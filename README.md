@@ -3,7 +3,7 @@
 - 🌱 I’m currently learning python and java
 - 💞️ I’m looking to collaborate on my minecraft server
 - 📫 How to reach me discord: daaanieltv
-- 😄 Pronouns: he/his
+- 😄 Pronouns: he/him
 - ⚡ Fun fact: doing stuff with debian since 2018
 
 <!---
