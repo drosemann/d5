@@ -2,7 +2,7 @@
 - 👀 I’m interested in tech and ai
 - 🌱 I’m currently learning python and java
 - 💞️ I’m looking to collaborate on my minecraft server
-- 📫 How to reach me discord: daaanieltv
+- 📫 How to reach me email: daniel.rosemann10@gmail.com
 - 😄 Pronouns: he/him
 - ⚡ Fun fact: doing stuff with debian since 2018
 
