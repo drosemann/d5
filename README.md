@@ -24,3 +24,6 @@ https://www.spigotmc.org/resources/broadcastrestart-plugin.122623/
 
 📢 TeamChat-Bungee: Supercharge Your BungeeCord Team Communication! 🚀: 
 https://www.spigotmc.org/resources/teamchat-bungee-supercharge-your-bungeecord-team-communication.122900/
+
+Minecraft Casino Plugin 🎰💸
+https://www.spigotmc.org/resources/minecraft-casino-plugin.122901/
