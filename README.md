@@ -21,3 +21,6 @@ https://www.spigotmc.org/resources/ephemeralelytra-temporary-elytra-on-death-fir
 
 📢 BroadCastRestart
 https://www.spigotmc.org/resources/broadcastrestart-plugin.122623/
+
+📢 TeamChat-Bungee: Supercharge Your BungeeCord Team Communication! 🚀: 
+https://www.spigotmc.org/resources/teamchat-bungee-supercharge-your-bungeecord-team-communication.122900/
