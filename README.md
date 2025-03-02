@@ -19,6 +19,9 @@ https://www.spigotmc.org/resources/%E2%9C%A8-unlock-hidden-treasures-across-your
 🦋 EphemeralElytra – Temporary Elytra on Death & First Join!
 https://www.spigotmc.org/resources/ephemeralelytra-temporary-elytra-on-death-first-join.122438/
 
+RoleSync | Discord ⇄ Minecraft | LuckPerms Integration
+https://www.spigotmc.org/resources/rolesync-discord-%E2%87%84-minecraft-luckperms-integration.122372/
+
 📢 BroadCastRestart
 https://www.spigotmc.org/resources/broadcastrestart-plugin.122623/
 
