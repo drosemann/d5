@@ -27,3 +27,6 @@ https://www.spigotmc.org/resources/teamchat-bungee-supercharge-your-bungeecord-t
 
 Minecraft Casino Plugin 🎰💸
 https://www.spigotmc.org/resources/minecraft-casino-plugin.122901/
+
+BuildFFA ⚔️🛡️ (Optimized for Minecraft 1.21.4)
+https://www.spigotmc.org/resources/buildffa-%E2%9A%94%EF%B8%8F%EF%B8%8F-optimized-for-minecraft-1-21-4.122957/
