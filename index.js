@@ -42,12 +42,6 @@ const SERVER_TYPES = {
     memory: 256,
     dockerImage: 'ghcr.io/pterodactyl/yolks:mysql'
   },
-  'debian': {
-    name: 'Debian Server',
-    eggId: process.env.DEBIAN_EGG_ID,
-    memory: 1024,
-    dockerImage: 'ghcr.io/pterodactyl/yolks:debian'
-  },
   'python': {
     name: 'Python Server',
     eggId: process.env.PYTHON_EGG_ID,
@@ -349,7 +343,7 @@ client.on('interactionCreate', async (interaction) => {
 
       const row = new ActionRowBuilder()
         .addComponents(
-          Object.entries(SERVER_TYPES).map(([key, type]) =>
+          Object.entries(SERVER_TYPES).filter(([key, type]) => key !== 'debian').map(([key, type]) =>
             new ButtonBuilder()
               .setCustomId(`servertype_${key}`)
               .setLabel(type.name)
