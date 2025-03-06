@@ -44,11 +44,11 @@ https://www.spigotmc.org/resources/minecraft-clan-wars-plugin-%EF%B8%8F.122958/
 
 ###
 
-<p align="left">Hey! I am Damian. I like to Code and play Video Games. I can C#, C++, C, JS, HTML, CSS and Py. </p>
+<p align="left">Hey! I am Daniel I like to Code and play Video Games. I can html, css, javascript, java, php, python and a bit of react. </p>
 
 ###
 
-[![Discord Presence](https://lanyard.cnrad.dev/api/1241397751644950652)](https://discord.com/users/1241397751644950652)
+[![Discord Presence](https://lanyard.cnrad.dev/api/1241397751644950652)](https://discord.com/users/1213567076997009421)
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/damianschoenberger/damianschoenberger/output/github-snake-dark.svg" />
