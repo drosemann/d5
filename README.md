@@ -48,7 +48,7 @@ https://www.spigotmc.org/resources/minecraft-clan-wars-plugin-%EF%B8%8F.122958/
 
 ###
 
-[![Discord Presence](https://lanyard.cnrad.dev/api/1241397751644950652)](https://discord.com/users/1213567076997009421)
+[![Discord Presence](https://lanyard.cnrad.dev/api/1213567076997009421)](https://discord.com/users/1213567076997009421)
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/damianschoenberger/damianschoenberger/output/github-snake-dark.svg" />
