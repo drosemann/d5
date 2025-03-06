@@ -1,10 +1,33 @@
-👋 Hi, I’m @DaaanielTV
+###
+
+<h3 align="left">Hey 👀</h2>
+
+###
+
+<p align="left">👋 Hi, I’m @DaaanielTV
 👀 I’m interested in tech and AI
 🌱 I’m currently learning Python and Java
 💞️ I’m looking to collaborate on my Minecraft server
 📫 How to reach me: email daniel.rosemann10@gmail.com
 😄 Pronouns: he/him
 ⚡ Fun fact: doing stuff with Debian since 2018
+I can html, css, javascript, java, php, python and a bit of react. </p>
+
+###
+
+[![Discord Presence](https://lanyard.cnrad.dev/api/1213567076997009421)](https://discord.com/users/1213567076997009421)
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/damianschoenberger/damianschoenberger/output/github-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/damianschoenberger/damianschoenberger/output/github-snake.svg" />
+  <img alt="github-snake" src="https://raw.githubusercontent.com/damianschoenberger/damianschoenberger/output/github-snake.svg" />
+</picture>
+
+
+###
+
+
+
 🔗 Check out my 1.21.4 Minecraft Plugins:
 
 🛏️ Advanced Bedwars
@@ -38,23 +61,3 @@ Minecraft Clan Wars Plugin
 https://www.spigotmc.org/resources/minecraft-clan-wars-plugin-%EF%B8%8F.122958/
 
 
-###
-
-<h3 align="left">Hey 👀</h2>
-
-###
-
-<p align="left">Hey! I am Daniel I like to Code and play Video Games. I can html, css, javascript, java, php, python and a bit of react. </p>
-
-###
-
-[![Discord Presence](https://lanyard.cnrad.dev/api/1213567076997009421)](https://discord.com/users/1213567076997009421)
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/damianschoenberger/damianschoenberger/output/github-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/damianschoenberger/damianschoenberger/output/github-snake.svg" />
-  <img alt="github-snake" src="https://raw.githubusercontent.com/damianschoenberger/damianschoenberger/output/github-snake.svg" />
-</picture>
-
-
-###
