@@ -1,0 +1,5 @@
+projects/learning-projects-python-programming/chat.json filter=lfs diff=lfs merge=lfs -text
+projects/learning-projects-python-programming/teil1.json filter=lfs diff=lfs merge=lfs -text
+projects/learning-projects-python-programming/teil2.json filter=lfs diff=lfs merge=lfs -text
+* !text -filter -merge -diff
+projects/learning-projects-python-programming/*.json filter=lfs diff=lfs merge=lfs -text
