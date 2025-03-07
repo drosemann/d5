@@ -1,3 +1,8 @@
+fix snake build error 
+generate Action failed with "The process '/usr/bin/git' failed with exit code 128"
+
+
+
 <h3 align="left">Hey 👀</h3>
 <p align="left">👋 Hi, I’m @DaaanielTV 👀 I’m interested in tech and AI 🌱 I’m currently learning Python and Java 💞️ I’m looking to collaborate on my Minecraft server 📫 How to reach me: email daniel.rosemann10@gmail.com 😄 Pronouns: he/him ⚡ Fun fact: doing stuff with Debian since 2018 I can HTML, CSS, JavaScript, Java, PHP, Python, and a bit of React.</p>
 Hi, my name is Daniel 👋  
