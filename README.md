@@ -32,14 +32,14 @@ I can html, css, javascript, java, php, python and a bit of react. </p>
 - I'm currently working on my free hosting service hosting-club.de
 - Open to collaborate on anything 🤝
 
-# They Call me **Ytext**✅
+# They Call me **Daniel**✅
 ---
 
 ## 🧑‍💻 **About Me**
-- **Name**: Ytext
+- **Name**: Daniel
 - **Age**: 17
-- **Interests**: Web Programming,Software Programming, UI/UX Design
-- **Favorite Game**: Minecraft (v1.12)
+- **Interests**: Web Programming, Software Programming, UI/UX Design
+- **Favorite Game**: Minecraft
 
 
 ## Socials
