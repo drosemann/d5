@@ -32,6 +32,16 @@ I can html, css, javascript, java, php, python and a bit of react. </p>
 - I'm currently working on my free hosting service hosting-club.de
 - Open to collaborate on anything 🤝
 
+# They Call me **Ytext**✅
+---
+
+## 🧑‍💻 **About Me**
+- **Name**: Ytext
+- **Age**: 17
+- **Interests**: Web Programming,Software Programming, UI/UX Design
+- **Favorite Game**: Minecraft (v1.12)
+
+
 ## Socials
 
 [![Discord Presence](https://lanyard.kyrie25.me/api/303142922780672013?showBanner=animated&waveColor=f159aa)](https://discord.com/users/303142922780672013)
