@@ -26,11 +26,10 @@ I can html, css, javascript, java, php, python and a bit of react. </p>
 
 ###
 
-# Hi, my name is Nikki 👋
-- Self-taught developer and designer.
+# Hi, my name is Daniel 👋
+- Self-taught developer
 - Familiar with full-stack work. 📚
-- I'm currently working on [Tinderhaj](https://github.com/CuteNikki/tinderhaj) and [a Discord Bot](https://github.com/CuteNikki/discord-bot)
-- and my very own, first portfolio website!
+- I'm currently working on my free hosting service hosting-club.de
 - Open to collaborate on anything 🤝
 
 ## Socials
