@@ -13,19 +13,6 @@
 ⚡ Fun fact: doing stuff with Debian since 2018
 I can html, css, javascript, java, php, python and a bit of react. </p>
 
-###
-
-[![Discord Presence](https://lanyard.cnrad.dev/api/1213567076997009421)](https://discord.com/users/1213567076997009421)
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/damianschoenberger/damianschoenberger/output/github-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/damianschoenberger/damianschoenberger/output/github-snake.svg" />
-  <img alt="github-snake" src="https://raw.githubusercontent.com/damianschoenberger/damianschoenberger/output/github-snake.svg" />
-</picture>
-
-
-###
-
 # Hi, my name is Daniel 👋
 - Self-taught developer
 - Familiar with full-stack work. 📚
@@ -40,6 +27,19 @@ I can html, css, javascript, java, php, python and a bit of react. </p>
 - **Age**: 17
 - **Interests**: Web Programming, Software Programming, UI/UX Design
 - **Favorite Game**: Minecraft
+
+###
+
+[![Discord Presence](https://lanyard.cnrad.dev/api/1213567076997009421)](https://discord.com/users/1213567076997009421)
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/damianschoenberger/damianschoenberger/output/github-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/damianschoenberger/damianschoenberger/output/github-snake.svg" />
+  <img alt="github-snake" src="https://raw.githubusercontent.com/damianschoenberger/damianschoenberger/output/github-snake.svg" />
+</picture>
+
+
+###
 
 
 ## Socials
