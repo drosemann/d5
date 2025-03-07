@@ -61,18 +61,7 @@ I can html, css, javascript, java, php, python and a bit of react. </p>
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)![shadcnui](https://img.shields.io/badge/shadcnui-%23000000.svg?style=for-the-badge)![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
 <br/>
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
-<br/>
-![Adobe Illustrator](https://img.shields.io/badge/adobe%20illustrator-%23FF9A00.svg?style=for-the-badge&logo=adobe%20illustrator&logoColor=white)![Adobe Photoshop](https://img.shields.io/badge/adobe%20photoshop-%2331A8FF.svg?style=for-the-badge&logo=adobe%20photoshop&logoColor=white)![Blender](https://img.shields.io/badge/blender-%23F5792A.svg?style=for-the-badge&logo=blender&logoColor=white)![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 
-## Github Stats
-
-![Global Stats](https://github-readme-stats.vercel.app/api?username=cutenikki&show_icons=true&title_color=4F8CC9&text_color=9f9f9f&bg_color=00000000&hide_border=true&icon_color=4F8CC9&hide_title=true&count_private=true)
-<br/>
-![Streak Stats](https://github-readme-streak-stats.herokuapp.com?user=CuteNikki&hide_border=true&background=00000000&fire=4F8CC9&sideNums=9f9f9f&ring=4F8CC9&currStreakNum=9f9f9f&currStreakLabel=9f9f9f&sideLabels=9F9F9F&dates=9F9F9F&stroke=00000000)
-<br/>
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=cutenikki&langs_count=10&custom_title=Top%20%Languages&show_icons=true&title_color=9f9f9f&text_color=9f9f9f&bg_color=00000000&hide_border=true)
-
-[![](https://visitcount.itsvg.in/api?id=cutenikki&label=Profile%20Views&color=1&icon=1&pretty=false)](https://visitcount.itsvg.in)
 
 🔗 Check out my 1.21.4 Minecraft Plugins:
 
