@@ -39,7 +39,7 @@ I plan to scale up my Minecraft hosting platform with automated systems for serv
 [![Discord](https://img.shields.io/badge/profile-%234953c9.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/1213567076997009421)   
 [![Instagram](https://img.shields.io/badge/instagram-%23E4405F.svg?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/daaanieltv)  
 [![Twitter/X](https://img.shields.io/badge/twitter-%23000000.svg?style=for-the-badge&logo=x&logoColor=white)](https://twitter.com/daaanieltv)  
-[![YouTube](https://img.shields.io/badge/youtube-%23FF0000.svg?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com/channel/TechInsightsDE)  
+[![YouTube](https://img.shields.io/badge/youtube-%23FF0000.svg?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@TechInsightsDE)  
 [![Twitch](https://img.shields.io/badge/twitch-%239146FF.svg?style=for-the-badge&logo=twitch&logoColor=white)](https://twitch.tv/daaanieltv)
 
 **GitHub Stats**  
