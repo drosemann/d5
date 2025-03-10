@@ -25,12 +25,6 @@ Open to collaborate on anything 🤝
 **Minecraft Server Hosting:** I am planning to provide Minecraft server hosting to other people using my own infrastructure. I aim to offer a low-cost solution with a better experience than Aternos.  
 **Free Hosting Service:** Running a free Minecraft hosting service where players can host their servers by watching ads and earning tokens.
 
-🛠 **Skills & Tools**  
-<br />
-<br />
-<br />
-<br />
-<br />
 
 [![Discord Presence](https://lanyard.cnrad.dev/api/1213567076997009421)](https://discord.com/users/1213567076997009421)
 
