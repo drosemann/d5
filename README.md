@@ -33,9 +33,7 @@ Open to collaborate on anything 🤝
 **Rosemann IT UG:**  
 I plan to start my own IT business after finishing school, offering services like server hosting and IT consulting.  
 **Minecraft Server Hosting:**  
-I plan to scale up my Minecraft hosting platform with automated systems for server creation, port management, and paid hosting tiers with prioritized support.  
-**YouTube Channel:**  
-I plan to start a YouTube channel focused on IT topics such as Cloud Computing, Kubernetes, Cybersecurity, and more.
+I plan to scale up my Minecraft hosting platform with automated systems for server creation, port management, and paid hosting tiers with prioritized support.
 
 **Socials**  
 [![Discord](https://img.shields.io/badge/profile-%234953c9.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/1213567076997009421)   
