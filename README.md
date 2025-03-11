@@ -41,6 +41,3 @@ I plan to scale up my Minecraft hosting platform with automated systems for serv
 [![Twitter/X](https://img.shields.io/badge/twitter-%23000000.svg?style=for-the-badge&logo=x&logoColor=white)](https://x.com/DaaaaanielTV)  
 [![YouTube](https://img.shields.io/badge/youtube-%23FF0000.svg?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@TechInsightsDE)  
 [![Twitch](https://img.shields.io/badge/twitch-%239146FF.svg?style=for-the-badge&logo=twitch&logoColor=white)](https://twitch.tv/daaanieltv)
-
-**GitHub Stats**  
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=your-github-username&show_icons=true&hide_title=true&count_private=true&hide=prs&theme=radical)
