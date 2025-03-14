@@ -8,11 +8,10 @@ Hey, I'm Daniel 👋, a self-taught developer with a passion for tech, AI, and I
 
 📧 Reach me at daniel.rosemann10@gmail.com!
 
-📌 **Current Projects**  
-**Minecraft-Server Monetization:** I'm working on monetizing my Minecraft server through in-game items, loot-boxes, and cosmetic ranks.  
-**Minecraft Server Hosting:** I am planning to provide Minecraft server hosting to other people using my own infrastructure. I aim to offer a low-cost solution with a better experience than Aternos.  
-**Free Hosting Service:** Running a free Minecraft hosting service where players can host their servers by watching ads and earning tokens.
-
+Current Projects
+🎮 Minecraft Server Monetization – Selling in-game items, loot boxes, and cosmetic ranks.
+🖥️ Minecraft Server Hosting – Providing affordable, high-performance server hosting as an alternative to Aternos.
+🌍 Free Hosting Service – Offering free Minecraft servers where players earn hosting time by watching ads.
 
 [![Discord Presence](https://lanyard.cnrad.dev/api/1213567076997009421)](https://discord.com/users/1213567076997009421)
 
@@ -22,11 +21,9 @@ Hey, I'm Daniel 👋, a self-taught developer with a passion for tech, AI, and I
   <img alt="github-snake" src="https://raw.githubusercontent.com/damianschoenberger/damianschoenberger/output/github-snake.svg" />  
 </picture>
 
-🚀 **Future Goals**  
-**Rosemann IT UG:**  
-I plan to start my own IT business after finishing school, offering services like server hosting and IT consulting.  
-**Minecraft Server Hosting:**  
-I plan to scale up my Minecraft hosting platform with automated systems for server creation, port management, and paid hosting tiers with prioritized support.
+Future Goals
+🏢 Rosemann IT UG – Launching an IT business for server hosting and consulting.
+🖥️ Minecraft Server Hosting – Expanding with automation, port management, and premium hosting tiers.
 
 **Socials**  
 [![Discord](https://img.shields.io/badge/profile-%234953c9.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/1213567076997009421)   
