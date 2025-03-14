@@ -26,7 +26,12 @@ Hey, I'm Daniel 👋, a self-taught developer with a passion for tech, AI, and I
 
 🖥️ Minecraft Server Hosting – Expanding with automation, port management, and premium hosting tiers.
 
-[![Discord Presence](https://lanyard.cnrad.dev/api/1213567076997009421)](https://discord.com/users/1213567076997009421)
+## Socials 
+[![Discord](https://img.shields.io/badge/profile-%234953c9.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/1213567076997009421)   
+[![Instagram](https://img.shields.io/badge/instagram-%23E4405F.svg?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/daaanieltv)  
+[![Twitter/X](https://img.shields.io/badge/twitter-%23000000.svg?style=for-the-badge&logo=x&logoColor=white)](https://x.com/DaaaaanielTV)  
+[![YouTube](https://img.shields.io/badge/youtube-%23FF0000.svg?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@TechInsightsDE)  
+[![Twitch](https://img.shields.io/badge/twitch-%239146FF.svg?style=for-the-badge&logo=twitch&logoColor=white)](https://twitch.tv/daaanieltv)
 
 <picture>  
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/damianschoenberger/damianschoenberger/output/github-snake-dark.svg" />  
@@ -34,9 +39,4 @@ Hey, I'm Daniel 👋, a self-taught developer with a passion for tech, AI, and I
   <img alt="github-snake" src="https://raw.githubusercontent.com/damianschoenberger/damianschoenberger/output/github-snake.svg" />  
 </picture>
 
-## Socials 
-[![Discord](https://img.shields.io/badge/profile-%234953c9.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/1213567076997009421)   
-[![Instagram](https://img.shields.io/badge/instagram-%23E4405F.svg?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/daaanieltv)  
-[![Twitter/X](https://img.shields.io/badge/twitter-%23000000.svg?style=for-the-badge&logo=x&logoColor=white)](https://x.com/DaaaaanielTV)  
-[![YouTube](https://img.shields.io/badge/youtube-%23FF0000.svg?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@TechInsightsDE)  
-[![Twitch](https://img.shields.io/badge/twitch-%239146FF.svg?style=for-the-badge&logo=twitch&logoColor=white)](https://twitch.tv/daaanieltv)
+[![Discord Presence](https://lanyard.cnrad.dev/api/1213567076997009421)](https://discord.com/users/1213567076997009421)
