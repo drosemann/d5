@@ -38,5 +38,3 @@ Hey, I'm Daniel 👋, a self-taught developer with a passion for tech, AI, and I
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/damianschoenberger/damianschoenberger/output/github-snake.svg" />  
   <img alt="github-snake" src="https://raw.githubusercontent.com/damianschoenberger/damianschoenberger/output/github-snake.svg" />  
 </picture>
-
-[![Discord Presence](https://lanyard.cnrad.dev/api/1213567076997009421)](https://discord.com/users/1213567076997009421)
