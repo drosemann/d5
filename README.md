@@ -9,6 +9,7 @@ Hey, I'm Daniel 👋, a self-taught developer with a passion for tech, AI, and I
 📧 Reach me at daniel.rosemann10@gmail.com!
 
 Current Projects
+
 🎮 Minecraft Server Monetization – Selling in-game items, loot boxes, and cosmetic ranks.
 
 🖥️ Minecraft Server Hosting – Providing affordable, high-performance server hosting as an alternative to Aternos.
@@ -24,7 +25,9 @@ Current Projects
 </picture>
 
 Future Goals
+
 🏢 Rosemann IT UG – Launching an IT business for server hosting and consulting.
+
 🖥️ Minecraft Server Hosting – Expanding with automation, port management, and premium hosting tiers.
 
 **Socials**  
