@@ -1,14 +1,18 @@
 Hey, I'm Daniel 👋, a self-taught developer with a passion for tech, AI, and IT infrastructure.
 
 💻 Skills: Full-stack development (HTML, CSS, JavaScript, Java, PHP, Python) + some React.
+
 📚 Currently Learning: Python, Java, DevOps, network security, cloud computing, and AI.
+
 🎮 Minecraft Projects: Running a SMP + RPG Minecraft server and working on hosting-club.de, a free Minecraft hosting service.
+
 🚀 Goal: Building an affordable, community-driven hosting service for Minecraft servers.
+
 🤝 Collaboration: Open to working on tech, AI, and Minecraft-related projects.
 
-📧 Reach me at daniel.rosemann10@gmail.com!
+## 📧 Reach me at daniel.rosemann10@gmail.com!
 
-Current Projects
+## Current Projects
 
 🎮 Minecraft Server Monetization – Selling in-game items, loot boxes, and cosmetic ranks.
 
@@ -24,7 +28,7 @@ Current Projects
   <img alt="github-snake" src="https://raw.githubusercontent.com/damianschoenberger/damianschoenberger/output/github-snake.svg" />  
 </picture>
 
-Future Goals
+## Future Goals
 
 🏢 Rosemann IT UG – Launching an IT business for server hosting and consulting.
 
