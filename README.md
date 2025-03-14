@@ -20,6 +20,12 @@ Hey, I'm Daniel 👋, a self-taught developer with a passion for tech, AI, and I
 
 🌍 Free Hosting Service – Offering free Minecraft servers where players earn hosting time by watching ads.
 
+## Future Goals
+
+🏢 Rosemann IT UG – Launching an IT business for server hosting and consulting.
+
+🖥️ Minecraft Server Hosting – Expanding with automation, port management, and premium hosting tiers.
+
 [![Discord Presence](https://lanyard.cnrad.dev/api/1213567076997009421)](https://discord.com/users/1213567076997009421)
 
 <picture>  
@@ -28,13 +34,7 @@ Hey, I'm Daniel 👋, a self-taught developer with a passion for tech, AI, and I
   <img alt="github-snake" src="https://raw.githubusercontent.com/damianschoenberger/damianschoenberger/output/github-snake.svg" />  
 </picture>
 
-## Future Goals
-
-🏢 Rosemann IT UG – Launching an IT business for server hosting and consulting.
-
-🖥️ Minecraft Server Hosting – Expanding with automation, port management, and premium hosting tiers.
-
-**Socials**  
+## Socials 
 [![Discord](https://img.shields.io/badge/profile-%234953c9.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/1213567076997009421)   
 [![Instagram](https://img.shields.io/badge/instagram-%23E4405F.svg?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/daaanieltv)  
 [![Twitter/X](https://img.shields.io/badge/twitter-%23000000.svg?style=for-the-badge&logo=x&logoColor=white)](https://x.com/DaaaaanielTV)  
