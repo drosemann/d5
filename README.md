@@ -1,19 +1,12 @@
-<h3 align="left">Hey 👀</h3>
-<p align="left">👋 Hi, I’m @DaaanielTV 👀 I’m interested in tech and AI 🌱 I’m currently learning Python and Java 💞️ I’m looking to collaborate on my Minecraft server 📫 How to reach me: email daniel.rosemann10@gmail.com 😄 Pronouns: he/him ⚡ Fun fact: doing stuff with Debian since 2018 I can HTML, CSS, JavaScript, Java, PHP, Python, and a bit of React.</p>
-Hi, my name is Daniel 👋  
-Self-taught developer  
-Familiar with full-stack work. 📚  
-I'm currently working on my free hosting service, hosting-club.de  
-Open to collaborate on anything 🤝
+Hey, I'm Daniel 👋, a self-taught developer with a passion for tech, AI, and IT infrastructure.
 
-🧑‍💻 About Me  
-**Name:** Daniel  
-**Age:** 17  
-**Interests:** Web Programming, Software Programming, UI/UX Design, Minecraft, IT, Virtualisierung und Cloud Computing  
-**Favorite Game:** Minecraft  
-**Learning Goals:** Focusing on Python, Java, and improving my DevOps skills. Also interested in network security, cloud computing, and AI.  
-**Minecraft Projects:** Working on a mix of Survival-Multiplayer (SMP) and RPG for my Minecraft server.  
-**Goal:** My goal is to build a hosting service, where I can provide affordable Minecraft servers, and to create a community-driven Minecraft ecosystem.
+💻 Skills: Full-stack development (HTML, CSS, JavaScript, Java, PHP, Python) + some React.
+📚 Currently Learning: Python, Java, DevOps, network security, cloud computing, and AI.
+🎮 Minecraft Projects: Running a SMP + RPG Minecraft server and working on hosting-club.de, a free Minecraft hosting service.
+🚀 Goal: Building an affordable, community-driven hosting service for Minecraft servers.
+🤝 Collaboration: Open to working on tech, AI, and Minecraft-related projects.
+
+📧 Reach me at daniel.rosemann10@gmail.com!
 
 📌 **Current Projects**  
 **Minecraft-Server Monetization:** I'm working on monetizing my Minecraft server through in-game items, loot-boxes, and cosmetic ranks.  
