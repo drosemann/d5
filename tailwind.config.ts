@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,33 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Custom theme colors
+				purple: {
+					DEFAULT: '#9333EA',
+					50: '#FAF5FF',
+					100: '#F3E8FF',
+					200: '#E9D5FF',
+					300: '#D8B4FE',
+					400: '#C084FC',
+					500: '#A855F7',
+					600: '#9333EA',
+					700: '#7E22CE',
+					800: '#6B21A8',
+					900: '#581C87'
+				},
+				dark: {
+					DEFAULT: '#0F1117',
+					50: '#2D3748',
+					100: '#1A202C',
+					200: '#171923',
+					300: '#13151C',
+					400: '#0F1117',
+					500: '#0A0C10',
+					600: '#060709',
+					700: '#030405',
+					800: '#010203',
+					900: '#000000'
 				}
 			},
 			borderRadius: {
@@ -84,11 +112,17 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				blink: {
+					'0%': { opacity: '0' },
+					'50%': { opacity: '1' },
+					'100%': { opacity: '0' },
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				blink: 'blink 1s infinite'
 			}
 		}
 	},
