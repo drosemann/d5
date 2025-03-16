@@ -12,12 +12,12 @@ const Message: React.FC<MessageProps> = ({ content, role }) => {
 
   return (
     <div className={cn(
-      "py-2 px-4 rounded-3xl max-w-[80%] mb-2",
+      "py-3 px-5 rounded-2xl max-w-[80%] mb-3 shadow-sm",
       isUser 
-        ? "bg-purple-600 text-white ml-auto rounded-tr-none" 
-        : "bg-dark-300 text-gray-100 mr-auto rounded-tl-none"
+        ? "bg-gradient-to-r from-purple-600 to-purple-700 text-white ml-auto rounded-tr-sm" 
+        : "bg-dark-300/80 text-gray-100 mr-auto rounded-tl-sm border border-white/5"
     )}>
-      <p className="text-sm md:text-base">{content}</p>
+      <p className="text-sm md:text-base leading-relaxed">{content}</p>
     </div>
   );
 };

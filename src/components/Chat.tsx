@@ -14,7 +14,8 @@ const Chat: React.FC = () => {
   const samplePrompts = [
     "Create a JavaScript game",
     "Design a system architecture",
-    "Explain quantum computing"
+    "Explain quantum computing",
+    "Help with React hooks"
   ];
 
   const features = [
@@ -26,12 +27,12 @@ const Chat: React.FC = () => {
     {
       icon: Shield,
       title: "Privacy First",
-      description: "We prioritize your privacy and are committed to safeguarding your data."
+      description: "We prioritize your privacy and are committed to safeguarding your data with end-to-end encryption."
     },
     {
       icon: FileText,
       title: "Proprietary Model",
-      description: "Receive superior answers from our proprietary, self-trained model."
+      description: "Receive superior answers from our proprietary, self-trained model optimized for creative solutions."
     }
   ];
 
@@ -80,7 +81,7 @@ const Chat: React.FC = () => {
       <div className="flex-1 overflow-y-auto px-4 lg:px-0 max-w-4xl mx-auto w-full">
         {!hasMessages ? (
           <div className="flex flex-col items-center justify-center h-full">
-            <h1 className="text-4xl font-bold text-purple-500 mb-4">AI Assistant</h1>
+            <h1 className="text-4xl font-bold text-gradient mb-2">AI Assistant</h1>
             <p className="text-gray-400 mb-12">Powered by TalkativeCloud</p>
             
             <div className="flex flex-wrap gap-3 justify-center mb-12">
@@ -110,8 +111,8 @@ const Chat: React.FC = () => {
               <Message key={index} {...message} />
             ))}
             {isTyping && (
-              <div className="bg-dark-300 text-gray-100 py-2 px-4 rounded-3xl max-w-[80%] mb-2 rounded-tl-none">
-                <p className="typing-indicator text-sm md:text-base">AI is typing...</p>
+              <div className="bg-dark-300/80 text-gray-100 py-3 px-5 rounded-2xl max-w-[80%] mb-3 rounded-tl-sm border border-white/5 mr-auto shadow-sm">
+                <p className="typing-indicator text-sm md:text-base">AI is thinking...</p>
               </div>
             )}
             <div ref={messagesEndRef} />

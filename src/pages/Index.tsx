@@ -5,7 +5,7 @@ import Chat from '@/components/Chat';
 
 const Index: React.FC = () => {
   return (
-    <div className="min-h-screen bg-dark">
+    <div className="min-h-screen bg-gradient-to-br from-dark-500 to-dark-900">
       <Header />
       <Chat />
     </div>
