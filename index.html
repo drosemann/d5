@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hosting-Club.de - Free Servers With Maximum Power!</title>
+    <style>
+        :root {
+            --primary-color: #0a0a12;
+            --secondary-color: #1a1a2f;
+            --neon-blue: #00e5ff;
+            --neon-red: #ff3860;
+            --text-color: #ffffff;
+            --accent-color: #7645fe;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #0a0a12 0%, #1a1a2f 100%);
+            box-shadow: 0 5px 20px rgba(0, 229, 255, 0.2);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--neon-blue), var(--neon-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--neon-blue);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(to right, var(--neon-blue), var(--neon-red));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            background: radial-gradient(circle at center, #1a1a2f 0%, #0a0a12 80%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("/api/placeholder/1600/900") center/cover no-repeat;
+            opacity: 0.1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            background: linear-gradient(to right, var(--neon-blue), var(--neon-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
+            line-height: 1.2;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(0, 229, 255, 0.8), 0 0 30px rgba(255, 56, 96, 0.5);
+            }
+            100% {
+                text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+            }
+        }
+        
+        .fire-effect {
+            display: inline-block;
+            position: relative;
+        }
+        
+        .fire-effect::after {
+            content: '🔥';
+            position: absolute;
+            right: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            animation: flicker 0.5s infinite alternate;
+        }
+        
+        @keyframes flicker {
+            0% {
+                opacity: 0.5;
+                transform: translateY(-50%) scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(-50%) scale(1.05);
+            }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #ccccff;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--neon-blue), var(--accent-color));
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 229, 255, 0.4);
+            margin: 0 1rem;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 229, 255, 0.6);
+        }
+        
+        .cta-button.secondary {
+            background: linear-gradient(135deg, var(--neon-red), #ff8860);
+        }
+        
+        .features {
+            background-color: var(--secondary-color);
+            padding: 6rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            color: var(--text-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(to right, var(--neon-blue), var(--neon-red));
+            bottom: 0;
+            left: 20%;
+            border-radius: 2px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: rgba(26, 26, 47, 0.7);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 229, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 229, 255, 0.2);
+            border-color: rgba(0, 229, 255, 0.3);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            color: var(--neon-blue);
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .feature-description {
+            color: #ccccff;
+            font-size: 1rem;
+        }
+        
+        .feature-highlight {
+            color: var(--neon-red);
+            font-weight: 700;
+        }
+        
+        .upgrades {
+            padding: 6rem 0;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .upgrade-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .upgrade-card {
+            background: rgba(10, 10, 18, 0.8);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(118, 69, 254, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .upgrade-card:hover {
+            transform: scale(1.03);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(118, 69, 254, 0.3);
+        }
+        
+        .upgrade-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .upgrade-price {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--neon-blue);
+        }
+        
+        .upgrade-features {
+            margin-bottom: 2rem;
+            padding-left: 1rem;
+            text-align: left;
+        }
+        
+        .upgrade-feature {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+            color: #ccccff;
+        }
+        
+        .upgrade-feature::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--neon-blue);
+        }
+        
+        .community {
+            padding: 6rem 0;
+            background-color: var(--primary-color);
+        }
+        
+        .community-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .community-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 2rem;
+        }
+        
+        .community-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .community-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .discord-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #5865F2;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4);
+            margin-top: 2rem;
+        }
+        
+        .discord-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(88, 101, 242, 0.6);
+        }
+        
+        .discord-icon {
+            font-size: 1.5rem;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--neon-blue), var(--neon-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: #ccccff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--neon-blue);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            color: #666680;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin: 0 0 2rem 0;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: #ffffff;
+        }
+        
+        .feature-list li::before {
+            content: '★';
+            position: absolute;
+            left: 0;
+            color: var(--neon-red);
+            font-size: 1.2rem;
+        }
+        
+        .color-highlight {
+            color: var(--neon-blue);
+            font-weight: 700;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        @media (max-width: 900px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .community-content {
+                flex-direction: column;
+            }
+            
+            .community-text {
+                padding-right: 0;
+                margin-bottom: 2rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background-color: var(--secondary-color);
+                width: 100%;
+                padding: 2rem;
+                gap: 1rem;
+                transition: all 0.3s ease;
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .feature-grid, .upgrade-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .cta-button {
+                display: block;
+                width: 80%;
+                margin: 1rem auto;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Animation */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">HOSTING-CLUB.DE</div>
+                <button class="mobile-menu-btn">☰</button>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#features" class="nav-link">Features</a></li>
+                        <li><a href="#upgrades" class="nav-link">Upgrades</a></li>
+                        <li><a href="#community" class="nav-link">Community</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">HOSTING-CLUB.DE <span class="fire-effect">–</span> FREE SERVERS WITH MAXIMUM POWER!</h1>
+                <p class="hero-subtitle">Launch your projects with unlimited potential. High-performance, reliable, and completely free hosting for developers and gamers.</p>
+                <div>
+                    <a href="#features" class="cta-button">Explore Features</a>
+                    <a href="#community" class="cta-button secondary">Join Discord</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Powerful Features</h2>
+            </div>
+            
+            <ul class="feature-list">
+                <li><span class="color-highlight">Completely free</span>, no hidden fees or surprise charges</li>
+                <li><span class="color-highlight">Node.js & Python servers</span> for bots, websites, and more</li>
+                <li><span class="color-highlight">Minecraft servers on demand</span>, your own server anytime</li>
+                <li><span class="color-highlight">NOW WITH DOUBLE THE PERFORMANCE</span> – More power for your projects</li>
+                <li><span class="color-highlight">High-performance hardware</span> with SSDs, stable ping, and DDoS protection</li>
+                <li><span class="color-highlight">Community support</span> to help optimize projects</li>
+            </ul>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3 class="feature-title">Lightning Fast</h3>
+                    <p class="feature-description">Experience blazing fast performance with our SSD-backed infrastructure and optimized server configurations.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3 class="feature-title">Secure & Protected</h3>
+                    <p class="feature-description">Sleep soundly with our enterprise-grade DDoS protection and security measures keeping your projects safe.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Double Power</h3>
+                    <p class="feature-description">Enjoy <span class="feature-highlight">TWICE</span> the power and resources compared to other free hosting services.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="upgrades" id="upgrades">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Upgrade On Request</h2>
+                <p>Need even more resources? We've got you covered!</p>
+            </div>
+            
+            <div class="upgrade-cards">
+                <div class="upgrade-card">
+                    <h3 class="upgrade-title">Extra RAM</h3>
+                    <p>Boost your server's memory for handling larger workloads and more concurrent users.</p>
+                    <ul class="upgrade-features">
+                        <li class="upgrade-feature">Additional RAM allocation</li>
+                        <li class="upgrade-feature">Faster processing</li>
+                        <li class="upgrade-feature">Support multiple instances</li>
+                    </ul>
+                    <a href="#community" class="cta-button">Request Upgrade</a>
+                </div>
+                
+                <div class="upgrade-card">
+                    <h3 class="upgrade-title">Extra Storage</h3>
+                    <p>Expand your storage capacity for larger applications, media files, and databases.</p>
+                    <ul class="upgrade-features">
+                        <li class="upgrade-feature">Additional SSD storage</li>
+                        <li class="upgrade-feature">Fast read/write speeds</li>
+                        <li class="upgrade-feature">Regular backups</li>
+                    </ul>
+                    <a href="#community" class="cta-button">Request Upgrade</a>
+                </div>
+                
+                <div class="upgrade-card">
+                    <h3 class="upgrade-title">Custom Configuration</h3>
+                    <p>Need a specialized setup? Our team can create a custom configuration for your unique needs.</p>
+                    <ul class="upgrade-features">
+                        <li class="upgrade-feature">Tailored server setup</li>
+                        <li class="upgrade-feature">Special software installations</li>
+                        <li class="upgrade-feature">Priority support</li>
+                    </ul>
+                    <a href="#community" class="cta-button">Request Upgrade</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="community" id="community">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Join Our Community</h2>
+            </div>
+            
+            <div class="community-content">
+                <div class="community-text">
+                    <h3>Get Help & Connect With Others</h3>
+                    <p>Join our active Discord community to get instant support, share your projects, and connect with other developers and gamers. Our team and community members are always ready to help optimize your projects and answer any questions.</p>
+                    <a href="#" class="discord-button">
+                        <span class="discord-icon">⚡</span>
+                        Join Our Discord
+                    </a>
+                </div>
+                
+                <div class="community-image floating">
+                    <img src="/api/placeholder/500/400" alt="Hosting Club Community">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">HOSTING-CLUB.DE</div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Home</a>
+                <a href="#features" class="footer-link">Features</a>
+                <a href="#upgrades" class="footer-link">Upgrades</a>
+                <a href="#community" class="footer-link">Community</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+            </div>
+            <p class="copyright">© 2025 Hosting-Club.de. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                    
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
