@@ -1,15 +1,23 @@
 name: BuildFFA
-version: 1.0.1
+version: '${project.version}'
 main: net.bote.bffa.main.Main
-author: bote100
+api-version: '1.21.4'
+author: Daniel
 
 commands:
-   setname:
-   setspawn:
-   build:
-   setheight:
-   stats:
-   setvillager:
-   teaming:
-   addmap:
-   bffa:
+  setname:
+    description: Set the map name
+  setspawn:
+    description: Set the spawn location
+  build:
+    description: Toggle build mode
+  setheight:
+    description: Set the death height
+  stats:
+    description: View player statistics
+  setvillager:
+    description: Set the inventory villager
+  teaming:
+    description: Configure teaming settings
+  bffa:
+    description: Main plugin command
