@@ -1,0 +1,14 @@
+name: ArenaAutoReset
+version: '1.0.0'
+main: com.example.arenaautoreset.ArenaAutoReset
+api-version: '1.21'
+description: A plugin to automatically reset arenas in Minecraft.
+commands:
+  arenareset:
+    description: Control the arena reset functionality
+    usage: /<command> reset
+    permission: arenareset.admin
+permissions:
+  arenareset.admin:
+    description: Allows access to all arena reset commands
+    default: op
