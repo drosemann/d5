@@ -16,7 +16,7 @@ Hey, I'm Daniel 👋, a self-taught developer with a passion for tech, AI, and I
 
 🎮 Minecraft Server – DMH Network and ShadowUnity.
 
-🌍 Free Hosting Service – Offering free Minecraft servers where players earn hosting time by watching ads.
+🌍 Free Hosting Service – Offering free Minecraft, NodeJS, VPS, Database and TeamSpeak Server.
 
 ## Future Goals
 
