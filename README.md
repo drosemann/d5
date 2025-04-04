@@ -4,8 +4,6 @@ Hey, I'm Daniel 👋, a self-taught developer with a passion for tech, AI, and I
 
 📚 Currently Learning: Python, Java, DevOps, network security, cloud computing, and AI.
 
-🎮 Minecraft Projects: Running a SMP + RPG Minecraft server and working on hosting-club.de, a free Minecraft hosting service.
-
 🚀 Goal: Building an affordable, community-driven hosting service for Minecraft servers.
 
 🤝 Collaboration: Open to working on tech, AI, and Minecraft-related projects.
