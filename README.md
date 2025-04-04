@@ -14,9 +14,7 @@ Hey, I'm Daniel 👋, a self-taught developer with a passion for tech, AI, and I
 
 ## Current Projects
 
-🎮 Minecraft Server Monetization – Selling in-game items, loot boxes, and cosmetic ranks.
-
-🖥️ Minecraft Server Hosting – Providing affordable, high-performance server hosting as an alternative to Aternos.
+🎮 Minecraft Server – DMH Network and ShadowUnity.
 
 🌍 Free Hosting Service – Offering free Minecraft servers where players earn hosting time by watching ads.
 
