@@ -20,7 +20,7 @@ Hey, I'm Daniel 👋, a self-taught developer with a passion for tech, AI, and I
 
 🏢 Rosemann IT UG – Launching an IT business for server hosting and consulting.
 
-🖥️ Minecraft Server Hosting – Expanding with automation, port management, and premium hosting tiers.
+🖥️ Minecraft Server Hosting – Expanding with automation, ads/sponsorships , and premium hosting tiers.
 
 ## Socials 
 [![Discord](https://img.shields.io/badge/profile-%234953c9.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/1213567076997009421)   
