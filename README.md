@@ -2,7 +2,7 @@ Hey, I'm Daniel 👋, a self-taught developer with a passion for tech, AI, and I
 
 💻 Skills: Full-stack development (HTML, CSS, JavaScript, Java, PHP, Python) + some React.
 
-📚 Currently Learning: Python, Java, DevOps, network security, cloud computing, and AI.
+📚 Currently Learning: NextJS, DevOps, cyber security and AI.
 
 🚀 Goal: Building an affordable, community-driven hosting service for Minecraft servers.
 
