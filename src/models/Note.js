@@ -1,0 +1,49 @@
+const db = require('../../config/database');
+const crypto = require('crypto');
+
+class Note {
+    static async create(userId, title, content) {
+        const conn = await db.getConnection();
+        try {
+            const encryptedContent = this.encrypt(content);
+            const result = await conn.query(
+                'INSERT INTO notes (user_id, title, content, created_at) VALUES (?, ?, ?, NOW())',
+                [userId, title, encryptedContent]
+            );
+            return result.insertId;
+        } finally {
+            conn.release();
+        }
+    }
+
+    static async get(id, userId) {
+        const conn = await db.getConnection();
+        try {
+            const rows = await conn.query(
+                'SELECT * FROM notes WHERE id = ? AND user_id = ?',
+                [id, userId]
+            );
+            if (rows.length > 0) {
+                rows[0].content = this.decrypt(rows[0].content);
+                return rows[0];
+            }
+            return null;
+        } finally {
+            conn.release();
+        }
+    }
+
+    static encrypt(text) {
+        const cipher = crypto.createCipher('aes-256-cbc', process.env.SECRET_KEY);
+        let encrypted = cipher.update(text, 'utf8', 'hex');
+        encrypted += cipher.final('hex');
+        return encrypted;
+    }
+
+    static decrypt(encrypted) {
+        const decipher = crypto.createDecipher('aes-256-cbc', process.env.SECRET_KEY);
+        let decrypted = decipher.update(encrypted, 'hex', 'utf8');
+        decrypted += decipher.final('utf8');
+        return decrypted;
+    }
+}
