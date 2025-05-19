@@ -1,32 +1,53 @@
-// Core Game Engine
+/**
+ * Core Game Engine Module
+ * This module provides the fundamental game loop and rendering functionality
+ * Handles canvas management, entity updates, and frame timing
+ */
 class GameEngine {
+    /**
+     * Initialize the game engine with a canvas
+     * @param {string} canvasId - The ID of the canvas element to use
+     */
     constructor(canvasId) {
+        // Initialize core engine components
         this.canvas = document.getElementById(canvasId);
         this.ctx = this.canvas.getContext('2d');
+        
+        // Entity management system
         this.entities = [];
+        
+        // Game loop control variables
         this.isRunning = false;
         this.lastTime = 0;
+        this.animationFrameId = null;
 
-        // Set up resize handling
+        // Set up responsive canvas handling
         window.addEventListener('resize', () => this.resize());
         this.resize();
     }
 
-    // Initialize the game engine
+    /**
+     * Initialize and start the game engine
+     * Begins the main game loop
+     */
     init() {
         this.isRunning = true;
         this.gameLoop();
-    }    // Main game loop
+    }
+
+    /**
+     * Main game loop - handles timing and frame updates
+     * @param {number} timestamp - Current frame timestamp
+     */
     gameLoop(timestamp = 0) {
         if (!this.isRunning) return;
 
+        // Calculate time between frames
         const deltaTime = timestamp - this.lastTime;
         this.lastTime = timestamp;
 
-        // Clear canvas before each frame
+        // Clear canvas and update game state
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-        // Update and render all entities
         this.update(deltaTime);
         this.render();
 
@@ -34,7 +55,10 @@ class GameEngine {
         this.animationFrameId = requestAnimationFrame((timestamp) => this.gameLoop(timestamp));
     }
 
-    // Update game state
+    /**
+     * Update all game entities
+     * @param {number} deltaTime - Time elapsed since last update
+     */
     update(deltaTime) {
         for (const entity of this.entities) {
             if (entity.update) {
@@ -43,7 +67,10 @@ class GameEngine {
         }
     }
 
-    // Render game state
+    /**
+     * Render all game entities
+     * Clears the canvas and draws each entity
+     */
     render() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         for (const entity of this.entities) {
@@ -53,12 +80,18 @@ class GameEngine {
         }
     }
 
-    // Add game entity
+    /**
+     * Add a new entity to the game
+     * @param {Entity} entity - The entity to add
+     */
     addEntity(entity) {
         this.entities.push(entity);
     }
 
-    // Remove game entity
+    /**
+     * Remove an entity from the game
+     * @param {Entity} entity - The entity to remove
+     */
     removeEntity(entity) {
         const index = this.entities.indexOf(entity);
         if (index > -1) {
@@ -66,11 +99,19 @@ class GameEngine {
         }
     }
 
-    // Handle window resize
+    /**
+     * Handle window resize events
+     * Adjusts the canvas size to match the window
+     */
     resize() {
         this.canvas.width = this.canvas.clientWidth;
         this.canvas.height = this.canvas.clientHeight;
-    }    // Stop game loop
+    }
+
+    /**
+     * Stop the game engine
+     * Halts the game loop and cancels the animation frame
+     */
     stop() {
         this.isRunning = false;
         if (this.animationFrameId) {
@@ -80,8 +121,18 @@ class GameEngine {
     }
 }
 
-// Base Entity Class
+/**
+ * Base Entity Class
+ * Represents a rectangular object in the game world
+ */
 class Entity {
+    /**
+     * Create an entity
+     * @param {number} x - X position
+     * @param {number} y - Y position
+     * @param {number} width - Width of the entity
+     * @param {number} height - Height of the entity
+     */
     constructor(x, y, width, height) {
         this.x = x;
         this.y = y;
@@ -89,7 +140,11 @@ class Entity {
         this.height = height;
     }
 
-    // Check collision with another entity
+    /**
+     * Check collision with another entity
+     * @param {Entity} other - The other entity to check against
+     * @returns {boolean} True if colliding, false otherwise
+     */
     collidesWith(other) {
         return this.x < other.x + other.width &&
                this.x + this.width > other.x &&
@@ -97,21 +152,33 @@ class Entity {
                this.y + this.height > other.y;
     }
 
-    // Default render method
+    /**
+     * Default render method
+     * Draws the entity as a white rectangle
+     * @param {CanvasRenderingContext2D} ctx - The canvas rendering context
+     */
     render(ctx) {
         ctx.fillStyle = '#fff';
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
 }
 
-// Asset Manager
+/**
+ * Asset Manager
+ * Manages loading and accessing game assets like images and sounds
+ */
 class AssetManager {
     constructor() {
         this.images = new Map();
         this.sounds = new Map();
     }
 
-    // Load an image
+    /**
+     * Load an image asset
+     * @param {string} key - The identifier for the image
+     * @param {string} src - The source URL of the image
+     * @returns {Promise<HTMLImageElement>} Promise resolving to the loaded image element
+     */
     async loadImage(key, src) {
         return new Promise((resolve, reject) => {
             const img = new Image();
@@ -124,12 +191,21 @@ class AssetManager {
         });
     }
 
-    // Get a loaded image
+    /**
+     * Get a loaded image by key
+     * @param {string} key - The identifier for the image
+     * @returns {HTMLImageElement} The loaded image element
+     */
     getImage(key) {
         return this.images.get(key);
     }
 
-    // Load a sound
+    /**
+     * Load a sound asset
+     * @param {string} key - The identifier for the sound
+     * @param {string} src - The source URL of the sound
+     * @returns {Promise<HTMLAudioElement>} Promise resolving to the loaded audio element
+     */
     async loadSound(key, src) {
         return new Promise((resolve, reject) => {
             const audio = new Audio();
@@ -142,13 +218,20 @@ class AssetManager {
         });
     }
 
-    // Get a loaded sound
+    /**
+     * Get a loaded sound by key
+     * @param {string} key - The identifier for the sound
+     * @returns {HTMLAudioElement} The loaded audio element
+     */
     getSound(key) {
         return this.sounds.get(key);
     }
 }
 
-// Input Manager
+/**
+ * Input Manager
+ * Handles keyboard and mouse input for the game
+ */
 class InputManager {
     constructor() {
         this.keys = new Map();
@@ -180,10 +263,19 @@ class InputManager {
         window.addEventListener('focus', () => this.clearKeys());
     }
 
+    /**
+     * Check if a key is currently pressed
+     * @param {string} code - The key code to check
+     * @returns {boolean} True if the key is pressed, false otherwise
+     */
     isKeyPressed(code) {
         return this.keys.get(code) || false;
     }
 
+    /**
+     * Handle mouse movement events
+     * @param {MouseEvent} event - The mouse event
+     */
     handleMouseMove(event) {
         const rect = event.target.getBoundingClientRect();
         this.lastMouseX = this.mouseX;
@@ -194,19 +286,35 @@ class InputManager {
         this.mouseDeltaY = this.mouseY - this.lastMouseY;
     }
 
+    /**
+     * Clear input states
+     * Resets key and mouse states
+     */
     clearKeys() {
         this.keys.clear();
         this.mouseDown = false;
     }
 
+    /**
+     * Set the active canvas for input events
+     * @param {HTMLCanvasElement} canvas - The canvas element to set as active
+     */
     setActiveCanvas(canvas) {
         this.activeCanvas = canvas;
     }
 
+    /**
+     * Get the current mouse position
+     * @returns {{x: number, y: number}} The mouse position
+     */
     getMousePosition() {
         return { x: this.mouseX, y: this.mouseY };
     }
 
+    /**
+     * Get the mouse movement delta since last frame
+     * @returns {{x: number, y: number}} The mouse delta
+     */
     getMouseDelta() {
         return { x: this.mouseDeltaX, y: this.mouseDeltaY };
     }
