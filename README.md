@@ -75,4 +75,4 @@ Lass uns gemeinsam etwas Großes aufbauen!
 ---
 
 > 💡 *„Ich baue nicht einfach nur Software – ich schaffe Möglichkeiten für andere, ihre Ideen zu verwirklichen.“*  
-> – *Daniel Rosemann*
+> – *Daniel*
