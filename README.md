@@ -24,7 +24,7 @@ Technikbegeistert, kreativ und aktiv in der Minecraft- & Hosting-Community.
 ## 🚀 Projekte
 
 ### 🎮 Minecraft
-- **ShadowUnity** – Anarchy/SMP-Netzwerk mit eigenen Plugins und Systemen
+- **ShadowUnity** – Anarchy Server mit eigenen Plugins und Systemen
 
 ### 🌐 Hosting
 - **Hosting-Club.de** – Kostenloses Hosting für Minecraft, NodeJS, VPS, Datenbanken & TeamSpeak
