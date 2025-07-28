@@ -31,14 +31,6 @@ Lass uns gemeinsam etwas Großes aufbauen!
 
 ---
 
-## 📫 Kontakt
-
-- 💬 **Discord**: `daaanieltv`  
-- 🌐 **Website**: [d5niel.de](https://d5niel.de)  
-- 🖥️ **Minecraft-Server**: `shadowunity.de`
-
----
-
 ## 🌐 Soziale Netzwerke
 
 [![Discord](https://img.shields.io/badge/profile-%234953c9.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/1213567076997009421)  
