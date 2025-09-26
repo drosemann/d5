@@ -1,0 +1,35 @@
+// Beschreiben Sie mithilfe von Pseudocode einen Algorithmus, welcher das Produkt aller ganzen Zah-len, welche durch 5 und durch 7 teilbar sind, berechnet und ausgibt Der Zahlenbereich beginnt bei 1 und endet bei einem Endwert, welcher größer als 1 ist und von dem Benutzer eingegeben wird. Hinweis: Es kann der Modulo-Operator (siehe Beispielaufgabe) genutzt werden. Es gibt aber auch andere Lösungen. 
+
+// Eingabe: Endwert (ganzzahlige Zahl größer als 1)
+// Ausgabe: Produkt aller Zahlen, die durch 5 und 7 teilbar sind
+
+// Schreibe "Bitte geben Sie einen Endwert ein" Lese Endwert ein Ergebnis = 1 Temp = 1 Solange Endwert > Temp: If Temp ist durch 7 teilbar und Temp ist durch 5 teilbar: Ergebnis = Ergebnis * Team Team = Team + 1 Ende Schleife Schreibe Ergebnis auf den Bildschirm 
+
+VARIABLE endwert AS INTEGER
+VARIABLE produkt AS INTEGER
+
+BEGIN
+    // Eingabe des Endwerts
+    PRINT "Bitte geben Sie einen Endwert größer als 1 ein:"
+    INPUT endwert
+
+    // Initialisierung des Produkts
+    produkt = 1
+    gefunden = FALSE
+
+    // Schleife durch alle Zahlen von 1 bis Endwert
+    FOR zahl FROM 1 TO endwert DO
+        // Überprüfung, ob die Zahl durch 5 und 7 teilbar ist
+        IF (zahl MOD 5 == 0) AND (zahl MOD 7 == 0) THEN
+            produkt = produkt * zahl
+            gefunden = TRUE
+        ENDIF
+    ENDFOR
+
+    // Ausgabe des Ergebnisses
+    IF gefunden THEN
+        PRINT "Das Produkt aller Zahlen, die durch 5 und 7 teilbar sind, ist: ", produkt
+    ELSE
+        PRINT "Es gibt keine Zahlen im Bereich, die durch 5 und 7 teilbar sind."
+    ENDIF
+END
