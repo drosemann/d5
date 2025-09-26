@@ -1,6 +1,5 @@
 from datetime import datetime, timedelta
 import hashlib
-from datetime import datetime, timedelta
 
 def register_company(company_name, admin_email, password):
     if email_exists(admin_email):
@@ -26,7 +25,6 @@ def handle_subscription(company_id, plan_type):
     subscription = create_record("Subscriptions", company_id=company_id, plan_type=plan_type, billing_cycle="monthly", status="active")
     update_record("Companies", id=company_id, status="active")
 
-
 def invite_user(admin_user_id, new_user_email, role):
     if not is_admin(admin_user_id):
         return {"error": "Unauthorized"}
@@ -36,15 +34,10 @@ def invite_user(admin_user_id, new_user_email, role):
     invitation = create_record("Invitations", email=new_user_email, company_id=admin["company_id"], role=role, expires_at=current_timestamp(offset_days=7))
     send_invitation_email(new_user_email, invitation.get("token"))
 
-
 def check_permission(user_id, resource, action):
     user = find_record("Users", id=user_id)
     role_permissions = get_permissions_for_role(user.get("role"))
-    if action in role_permissions.get(resource, []):
-        return True
-    else:
-        return False
-
+    return action in role_permissions.get(resource, [])
 
 def generate_invoice(company_id):
     subscription = find_record("Subscriptions", company_id=company_id, status="active")
@@ -54,12 +47,10 @@ def generate_invoice(company_id):
     invoice = create_record("Invoices", company_id=company_id, base_amount=base_amount, usage_amount=usage_amount, total=base_amount + usage_amount, due_date=current_date(offset_days=30), status="pending")
     send_invoice_email(company_id, invoice)
 
-
 def track_usage(company_id, feature, quantity):
-    usage = create_record("Usage", company_id=company_id, feature=feature, quantity=quantity, timestamp=current_timestamp())
+    create_record("Usage", company_id=company_id, feature=feature, quantity=quantity, timestamp=current_timestamp())
     if exceeds_limit(company_id, feature):
         notify_admin(company_id, "Usage limit approaching")
-
 
 def generate_company_report(company_id, date_range):
     usage_stats = aggregate_usage(company_id, date_range.start, date_range.end)
@@ -71,16 +62,13 @@ def generate_company_report(company_id, date_range):
         "revenue": billing_history
     }
 
-
 def check_rate_limit(company_id, endpoint):
     current_usage = get_current_api_usage(company_id, endpoint)
     limit = get_plan_limit(company_id, "api_calls")
     if current_usage >= limit:
         return {"error": "Rate limit exceeded"}
-    else:
-        increment_api_usage(company_id, endpoint)
-        return {"success": True}
-
+    increment_api_usage(company_id, endpoint)
+    return {"success": True}
 
 def export_company_data(company_id, format):
     if not allowed_format(format):
@@ -91,11 +79,9 @@ def export_company_data(company_id, format):
     notify_admin(company_id, "Data export completed")
 
 def email_exists(email):
-
     return False
 
 def create_record(table, **kwargs):
-
     return {"id": 1, **kwargs}
 
 def current_timestamp(offset_days=0):
