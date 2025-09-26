@@ -1,0 +1,5 @@
+PROCESS CalculateCost
+    INPUT price, quantity
+    SET cost = price * quantity
+    PRINT "The cost is: " + cost
+END
