@@ -4,11 +4,11 @@ Thank you for your interest in contributing! This document will help you get sta
 
 ## Project Overview
 
-Desktop Goose is a Windows desktop companion application. The core executable (`GooseDesktop.exe`) is closed-source, but the project extends functionality through:
+Desktop Goose is a cross-platform desktop companion application built with Python + PyQt5. The project extends functionality through:
 
 - **PowerShell Modules** - Feature implementations in `*.ps1` files (organized by category)
 - **Configuration** - `config.ini` for runtime settings
-- **Modding API** - `GooseModdingAPI.dll` for mod support
+- **Python UI** - Cross-platform UI layer in `goose-ui-python/`
 
 ## Architecture
 
@@ -52,7 +52,7 @@ The unified core system (`Core/GooseCore.ps1`) combines five subsystems:
 1. Clone the repository
 2. Ensure PowerShell 5.1+ is installed (Windows built-in)
 3. Review `config.ini` for available options
-4. Run `goose.vbs` or `run.bat` to launch
+4. Run `python main.py` in `goose-ui-python/` to launch
 
 ## Creating a New Module
 

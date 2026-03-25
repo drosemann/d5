@@ -12,16 +12,6 @@ A lightweight, feature-rich desktop companion that brings a playful goose to you
 
 ---
 
-> **✨ NEW: Cross-Platform Python UI**  
-> The original C# executable has been rewritten in Python + PyQt5 for true cross-platform support (Windows, macOS, Linux). See [goose-ui-python/README.md](goose-ui-python/README.md) for details. The PowerShell module architecture remains unchanged—all features work identically.
-
-**Choose Your Launch Method:**
-- 🪟 **Windows (Legacy)**: `run.bat` or `goose.vbs` (C# executable)
-- 🆕 **Cross-Platform Modern**: `python main.py` in `goose-ui-python/` (Python/PyQt5)
-- 📦 **Standalone**: Build with `goose-ui-python/build/build.bat` (no Python needed)
-
----
-
 ## 🦆 Features
 
 ### Core Features
@@ -126,13 +116,7 @@ Desktop Goose kann mit einem Self-Hosted Supabase Backend erweitert werden:
 
 ## 📋 System Requirements
 
-### C# Desktop EXE (Original)
-- Windows 10+ operating system
-- PowerShell 5.0+
-- .NET Framework (usually pre-installed)
-- Minimal system resources
-
-### Python UI (NEW - Recommended)
+### Python UI (Recommended)
 - **Windows 10+, macOS 10.13+, or Linux** (Ubuntu 18.04+)
 - Python 3.9+ (for development)
 - Or: Pre-built standalone executable (no installation needed)
@@ -167,25 +151,6 @@ bash build/build.sh
 ```
 
 See [goose-ui-python/SETUP.md](goose-ui-python/SETUP.md) for detailed setup, troubleshooting, and advanced configuration.
-
-### Option 2: Original C# EXE (Windows Only)
-
-1. Download the entire folder to your desired location
-2. Run `goose.vbs` to launch the goose silently in the background
-   - Alternatively, run `run.bat` for a minimized window launch
-   - Or directly execute `GooseDesktop.exe`
-
-> **⚠️ Antivirus Warning**
-> 
-> Some antivirus programs may flag GooseDesktop as a potential threat (currently detected by ~6/72 security vendors as `pua.goosedesktop/joke` or similar).
-> 
-> **Important:** The original executable (`GooseDesktop.exe`) is not open source. The new **Python UI is fully open source** and can be inspected for security.
-> 
-> If your antivirus blocks GooseDesktop:
-> - Try the **Python UI version instead** (fully open source)
-> - Add an exclusion for the GooseDesktop folder
-> - Report the false positive to your antivirus vendor
-> - Check the [VirusTotal report](https://www.virustotal.com/gui/file/943fd1ea44266c5d7fa02f2b292db095a4e6ba8027a1f6c73fd60d1165e63aff)
 
 ## ⚙️ Configuration
 
@@ -466,8 +431,7 @@ Goose_Desktop_Companion/
 │   ├── SERVER-STREAMER.md    # Streamer mode
 │   └── backend-setup.md      # Backend setup
 ├── config.ini                # Configuration
-├── goose.vbs                 # Silent launch (C# EXE)
-├── run.bat                   # Run C# EXE
+├── goose-ui.vbs              # Launch Python UI
 ├── run-all.bat              # Run all modules
 ├── run-all.ps1              # PowerShell runner
 ├── LICENSE                  # MIT License
@@ -480,9 +444,7 @@ Goose_Desktop_Companion/
 
 ### UI Layer Architecture
 
-Desktop Goose now offers **two rendering options**:
-
-#### 1. Python UI Layer (NEW - Recommended) ⭐
+Desktop Goose uses the Python UI Layer:
 
 **Location**: `goose-ui-python/`
 
@@ -525,10 +487,6 @@ goose-ui-python/
 └── [Documentation files]
 ```
 
-#### 2. C# WinForms EXE (Original - Windows Only)
-
-**Legacy option** for Windows-only deployment. See below for details.
-
 ---
 
 ### PowerShell Core Architecture
@@ -545,7 +503,6 @@ The business logic lives entirely in PowerShell modules (independent of UI choic
 - **Personality Core**: Trait development system
 - **Wellness Module**: Health and productivity tracking
 - **78+ Feature Modules**: Productivity, health, fun, social, media, widgets
-  - All feature identically regardless of UI renderer (C# or Python)
 
 #### Module Structure
 
@@ -578,7 +535,7 @@ function Get-GooseModule { return $gooseModule }
 function Do-Something { param($Module = $gooseModule) ... }
 ```
 
-**UI Layer Agnostic**: All PowerShell modules work identically whether using the Python UI or C# EXE. The UI is a thin rendering layer only. Module developers never need to worry about UI implementation.
+**UI Layer Agnostic**: All PowerShell modules work identically with the Python UI. The UI is a thin rendering layer only. Module developers never need to worry about UI implementation.
 
 #### Configuration
 All modules load settings from `config.ini`:
@@ -601,30 +558,13 @@ All modules load settings from `config.ini`:
 
 ## 🔧 Troubleshooting
 
-### Python UI Issues
-
 For issues with the Python UI version, see [goose-ui-python/SETUP.md](goose-ui-python/SETUP.md) troubleshooting section:
 - ModuleNotFoundError for dependencies
 - Window not appearing
 - Animation stuttering
 - PowerShell communication errors
 
-### C# EXE Issues
-
-**Goose doesn't appear**
-- Ensure `GooseDesktop.exe` is not blocked by antivirus
-- Try running as administrator
-- Check if process is running in Task Manager
-
-**Configuration not applying**
-- Ensure `config.ini` is in the same directory as `GooseDesktop.exe`
-- Restart the application after making changes
-- Check for syntax errors in config file
-
-**Module not working**
-- Verify the module .ps1 file exists
-- Check PowerShell execution policy
-- Review module-specific settings in config.ini
+---
 
 ---
 
@@ -668,19 +608,15 @@ Add new features to the 78+ existing modules:
 - Follow existing module patterns
 - Add configuration options to config.ini
 - Test modules before submitting
-- No need to worry about UI implementation—works with both C# and Python UI
+- No need to worry about UI implementation—works with Python UI
 
 ### For UI/Renderer Developers
 
-**Python UI** (recommended for new features):
+**Python UI**:
 - See [goose-ui-python/DEVELOPER.md](goose-ui-python/DEVELOPER.md)
 - Extend animation engine, rendering, or configuration
 - Cross-platform testing on Windows, macOS, Linux
 - 300+ lines of architecture documentation provided
-
-**C# EXE**: 
-- Original codebase not open source
-- Consider contributing to Python UI instead for visibility
 
 ### General Guidelines
 - Keep PowerShell logic separate from UI layer
