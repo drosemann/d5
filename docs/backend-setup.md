@@ -381,3 +381,211 @@ docker logs -f goose-supabase-db
 docker logs -f goose-supabase-kong
 docker logs -f goose-supabase-auth
 ```
+
+---
+
+## incident.io Integration
+
+incident.io ist ein Incident-Management-Tool, das automatisch Incidents erstellt, wenn Fehler in der Desktop Goose Anwendung auftreten.
+
+### Voraussetzungen
+
+- Kostenloses [incident.io](https://incident.io) Konto
+- Microsoft Teams oder Discord für Benachrichtigungen
+
+### 1. incident.io Setup
+
+#### Konto erstellen
+1. Gehe zu [incident.io](https://incident.io) und registriere dich
+2. Verbinde deinen Slack/Teams Workspace
+3. Erstelle ein Team
+
+#### API Key generieren
+1. Gehe zu **Settings** → **API Keys**
+2. Klicke auf **Create API Key**
+3. Wähle folgende Berechtigungen:
+   - `View all incident data`
+   - `Create incidents`
+   - `Edit incidents`
+4. Kopiere den Key (wird nur einmal angezeigt!)
+
+#### MS Teams Integration
+1. Gehe zu **Settings** → **Microsoft Teams**
+2. Folge den Anweisungen zur Installation
+3. Wähle den Channel für Benachrichtigungen
+
+#### Discord Webhook (Optional)
+1. Gehe zu Discord → Server Settings → Integrations
+2. Erstelle einen neuen Webhook
+3. Kopiere die Webhook URL
+
+### 2. Desktop Goose konfigurieren
+
+Bearbeite die `config.ini`:
+
+```ini
+# Incident Management aktivieren
+IncidentEnabled=True
+
+# API Key aus Schritt 1
+IncidentApiKey=inck_live_xxxxxxxxxxxxx
+
+# Team ID (aus incident.io URL: app.incident.io/team/TENER_ID)
+IncidentTeamId=
+
+# Automatisch Incidents erstellen
+IncidentAutoCreate=True
+
+# Mindest-Schweregrad für Auto-Create
+IncidentSeverityThreshold=warning
+
+# Benachrichtigungs-Kanäle (teams,discord)
+IncidentNotifyChannels=teams,discord
+
+# Discord Webhook URL (optional)
+IncidentDiscordWebhook=https://discord.com/api/webhooks/xxxxx
+
+# MS Teams Webhook (optional, falls nicht über incident.io)
+IncidentTeamsWebhook=
+
+# Prüf-Intervall in Sekunden
+IncidentMonitorIntervalSeconds=60
+
+# DB-Fehler überwachen
+IncidentDBCheckEnabled=True
+```
+
+### 3. Verwendung
+
+```powershell
+# Importieren des Moduls
+. ./Core/GooseIncident.ps1
+
+# Incident manuell erstellen
+New-GooseIncident -Title "Database Error" -Description "Supabase timeout" -Severity "high"
+
+# Incidents abrufen
+Get-GooseIncidents
+
+# Monitoring starten (prüft Logs automatisch)
+Start-IncidentMonitor
+
+# Monitoring stoppen
+Stop-IncidentMonitor
+
+# Verbindung testen
+Test-GooseIncident
+```
+
+### 4. Automatische Incident-Erkennung
+
+Das Modul überwacht automatisch die Log-Datei (`logs/goose.log`) und erstellt Incidents bei:
+
+| Fehlertyp | Severity |
+|-----------|----------|
+| 404, Not Found | Warning |
+| 500, Exception, Crash | Critical |
+| 403, Forbidden | Medium |
+| Timeout, Connection Refused | High |
+
+### 5. Severity-Mapping
+
+Der Schwellwert in `config.ini` bestimmt, ab welchem Level ein Incident erstellt wird:
+
+```ini
+IncidentSeverityThreshold=warning  # Alle Fehler
+IncidentSeverityThreshold=high     # Ab High
+IncidentSeverityThreshold=critical # Nur Critical
+```
+
+---
+
+## Supabase Auth Setup
+
+### 1. Auth aktivieren
+
+Die Supabase Auth ist bereits in der Backend-Installation enthalten. Konfiguriere die Anwendung:
+
+```ini
+# Session-Speicherung aktivieren
+SessionSaveEnabled=True
+
+# Session-Datei (verschlüsselt mit DPAPI)
+SessionFilePath=data/session.enc
+
+# Automatisches Token-Refresh
+AutoRefreshSession=True
+```
+
+### 2. Supabase Keys
+
+Stelle sicher, dass diese Werte in `config.ini` gesetzt sind:
+
+```ini
+SupabaseUrl=http://localhost:8000
+SupabaseAnonKey=your-anon-key
+```
+
+### 3. Verwendung
+
+```powershell
+# Importieren des Moduls
+. ./Core/GooseAuth.ps1
+
+# Benutzer registrieren
+Register-GooseUser -Email "user@team.com" -Password "password"
+
+# Benutzer anmelden
+Connect-GooseUser -Email "user@team.com" -Password "password"
+
+# Session prüfen (wird beim Start automatisch geladen)
+Test-GooseSession
+
+# Aktuellen Benutzer abrufen
+Get-GooseUser
+
+# Abmelden
+Disconnect-GooseUser
+```
+
+### 4. Session-Management
+
+- Sessions werden verschlüsselt mit Windows DPAPI gespeichert
+- Token werden automatisch vor Ablauf erneuert
+- Bei Ablauf wird der Benutzer zur erneuten Anmeldung aufgefordert
+
+---
+
+## Vollständige config.ini Beispiel
+
+```ini
+# ============================================
+# SUPABASE BACKEND
+# ============================================
+CloudSyncEnabled=True
+SupabaseUrl=http://localhost:8000
+SupabaseAnonKey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+SupabaseServiceKey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+DeviceName=Desktop-Goose
+
+# ============================================
+# AUTHENTICATION
+# ============================================
+SessionSaveEnabled=True
+SessionFilePath=data/session.enc
+AutoRefreshSession=True
+
+# ============================================
+# INCIDENT MANAGEMENT
+# ============================================
+IncidentEnabled=True
+IncidentApiKey=inck_live_xxxxxxxxxxxxx
+IncidentTeamId=
+IncidentAutoCreate=True
+IncidentSeverityThreshold=warning
+IncidentNotifyChannels=teams,discord
+IncidentDiscordWebhook=https://discord.com/api/webhooks/xxxxx
+IncidentTeamsWebhook=
+IncidentMonitorIntervalSeconds=60
+IncidentDBCheckEnabled=True
+```

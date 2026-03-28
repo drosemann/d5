@@ -34,6 +34,21 @@ Dieses Dokument beschreibt die erweiterten server-seitigen Features für Desktop
 
 ## Features Übersicht
 
+### Authentication & Security
+| Feature | Beschreibung | Dokumentation |
+|---------|--------------|---------------|
+| Supabase Auth | User-Authentifizierung | [backend-setup.md](./backend-setup.md) |
+| Session Management | Verschlüsselte Token-Speicherung | [backend-setup.md](./backend-setup.md) |
+| Auto-Refresh | Automatisches Token-Refresh | [backend-setup.md](./backend-setup.md) |
+
+### Incident Management
+| Feature | Beschreibung | Dokumentation |
+|---------|--------------|---------------|
+| incident.io Integration | Automatisches Incident-Tracking | [backend-setup.md](./backend-setup.md) |
+| Team Notifications | MS Teams & Discord Webhooks | [backend-setup.md](./backend-setup.md) |
+| DB Error Monitoring | Auto-Detect von Crashes/Fehlern | [backend-setup.md](./backend-setup.md) |
+| Severity Levels | Critical/High/Medium/Low/Warning | [backend-setup.md](./backend-setup.md) |
+
 ### Phase 4: Plugin & Marketplace
 | Feature | Beschreibung | Dokumentation |
 |---------|--------------|---------------|
@@ -51,13 +66,15 @@ Dieses Dokument beschreibt die erweiterten server-seitigen Features für Desktop
 | Webhooks | Event-Verarbeitung | [SERVER-STREAMER.md](./SERVER-STREAMER.md) |
 | Chaos Events | Streamer-Chaos | [SERVER-STREAMER.md](./SERVER-STREAMER.md) |
 
-### Bestehende Features
+### Core Features
 | Feature | Beschreibung |
 |---------|--------------|
+| Supabase Auth | User-Authentifizierung mit Email/Password |
+| Session Management | DPAPI-verschlüsselte Token-Speicherung |
+| Cloud Sync | Datensynchronisation |
 | Analytics | Metriken, Goals, Achievements |
 | Notifications | Push, Webhooks, Scheduled Tasks |
 | Security | OAuth, API Keys, Audit Logs |
-| Cloud Sync | Datensynchronisation |
 
 ---
 
@@ -172,6 +189,27 @@ docker exec -i goose-supabase-db psql -U postgres < supabase-setup.sql
 Aktivieren Sie die Features in `config.ini`:
 
 ```ini
+# Supabase Backend
+CloudSyncEnabled=True
+SupabaseUrl=http://localhost:8000
+SupabaseAnonKey=your-anon-key
+SupabaseServiceKey=your-service-key
+
+# Authentication
+SessionSaveEnabled=True
+SessionFilePath=data/session.enc
+AutoRefreshSession=True
+
+# Incident Management
+IncidentEnabled=True
+IncidentApiKey=inck_live_xxxxxxxxxxxxx
+IncidentAutoCreate=True
+IncidentSeverityThreshold=warning
+IncidentNotifyChannels=teams,discord
+IncidentDiscordWebhook=
+IncidentTeamsWebhook=
+IncidentDBCheckEnabled=True
+
 # Analytics & Reporting
 AnalyticsEnabled=True
 AnalyticsAutoReport=True
@@ -189,13 +227,20 @@ ApiKeyRateLimit=100
 ### 3. Module laden
 
 ```powershell
-# Alle Module laden
-. "$PSScriptRoot\Analytics\goose-analytics.ps1"
-. "$PSScriptRoot\Notifications\goose-notifications.ps1"
-. "$PSScriptRoot\Security\goose-security.ps1"
+# Authentication
+. "$PSScriptRoot\Core\GooseAuth.ps1"
 
-# Oder einzeln
+# Incident Management
+. "$PSScriptRoot\Core\GooseIncident.ps1"
+
+# Analytics
 . "$PSScriptRoot\Analytics\goose-analytics.ps1"
+
+# Notifications
+. "$PSScriptRoot\Notifications\goose-notifications.ps1"
+
+# Security
+. "$PSScriptRoot\Security\goose-security.ps1"
 ```
 
 ---
@@ -204,6 +249,8 @@ ApiKeyRateLimit=100
 
 | Feature | Beschreibung | Konfiguration |
 |---------|--------------|---------------|
+| Supabase Auth | User-Login, Registration | `SessionSaveEnabled` |
+| Incident Management | incident.io Integration | `IncidentEnabled` |
 | Analytics | Metriken, Goals, Achievements | `AnalyticsEnabled` |
 | Notifications | Push, Webhooks, Scheduled Tasks | `NotificationsEnabled` |
 | Security | OAuth, API Keys, Audit Logs | `SecurityEnabled` |

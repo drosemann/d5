@@ -5,6 +5,10 @@
 ```
 DesktopGoose/
 ├── Core/               # Core systems
+│   ├── GooseCore.ps1  # Behavior + Context + Animations + Personality
+│   ├── GooseLogging.ps1  # Logging system
+│   ├── GooseAuth.ps1     # Supabase Authentication
+│   └── GooseIncident.ps1 # incident.io Integration
 ├── Widgets/            # Desktop widgets (6 modules)
 ├── Productivity/       # Productivity tools (11 modules)
 ├── System/            # System integration (12 modules)
@@ -22,9 +26,19 @@ DesktopGoose/
 └── Assets/            # Images & sounds
 ```
 
-## Core System (GooseCore.ps1)
+## Core System
 
-The core system combines 5 subsystems:
+The core system combines 7 subsystems:
+
+### Core Files
+- **GooseCore.ps1** - Main behavior engine
+- **GooseLogging.ps1** - Centralized logging
+- **GooseAuth.ps1** - Supabase authentication
+- **GooseIncident.ps1** - incident.io integration
+
+### Subsystems (GooseCore.ps1)
+
+The main core combines 5 subsystems:
 
 ### 1. GooseBehavior
 - Time-based activity control

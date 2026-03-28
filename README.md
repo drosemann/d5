@@ -21,7 +21,18 @@ A lightweight, feature-rich desktop companion that brings a playful goose to you
 - **App Reactions**: Goose responds to what applications you're using
 - **Silent Operation**: No sounds or honks for distraction-free use (configurable)
 - **Minimal Resource Usage**: Optimized for performance
-- **Modular Architecture**: 78+ modules available
+- **Modular Architecture**: 80+ modules available
+
+### 🔐 Authentication & Security
+- **Supabase Auth Integration**: Secure user authentication
+- **Session Management**: Encrypted session storage (DPAPI)
+- **Auto-Refresh**: Automatic token refresh
+
+### 🚨 Incident Management
+- **incident.io Integration**: Automatic incident creation
+- **Real-time Alerts**: Teams & Discord notifications
+- **DB Error Monitoring**: Auto-detect crashes and errors
+- **Severity Levels**: Critical, High, Medium, Low, Warning
 
 ### 🧠 Advanced Desktop Assistant Features
 
@@ -90,6 +101,16 @@ A lightweight, feature-rich desktop companion that brings a playful goose to you
 
 Desktop Goose kann mit einem Self-Hosted Supabase Backend erweitert werden:
 
+### Authentication & User Management
+- **Supabase Auth**: Secure user authentication with email/password
+- **Session Management**: Encrypted token storage with auto-refresh
+- **Multi-Device Sync**: Same user across multiple devices
+
+### Incident Management
+- **incident.io Integration**: Automatic incident tracking
+- **Team Notifications**: MS Teams & Discord webhooks
+- **DB Error Monitoring**: Auto-detect and report crashes/errors
+
 ### Phase 4: Plugin & Marketplace
 - **Plugin Registry API** - Verwalte Plugins zentral
 - **Marketplace Backend** - Lade Skins, Plugins, Themes herunter
@@ -101,16 +122,16 @@ Desktop Goose kann mit einem Self-Hosted Supabase Backend erweitert werden:
 - **Streamer Integration** - Twitch/YouTube Webhooks
 - **Chaos Events** - Streamer-Chaos auslösen
 
-### Dokumentation
+### Documentation
 
-| Dokument | Beschreibung |
+| Document | Description |
 |----------|-------------|
-| [docs/SERVER-FEATURES.md](docs/SERVER-FEATURES.md) | Server-Übersicht |
+| [docs/backend-setup.md](docs/backend-setup.md) | Complete backend setup guide |
+| [docs/SERVER-FEATURES.md](docs/SERVER-FEATURES.md) | Server features overview |
 | [docs/SERVER-PLUGIN-API.md](docs/SERVER-PLUGIN-API.md) | Plugin API Server |
 | [docs/SERVER-MARKETPLACE.md](docs/SERVER-MARKETPLACE.md) | Marketplace Backend |
 | [docs/SERVER-MULTIPLAYER.md](docs/SERVER-MULTIPLAYER.md) | Multiplayer Server |
 | [docs/SERVER-STREAMER.md](docs/SERVER-STREAMER.md) | Streamer Integration |
-| [docs/backend-setup.md](docs/backend-setup.md) | Backend Setup |
 
 ---
 
@@ -272,6 +293,29 @@ FakeErrorEnabled=False
 VoiceHonksEnabled=False
 ```
 
+### 🔐 Authentication & Security
+```ini
+# Supabase Auth Session
+SessionSaveEnabled=True
+SessionFilePath=data/session.enc
+AutoRefreshSession=True
+```
+
+### 🚨 Incident Management
+```ini
+# incident.io Configuration
+IncidentEnabled=False
+IncidentApiKey=
+IncidentTeamId=
+IncidentAutoCreate=True
+IncidentSeverityThreshold=warning
+IncidentNotifyChannels=teams,discord
+IncidentDiscordWebhook=
+IncidentTeamsWebhook=
+IncidentMonitorIntervalSeconds=60
+IncidentDBCheckEnabled=True
+```
+
 ---
 
 ## 🎮 Usage
@@ -363,6 +407,42 @@ Start-MiniGame -GameName "whack_goose"
 End-MiniGame -GameName "whack_goose" -Score 15
 ```
 
+#### Authentication (Supabase)
+```powershell
+# Sign in with email/password
+Connect-GooseUser -Email "user@team.com" -Password "secure-password"
+
+# Register new user
+Register-GooseUser -Email "user@team.com" -Password "secure-password"
+
+# Check if session exists (auto-loads on startup)
+Test-GooseSession
+
+# Sign out
+Disconnect-GooseUser
+
+# Get current user info
+Get-GooseUser
+```
+
+#### Incident Management (incident.io)
+```powershell
+# Create a new incident manually
+New-GooseIncident -Title "Database timeout" -Description "Supabase not responding" -Severity "high"
+
+# Get recent incidents
+Get-GooseIncidents -Limit 10
+
+# Start automatic monitoring (checks logs every 60s)
+Start-IncidentMonitor
+
+# Stop monitoring
+Stop-IncidentMonitor
+
+# Test incident.io connection
+Test-GooseIncident
+```
+
 ---
 
 ## 📁 File Structure
@@ -390,7 +470,10 @@ Goose_Desktop_Companion/
 │   └── PROJECT_MANIFEST.md     # Project summary
 │
 ├── Core/                       # Core systems
-│   └── GooseCore.ps1          # Behavior + Context + Animations + Personality
+│   ├── GooseCore.ps1          # Behavior + Context + Animations + Personality
+│   ├── GooseLogging.ps1       # Logging system
+│   ├── GooseAuth.ps1          # Supabase Authentication
+│   └── GooseIncident.ps1      # incident.io Integration
 ├── Widgets/                    # Desktop widgets
 │   ├── ClockWidget.ps1        # Clock
 │   ├── WeatherWidget.ps1      # Weather

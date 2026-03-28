@@ -462,4 +462,55 @@ This implementation represents a complete, production-ready rewrite of the Goose
 
 **Document Version**: 1.0  
 **Created**: 2026-03-22  
-**Last Updated**: 2026-03-22
+**Last Updated**: 2026-03-28
+
+---
+
+## 📌 Recent Updates (March 2026)
+
+### New Core Modules Added
+
+#### Core/GooseAuth.ps1
+- **Supabase Auth Integration**: User authentication with email/password
+- **Session Management**: Encrypted token storage using Windows DPAPI
+- **Auto-Refresh**: Automatic JWT token refresh before expiration
+- **Functions**:
+  - `Connect-GooseUser` - Sign in with email/password
+  - `Register-GooseUser` - Create new account
+  - `Get-GooseUser` - Get current user info
+  - `Test-GooseSession` - Check and load saved session
+  - `Disconnect-GooseUser` - Sign out and clear session
+
+#### Core/GooseIncident.ps1
+- **incident.io Integration**: Automatic incident management
+- **Team Notifications**: Microsoft Teams & Discord webhooks
+- **DB Error Monitoring**: Auto-detect crashes and database errors
+- **Severity Levels**: Critical, High, Medium, Low, Warning
+- **Functions**:
+  - `New-GooseIncident` - Create incident manually
+  - `Get-GooseIncidents` - List recent incidents
+  - `Start-IncidentMonitor` - Auto-monitor logs
+  - `Stop-IncidentMonitor` - Stop monitoring
+  - `Test-GooseIncident` - Test API connection
+
+### Configuration Updates
+
+New `config.ini` sections:
+```ini
+# Authentication
+SessionSaveEnabled=True
+SessionFilePath=data/session.enc
+AutoRefreshSession=True
+
+# Incident Management
+IncidentEnabled=False
+IncidentApiKey=
+IncidentTeamId=
+IncidentAutoCreate=True
+IncidentSeverityThreshold=warning
+IncidentNotifyChannels=teams
+IncidentDiscordWebhook=
+IncidentTeamsWebhook=
+IncidentMonitorIntervalSeconds=60
+IncidentDBCheckEnabled=True
+```
