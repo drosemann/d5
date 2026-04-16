@@ -61,4 +61,8 @@ def main():
         print(f"\nFehler: {str(e)}")
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     main()
+=======
+    main()
+>>>>>>> 9f24c02 (average size in hours schematic)
