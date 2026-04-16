@@ -1,4 +1,4 @@
-# Desktop Goose Analytics & Reporting Module
+# Goose Desktop Companion Analytics & Reporting Module
 # Provides analytics, goals, achievements, and reporting
 
 enum ReportType {
@@ -1022,4 +1022,4 @@ function Get-GooseTelemetryStats {
     return $Client.GetTelemetryStats()
 }
 
-Write-Host "Desktop Goose Analytics Module Initialized"
+Write-Host "Goose Desktop Companion Analytics Module Initialized"

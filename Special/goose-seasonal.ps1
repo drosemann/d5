@@ -1,4 +1,4 @@
-# Desktop Goose Seasonal/Holiday Themes System
+# Goose Desktop Companion Seasonal/Holiday Themes System
 # Automatic theme changes for holidays and seasons
 
 class GooseSeasonal {
@@ -369,7 +369,7 @@ function Get-SeasonalGreeting {
     return $Seasonal.GetGreeting()
 }
 
-Write-Host "Desktop Goose Seasonal System Initialized"
+Write-Host "Goose Desktop Companion Seasonal System Initialized"
 $state = $gooseSeasonal.GetThemeState()
 Write-Host "Seasonal Themes Enabled: $($state['Enabled'])"
 Write-Host "Current Season: $($state['CurrentSeason'])"

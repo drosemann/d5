@@ -1,1 +1,49 @@
-nul
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# Build outputs
+build/
+dist/
+out/
+release/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# PowerShell / runtime artifacts
+*.tmp
+*.temp
+*.cache
+*.bak
+*.user
+
+# Local runtime/state files
+goose_notes.json
+
+# IDEs
+.vscode/
+.idea/
+
+# Coverage
+.coverage
+coverage.xml
+htmlcov/

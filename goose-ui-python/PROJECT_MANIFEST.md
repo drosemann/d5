@@ -8,7 +8,7 @@
 
 ## 🎯 Mission Accomplished
 
-Replaced legacy C# WinForms `GooseDesktop.exe` with modern Python + PyQt5 cross-platform alternative.
+Replaced legacy C# WinForms `GooseDesktopCompanion.exe` with modern Python + PyQt5 cross-platform alternative.
 
 ### Requirements Met ✅
 
@@ -140,11 +140,11 @@ python main.py
 ```bash
 # Windows
 build\build.bat
-# Result: dist\GooseDesktop\GooseDesktop.exe
+# Result: dist\GooseDesktopCompanion\GooseDesktopCompanion.exe
 
 # macOS/Linux
 bash build/build.sh
-# Result: dist/GooseDesktop/GooseDesktop
+# Result: dist/GooseDesktopCompanion/GooseDesktopCompanion
 ```
 
 ### 3. Configure
@@ -250,7 +250,7 @@ Edit `assets/config.ini`:
 ```bash
 # Windows
 build\build.bat
-# Creates: dist\GooseDesktop\GooseDesktop.exe (self-contained)
+# Creates: dist\GooseDesktopCompanion\GooseDesktopCompanion.exe (self-contained)
 
 # Or cross-platform via GitHub Actions CI/CD
 # (templates provided in build/)

@@ -1,4 +1,4 @@
-# Desktop Goose Pet Interaction System
+# Goose Desktop Companion Pet Interaction System
 # Click-and-hold petting interaction with trust system
 
 class GoosePet {
@@ -297,7 +297,7 @@ function Get-TrustRank {
     return $Pet.GetTrustRank()
 }
 
-Write-Host "Desktop Goose Pet Interaction System Initialized"
+Write-Host "Goose Desktop Companion Pet Interaction System Initialized"
 $state = $goosePet.GetPetState()
 Write-Host "Pet Interaction Enabled: $($state['Enabled'])"
 Write-Host "Trust Level: $($state['TrustLevel']) ($($goosePet.GetTrustRank()))"

@@ -1,4 +1,4 @@
-# Desktop Goose Calendar Integration System
+# Goose Desktop Companion Calendar Integration System
 # Provides calendar event awareness and integration
 
 class GooseCalendar {
@@ -248,6 +248,6 @@ function Get-GooseCalendarReminder {
 }
 
 # Example usage
-Write-Host "Desktop Goose Calendar Integration Initialized"
+Write-Host "Goose Desktop Companion Calendar Integration Initialized"
 $schedule = Get-TodaySchedule
 Write-Host "Today's events: $($schedule.EventCount)"

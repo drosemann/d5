@@ -1,4 +1,4 @@
-# Desktop Goose Battery Saver Mode
+# Goose Desktop Companion Battery Saver Mode
 # Reduce activity when on battery
 
 class GooseBatterySaver {
@@ -195,7 +195,7 @@ function Get-BatterySaverState {
     return $BatterySaver.GetBatterySaverState()
 }
 
-Write-Host "Desktop Goose Battery Saver System Initialized"
+Write-Host "Goose Desktop Companion Battery Saver System Initialized"
 $state = Get-BatterySaverState
 Write-Host "Battery Saver Active: $($state['IsActive'])"
 Write-Host "On Battery: $($state['IsOnBattery'])"

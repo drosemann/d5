@@ -1,4 +1,4 @@
-# Desktop Goose Countdown Timer Widget System
+# Goose Desktop Companion Countdown Timer Widget System
 # Countdown timer widget
 
 class GooseCountdownTimer {
@@ -152,6 +152,6 @@ function Get-CountdownTimerState {
     return $Timer.GetCountdownTimerState()
 }
 
-Write-Host "Desktop Goose Countdown Timer System Initialized"
+Write-Host "Goose Desktop Companion Countdown Timer System Initialized"
 $state = Get-CountdownTimerState
 Write-Host "Timer Running: $($state['IsRunning'])"

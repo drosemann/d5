@@ -2,7 +2,7 @@
 
 ## Overview
 
-Desktop Goose Enhanced Edition features a modular PowerShell-based architecture with 78+ modules. This guide covers how to create, test, and integrate new modules.
+Goose Desktop Companion Open Source Edition features a modular PowerShell-based architecture with 78+ modules. This guide covers how to create, test, and integrate new modules.
 
 ## Module Structure
 
@@ -98,7 +98,7 @@ function Get-GooseYourModule {
 }
 
 # Module initialization output
-Write-Host "Desktop Goose Your Module Initialized"
+Write-Host "Goose Desktop Companion Your Module Initialized"
 $state = Get-YourModuleState
 Write-Host "Your Module Enabled: $($state['Enabled'])"
 ```
@@ -326,7 +326,7 @@ Place modules in appropriate folders:
 
 ### Module Header
 ```powershell
-# Desktop Goose Your Module
+# Goose Desktop Companion Your Module
 # Description of what the module does
 # Dependencies (if any)
 ```

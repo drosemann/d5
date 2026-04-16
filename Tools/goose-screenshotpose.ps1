@@ -1,4 +1,4 @@
-# Desktop Goose Screenshot Pose Mode System
+# Goose Desktop Companion Screenshot Pose Mode System
 # Goose poses for screenshots
 
 class GooseScreenshotPose {
@@ -183,7 +183,7 @@ function Get-ScreenshotPoseState {
     return $ScreenshotPose.GetScreenshotPoseState()
 }
 
-Write-Host "Desktop Goose Screenshot Pose System Initialized"
+Write-Host "Goose Desktop Companion Screenshot Pose System Initialized"
 $state = Get-ScreenshotPoseState
 Write-Host "Available Poses: $($state['PoseCount'])"
 Write-Host "Currently Posing: $($state['IsPosing'])"

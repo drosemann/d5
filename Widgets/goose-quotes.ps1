@@ -1,4 +1,4 @@
-# Desktop Goose Daily Quote System
+# Goose Desktop Companion Daily Quote System
 # Display motivational quotes
 
 class GooseDailyQuote {
@@ -146,7 +146,7 @@ function Get-DailyQuoteState {
     return $Quote.GetDailyQuoteState()
 }
 
-Write-Host "Desktop Goose Daily Quote System Initialized"
+Write-Host "Goose Desktop Companion Daily Quote System Initialized"
 $state = Get-DailyQuoteState
 Write-Host "Daily Quote Enabled: $($state['Enabled'])"
 Write-Host "Quote of the day: $($state['TodayQuote']['Quote'].Substring(0, [Math]::Min(50, $state['TodayQuote']['Quote'].Length)))..."

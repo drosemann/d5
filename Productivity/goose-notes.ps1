@@ -1,4 +1,4 @@
-# Desktop Goose Notes/Sticky Notes System
+# Goose Desktop Companion Notes/Sticky Notes System
 # Goose brings sticky notes to user
 
 $LoggingScriptPath = Join-Path $PSScriptRoot "..\Core\GooseLogging.ps1"
@@ -335,7 +335,7 @@ function Sync-GooseNotes {
     }
 }
 
-Write-Host "Desktop Goose Notes System Initialized"
+Write-Host "Goose Desktop Companion Notes System Initialized"
 Write-LogInfo -Message "Notes System Initialized" -Source "GooseNotes"
 $state = $gooseNotes.GetNoteState()
 Write-Host "Notes Enabled: $($state['Enabled'])"

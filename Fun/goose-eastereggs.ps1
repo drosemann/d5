@@ -1,4 +1,4 @@
-# Desktop Goose Easter Eggs System
+# Goose Desktop Companion Easter Eggs System
 # Hidden commands and surprises
 
 class GooseEasterEggs {
@@ -312,7 +312,7 @@ function Get-AllEasterEggs {
     return $EasterEggs.GetAllEasterEggs()
 }
 
-Write-Host "Desktop Goose Easter Eggs System Initialized"
+Write-Host "Goose Desktop Companion Easter Eggs System Initialized"
 $state = Get-EasterEggsState
 Write-Host "Easter Eggs Enabled: $($state['Enabled'])"
 Write-Host "Total Easter Eggs: $($state['TotalEasterEggs'])"

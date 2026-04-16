@@ -1,4 +1,4 @@
-# Desktop Goose Desktop Cleanliness Gamification System
+# Goose Desktop Companion Desktop Cleanliness Gamification System
 # Gamify desktop organization
 
 class GooseDesktopGamification {
@@ -174,7 +174,7 @@ function Get-GamificationState {
     return $Gamification.GetGamificationState()
 }
 
-Write-Host "Desktop Goose Gamification System Initialized"
+Write-Host "Goose Desktop Companion Gamification System Initialized"
 $state = Get-GamificationState
 Write-Host "Level: $($state['LevelProgress']['Level'])"
 Write-Host "Points: $($state['LevelProgress']['TotalPoints'])"

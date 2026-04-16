@@ -1,4 +1,4 @@
-# Desktop Goose Volume Control System
+# Goose Desktop Companion Volume Control System
 # Control system volume with visual feedback
 
 class GooseVolumeControl {
@@ -176,7 +176,7 @@ function Get-VolumeState {
     return $VolumeControl.GetVolumeState()
 }
 
-Write-Host "Desktop Goose Volume Control System Initialized"
+Write-Host "Goose Desktop Companion Volume Control System Initialized"
 $state = Get-VolumeState
 Write-Host "Volume Control Enabled: $($state['Enabled'])"
 Write-Host "Current Volume: $($state['Volume'])%"

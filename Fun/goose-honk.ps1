@@ -1,4 +1,4 @@
-# Desktop Goose Voice Honk Reactions System
+# Goose Desktop Companion Voice Honk Reactions System
 # Goose makes honk sounds on user actions
 
 class GooseVoiceHonk {
@@ -225,7 +225,7 @@ function Get-VoiceHonkState {
     return $VoiceHonk.GetVoiceHonkState()
 }
 
-Write-Host "Desktop Goose Voice Honk System Initialized"
+Write-Host "Goose Desktop Companion Voice Honk System Initialized"
 $state = Get-VoiceHonkState
 Write-Host "Honks Enabled: $($state['HonkEnabled'])"
 Write-Host "Honk Volume: $($state['HonkVolume'])"

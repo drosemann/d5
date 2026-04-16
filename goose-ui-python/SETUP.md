@@ -43,7 +43,7 @@ python main.py
 # Build is automated - just run:
 build\build.bat
 
-# Executable created: dist\GooseDesktop\GooseDesktop.exe
+# Executable created: dist\GooseDesktopCompanion\GooseDesktopCompanion.exe
 ```
 
 ### macOS / Linux
@@ -51,7 +51,7 @@ build\build.bat
 # Build is automated - just run:
 bash build/build.sh
 
-# Executable created: dist/GooseDesktop/GooseDesktop
+# Executable created: dist/GooseDesktopCompanion/GooseDesktopCompanion
 ```
 
 ## ✅ Verification Checklist

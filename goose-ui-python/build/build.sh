@@ -41,6 +41,6 @@ fi
 echo ""
 echo "========================================"
 echo "Build complete!"
-echo "Executable: dist/GooseDesktop/GooseDesktop"
+echo "Executable: dist/GooseDesktopCompanion/GooseDesktopCompanion"
 echo "========================================"
 echo ""

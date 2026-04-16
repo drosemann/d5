@@ -1,4 +1,4 @@
-# Desktop Goose Music Reactivity System
+# Goose Desktop Companion Music Reactivity System
 # Responds to music playing on the system
 
 class GooseMusic {
@@ -228,6 +228,6 @@ function Test-MusicPlaying {
 }
 
 # Example usage
-Write-Host "Desktop Goose Music Reactivity Initialized"
+Write-Host "Goose Desktop Companion Music Reactivity Initialized"
 $nowPlaying = Get-NowPlaying
 Write-Host "Player: $($nowPlaying.Player), Playing: $($nowPlaying.IsPlaying)"

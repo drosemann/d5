@@ -362,7 +362,7 @@ function Toggle-StockTicker {
     $Ticker.Toggle()
 }
 
-Write-Host "Desktop Goose Stock Ticker Widget Initialized"
+Write-Host "Goose Desktop Companion Stock Ticker Widget Initialized"
 $state = Get-StockTickerState
 Write-Host "Stock Ticker Enabled: $($state['Enabled'])"
 Write-Host "Watchlist: $($state['Symbols'] -join ', ')"

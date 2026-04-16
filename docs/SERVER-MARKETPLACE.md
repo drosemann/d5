@@ -1,12 +1,12 @@
 # Server-seitiges Marketplace Backend
 
-Dieses Dokument beschreibt die server-seitige Implementierung des Marketplace-Systems für Desktop Goose.
+Dieses Dokument beschreibt die server-seitige Implementierung des Marketplace-Systems für Goose Desktop Companion.
 
 ## Architektur
 
 ```
 ┌──────────────────┐     ┌──────────────────┐
-│  Desktop Goose   │────▶│  Supabase        │
+│  Goose Desktop Companion   │────▶│  Supabase        │
 │  Marketplace     │     │  Backend         │
 │                  │     │                  │
 │ • Browse         │     │ • Storage        │

@@ -8,7 +8,7 @@ if (Test-Path $LoggingScriptPath) {
 
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $configPath = Join-Path $scriptDir "config.ini"
-$exePath = Join-Path $scriptDir "GooseDesktop.exe"
+$exePath = Join-Path $scriptDir "GooseDesktopCompanion.exe"
 $gooseProcesses = @()
 
 function Load-Config {
@@ -35,7 +35,7 @@ function Save-Config {
 function Get-RunningGooseCount {
     $count = 0
     $gooseProcesses = @()
-    $procs = Get-Process -Name "GooseDesktop" -ErrorAction SilentlyContinue
+    $procs = Get-Process -Name "GooseDesktopCompanion" -ErrorAction SilentlyContinue
     if ($procs) {
         $count = $procs.Count
         $gooseProcesses = @($procs)
@@ -49,7 +49,7 @@ function Get-RunningGooseCount {
 function Sync-GooseCount {
     param([int]$desiredCount, [System.Windows.Forms.Form]$form)
     if (-not (Test-Path $exePath)) {
-        [System.Windows.Forms.MessageBox]::Show("GooseDesktop.exe not found!", "Error", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
+        [System.Windows.Forms.MessageBox]::Show("GooseDesktopCompanion.exe not found!", "Error", [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error)
         return
     }
 
@@ -152,7 +152,7 @@ function Create-SectionLabel {
 $config = Load-Config
 
 $result = [System.Windows.Forms.MessageBox]::Show(
-    "GooseDesktop may be flagged by some antivirus programs. The original executable is not open source, so we cannot verify its full behavior.`n`nCurrent detection rate: ~6/72 security vendors (pua.goosedesktop/joke).`n`nDo you want to continue?",
+    "GooseDesktopCompanion may be flagged by some antivirus programs. The original executable is not open source, so we cannot verify its full behavior.`n`nCurrent detection rate: ~6/72 security vendors (pua.goosedesktop/joke).`n`nDo you want to continue?",
     "Antivirus Warning",
     [System.Windows.Forms.MessageBoxButtons]::YesNo,
     [System.Windows.Forms.MessageBoxIcon]::Warning
@@ -163,7 +163,7 @@ if ($result -eq [System.Windows.Forms.DialogResult]::No) {
 }
 
 $form = New-Object System.Windows.Forms.Form
-$form.Text = "Desktop Goose Control Center"
+$form.Text = "Goose Desktop Companion Control Center"
 $form.Size = New-Object System.Drawing.Size(950, 700)
 $form.StartPosition = "CenterScreen"
 $form.FormBorderStyle = "FixedDialog"
@@ -217,7 +217,7 @@ $tabScripts.BackColor = [System.Drawing.Color]::FromArgb(40, 40, 45)
 $tabControl.TabPages.Add($tabScripts)
 
 $titleLabel = New-Object System.Windows.Forms.Label
-$titleLabel.Text = "Desktop Goose Control Center"
+$titleLabel.Text = "Goose Desktop Companion Control Center"
 $titleLabel.Font = New-Object System.Drawing.Font("Segoe UI", 20, [System.Drawing.FontStyle]::Bold)
 $titleLabel.Location = New-Object System.Drawing.Point(20, 20)
 $titleLabel.Size = New-Object System.Drawing.Size(400, 40)
@@ -263,7 +263,7 @@ $avWarningTitle.ForeColor = [System.Drawing.Color]::FromArgb(255, 200, 100)
 $avWarningPanel.Controls.Add($avWarningTitle)
 
 $avWarningText = New-Object System.Windows.Forms.Label
-$avWarningText.Text = "GooseDesktop may be flagged by ~6/72 antivirus programs (pua.goosedesktop/joke). The original executable is not open source. Use at your own discretion."
+$avWarningText.Text = "GooseDesktopCompanion may be flagged by ~6/72 antivirus programs (pua.goosedesktop/joke). The original executable is not open source. Use at your own discretion."
 $avWarningText.Location = New-Object System.Drawing.Point(50, 35)
 $avWarningText.Size = New-Object System.Drawing.Size(800, 20)
 $avWarningText.Font = New-Object System.Drawing.Font("Segoe UI", 9)

@@ -1,4 +1,4 @@
-# Desktop Goose Multiplayer System
+# Goose Desktop Companion Multiplayer System
 # Visit friends' computers and interact with other geese
 
 enum ConnectionStatus {
@@ -475,6 +475,6 @@ function Get-MultiplayerState {
     return $Multiplayer.GetMultiplayerState()
 }
 
-Write-Host "Desktop Goose Multiplayer System Initialized"
+Write-Host "Goose Desktop Companion Multiplayer System Initialized"
 $state = Get-MultiplayerState
 Write-Host "Multiplayer Enabled: $($state['Enabled']) | Status: $($state['Status']) | Code: $($state['ConnectionCode'])"

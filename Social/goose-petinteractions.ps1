@@ -1,4 +1,4 @@
-# Desktop Goose Pet Interactions System
+# Goose Desktop Companion Pet Interactions System
 # Interactive pet features for the goose
 
 class GoosePetInteractions {
@@ -569,7 +569,7 @@ function Get-PetInteractionsState {
     return $Interactions.GetPetInteractionsState()
 }
 
-Write-Host "Desktop Goose Pet Interactions System Initialized"
+Write-Host "Goose Desktop Companion Pet Interactions System Initialized"
 $state = Get-PetInteractionsState
 Write-Host "Pet Interactions Enabled: $($state['Enabled'])"
 Write-Host "Mood: $($state['Stats']['mood'])"

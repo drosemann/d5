@@ -1,4 +1,4 @@
-# Desktop Goose AR Mode System
+# Goose Desktop Companion AR Mode System
 # Camera-based augmented reality features
 
 class GooseARMode {
@@ -437,7 +437,7 @@ function Get-ARModeState {
     return $ARMode.GetARModeState()
 }
 
-Write-Host "Desktop Goose AR Mode System Initialized"
+Write-Host "Goose Desktop Companion AR Mode System Initialized"
 $state = Get-ARModeState
 Write-Host "AR Mode Enabled: $($state['Enabled'])"
 Write-Host "AR Mode Active: $($state['IsActive'])"

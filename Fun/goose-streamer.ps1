@@ -1,4 +1,4 @@
-# Desktop Goose Streamer Mode
+# Goose Desktop Companion Streamer Mode
 # Twitch/YouTube integration for streamers
 
 enum StreamEvent {
@@ -573,6 +573,6 @@ function Get-StreamerState {
     return $Streamer.GetStreamerState()
 }
 
-Write-Host "Desktop Goose Streamer Mode Initialized"
+Write-Host "Goose Desktop Companion Streamer Mode Initialized"
 $state = Get-StreamerState
 Write-Host "Streamer Mode Enabled: $($state['Enabled']) | Platform: $($state['Platform']) | Channel: $($state['Channel'])"

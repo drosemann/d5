@@ -1,4 +1,4 @@
-# Desktop Goose Time Blocking System
+# Goose Desktop Companion Time Blocking System
 # Schedule and manage time blocks for productivity
 
 class GooseTimeBlock {
@@ -591,7 +591,7 @@ function Toggle-TimeBlock {
     $TimeBlock.Toggle()
 }
 
-Write-Host "Desktop Goose Time Blocking System Initialized"
+Write-Host "Goose Desktop Companion Time Blocking System Initialized"
 $state = Get-TimeBlockState
 Write-Host "Time Block Enabled: $($state['Enabled'])"
 Write-Host "Today Blocks: $($state['Stats']['todayBlocks'])"

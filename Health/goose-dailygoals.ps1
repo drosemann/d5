@@ -351,7 +351,7 @@ function Get-DailyGoalsStatus {
     return $Goals.GetDailyGoalsState()
 }
 
-Write-Host "Desktop Goose Daily Goals System Initialized"
+Write-Host "Goose Desktop Companion Daily Goals System Initialized"
 $state = Get-DailyGoalsStatus
 Write-Host "Daily Goals Enabled: $($state['Enabled'])"
 Write-Host "Today: $($state['TodayProgress']['CompletedGoals'])/$($state['TodayProgress']['TotalGoals']) goals completed"

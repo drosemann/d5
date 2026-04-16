@@ -1,6 +1,6 @@
 # Cloud Sync Backend Setup
 
-Dieses Dokument beschreibt die Einrichtung der Supabase Self-Hosted Backend-Infrastruktur für Desktop Goose.
+Dieses Dokument beschreibt die Einrichtung der Supabase Self-Hosted Backend-Infrastruktur für Goose Desktop Companion.
 
 ## Voraussetzungen
 
@@ -231,7 +231,7 @@ docker exec -i goose-supabase-db psql -U postgres < supabase-setup.sql
 
 ---
 
-## Desktop Goose konfigurieren
+## Goose Desktop Companion konfigurieren
 
 ### Keys generieren
 
@@ -386,7 +386,7 @@ docker logs -f goose-supabase-auth
 
 ## incident.io Integration
 
-incident.io ist ein Incident-Management-Tool, das automatisch Incidents erstellt, wenn Fehler in der Desktop Goose Anwendung auftreten.
+incident.io ist ein Incident-Management-Tool, das automatisch Incidents erstellt, wenn Fehler in der Goose Desktop Companion Anwendung auftreten.
 
 ### Voraussetzungen
 
@@ -419,7 +419,7 @@ incident.io ist ein Incident-Management-Tool, das automatisch Incidents erstellt
 2. Erstelle einen neuen Webhook
 3. Kopiere die Webhook URL
 
-### 2. Desktop Goose konfigurieren
+### 2. Goose Desktop Companion konfigurieren
 
 Bearbeite die `config.ini`:
 

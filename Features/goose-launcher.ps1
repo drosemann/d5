@@ -1,4 +1,4 @@
-# Desktop Goose App Launcher System
+# Goose Desktop Companion App Launcher System
 # Quick app launcher menu
 
 class GooseAppLauncher {
@@ -199,6 +199,6 @@ function Get-AppLauncherState {
     return $Launcher.GetAppLauncherState()
 }
 
-Write-Host "Desktop Goose App Launcher System Initialized"
+Write-Host "Goose Desktop Companion App Launcher System Initialized"
 $state = Get-AppLauncherState
 Write-Host "Available Apps: $($state['AppCount'])"

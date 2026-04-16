@@ -1,4 +1,4 @@
-# Desktop Goose Companion Journal System
+# Goose Desktop Companion Companion Journal System
 # Logs daily interactions with the goose
 
 class GooseCompanionJournal {
@@ -210,7 +210,7 @@ function Get-JournalState {
     return $Journal.GetJournalState()
 }
 
-Write-Host "Desktop Goose Companion Journal System Initialized"
+Write-Host "Goose Desktop Companion Companion Journal System Initialized"
 $state = Get-JournalState
 Write-Host "Journal Enabled: $($state['Enabled'])"
 Write-Host "Total Entries: $($state['TotalEntries'])"

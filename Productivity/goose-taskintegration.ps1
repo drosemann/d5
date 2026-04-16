@@ -1,4 +1,4 @@
-# Desktop Goose Task Integration System
+# Goose Desktop Companion Task Integration System
 # Sync tasks with external providers (Todoist, Microsoft To-Do, Google Tasks)
 
 class GooseTaskIntegration {
@@ -545,7 +545,7 @@ function Get-TaskIntegrationState {
     return $Integration.GetTaskIntegrationState()
 }
 
-Write-Host "Desktop Goose Task Integration System Initialized"
+Write-Host "Goose Desktop Companion Task Integration System Initialized"
 $state = Get-TaskIntegrationState
 Write-Host "Task Integration Enabled: $($state['Enabled'])"
 Write-Host "Provider: $($state['Provider'])"

@@ -1,4 +1,4 @@
-# Desktop Goose Cloud Sync Module
+# Goose Desktop Companion Cloud Sync Module
 # Supabase Self-Hosted Integration
 # Provides offline-first sync with conflict resolution
 
@@ -554,8 +554,8 @@ function Clear-SyncQueue {
     $Client.ClearQueue()
 }
 
-Write-Host "Desktop Goose Cloud Sync Module Initialized"
-Write-LogInfo "Desktop Goose Cloud Sync Module Initialized"
+Write-Host "Goose Desktop Companion Cloud Sync Module Initialized"
+Write-LogInfo "Goose Desktop Companion Cloud Sync Module Initialized"
 $status = Get-SyncStatus
 Write-Host "Sync Enabled: $($status['Enabled'])"
 Write-LogInfo "Sync Enabled: $($status['Enabled'])"

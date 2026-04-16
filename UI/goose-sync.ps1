@@ -5,7 +5,7 @@ $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $configPath = Join-Path $scriptDir "config.ini"
 
 $form = New-Object System.Windows.Forms.Form
-$form.Text = "Desktop Goose - Sync Manager"
+$form.Text = "Goose Desktop Companion - Sync Manager"
 $form.Size = New-Object System.Drawing.Size(550, 450)
 $form.StartPosition = "CenterScreen"
 $form.BackColor = [System.Drawing.Color]::FromArgb(30, 30, 35)

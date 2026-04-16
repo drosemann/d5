@@ -1,4 +1,4 @@
-# Desktop Goose Meeting Silence Mode
+# Goose Desktop Companion Meeting Silence Mode
 # Auto-trigger silence during meetings
 
 class GooseMeetingSilence {
@@ -159,7 +159,7 @@ function Get-MeetingSilenceState {
     return $MeetingSilence.GetMeetingSilenceState()
 }
 
-Write-Host "Desktop Goose Meeting Silence System Initialized"
+Write-Host "Goose Desktop Companion Meeting Silence System Initialized"
 $state = Get-MeetingSilenceState
 Write-Host "Meeting Silence Enabled: $($state['Enabled'])"
 Write-Host "In Meeting: $($state['IsInMeeting'])"

@@ -1,4 +1,4 @@
-# Desktop Goose Photo Frame System
+# Goose Desktop Companion Photo Frame System
 # Display photos on desktop
 
 class GoosePhotoFrame {
@@ -211,7 +211,7 @@ function Get-PhotoFrameState {
     return $PhotoFrame.GetPhotoFrameState()
 }
 
-Write-Host "Desktop Goose Photo Frame System Initialized"
+Write-Host "Goose Desktop Companion Photo Frame System Initialized"
 $state = Get-PhotoFrameState
 Write-Host "Photo Frame Enabled: $($state['Enabled'])"
 Write-Host "Available Photos: $($state['TotalPhotos'])"

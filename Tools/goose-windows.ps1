@@ -1,4 +1,4 @@
-# Desktop Goose Window Management System
+# Goose Desktop Companion Window Management System
 # Minimize/restore windows
 
 class GooseWindowManager {
@@ -232,7 +232,7 @@ function Get-WindowManagerState {
     return $Manager.GetWindowManagerState()
 }
 
-Write-Host "Desktop Goose Window Management System Initialized"
+Write-Host "Goose Desktop Companion Window Management System Initialized"
 $state = Get-WindowManagerState
 Write-Host "Window Management Enabled: $($state['Enabled'])"
 Write-Host "Open Windows: $($state['OpenWindows'].Count)"

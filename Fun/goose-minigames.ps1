@@ -1,4 +1,4 @@
-# Desktop Goose Mini Games System
+# Goose Desktop Companion Mini Games System
 # Fun mini games to play with the goose
 
 class GooseMiniGames {
@@ -134,7 +134,7 @@ class GooseMiniGames {
                     "game" = $gameName
                     "name" = "Goose Quiz"
                     "description" = "Answer questions about the goose!"
-                    "instructions" = "Answer 10 questions about Desktop Goose. Each correct answer is 10 points."
+                    "instructions" = "Answer 10 questions about Goose Desktop Companion. Each correct answer is 10 points."
                     "questions" = 10
                 }
             }
@@ -461,7 +461,7 @@ function Get-MiniGamesState {
     return $MiniGames.GetMiniGamesState()
 }
 
-Write-Host "Desktop Goose Mini Games System Initialized"
+Write-Host "Goose Desktop Companion Mini Games System Initialized"
 $state = Get-MiniGamesState
 Write-Host "Mini Games Enabled: $($state['Enabled'])"
 Write-Host "Games Available: $($state['AvailableGames'].Count)"

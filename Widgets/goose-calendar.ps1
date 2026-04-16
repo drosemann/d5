@@ -470,7 +470,7 @@ function Toggle-Calendar {
     $Calendar.Toggle()
 }
 
-Write-Host "Desktop Goose Calendar Widget Initialized"
+Write-Host "Goose Desktop Companion Calendar Widget Initialized"
 $state = Get-CalendarState
 Write-Host "Calendar Enabled: $($state['Enabled'])"
 Write-Host "Total Events: $($state['TotalEvents'])"

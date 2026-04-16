@@ -1,4 +1,4 @@
-# Desktop Goose Additional Mini Games
+# Goose Desktop Companion Additional Mini Games
 # Extended mini games beyond the base set
 
 enum GameType {
@@ -365,6 +365,6 @@ function Get-ExtendedGamesState {
     return $Games.GetExtendedGamesState()
 }
 
-Write-Host "Desktop Goose Extended Mini Games Initialized"
+Write-Host "Goose Desktop Companion Extended Mini Games Initialized"
 $state = Get-ExtendedGamesState
 Write-Host "Extended Games Enabled: $($state['Enabled']) | Games: $($state['AvailableGames'].Count)"

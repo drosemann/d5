@@ -125,7 +125,7 @@ class GooseQuickNotes {
         Add-Type -AssemblyName System.Windows.Forms
         Add-Type -AssemblyName System.Drawing
         $this.OverlayForm = New-Object System.Windows.Forms.Form
-        $this.OverlayForm.Text = "Desktop Goose - Quick Notes"
+        $this.OverlayForm.Text = "Goose Desktop Companion - Quick Notes"
         $this.OverlayForm.Size = New-Object System.Drawing.Size(800, 600)
         $this.OverlayForm.StartPosition = "CenterScreen"
         $this.OverlayForm.BackColor = [System.Drawing.Color]::FromArgb(30, 30, 35)

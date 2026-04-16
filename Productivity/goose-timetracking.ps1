@@ -1,4 +1,4 @@
-# Desktop Goose Time Tracking System
+# Goose Desktop Companion Time Tracking System
 # Tracks time spent in different applications
 
 $LoggingScriptPath = Join-Path $PSScriptRoot "..\Core\GooseLogging.ps1"
@@ -298,5 +298,5 @@ function Get-GooseComment {
 }
 
 # Example usage
-Write-Host "Desktop Goose Time Tracking Initialized"
+Write-Host "Goose Desktop Companion Time Tracking Initialized"
 Write-Host "Tracking enabled: $($gooseTimeTracker.Config["TimeTrackingEnabled"])"

@@ -1,4 +1,4 @@
-# Desktop Goose Break Workout Guide System
+# Goose Desktop Companion Break Workout Guide System
 # Guides users through stretch exercises
 
 class GooseBreakWorkout {
@@ -274,7 +274,7 @@ function Get-AllExercises {
     return $Workout.GetAllExercises()
 }
 
-Write-Host "Desktop Goose Break Workout System Initialized"
+Write-Host "Goose Desktop Companion Break Workout System Initialized"
 $state = Get-BreakWorkoutState
 Write-Host "Break Workout Enabled: $($state['Enabled'])"
 Write-Host "Total Exercises: $($state['TotalExercises'])"

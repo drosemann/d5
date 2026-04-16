@@ -1,4 +1,4 @@
-# Desktop Goose Multi-Pet System
+# Goose Desktop Companion Multi-Pet System
 # Support for multiple pets
 
 class GooseMultiPet {
@@ -64,7 +64,7 @@ class GooseMultiPet {
         $this.Pets = @(
             @{
                 "Id" = "goose"
-                "Name" = "Desktop Goose"
+                "Name" = "Goose Desktop Companion"
                 "Type" = "goose"
                 "Emoji" = "🦆"
                 "Active" = $true
@@ -196,7 +196,7 @@ function Get-MultiPetState {
     return $MultiPet.GetMultiPetState()
 }
 
-Write-Host "Desktop Goose Multi-Pet System Initialized"
+Write-Host "Goose Desktop Companion Multi-Pet System Initialized"
 $state = Get-MultiPetState
 Write-Host "Available Pets: $($state['PetCount'])"
 Write-Host "Active Pet: $($state['ActivePet']['Name'])"

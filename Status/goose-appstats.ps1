@@ -314,7 +314,7 @@ function Get-AppStatsStatus {
     return $AppStats.GetAppStatsState()
 }
 
-Write-Host "Desktop Goose App Stats System Initialized"
+Write-Host "Goose Desktop Companion App Stats System Initialized"
 $state = Get-AppStatsStatus
 Write-Host "App Stats Enabled: $($state['Enabled'])"
 Write-Host "Today's Top App: $($state['TodayStats']['TopApps'][0]['Name'])"

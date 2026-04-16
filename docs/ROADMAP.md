@@ -1,4 +1,4 @@
-# Desktop Goose - Roadmap
+# Goose Desktop Companion - Roadmap
 
 > **Version:** 2.0
 > **Last Updated:** März 2026
@@ -7,7 +7,7 @@
 
 ## Vision
 
-Make Desktop Goose the most customizable, extensible, and fun desktop companion by adding AI features, plugin support, and community-driven content.
+Make Goose Desktop Companion the most customizable, extensible, and fun desktop companion by adding AI features, plugin support, and community-driven content.
 
 ---
 

@@ -1,4 +1,4 @@
-# Desktop Goose Marketplace
+# Goose Desktop Companion Marketplace
 # Download and manage skins, plugins, and behaviors
 
 enum MarketplaceItemType {
@@ -458,6 +458,6 @@ function Get-MarketplaceState {
     return $Marketplace.GetMarketplaceState()
 }
 
-Write-Host "Desktop Goose Marketplace Initialized"
+Write-Host "Goose Desktop Companion Marketplace Initialized"
 $state = Get-MarketplaceState
 Write-Host "Marketplace Enabled: $($state['Enabled']) | Available: $($state['AvailableCount']) | Installed: $($state['InstalledCount'])"

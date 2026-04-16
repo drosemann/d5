@@ -1,4 +1,4 @@
-# Desktop Goose Mood System - Enhanced
+# Goose Desktop Companion Mood System - Enhanced
 # Goose emotions based on user behavior and system state
 
 enum SystemMood {
@@ -358,6 +358,6 @@ function Get-SystemMoodState {
     return $MoodSystem.GetSystemMoodState()
 }
 
-Write-Host "Desktop Goose System Mood Initialized"
+Write-Host "Goose Desktop Companion System Mood Initialized"
 $state = Get-SystemMoodState
 Write-Host "Mood: $($state['CurrentMood']) $($state['Emoji'])"

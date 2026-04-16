@@ -1,4 +1,4 @@
-' Desktop Goose UI Launcher (Silent)
+' Goose Desktop Companion UI Launcher (Silent)
 Set WshShell = CreateObject("WScript.Shell")
 currentPath = WshShell.CurrentDirectory
 

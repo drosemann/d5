@@ -4,7 +4,7 @@ Complete technical architecture of the Python + PyQt5 UI layer replacement for t
 
 ## Executive Summary
 
-**Goal**: Replace `GooseDesktop.exe` (C# WinForms) with a cross-platform Python + PyQt5 application that:
+**Goal**: Replace `GooseDesktopCompanion.exe` (C# WinForms) with a cross-platform Python + PyQt5 application that:
 - Eliminates .NET Framework dependency
 - Supports Windows, macOS, and Linux
 - Maintains feature parity with original EXE

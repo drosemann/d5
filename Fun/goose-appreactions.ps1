@@ -1,4 +1,4 @@
-# Desktop Goose App Reactions
+# Goose Desktop Companion App Reactions
 # Goose reacts to what applications you're using
 
 class AppReaction {
@@ -370,6 +370,6 @@ function Get-AvailableReactions {
     return $AppReactions.GetAllReactions()
 }
 
-Write-Host "Desktop Goose App Reactions Initialized"
+Write-Host "Goose Desktop Companion App Reactions Initialized"
 $state = Get-AppReactionState
 Write-Host "Enabled: $($state['Enabled']) | Reactions: $($state['AvailableReactions'].Count)"

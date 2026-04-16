@@ -1,4 +1,4 @@
-# Desktop Goose Hotkey Command System
+# Goose Desktop Companion Hotkey Command System
 # Global hotkey commands
 
 class GooseHotkeySystem {
@@ -171,6 +171,6 @@ function Get-HotkeyState {
     return $Hotkeys.GetHotkeySystemState()
 }
 
-Write-Host "Desktop Goose Hotkey System Initialized"
+Write-Host "Goose Desktop Companion Hotkey System Initialized"
 $state = Get-HotkeyState
 Write-Host "Total Hotkeys: $($state['HotkeyCount'])"

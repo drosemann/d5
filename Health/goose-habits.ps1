@@ -1,4 +1,4 @@
-# Desktop Goose Habit Tracker System
+# Goose Desktop Companion Habit Tracker System
 # Track daily habits and goals
 
 $LoggingScriptPath = Join-Path $PSScriptRoot "..\Core\GooseLogging.ps1"
@@ -273,8 +273,8 @@ function Sync-GooseHabits {
     }
 }
 
-Write-Host "Desktop Goose Habit Tracker System Initialized"
-Write-LogInfo "Desktop Goose Habit Tracker System Initialized"
+Write-Host "Goose Desktop Companion Habit Tracker System Initialized"
+Write-LogInfo "Goose Desktop Companion Habit Tracker System Initialized"
 $state = Get-HabitTrackerState
 Write-Host "Total Habits: $($state['Stats']['TotalHabits'])"
 Write-LogInfo "Total Habits: $($state['Stats']['TotalHabits'])"

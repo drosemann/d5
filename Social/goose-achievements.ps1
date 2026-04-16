@@ -211,7 +211,7 @@ class GooseAchievements {
         Add-Type -AssemblyName System.Windows.Forms
         Add-Type -AssemblyName System.Drawing
         $form = New-Object System.Windows.Forms.Form
-        $form.Text = "Desktop Goose - Achievements"
+        $form.Text = "Goose Desktop Companion - Achievements"
         $form.Size = New-Object System.Drawing.Size(600, 500)
         $form.StartPosition = "CenterScreen"
         $form.BackColor = [System.Drawing.Color]::FromArgb(30, 30, 35)

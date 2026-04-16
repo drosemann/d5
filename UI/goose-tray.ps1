@@ -7,7 +7,7 @@ if (Test-Path $LoggingScriptPath) {
 }
 
 $form = New-Object System.Windows.Forms.Form
-$form.Text = "Desktop Goose - System Tray"
+$form.Text = "Goose Desktop Companion - System Tray"
 $form.Size = New-Object System.Drawing.Size(400, 300)
 $form.StartPosition = "CenterScreen"
 $form.BackColor = [System.Drawing.Color]::FromArgb(30, 30, 35)
@@ -93,7 +93,7 @@ $btnTestBalloon.Add_Click({
     Add-Type -AssemblyName System.Windows.Forms
     $notify = New-Object System.Windows.Forms.NotifyIcon
     $notify.Icon = [System.Drawing.SystemIcons]::Information
-    $notify.BalloonTipTitle = "Desktop Goose"
+    $notify.BalloonTipTitle = "Goose Desktop Companion"
     $notify.BalloonTipText = "Hello! The goose is here!"
     $notify.BalloonTipIcon = "Info"
     $notify.Visible = $true
@@ -140,7 +140,7 @@ $btnMinimize.Add_Click({
     Add-Type -AssemblyName System.Windows.Forms
     $notify = New-Object System.Windows.Forms.NotifyIcon
     $notify.Icon = [System.Drawing.SystemIcons]::Information
-    $notify.BalloonTipTitle = "Desktop Goose"
+    $notify.BalloonTipTitle = "Goose Desktop Companion"
     $notify.BalloonTipText = "I'm in the tray! Click to bring me back."
     $notify.BalloonTipIcon = "Info"
     $notify.Visible = $true

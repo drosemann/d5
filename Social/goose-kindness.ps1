@@ -363,7 +363,7 @@ function Get-KindnessStatus {
     return $Kindness.GetKindnessState()
 }
 
-Write-Host "Desktop Goose Kindness System Initialized"
+Write-Host "Goose Desktop Companion Kindness System Initialized"
 $state = Get-KindnessStatus
 Write-Host "Kindness Tracking: $($state['Enabled'])"
 Write-Host "Current Streak: $($state['Stats']['Streak']) days"

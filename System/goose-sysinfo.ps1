@@ -1,4 +1,4 @@
-# Desktop Goose System Status Display
+# Goose Desktop Companion System Status Display
 # Shows system information near the goose
 
 class GooseSysInfo {
@@ -221,7 +221,7 @@ function Get-QuickSystemSummary {
     return $SysInfo.GetQuickSummary()
 }
 
-Write-Host "Desktop Goose System Info System Initialized"
+Write-Host "Goose Desktop Companion System Info System Initialized"
 $state = $gooseSysInfo.GetSysInfoState()
 Write-Host "System Info Enabled: $($state['Enabled'])"
 Write-Host "Visible: $($state['IsVisible'])"

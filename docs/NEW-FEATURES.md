@@ -1,4 +1,4 @@
-# Desktop Goose - Neue Features (Phase 7)
+# Goose Desktop Companion - Neue Features (Phase 7)
 
 > **Letzte Aktualisierung:** März 2026
 > **Version:** 2.1.0
@@ -19,7 +19,7 @@ Diese Phase fügt 10 neue Features hinzu, darunter ein PowerShell Script Hub, De
 
 ### Beschreibung
 
-Ein vollständiger Script-Manager zum Erstellen, Verwalten und Ausführen eigener PowerShell-Skripte direkt aus dem Desktop Goose Control Center.
+Ein vollständiger Script-Manager zum Erstellen, Verwalten und Ausführen eigener PowerShell-Skripte direkt aus dem Goose Desktop Companion Control Center.
 
 ### Features
 
@@ -658,7 +658,7 @@ $progress = $achievements.GetProgress()
 ## Dateistruktur
 
 ```
-DesktopGoose/
+GooseDesktopCompanion/
 ├── System/
 │   ├── goose-script-hub.ps1        # NEU: PowerShell Script Manager
 │   ├── goose-voice.ps1           # NEU: Voice Commands
@@ -700,4 +700,4 @@ DesktopGoose/
 
 ---
 
-*Desktop Goose Phase 7 - Neue Features 🦆*
+*Goose Desktop Companion Phase 7 - Neue Features 🦆*

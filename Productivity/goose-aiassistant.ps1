@@ -1,4 +1,4 @@
-# Desktop Goose AI Assistant System
+# Goose Desktop Companion AI Assistant System
 # Local AI assistant for quick actions and help
 
 class GooseAIAssistant {
@@ -482,7 +482,7 @@ function Get-AIAssistantState {
     return $Assistant.GetAIAssistantState()
 }
 
-Write-Host "Desktop Goose AI Assistant System Initialized"
+Write-Host "Goose Desktop Companion AI Assistant System Initialized"
 $state = Get-AIAssistantState
 Write-Host "AI Assistant Enabled: $($state['Enabled'])"
 Write-Host "Quick Actions: $($state['QuickActionsCount'])"

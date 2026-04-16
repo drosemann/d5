@@ -328,7 +328,7 @@ function Set-BatteryThresholds {
     $Battery.SetCriticalThreshold($Critical)
 }
 
-Write-Host "Desktop Goose Battery Monitor Initialized"
+Write-Host "Goose Desktop Companion Battery Monitor Initialized"
 $state = Get-BatteryStatus
 Write-Host "Battery Monitor: $($state['Enabled'])"
 Write-Host "Battery Status: $($state['Status']['Level'])% ($($state['Status']['Status']))"

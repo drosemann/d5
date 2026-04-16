@@ -1,4 +1,4 @@
-# Desktop Goose Custom Skins System
+# Goose Desktop Companion Custom Skins System
 # Load custom goose sprites and colors
 
 class GooseCustomSkins {
@@ -261,7 +261,7 @@ function Get-CurrentSkinColors {
     return $Skins.GetCurrentSkinColors()
 }
 
-Write-Host "Desktop Goose Custom Skins System Initialized"
+Write-Host "Goose Desktop Companion Custom Skins System Initialized"
 $state = Get-CustomSkinsState
 Write-Host "Custom Skins Enabled: $($state['Enabled'])"
 Write-Host "Current Skin: $($state['CurrentSkin'])"

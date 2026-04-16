@@ -240,7 +240,7 @@ function Get-InspirationStatus {
     return $Inspiration.GetInspirationState()
 }
 
-Write-Host "Desktop Goose Inspiration System Initialized"
+Write-Host "Goose Desktop Companion Inspiration System Initialized"
 $state = Get-InspirationStatus
 Write-Host "Inspiration Enabled: $($state['Enabled'])"
 Write-Host "Categories: $($state['Categories'] -join ', ')"

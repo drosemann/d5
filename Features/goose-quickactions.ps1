@@ -1,4 +1,4 @@
-# Desktop Goose Quick Actions Menu System
+# Goose Desktop Companion Quick Actions Menu System
 # Right-click context menu for user interaction
 
 class GooseQuickActions {
@@ -255,7 +255,7 @@ function Get-MenuStructure {
     return $QuickActions.GetMenuStructure()
 }
 
-Write-Host "Desktop Goose Quick Actions System Initialized"
+Write-Host "Goose Desktop Companion Quick Actions System Initialized"
 $state = @{ "Enabled" = $gooseQuickActions.Config["QuickActionsEnabled"] }
 Write-Host "Quick Actions Enabled: $($state['Enabled'])"
 Write-Host "Available Actions: $(($gooseQuickActions.GetAvailableActions()).Count)"
