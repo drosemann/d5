@@ -1,6 +1,6 @@
 # Server-seitiges Streamer Mode Backend
 
-Dieses Dokument beschreibt die server-seitige Implementierung des Streamer Mode für Desktop Goose mit Twitch/YouTube Integration.
+Dieses Dokument beschreibt die server-seitige Implementierung des Streamer Mode für Goose Desktop Companion mit Twitch/YouTube Integration.
 
 ## Architektur
 
@@ -18,7 +18,7 @@ Dieses Dokument beschreibt die server-seitige Implementierung des Streamer Mode 
          │
          ▼
 ┌──────────────────┐
-│  Desktop Goose   │
+│  Goose Desktop Companion   │
 │  Streamer Mode  │
 │                  │
 │ • Chaos Events  │

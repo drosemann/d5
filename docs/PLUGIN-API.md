@@ -7,7 +7,7 @@
 
 ## Overview
 
-The Goose Plugin API allows developers to extend Desktop Goose functionality with custom plugins.
+The Goose Plugin API allows developers to extend Goose Desktop Companion functionality with custom plugins.
 
 ## Plugin Structure
 

@@ -1,4 +1,4 @@
-# Desktop Goose Export/Import Settings System
+# Goose Desktop Companion Export/Import Settings System
 # Backup and restore configuration
 
 class GooseSettingsManager {
@@ -192,7 +192,7 @@ function Get-SettingsManagerState {
     return $Manager.GetSettingsManagerState()
 }
 
-Write-Host "Desktop Goose Settings Manager System Initialized"
+Write-Host "Goose Desktop Companion Settings Manager System Initialized"
 $state = Get-SettingsManagerState
 Write-Host "Settings Directory: $($state['SettingsDirectory'])"
 Write-Host "Available Backups: $($state['BackupCount'])"

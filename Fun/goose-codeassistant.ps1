@@ -1,4 +1,4 @@
-# Desktop Goose Code Assistant
+# Goose Desktop Companion Code Assistant
 # AI-powered code help and review
 
 enum CodeLanguage {
@@ -442,6 +442,6 @@ function Get-CodeAssistantState {
     return $CodeAssistant.GetCodeAssistantState()
 }
 
-Write-Host "Desktop Goose Code Assistant Initialized"
+Write-Host "Goose Desktop Companion Code Assistant Initialized"
 $state = Get-CodeAssistantState
 Write-Host "Code Assistant Enabled: $($state['Enabled']) | Reviews: $($state['SnippetCount'])"

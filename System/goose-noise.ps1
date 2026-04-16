@@ -245,7 +245,7 @@ function Set-NoiseSensitivity {
     $NoiseAlert.SetSensitivity($Sensitivity)
 }
 
-Write-Host "Desktop Goose Noise Alert System Initialized"
+Write-Host "Goose Desktop Companion Noise Alert System Initialized"
 $state = Get-NoiseStatus
 Write-Host "Noise Alert Enabled: $($state['Enabled'])"
 Write-Host "Current Environment: $($state['CurrentEnvironment'])"

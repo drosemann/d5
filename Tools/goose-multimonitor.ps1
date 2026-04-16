@@ -1,4 +1,4 @@
-# Desktop Goose Multi-Monitor Support System
+# Goose Desktop Companion Multi-Monitor Support System
 # Allows goose to wander across multiple monitors
 
 class GooseMultiMonitor {
@@ -205,7 +205,7 @@ function Set-CrossMonitorWandering {
     $MultiMonitor.SetCrossMonitorWandering($Enabled)
 }
 
-Write-Host "Desktop Goose Multi-Monitor System Initialized"
+Write-Host "Goose Desktop Companion Multi-Monitor System Initialized"
 $state = Get-MonitorState
 Write-Host "Multi-Monitor Support: $($state['Enabled'])"
 Write-Host "Monitor Count: $($state['MonitorCount'])"

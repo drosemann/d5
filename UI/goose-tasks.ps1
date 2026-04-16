@@ -4,7 +4,7 @@ Add-ObjectSystemDrawing
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 
 $form = New-Object System.Windows.Forms.Form
-$form.Text = "Desktop Goose - Task Manager"
+$form.Text = "Goose Desktop Companion - Task Manager"
 $form.Size = New-Object System.Drawing.Size(700, 550)
 $form.StartPosition = "CenterScreen"
 $form.BackColor = [System.Drawing.Color]::FromArgb(30, 30, 35)

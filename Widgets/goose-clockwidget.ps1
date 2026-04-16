@@ -1,4 +1,4 @@
-# Desktop Goose Clock Widget System
+# Goose Desktop Companion Clock Widget System
 # Displays a clock on or near the goose
 
 class GooseClockWidget {
@@ -156,7 +156,7 @@ function Set-ClockFormat {
     $ClockWidget.SetClockFormat($Format)
 }
 
-Write-Host "Desktop Goose Clock Widget System Initialized"
+Write-Host "Goose Desktop Companion Clock Widget System Initialized"
 $state = Get-ClockWidgetState
 Write-Host "Clock Widget Enabled: $($state['Enabled'])"
 Write-Host "Current Time: $($state['CurrentTime'])"

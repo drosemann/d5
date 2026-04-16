@@ -1,12 +1,12 @@
 # Server-seitige Features Übersicht
 
-Dieses Dokument beschreibt die erweiterten server-seitigen Features für Desktop Goose, die auf dem Supabase Self-Hosted Backend aufbauen.
+Dieses Dokument beschreibt die erweiterten server-seitigen Features für Goose Desktop Companion, die auf dem Supabase Self-Hosted Backend aufbauen.
 
 ## Architektur
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                         Desktop Goose Client                                  │
+│                         Goose Desktop Companion Client                                  │
 │  ┌──────────┐  ┌──────────────┐  ┌─────────┐  ┌──────────┐  ┌───────────┐  │
 │  │Analytics │  │Notifications │  │ Security│  │  Sync    │  │  Plugin   │  │
 │  │          │  │              │  │         │  │          │  │  Manager   │  │

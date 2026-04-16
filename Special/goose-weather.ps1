@@ -1,4 +1,4 @@
-# Desktop Goose Weather Integration System
+# Goose Desktop Companion Weather Integration System
 # Goose responds to local weather conditions
 
 class GooseWeather {
@@ -205,7 +205,7 @@ function Set-WeatherEnabled {
     $Weather.SetEnabled($Enabled)
 }
 
-Write-Host "Desktop Goose Weather System Initialized"
+Write-Host "Goose Desktop Companion Weather System Initialized"
 $state = Get-WeatherState
 Write-Host "Weather Integration: $($state['Enabled'])"
 Write-Host "Current Condition: $($state['Condition'])"

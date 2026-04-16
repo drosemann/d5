@@ -1,4 +1,4 @@
-# Desktop Goose Posture Check System
+# Goose Desktop Companion Posture Check System
 # Remind users to maintain good posture
 
 $LoggingScriptPath = Join-Path $PSScriptRoot "..\Core\GooseLogging.ps1"
@@ -566,8 +566,8 @@ function Reset-PostureDailyStats {
     $Posture.ResetDailyStats()
 }
 
-Write-Host "Desktop Goose Posture Check System Initialized"
-Write-LogInfo "Desktop Goose Posture Check System Initialized"
+Write-Host "Goose Desktop Companion Posture Check System Initialized"
+Write-LogInfo "Goose Desktop Companion Posture Check System Initialized"
 $state = Get-PostureState
 Write-Host "Posture Enabled: $($state['Enabled'])"
 Write-LogInfo "Posture Enabled: $($state['Enabled'])"

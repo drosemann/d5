@@ -2,7 +2,7 @@
 
 ## Übersicht
 
-Das Telemetry-Modul implementiert OpenTelemetry für Desktop Goose und sammelt Metriken, Traces und Logs lokal. Alle 7 Tage werden die gesammelten Daten automatisch an eine Supabase-Instanz gesendet.
+Das Telemetry-Modul implementiert OpenTelemetry für Goose Desktop Companion und sammelt Metriken, Traces und Logs lokal. Alle 7 Tage werden die gesammelten Daten automatisch an eine Supabase-Instanz gesendet.
 
 **Hinweis:** Telemetrie ist standardmäßig **aktiviert**.
 

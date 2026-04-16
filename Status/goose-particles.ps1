@@ -1,4 +1,4 @@
-# Desktop Goose Particle Effects System
+# Goose Desktop Companion Particle Effects System
 # Provides subtle environmental particle effects
 
 class GooseParticles {
@@ -329,5 +329,5 @@ function Get-AvailableEffects {
 }
 
 # Example usage
-Write-Host "Desktop Goose Particle Effects Initialized"
+Write-Host "Goose Desktop Companion Particle Effects Initialized"
 Write-Host "Available effects: $($gooseParticles.GetAvailableEffects() -join ', ')"

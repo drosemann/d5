@@ -8,7 +8,7 @@
 
 ## 🎯 Executive Summary
 
-Successfully replaced the legacy C# desktop EXE (`GooseDesktop.exe`) with a modern, cross-platform Python + PyQt5 implementation. The new UI:
+Successfully replaced the legacy C# desktop EXE (`GooseDesktopCompanion.exe`) with a modern, cross-platform Python + PyQt5 implementation. The new UI:
 
 - ✅ Runs on Windows, macOS, and Linux
 - ✅ Requires no .NET redistributables  
@@ -336,12 +336,12 @@ python main.py
 # Windows
 cd goose-ui-python
 build\build.bat
-# Output: dist\GooseDesktop\GooseDesktop.exe
+# Output: dist\GooseDesktopCompanion\GooseDesktopCompanion.exe
 
 # macOS/Linux
 cd goose-ui-python
 bash build/build.sh
-# Output: dist/GooseDesktop/GooseDesktop
+# Output: dist/GooseDesktopCompanion/GooseDesktopCompanion
 ```
 
 ### Size Analysis

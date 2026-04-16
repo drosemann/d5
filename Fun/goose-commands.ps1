@@ -1,4 +1,4 @@
-# Desktop Goose Command System
+# Goose Desktop Companion Command System
 # Provides interactive commands the goose responds to
 
 class GooseCommands {
@@ -369,5 +369,5 @@ function Get-GooseCommandList {
 }
 
 # Example usage
-Write-Host "Desktop Goose Command System Initialized"
+Write-Host "Goose Desktop Companion Command System Initialized"
 Write-Host "Available commands: $(Get-GooseCommandList)"

@@ -1,12 +1,12 @@
 # Server-seitiges Multiplayer Backend
 
-Dieses Dokument beschreibt die server-seitige Implementierung des Multiplayer-Systems für Desktop Goose mittels Supabase Realtime.
+Dieses Dokument beschreibt die server-seitige Implementierung des Multiplayer-Systems für Goose Desktop Companion mittels Supabase Realtime.
 
 ## Architektur
 
 ```
 ┌──────────────────┐     ┌──────────────────┐
-│  Desktop Goose   │────▶│  Supabase        │
+│  Goose Desktop Companion   │────▶│  Supabase        │
 │  Multiplayer     │     │  Backend         │
 │                  │     │                  │
 │ • Connect        │     │ • Realtime       │

@@ -1,4 +1,4 @@
-# Desktop Goose Plugin API System
+# Goose Desktop Companion Plugin API System
 # Allow custom plugins to extend functionality
 
 enum PluginState {
@@ -413,6 +413,6 @@ function Get-RegisteredHooks {
     return $API.RegisteredHooks
 }
 
-Write-Host "Desktop Goose Plugin API System Initialized"
+Write-Host "Goose Desktop Companion Plugin API System Initialized"
 $state = Get-PluginState
 Write-Host "Plugin API Enabled: $($state['Enabled']) | Plugins: $($state['PluginCount']) | Enabled: $($state['EnabledPlugins'])"

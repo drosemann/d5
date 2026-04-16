@@ -1,5 +1,5 @@
 -- Supabase Self-Hosted Database Setup
--- Desktop Goose Cloud Sync
+-- Goose Desktop Companion Cloud Sync
 
 -- Enable UUID extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
@@ -589,14 +589,14 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- Comment
-COMMENT ON TABLE telemetry_events IS 'Desktop Goose telemetry - feature usage, errors, sessions, performance';
+COMMENT ON TABLE telemetry_events IS 'Goose Desktop Companion telemetry - feature usage, errors, sessions, performance';
 COMMENT ON TABLE analytics_summaries IS 'Daily aggregated analytics for user productivity and habits';
 COMMENT ON TABLE reports IS 'Generated reports (weekly summaries, habit analysis, etc.)';
 COMMENT ON TABLE goals IS 'User goals and targets with progress tracking';
 COMMENT ON TABLE achievements IS 'Gamification - achievement badges and progress';
 
 -- Comment
-COMMENT ON TABLE users IS 'Desktop Goose users - can be anonymous (device-based)';
+COMMENT ON TABLE users IS 'Goose Desktop Companion users - can be anonymous (device-based)';
 COMMENT ON TABLE sync_data IS 'Synchronized user data (notes, habits, stats, etc.)';
 COMMENT ON TABLE sync_history IS 'Audit log of sync operations';
 

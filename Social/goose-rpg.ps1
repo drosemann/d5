@@ -1,4 +1,4 @@
-# Desktop Goose RPG Progression System
+# Goose Desktop Companion RPG Progression System
 # Level up your goose with stats and unlockables
 
 enum GooseStat {
@@ -477,6 +477,6 @@ function Get-Achievements {
     return $RPG.GetRPGState().Achievements
 }
 
-Write-Host "Desktop Goose RPG System Initialized"
+Write-Host "Goose Desktop Companion RPG System Initialized"
 $state = Get-RPGState
 Write-Host "RPG Enabled: $($state['Enabled']) | Level: $($state['Level']) | XP: $($state['TotalXP'])"

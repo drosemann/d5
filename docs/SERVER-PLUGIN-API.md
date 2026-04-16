@@ -1,12 +1,12 @@
 # Server-seitige Plugin API
 
-Dieses Dokument beschreibt die server-seitige Implementierung der Plugin API für Desktop Goose.
+Dieses Dokument beschreibt die server-seitige Implementierung der Plugin API für Goose Desktop Companion.
 
 ## Architektur
 
 ```
 ┌──────────────────┐     ┌──────────────────┐
-│  Desktop Goose   │────▶│  Supabase        │
+│  Goose Desktop Companion   │────▶│  Supabase        │
 │  Client          │     │  Backend         │
 │                  │     │                  │
 │ • Plugin Manager │     │ • Edge Functions │

@@ -265,7 +265,7 @@ function Get-ScreenTimeStatus {
     return $ScreenTime.GetScreenTimeState()
 }
 
-Write-Host "Desktop Goose Screen Time System Initialized"
+Write-Host "Goose Desktop Companion Screen Time System Initialized"
 $state = Get-ScreenTimeStatus
 Write-Host "Screen Time Tracking: $($state['Enabled'])"
 Write-Host "Today: $($state['TodayStats']['TotalHours']) hours"

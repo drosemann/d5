@@ -1,4 +1,4 @@
-# Desktop Goose Security & Storage Module
+# Goose Desktop Companion Security & Storage Module
 # Provides OAuth, API Keys, Audit Logs, and File Management
 
 enum AuthProvider {
@@ -688,4 +688,4 @@ function Test-RateLimit {
     return $Client.CheckRateLimit($Endpoint, $Limit)
 }
 
-Write-Host "Desktop Goose Security Module Initialized"
+Write-Host "Goose Desktop Companion Security Module Initialized"

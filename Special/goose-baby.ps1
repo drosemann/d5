@@ -1,4 +1,4 @@
-# Desktop Goose Baby Companion System
+# Goose Desktop Companion Baby Companion System
 # Allows spawning a baby goose that follows the parent
 
 class GooseBaby {
@@ -174,7 +174,7 @@ function Get-BabyState {
     return $Baby.GetBabyState()
 }
 
-Write-Host "Desktop Goose Baby Companion System Initialized"
+Write-Host "Goose Desktop Companion Baby Companion System Initialized"
 $state = $gooseBaby.GetBabyState()
 Write-Host "Baby Goose Enabled: $($state['Enabled'])"
 Write-Host "Active: $($state['IsActive'])"

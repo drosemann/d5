@@ -1,4 +1,4 @@
-# Desktop Goose Sleep/Wake Cycle System
+# Goose Desktop Companion Sleep/Wake Cycle System
 # Goose sleeps when user is idle, wakes on activity
 
 class GooseSleepWake {
@@ -199,7 +199,7 @@ function Get-SleepWakeState {
     return $SleepWake.GetSleepWakeState()
 }
 
-Write-Host "Desktop Goose Sleep/Wake System Initialized"
+Write-Host "Goose Desktop Companion Sleep/Wake System Initialized"
 $state = Get-SleepWakeState
 Write-Host "Sleep/Wake Enabled: $($state['Enabled'])"
 Write-Host "Current State: $(if ($state['IsSleeping']) { 'Sleeping' } else { 'Awake' })"

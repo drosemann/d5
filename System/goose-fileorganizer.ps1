@@ -1,4 +1,4 @@
-# Desktop Goose File Organizer System
+# Goose Desktop Companion File Organizer System
 # Auto-categorize and organize files
 
 class GooseFileOrganizer {
@@ -621,7 +621,7 @@ function Toggle-FileOrganizer {
     $Organizer.Toggle()
 }
 
-Write-Host "Desktop Goose File Organizer System Initialized"
+Write-Host "Goose Desktop Companion File Organizer System Initialized"
 $state = Get-FileOrganizerState
 Write-Host "File Organizer Enabled: $($state['Enabled'])"
 Write-Host "Rules: $($state['Stats']['rulesEnabled'])/$($state['Stats']['rulesTotal'])"

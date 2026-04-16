@@ -1,4 +1,4 @@
-# Desktop Goose Sync Status Widget
+# Goose Desktop Companion Sync Status Widget
 # Displays sync status in the UI
 
 class GooseSyncWidget {
@@ -190,4 +190,4 @@ function Get-SyncWidgetHtml {
     return $Widget.GetWidgetHtml()
 }
 
-Write-Host "Desktop Goose Sync Widget Module Initialized"
+Write-Host "Goose Desktop Companion Sync Widget Module Initialized"

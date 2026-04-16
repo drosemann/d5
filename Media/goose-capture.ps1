@@ -169,7 +169,7 @@ class GooseCapture {
         Add-Type -AssemblyName System.Windows.Forms
         Add-Type -AssemblyName System.Drawing
         $form = New-Object System.Windows.Forms.Form
-        $form.Text = "Desktop Goose - Annotation Mode"
+        $form.Text = "Goose Desktop Companion - Annotation Mode"
         $form.Size = New-Object System.Drawing.Size(800, 600)
         $form.StartPosition = "CenterScreen"
         $form.BackColor = [System.Drawing.Color]::Black

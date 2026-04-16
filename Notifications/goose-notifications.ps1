@@ -1,4 +1,4 @@
-# Desktop Goose Notifications & Events Module
+# Goose Desktop Companion Notifications & Events Module
 # Provides push notifications, webhooks, scheduled tasks, and event logging
 
 enum NotificationType {
@@ -726,4 +726,4 @@ function Get-Webhooks {
     return $Client.GetWebhooks()
 }
 
-Write-Host "Desktop Goose Notifications Module Initialized"
+Write-Host "Goose Desktop Companion Notifications Module Initialized"

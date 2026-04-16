@@ -1,4 +1,4 @@
-# Desktop Goose Focus Mode System
+# Goose Desktop Companion Focus Mode System
 # Provides distraction-free focus periods
 
 class GooseFocus {
@@ -253,7 +253,7 @@ function Toggle-FocusMode {
     return $Focus.GetFocusStatus()
 }
 
-Write-Host "Desktop Goose Focus Mode System Initialized"
+Write-Host "Goose Desktop Companion Focus Mode System Initialized"
 $state = $gooseFocus.GetFocusState()
 Write-Host "Focus Mode Enabled: $($state['Enabled'])"
 Write-Host "Current Mode: $($state['Mode'])"

@@ -4,7 +4,7 @@ Add-Type -AssemblyName System.Drawing
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 
 $form = New-Object System.Windows.Forms.Form
-$form.Text = "Desktop Goose - Global Hotkeys"
+$form.Text = "Goose Desktop Companion - Global Hotkeys"
 $form.Size = New-Object System.Drawing.Size(600, 500)
 $form.StartPosition = "CenterScreen"
 $form.BackColor = [System.Drawing.Color]::FromArgb(30, 30, 35)

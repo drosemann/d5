@@ -1,4 +1,4 @@
-# Desktop Goose Weather Widget System
+# Goose Desktop Companion Weather Widget System
 # Display weather info as a widget
 
 class GooseWeatherWidget {
@@ -187,7 +187,7 @@ function Get-WeatherWidgetState {
     return $WeatherWidget.GetWeatherWidgetState()
 }
 
-Write-Host "Desktop Goose Weather Widget System Initialized"
+Write-Host "Goose Desktop Companion Weather Widget System Initialized"
 $state = Get-WeatherWidgetState
 Write-Host "Weather Widget Enabled: $($state['Enabled'])"
 Write-Host "Current Weather: $($state['CurrentDisplay']['Condition']) $($state['CurrentDisplay']['Temperature'])"

@@ -427,7 +427,7 @@ function Get-CommandsStatus {
     return $Commands.GetCommandsState()
 }
 
-Write-Host "Desktop Goose Custom Commands System Initialized"
+Write-Host "Goose Desktop Companion Custom Commands System Initialized"
 $state = Get-CommandsStatus
 Write-Host "Custom Commands: $($state['Enabled'])"
 Write-Host "Available Commands: $($state['TotalCommands'])"

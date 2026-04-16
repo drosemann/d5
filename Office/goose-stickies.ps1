@@ -1,4 +1,4 @@
-# Desktop Goose Sticky Note System
+# Goose Desktop Companion Sticky Note System
 # Hold sticky notes on desktop
 
 class GooseStickyNote {
@@ -150,6 +150,6 @@ function Get-StickyNoteState {
     return $StickyNote.GetStickyNoteState()
 }
 
-Write-Host "Desktop Goose Sticky Note System Initialized"
+Write-Host "Goose Desktop Companion Sticky Note System Initialized"
 $state = Get-StickyNoteState
 Write-Host "Sticky Notes: $($state['NoteCount'])"

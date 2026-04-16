@@ -1,4 +1,4 @@
-# Desktop Goose Unit Tests
+# Goose Desktop Companion Unit Tests
 # Tests all new feature modules
 
 $ErrorActionPreference = "Continue"
@@ -63,7 +63,7 @@ function Assert-NotNull {
     }
 }
 
-Write-Host "`n=== Desktop Goose Unit Tests ===`n" -ForegroundColor Cyan
+Write-Host "`n=== Goose Desktop Companion Unit Tests ===`n" -ForegroundColor Cyan
 
 Write-Host "--- Testing goose-weather.ps1 ---" -ForegroundColor Yellow
 . "$PSScriptRoot\goose-weather.ps1"

@@ -1,4 +1,4 @@
-# Desktop Goose Core System
+# Goose Desktop Companion Core System
 # Unified module combining: Behavior, Context, Animations, Personality, Productivity
 
 $TelemetryScriptPath = Join-Path $PSScriptRoot "..\System\goose-telemetry.ps1"
@@ -460,7 +460,7 @@ function Get-VisualState { param($Core = $gooseCore); return $Core.Animations.Ge
 function Record-Interaction { param([string]$Type, $Core = $gooseCore); $Core.Personality.RecordInteraction($Type) }
 function Get-PersonalityReport { param($Core = $gooseCore); return $Core.Personality.GetReport() }
 
-Write-Host "Desktop Goose Core System Initialized"
-Write-LogInfo -Message "Desktop Goose Core System Initialized" -Source "GooseCore"
+Write-Host "Goose Desktop Companion Core System Initialized"
+Write-LogInfo -Message "Goose Desktop Companion Core System Initialized" -Source "GooseCore"
 Write-LogInfo -Message "Activity Level: $(Get-ActivityLevel)" -Source "GooseCore"
 Write-LogInfo -Message "Suggested Action: $($gooseCore.Behavior.GetSuggestedAction())" -Source "GooseCore"

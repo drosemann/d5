@@ -207,7 +207,7 @@ function Get-MoodStatus {
     return $MoodSystem.GetMoodState()
 }
 
-Write-Host "Desktop Goose Mood System Initialized"
+Write-Host "Goose Desktop Companion Mood System Initialized"
 $state = Get-MoodStatus
 Write-Host "Mood Tracking: $($state['Enabled'])"
 Write-Host "Current Mood: $($state['CurrentMood']['CurrentMood'])"

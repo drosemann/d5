@@ -1,4 +1,4 @@
-# Desktop Goose - Feature Roadmap
+# Goose Desktop Companion - Feature Roadmap
 
 > **Letzte Aktualisierung:** März 2026
 > **Version:** 2.0.0
@@ -7,7 +7,7 @@
 
 ## 📊 Übersicht
 
-Diese Roadmap plant 13 neue Feature-Kategorien für Desktop Goose:
+Diese Roadmap plant 13 neue Feature-Kategorien für Goose Desktop Companion:
 
 | Phase | Kategorie | Features | Priorität |
 |-------|-----------|----------|-----------|

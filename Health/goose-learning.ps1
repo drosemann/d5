@@ -1,4 +1,4 @@
-# Desktop Goose Learning System
+# Goose Desktop Companion Learning System
 # Gamified productivity with quizzes and coding streaks
 
 class QuizQuestion {
@@ -475,6 +475,6 @@ function Get-MotivationalMessage {
     return $Learning.GetMotivationalMessage()
 }
 
-Write-Host "Desktop Goose Learning System Initialized"
+Write-Host "Goose Desktop Companion Learning System Initialized"
 $state = Get-LearningState
 Write-Host "Learning Enabled: $($state['Enabled']) | Level: $($state['Level']['level']) | XP: $($state['Level']['totalXP']) | Streak: $($state['Streak']['Current'])"

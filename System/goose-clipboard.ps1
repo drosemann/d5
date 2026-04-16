@@ -1,4 +1,4 @@
-# Desktop Goose Enhanced Clipboard Manager System
+# Goose Desktop Companion Enhanced Clipboard Manager System
 # Full clipboard history with pinning, search, and categories
 
 class GooseClipboardManager {
@@ -626,7 +626,7 @@ function Toggle-ClipboardManager {
     $Manager.Toggle()
 }
 
-Write-Host "Desktop Goose Enhanced Clipboard Manager Initialized"
+Write-Host "Goose Desktop Companion Enhanced Clipboard Manager Initialized"
 $state = Get-ClipboardManagerState
 Write-Host "Clipboard Manager Enabled: $($state['Enabled'])"
 Write-Host "History Items: $($state['Stats']['totalHistory'])"

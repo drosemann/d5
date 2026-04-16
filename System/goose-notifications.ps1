@@ -1,4 +1,4 @@
-# Desktop Goose Notification Mimicry System
+# Goose Desktop Companion Notification Mimicry System
 # Goose mimics notification popups
 
 class GooseNotificationMimicry {
@@ -197,7 +197,7 @@ function Get-NotificationMimicryState {
     return $Mimicry.GetNotificationMimicryState()
 }
 
-Write-Host "Desktop Goose Notification Mimicry System Initialized"
+Write-Host "Goose Desktop Companion Notification Mimicry System Initialized"
 $state = Get-NotificationMimicryState
 Write-Host "Notification Mimicry Enabled: $($state['Enabled'])"
 Write-Host "Mimic Chance: $($state['MimicChance'])%"

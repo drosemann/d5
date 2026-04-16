@@ -1,4 +1,4 @@
-# Desktop Goose Focus Session Leaderboard System
+# Goose Desktop Companion Focus Session Leaderboard System
 # Track and display focus session achievements
 
 class GooseFocusLeaderboard {
@@ -240,7 +240,7 @@ function Get-FocusLeaderboard {
     return $Leaderboard.GetLeaderboardState()
 }
 
-Write-Host "Desktop Goose Focus Leaderboard System Initialized"
+Write-Host "Goose Desktop Companion Focus Leaderboard System Initialized"
 $state = Get-FocusLeaderboard
 Write-Host "Current Rank: $($state['CurrentRank']['Rank'])"
 Write-Host "Today's Focus: $($state['TodayStats']['Minutes']) minutes"

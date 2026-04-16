@@ -1,4 +1,4 @@
-# Desktop Goose Screen Doodle System
+# Goose Desktop Companion Screen Doodle System
 # Draw on screen
 
 class GooseScreenDoodle {
@@ -143,7 +143,7 @@ function Get-DoodleState {
     return $Doodle.GetScreenDoodleState()
 }
 
-Write-Host "Desktop Goose Screen Doodle System Initialized"
+Write-Host "Goose Desktop Companion Screen Doodle System Initialized"
 $state = Get-DoodleState
 Write-Host "Screen Doodle Enabled: $($state['Enabled'])"
 Write-Host "Current Tool: $($state['CurrentTool'])"

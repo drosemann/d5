@@ -308,7 +308,7 @@ function Get-TasksStatus {
     return $Tasks.GetTasksState()
 }
 
-Write-Host "Desktop Goose Tasks System Initialized"
+Write-Host "Goose Desktop Companion Tasks System Initialized"
 Write-LogInfo -Message "Tasks System Initialized" -Source "GooseTasks"
 $state = Get-TasksStatus
 Write-Host "Tasks Enabled: $($state['Enabled'])"

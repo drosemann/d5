@@ -1,4 +1,4 @@
-# Desktop Goose Pomodoro Timer System
+# Goose Desktop Companion Pomodoro Timer System
 # Provides focus timer with goose involvement
 
 $LoggingScriptPath = Join-Path $PSScriptRoot "..\Core\GooseLogging.ps1"
@@ -268,7 +268,7 @@ function Get-PomodoroStatus {
 }
 
 # Example usage
-Write-Host "Desktop Goose Pomodoro Timer Initialized"
-Write-LogInfo "Desktop Goose Pomodoro Timer Initialized"
+Write-Host "Goose Desktop Companion Pomodoro Timer Initialized"
+Write-LogInfo "Goose Desktop Companion Pomodoro Timer Initialized"
 Write-Host "Session Duration: $($goosePomodoro.SessionDuration) minutes"
 Write-LogInfo "Session Duration: $($goosePomodoro.SessionDuration) minutes"

@@ -24,7 +24,7 @@ function Load-Stats {
 }
 
 $form = New-Object System.Windows.Forms.Form
-$form.Text = "Desktop Goose - Daily Stats Dashboard"
+$form.Text = "Goose Desktop Companion - Daily Stats Dashboard"
 $form.Size = New-Object System.Drawing.Size(800, 600)
 $form.StartPosition = "CenterScreen"
 $form.BackColor = [System.Drawing.Color]::FromArgb(25, 25, 30)

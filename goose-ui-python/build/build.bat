@@ -43,7 +43,7 @@ if errorlevel 1 (
 echo.
 echo ========================================
 echo Build complete!
-echo Executable: dist\GooseDesktop\GooseDesktop.exe
+echo Executable: dist\GooseDesktopCompanion\GooseDesktopCompanion.exe
 echo ========================================
 echo.
 

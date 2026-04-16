@@ -1,4 +1,4 @@
-# Desktop Goose File Feeding System
+# Goose Desktop Companion File Feeding System
 # Goose accepts files dragged to it and displays info
 
 class GooseFileFeeder {
@@ -208,7 +208,7 @@ function Get-FileFeederStats {
     return $FileFeeder.GetStatistics()
 }
 
-Write-Host "Desktop Goose File Feeding System Initialized"
+Write-Host "Goose Desktop Companion File Feeding System Initialized"
 $state = $gooseFileFeeder.GetFileFeederState()
 Write-Host "File Feeding Enabled: $($state['Enabled'])"
 Write-Host "Total Feedings: $($state['Statistics']['TotalFeedings'])"

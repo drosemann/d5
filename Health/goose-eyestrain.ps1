@@ -1,4 +1,4 @@
-# Desktop Goose Eye Strain Prevention System
+# Goose Desktop Companion Eye Strain Prevention System
 # 20-20-20 rule and break reminders for eye health
 
 $LoggingScriptPath = Join-Path $PSScriptRoot "..\Core\GooseLogging.ps1"
@@ -529,8 +529,8 @@ function Reset-EyeStrainDailyStats {
     return $EyeStrain.ResetDailyStats()
 }
 
-Write-Host "Desktop Goose Eye Strain Prevention System Initialized"
-Write-LogInfo "Desktop Goose Eye Strain Prevention System Initialized"
+Write-Host "Goose Desktop Companion Eye Strain Prevention System Initialized"
+Write-LogInfo "Goose Desktop Companion Eye Strain Prevention System Initialized"
 $state = Get-EyeStrainState
 Write-Host "Eye Strain Enabled: $($state['Enabled'])"
 Write-LogInfo "Eye Strain Enabled: $($state['Enabled'])"

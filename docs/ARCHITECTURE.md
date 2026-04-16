@@ -3,7 +3,7 @@
 ## Project Structure
 
 ```
-DesktopGoose/
+GooseDesktopCompanion/
 ├── Core/               # Core systems
 │   ├── GooseCore.ps1  # Behavior + Context + Animations + Personality
 │   ├── GooseLogging.ps1  # Logging system

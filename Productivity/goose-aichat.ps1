@@ -1,4 +1,4 @@
-# Desktop Goose AI Chat System
+# Goose Desktop Companion AI Chat System
 # Enhanced AI chat with personality and local LLM support
 
 enum AIProvider {
@@ -491,6 +491,6 @@ function Get-AIChatState {
     return $AIChat.GetAIChatState()
 }
 
-Write-Host "Desktop Goose AI Chat System Initialized"
+Write-Host "Goose Desktop Companion AI Chat System Initialized"
 $state = Get-AIChatState
 Write-Host "AI Chat Enabled: $($state['Enabled']) | Provider: $($state['Provider']) | Personality: $($state['PersonalityName'])"

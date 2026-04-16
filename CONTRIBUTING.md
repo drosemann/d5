@@ -1,209 +1,67 @@
-# Contributing to Desktop Goose
+# Contributing to Goose Desktop Companion
 
-Thank you for your interest in contributing! This document will help you get started.
+Thanks for your interest in contributing.
 
-## Project Overview
+## Ground rules
 
-Desktop Goose is a cross-platform desktop companion application built with Python + PyQt5. The project extends functionality through:
+- Keep changes focused and minimal.
+- Preserve existing behavior unless a change is required for consistency, safety, or maintainability.
+- Update documentation with any user-facing or workflow changes.
+- Follow `CODE_OF_CONDUCT.md`.
 
-- **PowerShell Modules** - Feature implementations in `*.ps1` files (organized by category)
-- **Configuration** - `config.ini` for runtime settings
-- **Python UI** - Cross-platform UI layer in `goose-ui-python/`
+## Development setup
 
-## Architecture
+1. Fork and clone the repository.
+2. Create a branch from `main`.
+3. Set up Python UI dependencies:
+   ```bash
+   cd goose-ui-python
+   python -m venv .venv
+   # Windows: .venv\Scripts\activate
+   # macOS/Linux: source .venv/bin/activate
+   pip install -r requirements.txt
+   ```
+4. Return to repository root for PowerShell module work.
 
-```
-DesktopGoose/
-├── Core/                   # Core systems
-│   └── GooseCore.ps1     # Unified core (Behavior + Context + Animations + Personality + Productivity)
-├── Widgets/                # Desktop widgets
-├── Productivity/           # Productivity tools
-├── System/                 # System integration
-├── Features/               # Extended features
-├── Fun/                    # Fun features
-├── Health/                 # Wellness & health
-├── UI/                     # User interface
-├── Social/                 # Social features
-├── Media/                  # Media integration
-├── Office/                 # Office integration
-├── Tools/                  # Tools
-├── Status/                 # Status monitoring
-├── Special/                # Special features
-├── docs/                   # Documentation
-│   ├── MODULES.md        # Module reference
-│   └── ARCHITECTURE.md   # Architecture overview
-└── Assets/                 # Images and sounds
-```
+## Project structure
 
-### Core System
+- `Core/` - core systems
+- `Features/`, `Productivity/`, `System/`, `UI/`, `Fun/`, `Health/`, etc. - modular PowerShell capabilities
+- `goose-ui-python/` - cross-platform Python/PyQt UI
+- `docs/` - architecture and feature documentation
 
-The unified core system (`Core/GooseCore.ps1`) combines five subsystems:
+## Coding standards
 
-| Subsystem | Purpose |
-|-----------|---------|
-| `GooseBehavior` | Time-based activity, work/weekend detection |
-| `GooseContext` | Meeting detection, fullscreen, user presence |
-| `GooseAnimations` | Visual states, mood, breathing, blinking |
-| `GoosePersonality` | Interaction tracking, trait development |
-| `GooseProductivity` | Wellness reminders, break prompts |
+- Follow existing naming and style in each folder.
+- Prefer clear function/module names and small, testable changes.
+- Avoid unrelated refactors in feature PRs.
 
-## Development Setup
+## Testing checklist
 
-1. Clone the repository
-2. Ensure PowerShell 5.1+ is installed (Windows built-in)
-3. Review `config.ini` for available options
-4. Run `python main.py` in `goose-ui-python/` to launch
-
-## Creating a New Module
-
-### Option 1: Standalone Module (Legacy)
-
-Follow this pattern:
+Before submitting a PR, run what applies:
 
 ```powershell
-# Category/MyFeature.ps1
-
-class GooseMyFeature {
-    [hashtable]$Config
-    [hashtable]$State
-    
-    GooseMyFeature() {
-        $this.Config = $this.LoadConfig()
-        $this.State = @{}
-    }
-    
-    [hashtable] LoadConfig() {
-        $config = @{}
-        $configFile = "config.ini"
-        
-        if (Test-Path $configFile) {
-            Get-Content $configFile | ForEach-Object {
-                if ($_ -match '^([^=]+)=(.*)$') {
-                    $key = $matches[1].Trim()
-                    $value = $matches[2].Trim()
-                    
-                    if ($value -eq 'True' -or $value -eq 'False') {
-                        $config[$key] = [bool]$value
-                    } elseif ($value -match '^\d+$') {
-                        $config[$key] = [int]$value
-                    } elseif ($value -match '^\d+\.\d+$') {
-                        $config[$key] = [double]$value
-                    } else {
-                        $config[$key] = $value
-                    }
-                }
-            }
-        }
-        
-        return $config
-    }
-    
-    # Add your feature methods here
-}
-
-$gooseMyFeature = [GooseMyFeature]::new()
-
-function Get-GooseMyFeature { return $gooseMyFeature }
-function Do-Something {
-    param($Feature = $gooseMyFeature)
-    # implementation
-}
+./test-goose-features.ps1
 ```
 
-### Option 2: Integrate with Core
-
-```powershell
-# Import core
-. "$PSScriptRoot\Core\GooseCore.ps1"
-
-# Access core systems
-$core = Get-GooseCore
-$behavior = $core.Behavior
-$context = $core.Context.GetContext()
-
-# Add custom logic
-function Get-MyFeatureData {
-    param($Core = (Get-GooseCore))
-    # Use Core.Animations, Core.Personality, etc.
-    return @{}
-}
+```bash
+cd goose-ui-python
+python -m compileall src
 ```
 
-## Code Style
+## Pull requests
 
-- Use **PowerShell classes** for new modules
-- Prefix functions with `Get-`, `Set-`, `Update-`, `Should-`, `Is-`
-- Use `$this.Config` to access settings from `config.ini`
-- Return **hashtables** for complex data
-- Use `[hashtable] LoadConfig()` or reuse `GooseConfig::Load()` for config
+Please include:
 
-## Configuration
+- What changed
+- Why it changed
+- How it was tested
+- Any follow-up work or known limitations
 
-Add new options to `config.ini`:
+## Security
 
-```ini
-# Category
-FeatureName=False
-FeatureSetting=default_value
-```
+If you discover a security issue, avoid public disclosure in issues. Share reproduction details privately with maintainers.
 
-Access in code:
+## License
 
-```powershell
-if ($this.Config["FeatureName"]) {
-    # Feature enabled
-}
-```
-
-## Testing
-
-Run the test script:
-
-```powershell
-.\test-goose-features.ps1
-```
-
-Or test individual modules:
-
-```powershell
-. .\Core\GooseCore.ps1
-```
-
-## Module Categories
-
-Place new modules in the appropriate folder:
-
-| Category | Folder | Examples |
-|----------|--------|----------|
-| Desktop Widgets | `Widgets/` | Clock, Weather, StockTicker, Calendar |
-| Productivity | `Productivity/` | Tasks, Notes, Focus, TimeBlock, TaskIntegration, AIAssistant |
-| System | `System/` | Battery, Volume, Clipboard, FileOrganizer, Automation |
-| Features | `Features/` | Settings, Hotkeys, Sync |
-| Fun | `Fun/` | Commands, Honk, MiniGames, ARMode |
-| Health | `Health/` | Workout, Habits, ScreenTime, EyeStrain, Posture |
-| UI | `UI/` | Tray, Stats |
-| Social | `Social/` | Gamification, Leaderboard, PetInteractions |
-| Media | `Media/` | PhotoFrame, Music |
-| Office | `Office/` | Meeting, Journal |
-| Tools | `Tools/` | FileFeeder, MultiMonitor |
-| Status | `Status/` | SleepWake, Particles |
-| Special | `Special/` | Weather, Seasonal |
-
-## Documentation
-
-- [Module Reference](docs/MODULES.md) - All available modules
-- [Architecture](docs/ARCHITECTURE.md) - System design
-- [Developer Guide](docs/DEVELOPER.md) - How to create modules
-- [API Reference](docs/API-REFERENCE.md) - Function documentation
-
-## Pull Request Guidelines
-
-1. Test your changes locally
-2. Follow the code style above
-3. Update documentation if adding features
-4. Keep changes focused and minimal
-
-## Additional Resources
-
-- Original Desktop Goose: https://samperson.itch.io/desktop-goose
-- PowerShell Docs: https://docs.microsoft.com/powershell/
+By contributing, you agree that your contributions are licensed under the GNU GPLv3 (`LICENSE`).

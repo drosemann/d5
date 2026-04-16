@@ -109,7 +109,7 @@ class GooseFocusCompanion {
         Add-Type -AssemblyName System.Windows.Forms
         Add-Type -AssemblyName System.Drawing
         $form = New-Object System.Windows.Forms.Form
-        $form.Text = "Desktop Goose - Focus Mode"
+        $form.Text = "Goose Desktop Companion - Focus Mode"
         $form.Size = New-Object System.Drawing.Size(400, 300)
         $form.StartPosition = "CenterScreen"
         $form.BackColor = [System.Drawing.Color]::FromArgb(30, 30, 35)
@@ -192,7 +192,7 @@ class GooseFocusCompanion {
         Add-Type -AssemblyName System.Windows.Forms
         Add-Type -AssemblyName System.Drawing
         $form = New-Object System.Windows.Forms.Form
-        $form.Text = "Desktop Goose - Break Time"
+        $form.Text = "Goose Desktop Companion - Break Time"
         $form.Size = New-Object System.Drawing.Size(400, 250)
         $form.StartPosition = "CenterScreen"
         $form.BackColor = [System.Drawing.Color]::FromArgb(40, 50, 40)

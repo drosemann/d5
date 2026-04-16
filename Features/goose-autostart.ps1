@@ -1,4 +1,4 @@
-# Desktop Goose Auto-Start System
+# Goose Desktop Companion Auto-Start System
 # Auto-start with Windows
 
 class GooseAutoStart {
@@ -8,7 +8,7 @@ class GooseAutoStart {
     
     GooseAutoStart() {
         $this.Config = $this.LoadConfig()
-        $this.AppName = "DesktopGoose"
+        $this.AppName = "GooseDesktopCompanion"
     }
     
     [hashtable] LoadConfig() {
@@ -48,7 +48,7 @@ class GooseAutoStart {
     
     [hashtable] EnableAutoStart([string]$exePath = "") {
         if ($exePath -eq "") {
-            $exePath = Join-Path (Get-Location) "GooseDesktop.exe"
+            $exePath = Join-Path (Get-Location) "GooseDesktopCompanion.exe"
         }
         
         if (-not (Test-Path $exePath)) {
@@ -141,6 +141,6 @@ function Get-AutoStartState {
     return $AutoStart.GetAutoStartState()
 }
 
-Write-Host "Desktop Goose Auto-Start System Initialized"
+Write-Host "Goose Desktop Companion Auto-Start System Initialized"
 $state = Get-AutoStartState
 Write-Host "Auto-Start Enabled: $($state['IsEnabled'])"

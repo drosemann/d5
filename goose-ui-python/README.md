@@ -54,7 +54,7 @@ build\build.bat
 bash build/build.sh
 ```
 
-This creates a standalone `dist/GooseDesktop/GooseDesktop.exe` (Windows) or `GooseDesktop` (macOS/Linux) that requires no Python installation.
+This creates a standalone `dist/GooseDesktopCompanion/GooseDesktopCompanion.exe` (Windows) or `GooseDesktopCompanion` (macOS/Linux) that requires no Python installation.
 
 ## Architecture
 
@@ -253,20 +253,20 @@ mood_animations = {
 ### Windows
 ```bash
 build\build.bat
-# Output: dist\GooseDesktop\GooseDesktop.exe (~80MB)
+# Output: dist\GooseDesktopCompanion\GooseDesktopCompanion.exe (~80MB)
 ```
 
 ### macOS
 ```bash
 bash build/build.sh
-# Output: dist/GooseDesktop/GooseDesktop (~90MB)
+# Output: dist/GooseDesktopCompanion/GooseDesktopCompanion (~90MB)
 # Code signing optional
 ```
 
 ### Linux
 ```bash
 bash build/build.sh
-# Output: dist/GooseDesktop/GooseDesktop (~85MB)
+# Output: dist/GooseDesktopCompanion/GooseDesktopCompanion (~85MB)
 ```
 
 ## Performance

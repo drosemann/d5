@@ -1,4 +1,4 @@
-# Desktop Goose Multi-Goose Chaos Mode
+# Goose Desktop Companion Multi-Goose Chaos Mode
 # Spawn multiple geese with unique personalities
 
 enum GoosePersonality {
@@ -373,6 +373,6 @@ function Invoke-GooseInteraction {
     return $MultiGoose.GetRandomInteraction()
 }
 
-Write-Host "Desktop Goose Multi-Goose Chaos Mode Initialized"
+Write-Host "Goose Desktop Companion Multi-Goose Chaos Mode Initialized"
 $state = Get-MultiGooseState
 Write-Host "Enabled: $($state['Enabled']) | Geese: $($state['CurrentCount'])/$($state['MaxCount'])"

@@ -1,4 +1,4 @@
-# Desktop Goose Automation Hub System
+# Goose Desktop Companion Automation Hub System
 # Create automations with triggers and actions
 
 class GooseAutomation {
@@ -229,7 +229,7 @@ class GooseAutomation {
             try {
                 switch ($action.type) {
                     "notification" {
-                        $title = if ($action.title) { $action.title } else { "Desktop Goose" }
+                        $title = if ($action.title) { $action.title } else { "Goose Desktop Companion" }
                         $message = if ($action.message) { $action.message } else { "Automation triggered!" }
                         
                         Write-Host "[$title] $message"
@@ -575,7 +575,7 @@ function Get-AutomationState {
     return $Automation.GetAutomationState()
 }
 
-Write-Host "Desktop Goose Automation Hub System Initialized"
+Write-Host "Goose Desktop Companion Automation Hub System Initialized"
 $state = Get-AutomationState
 Write-Host "Automation Hub Enabled: $($state['Enabled'])"
 Write-Host "Total Automations: $($state['Stats']['totalAutomations'])"
