@@ -7,11 +7,14 @@ Ich lebe für **Technik, IT-Infrastruktur und künstliche Intelligenz**. Learnin
 ---
 
 ## Mein Stack
+*Das ist mein privater Stack für eigene Projekte – im Betrieb nutze ich den dort vorgegebenen Stack.*
 
 **Full-Stack:** `HTML` • `CSS` • `JavaScript` • `Java` • `PHP` • `Python`  
 **Infra & Server:** `Docker` • `Linux` • `NGINX` • `Apache` • `Proxmox` • `Velocity`  
 **Panels (viel Erfahrung):** `Pterodactyl` • `Coolify` – aktuell nutze ich aber lieber pure Docker für meine Services, weniger Overhead, mehr Kontrolle  
+**Datenbanken:** `MariaDB` – sehr viel Erfahrung im produktiven Einsatz • `Supabase` – Cloud und Self-Hosted ausgiebig getestet, möglicher Wechsel in Planung  
 **Tools & Services:** `Cloudflare` (DNS) • `HetrixTools` (Monitoring) • `Trello` + `Notion` (Projektmanagement für ShadowUnity)  
+**Client:** `Windows` – looking at you, Games Industry. Wechsel zu Linux geplant sobald der Anticheat-Support besser wird  
 **Fokus:** `Cybersecurity` • `KI / AI` • `Cloud & Virtualisierung` • `Automation mit Python`
 
 Ich teste regelmäßig moderne Tools sobald sie erscheinen – early adopter aus Neugier.
@@ -26,8 +29,11 @@ Nicht nur ein Server, sondern Jahre Hosting-Erfahrung durch alle Stufen:
 - **Aternos** → **Ploudos** – die ersten Schritte
 - **Minehub** (wurde Jahre später geschlossen)
 - **DeinServerHost** → **Strato** → **Host-Unlimited** → **LuxVPS** → **Mine-Hoster** (danach gewechselt, die Leistung reichte nicht mehr für meine Ansprüche)
+- **ST-Hosting** – nach 1 Monat gekündigt, LXC entsprach nicht meinen Ansprüchen
 - **HT-Hosting** – Anbieter ging insolvent, dabei gelernt wie man unter Zeitdruck migriert, Backups sichert und Downtime minimiert
 - **Index Hosting** – bis Mitte März genutzt, gekündigt wegen Einstellung der AMD EPYC-Reihe, aktuell auf der Suche nach einem neuen Server
+
+Zwischendurch auch Web-Hoster wie **Vercel** und **Kinsta** getestet, aber nie aktiv genutzt. Positiv aufgefallen ist die sehr gute Developer Experience, besonders deren 1A-Panel – so gut habe ich es bei keinem Hoster erlebt. Das integrierte Edge Compute und CDN war attraktiv, auf Dauer war Self-Hosting aber günstiger – wenn man wie viele ITler die eigene Zeit nicht rechnet.
 
 Über ein paar Jahre habe ich teilweise 3-4 Server parallel administriert (2 Rootserver + 1 Gameserver als Dev-, Failover- und Main-System). Am Anfang nur einer aus Budgetgründen, heute bewusst nur einer aus Effizienzgründen.
 
