@@ -11,7 +11,10 @@ Ich lebe für **Technik, IT-Infrastruktur und künstliche Intelligenz**. Learnin
 **Full-Stack:** `HTML` • `CSS` • `JavaScript` • `Java` • `PHP` • `Python`  
 **Infra & Server:** `Docker` • `Linux` • `NGINX` • `Apache` • `Proxmox` • `Velocity`  
 **Panels (viel Erfahrung):** `Pterodactyl` • `Coolify` – aktuell nutze ich aber lieber pure Docker für meine Services, weniger Overhead, mehr Kontrolle  
+**Tools & Services:** `Cloudflare` (DNS) • `HetrixTools` (Monitoring) • `Trello` + `Notion` (Projektmanagement für ShadowUnity)  
 **Fokus:** `Cybersecurity` • `KI / AI` • `Cloud & Virtualisierung` • `Automation mit Python`
+
+Ich teste regelmäßig moderne Tools sobald sie erscheinen – early adopter aus Neugier.
 
 ## Aktuell
 - Ausbildung zum **Fachinformatiker für Systemintegration** (1. Lehrjahr)
@@ -22,9 +25,11 @@ Nicht nur ein Server, sondern Jahre Hosting-Erfahrung durch alle Stufen:
 
 - **Aternos** → **Ploudos** – die ersten Schritte
 - **Minehub** (wurde Jahre später geschlossen)
-- **DeinServerHost** → **Strato** → **Host-Unlimited** → **Mine-Hoster**
+- **DeinServerHost** → **Strato** → **Host-Unlimited** → **LuxVPS** → **Mine-Hoster** (danach gewechselt, die Leistung reichte nicht mehr für meine Ansprüche)
 - **HT-Hosting** – Anbieter ging insolvent, dabei gelernt wie man unter Zeitdruck migriert, Backups sichert und Downtime minimiert
 - **Index Hosting** – bis Mitte März genutzt, gekündigt wegen Einstellung der AMD EPYC-Reihe, aktuell auf der Suche nach einem neuen Server
+
+Über ein paar Jahre habe ich teilweise 3-4 Server parallel administriert (2 Rootserver + 1 Gameserver als Dev-, Failover- und Main-System). Am Anfang nur einer aus Budgetgründen, heute bewusst nur einer aus Effizienzgründen.
 
 ## Erfahrung vor der Ausbildung
 - **3 Helpdesk-Praktika** – 2 Schulpraktika und 1 freiwilliges Praktikum, alle unbezahlt aus Freude am Werk
@@ -37,6 +42,8 @@ Nicht nur ein Server, sondern Jahre Hosting-Erfahrung durch alle Stufen:
 - **Server Automatisierung** – alles was mit Python scriptbar ist, wird scriptbar gemacht
 
 ## Eigene Domains
+Alle Domains miete ich bei netcup.
+
 - **d5niel.de** – genutzt für mein Portfolio
 - **shadowunity.de** – Domain für den Minecraft-Server
 - **hosting-club.de** – ehemaliges Projekt für Hosting-Forum/Anbieter, nach einem Jahr beendet um den Fokus voll auf die Ausbildung zu legen
