@@ -43,6 +43,9 @@ Zwischendurch auch Web-Hoster wie **Vercel** und **Kinsta** getestet, aber nie a
 
 ## Projekte & Spielwiese
 - **ShadowUnity** – Minecraft-Server mit Fokus auf Community, Technik und Events. Keine Weltresets seit 2022, damit Spieler-Fortschritt erhalten bleibt. Eigene Infrastruktur auf shadowunity.de mit Forum und Gästebuch, aktuell liegt der Fokus bewusst auf dem Server selbst (play.shadowunity.de) statt auf vielen Modi. Gestartet mit CityBuild und Minigames, heute klar auf Qualität statt Quantität ausgerichtet.
+- **DMH Network** – Minecraft-Netzwerk vom 24.01.2025 bis 26.04.2025, gegründet mit Matti und Henry. Verlassen um mich voll auf die Ausbildung zu konzentrieren.
+- **SpigotMC Plugins** – mehrere kostenlose Plugins veröffentlicht unter meinem alten Alias MineHub: https://www.spigotmc.org/resources/authors/minehub.1035036/
+- **Emergency Response: Crestwood County** – Roblox-Roleplay in Entwicklung seit 10.09.2023. Langzeitprojekt mit Rollen wie Polizei, SWAT, Paramedic und Feuerwehr. Geplant sind Wanted-System, Raubüberfälle, Fuel- und Fahrzeugsystem sowie dynamisches Wetter.
 - **Raspberry Pi KI Pflanzen-Überwachung** – Sensorik + AI für smarte Pflanzen
 - **Hardware-Hacking & KI-Sicherheit** – weil Security nicht optional ist
 - **Server Automatisierung** – alles was mit Python scriptbar ist, wird scriptbar gemacht
