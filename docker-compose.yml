@@ -1,0 +1,46 @@
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    init: true
+    ports:
+      - "${AKTIENWERK_PORT:-8080}:8080"
+    environment:
+      AKTIENWERK_DATA_DIR: /data
+      AKTIENWERK_HOST: 0.0.0.0
+      AKTIENWERK_PORT: 8080
+      SITE_URL: ${SITE_URL:-http://localhost:8080}
+      SEC_USER_AGENT: ${SEC_USER_AGENT:-Aktienwerk/1.0 kontakt@example.com}
+      OLLAMA_URL: ${OLLAMA_URL:-http://ollama:11434}
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-llama3.1}
+      FMP_API_KEY: ${FMP_API_KEY:-}
+      POLL_INTERVAL_SECONDS: ${POLL_INTERVAL_SECONDS:-3600}
+    volumes:
+      - aktienwerk-data:/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/health', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    depends_on:
+      worker:
+        condition: service_started
+
+  worker:
+    build: .
+    command: ["python", "-m", "app.worker"]
+    restart: unless-stopped
+    init: true
+    environment:
+      AKTIENWERK_DATA_DIR: /data
+      SEC_USER_AGENT: ${SEC_USER_AGENT:-Aktienwerk/1.0 kontakt@example.com}
+      OLLAMA_URL: ${OLLAMA_URL:-http://ollama:11434}
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-llama3.1}
+      FMP_API_KEY: ${FMP_API_KEY:-}
+      POLL_INTERVAL_SECONDS: ${POLL_INTERVAL_SECONDS:-3600}
+    volumes:
+      - aktienwerk-data:/data
+
+volumes:
+  aktienwerk-data:
