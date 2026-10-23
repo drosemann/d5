@@ -1,0 +1,29 @@
+# Node
+node_modules/
+.next/
+out/
+dist/
+build/
+*.log
+npm-debug.log*
+
+# Env (never commit real secrets; legacy .env files stay in legacy/ only)
+.env
+.env.local
+.env.*.local
+
+# Python leftovers in legacy donors
+venv/
+__pycache__/
+*.pyc
+
+# DB + uploads
+*.sqlite*
+*.db
+public/uploads/*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

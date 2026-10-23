@@ -1,0 +1,335 @@
+// ============================================================================
+// 2026 MODERN BLOG - VANILLA JAVASCRIPT
+// ============================================================================
+
+// Sample blog data - In production, this would come from an API
+const blogArticles = [
+    {
+        id: 1,
+        title: 'Building Accessible Digital Experiences',
+        excerpt: 'Creating inclusive design isn\'t just about compliance—it\'s about making technology that works for everyone.',
+        category: 'design',
+        author: 'Sarah Johnson',
+        date: 'March 15, 2026',
+        readTime: '8 min',
+    },
+    {
+        id: 2,
+        title: 'The Future of Web Development',
+        excerpt: 'Explore the latest trends and technologies shaping the web development landscape in 2026.',
+        category: 'technology',
+        author: 'Mike Chen',
+        date: 'March 12, 2026',
+        readTime: '6 min',
+    },
+    {
+        id: 3,
+        title: 'Design Trends 2026',
+        excerpt: 'From minimalism to bold typography, discover the design trends defining modern interfaces.',
+        category: 'design',
+        author: 'Emma Wilson',
+        date: 'March 10, 2026',
+        readTime: '7 min',
+    },
+    {
+        id: 4,
+        title: 'AI and User Experience',
+        excerpt: 'How artificial intelligence is revolutionizing the way we design user experiences.',
+        category: 'technology',
+        author: 'Alex Rivera',
+        date: 'March 8, 2026',
+        readTime: '9 min',
+    },
+    {
+        id: 5,
+        title: 'Mobile-First Design Strategies',
+        excerpt: 'Best practices for designing exceptional experiences on mobile devices.',
+        category: 'design',
+        author: 'Sarah Johnson',
+        date: 'March 5, 2026',
+        readTime: '5 min',
+    },
+    {
+        id: 6,
+        title: 'Performance Optimization Guide',
+        excerpt: 'Essential techniques to make your website faster and more efficient.',
+        category: 'technology',
+        author: 'Tom Brady',
+        date: 'March 1, 2026',
+        readTime: '10 min',
+    },
+];
+
+// ============================================================================
+// NAVIGATION MENU TOGGLE
+// ============================================================================
+
+function initializeMenuToggle() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    if (!menuToggle || !navMenu) return;
+
+    menuToggle.addEventListener('click', () => {
+        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', !isExpanded);
+        navMenu.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    const navLinks = navMenu.querySelectorAll('a');
+    navLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+            menuToggle.setAttribute('aria-expanded', 'false');
+            navMenu.classList.remove('active');
+        });
+    });
+
+    // Close menu on window resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            menuToggle.setAttribute('aria-expanded', 'false');
+            navMenu.classList.remove('active');
+        }
+    });
+}
+
+// ============================================================================
+// ARTICLE RENDERING
+// ============================================================================
+
+function createArticleCard(article) {
+    return `
+        <article class="article-card" data-category="${article.category}">
+            <div class="article-card-image">Featured Image</div>
+            <div class="article-card-content">
+                <span class="category">${article.category}</span>
+                <h3>${article.title}</h3>
+                <p>${article.excerpt}</p>
+                <div class="article-meta">
+                    <span>${article.author}</span>
+                    <span>${article.readTime} read</span>
+                </div>
+            </div>
+        </article>
+    `;
+}
+
+function renderArticles(articles = blogArticles) {
+    const articlesGrid = document.getElementById('articlesGrid');
+    if (!articlesGrid) return;
+
+    articlesGrid.innerHTML = articles.map((article) => createArticleCard(article)).join('');
+
+    // Add click handlers to article cards
+    document.querySelectorAll('.article-card').forEach((card) => {
+        card.addEventListener('click', () => {
+            window.location.href = '/article.html';
+        });
+        card.style.cursor = 'pointer';
+    });
+}
+
+// ============================================================================
+// FILTER FUNCTIONALITY
+// ============================================================================
+
+function initializeFilters() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    if (filterButtons.length === 0) return;
+
+    filterButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            // Update active state
+            filterButtons.forEach((btn) => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            // Filter articles
+            const filter = button.getAttribute('data-filter');
+            if (filter === 'all') {
+                renderArticles(blogArticles);
+            } else {
+                const filtered = blogArticles.filter((article) => article.category === filter);
+                renderArticles(filtered);
+            }
+        });
+    });
+}
+
+// ============================================================================
+// NEWSLETTER & FORM HANDLING
+// ============================================================================
+
+function initializeNewsletter() {
+    const forms = document.querySelectorAll('.newsletter, .newsletter-form');
+
+    forms.forEach((form) => {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = form.querySelector('input[type="email"]');
+
+            if (email && email.value) {
+                // Show success message
+                const successMsg = document.createElement('p');
+                successMsg.textContent = '✓ Thanks for subscribing!';
+                successMsg.style.color = 'var(--color-primary)';
+                successMsg.style.fontSize = 'var(--font-size-sm)';
+                successMsg.style.marginTop = 'var(--spacing-md)';
+
+                form.appendChild(successMsg);
+
+                // Clear form
+                email.value = '';
+
+                // Remove success message after 3 seconds
+                setTimeout(() => successMsg.remove(), 3000);
+            }
+        });
+    });
+}
+
+// ============================================================================
+// COMMENTS HANDLING
+// ============================================================================
+
+function initializeComments() {
+    const commentForm = document.getElementById('commentForm');
+    const commentsList = document.getElementById('commentsList');
+
+    if (!commentForm || !commentsList) return;
+
+    let comments = JSON.parse(localStorage.getItem('comments') || '[]');
+
+    // Display existing comments
+    function displayComments() {
+        commentsList.innerHTML = comments
+            .map(
+                (comment, index) => `
+            <div class="comment">
+                <div class="comment-author">${escapeHtml(comment.name)}</div>
+                <div class="comment-date">${new Date(comment.date).toLocaleDateString()}</div>
+                <div class="comment-text">${escapeHtml(comment.text)}</div>
+            </div>
+        `
+            )
+            .join('');
+    }
+
+    // Handle form submission
+    commentForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const text = document.getElementById('comment').value;
+
+        if (name && email && text) {
+            const newComment = {
+                name,
+                email,
+                text,
+                date: new Date().toISOString(),
+            };
+
+            comments.unshift(newComment);
+            localStorage.setItem('comments', JSON.stringify(comments));
+
+            // Clear form
+            commentForm.reset();
+
+            // Update display
+            displayComments();
+
+            // Show success message
+            const successMsg = document.createElement('p');
+            successMsg.textContent = '✓ Comment posted successfully!';
+            successMsg.style.color = 'var(--color-primary)';
+            successMsg.style.marginTop = 'var(--spacing-md)';
+            commentForm.appendChild(successMsg);
+
+            setTimeout(() => successMsg.remove(), 3000);
+        }
+    });
+
+    // Display initial comments
+    displayComments();
+}
+
+// ============================================================================
+// RELATED ARTICLES
+// ============================================================================
+
+function initializeRelatedArticles() {
+    const relatedGrid = document.getElementById('relatedGrid');
+    if (!relatedGrid) return;
+
+    // Get random 3 articles (in production, would be based on category)
+    const related = blogArticles.sort(() => 0.5 - Math.random()).slice(0, 3);
+    relatedGrid.innerHTML = related.map((article) => createArticleCard(article)).join('');
+
+    document.querySelectorAll('#relatedGrid .article-card').forEach((card) => {
+        card.addEventListener('click', () => {
+            window.location.href = '/article.html';
+        });
+        card.style.cursor = 'pointer';
+    });
+}
+
+// ============================================================================
+// UTILITY FUNCTIONS
+// ============================================================================
+
+function escapeHtml(text) {
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;',
+    };
+    return text.replace(/[&<>"']/g, (m) => map[m]);
+}
+
+// Smooth scroll behavior for anchor links
+function initializeSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href !== '#') {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    });
+}
+
+// ============================================================================
+// INITIALIZATION
+// ============================================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    initializeMenuToggle();
+    renderArticles();
+    initializeFilters();
+    initializeNewsletter();
+    initializeComments();
+    initializeRelatedArticles();
+    initializeSmoothScroll();
+});
+
+// Prefetch article page
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', prefetchResources);
+} else {
+    prefetchResources();
+}
+
+function prefetchResources() {
+    const link = document.createElement('link');
+    link.rel = 'prefetch';
+    link.href = '/article.html';
+    document.head.appendChild(link);
+}
