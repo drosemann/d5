@@ -100,4 +100,4 @@ Compose startet Webserver + Worker, teilen sich Volume `aktienwerk-data`. Port d
 
 MIT License (ab 24.10.2026 fuer neue Releases; aeltere Releases bleiben AGPLv3) – siehe [LICENSE](LICENSE).
 
-Ich habe AGPL genommen weil ich mal was anderes als GPL 3 probieren wollte – wegen SaaS Falle etc. Bei GPL kann jemand den Code als Service hosten ohne Source zu teilen, bei AGPL muss er. Passt hier besser als bei meinen anderen Repos.
+Neue Releases stehen unter MIT – frei verwendbar, auch als gehosteter Service, mit Copyright-Vermerk.

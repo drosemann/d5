@@ -107,7 +107,7 @@ class AktienwerkHandler(BaseHTTPRequestHandler):
 <span>aktien<span class="accent">werk</span></span></a><nav><a href="/">Aktien</a><a href="#ereignisse">News &amp; Ereignisse</a>
 <a href="https://github.com/drosemann/aktienwerk">Quellcode</a></nav></header>
 <main>{content}</main><footer><span>Aktienwerk · unabhängige Erklärungen zu US-Aktien</span>
-<span>Kursdaten können verzögert sein. Keine Anlageberatung.</span><a href="https://www.gnu.org/licenses/agpl-3.0.html">AGPL-3.0</a></footer>
+<span>Kursdaten können verzögert sein. Keine Anlageberatung.</span><a href="https://github.com/drosemann/aktienwerk/blob/main/LICENSE">MIT</a></footer>
 </body></html>"""
 
     def home_page(self):
