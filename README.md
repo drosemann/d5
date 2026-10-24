@@ -241,6 +241,11 @@ Yes — once the base boots (roadmap step 1). Until then, read
 
 ## License
 
-No license is granted in this repo right now. Two legacy `LICENSE` files
-still sit inside the legacy folders and are untouched — the author was the
-sole contributor to all ten donors, so license cleanup is his call alone.
+MIT, effective 2026-10-24 for this and all future releases
+(see [LICENSE](./LICENSE), copyright Daniel Rosemann).
+Before that date no license was granted.
+
+Two legacy `LICENSE` files (MIT, 2024) still sit inside the legacy folders
+and are untouched. The `nextjs-blog` reference was removed on 2026-10-24:
+it pointed at a third-party repository, was added by accident, contributed
+no files to this tree, and is therefore not covered by this license.
