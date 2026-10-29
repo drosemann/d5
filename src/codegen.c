@@ -64,6 +64,22 @@ static void collect_uses_node(TlNode *s, NameSet *decl, NameSet *imp, int toplev
 static void collect_uses_list(TlNodeList *l, NameSet *decl, NameSet *imp, int toplevel) {
     for (; l; l = l->next) collect_uses_node(l->node, decl, imp, toplevel);
 }
+static void collect_uses_args(TlNodeList *l, NameSet *decl, NameSet *imp) {
+    for (; l; l = l->next) {
+        TlNode *e = l->node;
+        if (!e) continue;
+        if (e->kind == N_EXPR_VAR) collect_use_name(e->name, decl, imp);
+        else if (e->kind == N_EXPR_BINOP) { collect_uses_expr(e->left, decl, imp); collect_uses_expr(e->right, decl, imp); }
+        else if (e->kind == N_FUNCCALL) {
+            for (TlNodeList *a = e->args; a; a = a->next) {
+                TlNode *ae = a->node;
+                if (ae && ae->kind == N_EXPR_VAR) collect_use_name(ae->name, decl, imp);
+                else collect_uses_expr(ae, decl, imp);
+            }
+        }
+        else collect_uses_expr(e, decl, imp);
+    }
+}
 static void collect_use_name(const char *name, NameSet *decl, NameSet *imp) {
     if (!name || !name[0]) return;
     for (int i = 0; i < decl->n; i++) if (!strcmp(decl->names[i], name)) return;
@@ -81,7 +97,19 @@ static void collect_uses_node(TlNode *s, NameSet *decl, NameSet *imp, int toplev
     /* Nur Deklarationen der obersten Scope-Ebene zaehlen; Block-Deklarationen
        bleiben lokal (ggf. als legale Abschattung einer impliziten Anlage). */
     case N_VARDECL: if (toplevel) set_add(decl, s->name); break;
-    case N_ASSIGN: collect_use_name(s->name, decl, imp); collect_uses_expr(s->left, decl, imp); break;
+    case N_ASSIGN:
+        collect_use_name(s->name, decl, imp);
+        if (s->left && s->left->kind == N_FUNCCALL) collect_uses_args(s->left->args, decl, imp);
+        else collect_uses_expr(s->left, decl, imp);
+        break;
+    case N_RETURN:
+        if (s->left && s->left->kind == N_FUNCCALL) collect_uses_args(s->left->args, decl, imp);
+        else collect_uses_expr(s->left, decl, imp);
+        break;
+    case N_FOR:
+        set_add(decl, s->name);
+        collect_uses_expr(s->left, decl, imp); collect_uses_expr(s->right, decl, imp);
+        collect_uses_list(s->body, decl, imp, 0); break;
     case N_COPY: collect_use_name(s->name, decl, imp); collect_use_name(s->name2, decl, imp); break;
     case N_INC: case N_DEC: collect_use_name(s->name, decl, imp); break;
     case N_PRINT: collect_uses_expr(s->left, decl, imp); break;
@@ -89,16 +117,20 @@ static void collect_uses_node(TlNode *s, NameSet *decl, NameSet *imp, int toplev
     case N_IF: collect_uses_expr(s->cond, decl, imp); collect_uses_list(s->body, decl, imp, 0); collect_uses_list(s->else_body, decl, imp, 0); break;
     case N_WHILE: collect_uses_expr(s->cond, decl, imp); collect_uses_list(s->body, decl, imp, 0); break;
     case N_DIRECTIVE: collect_use_name(s->name, decl, imp); break;
+    case N_FUNCCALL: collect_uses_args(s->args, decl, imp); break;
     default: break;
     }
 }
-static void emit_implicits(TlNodeList *body, FILE *out, int ind) {
+static void emit_implicits_fn(TlNodeList *body, const TlNode *fn, FILE *out, int ind) {
     NameSet decl; decl.n = 0;
-    /* Deklarationen sammeln (ohne Funktionsruempfe zu betreten). */
+    if (fn && fn->kind == N_FUNCDEF)
+        for (int i = 0; i < fn->param_count; i++) set_add(&decl, fn->params[i]);
     TlNodeList *l = body;
-    /* Erster Durchlauf: alle VARDECL der obersten Ebene einsammeln. */
     for (; l; l = l->next)
         if (l->node->kind == N_VARDECL) set_add(&decl, l->node->name);
+    /* FOR-Schleifenvariablen der obersten Ebene gelten als deklariert (Block-Scope). */
+    for (l = body; l; l = l->next)
+        if (l->node->kind == N_FOR) set_add(&decl, l->node->name);
     NameSet imp; imp.n = 0;
     collect_uses_list(body, &decl, &imp, 1);
     for (int i = 0; i < imp.n; i++) {
@@ -110,6 +142,61 @@ static void emit_implicits(TlNodeList *body, FILE *out, int ind) {
 }
 
 static void indent(FILE *out, int n) { for (int i = 0; i < n; i++) fputs("    ", out); }
+
+/* Scope-Stapel fuer echten Reset: jede Funktion / das Toplevel sammelt alle
+   TlVal-Namen (deklariert + implizit, inkl. Blöcke), N_RESET setzt sie zurueck. */
+static NameSet scope_stack[32];
+static int scope_depth = 0;
+static void scope_push(TlNodeList *body, const TlNode *fn) {
+    if (scope_depth >= 32) return;
+    NameSet *s = &scope_stack[scope_depth++];
+    s->n = 0;
+    NameSet imp; imp.n = 0;
+    NameSet decl; decl.n = 0;
+    /* Params gehoeren zum Scope. */
+    if (fn && fn->kind == N_FUNCDEF)
+        for (int i = 0; i < fn->param_count; i++) set_add(&decl, fn->params[i]);
+    for (TlNodeList *l = body; l; l = l->next) {
+        if (l->node->kind == N_VARDECL) set_add(&decl, l->node->name);
+        if (l->node->kind == N_FOR) set_add(&decl, l->node->name);
+    }
+    collect_uses_list(body, &decl, &imp, 1);
+    for (int i = 0; i < decl.n; i++) set_add(s, decl.names[i]);
+    for (int i = 0; i < imp.n; i++) set_add(s, imp.names[i]);
+}
+static void scope_pop(void) { if (scope_depth > 0) scope_depth--; }
+
+/* Call-Argumente als TlVal-Ausdrucksliste: Zahl->Zahl, String->String,
+   Var->Var, Null->Null, Binop->num. Gibt Komma-Separierung aus. */
+static int gen_call_args(TlNodeList *args, FILE *out, char **err) {
+    int first = 1;
+    for (; args; args = args->next) {
+        if (!first) fputs(", ", out);
+        first = 0;
+        TlNode *e = args->node;
+        if (!e) { *err = "fehlendes Argument"; return -1; }
+        switch (e->kind) {
+        case N_EXPR_NUM: fprintf(out, "(TlVal){.tag=TL_NUM,.num=%ldL,.str=0}", e->ival); break;
+        case N_EXPR_STR: fputs("(TlVal){.tag=TL_STR,.num=0,.str=", out); {
+            fputc('"', out);
+            for (const char *p = e->sval ? e->sval : ""; *p; p++) {
+                if (*p == '"' || *p == '\\') { fputc('\\', out); fputc(*p, out); }
+                else fputc(*p, out);
+            }
+            fputs("}", out);
+            break;
+        }
+        case N_EXPR_VAR: emit_ident(out, e->name); break;
+        case N_EXPR_NULL: fputs("(TlVal){.tag=TL_NULL,.num=0,.str=0}", out); break;
+        case N_COND_PROB: fprintf(out, "(TlVal){.tag=TL_NUM,.num=tl_prob(%ld),.str=0}", e->ival); break;
+        default:
+            fputs("(TlVal){.tag=TL_NUM,.num=(", out);
+            if (gen_expr(e, out, err)) return -1;
+            fputs("),.str=0}", out); break;
+        }
+    }
+    return 0;
+}
 
 static int gen_stmt(TlNode *s, FILE *out, int ind, char **err);
 
@@ -129,12 +216,44 @@ static int gen_stmt(TlNode *s, FILE *out, int ind, char **err) {
     case N_ASSIGN: {
         indent(out, ind);
         TlNode *e = s->left;
-        if (e && e->kind == N_EXPR_STR) { fputs("tl_val_set_str(&", out); emit_ident(out, s->name); fputs(", ", out); emit_cstr(out, e->sval); fputs(");\n", out); }
+        if (e && e->kind == N_FUNCCALL) {
+            emit_ident(out, s->name); fputs(" = tlf_", out); emit_ident(out, e->name); fputs("(", out);
+            if (gen_call_args(e->args, out, err)) return -1; fputs(");\n", out);
+        }
+        else if (e && e->kind == N_EXPR_STR) { fputs("tl_val_set_str(&", out); emit_ident(out, s->name); fputs(", ", out); emit_cstr(out, e->sval); fputs(");\n", out); }
         else if (e && e->kind == N_EXPR_NUM) { fputs("tl_val_set_num(&", out); emit_ident(out, s->name); fprintf(out, ", %ldL);\n", e->ival); }
         else if (e && e->kind == N_EXPR_NULL) { fputs("tl_val_set_null(&", out); emit_ident(out, s->name); fputs(");\n", out); }
         else if (e && e->kind == N_EXPR_VAR) { fputs("tl_val_copy(&", out); emit_ident(out, s->name); fputs(", &", out); emit_ident(out, e->name); fputs(");\n", out); }
         else { fputs("tl_val_set_num(&", out); emit_ident(out, s->name); fputs(", ", out); if (gen_expr(e, out, err)) return -1; fputs(");\n", out); }
         return 0;
+    }
+    case N_RETURN: {
+        indent(out, ind);
+        TlNode *e = s->left;
+        if (e && e->kind == N_FUNCCALL) {
+            fputs("return tlf_", out); emit_ident(out, e->name); fputs("(", out);
+            if (gen_call_args(e->args, out, err)) return -1; fputs(");\n", out);
+        }
+        else if (e && e->kind == N_EXPR_STR) { fputs("{ TlVal _r; tl_val_init(&_r); tl_val_set_str(&_r, ", out); emit_cstr(out, e->sval); fputs("); return _r; }\n", out); }
+        else if (e && e->kind == N_EXPR_NUM) { fprintf(out, "{ TlVal _r; tl_val_init(&_r); tl_val_set_num(&_r, %ldL); return _r; }\n", e->ival); }
+        else if (e && e->kind == N_EXPR_NULL) { fputs("{ TlVal _r; tl_val_init(&_r); return _r; }\n", out); }
+        else if (e && e->kind == N_EXPR_VAR) { fputs("return ", out); emit_ident(out, e->name); fputs(";\n", out); }
+        else if (e && e->kind == N_COND_PROB) { fprintf(out, "{ TlVal _r; tl_val_init(&_r); tl_val_set_num(&_r, tl_prob(%ld)); return _r; }\n", e->ival); }
+        else { fputs("{ TlVal _r; tl_val_init(&_r); tl_val_set_num(&_r, ", out); if (gen_expr(e, out, err)) return -1; fputs("); return _r; }\n", out); }
+        return 0;
+    }
+    case N_FOR: {
+        indent(out, ind); fputs("{ TlVal ", out); emit_ident(out, s->name);
+        fputs("; tl_val_init(&", out); emit_ident(out, s->name); fputs(");\n", out);
+        indent(out, ind); fputs("long _from = ", out);
+        if (gen_expr(s->left, out, err)) return -1;
+        fputs("; long _to = ", out);
+        if (gen_expr(s->right, out, err)) return -1;
+        fputs(";\n", out);
+        indent(out, ind); fputs("for (", out); emit_ident(out, s->name); fputs(".num = _from; ", out); emit_ident(out, s->name); fputs(".num <= _to; ", out); emit_ident(out, s->name); fputs(".num++) {\n", out);
+        if (gen_body(s->body, out, ind+1, err)) return -1;
+        indent(out, ind); fputs("}\n", out);
+        indent(out, ind); fputs("}\n", out); return 0;
     }
     case N_COPY:
         indent(out, ind); fputs("tl_val_copy(&", out);
@@ -246,24 +365,42 @@ static int gen_stmt(TlNode *s, FILE *out, int ind, char **err) {
     case N_BREAK: indent(out, ind); fputs("break;\n", out); return 0;
     case N_CONTINUE: indent(out, ind); fputs("continue;\n", out); return 0;
     case N_FUNCDEF:
-        /* Funktionsdefinitionen werden in tl_codegen vor main() gehoistet (tlf_-Praefix).
-           Verschachtelte Funktionsdefinitionen sind nicht unterstuetzt. */
+        /* Funktionen werden vor main() gehoistet (tlf_-Praefix). Alle geben TlVal
+           zurueck (Default: null), Params als TlVal by value. */
         if (ind > 0) { *err = "verschachtelte Funktionsdefinition nicht unterstuetzt"; return -1; }
-        indent(out, 0); fputs("static void tlf_", out); emit_ident(out, s->name); fputs("(void) {\n", out);
-        emit_implicits(s->body, out, 1);
-        if (gen_body(s->body, out, 1, err)) return -1;
+        indent(out, 0); fputs("static TlVal tlf_", out); emit_ident(out, s->name); fputs("(", out);
+        if (s->param_count == 0) fputs("void", out);
+        else for (int i = 0; i < s->param_count; i++) {
+            if (i) fputs(", ", out);
+            fputs("TlVal ", out); emit_ident(out, s->params[i]);
+        }
+        fputs(") {\n", out);
+        scope_push(s->body, s);
+        emit_implicits_fn(s->body, s, out, 1);
+        if (gen_body(s->body, out, 1, err)) { scope_pop(); return -1; }
+        indent(out, 1); fputs("{ TlVal _d; tl_val_init(&_d); return _d; }\n", out);
+        scope_pop();
         fputs("}\n", out); return 0;
-    case N_FUNCCALL: indent(out, ind); fputs("tlf_", out); emit_ident(out, s->name); fputs("();\n", out); return 0;
+    case N_FUNCCALL: indent(out, ind); fputs("(void)tlf_", out); emit_ident(out, s->name); fputs("(", out); if (gen_call_args(s->args, out, err)) return -1; fputs(");\n", out); return 0;
     case N_COMMENT: indent(out, ind); fprintf(out, "/* %s */\n", s->sval ? s->sval : "satire"); return 0;
     case N_METRICS_INC: indent(out, ind); fputs("tl_metrics_inc();\n", out); return 0;
     case N_METRICS_LOOP:
         indent(out, ind); fputs("for (;;) { tl_metrics_inc(); } /* absichtlich endlos, dokumentiert */\n", out); return 0;
     case N_CHAOS: indent(out, ind); fputs("tl_chaos(); /* kontrollierte Chaos-Operation */\n", out); return 0;
-    case N_RESET: indent(out, ind); fputs("/* HAVE YOU TRIED TURNING IT OFF AND ON AGAIN: Reset-Strategie siehe LANGUAGE.md */\n", out); return 0;
+    case N_RESET: {
+        indent(out, ind); fputs("/* HAVE YOU TRIED TURNING IT OFF AND ON AGAIN: echter Reset */\n", out);
+        if (scope_depth > 0) {
+            NameSet *sc = &scope_stack[scope_depth-1];
+            for (int i = 0; i < sc->n; i++) {
+                indent(out, ind); fputs("tl_val_set_null(&", out); emit_ident(out, sc->names[i]); fputs(");\n", out);
+            }
+        }
+        return 0;
+    }
     case N_SLEEP_OP: indent(out, ind); fputs("tl_sync_wait(); /* WE NEED TO SYNC: 8s */\n", out); return 0;
     case N_DOUBLE_RUN:
         indent(out, ind);
-        if (s->name) { fputs("tlf_", out); emit_ident(out, s->name); fputs("(); tlf_", out); emit_ident(out, s->name); fputs("(); /* double-booked: 2x sequenziell */\n", out); }
+        if (s->name) { fputs("(void)tlf_", out); emit_ident(out, s->name); fputs("(); (void)tlf_", out); emit_ident(out, s->name); fputs("(); /* double-booked: 2x sequenziell */\n", out); }
         else fputs("/* I WAS DOUBLE-BOOKED: kein Ziel, nur Marker */\n", out);
         return 0;
     case N_DIRECTIVE:
@@ -292,18 +429,25 @@ int tl_codegen(TlNode *prog, FILE *out, char **err_out) {
     /* Pass 1: Funktionen gehoistet vor main() (tlf_-Praefix, kein Clash mit echtem main). */
     TlNodeList *l;
     for (l = prog->body; l; l = l->next)
-        if (l->node->kind == N_FUNCDEF)
+        if (l->node->kind == N_FUNCDEF) {
+            if (l->node->name && !strcmp(l->node->name, "main") && l->node->param_count > 0) {
+                if (err_out) *err_out = "main darf keine Parameter haben";
+                return -1;
+            }
             if (gen_stmt(l->node, out, 0, &err)) { if (err_out) *err_out = err; return -1; }
+        }
     fprintf(out, "\nint main(void) {\n");
     fprintf(out, "    srand(1337);\n");
     fprintf(out, "    tl_startup_banner();\n");
-    emit_implicits(prog->body, out, 1);
+    scope_push(prog->body, NULL);
+    emit_implicits_fn(prog->body, NULL, out, 1);
     /* Pass 2: Anweisungen der obersten Ebene (Funktionsdefinitionen ueberspringen). */
     for (l = prog->body; l; l = l->next) {
         if (l->node->kind == N_FUNCDEF) continue;
-        if (gen_stmt(l->node, out, 1, &err)) { if (err_out) *err_out = err; return -1; }
+        if (gen_stmt(l->node, out, 1, &err)) { scope_pop(); if (err_out) *err_out = err; return -1; }
     }
-    if (body_has_func(prog->body, "main")) fprintf(out, "    tlf_main();\n");
+    if (body_has_func(prog->body, "main")) fprintf(out, "    (void)tlf_main();\n");
+    scope_pop();
     fprintf(out, "    return 0;\n}\n");
     return 0;
 }

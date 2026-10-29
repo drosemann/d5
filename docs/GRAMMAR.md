@@ -3,10 +3,13 @@
 ```ebnf
 program     = "IT'S SHOWTIME" NEWLINE { statement NEWLINE } "YOU HAVE BEEN TERMINATED" NEWLINE EOF ;
 statement   = funcdef | vardecl | assign | copy | inc | dec | owners | rotate
-            | ifstmt | whilestmt | break | continue
+            | ifstmt | whilestmt | forstmt | returnstmt | break | continue
             | print | jira | sink | comment | directive | sleep | doublerun
             | metricsinc | metricsloop | chaos | reset | funccall ;
-funcdef     = "WE NEED TO TAKE THIS OFFLINE" IDENT { statement } "THIS COULD HAVE BEEN AN EMAIL" ;
+funcdef     = "WE NEED TO TAKE THIS OFFLINE" IDENT [ "WITH" IDENT { "AND" IDENT } ] { statement } "THIS COULD HAVE BEEN AN EMAIL" ;
+funccall    = IDENT { expr } ;
+returnstmt  = "GIVE IT BACK" expr ;
+forstmt     = "DO SPRINT PLANNING" IDENT "FROM" expr "TO" expr { statement } "YOU HAVE BEEN TERMINATED" ;
 ifstmt      = "DO IT FOR THE METRICS" expr { statement }
               [ "BLUE IS BROKEN GREEN IS WORSE" { statement } ]
               "YOU HAVE BEEN TERMINATED" ;
@@ -39,7 +42,6 @@ PROB        = "I DID IT 5% OF SYSTEMS IS IAC" | "IT IS OPENED BY 33% OF STAFF"
 
 ## Reset-Strategie (`HAVE YOU TRIED TURNING IT OFF AND ON AGAIN`)
 
-Dokumentierte Strategie: alle im Scope sichtbaren `TlVal`-Variablen werden mit
-`tl_val_set_null()` auf Null zurueckgesetzt; numerische Zaehler auf 0. Derzeit als
-Marker-Kommentar im generierten Code abgebildet (Ausbau: Sammeltabelle aller
-deklarierten Variablen pro Funktion).
+Implementiert: alle im Scope sichtbaren `TlVal`-Variablen werden mit
+`tl_val_set_null()` auf Null zurueckgesetzt (Scope-Stapel pro Funktion/Toplevel
+in `src/codegen.c`). `main` mit Parametern ist ein Codegenfehler.

@@ -32,8 +32,13 @@ Funktionen oeffnen mit `WE NEED TO TAKE THIS OFFLINE <name>` und schliessen mit
 `THIS COULD HAVE BEEN AN EMAIL`. `if`/`while` schliessen mit `YOU HAVE BEEN TERMINATED`.
 
 Codegenerierung: Funktionen werden vor `main()` gehoistet (`tlf_`-Praefix, kein
-Namensclash mit echtem `main`); eine benutzerdefinierte Funktion `main` wird nach
-dem Startup-Banner automatisch aufgerufen. Variablen ohne vorherige Deklaration
+Namensclash mit echtem `main`); alle geben `TlVal` zurueck (Default: null) und
+nehmen `TlVal`-Parameter by value. Eine benutzerdefinierte Funktion `main` wird nach
+dem Startup-Banner automatisch aufgerufen (keine Parameter erlaubt). Aufrufe mit
+Argumenten: `name arg1 arg2`; Rueckgabewert per `I NEED YOUR CLOTHES <var> <func> <args>`
+uebernehmen oder per `GIVE IT BACK <expr>` zurueckgeben. Gezaehlte Schleife:
+`DO SPRINT PLANNING <var> FROM <a> TO <b>` (inklusive, eigener Block-Scope).
+Variablen ohne vorherige Deklaration
 (z. B. `prodIsDown` im Pflichtbeispiel) erhalten eine dokumentierte implizite
 `TlVal`-Nullanlage (`/* implizit: Verwendung ohne Deklaration */`).
 

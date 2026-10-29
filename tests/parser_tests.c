@@ -32,6 +32,12 @@ int main(void) {
     p = parse_src("IT'S SHOWTIME\nWE NEED TO TAKE THIS OFFLINE f\nTALK TO THE HAND \"x\"\nTHIS COULD HAVE BEEN AN EMAIL\nYOU HAVE BEEN TERMINATED\n");
     assert(p); tl_node_free(p);
 
+    p = parse_src("IT'S SHOWTIME\nWE NEED TO TAKE THIS OFFLINE add WITH x AND y\nGIVE IT BACK x\nTHIS COULD HAVE BEEN AN EMAIL\nYOU HAVE BEEN TERMINATED\n");
+    assert(p && p->body->node->param_count == 2); tl_node_free(p);
+
+    p = parse_src("IT'S SHOWTIME\nWE NEED TO TAKE THIS OFFLINE main\nDO SPRINT PLANNING i FROM 1 TO 3\nTALK TO THE HAND i\nYOU HAVE BEEN TERMINATED\nTHIS COULD HAVE BEEN AN EMAIL\nYOU HAVE BEEN TERMINATED\n");
+    assert(p); tl_node_free(p);
+
     /* Fehlerfaelle: fehlendes TERMINATED, falscher Blockabschluss */
     p = parse_src("IT'S SHOWTIME\nTALK TO THE HAND \"x\"\n");
     assert(!p);

@@ -35,7 +35,9 @@ static void ex_node(TlNode *s, FILE *o, int ind) {
     case N_CHAOS: fprintf(o, "- Chaos-Operation (Zeile %d): kontrollierter Zufall, kein echter Schaden.\n", s->line); break;
     case N_SLEEP_OP: fprintf(o, "- WE NEED TO SYNC (Zeile %d): wartet 8 Sekunden. Governance braucht Zeit.\n", s->line); break;
     case N_DOUBLE_RUN: fprintf(o, "- DOUBLE-BOOKED (Zeile %d): Funktion %s wird 2x sequenziell ausgefuehrt. Multithreading fuer den Kalender.\n", s->line, s->name ? s->name : "(keine)"); break;
-    case N_RESET: fprintf(o, "- HAVE YOU TRIED TURNING IT OFF AND ON AGAIN (Zeile %d): Reset-Strategie, siehe Doku.\n", s->line); break;
+    case N_RESET: fprintf(o, "- HAVE YOU TRIED TURNING IT OFF AND ON AGAIN (Zeile %d): echter Reset, alle TlVal-Variablen im Scope werden per tl_val_set_null zurueckgesetzt.\n", s->line); break;
+    case N_RETURN: fprintf(o, "- GIVE IT BACK (Zeile %d): gibt einen TlVal-Wert aus der Funktion zurueck.\n", s->line); break;
+    case N_FOR: fprintf(o, "- DO SPRINT PLANNING %s (Zeile %d): gezaehlte Schleife von FROM bis TO.\n", s->name ? s->name : "?", s->line); break;
     case N_DIRECTIVE: fprintf(o, "- Direktive %s (Zeile %d).\n", s->sval ? s->sval : "?", s->line); break;
     default: fprintf(o, "- Konstrukt (Zeile %d).\n", s->line); break;
     }
@@ -44,7 +46,7 @@ static void ex_node(TlNode *s, FILE *o, int ind) {
 static void ex_list(TlNodeList *l, FILE *o, int ind) {
     for (; l; l = l->next) {
         ex_node(l->node, o, ind);
-        if (l->node->kind == N_FUNCDEF || l->node->kind == N_IF || l->node->kind == N_WHILE) {
+        if (l->node->kind == N_FUNCDEF || l->node->kind == N_IF || l->node->kind == N_WHILE || l->node->kind == N_FOR) {
             ex_list(l->node->body, o, ind + 1);
             ex_list(l->node->else_body, o, ind + 1);
         }

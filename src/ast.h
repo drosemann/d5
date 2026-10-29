@@ -8,7 +8,8 @@ typedef enum {
     N_EXPR_VAR, N_EXPR_NUM, N_EXPR_STR, N_EXPR_BINOP, N_EXPR_NULL,
     N_NOOP, N_TODO_JIRA, N_NULL_SINK, N_METRICS_INC, N_METRICS_LOOP,
     N_CHAOS, N_COND_PROB, N_OBFUSCATE, N_RESET, N_SECURITY_OP,
-    N_COMMENT, N_DIRECTIVE, N_SLEEP_OP, N_DOUBLE_RUN
+    N_COMMENT, N_DIRECTIVE, N_SLEEP_OP, N_DOUBLE_RUN,
+    N_RETURN, N_FOR
 } TlNodeKind;
 
 typedef enum {
@@ -38,6 +39,9 @@ struct TlNode {
     TlNode *right;   /* expr right / else-branch */
     TlNodeList *body;/* statement list for program/func/if/while */
     TlNodeList *else_body;
+    TlNodeList *args;/* call arguments (N_FUNCCALL) */
+    char params[8][64];/* function parameters (N_FUNCDEF) */
+    int param_count;
 };
 
 TlNode *tl_node_new(TlNodeKind kind, int line);

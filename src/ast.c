@@ -24,7 +24,7 @@ void tl_node_free(TlNode *n) {
     if (!n) return;
     free(n->name); free(n->name2); free(n->sval);
     tl_node_free(n->cond); tl_node_free(n->left); tl_node_free(n->right);
-    tl_body_free(n->body); tl_body_free(n->else_body);
+    tl_body_free(n->body); tl_body_free(n->else_body); tl_body_free(n->args);
     free(n);
 }
 

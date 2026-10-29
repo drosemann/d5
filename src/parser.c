@@ -87,7 +87,40 @@ static TlNode *parse_stmt(TlParser *p, int depth) {
         p->pos++; skip_nl(p);
         TlToken *a = peek(p);
         if (a->kind != T_IDENT && a->kind != T_TEMP_VAR) { fail(p, t->line, "Variablenname nach I NEED YOUR CLOTHES ... erwartet"); return NULL; }
-        char vb[256]; strcpy(vb, a->text); p->pos++;
+        char vb[256]; strcpy(vb, a->text); int vline = a->line; p->pos++;
+        /* Aufruf-Form: I NEED YOUR CLOTHES <var> <func> <args...> (gleiche Zeile).
+           Erkennbar daran, dass nach dem Funktionsnamen noch Argumente auf
+           derselben Zeile folgen. Sonst normaler Ausdruck (inkl. einzelner Var). */
+        if (peek(p)->kind == T_IDENT && peek(p)->line == vline) {
+            TlToken *f = peek(p);
+            int fi = p->pos + 1;
+            int has_more = 0;
+            if (fi < p->count) {
+                TlToken *nx = &p->toks[fi];
+                if (nx->line == vline && (nx->kind == T_IDENT || nx->kind == T_TEMP_VAR ||
+                    nx->kind == T_NUMBER || nx->kind == T_STRING ||
+                    nx->kind == T_FOCUS_NULL || nx->kind == T_VAGUE_GOALS ||
+                    nx->kind == T_PROB5 || nx->kind == T_PHISH33 || nx->kind == T_PHISH85)) has_more = 1;
+            }
+            if (has_more) {
+                TlNode *call = tl_node_new(N_FUNCCALL, f->line);
+                call->name = (char*)malloc(strlen(f->text)+1); strcpy(call->name, f->text);
+                p->pos++;
+                while (p->pos < p->count) {
+                    TlToken *ax = peek(p);
+                    if (ax->line != vline) break;
+                    if (ax->kind == T_STRING || ax->kind == T_NUMBER || ax->kind == T_IDENT ||
+                        ax->kind == T_TEMP_VAR || ax->kind == T_FOCUS_NULL || ax->kind == T_VAGUE_GOALS ||
+                        ax->kind == T_PROB5 || ax->kind == T_PHISH33 || ax->kind == T_PHISH85) {
+                        TlNode *e = parse_expr(p);
+                        if (!e || p->error) { tl_node_free(call); return NULL; }
+                        tl_body_append(&call->args, e);
+                    } else break;
+                }
+                n = tl_node_new(N_ASSIGN, t->line);
+                n->name = (char*)malloc(strlen(vb)+1); strcpy(n->name, vb); n->left = call; return n;
+            }
+        }
         TlNode *e = parse_expr(p);
         if (!e || p->error) return NULL;
         n = tl_node_new(N_ASSIGN, t->line);
@@ -184,6 +217,20 @@ static TlNode *parse_stmt(TlParser *p, int depth) {
         if (a->kind != T_IDENT && a->kind != T_TEMP_VAR) { fail(p, t->line, "Funktionsname nach WE NEED TO TAKE THIS OFFLINE erwartet"); return NULL; }
         n = tl_node_new(N_FUNCDEF, t->line);
         n->name = (char*)malloc(strlen(a->text)+1); strcpy(n->name, a->text); p->pos++;
+        /* Optional: WITH <p1> [AND <p2> ...] (gleiche Zeile, max. 8). */
+        if (peek(p)->kind == T_IDENT && !strcmp(peek(p)->text, "WITH") && peek(p)->line == a->line) {
+            p->pos++;
+            while (1) {
+                TlToken *pa = peek(p);
+                if (pa->kind != T_IDENT && pa->kind != T_TEMP_VAR) { fail(p, t->line, "Parametername nach WITH erwartet"); tl_node_free(n); return NULL; }
+                if (n->param_count < 8) { strncpy(n->params[n->param_count], pa->text, 63); n->params[n->param_count][63] = '\0'; n->param_count++; }
+                else { fail(p, t->line, "maximal 8 Parameter"); tl_node_free(n); return NULL; }
+                p->pos++;
+                TlToken *sep = peek(p);
+                if (sep->kind == T_IDENT && !strcmp(sep->text, "AND") && sep->line == a->line) { p->pos++; continue; }
+                break;
+            }
+        }
         while (1) {
             skip_nl(p);
             TlTokKind k = peek(p)->kind;
@@ -255,13 +302,61 @@ static TlNode *parse_stmt(TlParser *p, int depth) {
         p->pos++; n = tl_node_new(N_METRICS_LOOP, t->line); return n;
     case T_TERRAFORM_CHAOS: p->pos++; n = tl_node_new(N_CHAOS, t->line); return n;
     case T_CAB_TUESDAY: p->pos++; n = tl_node_new(N_CHAOS, t->line); n->ival = 1; return n;
+    case T_RETURN: {
+        p->pos++; skip_nl(p);
+        TlNode *e = parse_expr(p);
+        if (!e || p->error) return NULL;
+        n = tl_node_new(N_RETURN, t->line); n->left = e; return n;
+    }
+    case T_FOR: {
+        p->pos++;
+        TlToken *a = peek(p);
+        if (a->kind != T_IDENT && a->kind != T_TEMP_VAR) { fail(p, t->line, "Variablenname nach DO SPRINT PLANNING erwartet"); return NULL; }
+        char vb[256]; strcpy(vb, a->text); p->pos++;
+        TlToken *fw = peek(p);
+        if (fw->kind != T_IDENT || strcmp(fw->text, "FROM")) { fail(p, t->line, "FROM nach DO SPRINT PLANNING <var> erwartet"); return NULL; }
+        p->pos++;
+        TlNode *from = parse_expr(p);
+        if (!from || p->error) return NULL;
+        TlToken *to = peek(p);
+        if (to->kind != T_IDENT || strcmp(to->text, "TO")) { fail(p, t->line, "TO nach FROM <expr> erwartet"); tl_node_free(from); return NULL; }
+        p->pos++;
+        TlNode *toex = parse_expr(p);
+        if (!toex || p->error) { tl_node_free(from); return NULL; }
+        n = tl_node_new(N_FOR, t->line);
+        n->name = (char*)malloc(strlen(vb)+1); strcpy(n->name, vb);
+        n->left = from; n->right = toex;
+        while (1) {
+            skip_nl(p);
+            TlTokKind k = peek(p)->kind;
+            if (k == T_TERMINATED || k == T_EOF) break;
+            TlNode *s = parse_stmt(p, depth+1);
+            if (p->error) { tl_node_free(n); return NULL; }
+            if (!s) break;
+            tl_body_append(&n->body, s);
+        }
+        if (peek(p)->kind != T_TERMINATED) { fail(p, peek(p)->line, "YOU HAVE BEEN TERMINATED zum Schliessen der FOR-Schleife erwartet"); tl_node_free(n); return NULL; }
+        p->pos++; return n;
+    }
     case T_NEWLINE: p->pos++; return parse_stmt(p, depth);
     default:
         /* Funktionsaufruf: Ident gefolgt von optionalen Argumenten auf derselben Zeile */
         if (t->kind == T_IDENT) {
+            int cline = t->line;
             p->pos++;
             n = tl_node_new(N_FUNCCALL, t->line);
             n->name = (char*)malloc(strlen(t->text)+1); strcpy(n->name, t->text);
+            while (p->pos < p->count) {
+                TlToken *ax = peek(p);
+                if (ax->line != cline) break;
+                if (ax->kind == T_STRING || ax->kind == T_NUMBER || ax->kind == T_IDENT ||
+                    ax->kind == T_TEMP_VAR || ax->kind == T_FOCUS_NULL || ax->kind == T_VAGUE_GOALS ||
+                    ax->kind == T_PROB5 || ax->kind == T_PHISH33 || ax->kind == T_PHISH85) {
+                    TlNode *e = parse_expr(p);
+                    if (!e || p->error) { tl_node_free(n); return NULL; }
+                    tl_body_append(&n->args, e);
+                } else break;
+            }
             return n;
         }
         fail(p, t->line, "Unbekannte Anweisung");

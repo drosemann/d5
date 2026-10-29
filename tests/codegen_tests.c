@@ -33,5 +33,11 @@ int main(void) {
     assert(c && strstr(c, "tl_startup_banner") && strstr(c, "TlVal x") && strstr(c, "A \\\"B\\\""));
     c = gen("IT'S SHOWTIME\nSTICK AROUND UNTIL THE SPRINT ENDS x\nTALK TO THE HAND \"s\"\nYOU HAVE BEEN TERMINATED\nYOU HAVE BEEN TERMINATED\n");
     assert(c && strstr(c, "while"));
+    c = gen("IT'S SHOWTIME\nWE NEED TO TAKE THIS OFFLINE add WITH x AND y\nGIVE IT BACK x\nTHIS COULD HAVE BEEN AN EMAIL\nYOU HAVE BEEN TERMINATED\n");
+    assert(c && strstr(c, "static TlVal tlf_add(TlVal x, TlVal y)") && strstr(c, "return x;"));
+    c = gen("IT'S SHOWTIME\nWE NEED TO TAKE THIS OFFLINE main\nDO SPRINT PLANNING i FROM 1 TO 3\nTALK TO THE HAND i\nYOU HAVE BEEN TERMINATED\nTHIS COULD HAVE BEEN AN EMAIL\nYOU HAVE BEEN TERMINATED\n");
+    assert(c && strstr(c, "for (i.num = _from;"));
+    c = gen("IT'S SHOWTIME\nWE NEED TO TAKE THIS OFFLINE main\nWE HAVE 240 EMPLOYEES AND 340 ACTIVE ACCOUNTS x\nHAVE YOU TRIED TURNING IT OFF AND ON AGAIN\nTHIS COULD HAVE BEEN AN EMAIL\nYOU HAVE BEEN TERMINATED\n");
+    assert(c && strstr(c, "tl_val_set_null(&x);"));
     printf("codegen ok\n"); return 0;
 }
