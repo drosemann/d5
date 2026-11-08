@@ -1,6 +1,6 @@
 # Source archive: the original standalone repos live here on disk and are
 # merged into projects/ in this repo. Do not track them twice.
-!Coding-Enviroment/
+\!Coding-Enviroment/
 
 # Local tooling / other VCS state in this folder
 .agents/
