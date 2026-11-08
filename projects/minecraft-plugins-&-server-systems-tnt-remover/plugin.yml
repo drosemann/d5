@@ -1,0 +1,6 @@
+name: TNTPreventionPlugin
+version: 1.0.0
+main: com.main.tntprevention.TNTPreventionPlugin
+api-version: 1.21
+description: Prevents all TNT ignition and removes primed TNT entities
+author: Daniel
