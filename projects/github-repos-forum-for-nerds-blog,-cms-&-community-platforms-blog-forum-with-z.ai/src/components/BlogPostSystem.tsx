@@ -1,0 +1,802 @@
+'use client'
+
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { 
+  Search, 
+  Filter, 
+  Heart, 
+  MessageCircle, 
+  Share, 
+  Eye,
+  Clock,
+  User,
+  Calendar,
+  ArrowLeft,
+  Bookmark,
+  TrendingUp,
+  Star,
+  Plus,
+  BookOpen,
+  Rocket
+} from 'lucide-react'
+
+const blogPosts = [
+  {
+    id: 1,
+    title: "The Future of AI in Space Exploration",
+    excerpt: "Exploring how artificial intelligence is revolutionizing our approach to space missions and cosmic discovery...",
+    content: `# The Future of AI in Space Exploration
+
+Artificial Intelligence is poised to revolutionize space exploration in ways we're only beginning to imagine. From autonomous rovers on Mars to intelligent satellites orbiting distant planets, AI is becoming the backbone of our cosmic endeavors.
+
+## Autonomous Navigation
+
+One of the most significant applications of AI in space exploration is autonomous navigation. Traditional space missions required constant human intervention for decision-making, but modern AI systems can now:
+
+- Make real-time decisions without Earth-based communication
+- Navigate complex terrain autonomously
+- Adapt to unexpected obstacles and conditions
+- Optimize fuel consumption and trajectory
+
+## Machine Learning for Data Analysis
+
+Space missions generate enormous amounts of data. AI and machine learning algorithms are essential for:
+
+- Processing astronomical images to identify celestial objects
+- Analyzing planetary surface compositions
+- Detecting patterns in space weather
+- Predicting equipment failures before they occur
+
+## The Mars Rover Example
+
+NASA's Mars rovers demonstrate the incredible potential of AI in space exploration. These robotic explorers use advanced AI systems to:
+
+- Identify interesting geological features
+- Make decisions about which samples to collect
+- Navigate challenging terrain safely
+- Communicate findings back to Earth efficiently
+
+## Future Prospects
+
+The future of AI in space exploration looks even more promising. We can expect to see:
+
+- Fully autonomous space stations
+- AI-powered spacecraft that can repair themselves
+- Intelligent systems capable of discovering extraterrestrial life
+- Machine learning algorithms that can predict cosmic events
+
+## Conclusion
+
+As we continue to push the boundaries of space exploration, artificial intelligence will play an increasingly crucial role. The synergy between human ingenuity and machine learning capabilities will unlock new possibilities in our quest to understand the universe.
+
+The cosmic frontier awaits, and AI will be our guide in this extraordinary journey of discovery.`,
+    author: "Dr. Sarah Chen",
+    date: "2024-01-15",
+    readTime: "8 min read",
+    views: 1247,
+    likes: 89,
+    comments: 23,
+    tags: ["AI", "Space", "Technology", "NASA"],
+    featured: true,
+    avatar: "SC"
+  },
+  {
+    id: 2,
+    title: "Quantum Computing and Neural Networks",
+    excerpt: "A deep dive into the intersection of quantum computing and artificial neural networks...",
+    content: `# Quantum Computing and Neural Networks
+
+The intersection of quantum computing and neural networks represents one of the most exciting frontiers in computational science. This convergence promises to revolutionize how we process information and solve complex problems.
+
+## Understanding Quantum Computing
+
+Quantum computing leverages the principles of quantum mechanics to perform calculations at speeds unimaginable with classical computers. Key concepts include:
+
+- **Qubits**: The fundamental units of quantum information
+- **Superposition**: The ability to exist in multiple states simultaneously
+- **Entanglement**: The phenomenon where qubits become correlated
+- **Quantum Gates**: Operations that manipulate qubit states
+
+## Neural Networks in the Quantum Realm
+
+When we apply neural network concepts to quantum computing, we open up new possibilities:
+
+- **Quantum Neural Networks**: Networks that process quantum information
+- **Variational Quantum Circuits**: Hybrid quantum-classical algorithms
+- **Quantum Machine Learning**: ML algorithms enhanced by quantum processing
+
+## Applications and Use Cases
+
+The combination of quantum computing and neural networks has promising applications:
+
+### Drug Discovery
+- Simulating molecular interactions at quantum level
+- Accelerating drug development processes
+- Predicting drug efficacy with higher accuracy
+
+### Financial Modeling
+- Optimizing investment portfolios
+- Risk assessment and management
+- High-frequency trading algorithms
+
+### Artificial Intelligence
+- Training complex neural networks faster
+- Solving optimization problems
+- Enhancing machine learning capabilities
+
+## Challenges and Limitations
+
+Despite the promise, several challenges remain:
+
+- **Quantum Decoherence**: Maintaining quantum states is difficult
+- **Error Correction**: Quantum systems are prone to errors
+- **Scalability**: Building large-scale quantum computers
+- **Algorithm Development**: Creating efficient quantum algorithms
+
+## The Future Outlook
+
+The future of quantum neural networks looks bright:
+
+- Increased qubit counts and stability
+- Better error correction techniques
+- More sophisticated quantum algorithms
+- Integration with classical computing systems
+
+## Conclusion
+
+Quantum computing and neural networks represent a powerful combination that could transform computation as we know it. While challenges remain, the potential benefits make this one of the most exciting areas of research in modern science.
+
+As we continue to develop these technologies, we can expect breakthroughs that will reshape industries and solve some of humanity's most pressing problems.`,
+    author: "Prof. Michael Rodriguez",
+    date: "2024-01-12",
+    readTime: "12 min read",
+    views: 892,
+    likes: 67,
+    comments: 15,
+    tags: ["Quantum", "Neural Networks", "Computing", "AI"],
+    featured: false,
+    avatar: "MR"
+  },
+  {
+    id: 3,
+    title: "Ethical AI: Building a Better Tomorrow",
+    excerpt: "Discussing the importance of ethical considerations in AI development and deployment...",
+    content: `# Ethical AI: Building a Better Tomorrow
+
+As artificial intelligence becomes increasingly integrated into our daily lives, the importance of ethical AI development cannot be overstated. This comprehensive guide explores the key ethical considerations and best practices for responsible AI deployment.
+
+## The Importance of AI Ethics
+
+Artificial intelligence systems are making decisions that affect millions of people worldwide. From healthcare diagnostics to criminal justice, AI impacts nearly every aspect of modern society. This power comes with significant responsibility.
+
+### Why Ethics Matter
+
+- **Human Impact**: AI decisions affect real people's lives
+- **Societal Trust**: Public trust in AI systems is crucial
+- **Legal Compliance**: Regulatory frameworks are evolving
+- **Business Sustainability**: Ethical AI practices ensure long-term success
+
+## Key Ethical Principles
+
+Several core principles guide ethical AI development:
+
+### 1. Fairness and Bias Mitigation
+
+AI systems must be designed to treat all individuals fairly:
+
+- **Data Bias**: Ensuring training data represents diverse populations
+- **Algorithmic Bias**: Identifying and correcting biased algorithms
+- **Outcome Fairness**: Monitoring for disparate impacts across groups
+
+### 2. Transparency and Explainability
+
+Users should understand how AI systems make decisions:
+
+- **Explainable AI**: Making AI decisions interpretable
+- **Model Documentation**: Clear documentation of AI systems
+- **User Understanding**: Helping users understand AI recommendations
+
+### 3. Privacy and Data Protection
+
+Protecting user data is paramount:
+
+- **Data Minimization**: Collecting only necessary data
+- **Anonymization**: Protecting user identities
+- **Secure Storage**: Implementing robust security measures
+
+### 4. Accountability and Responsibility
+
+Clear lines of responsibility must be established:
+
+- **Human Oversight**: Maintaining human control over critical decisions
+- **Error Handling**: Processes for addressing AI mistakes
+- **Legal Responsibility**: Clear accountability frameworks
+
+## Implementing Ethical AI
+
+Organizations can take concrete steps to implement ethical AI:
+
+### Development Practices
+
+- **Diverse Teams**: Including diverse perspectives in AI development
+- **Ethical Reviews**: Regular ethics reviews of AI systems
+- **Testing Protocols**: Comprehensive testing for bias and fairness
+
+### Deployment Strategies
+
+- **Gradual Rollout**: Phased implementation with monitoring
+- **User Feedback**: Collecting and acting on user feedback
+- **Continuous Improvement**: Regular updates and improvements
+
+### Governance Frameworks
+
+- **Ethics Committees**: Dedicated ethics oversight
+- **Policy Development**: Clear ethical guidelines
+- **Compliance Monitoring**: Regular audits and assessments
+
+## Challenges and Solutions
+
+### Common Challenges
+
+1. **Balancing Innovation and Ethics**
+2. **Measuring Ethical Compliance**
+3. **Global Regulatory Differences**
+4. **Technical Implementation Complexity**
+
+### Practical Solutions
+
+1. **Ethical by Design**: Building ethics into development processes
+2. **Metrics and KPIs**: Developing ethical performance metrics
+3. **International Standards**: Adopting global ethical frameworks
+4. **Tool Development**: Creating tools for ethical AI development
+
+## Case Studies
+
+### Healthcare AI
+
+- **Diagnostic Systems**: Ensuring fair and accurate diagnoses
+- **Patient Privacy**: Protecting sensitive medical data
+- **Treatment Recommendations**: Balancing AI and human expertise
+
+### Financial Services
+
+- **Credit Scoring**: Eliminating discriminatory practices
+- **Fraud Detection**: Balancing security and privacy
+- **Investment Advice**: Ensuring suitable recommendations
+
+### Criminal Justice
+
+- **Risk Assessment**: Avoiding biased predictions
+- **Sentencing Recommendations**: Maintaining human oversight
+- **Rehabilitation Programs**: Using AI for positive outcomes
+
+## The Future of Ethical AI
+
+The future of ethical AI looks promising:
+
+- **Increased Regulation**: More comprehensive legal frameworks
+- **Industry Standards**: Widespread adoption of ethical standards
+- **Public Awareness**: Greater public understanding of AI ethics
+- **Technological Solutions**: Better tools for ethical AI development
+
+## Conclusion
+
+Ethical AI is not just a moral imperative—it's essential for building sustainable, trustworthy, and beneficial artificial intelligence systems. By prioritizing ethics in AI development, we can ensure that these powerful technologies serve humanity's best interests.
+
+As we continue to advance AI capabilities, maintaining a strong ethical foundation will be crucial for creating a future where AI enhances human potential while respecting human values and dignity.`,
+    author: "Emma Thompson",
+    date: "2024-01-10",
+    readTime: "15 min read",
+    views: 2156,
+    likes: 156,
+    comments: 42,
+    tags: ["Ethics", "AI", "Future", "Technology"],
+    featured: true,
+    avatar: "ET"
+  }
+]
+
+const BlogPostSystem = () => {
+  const [selectedPost, setSelectedPost] = useState<typeof blogPosts[0] | null>(null)
+  const [searchTerm, setSearchTerm] = useState('')
+  const [selectedTag, setSelectedTag] = useState('all')
+  const [sortBy, setSortBy] = useState('recent')
+  const [newComment, setNewComment] = useState('')
+
+  const filteredPosts = blogPosts.filter(post => {
+    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+    
+    const matchesTag = selectedTag === 'all' || post.tags.includes(selectedTag)
+    
+    return matchesSearch && matchesTag
+  })
+
+  const sortedPosts = [...filteredPosts].sort((a, b) => {
+    if (sortBy === 'recent') {
+      return new Date(b.date).getTime() - new Date(a.date).getTime()
+    } else if (sortBy === 'popular') {
+      return b.views - a.views
+    } else if (sortBy === 'liked') {
+      return b.likes - a.likes
+    }
+    return 0
+  })
+
+  const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags)))
+
+  const handleLike = (postId: number) => {
+    // In a real app, this would update the backend
+    console.log('Liked post:', postId)
+  }
+
+  const handleComment = (postId: number) => {
+    if (newComment.trim()) {
+      // In a real app, this would submit to the backend
+      console.log('Comment on post:', postId, 'Comment:', newComment)
+      setNewComment('')
+    }
+  }
+
+  if (selectedPost) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="space-y-8"
+      >
+        {/* Back Button */}
+        <Button
+          variant="outline"
+          onClick={() => setSelectedPost(null)}
+          className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20"
+        >
+          <ArrowLeft className="w-4 h-4 mr-2" />
+          Back to Posts
+        </Button>
+
+        {/* Article Header */}
+        <Card className="bg-black/30 border border-white/10">
+          <CardHeader className="pb-6">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center space-x-2">
+                <Avatar className="w-10 h-10">
+                  <AvatarFallback className="bg-purple-600 text-white">
+                    {selectedPost.avatar}
+                  </AvatarFallback>
+                </Avatar>
+                <div>
+                  <div className="text-white font-semibold">{selectedPost.author}</div>
+                  <div className="text-sm text-gray-400 flex items-center space-x-2">
+                    <Calendar className="w-4 h-4" />
+                    <span>{new Date(selectedPost.date).toLocaleDateString()}</span>
+                    <Clock className="w-4 h-4 ml-2" />
+                    <span>{selectedPost.readTime}</span>
+                  </div>
+                </div>
+              </div>
+              <Button variant="outline" size="sm" className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20">
+                <Bookmark className="w-4 h-4" />
+              </Button>
+            </div>
+            
+            <CardTitle className="text-3xl md:text-4xl font-bold text-white mb-4">
+              {selectedPost.title}
+            </CardTitle>
+            
+            <div className="flex flex-wrap gap-2 mb-4">
+              {selectedPost.tags.map((tag) => (
+                <Badge 
+                  key={tag} 
+                  variant="outline" 
+                  className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20"
+                >
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+            
+            <div className="flex items-center space-x-6 text-sm text-gray-400">
+              <div className="flex items-center space-x-1">
+                <Eye className="w-4 h-4" />
+                <span>{selectedPost.views.toLocaleString()} views</span>
+              </div>
+              <div className="flex items-center space-x-1">
+                <Heart className="w-4 h-4" />
+                <span>{selectedPost.likes} likes</span>
+              </div>
+              <div className="flex items-center space-x-1">
+                <MessageCircle className="w-4 h-4" />
+                <span>{selectedPost.comments} comments</span>
+              </div>
+            </div>
+          </CardHeader>
+        </Card>
+
+        {/* Article Content */}
+        <Card className="bg-black/30 border border-white/10">
+          <CardContent className="p-8">
+            <div className="prose prose-invert max-w-none">
+              <div className="text-gray-300 leading-relaxed whitespace-pre-line">
+                {selectedPost.content}
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Engagement Section */}
+        <Card className="bg-black/30 border border-white/10">
+          <CardContent className="p-6">
+            <div className="flex items-center space-x-4 mb-6">
+              <Button
+                variant="outline"
+                onClick={() => handleLike(selectedPost.id)}
+                className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20"
+              >
+                <Heart className="w-4 h-4 mr-2" />
+                Like ({selectedPost.likes})
+              </Button>
+              <Button
+                variant="outline"
+                className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20"
+              >
+                <Share className="w-4 h-4 mr-2" />
+                Share
+              </Button>
+            </div>
+
+            {/* Comments Section */}
+            <div className="space-y-6">
+              <h3 className="text-xl font-bold text-white">Comments ({selectedPost.comments})</h3>
+              
+              {/* Add Comment */}
+              <div className="space-y-4">
+                <Textarea
+                  placeholder="Share your thoughts..."
+                  value={newComment}
+                  onChange={(e) => setNewComment(e.target.value)}
+                  className="bg-black/30 border-white/10 text-white placeholder-gray-400 focus:border-purple-500/50"
+                  rows={3}
+                />
+                <Button
+                  onClick={() => handleComment(selectedPost.id)}
+                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
+                >
+                  Post Comment
+                </Button>
+              </div>
+
+              {/* Sample Comments */}
+              <div className="space-y-4">
+                {[
+                  {
+                    author: "Alex Johnson",
+                    avatar: "AJ",
+                    content: "This is a fantastic article! The insights about quantum computing are particularly valuable.",
+                    time: "2 hours ago",
+                    likes: 12
+                  },
+                  {
+                    author: "Maria Garcia",
+                    avatar: "MG",
+                    content: "Great analysis of the ethical considerations. We need more discussions like this in the AI community.",
+                    time: "5 hours ago",
+                    likes: 8
+                  }
+                ].map((comment, index) => (
+                  <div key={index} className="flex space-x-4 p-4 bg-black/20 rounded-lg">
+                    <Avatar className="w-10 h-10">
+                      <AvatarFallback className="bg-purple-600 text-white">
+                        {comment.avatar}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="flex-1">
+                      <div className="flex items-center space-x-2 mb-2">
+                        <span className="text-white font-semibold">{comment.author}</span>
+                        <span className="text-sm text-gray-400">{comment.time}</span>
+                      </div>
+                      <p className="text-gray-300 mb-2">{comment.content}</p>
+                      <Button variant="ghost" size="sm" className="text-purple-400 hover:text-purple-300">
+                        <Heart className="w-4 h-4 mr-1" />
+                        {comment.likes}
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </motion.div>
+    )
+  }
+
+  return (
+    <div className="space-y-8">
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-center"
+      >
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+          Cosmic Blog
+        </h1>
+        <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          Explore thought-provoking articles about AI, technology, and the future of innovation
+        </p>
+      </motion.div>
+
+      {/* Search and Filter */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="flex flex-col lg:flex-row gap-4 items-center"
+      >
+        <div className="relative flex-1 w-full">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <Input
+            placeholder="Search articles..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="pl-10 bg-black/30 border-white/10 text-white placeholder-gray-400 focus:border-purple-500/50"
+          />
+        </div>
+        
+        <div className="flex gap-2 flex-wrap">
+          <select
+            value={selectedTag}
+            onChange={(e) => setSelectedTag(e.target.value)}
+            className="bg-black/30 border border-white/10 text-white px-3 py-2 rounded-lg focus:border-purple-500/50"
+          >
+            <option value="all">All Topics</option>
+            {allTags.map(tag => (
+              <option key={tag} value={tag}>{tag}</option>
+            ))}
+          </select>
+          
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+            className="bg-black/30 border border-white/10 text-white px-3 py-2 rounded-lg focus:border-purple-500/50"
+          >
+            <option value="recent">Most Recent</option>
+            <option value="popular">Most Popular</option>
+            <option value="liked">Most Liked</option>
+          </select>
+        </div>
+        
+        <Button
+          className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-6 py-3"
+        >
+          <Plus className="w-5 h-5 mr-2" />
+          New Article
+        </Button>
+      </motion.div>
+
+      {/* Featured Posts */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+        className="space-y-6"
+      >
+        <h2 className="text-2xl font-bold text-white flex items-center">
+          <Star className="w-6 h-6 mr-2 text-yellow-400" />
+          Featured Articles
+        </h2>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {blogPosts.filter(post => post.featured).map((post, index) => (
+            <motion.div
+              key={post.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+              whileHover={{ 
+                scale: 1.02,
+                boxShadow: "0 20px 40px rgba(139, 92, 246, 0.3)"
+              }}
+              className="cursor-pointer"
+              onClick={() => setSelectedPost(post)}
+            >
+              <Card className="h-full bg-black/30 border border-white/10 hover:border-purple-500/50 transition-all duration-300">
+                <CardHeader className="pb-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <Badge className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white">
+                      <TrendingUp className="w-3 h-3 mr-1" />
+                      Featured
+                    </Badge>
+                    <div className="flex items-center space-x-2 text-sm text-gray-400">
+                      <Clock className="w-4 h-4" />
+                      <span>{post.readTime}</span>
+                    </div>
+                  </div>
+                  <CardTitle className="text-xl font-bold text-white hover:text-purple-400 transition-colors duration-300">
+                    {post.title}
+                  </CardTitle>
+                  <CardDescription className="text-gray-300">
+                    {post.excerpt}
+                  </CardDescription>
+                </CardHeader>
+                
+                <CardContent className="pt-0">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <Avatar className="w-8 h-8">
+                        <AvatarFallback className="bg-purple-600 text-white text-xs">
+                          {post.avatar}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <div className="text-sm text-white font-medium">{post.author}</div>
+                        <div className="text-xs text-gray-400">{new Date(post.date).toLocaleDateString()}</div>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center space-x-4 text-sm text-gray-400">
+                      <div className="flex items-center space-x-1">
+                        <Eye className="w-4 h-4" />
+                        <span>{post.views.toLocaleString()}</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Heart className="w-4 h-4" />
+                        <span>{post.likes}</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {post.tags.slice(0, 3).map((tag) => (
+                      <Badge 
+                        key={tag} 
+                        variant="outline" 
+                        className="text-xs border-purple-500/50 text-purple-400 hover:bg-purple-500/20"
+                      >
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* All Posts */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className="space-y-6"
+      >
+        <h2 className="text-2xl font-bold text-white">All Articles</h2>
+        
+        <div className="space-y-4">
+          {sortedPosts.map((post, index) => (
+            <motion.div
+              key={post.id}
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+              whileHover={{ 
+                scale: 1.01,
+                boxShadow: "0 10px 30px rgba(139, 92, 246, 0.2)"
+              }}
+              className="cursor-pointer"
+              onClick={() => setSelectedPost(post)}
+            >
+              <Card className="bg-black/30 border border-white/10 hover:border-purple-500/50 transition-all duration-300">
+                <CardContent className="p-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex-1">
+                      <div className="flex items-center space-x-2 mb-2">
+                        {post.featured && (
+                          <Badge className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white">
+                            <Star className="w-3 h-3 mr-1" />
+                            Featured
+                          </Badge>
+                        )}
+                        <div className="flex items-center space-x-1 text-sm text-gray-400">
+                          <Clock className="w-4 h-4" />
+                          <span>{post.readTime}</span>
+                        </div>
+                      </div>
+                      
+                      <h3 className="text-xl font-bold text-white mb-2 hover:text-purple-400 transition-colors duration-300">
+                        {post.title}
+                      </h3>
+                      <p className="text-gray-300 mb-4">{post.excerpt}</p>
+                      
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-3">
+                          <Avatar className="w-8 h-8">
+                            <AvatarFallback className="bg-purple-600 text-white text-xs">
+                              {post.avatar}
+                            </AvatarFallback>
+                          </Avatar>
+                          <div>
+                            <div className="text-sm text-white font-medium">{post.author}</div>
+                            <div className="text-xs text-gray-400">{new Date(post.date).toLocaleDateString()}</div>
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-center space-x-4 text-sm text-gray-400">
+                          <div className="flex items-center space-x-1">
+                            <Eye className="w-4 h-4" />
+                            <span>{post.views.toLocaleString()}</span>
+                          </div>
+                          <div className="flex items-center space-x-1">
+                            <Heart className="w-4 h-4" />
+                            <span>{post.likes}</span>
+                          </div>
+                          <div className="flex items-center space-x-1">
+                            <MessageCircle className="w-4 h-4" />
+                            <span>{post.comments}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    {post.tags.map((tag) => (
+                      <Badge 
+                        key={tag} 
+                        variant="outline" 
+                        className="text-xs border-purple-500/50 text-purple-400 hover:bg-purple-500/20"
+                      >
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Empty State */}
+      {sortedPosts.length === 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center py-16"
+        >
+          <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center">
+            <BookOpen className="w-12 h-12 text-white" />
+          </div>
+          <h3 className="text-2xl font-bold text-white mb-4">No Articles Found</h3>
+          <p className="text-gray-400 mb-6">
+            We couldn't find any articles matching your search. Try adjusting your filters or search terms.
+          </p>
+          <Button 
+            onClick={() => {
+              setSearchTerm('')
+              setSelectedTag('all')
+            }}
+            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-6 py-3"
+          >
+            Clear Filters
+          </Button>
+        </motion.div>
+      )}
+    </div>
+  )
+}
+
+export default BlogPostSystem
