@@ -1,0 +1,2 @@
+"""Aktienwerk application package."""
+
