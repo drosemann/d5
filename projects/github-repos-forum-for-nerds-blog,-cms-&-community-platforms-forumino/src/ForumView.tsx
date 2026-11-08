@@ -1,0 +1,211 @@
+import { useState } from "react";
+import { useQuery, useMutation } from "convex/react";
+import { api } from "../convex/_generated/api";
+import { Id } from "../convex/_generated/dataModel";
+import { toast } from "sonner";
+
+export function ForumView() {
+  const categories = useQuery(api.forum.listCategories);
+  const [selectedCategory, setSelectedCategory] = useState<Id<"categories"> | null>(null);
+  const [selectedThread, setSelectedThread] = useState<Id<"threads"> | null>(null);
+
+  if (!categories) {
+    return <div>Loading...</div>;
+  }
+
+  if (selectedThread) {
+    return (
+      <ThreadView 
+        threadId={selectedThread} 
+        onBack={() => setSelectedThread(null)} 
+      />
+    );
+  }
+
+  if (selectedCategory) {
+    return (
+      <ThreadList 
+        categoryId={selectedCategory} 
+        onBack={() => setSelectedCategory(null)}
+        onSelectThread={setSelectedThread}
+      />
+    );
+  }
+
+  return (
+    <div className="space-y-4">
+      <h1 className="text-2xl font-bold">Categories</h1>
+      {categories.map((category) => (
+        <div
+          key={category._id}
+          className="p-4 border rounded-lg cursor-pointer hover:bg-gray-50"
+          onClick={() => setSelectedCategory(category._id)}
+        >
+          <h2 className="text-xl font-semibold">{category.name}</h2>
+          <p className="text-gray-600">{category.description}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ThreadList({ 
+  categoryId, 
+  onBack,
+  onSelectThread 
+}: { 
+  categoryId: Id<"categories">, 
+  onBack: () => void,
+  onSelectThread: (threadId: Id<"threads">) => void
+}) {
+  const threads = useQuery(api.forum.listThreads, { categoryId });
+  const createThread = useMutation(api.forum.createThread);
+  const [isCreating, setIsCreating] = useState(false);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+
+  if (!threads) return <div>Loading...</div>;
+
+  return (
+    <div className="space-y-4">
+      <button
+        onClick={onBack}
+        className="text-blue-500 hover:underline mb-4"
+      >
+        ← Back to Categories
+      </button>
+
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-bold">Threads</h1>
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded"
+          onClick={() => setIsCreating(true)}
+        >
+          New Thread
+        </button>
+      </div>
+
+      {isCreating && (
+        <div className="border rounded-lg p-4 space-y-4">
+          <input
+            type="text"
+            placeholder="Thread title"
+            className="w-full p-2 border rounded"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <textarea
+            placeholder="Thread content"
+            className="w-full p-2 border rounded h-32"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
+          <div className="flex justify-end gap-2">
+            <button
+              className="px-4 py-2 border rounded"
+              onClick={() => setIsCreating(false)}
+            >
+              Cancel
+            </button>
+            <button
+              className="px-4 py-2 bg-blue-500 text-white rounded"
+              onClick={async () => {
+                try {
+                  await createThread({
+                    categoryId,
+                    title,
+                    initialPost: content,
+                  });
+                  setIsCreating(false);
+                  setTitle("");
+                  setContent("");
+                  toast.success("Thread created!");
+                } catch (error) {
+                  toast.error("Failed to create thread");
+                }
+              }}
+            >
+              Create
+            </button>
+          </div>
+        </div>
+      )}
+
+      <div className="space-y-4">
+        {threads.map((thread) => (
+          <div
+            key={thread._id}
+            className="p-4 border rounded-lg cursor-pointer hover:bg-gray-50"
+            onClick={() => onSelectThread(thread._id)}
+          >
+            <h2 className="text-xl font-semibold">{thread.title}</h2>
+            <p className="text-gray-600">
+              by {thread.author?.email} • {new Date(thread.lastPostTime).toLocaleDateString()}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ThreadView({ threadId, onBack }: { threadId: Id<"threads">, onBack: () => void }) {
+  const posts = useQuery(api.forum.listPosts, { threadId });
+  const createPost = useMutation(api.forum.createPost);
+  const [reply, setReply] = useState("");
+
+  if (!posts) return <div>Loading...</div>;
+
+  return (
+    <div className="space-y-4">
+      <button
+        onClick={onBack}
+        className="text-blue-500 hover:underline mb-4"
+      >
+        ← Back to Threads
+      </button>
+
+      <div className="space-y-4">
+        {posts.map((post) => (
+          <div key={post._id} className="p-4 border rounded-lg">
+            <div className="flex justify-between items-start mb-2">
+              <span className="font-semibold">{post.author?.email}</span>
+              <span className="text-gray-500 text-sm">
+                {new Date(post._creationTime).toLocaleString()}
+              </span>
+            </div>
+            <p className="whitespace-pre-wrap">{post.content}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="border rounded-lg p-4 space-y-4">
+        <textarea
+          placeholder="Write a reply..."
+          className="w-full p-2 border rounded h-32"
+          value={reply}
+          onChange={(e) => setReply(e.target.value)}
+        />
+        <div className="flex justify-end">
+          <button
+            className="px-4 py-2 bg-blue-500 text-white rounded"
+            onClick={async () => {
+              try {
+                await createPost({
+                  threadId,
+                  content: reply,
+                });
+                setReply("");
+                toast.success("Reply posted!");
+              } catch (error) {
+                toast.error("Failed to post reply");
+              }
+            }}
+          >
+            Post Reply
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
