@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  signaling-server:
+    build:
+      context: ./signaling_server
+      dockerfile: Dockerfile
+    container_name: cooperating-screen-signaling-server
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      NODE_ENV: production
+      LOG_LEVEL: info
+      PUBLIC_WS_URL: ws://localhost:3000
+    restart: unless-stopped
+    networks:
+      - cooperating-screen-network
+
+  web-client:
+    build:
+      context: ./web_client
+      dockerfile: Dockerfile
+    container_name: cooperating-screen-web-client
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    depends_on:
+      - signaling-server
+    networks:
+      - cooperating-screen-network
+
+networks:
+  cooperating-screen-network:
+    driver: bridge
