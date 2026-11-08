@@ -1,0 +1,173 @@
+# Builds README.md, ALL-LICENSES.md, docs/INTEGRATION.md and app/catalog.json
+# from the source repos under !Coding-Enviroment. Run from workspace root.
+$root = (Get-Location).Path
+$srcRoot = Join-Path $root "!Coding-Enviroment"
+
+function Slug($rel) {
+  $s = $rel -replace '^!Coding-Enviroment\\', ''
+  $s = $s -replace '[\\/:*?"<>|]', '-'
+  $s = $s -replace '\s+', '-'
+  $s = $s -replace '-+', '-'
+  return $s.Trim('-').ToLower()
+}
+function StackOf($dir) {
+  $names = Get-ChildItem -LiteralPath $dir -Recurse -File -ErrorAction SilentlyContinue |
+    Where-Object { $_.FullName -notmatch '\\.git\\' } | Select-Object -ExpandProperty Extension -Unique
+  $tags = @()
+  if ($names -contains '.java') { $tags += 'Java' }
+  if ($names -contains '.py') { $tags += 'Python' }
+  if ($names -contains '.js' -or $names -contains '.ts' -or $names -contains '.tsx' -or $names -contains '.html') { $tags += 'Web/JS' }
+  if ($names -contains '.php') { $tags += 'PHP' }
+  if ($names -contains '.cs') { $tags += 'C#' }
+  if ($tags.Count -eq 0) { $tags += 'Other' }
+  return ($tags -join ', ')
+}
+function StatusOf($stack, $cat) {
+  if ($stack -match 'Java') { return 'Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.' }
+  if ($stack -match 'Python') { return 'Standalone for now: Python app. Planned port into the ShadowCore app.' }
+  if ($stack -match 'Web') { return 'Web project: candidate to integrate into the ShadowCore web app.' }
+  return 'Standalone module: kept as-is, integration not yet planned in detail.'
+}
+
+$repos = @()
+Get-ChildItem -Force -Recurse -Directory -ErrorAction SilentlyContinue -Filter ".git" |
+  ForEach-Object { if ($_.Parent.FullName -like "$srcRoot*") { $repos += $_.Parent.FullName } }
+$repos = $repos | Sort-Object -Unique
+
+$projects = @()
+foreach ($r in $repos) {
+  $rel = $r.Replace($root + "\", "")
+  $slug = Slug $rel
+  $name = Split-Path $r -Leaf
+  $cat = (Split-Path $rel -Parent) -replace '^!Coding-Enviroment\\?', ''
+  $readmeFile = Get-ChildItem -LiteralPath $r -File -ErrorAction SilentlyContinue | Where-Object { $_.Name -like 'README*' } | Select-Object -First 1
+  $licFile = Get-ChildItem -LiteralPath $r -File -ErrorAction SilentlyContinue | Where-Object { $_.Name -like 'LICENSE*' -or $_.Name -like 'COPYING*' } | Select-Object -First 1
+  $stack = StackOf $r
+  $projects += [ordered]@{
+    slug = $slug; name = $name; category = $cat; source = $rel
+    mergedPath = "projects/$slug"; stack = $stack; status = (StatusOf $stack $cat)
+    hasReadme = [bool]$readmeFile; hasLicense = [bool]$licFile
+    readmeSource = if ($readmeFile) { $readmeFile.FullName } else { $null }
+    licenseSource = if ($licFile) { $licFile.FullName } else { $null }
+  }
+}
+Write-Output "PROJECTS=$($projects.Count)"
+
+# ---------- catalog.json ----------
+New-Item -ItemType Directory -Force -Path (Join-Path $root "app") | Out-Null
+$cat = $projects | ForEach-Object { [ordered]@{ slug=$_.slug; name=$_.name; category=$_.category; stack=$_.stack; status=$_.status; path=$_.mergedPath; hasReadme=$_.hasReadme; hasLicense=$_.hasLicense } }
+($cat | ConvertTo-Json -Depth 4) | Out-File -Encoding utf8 (Join-Path $root "app\catalog.json")
+"window.SHADOWCORE_CATALOG = " + ($cat | ConvertTo-Json -Depth 4) + ";" | Out-File -Encoding utf8 (Join-Path $root "app\catalog.js")
+
+# ---------- ALL-LICENSES.md ----------
+$lic = New-Object System.Text.StringBuilder
+[void]$lic.AppendLine("# ShadowCore - All Licenses")
+[void]$lic.AppendLine("")
+[void]$lic.AppendLine("Every license found in the merged projects, one after another. Each project's own license file also stays inside its folder under ``projects/``.")
+[void]$lic.AppendLine("")
+foreach ($p in $projects) {
+  [void]$lic.AppendLine("---")
+  [void]$lic.AppendLine("")
+  [void]$lic.AppendLine("## $($p.name)")
+  [void]$lic.AppendLine("")
+  [void]$lic.AppendLine("Source: ``$($p.source)`` - merged at ``$($p.mergedPath)``")
+  [void]$lic.AppendLine("")
+  if ($p.licenseSource) {
+    [void]$lic.AppendLine('```text')
+    [void]$lic.AppendLine((Get-Content -LiteralPath $p.licenseSource -Raw -ErrorAction SilentlyContinue))
+    [void]$lic.AppendLine('```')
+  } else {
+    [void]$lic.AppendLine("_No LICENSE or COPYING file in this project._")
+  }
+  [void]$lic.AppendLine("")
+}
+$lic.ToString() | Out-File -Encoding utf8 (Join-Path $root "ALL-LICENSES.md")
+
+# ---------- docs/INTEGRATION.md ----------
+New-Item -ItemType Directory -Force -Path (Join-Path $root "docs") | Out-Null
+$doc = New-Object System.Text.StringBuilder
+[void]$doc.AppendLine("# ShadowCore - Integration status")
+[void]$doc.AppendLine("")
+[void]$doc.AppendLine("ShadowCore is one repository and one launcher/catalog app. Not every merged project can run inside that app yet. This file says, per project, what it is and what is planned. Nothing here claims a project is integrated when it is not.")
+[void]$doc.AppendLine("")
+[void]$doc.AppendLine("## Rules")
+[void]$doc.AppendLine("")
+[void]$doc.AppendLine("- Web/JS projects: candidates to integrate into the ShadowCore web app.")
+[void]$doc.AppendLine("- Java / Minecraft plugins: standalone for now. Planned: rewrite them to work in the browser game.")
+[void]$doc.AppendLine("- Python apps: standalone for now. Planned: port them to work in the app.")
+[void]$doc.AppendLine("- Websites: planned to integrate into the app instead of staying separate sites.")
+[void]$doc.AppendLine("- Everything else: standalone module in ``projects/``, runnable on its own terms if at all.")
+[void]$doc.AppendLine("- History note: project histories were merged with ``git subtree`` (original commits preserved, combined via merge commits on one ``main``). Four repos had no readable history (``ai assistant (flask)``, ``chat``, ``chat app``, ``ClearCall``) and were imported as file snapshots only.")
+[void]$doc.AppendLine("")
+foreach ($p in $projects) {
+  [void]$doc.AppendLine("## $($p.name)")
+  [void]$doc.AppendLine("")
+  [void]$doc.AppendLine("- Category: $($p.category)")
+  [void]$doc.AppendLine("- Stack: $($p.stack)")
+  [void]$doc.AppendLine("- Folder: ``$($p.mergedPath)``")
+  [void]$doc.AppendLine("- Status: $($p.status)")
+  [void]$doc.AppendLine("")
+}
+$doc.ToString() | Out-File -Encoding utf8 (Join-Path $root "docs\INTEGRATION.md")
+
+# ---------- README.md ----------
+$rm = New-Object System.Text.StringBuilder
+[void]$rm.AppendLine("# ShadowCore")
+[void]$rm.AppendLine("")
+[void]$rm.AppendLine("The result of merging years of experiments, tools, and ideas into one cohesive platform.")
+[void]$rm.AppendLine("")
+[void]$rm.AppendLine("ShadowCore is a single repository that merges all of Daniel Rosemann's projects: their code, their full Git histories, their READMEs and their licenses. One launcher app (``app/``) catalogs every project. Projects that cannot run inside the app yet stay as standalone modules under ``projects/`` - see ``docs/INTEGRATION.md`` for the per-project status and the planned rewrites (Java plugins into the browser game, Python apps into the app, websites into the app).")
+[void]$rm.AppendLine("")
+[void]$rm.AppendLine("## How the merge was done")
+[void]$rm.AppendLine("")
+[void]$rm.AppendLine("Each project's history was merged into this repository's single ``main`` branch with ``git subtree`` (one merge per project, files under ``projects/<project>``), so the original commits, authors and dates are still in ``git log``. In addition, every branch, tag and other ref from every source repo was mirrored under ``refs/projects/<project>/`` in this repository, so side branches and checkpoint refs are not lost; ``git log --all`` covers them. That is a combined history, not a rewritten cherry-pick timeline: project commits keep their original hashes. Four source repos had no readable commits (two empty, two with a broken ``.git``): ``ai assistant (flask)``, ``chat``, ``chat app`` and ``ClearCall``. Their current files were imported as labeled snapshot commits; no original history existed to merge for them.")
+[void]$rm.AppendLine("")
+[void]$rm.AppendLine("## Run the launcher")
+[void]$rm.AppendLine("")
+[void]$rm.AppendLine("Open ``app/index.html`` in a browser, or serve it:")
+[void]$rm.AppendLine("")
+[void]$rm.AppendLine('```powershell')
+[void]$rm.AppendLine("python -m http.server 8000 --directory app")
+[void]$rm.AppendLine('```')
+[void]$rm.AppendLine("")
+[void]$rm.AppendLine("Then open http://localhost:8000 in your browser.")
+[void]$rm.AppendLine("")
+[void]$rm.AppendLine("## Contributors")
+[void]$rm.AppendLine("")
+[void]$rm.AppendLine("ShadowCore is written and maintained by **Daniel Rosemann** (also committed as DaaanielTV, danielatschool and Daniel). Almost every repository merged here was authored by him alone.")
+[void]$rm.AppendLine("")
+[void]$rm.AppendLine("Other names in the Git history, so there is no confusion:")
+[void]$rm.AppendLine("")
+[void]$rm.AppendLine("- **Dev Coder** (``vicarious.catshark.aokd@hidingmail.com``) is Daniel Rosemann himself - a temporary Git configuration of his, as he confirms in the InfraPilot README (``projects/github-repos-infra-pilot/README.md``, 'Historical contributor records').")
+[void]$rm.AppendLine("- **InfraPilot**: Server-Filter, Tonchain and coderabbitai[bot] appear in its history. Those contributors are mostly no longer part of the project; their code has mostly been rewritten or deleted since.")
+[void]$rm.AppendLine("- **ed-docs**: Greg Nietsky appears in its history. That documentation is not up to date: the project was rewritten in React and the original code Greg's commits relate to is no longer there.")
+[void]$rm.AppendLine("- Bots and AI in the history: dependabot[bot], github-actions[bot], gpt-engineer-app[bot], coderabbitai[bot], Copilot (co-author), Muse Spark (co-author) and Muse (author/co-author, ``muse-code@meta.com``). GitHub (``noreply@github.com``) appears as committer on web merges, never as author.")
+[void]$rm.AppendLine("")
+[void]$rm.AppendLine("## Licenses")
+[void]$rm.AppendLine("")
+[void]$rm.AppendLine("All project licenses collected in one file: [ALL-LICENSES.md](ALL-LICENSES.md). Each project also keeps its own license file in its folder.")
+[void]$rm.AppendLine("")
+[void]$rm.AppendLine("## All projects")
+[void]$rm.AppendLine("")
+[void]$rm.AppendLine("Every merged project's own README follows below, one after another.")
+[void]$rm.AppendLine("")
+foreach ($p in $projects) {
+  [void]$rm.AppendLine("---")
+  [void]$rm.AppendLine("")
+  [void]$rm.AppendLine("## $($p.name)")
+  [void]$rm.AppendLine("")
+  [void]$rm.AppendLine("Category: $($p.category) - Stack: $($p.stack) - Folder: ``$($p.mergedPath)``")
+  [void]$rm.AppendLine("")
+  [void]$rm.AppendLine($p.status)
+  [void]$rm.AppendLine("")
+  if ($p.readmeSource) {
+    $txt = Get-Content -LiteralPath $p.readmeSource -Raw -ErrorAction SilentlyContinue
+    $txt = $txt -replace '(?m)^#', '###'
+    [void]$rm.AppendLine($txt)
+  } else {
+    [void]$rm.AppendLine("_This project had no README in its original repository._")
+  }
+  [void]$rm.AppendLine("")
+}
+$rm.ToString() | Out-File -Encoding utf8 (Join-Path $root "README.md")
+Write-Output "DOCS_BUILT"

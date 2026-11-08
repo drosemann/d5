@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ShadowCore</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>ShadowCore</h1>
+  <p class="sub">Years of experiments, tools, and ideas — one repository, one catalog.</p>
+  <p class="note">This launcher catalogs every merged project. Web projects are candidates to run inside this app later. Java/Minecraft plugins and Python apps are still standalone; their planned rewrites are listed per project and in <code>docs/INTEGRATION.md</code>. Nothing here pretends a standalone project already runs in the browser.</p>
+</header>
+
+<section class="controls">
+  <label>Search <input id="q" type="search" placeholder="name, category, stack…"></label>
+  <label>Category
+    <select id="cat"><option value="">All categories</option></select>
+  </label>
+  <label>Stack
+    <select id="stack">
+      <option value="">All stacks</option>
+      <option>Web/JS</option><option>Python</option><option>Java</option><option>PHP</option><option>C#</option><option>Other</option>
+    </select>
+  </label>
+  <span id="count" aria-live="polite"></span>
+</section>
+
+<main id="grid"></main>
+
+<footer>
+  <p>Licenses: <code>ALL-LICENSES.md</code> · Integration status: <code>docs/INTEGRATION.md</code> · Full merged README: <code>README.md</code></p>
+</footer>
+
+<script src="catalog.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

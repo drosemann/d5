@@ -1,0 +1,762 @@
+﻿window.SHADOWCORE_CATALOG = [
+    {
+        "slug":  "ai-\u0026-llm-projects-ai-assistant-html,-css,-javascript,-python-(flask)-for-openai-api",
+        "name":  "ai assistant html, css, javascript, python (flask) for openai api",
+        "category":  "AI \u0026 LLM Projects",
+        "stack":  "Python, Web/JS",
+        "status":  "Standalone for now: Python app. Planned port into the ShadowCore app.",
+        "path":  "projects/ai-\u0026-llm-projects-ai-assistant-html,-css,-javascript,-python-(flask)-for-openai-api",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "ai-\u0026-llm-projects-ai-chat-website-chat",
+        "name":  "chat",
+        "category":  "AI \u0026 LLM Projects\\ai chat website",
+        "stack":  "Python, Web/JS",
+        "status":  "Standalone for now: Python app. Planned port into the ShadowCore app.",
+        "path":  "projects/ai-\u0026-llm-projects-ai-chat-website-chat",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "ai-\u0026-llm-projects-ai-chat-website-super-fast-ai-chat",
+        "name":  "super-fast-ai-chat",
+        "category":  "AI \u0026 LLM Projects\\ai chat website",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/ai-\u0026-llm-projects-ai-chat-website-super-fast-ai-chat",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "ai-\u0026-llm-projects-ai-chat-website-talkativecloud",
+        "name":  "talkativecloud",
+        "category":  "AI \u0026 LLM Projects\\ai chat website",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/ai-\u0026-llm-projects-ai-chat-website-talkativecloud",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "ai-\u0026-llm-projects-gpt-5-mini-game",
+        "name":  "gpt-5-mini-game",
+        "category":  "AI \u0026 LLM Projects",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/ai-\u0026-llm-projects-gpt-5-mini-game",
+        "hasReadme":  false,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "ai-\u0026-llm-projects-web-scraping-chatbot",
+        "name":  "web-scraping-chatbot",
+        "category":  "AI \u0026 LLM Projects",
+        "stack":  "Python, Web/JS",
+        "status":  "Standalone for now: Python app. Planned port into the ShadowCore app.",
+        "path":  "projects/ai-\u0026-llm-projects-web-scraping-chatbot",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "archive-unsorted-bodymassindex",
+        "name":  "bodymassindex",
+        "category":  "Archive - Unsorted",
+        "stack":  "Python",
+        "status":  "Standalone for now: Python app. Planned port into the ShadowCore app.",
+        "path":  "projects/archive-unsorted-bodymassindex",
+        "hasReadme":  false,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "archive-unsorted-calculator",
+        "name":  "calculator",
+        "category":  "Archive - Unsorted",
+        "stack":  "Python",
+        "status":  "Standalone for now: Python app. Planned port into the ShadowCore app.",
+        "path":  "projects/archive-unsorted-calculator",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "archive-unsorted-chat-app",
+        "name":  "chat app",
+        "category":  "Archive - Unsorted",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/archive-unsorted-chat-app",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "archive-unsorted-die_klasse_bruch",
+        "name":  "die_klasse_bruch",
+        "category":  "Archive - Unsorted",
+        "stack":  "Python",
+        "status":  "Standalone for now: Python app. Planned port into the ShadowCore app.",
+        "path":  "projects/archive-unsorted-die_klasse_bruch",
+        "hasReadme":  false,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "archive-unsorted-drachen-im-asphalt",
+        "name":  "drachen-im-asphalt",
+        "category":  "Archive - Unsorted",
+        "stack":  "Python",
+        "status":  "Standalone for now: Python app. Planned port into the ShadowCore app.",
+        "path":  "projects/archive-unsorted-drachen-im-asphalt",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "archive-unsorted-goose-desktop-companion",
+        "name":  "goose-desktop-companion",
+        "category":  "Archive - Unsorted",
+        "stack":  "Python",
+        "status":  "Standalone for now: Python app. Planned port into the ShadowCore app.",
+        "path":  "projects/archive-unsorted-goose-desktop-companion",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "archive-unsorted-kilometerzähler",
+        "name":  "Kilometerzähler",
+        "category":  "Archive - Unsorted",
+        "stack":  "Python",
+        "status":  "Standalone for now: Python app. Planned port into the ShadowCore app.",
+        "path":  "projects/archive-unsorted-kilometerzähler",
+        "hasReadme":  false,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "archive-unsorted-kilometerz-hler",
+        "name":  "Kilometerz-hler",
+        "category":  "Archive - Unsorted",
+        "stack":  "Python",
+        "status":  "Standalone for now: Python app. Planned port into the ShadowCore app.",
+        "path":  "projects/archive-unsorted-kilometerz-hler",
+        "hasReadme":  false,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "archive-unsorted-modernize-website-design",
+        "name":  "modernize-website-design",
+        "category":  "Archive - Unsorted",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/archive-unsorted-modernize-website-design",
+        "hasReadme":  false,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "archive-unsorted-rebioot",
+        "name":  "Rebioot",
+        "category":  "Archive - Unsorted",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/archive-unsorted-rebioot",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "archive-unsorted-tokyo-metro-pricing",
+        "name":  "tokyo-metro-pricing",
+        "category":  "Archive - Unsorted",
+        "stack":  "Python",
+        "status":  "Standalone for now: Python app. Planned port into the ShadowCore app.",
+        "path":  "projects/archive-unsorted-tokyo-metro-pricing",
+        "hasReadme":  false,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "archive-unsorted-wetter-daten-analyse",
+        "name":  "wetter-daten-analyse",
+        "category":  "Archive - Unsorted",
+        "stack":  "Python",
+        "status":  "Standalone for now: Python app. Planned port into the ShadowCore app.",
+        "path":  "projects/archive-unsorted-wetter-daten-analyse",
+        "hasReadme":  false,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "browser-games-browser-game",
+        "name":  "browser game",
+        "category":  "Browser Games",
+        "stack":  "Java, Web/JS",
+        "status":  "Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.",
+        "path":  "projects/browser-games-browser-game",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "browser-games-browser-game-online-game-backend",
+        "name":  "online-game-backend",
+        "category":  "Browser Games\\browser game",
+        "stack":  "Other",
+        "status":  "Standalone module: kept as-is, integration not yet planned in detail.",
+        "path":  "projects/browser-games-browser-game-online-game-backend",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "browser-games-tamagotchi-game",
+        "name":  "tamagotchi-game",
+        "category":  "Browser Games",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/browser-games-tamagotchi-game",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "cloud,-hosting-\u0026-saas-aktienwerk",
+        "name":  "aktienwerk",
+        "category":  "Cloud, Hosting \u0026 SaaS",
+        "stack":  "Python",
+        "status":  "Standalone for now: Python app. Planned port into the ShadowCore app.",
+        "path":  "projects/cloud,-hosting-\u0026-saas-aktienwerk",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "cloud,-hosting-\u0026-saas-hosting-club-discord-bot",
+        "name":  "hosting-club-discord-bot",
+        "category":  "Cloud, Hosting \u0026 SaaS",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/cloud,-hosting-\u0026-saas-hosting-club-discord-bot",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "cloud,-hosting-\u0026-saas-hosting-club-redesign",
+        "name":  "hosting-club-redesign",
+        "category":  "Cloud, Hosting \u0026 SaaS",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/cloud,-hosting-\u0026-saas-hosting-club-redesign",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "cloud,-hosting-\u0026-saas-hosting-club-site",
+        "name":  "hosting-club-site",
+        "category":  "Cloud, Hosting \u0026 SaaS",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/cloud,-hosting-\u0026-saas-hosting-club-site",
+        "hasReadme":  false,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "cloud,-hosting-\u0026-saas-hosting-software-hosting-club-redesign",
+        "name":  "hosting-club-redesign",
+        "category":  "Cloud, Hosting \u0026 SaaS\\hosting-software",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/cloud,-hosting-\u0026-saas-hosting-software-hosting-club-redesign",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "cloud,-hosting-\u0026-saas-hosting-software-hosting-club-site",
+        "name":  "hosting-club-site",
+        "category":  "Cloud, Hosting \u0026 SaaS\\hosting-software",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/cloud,-hosting-\u0026-saas-hosting-software-hosting-club-site",
+        "hasReadme":  false,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "cloud,-hosting-\u0026-saas-minisaas",
+        "name":  "minisaas",
+        "category":  "Cloud, Hosting \u0026 SaaS",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/cloud,-hosting-\u0026-saas-minisaas",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "cloud,-hosting-\u0026-saas-secure-vps-setup",
+        "name":  "secure-vps-setup",
+        "category":  "Cloud, Hosting \u0026 SaaS",
+        "stack":  "Other",
+        "status":  "Standalone module: kept as-is, integration not yet planned in detail.",
+        "path":  "projects/cloud,-hosting-\u0026-saas-secure-vps-setup",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "cloud,-hosting-\u0026-saas-uptime-site",
+        "name":  "uptime-site",
+        "category":  "Cloud, Hosting \u0026 SaaS",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/cloud,-hosting-\u0026-saas-uptime-site",
+        "hasReadme":  false,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "github-repos-ai-chat-webui",
+        "name":  "ai-chat-webui",
+        "category":  "github-repos",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/github-repos-ai-chat-webui",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "github-repos-cooperating-screen",
+        "name":  "cooperating-screen",
+        "category":  "github-repos",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/github-repos-cooperating-screen",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "github-repos-drosemann",
+        "name":  "drosemann",
+        "category":  "github-repos",
+        "stack":  "Other",
+        "status":  "Standalone module: kept as-is, integration not yet planned in detail.",
+        "path":  "projects/github-repos-drosemann",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "github-repos-ed-docs",
+        "name":  "ed-docs",
+        "category":  "github-repos",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/github-repos-ed-docs",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "github-repos-forgecms",
+        "name":  "forgecms",
+        "category":  "github-repos",
+        "stack":  "Python, Web/JS",
+        "status":  "Standalone for now: Python app. Planned port into the ShadowCore app.",
+        "path":  "projects/github-repos-forgecms",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "github-repos-forum-for-nerds",
+        "name":  "forum-for-nerds",
+        "category":  "github-repos",
+        "stack":  "Python, Web/JS, PHP",
+        "status":  "Standalone for now: Python app. Planned port into the ShadowCore app.",
+        "path":  "projects/github-repos-forum-for-nerds",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "github-repos-forum-for-nerds-blog,-cms-\u0026-community-platforms-blog",
+        "name":  "blog",
+        "category":  "github-repos\\forum-for-nerds\\Blog, CMS \u0026 Community Platforms",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/github-repos-forum-for-nerds-blog,-cms-\u0026-community-platforms-blog",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "github-repos-forum-for-nerds-blog,-cms-\u0026-community-platforms-blogforge",
+        "name":  "BlogForge",
+        "category":  "github-repos\\forum-for-nerds\\Blog, CMS \u0026 Community Platforms",
+        "stack":  "Python, Web/JS",
+        "status":  "Standalone for now: Python app. Planned port into the ShadowCore app.",
+        "path":  "projects/github-repos-forum-for-nerds-blog,-cms-\u0026-community-platforms-blogforge",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "github-repos-forum-for-nerds-blog,-cms-\u0026-community-platforms-blog-forum-with-z.ai",
+        "name":  "blog-forum-with-z.ai",
+        "category":  "github-repos\\forum-for-nerds\\Blog, CMS \u0026 Community Platforms",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/github-repos-forum-for-nerds-blog,-cms-\u0026-community-platforms-blog-forum-with-z.ai",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "github-repos-forum-for-nerds-blog,-cms-\u0026-community-platforms-blog-website-frontend-backend",
+        "name":  "blog-website-frontend---backend",
+        "category":  "github-repos\\forum-for-nerds\\Blog, CMS \u0026 Community Platforms",
+        "stack":  "Web/JS, PHP",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/github-repos-forum-for-nerds-blog,-cms-\u0026-community-platforms-blog-website-frontend-backend",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "github-repos-forum-for-nerds-blog,-cms-\u0026-community-platforms-forumino",
+        "name":  "Forumino",
+        "category":  "github-repos\\forum-for-nerds\\Blog, CMS \u0026 Community Platforms",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/github-repos-forum-for-nerds-blog,-cms-\u0026-community-platforms-forumino",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "github-repos-infra-pilot",
+        "name":  "infra-pilot",
+        "category":  "github-repos",
+        "stack":  "Python, Web/JS",
+        "status":  "Standalone for now: Python app. Planned port into the ShadowCore app.",
+        "path":  "projects/github-repos-infra-pilot",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "github-repos-stranded-horizons",
+        "name":  "stranded-horizons",
+        "category":  "github-repos",
+        "stack":  "Python, Web/JS",
+        "status":  "Standalone for now: Python app. Planned port into the ShadowCore app.",
+        "path":  "projects/github-repos-stranded-horizons",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "github-repos-streuland",
+        "name":  "streuland",
+        "category":  "github-repos",
+        "stack":  "Java, Web/JS",
+        "status":  "Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.",
+        "path":  "projects/github-repos-streuland",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "learning-projects-fun_ccna_learning",
+        "name":  "fun_ccna_learning",
+        "category":  "Learning Projects",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/learning-projects-fun_ccna_learning",
+        "hasReadme":  false,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "learning-projects-it-security-learning-platform",
+        "name":  "it-security-learning-platform",
+        "category":  "Learning Projects",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/learning-projects-it-security-learning-platform",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "learning-projects-katzen_python",
+        "name":  "katzen_python",
+        "category":  "Learning Projects",
+        "stack":  "Python",
+        "status":  "Standalone for now: Python app. Planned port into the ShadowCore app.",
+        "path":  "projects/learning-projects-katzen_python",
+        "hasReadme":  false,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "learning-projects-pseudocode",
+        "name":  "pseudocode",
+        "category":  "Learning Projects",
+        "stack":  "Java, Python",
+        "status":  "Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.",
+        "path":  "projects/learning-projects-pseudocode",
+        "hasReadme":  false,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "learning-projects-python",
+        "name":  "python",
+        "category":  "Learning Projects",
+        "stack":  "Python",
+        "status":  "Standalone for now: Python app. Planned port into the ShadowCore app.",
+        "path":  "projects/learning-projects-python",
+        "hasReadme":  false,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "learning-projects-python-code",
+        "name":  "python-code",
+        "category":  "Learning Projects",
+        "stack":  "Python",
+        "status":  "Standalone for now: Python app. Planned port into the ShadowCore app.",
+        "path":  "projects/learning-projects-python-code",
+        "hasReadme":  false,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "learning-projects-traumalang",
+        "name":  "TraumaLang",
+        "category":  "Learning Projects",
+        "stack":  "Python",
+        "status":  "Standalone for now: Python app. Planned port into the ShadowCore app.",
+        "path":  "projects/learning-projects-traumalang",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "minecraft-plugins-\u0026-server-systems-arena-auto-reset",
+        "name":  "arena-auto-reset",
+        "category":  "Minecraft Plugins \u0026 Server Systems",
+        "stack":  "Java",
+        "status":  "Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.",
+        "path":  "projects/minecraft-plugins-\u0026-server-systems-arena-auto-reset",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "minecraft-plugins-\u0026-server-systems-bedwars",
+        "name":  "bedwars",
+        "category":  "Minecraft Plugins \u0026 Server Systems",
+        "stack":  "Java",
+        "status":  "Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.",
+        "path":  "projects/minecraft-plugins-\u0026-server-systems-bedwars",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "minecraft-plugins-\u0026-server-systems-buildffa-revamp",
+        "name":  "buildffa-revamp",
+        "category":  "Minecraft Plugins \u0026 Server Systems",
+        "stack":  "Java",
+        "status":  "Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.",
+        "path":  "projects/minecraft-plugins-\u0026-server-systems-buildffa-revamp",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "minecraft-plugins-\u0026-server-systems-clan-wars",
+        "name":  "clan-wars",
+        "category":  "Minecraft Plugins \u0026 Server Systems",
+        "stack":  "Java",
+        "status":  "Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.",
+        "path":  "projects/minecraft-plugins-\u0026-server-systems-clan-wars",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "minecraft-plugins-\u0026-server-systems-locate-structure-minecraft",
+        "name":  "locate-structure-minecraft",
+        "category":  "Minecraft Plugins \u0026 Server Systems",
+        "stack":  "Java",
+        "status":  "Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.",
+        "path":  "projects/minecraft-plugins-\u0026-server-systems-locate-structure-minecraft",
+        "hasReadme":  false,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "minecraft-plugins-\u0026-server-systems-tnt-remover",
+        "name":  "tnt-remover",
+        "category":  "Minecraft Plugins \u0026 Server Systems",
+        "stack":  "Java",
+        "status":  "Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.",
+        "path":  "projects/minecraft-plugins-\u0026-server-systems-tnt-remover",
+        "hasReadme":  false,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "personal-\u0026-client-websites-d5niel",
+        "name":  "d5niel",
+        "category":  "Personal \u0026 Client Websites",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/personal-\u0026-client-websites-d5niel",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "personal-\u0026-client-websites-jonathan-site",
+        "name":  "jonathan-site",
+        "category":  "Personal \u0026 Client Websites",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/personal-\u0026-client-websites-jonathan-site",
+        "hasReadme":  false,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "personal-\u0026-client-websites-portfolio",
+        "name":  "portfolio",
+        "category":  "Personal \u0026 Client Websites",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/personal-\u0026-client-websites-portfolio",
+        "hasReadme":  false,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "productivity-\u0026-sharing-apps-link-shortener",
+        "name":  "link shortener",
+        "category":  "Productivity \u0026 Sharing Apps",
+        "stack":  "PHP",
+        "status":  "Standalone module: kept as-is, integration not yet planned in detail.",
+        "path":  "projects/productivity-\u0026-sharing-apps-link-shortener",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "productivity-\u0026-sharing-apps-notenest",
+        "name":  "NoteNest",
+        "category":  "Productivity \u0026 Sharing Apps",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/productivity-\u0026-sharing-apps-notenest",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "productivity-\u0026-sharing-apps-photoshare",
+        "name":  "PhotoShare",
+        "category":  "Productivity \u0026 Sharing Apps",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/productivity-\u0026-sharing-apps-photoshare",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "productivity-\u0026-sharing-apps-sharebox",
+        "name":  "ShareBox",
+        "category":  "Productivity \u0026 Sharing Apps",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/productivity-\u0026-sharing-apps-sharebox",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "productivity-\u0026-sharing-apps-shortify",
+        "name":  "Shortify",
+        "category":  "Productivity \u0026 Sharing Apps",
+        "stack":  "PHP",
+        "status":  "Standalone module: kept as-is, integration not yet planned in detail.",
+        "path":  "projects/productivity-\u0026-sharing-apps-shortify",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "startup-\u0026-business-concepts-old-party-planner",
+        "name":  "OLD-party-planner",
+        "category":  "Startup \u0026 Business Concepts",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/startup-\u0026-business-concepts-old-party-planner",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "startup-\u0026-business-concepts-online-game-backend",
+        "name":  "online-game-backend",
+        "category":  "Startup \u0026 Business Concepts",
+        "stack":  "Other",
+        "status":  "Standalone module: kept as-is, integration not yet planned in detail.",
+        "path":  "projects/startup-\u0026-business-concepts-online-game-backend",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "startup-\u0026-business-concepts-online-game-frontend",
+        "name":  "online-game-frontend",
+        "category":  "Startup \u0026 Business Concepts",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/startup-\u0026-business-concepts-online-game-frontend",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "startup-\u0026-business-concepts-party-planner",
+        "name":  "Party Planner",
+        "category":  "Startup \u0026 Business Concepts",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/startup-\u0026-business-concepts-party-planner",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "startup-\u0026-business-concepts-party-planner-party-planner",
+        "name":  "party-planner",
+        "category":  "Startup \u0026 Business Concepts\\Party Planner",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/startup-\u0026-business-concepts-party-planner-party-planner",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "startup-\u0026-business-concepts-scalable-arnoldc-ecommerce",
+        "name":  "scalable-ArnoldC-ecommerce",
+        "category":  "Startup \u0026 Business Concepts",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/startup-\u0026-business-concepts-scalable-arnoldc-ecommerce",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "utilities-\u0026-desktop-tools-audio_visualizer",
+        "name":  "audio_visualizer",
+        "category":  "Utilities \u0026 Desktop Tools",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/utilities-\u0026-desktop-tools-audio_visualizer",
+        "hasReadme":  false,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "utilities-\u0026-desktop-tools-clearcall",
+        "name":  "ClearCall",
+        "category":  "Utilities \u0026 Desktop Tools",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/utilities-\u0026-desktop-tools-clearcall",
+        "hasReadme":  true,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "utilities-\u0026-desktop-tools-data-optimization",
+        "name":  "data-optimization",
+        "category":  "Utilities \u0026 Desktop Tools",
+        "stack":  "Other",
+        "status":  "Standalone module: kept as-is, integration not yet planned in detail.",
+        "path":  "projects/utilities-\u0026-desktop-tools-data-optimization",
+        "hasReadme":  true,
+        "hasLicense":  true
+    },
+    {
+        "slug":  "utilities-\u0026-desktop-tools-ui-optimization",
+        "name":  "ui-optimization",
+        "category":  "Utilities \u0026 Desktop Tools",
+        "stack":  "Web/JS",
+        "status":  "Web project: candidate to integrate into the ShadowCore web app.",
+        "path":  "projects/utilities-\u0026-desktop-tools-ui-optimization",
+        "hasReadme":  false,
+        "hasLicense":  false
+    },
+    {
+        "slug":  "utilities-\u0026-desktop-tools-youtube-downloader",
+        "name":  "youtube-downloader",
+        "category":  "Utilities \u0026 Desktop Tools",
+        "stack":  "Python",
+        "status":  "Standalone for now: Python app. Planned port into the ShadowCore app.",
+        "path":  "projects/utilities-\u0026-desktop-tools-youtube-downloader",
+        "hasReadme":  true,
+        "hasLicense":  false
+    }
+];
