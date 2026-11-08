@@ -1,0 +1,26 @@
+# PHP
+/vendor/
+composer.phar
+composer.lock
+
+# Environment variables
+.env
+
+# IDE and OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Docker
+.docker/data/
+docker-compose.override.yml
+
+# Logs
+*.log
+nginx-access.log
+nginx-error.log
+
+# Cache
+*.cache
+.phpunit.result.cache
