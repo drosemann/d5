@@ -1,0 +1,13 @@
+# Node dependencies
+node_modules/
+web/node_modules/
+
+# Build outputs
+dist/
+web/dist/
+
+# Logs and local temp files
+*.log
+*.tmp
+*~
+.DS_Store
