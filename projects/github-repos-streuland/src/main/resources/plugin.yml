@@ -1,0 +1,84 @@
+name: Streuland
+version: 1.0.0
+main: de.streuland.StreulandPlugin
+description: Streuland plot system with vanilla world generation
+authors:
+  - Streuland Contributors
+api-version: 1.13
+
+commands:
+  plot:
+    description: Main plot command
+    usage: /plot <help|create|claim|info|trust|untrust|home|list|style|biome|weather|neighbor|quest|market|upgrade|upgrades|trader|inspect|admin|unclaim|delete|confirm|cancel|generate|stats|dashboard|flag>
+    aliases:
+      - p
+  district:
+    description: District command
+    usage: /district <create|invite|join|leave|info|rename|disband|claimplot|unclaimplot|override>
+    aliases:
+      - city
+  plotapprove:
+    description: Manage pending plot approvals
+    usage: /plotapprove <list|approve|reject> <id>
+  streuland:
+    description: Admin diagnostics and maintenance
+    usage: /streuland <debug|reload|scan|repair|backup|audit>
+  clan:
+    description: Clan system command
+    usage: /clan <create|join|war|warinfo|peace>
+  markt:
+    description: Market stand management
+    usage: /markt <mieten|preis|info>
+    aliases:
+      - marketstand
+
+softdepend:
+  - Vault
+  - WorldGuard
+
+permissions:
+  streuland.plot.admin.inspect:
+    description: Allows inspection of block change history at coordinates
+    default: op
+  streuland.plot.admin.log:
+    description: Allows viewing block change logs for any player
+    default: op
+  streuland.plot.admin.rollback:
+    description: Allows preparing and confirming plot rollback
+    default: op
+
+  streuland.admin:
+    description: Grants admin-level dashboard controls
+    default: op
+  streuland.admin.diagnostics:
+    description: Allows diagnostics and maintenance commands
+    default: op
+
+  streuland.plot.approval:
+    description: Allows managing pending plot approvals
+    default: op
+  streuland.plot.environment.manage:
+    description: Allows changing biome/weather environment settings on owned plots
+    default: true
+  streuland.portal.admin:
+    description: Allows managing plot portals everywhere
+    default: op
+
+  streuland.market.*:
+    description: Grants access to marketplace commands
+    default: true
+  streuland.market.sell:
+    description: Allows listing plots on the marketplace
+    default: true
+  streuland.market.buy:
+    description: Allows buying plots
+    default: true
+  streuland.market.auction:
+    description: Allows creating plot auctions
+    default: true
+  streuland.market.bid:
+    description: Allows bidding in plot auctions
+    default: true
+  streuland.plot.upgrade:
+    description: Allows buying and listing plot upgrades
+    default: true
