@@ -1,0 +1,40 @@
+const express = require('express');
+const router = express.Router();
+const db = require('../config/database');
+const { v4: uuidv4 } = require('uuid');
+const auth = require('../middleware/auth');
+
+// Get direct messages between two users
+router.get('/:userId', auth, async (req, res) => {
+    try {
+        const [messages] = await db.execute(
+            `SELECT dm.*, u.username AS sender_username, u2.username AS receiver_username
+             FROM direct_messages dm
+             JOIN users u ON dm.sender_id = u.id
+             JOIN users u2 ON dm.receiver_id = u2.id
+             WHERE (dm.sender_id = ? AND dm.receiver_id = ?) OR (dm.sender_id = ? AND dm.receiver_id = ?)
+             ORDER BY dm.created_at ASC`,
+            [req.user.id, req.params.userId, req.params.userId, req.user.id]
+        );
+        res.json(messages);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Send a direct message
+router.post('/:userId', auth, async (req, res) => {
+    try {
+        const { content } = req.body;
+        const messageId = uuidv4();
+        await db.execute(
+            'INSERT INTO direct_messages (id, content, sender_id, receiver_id) VALUES (?, ?, ?, ?)',
+            [messageId, content, req.user.id, req.params.userId]
+        );
+        res.status(201).json({ message: 'Direct message sent' });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+module.exports = router;

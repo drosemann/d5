@@ -1,0 +1,56 @@
+const express = require('express');
+const router = express.Router();
+const db = require('../config/database');
+const auth = require('../middleware/auth');
+
+// Get user profile
+router.get('/profile', auth, async (req, res) => {
+    try {
+        const [users] = await db.execute(
+            'SELECT id, username, email, avatar_url, status FROM users WHERE id = ?',
+            [req.user.id]
+        );
+        
+        if (users.length === 0) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        
+        res.json(users[0]);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Update user status
+router.patch('/status', auth, async (req, res) => {
+    try {
+        const { status } = req.body;
+        
+        await db.execute(
+            'UPDATE users SET status = ? WHERE id = ?',
+            [status, req.user.id]
+        );
+        
+        res.json({ message: 'Status updated successfully' });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Update user profile
+router.patch('/profile', auth, async (req, res) => {
+    try {
+        const { username, avatar_url } = req.body;
+        
+        await db.execute(
+            'UPDATE users SET username = ?, avatar_url = ? WHERE id = ?',
+            [username, avatar_url, req.user.id]
+        );
+        
+        res.json({ message: 'Profile updated successfully' });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+module.exports = router;
