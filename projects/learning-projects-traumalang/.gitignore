@@ -1,0 +1,7 @@
+traumalang
+*.o
+*.bin
+*.gen.c
+tests/_out.c
+tests/_in.txt
+tests/_o.tl

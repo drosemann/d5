@@ -1,0 +1,58 @@
+#pragma once
+#ifndef TL_AST_H
+#define TL_AST_H
+
+typedef enum {
+    N_PROGRAM, N_FUNCDEF, N_FUNCCALL, N_VARDECL, N_ASSIGN, N_COPY,
+    N_INC, N_DEC, N_PRINT, N_IF, N_WHILE, N_BREAK, N_CONTINUE,
+    N_EXPR_VAR, N_EXPR_NUM, N_EXPR_STR, N_EXPR_BINOP, N_EXPR_NULL,
+    N_NOOP, N_TODO_JIRA, N_NULL_SINK, N_METRICS_INC, N_METRICS_LOOP,
+    N_CHAOS, N_COND_PROB, N_OBFUSCATE, N_RESET, N_SECURITY_OP,
+    N_COMMENT, N_DIRECTIVE, N_SLEEP_OP, N_DOUBLE_RUN,
+    N_RETURN, N_FOR
+} TlNodeKind;
+
+typedef enum {
+    P_PLAIN, P_SLACK, P_DATADOG, P_CLOUD, P_GRAFANA, P_ESCALATE,
+    P_LEGACY, P_CAB, P_VACATION, P_PHISH, P_RESEARCH, P_PROD_DEPLOY,
+    P_SBOM, P_AD, P_PHONE, P_AMIGA, P_TOS
+} TlPrintKind;
+
+typedef struct TlNode TlNode;
+typedef struct TlNodeList TlNodeList;
+
+struct TlNodeList {
+    TlNode *node;
+    TlNodeList *next;
+};
+
+struct TlNode {
+    TlNodeKind kind;
+    int line;
+    char *name;      /* var/func name */
+    char *name2;     /* second name (copy dest/src) */
+    char *sval;      /* string literal / value / operator */
+    long ival;       /* numeric literal / probability */
+    TlPrintKind print_kind;
+    TlNode *cond;    /* if/while condition */
+    TlNode *left;    /* expr left / then-branch list head via child */
+    TlNode *right;   /* expr right / else-branch */
+    TlNodeList *body;/* statement list for program/func/if/while */
+    TlNodeList *else_body;
+    TlNodeList *args;/* call arguments (N_FUNCCALL) */
+    char params[8][64];/* function parameters (N_FUNCDEF) */
+    int param_count;
+};
+
+TlNode *tl_node_new(TlNodeKind kind, int line);
+void tl_node_free(TlNode *n);
+void tl_body_append(TlNodeList **list, TlNode *n);
+void tl_body_free(TlNodeList *list);
+
+TlNode *tl_expr_var(int line, const char *name);
+TlNode *tl_expr_num(int line, long v);
+TlNode *tl_expr_str(int line, const char *s);
+TlNode *tl_expr_binop(int line, const char *op, TlNode *l, TlNode *r);
+TlNode *tl_expr_null(int line);
+
+#endif

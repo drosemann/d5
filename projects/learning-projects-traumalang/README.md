@@ -1,0 +1,29 @@
+# TraumaLang v2.2 — The Unbenchmarkable IT Satire Language
+
+Satirische Programmiersprache in C (Linux-Ziel, GCC). `.tl` -> C.
+
+## Schnellstart (fuer den Anwender, hier nicht ausgefuehrt)
+
+```sh
+make
+./traumalang build examples/hello_world_enterprise.tl
+./traumalang --explain examples/hello_world_enterprise.tl
+./traumalang rewrite --from python -i examples/hello.py -o /tmp/hello.tl
+```
+
+Alle Build-/Run-/Test-Schritte sind **nicht ausgefuehrt, nicht verifiziert**;
+sie sind als Anweisungen fuer den Anwender gedacht.
+
+## Struktur
+
+- `src/`: Compiler (lexer, parser, ast, codegen, runtime, cli, rewrite, explain, main).
+- `examples/`: Pflichtbeispiele + `hello.py`.
+- `tests/`: C-Modultests + `cli_tests.sh` (Ablage, manuell auszufuehren).
+- `docs/`: LANGUAGE.md, GRAMMAR.md, KEYWORDS.md, REWRITER.md.
+
+## Hinweise
+
+- Kein Rust/Go/Python/JS im Compiler; keine Pflichtabhaengigkeiten (nur libc + GCC).
+- Absichtlich endlose Konstrukte sind dokumentiert (LANGUAGE.md).
+- Satire-Allokationen sind begrenzt (4 KiB Leak einmalig, 64 KiB Datadog temporaer).
+- `build` generiert `.tl.gen.c` und zeigt den GCC-Befehl; der Anwender fuehrt ihn selbst aus.
