@@ -1,0 +1,52 @@
+groups:
+  - name: infra-pilot-alerts
+    interval: 30s
+    rules:
+      - alert: ServiceDown
+        expr: up == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Service {{ $labels.instance }} is down"
+          description: "{{ $labels.instance }} has been unreachable for more than 1 minute."
+
+      - alert: HighMemoryUsage
+        expr: (node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes * 100 > 90
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage on {{ $labels.instance }}"
+          description: "Memory usage is above 90% for more than 5 minutes."
+
+      - alert: HighCPUUsage
+        expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage on {{ $labels.instance }}"
+          description: "CPU usage is above 85% for more than 5 minutes."
+
+      - alert: DiskSpaceLow
+        expr: (node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"}) * 100 < 10
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Low disk space on {{ $labels.instance }}"
+          description: "Disk usage is above 90% on {{ $labels.mountpoint }}."
+
+      # Fires when no successful backup was reported for 26h (daily cron
+      # plus 2h slack). The metric is a Unix timestamp, e.g. written by
+      # scripts/db-backup.sh when BACKUP_METRIC_FILE points at a
+      # node-exporter textfile path (see wiki/12-Backup-Restore.md).
+      - alert: BackupStale
+        expr: (time() - backup_last_success_timestamp) > 93600
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "No successful backup for more than 26h"
+          description: "backup_last_success_timestamp is older than 26h. Check the backup cron job and wiki/12-Backup-Restore.md."

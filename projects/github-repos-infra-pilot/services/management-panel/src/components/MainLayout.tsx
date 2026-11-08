@@ -1,0 +1,171 @@
+import { Outlet, useNavigate } from "react-router";
+import { useState, useEffect } from "react";
+import { apiClient } from "../lib/api";
+import { clearAccessToken } from "../lib/auth";
+import { useConfig } from "../lib/types";
+import { Sidebar } from "./Sidebar";
+import { UserAvatar } from "./UserAvatar";
+import DemoFlagBadge from "./DemoFlagBadge";
+import { Announcements } from "./accessibility/Announcements";
+
+export const MainLayout = () => {
+  const navigate = useNavigate();
+  const { mode } = useConfig();
+  const [user, setUser] = useState<any>(null);
+  const [healthy, setHealthy] = useState<boolean | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+    let timer: ReturnType<typeof setTimeout>;
+    const checkHealth = async () => {
+      try {
+        await apiClient.health();
+        if (active) setHealthy(true);
+      } catch {
+        if (active) setHealthy(false);
+      }
+      // Wait between completed checks to avoid overlapping requests.
+      if (active) timer = setTimeout(checkHealth, 30_000);
+    };
+    void checkHealth();
+    return () => {
+      active = false;
+      clearTimeout(timer);
+    };
+  }, []);
+
+  useEffect(() => {
+    const loadUser = async () => {
+      try {
+        const userData = await apiClient.getUser();
+        setUser(userData);
+      } catch (error) {
+        console.error("Failed to load user");
+      }
+    };
+    loadUser();
+  }, []);
+
+  const handleLogout = () => {
+    clearAccessToken();
+    apiClient.clearToken();
+    navigate("/setup");
+    window.location.reload();
+  };
+
+  return (
+    <div className="ara-shell flex min-h-screen text-white">
+      <Announcements />
+      {/* Sidebar */}
+      <Sidebar
+        isMobileOpen={sidebarOpen}
+        onMobileClose={() => setSidebarOpen(false)}
+      />
+
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col ara-surface">
+        {/* Header */}
+        <header className="glass-chrome sticky top-0 z-20 border-b border-white/10">
+          <div className="px-4 py-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between gap-6">
+              {/* Status & Search */}
+              <div className="flex items-center gap-4 flex-1">
+                <div className="hidden items-center gap-2 text-xs font-medium text-white/45 xl:flex">
+                  <span
+                    className={
+                      healthy === null
+                        ? "h-2 w-2 rounded-full bg-white/40"
+                        : healthy
+                          ? "h-2 w-2 rounded-full bg-emerald-400"
+                          : "h-2 w-2 rounded-full bg-red-400"
+                    }
+                  />
+                  {healthy === null
+                    ? "Checking management-panel API…"
+                    : healthy
+                      ? "API operational"
+                      : "Degraded — check monitoring"}
+                </div>
+                <button
+                  onClick={() => setSidebarOpen(true)}
+                  className="md:hidden rounded-full border border-white/10 bg-white/5 p-2 text-white/60 transition-colors hover:bg-white/10 hover:text-white"
+                  aria-label="Open sidebar"
+                >
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  </svg>
+                </button>
+                <div className="flex-1 max-w-md">
+                  <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 focus-within:border-white/25">
+                    <input
+                      type="text"
+                      placeholder="Search apps, containers, logs..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="flex-1 bg-transparent text-sm text-white outline-none placeholder:text-white/35"
+                    />
+                    <span className="rounded-full border border-white/10 px-2 py-0.5 text-xs text-white/35">
+                      ⌘K
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Section */}
+              <div className="flex items-center gap-4">
+                {/* User Profile */}
+                {user && (
+                  <div className="flex items-center gap-3">
+                    <div className="text-right">
+                      <p className="text-sm font-medium text-white">
+                        {user.display_name || user.email}
+                      </p>
+                      {user.role && (
+                        <p className="text-xs text-white/45">{user.role}</p>
+                      )}
+                    </div>
+                    <UserAvatar
+                      value={user.id || user.email}
+                      size={36}
+                      className="rounded-full shadow-lg shadow-white/10"
+                    />
+                    <button
+                      onClick={handleLogout}
+                      className="ml-2 rounded-full border border-white/10 p-2 text-xs text-white/45 transition-colors hover:bg-white/10 hover:text-white"
+                      title="Logout"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                )}
+
+                <DemoFlagBadge />
+              </div>
+            </div>
+          </div>
+        </header>
+
+        {/* Main Area */}
+        <main className="flex-1 overflow-auto" id="main-content">
+          <div className="p-4 sm:p-6 lg:p-8">
+            <div className="page-enter mx-auto w-full max-w-[1600px]">
+              <Outlet />
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+};
