@@ -1,8 +1,0 @@
-without updating this file and the API schema):
-
-| Mood | Trigger sketch (exact thresholds in ¶õ4) | Panel/Discord presentation |
-| --- | --- | --- |
-| `thriving` | All known vitals high, no recent incident | Bright, animated, occasional happy template line |
-| `content` | Default healthy state | Calm idle |
-| `sleepy` | Long idle / near-zero traffic or CPU for a sustained window (only if signal exists) | Drowsy; **optional in v
-...[truncated 9113 chars]

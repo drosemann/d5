@@ -1,8 +1,0 @@
-2881126 Review: complete fleet mood table, drop truncation artifact
-23f43ce Review: fleet birth/mood/rename hardening, pet a11y role
-b0319c7 Review: discord fleet auth, workload IDs, embed pagination
-3100b52 Review: fix fleet API paths and pet import depth
-20b26a7 Living Fleet barecode v0 (untested skeleton)
-cdf36fc updated agents md (#453)
----PUSH---
-fatal: unable to access 'https://github.com/drosemann/infra-pilot.git/': schannel: AcquireCredentialsHandle failed: SEC_E_NO_CREDENTIALS (0x8009030e) - Im Sicherheitspaket sind keine Anmeldeinformationen verfügbar.

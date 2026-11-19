@@ -1,2 +1,0 @@
-4607: res.status(201).json({ flag: data });
-4635: res.json({ ok: true, killed: req.params.key });

@@ -1,8 +1,0 @@
-EXIT:
-Get-Content : Der Pfad "C:\Users\danie\AppData\Local\Temp\vbox_uninstall.log" kann nicht gefunden werden, da er nicht vorhanden ist.
-In Zeile:1 Zeichen:128
-+ ... IT:$LASTEXITCODE; Get-Content "$env:TEMP\vbox_uninstall.log" -Tail 15
-+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : ObjectNotFound: (C:\Users\danie\...x_uninstall.log:String) [Get-Content], ItemNotFoundException
-    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetContentCommand
- 

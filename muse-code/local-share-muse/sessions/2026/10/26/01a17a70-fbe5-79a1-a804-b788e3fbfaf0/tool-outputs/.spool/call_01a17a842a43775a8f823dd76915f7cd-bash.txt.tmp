@@ -1,8 +1,0 @@
-git : fatal: unable to access 'https://github.com/drosemann/infra-pilot.git/': schannel: AcquireCredentialsHandle 
-failed: SEC_E_NO_CREDENTIALS (0x8009030e) - Im Sicherheitspaket sind keine Anmeldeinformationen verfügbar.
-In Zeile:1 Zeichen:1
-+ git push -u origin feature/feature-flags 2>&1 | Select-Object -Last 8
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (fatal: unable t...onen verfügbar.:String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError
- 

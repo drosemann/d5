@@ -1,1 +1,0 @@
-{"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\Agentenplattform\\apps\\frontend\\tsconfig.json","hunks":[{"oldStart":1,"oldLines":0,"newStart":1,"newLines":1,"lines":["+{\"compilerOptions\":{\"target\":\"ES2020\",\"module\":\"ESNext\",\"jsx\":\"react-jsx\",\"strict\":true,\"moduleResolution\":\"bundler\",\"types\":[\"vitest\"]},\"include\":[\"src\"]}"]}]}]}

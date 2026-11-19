@@ -1,6 +1,0 @@
-422a961 Agent host session 4ba6e26f-a2be-466a-ab39-3c13dfec8963 - turn 4
-c43e6bc Restore original GNU GPL license
-7b5c54b Remove legacy ed code and keep React TUI only
-d08f116 accidentally added a second LICENSE file
-fc28f70 chore: modernize repository docs, policies, and ignore rules
-22635d8 Add Upstream ED

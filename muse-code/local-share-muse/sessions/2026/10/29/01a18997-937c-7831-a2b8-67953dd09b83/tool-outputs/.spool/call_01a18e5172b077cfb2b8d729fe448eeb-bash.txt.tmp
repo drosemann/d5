@@ -1,8 +1,0 @@
-
-Name                                         Lines
-----                                         -----
-test_client.py                                 439
-test_secrets_ssh_plugins_webhooks_apikeys.py   355
-test_templates_rollback_infra_gitops.py        549
-
-

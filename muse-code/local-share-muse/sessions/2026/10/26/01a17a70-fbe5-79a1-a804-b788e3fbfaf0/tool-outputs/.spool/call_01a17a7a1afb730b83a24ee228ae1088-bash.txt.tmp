@@ -1,6 +1,0 @@
-56: AUDIT_EXPORT = "audit:export"
-63: DRIFT_VIEW = "drift:view"
-94: Permission.DRIFT_VIEW,
-108: Permission.DRIFT_VIEW,
-114: Permission.DRIFT_VIEW,
-123: Permission.AUDIT_EXPORT,

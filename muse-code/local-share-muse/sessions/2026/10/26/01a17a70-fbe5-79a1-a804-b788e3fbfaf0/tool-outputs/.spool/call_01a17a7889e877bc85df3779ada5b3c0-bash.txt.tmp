@@ -1,8 +1,0 @@
-import { buildPlan } from './assistant.ts';
-import { executeGraphQL } from './graphql.ts';
-// plugin-registry and change-approval-engine moved to experimental
-
-dotenv.config({ path: '.env.local' });
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const app = express();

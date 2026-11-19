@@ -1,8 +1,0 @@
-
-file:C:/Program Files/Git/etc/gitconfig	http.sslbackend=schannel
-file:C:/Program Files/Git/etc/gitconfig	credential.helper=manager
-file:C:/Program Files/Git/etc/gitconfig	credential.https://dev.azure.com.usehttppath=true
-===ENV-PROXY===
-http://127.0.0.1:56500
-http://127.0.0.1:56500
-===GH===

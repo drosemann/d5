@@ -1,9 +1,0 @@
-node : Die Benennung "node" wurde nicht als Name eines Cmdlet, einer Funktion, einer Skriptdatei oder eines 
-ausfhrbaren Programms erkannt. šberprfen Sie die Schreibweise des Namens, oder ob der Pfad korrekt ist (sofern 
-enthalten), und wiederholen Sie den Vorgang.
-In Zeile:1 Zeichen:1
-+ node --test tests/ 2>&1 | Select-Object -First 40
-+ ~~~~
-    + CategoryInfo          : ObjectNotFound: (node:String) [], CommandNotFoundException
-    + FullyQualifiedErrorId : CommandNotFoundException
- 

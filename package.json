@@ -1,0 +1,22 @@
+{
+  "name": "d5",
+  "version": "1.0.0",
+  "private": true,
+  "description": "d5 — super-app ecosystem combining years of experiments, tools, and ideas into one connected platform (app/ shell + projects/).",
+  "type": "module",
+  "scripts": {
+    "dev": "python -m http.server 8000 --directory app",
+    "dev:root": "python -m http.server 8000 --directory .",
+    "dev:solid": "npm --prefix app-solid run dev",
+    "build": "npm run build:solid",
+    "build:solid": "npm --prefix app-solid run build",
+    "test": "npm run test:d5lang && npm run test:verify",
+    "test:d5lang": "make -C d5lang test",
+    "test:verify": "python app-solid/verify_port.py",
+    "check": "node --check app/app.js && node --check app/catalog.js && node --check app/tools.js && node --check app/games.js"
+  },
+  "workspaces": [],
+  "engines": {
+    "node": ">=18"
+  }
+}

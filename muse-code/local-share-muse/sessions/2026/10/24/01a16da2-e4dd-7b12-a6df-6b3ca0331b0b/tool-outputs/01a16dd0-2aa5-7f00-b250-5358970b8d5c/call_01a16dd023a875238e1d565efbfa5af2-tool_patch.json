@@ -1,1 +1,0 @@
-{"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\forum-for-nerds\\package.json","hunks":[{"oldStart":2,"oldLines":6,"newStart":2,"newLines":7,"lines":["   \"name\": \"forum-for-nerds\",","   \"private\": true,","   \"version\": \"0.1.0\",","+  \"license\": \"MIT\",","   \"type\": \"module\",","   \"scripts\": {","     \"dev\": \"next dev\","]}]}]}

@@ -1,9 +1,0 @@
- M README.md
-===DIFFSTAT===
-warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
- README.md | 121 +++++++++++++++++++-------------------------------------------
- 1 file changed, 36 insertions(+), 85 deletions(-)
-===BRANCH===
-main
-origin	https://github.com/drosemann/drosemann (fetch)
-origin	https://github.com/drosemann/drosemann (push)

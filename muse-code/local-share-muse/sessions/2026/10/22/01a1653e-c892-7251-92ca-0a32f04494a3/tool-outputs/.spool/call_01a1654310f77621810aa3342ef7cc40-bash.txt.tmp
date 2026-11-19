@@ -1,9 +1,0 @@
-
-
-Target           : C:\Users\danie\AppData\Local\Microsoft\WindowsApps\wt.exe
-Arguments        : powershell.exe -NoExit -Command muse
-WorkingDirectory : C:\Users\danie
-
-
-
-C:\Users\danie\AppData\Local\Programs\muse\muse.cmd

@@ -1,1 +1,0 @@
-{"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\ai-chat-webui\\bootstrap.js","hunks":[{"oldStart":191,"oldLines":6,"newStart":191,"newLines":7,"lines":[" }"," "," async function mountChat(_root, { conversationId }) {","+    applyServerTheme().catch(() => {});","     if (suppressNextMount) {","         suppressNextMount = false;","         return;"]}]}]}

@@ -1,6 +1,0 @@
-57: FEATURE_FLAG_READ = "feature-flag:read"
-58: FEATURE_FLAG_MANAGE = "feature-flag:manage"
-94: Permission.DRIFT_VIEW,        Permission.FEATURE_FLAG_READ,
-108: Permission.DRIFT_VIEW,        Permission.FEATURE_FLAG_READ,
-114: Permission.DRIFT_VIEW,        Permission.FEATURE_FLAG_READ,
-123: Permission.AUDIT_EXPORT,        Permission.FEATURE_FLAG_READ,

@@ -1,8 +1,0 @@
-19: import { SettingsPage } from './pages/Settings';
-20: import { AuditLog } from './pages/AuditLog';
-26: import { featureGates } from './lib/types';
-181: <Route path="/audit" element={<AuditLog />} />
-185: <Route path="/settings" element={<SettingsPage />} />
-186: <Route path="/settings/alerts" element={<SettingsPage />} />
-187: <Route path="/settings/maintenance" element={<SettingsPage />} />
-188: {featureGates.canManageCustomers(mode) && (

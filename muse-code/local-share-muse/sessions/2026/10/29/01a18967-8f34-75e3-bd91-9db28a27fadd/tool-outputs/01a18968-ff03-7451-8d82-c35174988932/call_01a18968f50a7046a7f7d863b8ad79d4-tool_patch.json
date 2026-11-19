@@ -1,1 +1,0 @@
-{"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\Agentenplattform\\.gitignore","hunks":[{"oldStart":1,"oldLines":0,"newStart":1,"newLines":9,"lines":["+.env","+__pycache__/","+node_modules/","+dist/","+*.pyc","+uploads/","+backups/","+postgres-data/","+redis-data/"]}]}]}

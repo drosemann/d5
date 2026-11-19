@@ -1,7 +1,0 @@
-warning: in the working copy of 'web/src/main.tsx', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'web/src/styles.css', LF will be replaced by CRLF the next time Git touches it
-[master 38b211d] Wire full vim plan into editor shell and styles
- 2 files changed, 893 insertions(+), 120 deletions(-)
-warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
-[master d2b3151] Document new ex commands and roadmap in README
- 1 file changed, 26 insertions(+)

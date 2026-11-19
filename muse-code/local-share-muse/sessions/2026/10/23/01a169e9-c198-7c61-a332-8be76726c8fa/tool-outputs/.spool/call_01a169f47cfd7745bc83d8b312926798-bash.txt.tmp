@@ -1,4 +1,0 @@
-warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
-[main 14fafd9] Rewrite README in plain text style
- 1 file changed, 36 insertions(+), 85 deletions(-)
-14fafd9f4d6a12f57e0372294570afe51881834a Rewrite README in plain text style

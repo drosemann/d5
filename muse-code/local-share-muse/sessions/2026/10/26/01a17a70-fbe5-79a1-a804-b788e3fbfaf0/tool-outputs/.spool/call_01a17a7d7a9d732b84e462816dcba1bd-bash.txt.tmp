@@ -1,4 +1,0 @@
-5: dotenv.config();
-7: const pterodactyl = require('./modules/pterodactyl');
-206: client.once('ready', async () => {
-358: client.login(DISCORD_TOKEN).catch((error) => {

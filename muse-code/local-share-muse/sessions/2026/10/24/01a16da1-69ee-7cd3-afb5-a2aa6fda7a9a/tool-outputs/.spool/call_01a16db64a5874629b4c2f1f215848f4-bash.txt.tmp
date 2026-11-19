@@ -1,7 +1,0 @@
-M  README.md
-M  app/web.py
-[main 237662c] AGPL-Verweise auf MIT umgestellt (Footer, README).
- 2 files changed, 2 insertions(+), 2 deletions(-)
-237662c AGPL-Verweise auf MIT umgestellt (Footer, README).
-ee004c9 Ab 24.10.2026 MIT, da nur Daniel Rosemann committed.
-4e69f62 first commit

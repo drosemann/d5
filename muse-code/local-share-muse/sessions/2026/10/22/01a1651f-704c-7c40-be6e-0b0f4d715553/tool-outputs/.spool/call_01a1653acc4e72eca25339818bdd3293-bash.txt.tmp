@@ -1,9 +1,0 @@
-Fehler beim AusfÅhren des Programms "python.exe": Das System kann auf die Datei nicht zugreifenIn Zeile:1 Zeichen:1
-+ python -c 'import os; print(os.path.join(os.environ.get("XDG_CONFIG_H ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.
-In Zeile:1 Zeichen:1
-+ python -c 'import os; print(os.path.join(os.environ.get("XDG_CONFIG_H ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : ResourceUnavailable: (:) [], ApplicationFailedException
-    + FullyQualifiedErrorId : NativeCommandFailed
- 

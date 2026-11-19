@@ -5,6 +5,8 @@
 # Local tooling / other VCS state in this folder
 .agents/
 .muse/
+muse-code/
+trajectory-*.json
 .eden/
 .hg/
 .sl/

@@ -1,1 +1,0 @@
-{"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\ai-chat-webui\\workspace.js","hunks":[{"oldStart":19,"oldLines":6,"newStart":19,"newLines":7,"lines":[" let shellBuilt = false;"," let views = {};"," let sidebarEls = {};","+let lastUserId = null;"," "," const VIEW_NAMES = ['home', 'chat', 'projects', 'tasks', 'memory', 'models', 'settings'];"," "]}]}]}

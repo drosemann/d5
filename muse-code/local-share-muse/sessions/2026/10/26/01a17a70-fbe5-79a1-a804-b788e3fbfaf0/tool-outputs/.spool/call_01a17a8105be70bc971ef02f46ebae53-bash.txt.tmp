@@ -1,3 +1,0 @@
-46: order(_column: string, _options?: any) {
-50: limit(_count: number) {
-58: single() {

@@ -1,3 +1,0 @@
-warning: in the working copy of 'cli/ipilot/commands/pet.py', LF will be replaced by CRLF the next time Git touches it
-[feature/living-fleet-barecode 3100b52] Review: fix fleet API paths and pet import depth
- 2 files changed, 6 insertions(+), 6 deletions(-)

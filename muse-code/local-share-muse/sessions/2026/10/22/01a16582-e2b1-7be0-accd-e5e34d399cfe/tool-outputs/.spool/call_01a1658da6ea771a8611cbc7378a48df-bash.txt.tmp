@@ -1,8 +1,0 @@
-[feature/living-fleet-barecode 20b26a7] Living Fleet barecode v0 (untested skeleton)
- 9 files changed, 667 insertions(+)
- create mode 100644 cli/ipilot/commands/pet.py
- create mode 100644 docs/LIVING-FLEET-PLAN.md
- create mode 100644 services/discord-service/modules/petCommands.js
- create mode 100644 services/management-panel/src/components/FleetPet.tsx
- create mode 100644 services/orchestrator-agent/living_fleet.py
-fatal: unable to access 'https://github.com/drosemann/infra-pilot.git/': schannel: AcquireCredentialsHandle failed: SEC_E_NO_CREDENTIALS (0x8009030e) - Im Sicherheitspaket sind keine Anmeldeinformationen verfügbar.

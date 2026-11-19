@@ -1,9 +1,0 @@
-Select-String : Die Datei "\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src" kann 
-nicht gelesen werden: Der Zugriff auf den Pfad 
-"\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src" wurde verweigert..
-In Zeile:1 Zeichen:1
-+ Select-String -Path services/management-panel/src -Pattern '<AppCard' ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : InvalidArgument: (:) [Select-String], ArgumentException
-    + FullyQualifiedErrorId : ProcessingFile,Microsoft.PowerShell.Commands.SelectStringCommand
- 

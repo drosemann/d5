@@ -1,4 +1,0 @@
-warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
-M  README.md
-[main 229de36] docs: add TraumaLang and expand project descriptions
- 1 file changed, 9 insertions(+), 8 deletions(-)

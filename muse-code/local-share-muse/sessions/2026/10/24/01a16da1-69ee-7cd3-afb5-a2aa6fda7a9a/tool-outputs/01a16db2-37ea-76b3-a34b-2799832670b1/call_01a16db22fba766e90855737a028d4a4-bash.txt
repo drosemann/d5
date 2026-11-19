@@ -1,6 +1,0 @@
-warning: in the working copy of 'LICENSE', LF will be replaced by CRLF the next time Git touches it
-M  LICENSE
-M  README.md
-[main ee004c9] Ab 24.10.2026 MIT, da nur Daniel Rosemann committed.
- 2 files changed, 22 insertions(+), 209 deletions(-)
-fatal: unable to access 'https://github.com/drosemann/aktienwerk.git/': schannel: AcquireCredentialsHandle failed: SEC_E_NO_CREDENTIALS (0x8009030e) - Im Sicherheitspaket sind keine Anmeldeinformationen verfügbar.

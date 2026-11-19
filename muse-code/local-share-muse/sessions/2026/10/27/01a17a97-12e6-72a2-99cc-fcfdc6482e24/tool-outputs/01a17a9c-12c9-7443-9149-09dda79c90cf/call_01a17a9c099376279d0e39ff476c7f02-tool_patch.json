@@ -1,1 +1,0 @@
-{"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\TraumaLang\\src\\rewrite.h","hunks":[{"oldStart":1,"oldLines":0,"newStart":1,"newLines":6,"lines":["+#pragma once","+#ifndef TL_REWRITE_H","+#define TL_REWRITE_H","+int tl_rewrite_file(const char *from, const char *in_path, const char *out_path, int roast,","+                    char **warn_out);","+#endif"]}]}]}

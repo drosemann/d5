@@ -1,8 +1,0 @@
-warning: in the working copy of 'LICENSE', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'package.json', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'server/package.json', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'docs/license-audit-mit.md', LF will be replaced by CRLF the next time Git touches it
-[main 9cc24d7] Ab 24.10.2026 MIT, da nur Daniel Rosemann committed (67 Commits verifiziert)
- 5 files changed, 122 insertions(+), 677 deletions(-)
- create mode 100644 docs/license-audit-mit.md
-fatal: unable to access 'https://github.com/drosemann/stranded-horizons.git/': Connection timed out after 300025 milliseconds

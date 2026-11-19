@@ -1,7 +1,0 @@
-Get-ChildItem : Es wurde kein Parameter gefunden, der dem Parameternamen "la" entspricht.
-In Zeile:1 Zeichen:4
-+ ls -la
-+    ~~~
-    + CategoryInfo          : InvalidArgument: (:) [Get-ChildItem], ParameterBindingException
-    + FullyQualifiedErrorId : NamedParameterNotFound,Microsoft.PowerShell.Commands.GetChildItemCommand
- 

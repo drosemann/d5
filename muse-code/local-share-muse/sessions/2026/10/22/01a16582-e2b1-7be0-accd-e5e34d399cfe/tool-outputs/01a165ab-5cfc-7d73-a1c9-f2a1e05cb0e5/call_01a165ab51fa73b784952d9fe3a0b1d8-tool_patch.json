@@ -1,1 +1,0 @@
-{"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\services\\management-panel\\src\\components\\AppCard.tsx","hunks":[{"oldStart":1,"oldLines":4,"newStart":1,"newLines":5,"lines":[" import { FleetPet, type CreatureView } from './FleetPet';","+import { FleetWhy } from './FleetWhy';"," "," interface AppCardProps {","   id: string;"]}]}]}
