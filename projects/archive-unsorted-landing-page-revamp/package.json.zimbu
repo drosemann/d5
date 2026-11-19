@@ -1,0 +1,20 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-landing-page-revamp\package.json
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE package_json
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-landing-page-revamp\package.json\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-landing-page-revamp\package.json), unveraendert, als Inline-Doku ----
+# {
+#   "name": "my-v0-project",
+#   "version": "0.1.0",
+#   "private": true,
+#   "scripts": {
+#     "build": "echo 'no build script'"
+#   }
+# }
+#

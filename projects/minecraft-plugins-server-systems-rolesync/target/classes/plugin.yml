@@ -1,0 +1,13 @@
+name: RoleSync
+version: '1.0-SNAPSHOT'
+main: com.example.rolesync.DiscordSyncPlugin
+api-version: '1.20'
+depend: [LuckPerms]
+commands:
+  linkdiscord:
+    description: Link your Discord account
+    usage: /<command> <DiscordUserID>
+permissions:
+  rolesync.link:
+    description: Allows players to link their Discord account.
+    default: true

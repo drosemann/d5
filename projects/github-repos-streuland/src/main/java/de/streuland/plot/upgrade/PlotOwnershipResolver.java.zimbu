@@ -1,0 +1,19 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-streuland\src\main\java\de\streuland\plot\upgrade\PlotOwnershipResolver.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE PlotOwnershipResolver_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-streuland\src\main\java\de\streuland\plot\upgrade\PlotOwnershipResolver.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-streuland\src\main\java\de\streuland\plot\upgrade\PlotOwnershipResolver.java), unveraendert, als Inline-Doku ----
+# package de.streuland.plot.upgrade;
+#
+# import java.util.UUID;
+#
+# public interface PlotOwnershipResolver {
+#     boolean isOwner(String plotId, UUID playerId);
+# }
+#

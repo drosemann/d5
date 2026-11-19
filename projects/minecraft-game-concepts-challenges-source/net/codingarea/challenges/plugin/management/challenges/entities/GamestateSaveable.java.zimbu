@@ -1,0 +1,24 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\management\challenges\entities\GamestateSaveable.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE GamestateSaveable_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\management\challenges\entities\GamestateSaveable.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\management\challenges\entities\GamestateSaveable.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.management.challenges.entities;
+#
+# import javax.annotation.Nonnull;
+# import net.anweisen.utilities.common.config.Document;
+#
+# public interface GamestateSaveable {
+#    String getUniqueGamestateName();
+#
+#    void writeGameState(@Nonnull Document var1);
+#
+#    void loadGameState(@Nonnull Document var1);
+# }
+#

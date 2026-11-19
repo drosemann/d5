@@ -1,0 +1,37 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-streuland/src/api/dashboard/ops/invitations.js
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-streuland/src/api/dashboard/ops/invitations.js");
+}
+
+// ---- Original-Code (projects/github-repos-streuland/src/api/dashboard/ops/invitations.js), unveraendert, als Inline-Doku ----
+// // Minimal API Router scaffold for Admin API: Create/List/Update/Revoke/Export
+// // Uses the MVP InviteService (SQLite gateway wrapper) when available.
+// const { InviteService } = require('../../../invitations/index');
+// module.exports = function invitationsRouter(dbPath) {
+//   // Simple structure to show endpoints; actual HTTP server wiring is left for integration.
+//   const router = {
+//     post: (path, handler) => {},
+//     get: (path, handler) => {},
+//     put: (path, handler) => {},
+//   };
+//   const service = new InviteService(dbPath);
+//
+//   // Example endpoint signatures (no-op implementations)
+//   router.post('/api/dashboard/ops/invitations', async (req, res) => {
+//     const invite = req.body || { code: 'DEMO' };
+//     const created = await service.create(invite);
+//     res.statusCode = 201;
+//     res.end(JSON.stringify(created));
+//   });
+//   router.get('/api/dashboard/ops/invitations', async (req, res) => {
+//     const list = await service.export();
+//     res.statusCode = 200;
+//     res.end(JSON.stringify(list));
+//   });
+//
+//   return router;
+// };
+//

@@ -1,0 +1,66 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-plugins-server-systems-connecthub-java-mc-plugin\src\main\java\de\example\lobby\progression\LevelManager.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE LevelManager_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-plugins-server-systems-connecthub-java-mc-plugin\src\main\java\de\example\lobby\progression\LevelManager.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-plugins-server-systems-connecthub-java-mc-plugin\src\main\java\de\example\lobby\progression\LevelManager.java), unveraendert, als Inline-Doku ----
+# package de.example.lobby.progression;
+#
+# import de.example.lobby.LobbyPlugin;
+# import org.bukkit.entity.Player;
+#
+# import java.util.HashMap;
+# import java.util.Map;
+# import java.util.UUID;
+#
+# public class LevelManager {
+#     private final LobbyPlugin plugin;
+#     private final Map<UUID, PlayerLevel> playerLevels = new HashMap<>();
+#
+#     public LevelManager(LobbyPlugin plugin) {
+#         this.plugin = plugin;
+#     }
+#
+#     public void addExperience(Player player, int amount) {
+#         UUID playerId = player.getUniqueId();
+#         PlayerLevel level = playerLevels.computeIfAbsent(playerId, k -> new PlayerLevel());
+#         level.addExperience(amount);
+#         
+#         if (level.hasLeveledUp()) {
+#             player.sendMessage("Congratulations! You've reached level " + level.getLevel() + "!");
+#             // Maybe give rewards for leveling up
+#         }
+#     }
+#
+#     public int getPlayerLevel(Player player) {
+#         return playerLevels.getOrDefault(player.getUniqueId(), new PlayerLevel()).getLevel();
+#     }
+# }
+#
+# public class PlayerLevel {
+#     private int level = 1;
+#     private int experience = 0;
+#     private boolean leveledUp = false;
+#
+#     public void addExperience(int amount) {
+#         experience += amount;
+#         int expToNextLevel = getExpToNextLevel();
+#         while (experience >= expToNextLevel) {
+#             level++;
+#             experience -= expToNextLevel;
+#             leveledUp = true;
+#             expToNextLevel = getExpToNextLevel();
+#         }
+#     }
+#
+#     private int getExpToNextLevel() {
+#         return 100 * level; // Simple formula, can be more complex
+#     }
+#
+#     // Getters and other methods
+# } 

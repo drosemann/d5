@@ -1,0 +1,29 @@
+package net.codingarea.challenges.plugin.challenges.custom.settings.action.impl;
+
+import java.util.Map;
+import net.codingarea.challenges.plugin.challenges.custom.settings.action.EntityTargetAction;
+import net.codingarea.challenges.plugin.challenges.type.helper.ChallengeHelper;
+import net.codingarea.challenges.plugin.challenges.type.helper.SubSettingsHelper;
+import org.bukkit.Material;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
+
+public class KillEntityAction extends EntityTargetAction {
+   public KillEntityAction(String name) {
+      super(name, SubSettingsHelper.createEntityTargetSettingsBuilder(true));
+   }
+
+   public void executeFor(Entity entity, Map subActions) {
+      if (entity instanceof Player) {
+         ChallengeHelper.kill((Player)entity);
+      } else if (entity instanceof LivingEntity) {
+         ((LivingEntity)entity).damage(((LivingEntity)entity).getHealth());
+      }
+
+   }
+
+   public Material getMaterial() {
+      return Material.DIAMOND_SWORD;
+   }
+}

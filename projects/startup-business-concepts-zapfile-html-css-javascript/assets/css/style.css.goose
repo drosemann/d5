@@ -1,0 +1,75 @@
+﻿// Goose-Port-Spiegel von: projects/startup-business-concepts-zapfile-html-css-javascript/assets/css/style.css
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/startup-business-concepts-zapfile-html-css-javascript/assets/css/style.css");
+}
+
+// ---- Original-Code (projects/startup-business-concepts-zapfile-html-css-javascript/assets/css/style.css), unveraendert, als Inline-Doku ----
+// :root {
+//     --primary-color: #2962ff;
+//     --secondary-color: #0039cb;
+//     --bg-color: #f5f5f5;
+// }
+//
+// body {
+//     font-family: 'Segoe UI', sans-serif;
+//     background: var(--bg-color);
+//     margin: 0;
+//     padding: 20px;
+// }
+//
+// .container {
+//     max-width: 800px;
+//     margin: 0 auto;
+//     padding: 20px;
+// }
+//
+// .drop-zone {
+//     border: 2px dashed var(--primary-color);
+//     border-radius: 10px;
+//     padding: 40px;
+//     text-align: center;
+//     cursor: pointer;
+//     transition: 0.3s;
+// }
+//
+// .drop-zone:hover {
+//     background: rgba(41, 98, 255, 0.1);
+// }
+//
+// .drop-zone__input {
+//     display: none;
+// }
+//
+// .progress-bar {
+//     margin-top: 20px;
+//     background: #e0e0e0;
+//     border-radius: 5px;
+//     overflow: hidden;
+// }
+//
+// .progress {
+//     width: 0%;
+//     height: 20px;
+//     background: var(--primary-color);
+//     transition: width 0.3s;
+// }
+//
+// .share-link {
+//     margin-top: 20px;
+//     display: flex;
+//     gap: 10px;
+// }
+//
+// .share-link input {
+//     flex: 1;
+//     padding: 10px;
+//     border: 1px solid #ddd;
+//     border-radius: 5px;
+// }
+//
+// .hidden {
+//     display: none;
+// }

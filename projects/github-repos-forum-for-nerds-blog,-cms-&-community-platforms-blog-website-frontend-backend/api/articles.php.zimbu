@@ -1,0 +1,20 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-website-frontend-backend\api\articles.php
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE articles_php
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-website-frontend-backend\api\articles.php\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-website-frontend-backend\api\articles.php), unveraendert, als Inline-Doku ----
+# <?php
+# // api/articles.php
+# header('Content-Type: application/json');
+# require_once '../config.php';
+#
+# $stmt = $pdo->query("SELECT * FROM articles ORDER BY created_at DESC");
+# $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+# echo json_encode($articles);
+# ?>

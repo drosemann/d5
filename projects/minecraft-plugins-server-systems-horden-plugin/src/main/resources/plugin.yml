@@ -1,0 +1,21 @@
+name: HordePlugin
+version: 1.0.0
+main: de.hordeplugin.HordePlugin
+description: Advanced Horde System mit Custom-Ausrüstung, Loot und Effekten
+author: HordePlugin Team
+api-version: 1.13
+
+commands:
+  horde:
+    description: Horden-Verwaltung
+    usage: /horde <start|stop|status|list> [name]
+    aliases:
+      - h
+
+permissions:
+  horde.admin:
+    description: Erlaubt Horden-Befehle
+    default: op
+  horde.use:
+    description: Erlaubt Horden zu aktivieren
+    default: true

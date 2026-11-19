@@ -1,0 +1,117 @@
+package net.codingarea.challenges.plugin.challenges.implementation.challenge.force;
+
+import java.util.Arrays;
+import java.util.function.BiConsumer;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import net.anweisen.utilities.common.config.Document;
+import net.codingarea.challenges.plugin.ChallengeAPI;
+import net.codingarea.challenges.plugin.challenges.type.abstraction.EndingForceChallenge;
+import net.codingarea.challenges.plugin.challenges.type.helper.ChallengeHelper;
+import net.codingarea.challenges.plugin.content.Message;
+import net.codingarea.challenges.plugin.content.Prefix;
+import net.codingarea.challenges.plugin.management.challenges.annotations.ExcludeFromRandomChallenges;
+import net.codingarea.challenges.plugin.management.menu.MenuType;
+import net.codingarea.challenges.plugin.management.menu.generator.categorised.SettingCategory;
+import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+import net.codingarea.challenges.plugin.utils.item.ItemUtils;
+import net.codingarea.challenges.plugin.utils.misc.BlockUtils;
+import net.codingarea.challenges.plugin.utils.misc.ExperimentalUtils;
+import net.codingarea.challenges.plugin.utils.misc.NameHelper;
+import org.bukkit.Material;
+import org.bukkit.boss.BarColor;
+import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
+
+@ExcludeFromRandomChallenges
+public class ForceBlockChallenge extends EndingForceChallenge {
+   private Material block;
+
+   public ForceBlockChallenge() {
+      super(MenuType.CHALLENGES, 2, 15);
+      this.setCategory(SettingCategory.FORCE);
+   }
+
+   @Nonnull
+   public ItemBuilder createDisplayItem() {
+      return new ItemBuilder(Material.GOLDEN_BOOTS, Message.forName("item-force-block-challenge"));
+   }
+
+   @Nullable
+   protected String[] getSettingsDescription() {
+      return ChallengeHelper.getTimeRangeSettingsDescription(this, 60, 30);
+   }
+
+   public void playValueChangeTitle() {
+      ChallengeHelper.playChallengeSecondsRangeValueChangeTitle(this, this.getValue() * 60 - 30, this.getValue() * 60 + 30);
+   }
+
+   @Nonnull
+   protected BiConsumer setupBossbar() {
+      return (bossbar, player) -> {
+         if (this.getState() == 0) {
+            bossbar.setTitle(Message.forName("bossbar-force-block-waiting").asString());
+         } else {
+            bossbar.setColor(BarColor.GREEN);
+            bossbar.setProgress((double)this.getProgress());
+            bossbar.setTitle(Message.forName("bossbar-force-block-instruction").asComponent(this.block, ChallengeAPI.formatTime((long)this.getSecondsLeftUntilNextActivation())));
+         }
+      };
+   }
+
+   protected boolean isFailing(@Nonnull Player player) {
+      for(int x = -1; x <= 1; ++x) {
+         for(int z = -1; z <= 1; ++z) {
+            for(int y = -1; y <= 1; ++y) {
+               Material type = player.getLocation().add((double)x, (double)y, (double)z).getBlock().getType();
+               if (type == this.block) {
+                  return false;
+               }
+            }
+         }
+      }
+
+      return true;
+   }
+
+   protected void broadcastFailedMessage(@Nonnull Player player) {
+      Message.forName("force-block-fail").broadcast(Prefix.CHALLENGES, NameHelper.getName(player), player.getLocation().subtract(0.0D, 1.0D, 0.0D).getBlock().getType());
+   }
+
+   protected void broadcastSuccessMessage() {
+      Message.forName("force-block-success").broadcast(Prefix.CHALLENGES);
+   }
+
+   protected void chooseForcing() {
+      Material[] materials = (Material[])Arrays.stream(ExperimentalUtils.getMaterials()).filter(Material::isBlock).filter(ItemUtils::isObtainableInSurvival).filter((material) -> {
+         return !BlockUtils.isTooHardToGet(material);
+      }).filter((material) -> {
+         return !material.name().contains("WALL");
+      }).toArray((length) -> {
+         return new Material[length];
+      });
+      this.block = (Material)globalRandom.choose((Object[])materials);
+   }
+
+   protected int getSecondsUntilNextActivation() {
+      return globalRandom.around(this.getValue() * 60, 30);
+   }
+
+   protected int getForcingTime() {
+      return globalRandom.range(240, 360);
+   }
+
+   public void loadGameState(@NotNull Document document) {
+      super.loadGameState(document);
+      if (document.contains("target")) {
+         this.block = (Material)document.getEnum("target", Material.class);
+         this.setState(this.block == null ? 0 : 1);
+      }
+
+   }
+
+   public void writeGameState(@NotNull Document document) {
+      super.writeGameState(document);
+      document.set("target", this.block);
+   }
+}

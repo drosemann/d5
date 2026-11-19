@@ -1,0 +1,88 @@
+'use client'
+
+import { Search, Bell, ChevronDown, Zap } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
+import { Badge } from '@/components/ui/badge'
+import { useChatStore } from '@/stores/chatStore'
+import { format } from 'date-fns'
+
+const MODEL_OPTIONS = ['llama3', 'llama3:8b', 'mistral', 'codellama', 'phi3']
+
+export function Header() {
+  const { currentModel, setCurrentModel } = useChatStore()
+  const dateStr = format(new Date(), 'EEEE, MMMM d')
+
+  return (
+    <header className="h-14 flex items-center justify-between px-5 border-b border-border bg-background shrink-0 z-20">
+      {/* Left: date */}
+      <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1.5">
+          <Zap className="w-4 h-4 text-primary md:hidden" />
+          <span className="text-sm text-muted-foreground hidden sm:block">{dateStr}</span>
+        </div>
+      </div>
+
+      {/* Right: model selector + actions */}
+      <div className="flex items-center gap-2">
+        {/* Model selector */}
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="outline"
+              size="sm"
+              className="h-8 text-xs gap-1.5 border-border bg-transparent"
+            >
+              <span className="text-muted-foreground hidden sm:inline">Model:</span>
+              <span className="font-medium">{currentModel}</span>
+              <ChevronDown className="w-3 h-3 text-muted-foreground" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-44">
+            {MODEL_OPTIONS.map((m) => (
+              <DropdownMenuItem
+                key={m}
+                onClick={() => setCurrentModel(m)}
+                className="text-sm"
+              >
+                {m}
+                {m === currentModel && (
+                  <span className="ml-auto text-primary text-xs">✓</span>
+                )}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        {/* Search */}
+        <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground">
+          <Search className="w-4 h-4" />
+          <span className="sr-only">Search</span>
+        </Button>
+
+        {/* Notifications */}
+        <div className="relative">
+          <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground">
+            <Bell className="w-4 h-4" />
+            <span className="sr-only">Notifications</span>
+          </Button>
+          <Badge className="absolute -top-0.5 -right-0.5 h-4 w-4 p-0 flex items-center justify-center text-[10px] bg-primary text-primary-foreground rounded-full">
+            3
+          </Badge>
+        </div>
+
+        {/* Avatar */}
+        <Avatar className="h-7 w-7">
+          <AvatarImage src="https://api.dicebear.com/7.x/avataaars/svg?seed=aria" />
+          <AvatarFallback className="text-[10px] bg-primary text-primary-foreground">AP</AvatarFallback>
+        </Avatar>
+      </div>
+    </header>
+  )
+}

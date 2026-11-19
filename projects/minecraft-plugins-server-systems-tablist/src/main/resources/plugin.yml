@@ -1,0 +1,6 @@
+name: Tablist
+version: '${project.version}'
+main: org.me.tablist.Tablist
+api-version: 1.18
+authors: [ DaaanielTV ]
+description: Tablist

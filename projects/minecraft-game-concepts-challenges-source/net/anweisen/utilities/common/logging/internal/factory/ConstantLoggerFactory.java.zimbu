@@ -1,0 +1,36 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\logging\internal\factory\ConstantLoggerFactory.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE ConstantLoggerFactory_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\logging\internal\factory\ConstantLoggerFactory.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\logging\internal\factory\ConstantLoggerFactory.java), unveraendert, als Inline-Doku ----
+# package net.anweisen.utilities.common.logging.internal.factory;
+#
+# import javax.annotation.Nonnull;
+# import javax.annotation.Nullable;
+# import net.anweisen.utilities.common.logging.ILogger;
+# import net.anweisen.utilities.common.logging.ILoggerFactory;
+# import net.anweisen.utilities.common.logging.LogLevel;
+#
+# public class ConstantLoggerFactory implements ILoggerFactory {
+#    protected final ILogger logger;
+#
+#    public ConstantLoggerFactory(@Nonnull ILogger logger) {
+#       this.logger = logger;
+#    }
+#
+#    @Nonnull
+#    public ILogger forName(@Nullable String name) {
+#       return this.logger;
+#    }
+#
+#    public void setDefaultLevel(@Nonnull LogLevel level) {
+#       this.logger.setMinLevel(level);
+#    }
+# }
+#

@@ -1,0 +1,38 @@
+﻿# Zimbu-Port-Spiegel von: projects\startup-&-business-concepts-party-planner\convex\schema.ts
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE schema_ts
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\startup-&-business-concepts-party-planner\convex\schema.ts\n")
+  RETURN 0
+
+# ---- Original-Code (projects\startup-&-business-concepts-party-planner\convex\schema.ts), unveraendert, als Inline-Doku ----
+# import { defineSchema, defineTable } from "convex/server";
+# import { authTables } from "@convex-dev/auth/server";
+# import { v } from "convex/values";
+#
+# const applicationTables = {
+#   events: defineTable({
+#     title: v.string(),
+#     description: v.string(),
+#     date: v.string(),
+#     location: v.string(),
+#     hostId: v.id("users"),
+#   }).index("by_host", ["hostId"]),
+#   
+#   invitations: defineTable({
+#     eventId: v.id("events"),
+#     userId: v.id("users"),
+#     status: v.string(), // "pending", "accepted", "declined"
+#   })
+#     .index("by_event", ["eventId"])
+#     .index("by_user", ["userId"])
+# };
+#
+# export default defineSchema({
+#   ...authTables,
+#   ...applicationTables,
+# });
+#

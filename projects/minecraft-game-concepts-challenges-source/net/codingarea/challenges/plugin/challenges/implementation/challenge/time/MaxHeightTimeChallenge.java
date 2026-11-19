@@ -1,0 +1,102 @@
+package net.codingarea.challenges.plugin.challenges.implementation.challenge.time;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import net.anweisen.utilities.common.annotations.Since;
+import net.codingarea.challenges.plugin.challenges.type.abstraction.SettingModifier;
+import net.codingarea.challenges.plugin.challenges.type.helper.ChallengeHelper;
+import net.codingarea.challenges.plugin.content.Message;
+import net.codingarea.challenges.plugin.management.menu.MenuType;
+import net.codingarea.challenges.plugin.management.menu.generator.categorised.SettingCategory;
+import net.codingarea.challenges.plugin.management.scheduler.task.ScheduledTask;
+import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.boss.BarColor;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.player.PlayerMoveEvent;
+
+@Since("2.0")
+public class MaxHeightTimeChallenge extends SettingModifier {
+   public MaxHeightTimeChallenge() {
+      super(MenuType.CHALLENGES, 3, 20);
+      this.setCategory(SettingCategory.LIMITED_TIME);
+   }
+
+   protected void onEnable() {
+      this.bossbar.setContent((bossbar, player) -> {
+         int currentTime = this.getCurrentTime(player);
+         int maxTime = this.getValue() * 60;
+         bossbar.setTitle(Message.forName("bossbar-height-time-left").asString(player.getLocation().getBlockY(), maxTime - currentTime));
+         bossbar.setColor(BarColor.GREEN);
+         bossbar.setProgress((double)(1.0F - (float)currentTime / (float)maxTime));
+      });
+      this.bossbar.show();
+   }
+
+   protected void onDisable() {
+      this.bossbar.hide();
+   }
+
+   protected void onValueChange() {
+      this.bossbar.update();
+   }
+
+   @Nonnull
+   public ItemBuilder createDisplayItem() {
+      return new ItemBuilder(Material.PARROT_SPAWN_EGG, Message.forName("item-max-height-time-challenge"));
+   }
+
+   @Nullable
+   protected String[] getSettingsDescription() {
+      return Message.forName("item-time-seconds-description").asArray(this.getValue() * 60);
+   }
+
+   public void playValueChangeTitle() {
+      ChallengeHelper.playChallengeSecondsValueChangeTitle(this, this.getValue() * 60);
+   }
+
+   @EventHandler
+   public void onPlayerMove(@Nonnull PlayerMoveEvent event) {
+      if (this.shouldExecuteEffect()) {
+         if (!ignorePlayer(event.getPlayer())) {
+            if (event.getTo() != null) {
+               if (event.getFrom().getBlockY() != event.getTo().getBlockY()) {
+                  Bukkit.getScheduler().runTask(plugin, () -> {
+                     this.bossbar.update(event.getPlayer());
+                  });
+               }
+            }
+         }
+      }
+   }
+
+   @ScheduledTask(
+      ticks = 20
+   )
+   public void onSecond() {
+      broadcast(this::updateHeightTime);
+   }
+
+   private void updateHeightTime(@Nonnull Player player) {
+      if (ignorePlayer(player)) {
+         this.bossbar.update(player);
+      } else {
+         int time = this.getCurrentTime(player) + 1;
+         if (time > this.getValue() * 60) {
+            this.kill(player);
+         }
+
+         if (time < this.getValue() * 60) {
+            this.getPlayerData(player).set(String.valueOf(player.getLocation().getBlockY()), time);
+         }
+
+         this.bossbar.update(player);
+      }
+   }
+
+   private int getCurrentTime(@Nonnull Player player) {
+      return this.getPlayerData(player).getInt(String.valueOf(player.getLocation().getBlockY()), 0);
+   }
+}

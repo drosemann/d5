@@ -1,0 +1,18 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-webscrapemaster\dashboard.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE dashboard_py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-webscrapemaster\dashboard.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-webscrapemaster\dashboard.py), unveraendert, als Inline-Doku ----
+# # dashboard.py
+# # This module creates a dashboard to monitor scraping tasks.
+#
+# def show_dashboard():
+#     # Implement dashboard logic
+#     pass
+#

@@ -1,0 +1,54 @@
+﻿# Zimbu-Port-Spiegel von: projects\learning-projects-python-programming\old\01_uebung.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE M_01_uebung_py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\learning-projects-python-programming\old\01_uebung.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\learning-projects-python-programming\old\01_uebung.py), unveraendert, als Inline-Doku ----
+# # Lies eine Ganzzahl n ein, gib alle durch 3 teilbaren Zahlen von 1 bis n aus – jede in einer eigenen Zeile.
+#
+# n = int(input("Ganzzahl n: "))
+# for i in range(1,n + 1):
+#     if i % 3 == 0:
+#      print(i)
+#
+#
+# ##Zeile für Zeile, ganz klein:
+# ##n = int(input("Ganzzahl n: "))
+# ##input(...)
+# ##– hält das Programm an, zeigt den Text in der Klammer an,
+# ##– alles, was der Benutzer eintippt und mit Enter bestätigt,
+# ##kommt als Zeichenkette (str) zurück.
+# ##int(...)
+# ##– wandelt diese Zeichenkette sofort in eine ganze Zahl um.
+# ##– Würde der User „abc“ eingeben, kracht das Programm hier
+# ##(später lernen wir try/except, damit es nicht kracht).
+# ##n = ...
+# ##– das Ergebnis (die Zahl) wird in der Variablen n gespeichert,
+# ##damit wir sie öfter verwenden können.
+# ##for i in range(1, n + 1):
+# ##range(a, b) erzeugt eine Zahlenfolge von a bis b-1.
+# ##Wir wollen aber auch die Zahl n selbst prüfen, deshalb n + 1.
+# ##Beispiel: n = 12 → range(1, 13) liefert 1,2,3,…,12.
+# ##for i in ...
+# ##– die Schleife läuft diese Folge der Reihe nach ab.
+# ##– Bei jedem Durchlauf steckt die aktuelle Zahl in der Variablen i.
+# ##– Nach dem letzten Element endet die Schleife automatisch.
+# ##if i % 3 == 0:
+# ##% ist der Modulo-Operator – er liefert den Rest einer Division.
+# ##7 % 3 → 1, weil 7 : 3 = 2 Rest 1
+# ##9 % 3 → 0, weil 9 : 3 = 3 Rest 0
+# ##== 0 prüft, ob dieser Rest genau 0 ist.
+# ##Nur dann ist die Zahl durch 3 teilbar.
+# ##print(i)
+# ##– wird nur ausgeführt, wenn die Bedingung in Zeile 3 wahr ist.
+# ##– print gibt den aktuellen Wert von i aus und springt in die nächste Zeile
+# ##(das wollte die Aufgabe: „jede in einer eigenen Zeile“).
+# ##Fertig – mehr steckt nicht drin.
+# ##Kurz gesagt:
+# ##„Hole eine Zahl, zähle von 1 bis diese Zahl, prüfe jedes Mal, ob der Zähler durch 3 teilbar ist – wenn ja, gib ihn aus.“
+#

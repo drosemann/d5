@@ -1,0 +1,86 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\spigot\command\WeatherCommand.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE WeatherCommand_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\spigot\command\WeatherCommand.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\spigot\command\WeatherCommand.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.spigot.command;
+#
+# import java.util.ArrayList;
+# import java.util.List;
+# import javax.annotation.Nonnull;
+# import net.codingarea.challenges.plugin.content.Message;
+# import net.codingarea.challenges.plugin.content.Prefix;
+# import net.codingarea.challenges.plugin.utils.bukkit.command.Completer;
+# import net.codingarea.challenges.plugin.utils.bukkit.command.PlayerCommand;
+# import net.codingarea.challenges.plugin.utils.misc.Utils;
+# import org.bukkit.World;
+# import org.bukkit.command.CommandSender;
+# import org.bukkit.entity.Player;
+# import org.jetbrains.annotations.Nullable;
+#
+# public class WeatherCommand implements PlayerCommand, Completer {
+#    public void onCommand(@Nonnull Player player, @Nonnull String[] args) throws Exception {
+#       if (args.length == 0) {
+#          Message.forName("syntax").send(player, Prefix.CHALLENGES, "weather <sun/clear/rain/thunder>");
+#       } else {
+#          World world = player.getWorld();
+#          String var4 = args[0].toLowerCase();
+#          byte var5 = -1;
+#          switch(var4.hashCode()) {
+#          case -1334895388:
+#             if (var4.equals("thunder")) {
+#                var5 = 3;
+#             }
+#             break;
+#          case 114252:
+#             if (var4.equals("sun")) {
+#                var5 = 1;
+#             }
+#             break;
+#          case 3492756:
+#             if (var4.equals("rain")) {
+#                var5 = 2;
+#             }
+#             break;
+#          case 94746189:
+#             if (var4.equals("clear")) {
+#                var5 = 0;
+#             }
+#          }
+#
+#          switch(var5) {
+#          case 0:
+#          case 1:
+#             world.setStorm(false);
+#             world.setThundering(false);
+#             Message.forName("command-weather-set-clear").send(player, Prefix.CHALLENGES);
+#             break;
+#          case 2:
+#             world.setThundering(false);
+#             world.setStorm(true);
+#             Message.forName("command-weather-set-rain").send(player, Prefix.CHALLENGES);
+#             break;
+#          case 3:
+#             world.setStorm(true);
+#             world.setThundering(true);
+#             Message.forName("command-weather-set-thunder").send(player, Prefix.CHALLENGES);
+#             break;
+#          default:
+#             Message.forName("syntax").send(player, Prefix.CHALLENGES, "weather <sun/clear/rain/thunder>");
+#          }
+#
+#       }
+#    }
+#
+#    @Nullable
+#    public List onTabComplete(@Nonnull CommandSender sender, @Nonnull String[] args) {
+#       return (List)(args.length > 1 ? new ArrayList() : Utils.filterRecommendations(args[0], "sun", "clear", "rain", "thunder"));
+#    }
+# }
+#

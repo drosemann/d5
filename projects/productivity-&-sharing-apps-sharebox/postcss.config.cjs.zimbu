@@ -1,0 +1,17 @@
+﻿# Zimbu-Port-Spiegel von: projects\productivity-&-sharing-apps-sharebox\postcss.config.cjs
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE postcss_config_cjs
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\productivity-&-sharing-apps-sharebox\postcss.config.cjs\n")
+  RETURN 0
+
+# ---- Original-Code (projects\productivity-&-sharing-apps-sharebox\postcss.config.cjs), unveraendert, als Inline-Doku ----
+# module.exports = {
+#     plugins: {
+#       tailwindcss: {},
+#       autoprefixer: {},
+#     },
+#   }

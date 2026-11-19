@@ -1,0 +1,28 @@
+import React, { useEffect, useState } from "react";
+import { Link, Outlet } from "react-router-dom";
+
+export function Layout() {
+  const [bereit, setBereit] = useState("Prüfe Backend …");
+  useEffect(() => {
+    fetch("/health/ready").then(r => r.json()).then(d => setBereit(d.demo_modus ? "Bereit (Demo-Modus)" : "Bereit")).catch(() => setBereit("Backend nicht erreichbar (Demo-Daten sichtbar)"));
+  }, []);
+  return (
+    <div className="layout">
+      <aside className="seite">
+        <h1>Agentenplattform</h1>
+        <p style={{color:"var(--muted)"}}>{bereit}</p>
+        <nav aria-label="Hauptbereiche">
+          <Link className="fokus-sichtbar" to="/">Dashboard</Link>
+          <Link className="fokus-sichtbar" to="/agenten">Agenten</Link>
+          <Link className="fokus-sichtbar" to="/chat">Chat & Aufgaben</Link>
+          <Link className="fokus-sichtbar" to="/angebote">Angebote</Link>
+          <Link className="fokus-sichtbar" to="/kalender">Kalender</Link>
+          <Link className="fokus-sichtbar" to="/sicherheit">Standort & SOS</Link>
+          <Link className="fokus-sichtbar" to="/freigaben">Freigaben</Link>
+          <Link className="fokus-sichtbar" to="/einstellungen">Einstellungen</Link>
+        </nav>
+      </aside>
+      <main className="inhalt"><Outlet /></main>
+    </div>
+  );
+}

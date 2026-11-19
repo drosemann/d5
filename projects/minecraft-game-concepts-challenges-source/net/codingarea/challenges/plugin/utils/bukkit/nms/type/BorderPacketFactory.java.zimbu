@@ -1,0 +1,23 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\utils\bukkit\nms\type\BorderPacketFactory.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE BorderPacketFactory_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\utils\bukkit\nms\type\BorderPacketFactory.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\utils\bukkit\nms\type\BorderPacketFactory.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.utils.bukkit.nms.type;
+#
+# public abstract class BorderPacketFactory {
+#    public abstract Object center(PacketBorder var1);
+#
+#    public abstract Object size(PacketBorder var1);
+#
+#    public abstract Object warningDelay(PacketBorder var1);
+#
+#    public abstract Object warningDistance(PacketBorder var1);
+# }
+#

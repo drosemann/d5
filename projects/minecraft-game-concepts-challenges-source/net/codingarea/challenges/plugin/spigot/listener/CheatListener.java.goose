@@ -1,0 +1,108 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/spigot/listener/CheatListener.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/spigot/listener/CheatListener.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/spigot/listener/CheatListener.java), unveraendert, als Inline-Doku ----
+// package net.codingarea.challenges.plugin.spigot.listener;
+//
+// import javax.annotation.Nonnull;
+// import net.anweisen.utilities.bukkit.utils.logging.Logger;
+// import net.codingarea.challenges.plugin.Challenges;
+// import net.codingarea.challenges.plugin.content.Message;
+// import net.codingarea.challenges.plugin.content.Prefix;
+// import net.codingarea.challenges.plugin.utils.misc.NameHelper;
+// import org.bukkit.Bukkit;
+// import org.bukkit.GameMode;
+// import org.bukkit.entity.Player;
+// import org.bukkit.event.EventHandler;
+// import org.bukkit.event.EventPriority;
+// import org.bukkit.event.Listener;
+// import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+// import org.bukkit.event.player.PlayerGameModeChangeEvent;
+// import org.bukkit.event.player.PlayerToggleSneakEvent;
+//
+// public class CheatListener implements Listener {
+//    public CheatListener() {
+//       Bukkit.getOnlinePlayers().stream().filter((player) -> {
+//          return player.getGameMode() == GameMode.CREATIVE;
+//       }).findFirst().ifPresent(this::handleCheatsDetected);
+//    }
+//
+//    @EventHandler(
+//       priority = EventPriority.MONITOR,
+//       ignoreCancelled = true
+//    )
+//    public void onGameModeChange(@Nonnull PlayerGameModeChangeEvent event) {
+//       if (event.getNewGameMode() == GameMode.CREATIVE) {
+//          this.handleCheatsDetected(event.getPlayer());
+//       }
+//
+//    }
+//
+//    @EventHandler(
+//       priority = EventPriority.MONITOR
+//    )
+//    public void onSneak(PlayerToggleSneakEvent event) {
+//       if (event.isSneaking()) {
+//          ;
+//       }
+//    }
+//
+//    @EventHandler(
+//       priority = EventPriority.MONITOR,
+//       ignoreCancelled = true
+//    )
+//    public void onCommand(@Nonnull PlayerCommandPreprocessEvent event) {
+//       String[] commands = new String[]{"give", "replaceitem", "effect", "i", "summon", "enchant", "heal", "kill", "setblock", "fill"};
+//       String message = event.getMessage().toLowerCase();
+//       if (!message.isEmpty()) {
+//          String[] args = message.substring(1).trim().split(" ");
+//          String commandName = args[0];
+//          if (commandName.contains(":")) {
+//             commandName = commandName.substring(commandName.indexOf(58) + 1);
+//          }
+//
+//          String[] var6 = commands;
+//          int var7 = commands.length;
+//
+//          for(int var8 = 0; var8 < var7; ++var8) {
+//             String command = var6[var8];
+//             if (commandName.equalsIgnoreCase("/" + command) && this.hasPermission(event.getPlayer(), command)) {
+//                this.handleCheatsDetected(event.getPlayer());
+//                break;
+//             }
+//          }
+//
+//       }
+//    }
+//
+//    private boolean hasPermission(@Nonnull Player player, @Nonnull String command) {
+//       String[] prefixes = new String[]{"challenges.", "minecraft.command.", "essentials.", "bukkit."};
+//       String[] var4 = prefixes;
+//       int var5 = prefixes.length;
+//
+//       for(int var6 = 0; var6 < var5; ++var6) {
+//          String prefix = var4[var6];
+//          if (player.hasPermission(prefix + command)) {
+//             return true;
+//          }
+//       }
+//
+//       return false;
+//    }
+//
+//    private void handleCheatsDetected(@Nonnull Player player) {
+//       if (!Challenges.getInstance().getServerManager().hasCheated()) {
+//          if (Challenges.getInstance().getStatsManager().isNoStatsAfterCheating()) {
+//             Challenges.getInstance().getServerManager().setHasCheated();
+//             Logger.info("Detected cheating: No more stats can be collected");
+//             Message.forName("cheats-detected").broadcast(Prefix.CHALLENGES, NameHelper.getName(player));
+//          }
+//       }
+//    }
+// }
+//

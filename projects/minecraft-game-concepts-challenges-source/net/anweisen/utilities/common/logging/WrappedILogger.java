@@ -1,0 +1,129 @@
+package net.anweisen.utilities.common.logging;
+
+import java.io.PrintStream;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import net.anweisen.utilities.common.logging.lib.JavaILogger;
+import net.anweisen.utilities.common.logging.lib.Slf4jILogger;
+
+public interface WrappedILogger extends ILogger {
+   @Nonnull
+   ILogger getWrappedLogger();
+
+   default void log(@Nonnull LogLevel level, @Nullable String message, @Nonnull Object... args) {
+      this.getWrappedLogger().log(level, message, args);
+   }
+
+   default void log(@Nonnull LogLevel level, @Nullable Object message, @Nonnull Object... args) {
+      this.getWrappedLogger().log(level, message, args);
+   }
+
+   default void error(@Nullable String message, @Nonnull Object... args) {
+      this.getWrappedLogger().error(message, args);
+   }
+
+   default void error(@Nullable Object message, @Nonnull Object... args) {
+      this.getWrappedLogger().error(message, args);
+   }
+
+   default void warn(@Nullable String message, @Nonnull Object... args) {
+      this.getWrappedLogger().warn(message, args);
+   }
+
+   default void warn(@Nullable Object message, @Nonnull Object... args) {
+      this.getWrappedLogger().warn(message, args);
+   }
+
+   default void info(@Nullable String message, @Nonnull Object... args) {
+      this.getWrappedLogger().info(message, args);
+   }
+
+   default void info(@Nullable Object message, @Nonnull Object... args) {
+      this.getWrappedLogger().info(message, args);
+   }
+
+   default void status(@Nullable String message, @Nonnull Object... args) {
+      this.getWrappedLogger().status(message, args);
+   }
+
+   default void status(@Nullable Object message, @Nonnull Object... args) {
+      this.getWrappedLogger().status(message, args);
+   }
+
+   default void extended(@Nullable String message, @Nonnull Object... args) {
+      this.getWrappedLogger().extended(message, args);
+   }
+
+   default void extended(@Nullable Object message, @Nonnull Object... args) {
+      this.getWrappedLogger().extended(message, args);
+   }
+
+   default void debug(@Nullable String message, @Nonnull Object... args) {
+      this.getWrappedLogger().debug(message, args);
+   }
+
+   default void debug(@Nullable Object message, @Nonnull Object... args) {
+      this.getWrappedLogger().debug(message, args);
+   }
+
+   default void trace(@Nullable String message, @Nonnull Object... args) {
+      this.getWrappedLogger().trace(message, args);
+   }
+
+   default void trace(@Nullable Object message, @Nonnull Object... args) {
+      this.getWrappedLogger().trace(message, args);
+   }
+
+   default boolean isLevelEnabled(@Nonnull LogLevel level) {
+      return this.getWrappedLogger().isLevelEnabled(level);
+   }
+
+   default boolean isTraceEnabled() {
+      return this.getWrappedLogger().isTraceEnabled();
+   }
+
+   default boolean isDebugEnabled() {
+      return this.getWrappedLogger().isDebugEnabled();
+   }
+
+   default boolean isExtendedEnabled() {
+      return this.getWrappedLogger().isExtendedEnabled();
+   }
+
+   default boolean isInfoEnabled() {
+      return this.getWrappedLogger().isInfoEnabled();
+   }
+
+   default boolean isWarnEnabled() {
+      return this.getWrappedLogger().isWarnEnabled();
+   }
+
+   default boolean isErrorEnabled() {
+      return this.getWrappedLogger().isErrorEnabled();
+   }
+
+   @Nonnull
+   default LogLevel getMinLevel() {
+      return this.getWrappedLogger().getMinLevel();
+   }
+
+   @Nonnull
+   default ILogger setMinLevel(@Nonnull LogLevel level) {
+      return this.getWrappedLogger().setMinLevel(level);
+   }
+
+   @Nonnull
+   default Slf4jILogger slf4j() {
+      return this.getWrappedLogger().slf4j();
+   }
+
+   @Nonnull
+   default JavaILogger java() {
+      return this.getWrappedLogger().java();
+   }
+
+   @Nonnull
+   default PrintStream asPrintStream(@Nonnull LogLevel level) {
+      return this.getWrappedLogger().asPrintStream(level);
+   }
+}

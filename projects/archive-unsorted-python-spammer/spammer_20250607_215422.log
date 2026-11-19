@@ -1,0 +1,10 @@
+2025-06-07 21:54:22,636 - INFO - Program started
+2025-06-07 21:54:27,282 - INFO - Starting meme spam
+2025-06-07 21:54:31,531 - ERROR - Failed to get meme. Status code: 401
+2025-06-07 21:54:33,453 - ERROR - Failed to get meme. Status code: 401
+2025-06-07 21:54:36,015 - ERROR - Failed to get meme. Status code: 401
+2025-06-07 21:54:38,339 - ERROR - Failed to get meme. Status code: 401
+2025-06-07 21:54:40,259 - ERROR - Failed to get meme. Status code: 401
+2025-06-07 21:54:42,364 - ERROR - Failed to get meme. Status code: 401
+2025-06-07 21:54:44,574 - ERROR - Failed to get meme. Status code: 401
+2025-06-07 21:54:45,322 - INFO - Program stopped by user

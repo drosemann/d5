@@ -1,0 +1,121 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/database/SQLColumn.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/database/SQLColumn.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/database/SQLColumn.java), unveraendert, als Inline-Doku ----
+// package net.anweisen.utilities.database;
+//
+// import java.util.Arrays;
+// import javax.annotation.Nonnegative;
+// import javax.annotation.Nonnull;
+// import javax.annotation.Nullable;
+// import net.anweisen.utilities.common.misc.ReflectionUtils;
+// import net.anweisen.utilities.common.misc.StringUtils;
+//
+// public final class SQLColumn {
+//    private final String name;
+//    private final String type;
+//    private final String param;
+//
+//    public SQLColumn(@Nonnull String name, @Nonnull String type, @Nullable String param) {
+//       if (name.contains(" ")) {
+//          throw new IllegalArgumentException("Column name cannot contain spaces");
+//       } else if (type.contains(" ")) {
+//          throw new IllegalArgumentException("Column type cannot contain spaces");
+//       } else {
+//          this.name = name;
+//          this.type = type;
+//          this.param = param;
+//       }
+//    }
+//
+//    public SQLColumn(@Nonnull String name, @Nonnull String type, @Nonnegative int size) {
+//       this(name, type, String.valueOf(size));
+//    }
+//
+//    public SQLColumn(@Nonnull String name, @Nonnull String type, @Nonnegative int size, @Nonnegative int d) {
+//       this(name, type, String.valueOf(size), String.valueOf(d));
+//    }
+//
+//    public SQLColumn(@Nonnull String name, @Nonnull String type, @Nonnull String... params) {
+//       this(name, type, StringUtils.getArrayAsString(params, ", "));
+//    }
+//
+//    public SQLColumn(@Nonnull String name, @Nonnull SQLColumn.Type type, @Nullable String param) {
+//       this(name, type.name(), param);
+//    }
+//
+//    public SQLColumn(@Nonnull String name, @Nonnull SQLColumn.Type type, @Nonnegative int size) {
+//       this(name, type.name(), size);
+//    }
+//
+//    public SQLColumn(@Nonnull String name, @Nonnull SQLColumn.Type type, @Nonnegative int size, @Nonnegative int d) {
+//       this(name, type.name(), size, d);
+//    }
+//
+//    public SQLColumn(@Nonnull String name, @Nonnull SQLColumn.Type type, @Nonnull String... params) {
+//       this(name, type.name(), params);
+//    }
+//
+//    public SQLColumn(@Nonnull String name, @Nonnull SQLColumn.Type type, @Nonnull SQLColumn.Type... types) {
+//       this(name, type, (String[])Arrays.stream(types).map(Enum::name).toArray((x$0) -> {
+//          return new String[x$0];
+//       }));
+//    }
+//
+//    @Nonnull
+//    public String getName() {
+//       return this.name;
+//    }
+//
+//    @Nonnull
+//    public String getType() {
+//       return this.type;
+//    }
+//
+//    @Nullable
+//    public SQLColumn.Type findType() {
+//       return (SQLColumn.Type)ReflectionUtils.getEnumOrNull(this.type.toUpperCase(), SQLColumn.Type.class);
+//    }
+//
+//    @Nullable
+//    public String getParam() {
+//       return this.param;
+//    }
+//
+//    public String toString() {
+//       return this.name + " " + this.type + (this.param == null ? "" : "(" + this.param + ")");
+//    }
+//
+//    public static enum Type {
+//       CHAR,
+//       VARCHAR,
+//       BINARY,
+//       VARBINARY,
+//       TINYBLOB,
+//       TINYTEXT,
+//       TEXT,
+//       BLOB,
+//       MEDIUMTEXT,
+//       MEDIUMBLOB,
+//       LONGTEXT,
+//       LONGBLOB,
+//       ENUM,
+//       SET,
+//       BIT,
+//       TINYINT,
+//       BOOLEAN,
+//       SMALLINT,
+//       MEDIUMINT,
+//       INT,
+//       BIGINT,
+//       FLOAT,
+//       DOUBLE,
+//       DECIMAL;
+//    }
+// }
+//

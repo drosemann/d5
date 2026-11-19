@@ -1,0 +1,142 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\type\abstraction\ForceBattleDisplayGoal.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE ForceBattleDisplayGoal_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\type\abstraction\ForceBattleDisplayGoal.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\type\abstraction\ForceBattleDisplayGoal.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.challenges.type.abstraction;
+#
+# import java.util.HashMap;
+# import java.util.Iterator;
+# import java.util.Map;
+# import net.anweisen.utilities.common.config.Document;
+# import net.codingarea.challenges.plugin.challenges.implementation.goal.forcebattle.targets.ForceTarget;
+# import net.codingarea.challenges.plugin.content.Message;
+# import net.codingarea.challenges.plugin.spigot.events.PlayerIgnoreStatusChangeEvent;
+# import org.bukkit.World;
+# import org.bukkit.entity.ArmorStand;
+# import org.bukkit.entity.Entity;
+# import org.bukkit.entity.EntityType;
+# import org.bukkit.entity.Player;
+# import org.bukkit.event.EventHandler;
+# import org.bukkit.event.EventPriority;
+# import org.bukkit.event.player.PlayerQuitEvent;
+# import org.bukkit.event.player.PlayerTeleportEvent;
+# import org.bukkit.inventory.ItemStack;
+# import org.jetbrains.annotations.NotNull;
+#
+# public abstract class ForceBattleDisplayGoal extends ForceBattleGoal {
+#    private Map displayStands;
+#
+#    public ForceBattleDisplayGoal(@NotNull Message title) {
+#       super(title);
+#    }
+#
+#    protected void onEnable() {
+#       this.displayStands = new HashMap();
+#       broadcastFiltered(this::updateDisplayStand);
+#       super.onEnable();
+#    }
+#
+#    protected void onDisable() {
+#       super.onDisable();
+#       this.displayStands.values().forEach(Entity::remove);
+#       this.displayStands = null;
+#    }
+#
+#    public void updateDisplayStand(Player player) {
+#       ArmorStand armorStand = (ArmorStand)this.displayStands.computeIfAbsent(player, (player1) -> {
+#          World world = player1.getWorld();
+#          ArmorStand entity = (ArmorStand)world.spawnEntity(player1.getLocation().clone().add(0.0D, 2.0D, 0.0D), EntityType.ARMOR_STAND);
+#          entity.setVisible(false);
+#          entity.setInvulnerable(true);
+#          entity.setGravity(false);
+#          entity.setMarker(true);
+#          entity.setSilent(true);
+#          entity.setSmall(true);
+#          return entity;
+#       });
+#       armorStand.setVelocity(player.getVelocity().clone().multiply(2));
+#       armorStand.teleport(player.getLocation().clone().add(0.0D, 2.0D, 0.0D));
+#       this.handleDisplayStandUpdate(player, armorStand);
+#    }
+#
+#    public void handleDisplayStandUpdate(@NotNull Player player, @NotNull ArmorStand armorStand) {
+#       if (this.currentTarget.containsKey(player.getUniqueId())) {
+#          ((ForceTarget)this.currentTarget.get(player.getUniqueId())).updateDisplayStand(armorStand);
+#       } else if (armorStand.getEquipment().getHelmet() != null) {
+#          armorStand.getEquipment().setHelmet((ItemStack)null);
+#       }
+#
+#    }
+#
+#    public void loadGameState(@NotNull Document document) {
+#       super.loadGameState(document);
+#       if (this.isEnabled()) {
+#          broadcastFiltered(this::updateDisplayStand);
+#       }
+#
+#    }
+#
+#    public void setRandomTarget(Player player) {
+#       super.setRandomTarget(player);
+#       this.updateDisplayStand(player);
+#    }
+#
+#    @EventHandler(
+#       ignoreCancelled = true
+#    )
+#    public void onTeleport(PlayerTeleportEvent event) {
+#       if (this.shouldExecuteEffect()) {
+#          if (!ignorePlayer(event.getPlayer())) {
+#             this.updateDisplayStand(event.getPlayer());
+#          }
+#       }
+#    }
+#
+#    @EventHandler
+#    public void onStatusChange(PlayerIgnoreStatusChangeEvent event) {
+#       if (this.shouldExecuteEffect()) {
+#          if (event.isNotIgnored()) {
+#             this.setRandomTargetIfCurrentlyNone(event.getPlayer());
+#             this.updateDisplayStand(event.getPlayer());
+#          } else {
+#             ArmorStand stand = (ArmorStand)this.displayStands.remove(event.getPlayer());
+#             if (stand != null) {
+#                stand.remove();
+#             }
+#          }
+#
+#       }
+#    }
+#
+#    public void onTick() {
+#       super.onTick();
+#       Iterator var1 = this.displayStands.keySet().iterator();
+#
+#       while(var1.hasNext()) {
+#          Player player = (Player)var1.next();
+#          this.updateDisplayStand(player);
+#       }
+#
+#    }
+#
+#    @EventHandler(
+#       priority = EventPriority.HIGH
+#    )
+#    public void onQuit(PlayerQuitEvent event) {
+#       if (this.shouldExecuteEffect()) {
+#          ArmorStand stand = (ArmorStand)this.displayStands.remove(event.getPlayer());
+#          if (stand != null) {
+#             stand.remove();
+#          }
+#
+#       }
+#    }
+# }
+#

@@ -1,0 +1,78 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-infra-pilot/services/management-panel/src/components/KnowledgeBase/ArticleList.tsx
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-infra-pilot/services/management-panel/src/components/KnowledgeBase/ArticleList.tsx");
+}
+
+// ---- Original-Code (projects/github-repos-infra-pilot/services/management-panel/src/components/KnowledgeBase/ArticleList.tsx), unveraendert, als Inline-Doku ----
+// import { useState } from 'react';
+// import { Search, Plus, FileText, Trash2 } from 'lucide-react';
+// import type { KBArticle } from '../../lib/types';
+//
+// interface ArticleListProps {
+//   articles: KBArticle[];
+//   selectedId: string | null;
+//   onSelect: (id: string) => void;
+//   onCreate: () => void;
+//   onDelete: (id: string) => void;
+//   onSearch: (query: string) => void;
+//   searchQuery: string;
+// }
+//
+// export function ArticleList({ articles, selectedId, onSelect, onCreate, onDelete, onSearch, searchQuery }: ArticleListProps) {
+//   return (
+//     <div className="flex flex-col h-full">
+//       <div className="flex items-center gap-2 mb-4">
+//         <div className="flex items-center gap-2 flex-1 px-3 py-2 bg-white/[0.04] rounded-lg border border-white/10 focus-within:border-blue-500">
+//           <Search className="w-4 h-4 text-white/45" />
+//           <input
+//             value={searchQuery}
+//             onChange={e => onSearch(e.target.value)}
+//             placeholder="Search articles..."
+//             className="flex-1 bg-transparent text-sm text-white placeholder-slate-400 outline-none"
+//           />
+//         </div>
+//         <button onClick={onCreate} className="primary-button" title="New Article">
+//           <Plus className="w-4 h-4" />
+//         </button>
+//       </div>
+//
+//       <div className="flex-1 overflow-y-auto space-y-1">
+//         {articles.length === 0 ? (
+//           <div className="text-center py-8">
+//             <FileText className="w-8 h-8 text-white/60 mx-auto mb-2" />
+//             <p className="text-sm text-white/40">No articles found</p>
+//           </div>
+//         ) : articles.map(article => (
+//           <div
+//             key={article.id}
+//             onClick={() => onSelect(article.id)}
+//             className={`group flex items-center gap-3 px-3 py-2.5 rounded-lg cursor-pointer transition-colors ${
+//               selectedId === article.id ? 'bg-white/10 border border-white/20' : 'hover:bg-white/10 border border-transparent'
+//             }`}
+//           >
+//             <FileText className={`w-4 h-4 ${selectedId === article.id ? 'text-blue-400' : 'text-white/40'}`} />
+//             <div className="flex-1 min-w-0">
+//               <p className={`text-sm truncate ${selectedId === article.id ? 'text-white' : 'text-white/60'}`}>
+//                 {article.title}
+//               </p>
+//               <p className="text-xs text-white/40 truncate">
+//                 {article.category} Â· {new Date(article.updated_at).toLocaleDateString()}
+//               </p>
+//             </div>
+//             <button
+//               onClick={(e) => { e.stopPropagation(); onDelete(article.id); }}
+//               className="p-1 text-white/40 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-all"
+//               title="Delete article"
+//             >
+//               <Trash2 className="w-3.5 h-3.5" />
+//             </button>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
+//

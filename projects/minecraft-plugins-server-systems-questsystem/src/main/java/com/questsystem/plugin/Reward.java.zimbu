@@ -1,0 +1,34 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-plugins-server-systems-questsystem\src\main\java\com\questsystem\plugin\Reward.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE Reward_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-plugins-server-systems-questsystem\src\main\java\com\questsystem\plugin\Reward.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-plugins-server-systems-questsystem\src\main\java\com\questsystem\plugin\Reward.java), unveraendert, als Inline-Doku ----
+# package com.questsystem.plugin;
+#
+# import org.bukkit.inventory.ItemStack;
+#
+# import java.util.List;
+#
+# public class Reward {
+#     private final int xp;
+#     private final List<ItemStack> items;
+#
+#     public Reward(int xp, List<ItemStack> items) {
+#         this.xp = xp;
+#         this.items = items;
+#     }
+#
+#     public int getXp() {
+#         return xp;
+#     }
+#
+#     public List<ItemStack> getItems() {
+#         return items;
+#     }
+# }

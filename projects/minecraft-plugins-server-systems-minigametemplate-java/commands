@@ -1,0 +1,8 @@
+/set: Dieser Befehl wird verwendet, um verschiedene Spielobjekte zu setzen.
+/set teamspawn: Setzt den Team-Spawnpunkt an der aktuellen Position des Spielers.
+/set kiste: Setzt eine Kiste an der aktuellen Position des Spielers.
+/set eisenspawner: Setzt einen Eisenspawner (Eisenblock) an der aktuellen Position des Spielers.
+/set bett: Setzt einen “Bett”-Block (Bedrock) an der aktuellen Position des Spielers und fügt ihn zur Liste der zu zerstörenden Blöcke hinzu.
+/set monster: Spawnt ein Monster (Zombie) an der aktuellen Position des Spielers und fügt es zur Liste der zu tötenden Monster hinzu.
+/lobby: Dieser Befehl teleportiert den Spieler zur Wartelobby.
+/lobby: Teleportiert den Spieler zur vordefinierten Wartelobby-Position.

@@ -1,0 +1,4 @@
+name: ElytraPlugin
+version: 1.0
+main: com.example.elytraplugin.ElytraPlugin
+api-version: '1.21.4' 

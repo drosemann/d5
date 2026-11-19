@@ -1,0 +1,58 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/database/internal/sql/sqlite/SQLiteDatabase.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/database/internal/sql/sqlite/SQLiteDatabase.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/database/internal/sql/sqlite/SQLiteDatabase.java), unveraendert, als Inline-Doku ----
+// package net.anweisen.utilities.database.internal.sql.sqlite;
+//
+// import java.io.File;
+// import java.io.IOException;
+// import javax.annotation.Nonnull;
+// import net.anweisen.utilities.common.misc.FileUtils;
+// import net.anweisen.utilities.database.DatabaseConfig;
+// import net.anweisen.utilities.database.action.DatabaseListTables;
+// import net.anweisen.utilities.database.exceptions.DatabaseException;
+// import net.anweisen.utilities.database.internal.sql.abstraction.AbstractSQLDatabase;
+// import net.anweisen.utilities.database.internal.sql.sqlite.list.SQLiteListTables;
+//
+// public class SQLiteDatabase extends AbstractSQLDatabase {
+//    protected final File file;
+//
+//    public SQLiteDatabase(@Nonnull DatabaseConfig config) {
+//       super(config);
+//       this.file = new File(config.getFile());
+//    }
+//
+//    public void connect() throws DatabaseException {
+//       try {
+//          FileUtils.createFilesIfNecessary(this.file);
+//       } catch (IOException var2) {
+//          throw new DatabaseException(var2);
+//       }
+//
+//       super.connect();
+//    }
+//
+//    protected String createUrl() {
+//       return "jdbc:sqlite:" + this.file;
+//    }
+//
+//    @Nonnull
+//    public DatabaseListTables listTables() {
+//       return new SQLiteListTables(this);
+//    }
+//
+//    static {
+//       try {
+//          Class.forName("org.sqlite.JDBC");
+//       } catch (ClassNotFoundException var1) {
+//          LOGGER.error("Could not load sqlite driver");
+//       }
+//
+//    }
+// }
+//

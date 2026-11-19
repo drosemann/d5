@@ -1,0 +1,51 @@
+package com.autosaver.plugin;
+
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
+
+public class AutoSaverPlugin extends JavaPlugin {
+    private int saveInterval;
+
+    @Override
+    public void onEnable() {
+        getLogger().info("AutoSaver has been enabled!");
+        this.getCommand("autosaver").setExecutor(new ReloadCommand(this));
+        loadConfig();
+        startAutoSaveTask();
+    }
+
+    @Override
+    public void onDisable() {
+        getLogger().info("AutoSaver has been disabled!");
+    }
+
+    private void loadConfig() {
+        // Load the save interval from the configuration
+        saveInterval = getConfig().getInt("save-interval", 30); // Default to 30 seconds
+    }
+
+    private void startAutoSaveTask() {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                // Save all worlds
+                Bukkit.getWorlds().forEach(world -> {
+                    world.save();
+                });
+                getLogger().info("Worlds have been saved.");
+            }
+        }.runTaskTimer(this, saveInterval * 20L, saveInterval * 20L); // Convert seconds to ticks
+    }
+
+    public void reloadConfig() {
+        getLogger().info("Reloading AutoSaver configuration...");
+        try {
+            super.reloadConfig(); // Correctly reloads the configuration from the file
+            loadConfig(); // Reload the save interval
+            getLogger().info("AutoSaver configuration reloaded successfully.");
+        } catch (Exception e) {
+            getLogger().severe("Failed to reload AutoSaver configuration: " + e.getMessage());
+        }
+    }
+}

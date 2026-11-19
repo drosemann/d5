@@ -1,0 +1,170 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/management/server/scoreboard/ChallengeBossBar.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/management/server/scoreboard/ChallengeBossBar.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/management/server/scoreboard/ChallengeBossBar.java), unveraendert, als Inline-Doku ----
+// package net.codingarea.challenges.plugin.management.server.scoreboard;
+//
+// import java.util.Map;
+// import java.util.concurrent.ConcurrentHashMap;
+// import java.util.function.BiConsumer;
+// import javax.annotation.Nonnull;
+// import net.anweisen.utilities.bukkit.utils.logging.Logger;
+// import net.anweisen.utilities.bukkit.utils.misc.MinecraftVersion;
+// import net.codingarea.challenges.plugin.ChallengeAPI;
+// import net.codingarea.challenges.plugin.Challenges;
+// import net.codingarea.challenges.plugin.content.Message;
+// import net.codingarea.challenges.plugin.utils.bukkit.nms.NMSUtils;
+// import net.md_5.bungee.api.chat.BaseComponent;
+// import net.md_5.bungee.api.chat.TextComponent;
+// import org.bukkit.Bukkit;
+// import org.bukkit.boss.BarColor;
+// import org.bukkit.boss.BarFlag;
+// import org.bukkit.boss.BarStyle;
+// import org.bukkit.boss.BossBar;
+// import org.bukkit.entity.Player;
+//
+// public final class ChallengeBossBar {
+//    private final Map bossbars = new ConcurrentHashMap();
+//    private BiConsumer content = (bossbar, player) -> {
+//    };
+//
+//    private BossBar createBossbar(@Nonnull ChallengeBossBar.BossBarInstance instance) {
+//       BossBar bossbar = Bukkit.createBossBar(instance.title.toPlainText(), instance.color, instance.style, new BarFlag[0]);
+//       bossbar.setProgress(instance.progress);
+//       return bossbar;
+//    }
+//
+//    private void apply(@Nonnull BossBar bossbar, @Nonnull ChallengeBossBar.BossBarInstance instance) {
+//       if (MinecraftVersion.current().isNewerOrEqualThan(MinecraftVersion.V1_20_5)) {
+//          bossbar.setTitle(instance.title.toPlainText());
+//       } else {
+//          NMSUtils.setBossBarTitle(bossbar, instance.title);
+//       }
+//
+//       bossbar.setColor(instance.color);
+//       bossbar.setStyle(instance.style);
+//       bossbar.setProgress(instance.progress);
+//       bossbar.setVisible(instance.visible);
+//    }
+//
+//    public void setContent(@Nonnull BiConsumer content) {
+//       this.content = content;
+//    }
+//
+//    public void applyHide(@Nonnull Player player) {
+//       BossBar bossbar = (BossBar)this.bossbars.get(player);
+//       if (bossbar != null) {
+//          bossbar.removePlayer(player);
+//       }
+//    }
+//
+//    public void update() {
+//       Bukkit.getOnlinePlayers().forEach(this::update);
+//    }
+//
+//    public void update(@Nonnull Player player) {
+//       if (!this.isShown()) {
+//          Logger.warn("Tried to update bossbar which is not shown");
+//       } else {
+//          try {
+//             ChallengeBossBar.BossBarInstance instance = new ChallengeBossBar.BossBarInstance();
+//             if (ChallengeAPI.isPaused()) {
+//                instance.setTitle(Message.forName("bossbar-timer-paused").asString());
+//                instance.setColor(BarColor.RED);
+//             } else {
+//                this.content.accept(instance, player);
+//             }
+//
+//             BossBar bossbar = (BossBar)this.bossbars.computeIfAbsent(player, (key) -> {
+//                return this.createBossbar(instance);
+//             });
+//             this.apply(bossbar, instance);
+//             if (!bossbar.getPlayers().contains(player)) {
+//                bossbar.addPlayer(player);
+//             }
+//          } catch (Exception var4) {
+//             Logger.error("Unable to update bossbar for player '{}'", player.getName(), var4);
+//          }
+//
+//       }
+//    }
+//
+//    public void show() {
+//       Challenges.getInstance().getScoreboardManager().showBossBar(this);
+//    }
+//
+//    public void hide() {
+//       Challenges.getInstance().getScoreboardManager().hideBossBar(this);
+//    }
+//
+//    public boolean isShown() {
+//       return Challenges.getInstance().getScoreboardManager().isShown(this);
+//    }
+//
+//    public static final class BossBarInstance {
+//       private BaseComponent title;
+//       private double progress;
+//       private BarColor color;
+//       private BarStyle style;
+//       private boolean visible;
+//
+//       private BossBarInstance() {
+//          this.title = new TextComponent();
+//          this.progress = 1.0D;
+//          this.color = BarColor.WHITE;
+//          this.style = BarStyle.SOLID;
+//          this.visible = true;
+//       }
+//
+//       @Nonnull
+//       public ChallengeBossBar.BossBarInstance setTitle(@Nonnull String title) {
+//          this.title = new TextComponent(title);
+//          return this;
+//       }
+//
+//       @Nonnull
+//       public ChallengeBossBar.BossBarInstance setTitle(@Nonnull BaseComponent title) {
+//          this.title = title;
+//          return this;
+//       }
+//
+//       @Nonnull
+//       public ChallengeBossBar.BossBarInstance setProgress(double progress) {
+//          if (!(progress < 0.0D) && !(progress > 1.0D)) {
+//             this.progress = progress;
+//             return this;
+//          } else {
+//             throw new IllegalArgumentException("Progress must be between 0 and 1; Got " + progress);
+//          }
+//       }
+//
+//       @Nonnull
+//       public ChallengeBossBar.BossBarInstance setColor(@Nonnull BarColor color) {
+//          this.color = color;
+//          return this;
+//       }
+//
+//       @Nonnull
+//       public ChallengeBossBar.BossBarInstance setStyle(@Nonnull BarStyle style) {
+//          this.style = style;
+//          return this;
+//       }
+//
+//       @Nonnull
+//       public ChallengeBossBar.BossBarInstance setVisible(boolean visible) {
+//          this.visible = visible;
+//          return this;
+//       }
+//
+//       // $FF: synthetic method
+//       BossBarInstance(Object x0) {
+//          this();
+//       }
+//    }
+// }
+//

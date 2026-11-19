@@ -1,0 +1,49 @@
+package net.codingarea.challenges.plugin.management.server;
+
+import javax.annotation.Nonnull;
+import net.anweisen.utilities.common.config.Document;
+import net.codingarea.challenges.plugin.Challenges;
+import net.codingarea.challenges.plugin.content.Message;
+import org.bukkit.entity.Player;
+
+public final class TitleManager {
+   private static final int fadein = 5;
+   private static final int duration = 20;
+   private static final int fadeout = 10;
+   private final boolean timerStatusEnabled;
+   private final boolean challengeStatusEnabled;
+
+   public TitleManager() {
+      Document config = Challenges.getInstance().getConfigDocument().getDocument("titles");
+      this.timerStatusEnabled = config.getBoolean("timer-status");
+      this.challengeStatusEnabled = config.getBoolean("challenge-status");
+   }
+
+   public void sendTimerStatusTitle(@Nonnull Message message) {
+      if (this.timerStatusEnabled) {
+         message.broadcastTitle();
+      }
+   }
+
+   public void sendChallengeStatusTitle(@Nonnull Message message, @Nonnull Object... args) {
+      if (this.challengeStatusEnabled) {
+         message.broadcastTitle(args);
+      }
+   }
+
+   public boolean isChallengeStatusEnabled() {
+      return this.challengeStatusEnabled;
+   }
+
+   public boolean isTimerStatusEnabled() {
+      return this.timerStatusEnabled;
+   }
+
+   public void sendTitle(@Nonnull Player player, @Nonnull String title, @Nonnull String subtitle) {
+      player.sendTitle(title, subtitle, 5, 20, 10);
+   }
+
+   public void sendTitleInstant(@Nonnull Player player, @Nonnull String title, @Nonnull String subtitle) {
+      player.sendTitle(title, subtitle, 0, 20, 10);
+   }
+}

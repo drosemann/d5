@@ -1,0 +1,27 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-streuland\src\main\java\de\streuland\plot\upgrade\PlotUpgradeService.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE PlotUpgradeService_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-streuland\src\main\java\de\streuland\plot\upgrade\PlotUpgradeService.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-streuland\src\main\java\de\streuland\plot\upgrade\PlotUpgradeService.java), unveraendert, als Inline-Doku ----
+# package de.streuland.plot.upgrade;
+#
+# import java.util.List;
+# import java.util.Optional;
+# import java.util.UUID;
+#
+# public interface PlotUpgradeService {
+#     Optional<PlotProgressionState> getState(String plotId);
+#     List<PlotUpgradeView> getAvailableUpgrades(String plotId, UUID playerId);
+#     boolean canUpgrade(String plotId, UUID playerId, String upgradeId);
+#     boolean applyUpgrade(String plotId, UUID playerId, String upgradeId);
+#     boolean canPrestige(String plotId, UUID playerId);
+#     boolean prestige(String plotId, UUID playerId);
+#     PlotExperienceResult grantExperience(String plotId, UUID playerId, String source, int suggestedAmount);
+# }
+#

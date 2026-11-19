@@ -1,0 +1,4 @@
+# AutoSaver Configuration
+# The interval in seconds between automatic world saves
+# Must be a positive integer (default: 30)
+save-interval: 30

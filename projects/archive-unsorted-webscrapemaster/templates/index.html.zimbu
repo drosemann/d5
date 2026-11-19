@@ -1,0 +1,32 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-webscrapemaster\templates\index.html
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE index_html
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-webscrapemaster\templates\index.html\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-webscrapemaster\templates\index.html), unveraendert, als Inline-Doku ----
+# <!DOCTYPE html>
+# <html lang="en">
+# <head>
+#     <meta charset="UTF-8">
+#     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+#     <title>WebScrapeMaster</title>
+#     <link rel="stylesheet" href="static/styles.css">
+# </head>
+# <body>
+#     <div class="container">
+#         <h1>WebScrapeMaster</h1>
+#         <form id="urlForm">
+#             <input type="text" id="urlInput" placeholder="Enter URL" required>
+#             <button type="submit">Submit</button>
+#         </form>
+#         <div id="response"></div>
+#     </div>
+#     <script src="static/scripts.js"></script>
+# </body>
+# </html>
+#

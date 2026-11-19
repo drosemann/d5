@@ -1,0 +1,24 @@
+﻿# Zimbu-Port-Spiegel von: projects\startup-business-concepts-agentenplattform\apps\frontend\src\seiten.test.ts
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE seiten_test_ts
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\startup-business-concepts-agentenplattform\apps\frontend\src\seiten.test.ts\n")
+  RETURN 0
+
+# ---- Original-Code (projects\startup-business-concepts-agentenplattform\apps\frontend\src\seiten.test.ts), unveraendert, als Inline-Doku ----
+# import { describe, it, expect } from "vitest";
+# // Deutsch: Prüfung ohne Browser – Routing-Texte und SOS-Idempotenz-Gedanke.
+# describe("PWA-Routen (deutsch)", () => {
+#   it("führt alle 7 Bereiche", () => {
+#     const bereiche = ["Dashboard","Agenten","Chat","Angebote","Sicherheit","Freigaben","Einstellungen"];
+#     expect(bereiche).toHaveLength(7);
+#   });
+#   it("SOS braucht Bestätigung und Idempotenz", () => {
+#     const key = crypto.randomUUID();
+#     expect(key.length).toBeGreaterThan(10);
+#   });
+# });
+#

@@ -1,0 +1,131 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-streuland/src/main/resources/web/static/index.html
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-streuland/src/main/resources/web/static/index.html");
+}
+
+// ---- Original-Code (projects/github-repos-streuland/src/main/resources/web/static/index.html), unveraendert, als Inline-Doku ----
+// <!doctype html>
+// <html lang="en">
+// <head>
+//   <meta charset="UTF-8" />
+//   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+//   <title>Streuland Admin Dashboard</title>
+//   <style>
+//     body { font-family: Arial, sans-serif; margin: 16px; }
+//     table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+//     th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+//     th { background: #f4f4f4; }
+//     .controls { margin-bottom: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+//     .panel { border: 1px solid #ccc; padding: 12px; margin-top: 12px; border-radius: 8px; }
+//   </style>
+// </head>
+// <body>
+//   <h2>Streuland Operations Dashboard</h2>
+//   <div class="controls">
+//     <input id="token" type="password" placeholder="Bearer token" />
+//     <input id="search" type="text" placeholder="Search owner/player/plot" />
+//     <button id="load">Load Plots</button>
+//   </div>
+//
+//   <div class="panel">
+//     <strong>Backups</strong>
+//     <div class="controls">
+//       <input id="backupPlot" type="text" placeholder="plotId" />
+//       <button id="backupList">List</button>
+//       <button id="backupCreate">Create</button>
+//     </div>
+//     <pre id="backupOutput"></pre>
+//   </div>
+//
+//   <table>
+//     <thead>
+//       <tr>
+//         <th>ID</th><th>Owner</th><th>Area Type</th><th>Trusted</th><th>Actions</th>
+//       </tr>
+//     </thead>
+//     <tbody id="rows"></tbody>
+//   </table>
+//
+//   <script>
+//     let auditSocket;
+//
+//     async function api(path, method = 'GET', body = null) {
+//       const token = document.getElementById('token').value.trim();
+//       const headers = {};
+//       if (token) headers['Authorization'] = 'Bearer ' + token;
+//       if (body) headers['Content-Type'] = 'application/json';
+//       const res = await fetch(path, { method, headers, body: body ? JSON.stringify(body) : undefined });
+//       if (!res.ok) throw new Error(await res.text());
+//       return res.headers.get('content-type')?.includes('application/json') ? res.json() : res.text();
+//     }
+//
+//     async function loadPlots() {
+//       const rows = document.getElementById('rows');
+//       rows.innerHTML = '';
+//       const q = encodeURIComponent(document.getElementById('search').value.trim());
+//       const data = await api('/api/dashboard/ops/plots?search=' + q);
+//       (data.plots || []).forEach(plot => {
+//         const tr = document.createElement('tr');
+//         tr.innerHTML = `
+//           <td>${plot.plotId}</td>
+//           <td>${plot.owner || '-'}</td>
+//           <td>${plot.areaType}</td>
+//           <td>${(plot.trustedPlayers || []).length}</td>
+//           <td>
+//             <button data-detail="${plot.plotId}">Details</button>
+//             <button data-backup="${plot.plotId}">Backup</button>
+//           </td>
+//         `;
+//         tr.querySelector('[data-detail]').addEventListener('click', async () => {
+//           const detail = await api('/api/dashboard/ops/plots/' + plot.plotId);
+//           alert(JSON.stringify(detail, null, 2));
+//         });
+//         tr.querySelector('[data-backup]').addEventListener('click', async () => {
+//           const out = await api('/api/dashboard/ops/backups?plotId=' + encodeURIComponent(plot.plotId), 'POST');
+//           alert('Backup created: ' + out.snapshotId);
+//         });
+//         rows.appendChild(tr);
+//       });
+//     }
+//
+//     async function listBackups() {
+//       const plotId = document.getElementById('backupPlot').value.trim();
+//       const out = await api('/api/dashboard/ops/backups?plotId=' + encodeURIComponent(plotId));
+//       document.getElementById('backupOutput').textContent = JSON.stringify(out, null, 2);
+//     }
+//
+//     async function createBackup() {
+//       const plotId = document.getElementById('backupPlot').value.trim();
+//       const out = await api('/api/dashboard/ops/backups?plotId=' + encodeURIComponent(plotId), 'POST');
+//       document.getElementById('backupOutput').textContent = JSON.stringify(out, null, 2);
+//     }
+//
+//     function connectAuditSocket() {
+//       if (auditSocket) {
+//         auditSocket.close();
+//       }
+//       const token = document.getElementById('token').value.trim();
+//       if (!token) return;
+//       const protocol = location.protocol === 'https:' ? 'wss' : 'ws';
+//       const wsPort = 8081;
+//       auditSocket = new WebSocket(`${protocol}://${location.hostname}:${wsPort}/?token=${encodeURIComponent(token)}`);
+//       auditSocket.onmessage = (evt) => {
+//         const msg = JSON.parse(evt.data);
+//         if (msg.type === 'audit_event') {
+//           console.log('Audit update', msg);
+//         }
+//       };
+//     }
+//
+//     document.getElementById('load').addEventListener('click', () => {
+//       loadPlots().then(connectAuditSocket).catch(err => alert('Request failed: ' + err.message));
+//     });
+//     document.getElementById('backupList').addEventListener('click', () => listBackups().catch(err => alert(err.message)));
+//     document.getElementById('backupCreate').addEventListener('click', () => createBackup().catch(err => alert(err.message)));
+//   </script>
+// </body>
+// </html>
+//

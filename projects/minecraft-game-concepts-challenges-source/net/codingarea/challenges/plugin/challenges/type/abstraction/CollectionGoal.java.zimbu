@@ -1,0 +1,166 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\type\abstraction\CollectionGoal.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE CollectionGoal_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\type\abstraction\CollectionGoal.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\type\abstraction\CollectionGoal.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.challenges.type.abstraction;
+#
+# import java.util.ArrayList;
+# import java.util.Arrays;
+# import java.util.HashMap;
+# import java.util.Iterator;
+# import java.util.List;
+# import java.util.Map;
+# import java.util.Objects;
+# import java.util.UUID;
+# import java.util.Map.Entry;
+# import java.util.concurrent.atomic.AtomicInteger;
+# import java.util.stream.Collectors;
+# import java.util.stream.Stream;
+# import javax.annotation.CheckReturnValue;
+# import javax.annotation.Nonnull;
+# import net.anweisen.utilities.bukkit.utils.logging.Logger;
+# import net.anweisen.utilities.common.config.Document;
+# import net.codingarea.challenges.plugin.ChallengeAPI;
+# import net.codingarea.challenges.plugin.challenges.type.helper.GoalHelper;
+# import net.codingarea.challenges.plugin.management.server.ChallengeEndCause;
+# import org.bukkit.Bukkit;
+# import org.bukkit.entity.Player;
+#
+# public abstract class CollectionGoal extends SettingGoal {
+#    private final Map collections = new HashMap();
+#    protected Object[] target;
+#
+#    public CollectionGoal(@Nonnull Object[] target) {
+#       this.target = target;
+#    }
+#
+#    public CollectionGoal(boolean enabledByDefault, @Nonnull Object[] target) {
+#       super(enabledByDefault);
+#       this.target = target;
+#    }
+#
+#    protected void onEnable() {
+#       this.scoreboard.setContent(GoalHelper.createScoreboard(() -> {
+#          return this.getPoints(new AtomicInteger(), true);
+#       }));
+#       this.scoreboard.show();
+#    }
+#
+#    protected void onDisable() {
+#       this.scoreboard.hide();
+#    }
+#
+#    public void getWinnersOnEnd(@Nonnull List winners) {
+#       AtomicInteger mostPoints = new AtomicInteger();
+#       Map points = this.getPoints(mostPoints, false);
+#       if (mostPoints.get() != 0) {
+#          Iterator var4 = points.entrySet().iterator();
+#
+#          while(var4.hasNext()) {
+#             Entry entry = (Entry)var4.next();
+#             if ((Integer)entry.getValue() == mostPoints.get()) {
+#                winners.add((Player)entry.getKey());
+#             }
+#          }
+#
+#       }
+#    }
+#
+#    @Nonnull
+#    @CheckReturnValue
+#    protected Map getPoints(@Nonnull AtomicInteger mostPoints, boolean zeros) {
+#       return GoalHelper.createPointsFromValues(mostPoints, this.collections, (uuid, strings) -> {
+#          return this.getCollectionFiltered(uuid).size();
+#       }, zeros);
+#    }
+#
+#    protected void collect(@Nonnull Player player, @Nonnull Object item, @Nonnull Runnable success) {
+#       if (!ignorePlayer(player)) {
+#          List collection = this.getCollectionRaw(player.getUniqueId());
+#          if (!collection.contains(item.toString())) {
+#             if (Arrays.asList(this.target).contains(item)) {
+#                collection.add(item.toString());
+#                success.run();
+#                this.checkCollects();
+#             }
+#          }
+#       }
+#    }
+#
+#    protected List getCollectionFiltered(@Nonnull UUID uuid) {
+#       List targetStringList = (List)Arrays.stream(this.target).map(Object::toString).collect(Collectors.toList());
+#       Stream var10000 = ((List)this.collections.computeIfAbsent(uuid, (key) -> {
+#          return new ArrayList();
+#       })).stream();
+#       Objects.requireNonNull(targetStringList);
+#       return (List)var10000.filter(targetStringList::contains).collect(Collectors.toList());
+#    }
+#
+#    protected List getCollectionRaw(@Nonnull UUID uuid) {
+#       return (List)this.collections.computeIfAbsent(uuid, (key) -> {
+#          return new ArrayList();
+#       });
+#    }
+#
+#    protected void checkCollects() {
+#       this.scoreboard.update();
+#       Iterator var1 = Bukkit.getOnlinePlayers().iterator();
+#
+#       while(var1.hasNext()) {
+#          Player player = (Player)var1.next();
+#          this.checkCollects(this.getCollectionFiltered(player.getUniqueId()));
+#       }
+#
+#    }
+#
+#    protected void checkCollects(@Nonnull List collection) {
+#       if (collection.size() >= this.target.length) {
+#          ChallengeAPI.endChallenge(ChallengeEndCause.GOAL_REACHED);
+#       }
+#
+#    }
+#
+#    public void loadGameState(@Nonnull Document document) {
+#       super.loadGameState(document);
+#       this.collections.clear();
+#       Document scores = document.getDocument("scores");
+#       Iterator var3 = scores.keys().iterator();
+#
+#       while(var3.hasNext()) {
+#          String key = (String)var3.next();
+#
+#          try {
+#             UUID uuid = UUID.fromString(key);
+#             List collection = scores.getStringList(key);
+#             this.collections.put(uuid, collection);
+#          } catch (Exception var7) {
+#             Logger.error("Could not load scores for {}", key);
+#          }
+#       }
+#
+#       if (this.scoreboard.isShown()) {
+#          this.scoreboard.update();
+#       }
+#
+#    }
+#
+#    public void writeGameState(@Nonnull Document document) {
+#       super.writeGameState(document);
+#       Document scores = document.getDocument("scores");
+#       this.collections.forEach((uuid, collection) -> {
+#          scores.set(uuid.toString(), collection);
+#       });
+#    }
+#
+#    protected void setTarget(@Nonnull Object... target) {
+#       this.target = target;
+#    }
+# }
+#

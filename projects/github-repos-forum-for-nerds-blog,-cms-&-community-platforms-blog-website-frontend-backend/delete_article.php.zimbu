@@ -1,0 +1,29 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-website-frontend-backend\delete_article.php
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE delete_article_php
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-website-frontend-backend\delete_article.php\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-website-frontend-backend\delete_article.php), unveraendert, als Inline-Doku ----
+# <?php
+# // delete_article.php
+# session_start();
+# require_once 'config.php';
+#
+# if (!isset($_SESSION['admin_logged_in'])) {
+#     header("Location: login.php");
+#     exit;
+# }
+#
+# $id = $_GET['id'] ?? '';
+# if ($id) {
+#     $stmt = $pdo->prepare("DELETE FROM articles WHERE id = ?");
+#     $stmt->execute([$id]);
+# }
+# header("Location: admin.php");
+# exit;
+# ?>

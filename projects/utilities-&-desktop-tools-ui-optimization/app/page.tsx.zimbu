@@ -1,0 +1,18 @@
+﻿# Zimbu-Port-Spiegel von: projects\utilities-&-desktop-tools-ui-optimization\app\page.tsx
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE page_tsx
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\utilities-&-desktop-tools-ui-optimization\app\page.tsx\n")
+  RETURN 0
+
+# ---- Original-Code (projects\utilities-&-desktop-tools-ui-optimization\app\page.tsx), unveraendert, als Inline-Doku ----
+# "use client"
+#
+# import GameUI from "../game-ui"
+#
+# export default function SyntheticV0PageForDeployment() {
+#   return <GameUI />
+# }

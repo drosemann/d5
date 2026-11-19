@@ -1,0 +1,35 @@
+package net.codingarea.challenges.plugin.challenges.implementation.challenge.world;
+
+import javax.annotation.Nonnull;
+import net.codingarea.challenges.plugin.challenges.type.abstraction.Setting;
+import net.codingarea.challenges.plugin.content.Message;
+import net.codingarea.challenges.plugin.management.menu.MenuType;
+import net.codingarea.challenges.plugin.management.menu.generator.categorised.SettingCategory;
+import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+import net.codingarea.challenges.plugin.utils.misc.BlockUtils;
+import org.bukkit.Color;
+import org.bukkit.GameMode;
+import org.bukkit.Material;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.player.PlayerMoveEvent;
+
+public class BedrockPathChallenge extends Setting {
+   public BedrockPathChallenge() {
+      super(MenuType.CHALLENGES);
+      this.setCategory(SettingCategory.WORLD);
+   }
+
+   @Nonnull
+   public ItemBuilder createDisplayItem() {
+      return (new ItemBuilder.LeatherArmorBuilder(Material.LEATHER_BOOTS, Message.forName("item-bedrock-path-challenge"))).setColor(Color.GRAY);
+   }
+
+   @EventHandler
+   public void onMove(@Nonnull PlayerMoveEvent event) {
+      if (this.shouldExecuteEffect()) {
+         if (event.getPlayer().getGameMode() != GameMode.CREATIVE && event.getPlayer().getGameMode() != GameMode.SPECTATOR) {
+            BlockUtils.createBlockPath(event.getFrom(), event.getTo(), Material.BEDROCK);
+         }
+      }
+   }
+}

@@ -1,0 +1,18 @@
+﻿# Zimbu-Port-Spiegel von: projects\cloud,-hosting-&-saas-hosting-software-hosting-club-redesign\lib\utils.ts
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE utils_ts
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\cloud,-hosting-&-saas-hosting-software-hosting-club-redesign\lib\utils.ts\n")
+  RETURN 0
+
+# ---- Original-Code (projects\cloud,-hosting-&-saas-hosting-software-hosting-club-redesign\lib\utils.ts), unveraendert, als Inline-Doku ----
+# import { clsx, type ClassValue } from "clsx"
+# import { twMerge } from "tailwind-merge"
+#
+# export function cn(...inputs: ClassValue[]) {
+#   return twMerge(clsx(inputs))
+# }
+#

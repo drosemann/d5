@@ -1,0 +1,16 @@
+com\hearthrift\rewards\PvPReward.class
+com\hearthrift\rewards\RewardManager.class
+com\hearthrift\rewards\RandomEvent.class
+com\hearthrift\tutorial\TutorialSession.class
+com\hearthrift\worlds\WorldManager.class
+com\hearthrift\commands\BaseCommand.class
+com\hearthrift\worlds\WorldPermissions$Permission.class
+com\hearthrift\worlds\WorldPermissions.class
+com\hearthrift\rewards\DailyReward.class
+com\hearthrift\commands\WorldCommand.class
+com\hearthrift\tutorial\TutorialManager.class
+com\hearthrift\Hearthrift.class
+com\hearthrift\rewards\RewardManager$1.class
+com\hearthrift\rewards\TaskReward.class
+com\hearthrift\PlayerListener.class
+com\hearthrift\tutorial\TutorialSession$TutorialStep.class

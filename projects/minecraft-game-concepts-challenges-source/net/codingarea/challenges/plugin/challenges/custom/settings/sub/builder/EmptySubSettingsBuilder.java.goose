@@ -1,0 +1,36 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/custom/settings/sub/builder/EmptySubSettingsBuilder.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/custom/settings/sub/builder/EmptySubSettingsBuilder.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/custom/settings/sub/builder/EmptySubSettingsBuilder.java), unveraendert, als Inline-Doku ----
+// package net.codingarea.challenges.plugin.challenges.custom.settings.sub.builder;
+//
+// import com.google.common.collect.Lists;
+// import java.util.List;
+// import java.util.Map;
+// import net.codingarea.challenges.plugin.challenges.custom.settings.sub.SubSettingsBuilder;
+// import net.codingarea.challenges.plugin.management.menu.generator.implementation.custom.IParentCustomGenerator;
+// import org.bukkit.entity.Player;
+//
+// public class EmptySubSettingsBuilder extends SubSettingsBuilder {
+//    public EmptySubSettingsBuilder() {
+//       super("none");
+//    }
+//
+//    public List getDisplay(Map activated) {
+//       return Lists.newLinkedList();
+//    }
+//
+//    public boolean hasSettings() {
+//       return false;
+//    }
+//
+//    public boolean open(Player player, IParentCustomGenerator parentGenerator, String title) {
+//       return false;
+//    }
+// }
+//

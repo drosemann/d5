@@ -1,0 +1,71 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\implementation\challenge\randomizer\BlockRandomizerChallenge.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE BlockRandomizerChallenge_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\implementation\challenge\randomizer\BlockRandomizerChallenge.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\implementation\challenge\randomizer\BlockRandomizerChallenge.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.challenges.implementation.challenge.randomizer;
+#
+# import java.util.ArrayList;
+# import java.util.Arrays;
+# import java.util.List;
+# import javax.annotation.Nonnull;
+# import net.anweisen.utilities.bukkit.utils.misc.BukkitReflectionUtils;
+# import net.codingarea.challenges.plugin.Challenges;
+# import net.codingarea.challenges.plugin.challenges.type.abstraction.RandomizerSetting;
+# import net.codingarea.challenges.plugin.content.Message;
+# import net.codingarea.challenges.plugin.management.blocks.BlockDropManager;
+# import net.codingarea.challenges.plugin.management.menu.MenuType;
+# import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+# import net.codingarea.challenges.plugin.utils.item.ItemUtils;
+# import net.codingarea.challenges.plugin.utils.misc.ExperimentalUtils;
+# import org.bukkit.Material;
+#
+# public class BlockRandomizerChallenge extends RandomizerSetting {
+#    public BlockRandomizerChallenge() {
+#       super(MenuType.CHALLENGES);
+#    }
+#
+#    @Nonnull
+#    public ItemBuilder createDisplayItem() {
+#       return new ItemBuilder(Material.MINECART, Message.forName("item-block-randomizer-challenge"));
+#    }
+#
+#    protected void reloadRandomization() {
+#       BlockDropManager manager = Challenges.getInstance().getBlockDropManager();
+#       List blocks = new ArrayList(Arrays.asList(ExperimentalUtils.getMaterials()));
+#       blocks.removeIf((material) -> {
+#          return !ItemUtils.isObtainableInSurvival(material) || !material.isBlock() || BukkitReflectionUtils.isAir(material);
+#       });
+#       this.random.shuffle(blocks);
+#       List drops = new ArrayList(Arrays.asList(ExperimentalUtils.getMaterials()));
+#       drops.removeIf((material) -> {
+#          return !material.isItem() || !ItemUtils.isObtainableInSurvival(material);
+#       });
+#       this.random.shuffle(drops);
+#
+#       while(!blocks.isEmpty()) {
+#          Material block = (Material)blocks.remove(0);
+#          List items = new ArrayList();
+#          int addDrops = this.getMatches(blocks.size(), drops.size());
+#
+#          for(int i = 0; i < addDrops && !drops.isEmpty(); ++i) {
+#             items.add((Material)drops.remove(0));
+#          }
+#
+#          manager.setCustomDrops(block, (List)items, (byte)5);
+#       }
+#
+#    }
+#
+#    protected void onDisable() {
+#       BlockDropManager manager = Challenges.getInstance().getBlockDropManager();
+#       manager.resetCustomDrops((byte)5);
+#    }
+# }
+#

@@ -1,0 +1,43 @@
+﻿# Zimbu-Port-Spiegel von: projects\cloud-hosting-saas-vercel-like-lxc-container-platform\vercel-clone\templates\index.html
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE index_html
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\cloud-hosting-saas-vercel-like-lxc-container-platform\vercel-clone\templates\index.html\n")
+  RETURN 0
+
+# ---- Original-Code (projects\cloud-hosting-saas-vercel-like-lxc-container-platform\vercel-clone\templates\index.html), unveraendert, als Inline-Doku ----
+# <!DOCTYPE html>
+# <html lang="en">
+# <head>
+#     <meta charset="UTF-8">
+#     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+#     <title>Welcome to CloudNest</title>
+#     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+# </head>
+# <body>
+#     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+#         <div class="container-fluid">
+#             <a class="navbar-brand" href="#">CloudNest</a>
+#             <div class="collapse navbar-collapse" id="navbarNav">
+#                 <ul class="navbar-nav ms-auto">
+#                     <li class="nav-item">
+#                         <a class="nav-link" href="/register">Register</a>
+#                     </li>
+#                     <li class="nav-item">
+#                         <a class="nav-link" href="/login">Login</a>
+#                     </li>
+#                 </ul>
+#             </div>
+#         </div>
+#     </nav>
+#     <div class="container text-center mt-5">
+#         <h1>Welcome to CloudNest</h1>
+#         <p>Welcome to <strong>CloudNest</strong>, the next-generation platform for deploying and managing your projects with ease. Whether you're a developer looking to streamline your workflow or a business aiming to scale efficiently, CloudNest provides the tools and infrastructure you need to succeed.</p>
+#         <p>Join us and experience the power of seamless container management, robust deployment options, and a community-driven ecosystem designed to elevate your projects to new heights.</p>
+#     </div>
+# </body>
+# </html>
+#

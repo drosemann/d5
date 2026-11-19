@@ -1,0 +1,57 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-streuland/src/main/resources/web/static/signup.html
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-streuland/src/main/resources/web/static/signup.html");
+}
+
+// ---- Original-Code (projects/github-repos-streuland/src/main/resources/web/static/signup.html), unveraendert, als Inline-Doku ----
+// <!doctype html>
+// <html>
+//   <head>
+//     <meta charset="utf-8" />
+//     <title>Streuland - Sign Up</title>
+//   </head>
+//   <body>
+//     <h1>Sign Up with Invitation</h1>
+//     <form id="signupForm">
+//       <label>Username: <input type="text" id="username" required /></label><br/>
+//       <label>Email: <input type="email" id="email" required /></label><br/>
+//       <label>Password: <input type="password" id="password" required /></label><br/>
+//       <label>Invite Code: <input type="text" id="inviteCode" required /></label><br/>
+//       <button type="submit">Sign Up</button>
+//     </form>
+//     <pre id="signupStatus"></pre>
+//
+//     <script>
+//       const form = document.getElementById('signupForm');
+//       const status = document.getElementById('signupStatus');
+//       form.addEventListener('submit', async (e) => {
+//         e.preventDefault();
+//         const payload = {
+//           username: document.getElementById('username').value,
+//           email: document.getElementById('email').value,
+//           password: document.getElementById('password').value,
+//           invitation_code: document.getElementById('inviteCode').value
+//         };
+//         try {
+//           const res = await fetch('/auth/signup-with-code', {
+//             method: 'POST',
+//             headers: { 'Content-Type': 'application/json' },
+//             body: JSON.stringify(payload)
+//           });
+//           const json = await res.json();
+//           if (!res.ok) {
+//             status.textContent = 'Error: ' + (json?.error ?? res.status);
+//           } else {
+//             status.textContent = 'Signed up. UserID: ' + (json.userId || json.user_id);
+//           }
+//         } catch (err) {
+//           status.textContent = 'Network error: ' + err;
+//         }
+//       });
+//     </script>
+//   </body>
+//   </html>
+//

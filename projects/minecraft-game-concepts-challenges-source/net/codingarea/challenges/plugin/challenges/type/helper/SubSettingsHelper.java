@@ -1,0 +1,163 @@
+package net.codingarea.challenges.plugin.challenges.type.helper;
+
+import java.util.Iterator;
+import net.anweisen.utilities.bukkit.utils.misc.BukkitReflectionUtils;
+import net.anweisen.utilities.common.misc.StringUtils;
+import net.codingarea.challenges.plugin.challenges.custom.settings.sub.SubSettingsBuilder;
+import net.codingarea.challenges.plugin.challenges.custom.settings.sub.builder.ChooseItemSubSettingsBuilder;
+import net.codingarea.challenges.plugin.challenges.custom.settings.sub.builder.ChooseMultipleItemSubSettingBuilder;
+import net.codingarea.challenges.plugin.content.Message;
+import net.codingarea.challenges.plugin.utils.bukkit.misc.BukkitStringUtils;
+import net.codingarea.challenges.plugin.utils.item.DefaultItem;
+import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+import net.codingarea.challenges.plugin.utils.misc.ExperimentalUtils;
+import net.codingarea.challenges.plugin.utils.misc.StructureUtils;
+import org.bukkit.Material;
+import org.bukkit.StructureType;
+import org.bukkit.entity.EntityType;
+import org.bukkit.potion.PotionEffectType;
+
+public class SubSettingsHelper {
+   public static final String ENTITY_TYPE = "entity_type";
+   public static final String BLOCK = "block";
+   public static final String ANY = "any";
+   public static final String ITEM = "item";
+   public static final String LIQUID = "liquid";
+   public static final String TARGET_ENTITY = "target_entity";
+   public static final String STRUCTURE = "structure";
+
+   public static ChooseMultipleItemSubSettingBuilder createEntityTypeSettingsBuilder(boolean any, boolean player) {
+      return SubSettingsBuilder.createChooseMultipleItem("entity_type").fill((builder) -> {
+         if (any) {
+            builder.addSetting("any", (new ItemBuilder(Material.NETHER_STAR, Message.forName("item-custom-setting-entity_type-any"))).build());
+         }
+
+         if (player) {
+            builder.addSetting("PLAYER", (new ItemBuilder(Material.PLAYER_HEAD, Message.forName("item-custom-setting-entity_type-player"))).build());
+         }
+
+         EntityType[] var3 = EntityType.values();
+         int var4 = var3.length;
+
+         for(int var5 = 0; var5 < var4; ++var5) {
+            EntityType type = var3[var5];
+            if (type.isSpawnable() && type.isAlive()) {
+               try {
+                  Material spawnEgg = Material.valueOf(type.name() + "_SPAWN_EGG");
+                  builder.addSetting(type.name(), (new ItemBuilder(spawnEgg, DefaultItem.getItemPrefix() + BukkitStringUtils.getEntityName(type).toPlainText())).build());
+               } catch (Exception var8) {
+                  builder.addSetting(type.name(), new ItemBuilder(Material.STRUCTURE_VOID, DefaultItem.getItemPrefix() + BukkitStringUtils.getEntityName(type).toPlainText()));
+               }
+            }
+         }
+
+      });
+   }
+
+   public static ChooseMultipleItemSubSettingBuilder createBlockSettingsBuilder() {
+      return SubSettingsBuilder.createChooseMultipleItem("block").fill((builder) -> {
+         builder.addSetting("any", (new ItemBuilder(Material.NETHER_STAR, Message.forName("item-custom-setting-block-any"))).build());
+         Material[] var1 = ExperimentalUtils.getMaterials();
+         int var2 = var1.length;
+
+         for(int var3 = 0; var3 < var2; ++var3) {
+            Material material = var1[var3];
+            if (material.isBlock() && material.isItem() && !BukkitReflectionUtils.isAir(material)) {
+               builder.addSetting(material.name(), (new ItemBuilder(material, DefaultItem.getItemPrefix() + BukkitStringUtils.getItemName(material).toPlainText())).build());
+            }
+         }
+
+      });
+   }
+
+   public static ChooseMultipleItemSubSettingBuilder createItemSettingsBuilder() {
+      return SubSettingsBuilder.createChooseMultipleItem("item").fill((builder) -> {
+         builder.addSetting("any", (new ItemBuilder(Material.NETHER_STAR, Message.forName("item-custom-setting-item-any"))).build());
+         Material[] var1 = ExperimentalUtils.getMaterials();
+         int var2 = var1.length;
+
+         for(int var3 = 0; var3 < var2; ++var3) {
+            Material material = var1[var3];
+            if (material.isItem() && !BukkitReflectionUtils.isAir(material)) {
+               builder.addSetting(material.name(), (new ItemBuilder(material, DefaultItem.getItemPrefix() + BukkitStringUtils.getItemName(material).toPlainText())).build());
+            }
+         }
+
+      });
+   }
+
+   public static SubSettingsBuilder createEntityTargetSettingsBuilder(boolean everyMob) {
+      return createEntityTargetSettingsBuilder(everyMob, false);
+   }
+
+   public static SubSettingsBuilder createEntityTargetSettingsBuilder(boolean everyMob, boolean onlyPlayer) {
+      return createEntityTargetSettingsBuilder(everyMob, onlyPlayer, false);
+   }
+
+   public static SubSettingsBuilder createEntityTargetSettingsBuilder(boolean everyMob, boolean onlyPlayer, boolean console) {
+      ChooseItemSubSettingsBuilder builder = SubSettingsBuilder.createChooseItem("target_entity");
+      if (console) {
+         builder.addSetting("console", new ItemBuilder(Material.COMMAND_BLOCK_MINECART, Message.forName("item-custom-setting-target-console")));
+      }
+
+      if (!onlyPlayer) {
+         builder.addSetting("current", new ItemBuilder(Material.DRAGON_HEAD, Message.forName("item-custom-setting-target-current")));
+      }
+
+      builder.addSetting("current_player", new ItemBuilder(Material.PLAYER_HEAD, Message.forName("item-custom-setting-target-current_player")));
+      builder.addSetting("random_player", new ItemBuilder(Material.ZOMBIE_HEAD, Message.forName("item-custom-setting-target-random_player")));
+      builder.addSetting("every_player", new ItemBuilder(Material.PLAYER_HEAD, Message.forName("item-custom-setting-target-every_player")));
+      if (everyMob && !onlyPlayer) {
+         builder.addSetting("every_mob", new ItemBuilder(Material.WITHER_SKELETON_SKULL, Message.forName("item-custom-setting-target-every_mob")));
+         builder.addSetting("every_mob_except_current", new ItemBuilder(Material.SKELETON_SKULL, Message.forName("item-custom-setting-target-every_mob_except_current")));
+         builder.addSetting("every_mob_except_players", new ItemBuilder(Material.SKELETON_SKULL, Message.forName("item-custom-setting-target-every_mob_except_players")));
+      }
+
+      return builder;
+   }
+
+   public static SubSettingsBuilder createPotionSettingsBuilder(boolean potionType, boolean potionTime) {
+      SubSettingsBuilder potionSettings = SubSettingsBuilder.createValueItem().fill((builder) -> {
+         if (potionTime) {
+            builder.addModifierSetting("length", new ItemBuilder(Material.CLOCK, Message.forName("item-random-effect-length-challenge")), 30, 1, 60, (value) -> {
+               return "";
+            }, (value) -> {
+               return Message.forName(value == 1 ? "second" : "seconds").asString();
+            });
+         }
+
+         builder.addModifierSetting("amplifier", new ItemBuilder(Material.STONE_SWORD, Message.forName("item-random-effect-amplifier-challenge")), 3, 1, 8, (value) -> {
+            return Message.forName("amplifier").asString();
+         }, (integer) -> {
+            return "";
+         });
+      });
+      if (potionType) {
+         potionSettings = ((SubSettingsBuilder)potionSettings).createChooseItemChild("potion_type").fill((builder) -> {
+            PotionEffectType[] var1 = PotionEffectType.values();
+            int var2 = var1.length;
+
+            for(int var3 = 0; var3 < var2; ++var3) {
+               PotionEffectType effectType = var1[var3];
+               builder.addSetting(effectType.getName(), (new net.anweisen.utilities.bukkit.utils.item.ItemBuilder.PotionBuilder(Material.POTION, DefaultItem.getItemPrefix() + StringUtils.getEnumName(effectType.getName()))).addEffect(effectType.createEffect(1, 0)).color(effectType.getColor()).build());
+            }
+
+         });
+      }
+
+      return (SubSettingsBuilder)potionSettings;
+   }
+
+   public static SubSettingsBuilder createStructureSettingsBuilder() {
+      return SubSettingsBuilder.createChooseItem("structure").fill((builder) -> {
+         builder.addSetting("random_structure", (new ItemBuilder(Material.STRUCTURE_BLOCK, Message.forName("item-custom-action-place_structure-random"))).build());
+         Iterator var1 = StructureType.getStructureTypes().values().iterator();
+
+         while(var1.hasNext()) {
+            StructureType structure = (StructureType)var1.next();
+            builder.addSetting(structure.getName(), (new ItemBuilder(StructureUtils.getStructureIcon(structure), DefaultItem.getItemPrefix() + StringUtils.getEnumName(structure.getName()))).build());
+         }
+
+      });
+   }
+}

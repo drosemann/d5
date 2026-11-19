@@ -1,0 +1,21 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-plugins-server-systems-broadcast-restart-plugin\src\main\java\com\example\broadcastrestart\BroadcastRestartPlugin.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE BroadcastRestartPlugin_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-plugins-server-systems-broadcast-restart-plugin\src\main\java\com\example\broadcastrestart\BroadcastRestartPlugin.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-plugins-server-systems-broadcast-restart-plugin\src\main\java\com\example\broadcastrestart\BroadcastRestartPlugin.java), unveraendert, als Inline-Doku ----
+# package com.example.broadcastrestart;
+#
+# import org.bukkit.plugin.java.JavaPlugin;
+#
+# public class BroadcastRestartPlugin extends JavaPlugin {
+#     @Override
+#     public void onEnable() {
+#         getCommand("broadcastrestart").setExecutor(new BroadcastRestartCommand(this));
+#     }
+# }

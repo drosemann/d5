@@ -1,0 +1,246 @@
+package net.anweisen.utilities.common.concurrent.task;
+
+import java.util.concurrent.Callable;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import javax.annotation.CheckReturnValue;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import net.anweisen.utilities.common.collection.WrappedException;
+import net.anweisen.utilities.common.function.ExceptionallyFunction;
+import net.anweisen.utilities.common.function.ExceptionallyRunnable;
+
+public interface Task extends Future, Callable {
+   @Nonnull
+   static ExecutorService getAsyncExecutor() {
+      return CompletableTask.SERVICE;
+   }
+
+   @Nonnull
+   static Task empty() {
+      return completed((Object)null);
+   }
+
+   @Nonnull
+   static Task completed(@Nullable Object value) {
+      return new CompletedTask(value);
+   }
+
+   @Nonnull
+   static Task completedVoid() {
+      return empty();
+   }
+
+   @Nonnull
+   static Task failed(@Nonnull Throwable failure) {
+      return new CompletedTask(failure);
+   }
+
+   @Nonnull
+   static CompletableTask completable() {
+      return new CompletableTask();
+   }
+
+   @Nonnull
+   static Task asyncCall(@Nonnull Callable callable) {
+      return CompletableTask.callAsync(callable);
+   }
+
+   @Nonnull
+   static Task asyncSupply(@Nonnull Supplier supplier) {
+      supplier.getClass();
+      return asyncCall(supplier::get);
+   }
+
+   @Nonnull
+   static Task asyncRun(@Nonnull Runnable runnable) {
+      return asyncCall(() -> {
+         runnable.run();
+         return null;
+      });
+   }
+
+   @Nonnull
+   static Task asyncRunExceptionally(@Nonnull ExceptionallyRunnable runnable) {
+      return asyncRun(runnable);
+   }
+
+   @Nonnull
+   static Task syncCall(@Nonnull Callable callable) {
+      return CompletableTask.callSync(callable);
+   }
+
+   @Nonnull
+   static Task syncSupply(@Nonnull Supplier supplier) {
+      supplier.getClass();
+      return syncCall(supplier::get);
+   }
+
+   @Nonnull
+   static Task syncRun(@Nonnull Runnable runnable) {
+      return syncCall(() -> {
+         runnable.run();
+         return null;
+      });
+   }
+
+   @Nonnull
+   static Task syncRunExceptionally(@Nonnull ExceptionallyRunnable runnable) {
+      return syncRun(runnable);
+   }
+
+   @Nonnull
+   default Task onComplete(@Nonnull Runnable action) {
+      return this.onComplete((v) -> {
+         action.run();
+      });
+   }
+
+   @Nonnull
+   default Task onComplete(@Nonnull Consumer action) {
+      return this.onComplete((task, value) -> {
+         action.accept(value);
+      });
+   }
+
+   @Nonnull
+   default Task onComplete(@Nonnull final BiConsumer action) {
+      return this.addListener(new TaskListener() {
+         public void onComplete(@Nonnull Task task, @Nonnull Object value) {
+            action.accept(task, value);
+         }
+      });
+   }
+
+   @Nonnull
+   default Task onFailure(@Nonnull Runnable action) {
+      return this.onFailure((ex) -> {
+         action.run();
+      });
+   }
+
+   @Nonnull
+   default Task onFailure(@Nonnull Consumer action) {
+      return this.onFailure((task, ex) -> {
+         action.accept(ex);
+      });
+   }
+
+   @Nonnull
+   default Task onFailure(@Nonnull final BiConsumer action) {
+      return this.addListener(new TaskListener() {
+         public void onFailure(@Nonnull Task task, @Nonnull Throwable ex) {
+            action.accept(task, ex);
+         }
+      });
+   }
+
+   @Nonnull
+   default Task throwOnFailure() {
+      return this.onFailure((ex) -> {
+         ex.printStackTrace();
+      });
+   }
+
+   @Nonnull
+   default Task onCancelled(@Nonnull Runnable action) {
+      return this.onCancelled((task) -> {
+         action.run();
+      });
+   }
+
+   @Nonnull
+   default Task onCancelled(@Nonnull final Consumer action) {
+      return this.addListener(new TaskListener() {
+         public void onCancelled(@Nonnull Task task) {
+            action.accept(task);
+         }
+      });
+   }
+
+   @Nonnull
+   default Task addListeners(@Nonnull TaskListener... listeners) {
+      TaskListener[] var2 = listeners;
+      int var3 = listeners.length;
+
+      for(int var4 = 0; var4 < var3; ++var4) {
+         TaskListener listener = var2[var4];
+         this.addListener(listener);
+      }
+
+      return this;
+   }
+
+   @Nonnull
+   Task addListener(@Nonnull TaskListener var1);
+
+   @Nonnull
+   Task clearListeners();
+
+   Object get() throws InterruptedException, ExecutionException;
+
+   Object get(long var1, @Nonnull TimeUnit var3) throws InterruptedException, ExecutionException, TimeoutException;
+
+   default Object getOrDefault(Object def) {
+      try {
+         return this.get();
+      } catch (InterruptedException var3) {
+         throw new WrappedException(var3);
+      } catch (ExecutionException var4) {
+         return def;
+      }
+   }
+
+   default Object getOrDefault(long timeout, @Nonnull TimeUnit unit, Object def) {
+      try {
+         return this.get(timeout, unit);
+      } catch (InterruptedException var6) {
+         throw new WrappedException(var6);
+      } catch (TimeoutException | ExecutionException var7) {
+         return def;
+      }
+   }
+
+   default Object getBeforeTimeout(long timeout, @Nonnull TimeUnit unit) {
+      try {
+         return this.get(timeout, unit);
+      } catch (InterruptedException | ExecutionException var5) {
+         throw new WrappedException(var5);
+      } catch (TimeoutException var6) {
+         throw new IllegalStateException("Operation timed out (" + timeout + " " + unit + ")");
+      }
+   }
+
+   @Nonnull
+   Task map(@Nullable Function var1);
+
+   @Nonnull
+   default Task mapExceptionally(@Nullable ExceptionallyFunction mapper) {
+      return this.map((Function)mapper);
+   }
+
+   @Nonnull
+   default Task mapVoid() {
+      return this.map((v) -> {
+         return null;
+      });
+   }
+
+   @Nonnull
+   default Task map(@Nonnull Class target) {
+      target.getClass();
+      return this.map(target::cast);
+   }
+
+   @Nonnull
+   @CheckReturnValue
+   CompletionStage stage();
+}

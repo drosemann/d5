@@ -1,0 +1,31 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-ed-docs\web\tsconfig.json
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE tsconfig_json
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-ed-docs\web\tsconfig.json\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-ed-docs\web\tsconfig.json), unveraendert, als Inline-Doku ----
+# {
+#   "compilerOptions": {
+#     "target": "ES2022",
+#     "useDefineForClassFields": true,
+#     "lib": ["ES2022", "DOM", "DOM.Iterable"],
+#     "module": "ESNext",
+#     "skipLibCheck": true,
+#     "moduleResolution": "Bundler",
+#     "allowImportingTsExtensions": true,
+#     "resolveJsonModule": true,
+#     "isolatedModules": true,
+#     "noEmit": true,
+#     "jsx": "react-jsx",
+#     "strict": true,
+#     "noUnusedLocals": true,
+#     "noUnusedParameters": true
+#   },
+#   "include": ["src", "vite.config.ts"]
+# }
+#

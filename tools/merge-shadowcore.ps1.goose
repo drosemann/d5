@@ -1,0 +1,45 @@
+﻿// Goose-Port-Spiegel von: tools/merge-shadowcore.ps1
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: tools/merge-shadowcore.ps1");
+}
+
+// ---- Original-Code (tools/merge-shadowcore.ps1), unveraendert, als Inline-Doku ----
+// # ShadowCore mega-repo merge script. Run from workspace root.
+// # Combines every remaining source repo under !Coding-Enviroment into projects/<slug>
+// # in this root git repo, preserving each project's commits (subtree merge).
+// $ErrorActionPreference = "Continue"
+// $root = (Get-Location).Path
+//
+// function Slug($rel) {
+//   $s = $rel -replace '^!Coding-Enviroment\\', ''
+//   $s = $s -replace '[\\/:*?"<>|]', '-'
+//   $s = $s -replace '\s+', '-'
+//   $s = $s -replace '-+', '-'
+//   return $s.Trim('-').ToLower()
+// }
+//
+// $repos = @()
+// Get-ChildItem -Force -Recurse -Directory -ErrorAction SilentlyContinue -Filter ".git" |
+//   ForEach-Object { if ($_.Parent.FullName -like "$root\!Coding-Enviroment*") { $repos += $_.Parent.FullName } }
+// $repos = $repos | Sort-Object -Unique
+// Write-Output "REPOS_FOUND=$($repos.Count)"
+//
+// $ok = @(); $skipped = @()
+// foreach ($r in $repos) {
+//   $rel = $r.Replace($root + "\", "")
+//   $slug = Slug $rel
+//   $prefix = "projects/$slug"
+//   if (Test-Path (Join-Path $root $prefix)) { Write-Output "ALREADY: $slug"; $ok += $slug; continue }
+//   $count = & git -c safe.directory=* -C $r rev-list --all --count 2>$null
+//   if ($LASTEXITCODE -ne 0 -or [int]$count -eq 0) { Write-Output "SKIP (no readable history): $rel"; $skipped += $rel; continue }
+//   Write-Output "MERGING: $rel -> $prefix ($count commits)"
+//   & git -c safe.directory=* -c safe.directory=$r subtree add --prefix=$prefix $r HEAD 2>&1 | Select-Object -Last 2
+//   if (Test-Path (Join-Path $root $prefix)) { $ok += $slug } else { $skipped += $rel; Write-Output "FAILED: $rel" }
+// }
+// Write-Output "MERGED_OK=$($ok.Count)"
+// Write-Output "SKIPPED=$($skipped.Count)"
+// $skipped | ForEach-Object { Write-Output "SKIPPED: $_" }
+//

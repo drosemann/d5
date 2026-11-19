@@ -1,0 +1,41 @@
+﻿// Goose-Port-Spiegel von: projects/archive-unsorted-chat-app/client/package.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/archive-unsorted-chat-app/client/package.json");
+}
+
+// ---- Original-Code (projects/archive-unsorted-chat-app/client/package.json), unveraendert, als Inline-Doku ----
+// {
+//   "name": "chat-app-client",
+//   "private": true,
+//   "version": "0.0.0",
+//   "type": "module",
+//   "scripts": {
+//     "dev": "vite",
+//     "build": "vite build",
+//     "preview": "vite preview"
+//   },
+//   "dependencies": {
+//     "@emotion/react": "^11.11.1",
+//     "@emotion/styled": "^11.11.0",
+//     "@mui/icons-material": "^5.14.0",
+//     "@mui/material": "^5.14.0",
+//     "axios": "^1.4.0",
+//     "date-fns": "^2.30.0",
+//     "emoji-mart": "^5.5.2",
+//     "react": "^18.2.0",
+//     "react-dom": "^18.2.0",
+//     "react-router-dom": "^6.14.1",
+//     "socket.io-client": "^4.7.1",
+//     "zustand": "^4.3.9"
+//   },
+//   "devDependencies": {
+//     "@types/react": "^18.2.14",
+//     "@types/react-dom": "^18.2.6",
+//     "@vitejs/plugin-react": "^4.0.1",
+//     "vite": "^4.4.0"
+//   }
+// }
+//

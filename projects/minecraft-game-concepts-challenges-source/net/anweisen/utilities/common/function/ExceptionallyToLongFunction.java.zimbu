@@ -1,0 +1,29 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\function\ExceptionallyToLongFunction.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE ExceptionallyToLongFunction_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\function\ExceptionallyToLongFunction.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\function\ExceptionallyToLongFunction.java), unveraendert, als Inline-Doku ----
+# package net.anweisen.utilities.common.function;
+#
+# import java.util.function.ToLongFunction;
+# import net.anweisen.utilities.common.collection.WrappedException;
+#
+# @FunctionalInterface
+# public interface ExceptionallyToLongFunction extends ToLongFunction {
+#    default long applyAsLong(Object t) {
+#       try {
+#          return this.applyExceptionally(t);
+#       } catch (Exception var3) {
+#          throw WrappedException.rethrow(var3);
+#       }
+#    }
+#
+#    long applyExceptionally(Object var1) throws Exception;
+# }
+#

@@ -1,0 +1,149 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-cooperating-screen/cosc/lib/screens/home_screen.dart
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-cooperating-screen/cosc/lib/screens/home_screen.dart");
+}
+
+// ---- Original-Code (projects/github-repos-cooperating-screen/cosc/lib/screens/home_screen.dart), unveraendert, als Inline-Doku ----
+// /// Main dashboard screen for the cooperating-screen client.
+// /// It is the landing surface after registration and centralizes access to room
+// /// creation, pairing requests, device status, and app settings.
+// import 'package:flutter/material.dart';
+// import 'package:provider/provider.dart';
+// import '../services/supabase_service.dart';
+//
+// class HomeScreen extends StatefulWidget {
+//   const HomeScreen({Key? key}) : super(key: key);
+//
+//   @override
+//   State<HomeScreen> createState() => _HomeScreenState();
+// }
+//
+// class _HomeScreenState extends State<HomeScreen> {
+//   // The dashboard starts by loading the device metadata that is displayed in the
+//   // "This Device" card. This keeps the home screen consistent with the current
+//   // registration state without forcing the user to manually re-enter details.
+//   @override
+//   void initState() {
+//     super.initState();
+//     _loadDeviceInfo();
+//   }
+//
+//   // Retrieves the current device identity from the Supabase-backed service so the
+//   // screen can render the active serial and friendly name in the interface.
+//   Future<void> _loadDeviceInfo() async {
+//     final supabaseService = context.read<SupabaseService>();
+//     // Device info will be displayed from storage
+//   }
+//
+//   // Builds the main dashboard layout and consolidates the primary actions users can
+//   // take from the home view: manage pairings, open rooms, and navigate to settings.
+//   @override
+//   Widget build(BuildContext context) {
+//     final supabaseService = context.read<SupabaseService>();
+//     final deviceSerial = supabaseService.getDeviceSerial() ?? 'Unknown';
+//     final deviceName = supabaseService.getDeviceName() ?? 'My Device';
+//
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Cooperating Screen'),
+//         centerTitle: true,
+//         actions: [
+//           IconButton(
+//             icon: const Icon(Icons.settings),
+//             onPressed: () => Navigator.of(context).pushNamed('/settings'),
+//           ),
+//         ],
+//       ),
+//       body: SingleChildScrollView(
+//         padding: const EdgeInsets.all(16.0),
+//         child: Column(
+//           children: [
+//             // Device Info Card
+//             Card(
+//               child: Padding(
+//                 padding: const EdgeInsets.all(16.0),
+//                 child: Column(
+//                   crossAxisAlignment: CrossAxisAlignment.start,
+//                   children: [
+//                     const Text(
+//                       'This Device',
+//                       style: TextStyle(
+//                         fontSize: 18,
+//                         fontWeight: FontWeight.bold,
+//                       ),
+//                     ),
+//                     const SizedBox(height: 16),
+//                     Row(
+//                       children: [
+//                         const Icon(Icons.devices),
+//                         const SizedBox(width: 12),
+//                         Column(
+//                           crossAxisAlignment: CrossAxisAlignment.start,
+//                           children: [
+//                             Text(deviceName),
+//                             Text(
+//                               'Serial: $deviceSerial',
+//                               style: const TextStyle(fontSize: 12),
+//                             ),
+//                           ],
+//                         ),
+//                       ],
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ),
+//             const SizedBox(height: 24),
+//             // Paired Devices Section
+//             const Text(
+//               'Paired Devices',
+//               style: TextStyle(
+//                 fontSize: 18,
+//                 fontWeight: FontWeight.bold,
+//               ),
+//             ),
+//             const SizedBox(height: 16),
+//             // Placeholder for paired devices list
+//             Center(
+//               child: Column(
+//                 children: [
+//                   Icon(
+//                     Icons.devices,
+//                     size: 48,
+//                     color: Colors.grey.shade300,
+//                   ),
+//                   const SizedBox(height: 16),
+//                   Text(
+//                     'No paired devices yet',
+//                     style: TextStyle(color: Colors.grey.shade600),
+//                   ),
+//                   const SizedBox(height: 16),
+//                   ElevatedButton.icon(
+//                     onPressed: () => Navigator.of(context).pushNamed('/pairing-request'),
+//                     icon: const Icon(Icons.add),
+//                     label: const Text('Pair New Device'),
+//                   ),
+//                   const SizedBox(height: 16),
+//                   OutlinedButton.icon(
+//                     onPressed: () => Navigator.of(context).pushNamed('/room'),
+//                     icon: const Icon(Icons.meeting_room),
+//                     label: const Text('Join Room'),
+//                   ),
+//                   const SizedBox(height: 16),
+//                   TextButton(
+//                     onPressed: () => Navigator.of(context).pushNamed('/devices'),
+//                     child: const Text('View All Paired Devices'),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+//

@@ -1,0 +1,93 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/custom/settings/sub/impl/ModifierSetting.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/custom/settings/sub/impl/ModifierSetting.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/custom/settings/sub/impl/ModifierSetting.java), unveraendert, als Inline-Doku ----
+// package net.codingarea.challenges.plugin.challenges.custom.settings.sub.impl;
+//
+// import java.util.function.Function;
+// import net.anweisen.utilities.bukkit.utils.menu.MenuClickInfo;
+// import net.codingarea.challenges.plugin.Challenges;
+// import net.codingarea.challenges.plugin.challenges.custom.settings.sub.ValueSetting;
+// import net.codingarea.challenges.plugin.challenges.type.IModifier;
+// import net.codingarea.challenges.plugin.challenges.type.helper.ChallengeHelper;
+// import net.codingarea.challenges.plugin.utils.item.DefaultItem;
+// import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+//
+// public class ModifierSetting extends ValueSetting implements IModifier {
+//    private final int min;
+//    private final int max;
+//    private final Function settingsItemGetter;
+//    private int tempValue;
+//
+//    public ModifierSetting(String key, int min, int max, ItemBuilder displayItem) {
+//       this(key, min, max, displayItem, (integer) -> {
+//          return "";
+//       }, (integer) -> {
+//          return "";
+//       });
+//    }
+//
+//    public ModifierSetting(String key, int min, int max, ItemBuilder itemBuilder, Function prefixGetter, Function suffixGetter) {
+//       this(key, min, max, itemBuilder, (value) -> {
+//          String prefix = (String)prefixGetter.apply(value);
+//          String suffix = (String)suffixGetter.apply(value);
+//          return DefaultItem.value(value, (prefix.isEmpty() ? "" : "§7" + prefix + " ") + "§e").appendName(suffix.isEmpty() ? "" : " §7" + suffix);
+//       });
+//    }
+//
+//    public ModifierSetting(String key, int min, int max, ItemBuilder itemBuilder, Function settingsItemGetter) {
+//       super(key, itemBuilder);
+//       this.min = min;
+//       this.max = max;
+//       this.settingsItemGetter = settingsItemGetter;
+//    }
+//
+//    public String onClick(MenuClickInfo info, String value, int slotIndex) {
+//       int intValue = this.getIntValue(value);
+//       this.tempValue = intValue;
+//       ChallengeHelper.handleModifierClick(info, this);
+//       intValue = this.tempValue;
+//       this.tempValue = 0;
+//       return String.valueOf(intValue);
+//    }
+//
+//    public int getValue() {
+//       return this.tempValue;
+//    }
+//
+//    public void setValue(int value) {
+//       this.tempValue = value;
+//    }
+//
+//    public int getMinValue() {
+//       return this.min;
+//    }
+//
+//    public int getMaxValue() {
+//       return this.max;
+//    }
+//
+//    public void playValueChangeTitle() {
+//    }
+//
+//    public ItemBuilder getSettingsItem(String value) {
+//       int intValue = this.getIntValue(value);
+//       return (ItemBuilder)this.settingsItemGetter.apply(intValue);
+//    }
+//
+//    public int getIntValue(String value) {
+//       try {
+//          return Integer.parseInt(value);
+//       } catch (Exception var3) {
+//          Challenges.getInstance().getLogger().severe("Something went wrong while parsing the value of subsetting " + this.getKey() + " with value " + value);
+//          Challenges.getInstance().getLogger().error("", new Object[]{var3});
+//          return 0;
+//       }
+//    }
+// }
+//

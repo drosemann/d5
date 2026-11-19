@@ -1,0 +1,23 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-modernize-website-design\next.config.mjs
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE next_config_mjs
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-modernize-website-design\next.config.mjs\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-modernize-website-design\next.config.mjs), unveraendert, als Inline-Doku ----
+# /** @type {import('next').NextConfig} */
+# const nextConfig = {
+#   typescript: {
+#     ignoreBuildErrors: true,
+#   },
+#   images: {
+#     unoptimized: true,
+#   },
+# }
+#
+# export default nextConfig
+#

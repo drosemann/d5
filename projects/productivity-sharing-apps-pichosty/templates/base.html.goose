@@ -1,0 +1,57 @@
+﻿// Goose-Port-Spiegel von: projects/productivity-sharing-apps-pichosty/templates/base.html
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/productivity-sharing-apps-pichosty/templates/base.html");
+}
+
+// ---- Original-Code (projects/productivity-sharing-apps-pichosty/templates/base.html), unveraendert, als Inline-Doku ----
+// <!DOCTYPE html>
+// <html lang="de">
+// <head>
+//     <meta charset="UTF-8">
+//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//     <title>{% block title %}PicHosty{% endblock %}</title>
+//     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+//     <style>
+//         body { 
+//             background-color: #f4f6f9; 
+//             font-family: 'Arial', sans-serif;
+//         }
+//         .container {
+//             max-width: 800px;
+//             margin: 2rem auto;
+//             background-color: white;
+//             padding: 2rem;
+//             border-radius: 10px;
+//             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+//         }
+//     </style>
+// </head>
+// <body>
+//     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+//         <div class="container">
+//             <a class="navbar-brand" href="/">PicHosty</a>
+//             <div class="navbar-nav">
+//                 {% if current_user.is_authenticated %}
+//                     <a class="nav-item nav-link" href="/upload">Upload</a>
+//                     <a class="nav-item nav-link" href="/gallery">Meine Galerie</a>
+//                     <a class="nav-item nav-link" href="/logout">Logout</a>
+//                 {% else %}
+//                     <a class="nav-item nav-link" href="/login">Login</a>
+//                     <a class="nav-item nav-link" href="/register">Registrieren</a>
+//                 {% endif %}
+//             </div>
+//         </div>
+//     </nav>
+//
+//     <div class="container">
+//         {% block content %}{% endblock %}
+//     </div>
+//
+//     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+//     {% block scripts %}{% endblock %}
+// </body>
+// </html>
+//

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Upload Video{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h2>Upload Video</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Video Title</label>
+                        <input type="text" class="form-control" id="title" name="title" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="video" class="form-label">Video File</label>
+                        <input class="form-control" type="file" id="video" name="video" accept=".mp4,.avi,.mov" required>
+                        <div class="form-text">Supported formats: MP4, AVI, MOV</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload Video</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

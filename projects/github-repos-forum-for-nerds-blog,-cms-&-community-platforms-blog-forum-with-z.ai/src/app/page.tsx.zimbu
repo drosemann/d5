@@ -1,0 +1,357 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-forum-with-z.ai\src\app\page.tsx
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE page_tsx
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-forum-with-z.ai\src\app\page.tsx\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-forum-with-z.ai\src\app\page.tsx), unveraendert, als Inline-Doku ----
+# 'use client'
+#
+# import { motion } from 'framer-motion'
+# import { Button } from '@/components/ui/button'
+# import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+# import { Badge } from '@/components/ui/badge'
+# import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+# import CosmicLayout from '@/components/CosmicLayout'
+# import { 
+#   BookOpen, 
+#   MessageCircle, 
+#   Users, 
+#   Star, 
+#   Sparkles,
+#   Rocket,
+#   Zap,
+#   Heart,
+#   TrendingUp,
+#   Calendar,
+#   Eye
+# } from 'lucide-react'
+#
+# export default function Home() {
+#   const features = [
+#     {
+#       icon: Rocket,
+#       title: "Cosmic Discussions",
+#       description: "Engage in thought-provoking conversations about AI, technology, and the future.",
+#       color: "from-purple-500 to-pink-500"
+#     },
+#     {
+#       icon: BookOpen,
+#       title: "Nebula Articles",
+#       description: "Discover insightful blog posts about the latest developments in artificial intelligence.",
+#       color: "from-blue-500 to-purple-500"
+#     },
+#     {
+#       icon: Users,
+#       title: "Stellar Community",
+#       description: "Connect with brilliant minds from around the world in our cosmic community.",
+#       color: "from-pink-500 to-rose-500"
+#     },
+#     {
+#       icon: Zap,
+#       title: "Lightning Fast",
+#       description: "Experience real-time discussions with instant updates and notifications.",
+#       color: "from-yellow-500 to-orange-500"
+#     }
+#   ]
+#
+#   const recentPosts = [
+#     {
+#       id: 1,
+#       title: "The Future of AI in Space Exploration",
+#       excerpt: "Exploring how artificial intelligence is revolutionizing our approach to space missions and cosmic discovery...",
+#       author: "Dr. Sarah Chen",
+#       date: "2 hours ago",
+#       views: 1247,
+#       tags: ["AI", "Space", "Technology"]
+#     },
+#     {
+#       id: 2,
+#       title: "Quantum Computing and Neural Networks",
+#       excerpt: "A deep dive into the intersection of quantum computing and artificial neural networks...",
+#       author: "Prof. Michael Rodriguez",
+#       date: "5 hours ago",
+#       views: 892,
+#       tags: ["Quantum", "Neural Networks", "Computing"]
+#     },
+#     {
+#       id: 3,
+#       title: "Ethical AI: Building a Better Tomorrow",
+#       excerpt: "Discussing the importance of ethical considerations in AI development and deployment...",
+#       author: "Emma Thompson",
+#       date: "1 day ago",
+#       views: 2156,
+#       tags: ["Ethics", "AI", "Future"]
+#     }
+#   ]
+#
+#   const stats = [
+#     { label: "Active Users", value: "2,847", icon: Users, color: "text-purple-400" },
+#     { label: "Posts Published", value: "15,234", icon: BookOpen, color: "text-blue-400" },
+#     { label: "Discussions", value: "8,921", icon: MessageCircle, color: "text-pink-400" },
+#     { label: "Community Rating", value: "4.9/5", icon: Star, color: "text-yellow-400" }
+#   ]
+#
+#   return (
+#     <CosmicLayout>
+#       {/* Hero Section */}
+#       <section className="text-center py-16 md:py-24">
+#         <motion.div
+#           initial={{ opacity: 0, y: 30 }}
+#           animate={{ opacity: 1, y: 0 }}
+#           transition={{ duration: 0.8 }}
+#           className="max-w-4xl mx-auto"
+#         >
+#           <div className="mb-8">
+#             <motion.div
+#               initial={{ scale: 0 }}
+#               animate={{ scale: 1 }}
+#               transition={{ duration: 0.5, delay: 0.2 }}
+#               className="inline-flex items-center space-x-2 bg-purple-600/20 border border-purple-500/30 rounded-full px-4 py-2 mb-6"
+#             >
+#               <Sparkles className="w-4 h-4 text-purple-400" />
+#               <span className="text-sm text-purple-400 font-medium">Welcome to the Future</span>
+#             </motion.div>
+#             
+#             <motion.h1 
+#               className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent"
+#               initial={{ opacity: 0, y: 20 }}
+#               animate={{ opacity: 1, y: 0 }}
+#               transition={{ duration: 0.8, delay: 0.3 }}
+#             >
+#               Explore the Universe
+#               <br />
+#               <span className="text-white">of AI Knowledge</span>
+#             </motion.h1>
+#             
+#             <motion.p 
+#               className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto"
+#               initial={{ opacity: 0, y: 20 }}
+#               animate={{ opacity: 1, y: 0 }}
+#               transition={{ duration: 0.8, delay: 0.4 }}
+#             >
+#               Join our cosmic community of thinkers, innovators, and dreamers pushing the boundaries of artificial intelligence.
+#             </motion.p>
+#           </div>
+#           
+#           <motion.div 
+#             className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4"
+#             initial={{ opacity: 0, y: 20 }}
+#             animate={{ opacity: 1, y: 0 }}
+#             transition={{ duration: 0.8, delay: 0.5 }}
+#           >
+#             <Button 
+#               size="lg" 
+#               className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-8 py-3 text-lg shadow-lg hover:shadow-purple-500/25 transition-all duration-300"
+#             >
+#               <Rocket className="w-5 h-5 mr-2" />
+#               Start Exploring
+#             </Button>
+#             <Button 
+#               variant="outline" 
+#               size="lg" 
+#               className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20 font-semibold px-8 py-3 text-lg"
+#             >
+#               <Heart className="w-5 h-5 mr-2" />
+#               Join Community
+#             </Button>
+#           </motion.div>
+#         </motion.div>
+#       </section>
+#
+#       {/* Features Section */}
+#       <section className="py-16">
+#         <motion.div
+#           initial={{ opacity: 0, y: 30 }}
+#           animate={{ opacity: 1, y: 0 }}
+#           transition={{ duration: 0.8, delay: 0.6 }}
+#           className="text-center mb-12"
+#         >
+#           <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+#             Cosmic Features
+#           </h2>
+#           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+#             Experience the future of online communities with our cutting-edge features
+#           </p>
+#         </motion.div>
+#         
+#         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+#           {features.map((feature, index) => {
+#             const Icon = feature.icon
+#             return (
+#               <motion.div
+#                 key={feature.title}
+#                 initial={{ opacity: 0, y: 30 }}
+#                 animate={{ opacity: 1, y: 0 }}
+#                 transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+#                 whileHover={{ 
+#                   scale: 1.05,
+#                   boxShadow: "0 20px 40px rgba(139, 92, 246, 0.3)"
+#                 }}
+#                 className="group"
+#               >
+#                 <Card className="h-full bg-black/30 border border-white/10 hover:border-purple-500/50 transition-all duration-300 overflow-hidden">
+#                   <CardHeader className="text-center pb-4">
+#                     <div className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-br ${feature.color} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+#                       <Icon className="w-8 h-8 text-white" />
+#                     </div>
+#                     <CardTitle className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors duration-300">
+#                       {feature.title}
+#                     </CardTitle>
+#                   </CardHeader>
+#                   <CardContent>
+#                     <CardDescription className="text-gray-300 text-center">
+#                       {feature.description}
+#                     </CardDescription>
+#                   </CardContent>
+#                 </Card>
+#               </motion.div>
+#             )
+#           })}
+#         </div>
+#       </section>
+#
+#       {/* Stats Section */}
+#       <section className="py-16">
+#         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+#           {stats.map((stat, index) => {
+#             const Icon = stat.icon
+#             return (
+#               <motion.div
+#                 key={stat.label}
+#                 initial={{ opacity: 0, scale: 0.8 }}
+#                 animate={{ opacity: 1, scale: 1 }}
+#                 transition={{ duration: 0.5, delay: 1.1 + index * 0.1 }}
+#                 whileHover={{ scale: 1.05 }}
+#                 className="text-center"
+#               >
+#                 <div className="bg-black/30 border border-white/10 rounded-2xl p-6 hover:border-purple-500/50 transition-all duration-300">
+#                   <Icon className={`w-8 h-8 mx-auto mb-3 ${stat.color}`} />
+#                   <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
+#                   <div className="text-sm text-gray-400">{stat.label}</div>
+#                 </div>
+#               </motion.div>
+#             )
+#           })}
+#         </div>
+#       </section>
+#
+#       {/* Recent Posts Section */}
+#       <section className="py-16">
+#         <motion.div
+#           initial={{ opacity: 0, y: 30 }}
+#           animate={{ opacity: 1, y: 0 }}
+#           transition={{ duration: 0.8, delay: 1.3 }}
+#           className="text-center mb-12"
+#         >
+#           <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+#             Latest Cosmic Insights
+#           </h2>
+#           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+#             Discover the most recent discussions and articles from our community
+#           </p>
+#         </motion.div>
+#         
+#         <div className="space-y-6">
+#           {recentPosts.map((post, index) => (
+#             <motion.div
+#               key={post.id}
+#               initial={{ opacity: 0, x: -30 }}
+#               animate={{ opacity: 1, x: 0 }}
+#               transition={{ duration: 0.5, delay: 1.4 + index * 0.1 }}
+#               whileHover={{ 
+#                 scale: 1.02,
+#                 boxShadow: "0 10px 30px rgba(139, 92, 246, 0.2)"
+#               }}
+#             >
+#               <Card className="bg-black/30 border border-white/10 hover:border-purple-500/50 transition-all duration-300">
+#                 <CardContent className="p-6">
+#                   <div className="flex items-start justify-between mb-4">
+#                     <div className="flex-1">
+#                       <h3 className="text-xl font-bold text-white mb-2 hover:text-purple-400 transition-colors duration-300 cursor-pointer">
+#                         {post.title}
+#                       </h3>
+#                       <p className="text-gray-300 mb-4">{post.excerpt}</p>
+#                       
+#                       <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
+#                         <div className="flex items-center space-x-2">
+#                           <Avatar className="w-6 h-6">
+#                             <AvatarFallback className="bg-purple-600 text-white text-xs">
+#                               {post.author.split(' ').map(n => n[0]).join('')}
+#                             </AvatarFallback>
+#                           </Avatar>
+#                           <span>{post.author}</span>
+#                         </div>
+#                         <div className="flex items-center space-x-1">
+#                           <Calendar className="w-4 h-4" />
+#                           <span>{post.date}</span>
+#                         </div>
+#                         <div className="flex items-center space-x-1">
+#                           <Eye className="w-4 h-4" />
+#                           <span>{post.views} views</span>
+#                         </div>
+#                       </div>
+#                     </div>
+#                     
+#                     <Button variant="ghost" size="sm" className="text-purple-400 hover:text-purple-300 hover:bg-purple-500/20">
+#                       <TrendingUp className="w-4 h-4" />
+#                     </Button>
+#                   </div>
+#                   
+#                   <div className="flex flex-wrap gap-2">
+#                     {post.tags.map((tag) => (
+#                       <Badge 
+#                         key={tag} 
+#                         variant="outline" 
+#                         className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20"
+#                       >
+#                         {tag}
+#                       </Badge>
+#                     ))}
+#                   </div>
+#                 </CardContent>
+#               </Card>
+#             </motion.div>
+#           ))}
+#         </div>
+#       </section>
+#
+#       {/* CTA Section */}
+#       <section className="py-16 text-center">
+#         <motion.div
+#           initial={{ opacity: 0, y: 30 }}
+#           animate={{ opacity: 1, y: 0 }}
+#           transition={{ duration: 0.8, delay: 1.7 }}
+#           className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 border border-purple-500/30 rounded-3xl p-8 md:p-12"
+#         >
+#           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+#             Ready to Join the Cosmic Journey?
+#           </h2>
+#           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+#             Become part of a community that's shaping the future of AI and technology.
+#           </p>
+#           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+#             <Button 
+#               size="lg" 
+#               className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-8 py-3 text-lg shadow-lg hover:shadow-purple-500/25 transition-all duration-300"
+#             >
+#               <Sparkles className="w-5 h-5 mr-2" />
+#               Get Started Free
+#             </Button>
+#             <Button 
+#               variant="outline" 
+#               size="lg" 
+#               className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20 font-semibold px-8 py-3 text-lg"
+#             >
+#               Learn More
+#             </Button>
+#           </div>
+#         </motion.div>
+#       </section>
+#     </CosmicLayout>
+#   )
+# }

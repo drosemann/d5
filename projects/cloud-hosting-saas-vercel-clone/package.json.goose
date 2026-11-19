@@ -1,0 +1,33 @@
+﻿// Goose-Port-Spiegel von: projects/cloud-hosting-saas-vercel-clone/package.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/cloud-hosting-saas-vercel-clone/package.json");
+}
+
+// ---- Original-Code (projects/cloud-hosting-saas-vercel-clone/package.json), unveraendert, als Inline-Doku ----
+// {
+//   "name": "vercel-clone",
+//   "version": "1.0.0",
+//   "description": "A Vercel-like deployment platform",
+//   "scripts": {
+//     "start": "concurrently \"cd api-server && python app.py\" \"cd frontend-nextjs && npm run dev\" \"cd s3-reverse-proxy && npm start\"",
+//     "dev": "concurrently \"cd api-server && set FLASK_DEBUG=true && python app.py\" \"cd frontend-nextjs && npm run dev\" \"cd s3-reverse-proxy && npm run dev\"",
+//     "install-all": "concurrently \"cd api-server && pip install -r requirements.txt\" \"cd frontend-nextjs && npm install\" \"cd s3-reverse-proxy && npm install\" \"cd build-server && npm install\"",
+//     "build": "cd frontend-nextjs && npm run build",
+//     "test": "echo \"No test specified\""
+//   },
+//   "workspaces": [
+//     "api-server",
+//     "build-server",
+//     "frontend-nextjs",
+//     "s3-reverse-proxy"
+//   ],
+//   "author": "",
+//   "license": "ISC",
+//   "devDependencies": {
+//     "concurrently": "^8.0.0"
+//   }
+// }
+//

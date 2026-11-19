@@ -1,0 +1,255 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/content/impl/MessageImpl.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/content/impl/MessageImpl.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/content/impl/MessageImpl.java), unveraendert, als Inline-Doku ----
+// package net.codingarea.challenges.plugin.content.impl;
+//
+// import java.util.Iterator;
+// import java.util.LinkedList;
+// import java.util.List;
+// import java.util.function.BiConsumer;
+// import java.util.function.Consumer;
+// import javax.annotation.Nonnull;
+// import javax.annotation.Nullable;
+// import net.anweisen.utilities.common.collection.IRandom;
+// import net.anweisen.utilities.common.misc.StringUtils;
+// import net.codingarea.challenges.plugin.Challenges;
+// import net.codingarea.challenges.plugin.content.ItemDescription;
+// import net.codingarea.challenges.plugin.content.Message;
+// import net.codingarea.challenges.plugin.content.Prefix;
+// import net.codingarea.challenges.plugin.content.loader.LanguageLoader;
+// import net.codingarea.challenges.plugin.utils.bukkit.misc.BukkitStringUtils;
+// import net.codingarea.challenges.plugin.utils.misc.FontUtils;
+// import net.md_5.bungee.api.chat.BaseComponent;
+// import net.md_5.bungee.api.chat.TextComponent;
+// import org.bukkit.Bukkit;
+// import org.bukkit.command.CommandSender;
+// import org.bukkit.entity.Player;
+//
+// public class MessageImpl implements Message {
+//    protected final String name;
+//    protected String[] value;
+//
+//    public MessageImpl(@Nonnull String name) {
+//       this.name = name;
+//    }
+//
+//    @Nonnull
+//    protected static IRandom defaultRandom() {
+//       return IRandom.threadLocal();
+//    }
+//
+//    @Nonnull
+//    public String asString(@Nonnull Object... args) {
+//       return this.value == null ? this.name : String.join("\n", this.asArray(args));
+//    }
+//
+//    @Nonnull
+//    public BaseComponent asComponent(@Nonnull Object... args) {
+//       if (this.value == null) {
+//          return new TextComponent(this.name);
+//       } else {
+//          BaseComponent[] components = this.asComponentArray((Prefix)null, args);
+//          BaseComponent first = null;
+//          BaseComponent[] var4 = components;
+//          int var5 = components.length;
+//
+//          for(int var6 = 0; var6 < var5; ++var6) {
+//             BaseComponent component = var4[var6];
+//             if (first == null) {
+//                first = component;
+//             } else {
+//                first.addExtra(component);
+//             }
+//          }
+//
+//          return (BaseComponent)(first == null ? new TextComponent() : first);
+//       }
+//    }
+//
+//    @Nonnull
+//    public String asRandomString(@Nonnull Object... args) {
+//       return this.asRandomString(defaultRandom(), args);
+//    }
+//
+//    @Nonnull
+//    public String asRandomString(@Nonnull IRandom random, @Nonnull Object... args) {
+//       String[] array = this.asArray(args);
+//       return array.length == 0 ? Message.unknown(this.name) : (String)random.choose((Object[])array);
+//    }
+//
+//    @Nonnull
+//    public BaseComponent asRandomComponent(@Nonnull IRandom random, @Nonnull Prefix prefix, @Nonnull Object... args) {
+//       BaseComponent[] array = this.asComponentArray(prefix, args);
+//       return (BaseComponent)(array.length == 0 ? new TextComponent(Message.unknown(this.name)) : (BaseComponent)random.choose((Object[])array));
+//    }
+//
+//    @Nonnull
+//    public String[] asArray(@Nonnull Object... args) {
+//       if (this.value == null) {
+//          return new String[]{Message.unknown(this.name)};
+//       } else {
+//          args = BukkitStringUtils.replaceArguments(args, true);
+//          LanguageLoader loader = (LanguageLoader)Challenges.getInstance().getLoaderRegistry().getFirstLoaderByClass(LanguageLoader.class);
+//          boolean capsFont = false;
+//          if (loader != null) {
+//             capsFont = loader.isSmallCapsFont();
+//          }
+//
+//          return capsFont ? FontUtils.toSmallCaps(StringUtils.format(this.value, args)) : StringUtils.format(this.value, args);
+//       }
+//    }
+//
+//    @Nonnull
+//    public BaseComponent[] asComponentArray(@Nullable Prefix prefix, @Nonnull Object... args) {
+//       return (BaseComponent[])(this.value == null ? new TextComponent[]{new TextComponent(Message.unknown(this.name))} : BukkitStringUtils.format(prefix, this.value, args));
+//    }
+//
+//    @Nonnull
+//    public ItemDescription asItemDescription(@Nonnull Object... args) {
+//       if (this.value == null) {
+//          Message.unknown(this.name);
+//          return ItemDescription.empty();
+//       } else {
+//          return new ItemDescription(this.asArray(args));
+//       }
+//    }
+//
+//    public void send(@Nonnull CommandSender target, @Nonnull Prefix prefix, @Nonnull Object... args) {
+//       this.doSendLines((component) -> {
+//          target.spigot().sendMessage(component);
+//       }, prefix, this.asComponentArray(prefix, args));
+//    }
+//
+//    public void sendRandom(@Nonnull CommandSender target, @Nonnull Prefix prefix, @Nonnull Object... args) {
+//       this.sendRandom(defaultRandom(), target, prefix, args);
+//    }
+//
+//    public void sendRandom(@Nonnull IRandom random, @Nonnull CommandSender target, @Nonnull Prefix prefix, @Nonnull Object... args) {
+//       this.doSendLine((components) -> {
+//          target.spigot().sendMessage(components);
+//       }, prefix, this.asRandomComponent(random, prefix, args));
+//    }
+//
+//    public void broadcast(@Nonnull Prefix prefix, @Nonnull Object... args) {
+//       this.doSendLines((components) -> {
+//          Bukkit.spigot().broadcast(components);
+//       }, prefix, this.asComponentArray(prefix, args));
+//    }
+//
+//    public void broadcastRandom(@Nonnull Prefix prefix, @Nonnull Object... args) {
+//       this.broadcastRandom(defaultRandom(), prefix, args);
+//    }
+//
+//    public void broadcastRandom(@Nonnull IRandom random, @Nonnull Prefix prefix, @Nonnull Object... args) {
+//       this.doSendLine((component) -> {
+//          Bukkit.spigot().broadcast(component);
+//       }, prefix, this.asRandomComponent(random, prefix, args));
+//    }
+//
+//    private void doSendLines(@Nonnull Consumer sender, @Nonnull Prefix prefix, @Nonnull BaseComponent[] components) {
+//       BaseComponent[] var4 = components;
+//       int var5 = components.length;
+//
+//       for(int var6 = 0; var6 < var5; ++var6) {
+//          BaseComponent line = var4[var6];
+//          this.doSendLine(sender, prefix, line);
+//       }
+//
+//    }
+//
+//    private void doSendLine(@Nonnull Consumer sender, @Nonnull Prefix prefix, BaseComponent component) {
+//       LanguageLoader loader = (LanguageLoader)Challenges.getInstance().getLoaderRegistry().getFirstLoaderByClass(LanguageLoader.class);
+//       boolean capsFont = false;
+//       if (loader != null) {
+//          capsFont = loader.isSmallCapsFont();
+//       }
+//
+//       BaseComponent component1 = component;
+//       if (capsFont) {
+//          if (component instanceof TextComponent) {
+//             component1 = new TextComponent(FontUtils.toSmallCaps(((TextComponent)component).getText()));
+//          }
+//
+//          if (component != null) {
+//             List extra = component.getExtra();
+//             if (extra != null) {
+//                component.setExtra(new LinkedList());
+//                Iterator var8 = extra.iterator();
+//
+//                while(var8.hasNext()) {
+//                   BaseComponent baseComponent = (BaseComponent)var8.next();
+//                   if (baseComponent instanceof TextComponent) {
+//                      String text = ((TextComponent)baseComponent).getText();
+//                      ((BaseComponent)component1).addExtra(new TextComponent(text));
+//                   } else {
+//                      ((BaseComponent)component1).addExtra(baseComponent);
+//                   }
+//                }
+//             }
+//          }
+//       }
+//
+//       if (component1 != null) {
+//          sender.accept(component1);
+//       }
+//
+//    }
+//
+//    public void broadcastTitle(@Nonnull Object... args) {
+//       String[] title = this.asArray(args);
+//       Bukkit.getOnlinePlayers().forEach((player) -> {
+//          this.doSendTitle(player, title);
+//       });
+//    }
+//
+//    public void sendTitle(@Nonnull Player player, @Nonnull Object... args) {
+//       this.doSendTitle(player, this.asArray(args));
+//    }
+//
+//    public void sendTitleInstant(@Nonnull Player player, @Nonnull Object... args) {
+//       this.doSendTitleInstant(player, this.asArray(args));
+//    }
+//
+//    protected void doSendTitle(@Nonnull Player player, @Nonnull String[] title) {
+//       this.sendTitle(title, (line1, line2) -> {
+//          Challenges.getInstance().getTitleManager().sendTitle(player, line1, line2);
+//       });
+//    }
+//
+//    protected void doSendTitleInstant(@Nonnull Player player, @Nonnull String[] title) {
+//       this.sendTitle(title, (line1, line2) -> {
+//          Challenges.getInstance().getTitleManager().sendTitleInstant(player, line1, line2);
+//       });
+//    }
+//
+//    protected void sendTitle(@Nonnull String[] title, @Nonnull BiConsumer send) {
+//       if (title.length == 0) {
+//          send.accept("", "");
+//       } else if (title.length == 1) {
+//          send.accept(title[0], "");
+//       } else {
+//          send.accept(title[0], title[1]);
+//       }
+//
+//    }
+//
+//    public void setValue(@Nonnull String[] value) {
+//       this.value = value;
+//    }
+//
+//    @Nonnull
+//    public String getName() {
+//       return this.name;
+//    }
+//
+//    public String toString() {
+//       return this.asString();
+//    }
+// }
+//

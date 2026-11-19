@@ -1,0 +1,34 @@
+﻿# Zimbu-Port-Spiegel von: projects\productivity-&-sharing-apps-sharebox\convex\_generated\api.js
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE api_js
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\productivity-&-sharing-apps-sharebox\convex\_generated\api.js\n")
+  RETURN 0
+
+# ---- Original-Code (projects\productivity-&-sharing-apps-sharebox\convex\_generated\api.js), unveraendert, als Inline-Doku ----
+# /* eslint-disable */
+# /**
+#  * Generated `api` utility.
+#  *
+#  * THIS CODE IS AUTOMATICALLY GENERATED.
+#  *
+#  * To regenerate, run `npx convex dev`.
+#  * @module
+#  */
+#
+# import { anyApi } from "convex/server";
+#
+# /**
+#  * A utility for referencing Convex functions in your app's API.
+#  *
+#  * Usage:
+#  * ```js
+#  * const myFunctionReference = api.myModule.myFunction;
+#  * ```
+#  */
+# export const api = anyApi;
+# export const internal = anyApi;
+#

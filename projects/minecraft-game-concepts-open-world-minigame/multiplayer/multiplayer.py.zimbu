@@ -1,0 +1,72 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-open-world-minigame\multiplayer\multiplayer.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE multiplayer_py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-open-world-minigame\multiplayer\multiplayer.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-open-world-minigame\multiplayer\multiplayer.py), unveraendert, als Inline-Doku ----
+# # connect to ssh with settings in settings.txt
+# # this is only done if the game is launched for the first time
+# try:
+#     with open('settings.txt', 'r') as f:
+#         settings = f.read().splitlines()
+#         user = settings[0].split(':')[1]
+#         password = settings[1].split(':')[1]
+#         ip = settings[2].split(':')[1]
+#     ssh = paramiko.SSHClient()
+#     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+#     ssh.connect(ip, username=user, password=password)
+#     connected = True
+# except:
+#     connected = False
+#
+# # fetch player online 
+# # this is done every second
+# if connected:
+#     stdin, stdout, stderr = ssh.exec_command('who')
+#
+#     # add players to an array
+#     players = []
+#     for line in stdout:
+#         player = line.split()[0]
+#         players.append(player)
+#
+#     # for each player in the array
+#     for player in players:
+#         # add player to the game
+# if player not in players_in_game:
+#     players_in_game.append(player)
+#         
+#         # this is done by adding the player to an array
+#
+# add player to players:
+# remove player from players after pygame.quit
+#
+# # for each player in the array
+# for player in players:
+#     # check if the player is in the game
+#     if player in players_in_game:
+#         # and then updating the position of the player
+#
+#         check player current_location if [0, 0] == player_location then remove player from players
+#         # and then checking if the player is out of the screen
+#
+# check if player is in players:
+# if not remove player from players
+#         # and then removing the player from the array
+#         if player is not in players:
+#             remove player from players
+#
+# #check if player still connected
+#
+# if player connected = true WeatherSystem to sunny
+# if player connected = false: remove player from players
+#     
+#
+#
+#         pass
+#

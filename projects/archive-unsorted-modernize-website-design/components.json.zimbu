@@ -1,0 +1,33 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-modernize-website-design\components.json
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE components_json
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-modernize-website-design\components.json\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-modernize-website-design\components.json), unveraendert, als Inline-Doku ----
+# {
+#   "$schema": "https://ui.shadcn.com/schema.json",
+#   "style": "new-york",
+#   "rsc": true,
+#   "tsx": true,
+#   "tailwind": {
+#     "config": "",
+#     "css": "app/globals.css",
+#     "baseColor": "neutral",
+#     "cssVariables": true,
+#     "prefix": ""
+#   },
+#   "aliases": {
+#     "components": "@/components",
+#     "utils": "@/lib/utils",
+#     "ui": "@/components/ui",
+#     "lib": "@/lib",
+#     "hooks": "@/hooks"
+#   },
+#   "iconLibrary": "lucide"
+# }
+#

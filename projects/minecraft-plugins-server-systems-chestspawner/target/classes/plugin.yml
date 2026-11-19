@@ -1,0 +1,13 @@
+name: ChestSpawner
+version: 1.0.0
+main: com.chestspawner.plugin.ChestSpawnerPlugin
+api-version: 1.21.4
+description: Spawns chests with random loot when players are near each other
+commands:
+  chestreload:
+    description: Reload the plugin configuration
+    permission: chestspawner.reload
+permissions:
+  chestspawner.reload:
+    description: Allows reloading the plugin configuration
+    default: op

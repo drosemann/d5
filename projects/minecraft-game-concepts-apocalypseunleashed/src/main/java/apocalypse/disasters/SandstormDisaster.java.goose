@@ -1,0 +1,112 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-apocalypseunleashed/src/main/java/apocalypse/disasters/SandstormDisaster.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-apocalypseunleashed/src/main/java/apocalypse/disasters/SandstormDisaster.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-apocalypseunleashed/src/main/java/apocalypse/disasters/SandstormDisaster.java), unveraendert, als Inline-Doku ----
+// package apocalypse.disasters;
+//
+// import org.bukkit.Location;
+// import org.bukkit.World;
+// import org.bukkit.Material;
+// import org.bukkit.Particle;
+// import org.bukkit.block.Block;
+// import org.bukkit.scheduler.BukkitRunnable;
+// import org.bukkit.entity.Player;
+// import org.bukkit.potion.PotionEffect;
+// import org.bukkit.potion.PotionEffectType;
+// import org.bukkit.util.Vector;
+// import org.bukkit.scheduler.BukkitRunnable;
+// import org.bukkit.entity.Player;
+// import org.bukkit.potion.PotionEffect;
+// import org.bukkit.potion.PotionEffectType;
+//
+// public class SandstormDisaster extends Disaster {
+//     private static final int RADIUS = 20;
+//     private BukkitRunnable sandstormTask;
+//     
+//     public SandstormDisaster(World world, Location location) {
+//         super(world, location);
+//     }
+//
+//     @Override
+//     public void start() {
+//         Location center = location.clone();
+//         
+//         sandstormTask = new BukkitRunnable() {
+//             double angle = 0;
+//             
+//             @Override
+//             public void run() {
+//                 angle += 0.1; // Rotate the storm
+//                 
+//                 // Create swirling sand particles
+//                 for(int i = 0; i < 100; i++) {
+//                     double r = Math.random() * RADIUS;
+//                     double circleAngle = angle + (Math.random() * Math.PI * 2);
+//                     double x = center.getX() + (Math.cos(circleAngle) * r);
+//                     double y = center.getY() + (Math.random() * 10);
+//                     double z = center.getZ() + (Math.sin(circleAngle) * r);
+//                     Location particleLoc = new Location(world, x, y, z);
+//                     
+//                     // Mix of particles for better effect
+//                     world.spawnParticle(Particle.FALLING_DUST, particleLoc, 1, 0.5, 0.5, 0.5, 0);
+//                     if(Math.random() < 0.3) {
+//                         world.spawnParticle(Particle.CLOUD, particleLoc, 1, 0.2, 0.2, 0.2, 0);
+//                     }
+//                 }
+//                 
+//                 // Affect players in the sandstorm
+//                 for(Player player : world.getPlayers()) {
+//                     if(player.getLocation().distance(center) <= RADIUS) {
+//                         // Apply effects
+//                         player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 40, 0));
+//                         player.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, 40, 1));
+//                         
+//                         // Push player slightly
+//                         double pushAngle = angle + Math.PI;
+//                         double pushX = Math.cos(pushAngle) * 0.1;
+//                         double pushZ = Math.sin(pushAngle) * 0.1;
+//                         player.setVelocity(player.getVelocity().add(
+//                             new org.bukkit.util.Vector(pushX, 0.0, pushZ)));
+//                     }
+//                 }
+//                 
+//                 // Chance to place sand
+//                 if(Math.random() < 0.1) {
+//                     for(int x = -RADIUS; x <= RADIUS; x++) {
+//                         for(int z = -RADIUS; z <= RADIUS; z++) {
+//                             if(Math.random() < 0.05 && x*x + z*z <= RADIUS*RADIUS) {
+//                                 Location blockLoc = center.clone().add(x, 0, z);
+//                                 blockLoc.setY(world.getHighestBlockYAt(blockLoc));
+//                                 Block block = blockLoc.getBlock();
+//                                 Block above = blockLoc.clone().add(0, 1, 0).getBlock();
+//                                 
+//                                 if(above.getType() == Material.AIR && 
+//                                    block.getType() != Material.AIR) {
+//                                     above.setType(Material.SAND);
+//                                 }
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         };
+//         sandstormTask.runTaskTimer(apocalypse.ApocalypsePlugin.getInstance(), 0L, 2L);
+//     }
+//
+//     @Override
+//     public void stop() {
+//         if(sandstormTask != null) {
+//             sandstormTask.cancel();
+//         }
+//     }
+//
+//     @Override
+//     public String getName() {
+//         return "sandstorm";
+//     }
+// }

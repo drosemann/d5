@@ -1,0 +1,24 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-chat-app\server\middleware\auth.js
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE auth_js
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-chat-app\server\middleware\auth.js\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-chat-app\server\middleware\auth.js), unveraendert, als Inline-Doku ----
+# const jwt = require('jsonwebtoken');
+#
+# module.exports = (req, res, next) => {
+#     try {
+#         const token = req.headers.authorization.split(' ')[1];
+#         const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key');
+#         req.user = { id: decoded.userId };
+#         next();
+#     } catch (error) {
+#         res.status(401).json({ message: 'Authentication failed' });
+#     }
+# };
+#

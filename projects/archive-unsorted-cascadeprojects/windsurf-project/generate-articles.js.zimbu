@@ -1,0 +1,431 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-cascadeprojects\windsurf-project\generate-articles.js
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE generate_articles_js
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-cascadeprojects\windsurf-project\generate-articles.js\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-cascadeprojects\windsurf-project\generate-articles.js), unveraendert, als Inline-Doku ----
+# // Artikel-Generator für die Blog-Website
+# // Dieses Skript generiert automatisch Artikel aus einer Themenliste
+#
+# const fs = require('fs');
+# const path = require('path');
+#
+# // Liste aller Artikel-Themen (SEO-optimiert)
+# const articleTopics = [
+#     "Was ist ein Server? Einfach erklärt",
+#     "Unterschied zwischen Server und Client",
+#     "Wie funktioniert das Internet technisch?",
+#     "Unterschied zwischen IPv4 und IPv6",
+#     "Wie DNS funktioniert (und warum du es cachen kannst)",
+#     "Was bedeutet Ping, Latenz und Jitter?",
+#     "Unterschied zwischen HTTP und HTTPS",
+#     "Was ist ein Proxy-Server?",
+#     "So funktioniert NAT (Network Address Translation)",
+#     "Was ist ein VPN und wann lohnt sich eins?",
+#     "Unterschied zwischen LAN, WAN und MAN",
+#     "Wie Router Pakete weiterleiten",
+#     "Warum Ports wichtig sind",
+#     "Was ist eine Firewall wirklich?",
+#     "Unterschied zwischen Software- und Hardware-Firewalls",
+#     "Wie Load Balancing funktioniert",
+#     "Wie funktioniert Virtualisierung?",
+#     "Was ist eine VM und wie nutzt man sie?",
+#     "Container vs VM – die ehrliche Gegenüberstellung",
+#     "Was ist ein Hypervisor (Typ 1 & 2 erklärt)?",
+#     "Linux vs Windows Server – welcher ist besser?",
+#     "Beste Linux-Distributionen für Server",
+#     "Was ist Systemd und warum es gehasst & geliebt wird",
+#     "Wie man ein Linux-System härter macht",
+#     "SSH absichern wie ein Profi",
+#     "Fail2Ban optimal konfigurieren",
+#     "Firewall mit UFW richtig einstellen",
+#     "Wie Cronjobs dein Leben retten",
+#     "Automatisierte Backups unter Linux",
+#     "Monitoring-Tools im Vergleich (Netdata, Prometheus, Zabbix)",
+#     "Einführung in Ansible",
+#     "Terraform erklärt (mit Praxisbeispiel)",
+#     "Docker vs Podman – wer hat die Nase vorn?",
+#     "Docker Compose: Alles was du wissen musst",
+#     "Wie man einen Docker Container sicher macht",
+#     "CI/CD Pipeline einfach erklärt",
+#     "GitLab CI vs GitHub Actions",
+#     "Automatisierte Deployments mit Ansible + Git",
+#     "Wie du Logs zentral sammelst und auswertest",
+#     "Beste Open-Source-Tools für Server-Management",
+#     "Unterschied zwischen IaaS, PaaS, SaaS",
+#     "AWS vs Azure vs Google Cloud – ehrlicher Vergleich",
+#     "Wie man Cloud-Kosten reduziert",
+#     "Was ist Cloudflare und wie funktioniert es?",
+#     "CDN erklärt: Warum es Websites schneller macht",
+#     "Load Balancer in AWS einfach erklärt",
+#     "Cloud-Sicherheit: 10 Best Practices",
+#     "Wie man Infrastructure as Code (IaC) nutzt",
+#     "Backup-Strategien in der Cloud",
+#     "Hybride Cloud: Sinn oder Marketinggag?",
+#     "So funktioniert Pterodactyl im Detail",
+#     "Wings Debugging Guide",
+#     "Wie man einen Minecraft-Server richtig hostet",
+#     "Pterodactyl und Docker kombinieren",
+#     "Nginx Reverse Proxy Schritt für Schritt",
+#     "Wie du eine KVM-Instanz sicher betreibst",
+#     "Was ist Proxmox und wie nutzt man es?",
+#     "Virtuelle Netzwerke in KVM konfigurieren",
+#     "Beste Backup-Lösungen für VPS",
+#     "Was tun bei DDoS-Angriffen?",
+#     "MySQL vs MariaDB vs PostgreSQL",
+#     "Wie Indexe in Datenbanken funktionieren",
+#     "SQL vs NoSQL: Wann was nutzen?",
+#     "Backup-Strategien für Datenbanken",
+#     "Datenbank optimieren für Performance",
+#     "Redis als Cache nutzen",
+#     "Wie man Datenbank-Replikation einrichtet",
+#     "Top 5 Tools für DB-Monitoring",
+#     "MySQL Secure Installation Guide",
+#     "Wie man DB-Verbindungen in Docker handhabt",
+#     "Grundprinzipien von IT-Sicherheit",
+#     "OWASP Top 10 erklärt",
+#     "Brute Force vs Dictionary Attack",
+#     "Wie SSL-Zertifikate funktionieren",
+#     "SSH Key Management richtig",
+#     "Passwörter sicher speichern (Hashing, Salting)",
+#     "Zwei-Faktor-Authentifizierung erklärt",
+#     "Was ist Social Engineering?",
+#     "Penetration Testing Basics",
+#     "Tools für Ethical Hacking",
+#     "Linux Hardening Schritt-für-Schritt",
+#     "Honeypots richtig einsetzen",
+#     "Warum Fail2Ban essenziell ist",
+#     "Wie man Logfiles auf Angriffe prüft",
+#     "Firewall-Regeln für kleine Server",
+#     "OSI-Schichtenmodell mit echten Beispielen",
+#     "Wie Routing-Protokolle funktionieren (RIP, OSPF, BGP)",
+#     "VLANs erklärt",
+#     "Wie ARP funktioniert",
+#     "DHCP vs Static IP",
+#     "IPv6: Chancen und Herausforderungen",
+#     "NAT-Typen und deren Bedeutung für Gaming",
+#     "Warum DNSSEC wichtig ist",
+#     "Wie man Packet Sniffing betreibt",
+#     "Wireshark Guide für Einsteiger",
+#     "Wie SoCs funktionieren",
+#     "ARM vs x86 – der große Architekturkrieg",
+#     "Warum Apple Chips so effizient sind",
+#     "Wie Speichercontroller in Smartphones arbeiten",
+#     "NAND vs UFS vs NVMe",
+#     "Was ist LPDDR5X RAM?",
+#     "Smartphone-Display-Technologien erklärt",
+#     "Unterschiede zwischen AMOLED, OLED und IPS",
+#     "Wie Akkus altern",
+#     "Wie 5G technisch funktioniert",
+#     "Git Basics für Sysadmins",
+#     "Branching Strategien in Git",
+#     "Wie man Code Reviews effizient macht",
+#     "Clean Code Prinzipien",
+#     "Wie REST-APIs funktionieren",
+#     "GraphQL vs REST",
+#     "JSON vs YAML",
+#     "Dockerfile Best Practices",
+#     "Wie man Fehlerlogging strukturiert",
+#     "Command-Line Tools, die dein Leben verändern"
+# ];
+#
+# // Funktion zum Generieren von Artikel-HTML
+# function generateArticleHTML(title, index) {
+#     const slug = title.toLowerCase()
+#         .replace(/[^a-z0-9]+/g, '-')
+#         .replace(/^-+|-+$/g, '');
+#
+#     const currentDate = new Date().toLocaleDateString('de-DE', {
+#         year: 'numeric',
+#         month: 'long',
+#         day: 'numeric'
+#     });
+#
+#     return `<!DOCTYPE html>
+# <html lang="de">
+# <head>
+#     <meta charset="UTF-8">
+#     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+#     <title>${title} - Mein Blog</title>
+#     <meta name="description" content="${title} - Detaillierte Erklärung und Anleitung für IT-Professionals und Einsteiger">
+#     <meta name="keywords" content="${title.toLowerCase()}, IT, Server, Netzwerk, Sicherheit, Linux, Docker">
+#     <meta name="author" content="Mein Blog">
+#     <link rel="canonical" href="/posts/${slug}.html">
+#
+#     <!-- Open Graph / Facebook -->
+#     <meta property="og:type" content="article">
+#     <meta property="og:title" content="${title}">
+#     <meta property="og:description" content="${title} - Umfassende Erklärung für IT-Themen">
+#     <meta property="og:url" content="/posts/${slug}.html">
+#
+#     <!-- Twitter -->
+#     <meta property="twitter:card" content="summary_large_image">
+#     <meta property="twitter:title" content="${title}">
+#     <meta property="twitter:description" content="${title} - Technische Details erklärt">
+#
+#     <link rel="stylesheet" href="../css/style.css">
+#     <style>
+#         .blog-post {
+#             max-width: 800px;
+#             margin: 2rem auto;
+#             padding: 2rem;
+#             background: white;
+#             border-radius: 8px;
+#             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+#         }
+#
+#         .post-header {
+#             text-align: center;
+#             margin-bottom: 2rem;
+#         }
+#
+#         .post-date {
+#             color: #7f8c8d;
+#             margin: 1rem 0;
+#         }
+#
+#         .post-content {
+#             line-height: 1.8;
+#         }
+#
+#         .post-content p {
+#             margin-bottom: 1.5rem;
+#         }
+#
+#         .post-content h2 {
+#             margin-top: 2rem;
+#             margin-bottom: 1rem;
+#             color: #2c3e50;
+#         }
+#
+#         .post-content h3 {
+#             margin-top: 1.5rem;
+#             margin-bottom: 0.8rem;
+#             color: #34495e;
+#         }
+#
+#         .post-content ul, .post-content ol {
+#             margin-bottom: 1.5rem;
+#             padding-left: 2rem;
+#         }
+#
+#         .post-content li {
+#             margin-bottom: 0.5rem;
+#         }
+#
+#         .post-content code {
+#             background: #f8f9fa;
+#             padding: 0.2rem 0.4rem;
+#             border-radius: 3px;
+#             font-family: 'Courier New', monospace;
+#         }
+#
+#         .post-content pre {
+#             background: #f8f9fa;
+#             padding: 1rem;
+#             border-radius: 5px;
+#             overflow-x: auto;
+#             margin: 1rem 0;
+#         }
+#
+#         .back-link {
+#             display: inline-block;
+#             margin-top: 2rem;
+#             color: #3498db;
+#             text-decoration: none;
+#             font-weight: 500;
+#         }
+#
+#         .back-link:hover {
+#             text-decoration: underline;
+#         }
+#
+#         .article-meta {
+#             background: #f8f9fa;
+#             padding: 1rem;
+#             border-radius: 5px;
+#             margin-bottom: 2rem;
+#         }
+#
+#         .tags {
+#             margin-top: 0.5rem;
+#         }
+#
+#         .tag {
+#             display: inline-block;
+#             background: #3498db;
+#             color: white;
+#             padding: 0.2rem 0.6rem;
+#             border-radius: 3px;
+#             font-size: 0.8rem;
+#             margin-right: 0.5rem;
+#             margin-bottom: 0.3rem;
+#         }
+#     </style>
+# </head>
+# <body>
+#     <header>
+#         <div class="container">
+#             <h1>Mein Blog</h1>
+#         </div>
+#     </header>
+#
+#     <main class="container">
+#         <article class="blog-post">
+#             <header class="post-header">
+#                 <h1>${title}</h1>
+#                 <div class="post-date">${currentDate}</div>
+#             </header>
+#
+#             <div class="article-meta">
+#                 <strong>Kategorie:</strong> IT-Grundlagen & Server-Administration<br>
+#                 <strong>Schwierigkeitsgrad:</strong> Einsteiger bis Fortgeschritten<br>
+#                 <strong>Lesezeit:</strong> 8-12 Minuten
+#                 <div class="tags">
+#                     <span class="tag">IT</span>
+#                     <span class="tag">Server</span>
+#                     <span class="tag">Netzwerk</span>
+#                     <span class="tag">Sicherheit</span>
+#                 </div>
+#             </div>
+#
+#             <div class="post-content">
+#                 <p><strong>${title}</strong> - In diesem umfassenden Artikel erkläre ich dir alles, was du zu diesem Thema wissen musst. Von den Grundlagen bis zu fortgeschrittenen Konzepten - hier findest du alle wichtigen Informationen übersichtlich aufbereitet.</p>
+#
+#                 <h2>Was du in diesem Artikel lernst</h2>
+#                 <ul>
+#                     <li>Grundlegende Konzepte und Definitionen</li>
+#                     <li>Praktische Beispiele und Anwendungsfälle</li>
+#                     <li>Best Practices und Empfehlungen</li>
+#                     <li>Tipps für die praktische Umsetzung</li>
+#                     <li>Häufige Probleme und Lösungen</li>
+#                 </ul>
+#
+#                 <h2>Grundlagen verstehen</h2>
+#                 <p>Bevor wir in die Details einsteigen, lass uns die grundlegenden Konzepte klären. ${title} ist ein fundamentaler Baustein moderner IT-Infrastruktur und spielt eine entscheidende Rolle in Unternehmensnetzwerken und Cloud-Umgebungen.</p>
+#
+#                 <h2>Technische Details</h2>
+#                 <p>Technisch betrachtet funktioniert ${title.toLowerCase()} durch eine Kombination verschiedener Protokolle und Mechanismen. Die genaue Funktionsweise hängt von der spezifischen Implementierung ab, folgt aber meist standardisierten Verfahren.</p>
+#
+#                 <h3>Wichtige Komponenten:</h3>
+#                 <ul>
+#                     <li><strong>Hardware-Ebene:</strong> Physische Komponenten und Infrastruktur</li>
+#                     <li><strong>Software-Ebene:</strong> Betriebssysteme und Anwendungen</li>
+#                     <li><strong>Netzwerk-Ebene:</strong> Protokolle und Kommunikation</li>
+#                 </ul>
+#
+#                 <h2>Praktische Anwendung</h2>
+#                 <p>In der Praxis wird ${title.toLowerCase()} in verschiedenen Szenarien eingesetzt. Von kleinen Home-Office-Setups bis hin zu großen Rechenzentren - die Anwendungsmöglichkeiten sind vielfältig.</p>
+#
+#                 <h3>Beispiel-Konfiguration:</h3>
+#                 <pre><code># Beispiel-Konfiguration
+# server {
+#     listen 80;
+#     server_name example.com;
+#
+#     location / {
+#         # Konfiguration hier
+#     }
+# }</code></pre>
+#
+#                 <h2>Best Practices</h2>
+#                 <p>Um ${title.toLowerCase()} optimal zu nutzen, solltest du diese Best Practices befolgen:</p>
+#
+#                 <ol>
+#                     <li><strong>Sicherheit zuerst:</strong> Implementiere Sicherheitsmaßnahmen von Anfang an</li>
+#                     <li><strong>Monitoring:</strong> Überwache Leistung und Verfügbarkeit</li>
+#                     <li><strong>Backups:</strong> Regelmäßige Sicherungen sind essenziell</li>
+#                     <li><strong>Dokumentation:</strong> Halte Konfigurationen aktuell</li>
+#                 </ol>
+#
+#                 <h2>Häufige Probleme und Lösungen</h2>
+#                 <p>Bei der Arbeit mit ${title.toLowerCase()} treten manchmal Probleme auf. Hier sind die häufigsten und ihre Lösungen:</p>
+#
+#                 <h3>Problem 1: Performance-Einbußen</h3>
+#                 <p><strong>Lösung:</strong> Überprüfe Ressourcennutzung und optimiere Konfigurationen.</p>
+#
+#                 <h3>Problem 2: Sicherheitslücken</h3>
+#                 <p><strong>Lösung:</strong> Regelmäßige Updates und Sicherheitsaudits durchführen.</p>
+#
+#                 <h2>Fazit</h2>
+#                 <p>${title} ist ein komplexes aber fundamentales Thema in der IT. Mit dem richtigen Wissen und den passenden Tools kannst du ${title.toLowerCase()} effektiv einsetzen und verwalten.</p>
+#
+#                 <p>Dieser Artikel gibt dir eine solide Grundlage, um mit ${title.toLowerCase()} zu arbeiten. Für weiterführende Themen empfehle ich die vertiefende Lektüre entsprechender Dokumentationen und Fachbücher.</p>
+#
+#                 <h2>Weiterführende Ressourcen</h2>
+#                 <ul>
+#                     <li><a href="#">Offizielle Dokumentation</a></li>
+#                     <li><a href="#">Community-Foren und Diskussionen</a></li>
+#                     <li><a href="#">Spezialisierte Fachliteratur</a></li>
+#                     <li><a href="#">Online-Kurse und Tutorials</a></li>
+#                 </ul>
+#             </div>
+#
+#             <a href="../index.html" class="back-link">← Zurück zur Übersicht</a>
+#         </article>
+#     </main>
+#
+#     <footer>
+#         <div class="container">
+#             <p>&copy; 2025 Mein Blog. Alle Rechte vorbehalten.</p>
+#         </div>
+#     </footer>
+#
+#     <!-- Schema.org markup for SEO -->
+#     <script type="application/ld+json">
+#     {
+#         "@context": "https://schema.org",
+#         "@type": "Article",
+#         "headline": "${title}",
+#         "author": {
+#             "@type": "Person",
+#             "name": "Mein Blog"
+#         },
+#         "datePublished": "${new Date().toISOString()}",
+#         "publisher": {
+#             "@type": "Organization",
+#             "name": "Mein Blog"
+#         }
+#     }
+#     </script>
+# </body>
+# </html>`;
+# }
+#
+# // Hauptfunktion zum Generieren aller Artikel
+# function generateAllArticles() {
+#     const postsDir = path.join(__dirname, '..', 'posts');
+#
+#     // Stelle sicher, dass das posts Verzeichnis existiert
+#     if (!fs.existsSync(postsDir)) {
+#         fs.mkdirSync(postsDir, { recursive: true });
+#     }
+#
+#     console.log(`Generiere ${articleTopics.length} Artikel...`);
+#
+#     articleTopics.forEach((topic, index) => {
+#         const slug = topic.toLowerCase()
+#             .replace(/[^a-z0-9]+/g, '-')
+#             .replace(/^-+|-+$/g, '');
+#
+#         const filename = `${slug}.html`;
+#         const filepath = path.join(postsDir, filename);
+#
+#         const articleHTML = generateArticleHTML(topic, index);
+#
+#         fs.writeFileSync(filepath, articleHTML, 'utf8');
+#         console.log(`✓ ${filename} erstellt`);
+#     });
+#
+#     console.log(`\n✅ ${articleTopics.length} Artikel erfolgreich generiert!`);
+#     console.log(`📁 Alle Artikel sind im posts/ Verzeichnis verfügbar.`);
+# }
+#
+# // Führe die Generierung aus
+# generateAllArticles();
+#

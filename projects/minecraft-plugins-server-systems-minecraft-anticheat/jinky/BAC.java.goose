@@ -1,0 +1,478 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/BAC.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/BAC.java");
+}
+
+// ---- Original-Code (projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/BAC.java), unveraendert, als Inline-Doku ----
+// package me.jinky;
+//
+// import java.io.InputStreamReader;
+// import java.lang.reflect.InvocationTargetException;
+// import java.net.URL;
+// import java.util.ArrayList;
+// import java.util.HashMap;
+// import java.util.Iterator;
+// import java.util.List;
+// import java.util.Map;
+// import java.util.UUID;
+// import java.util.Map.Entry;
+// import me.jinky.checks.Check;
+// import me.jinky.checks.combat.CriticalCheck;
+// import me.jinky.checks.combat.KillAuraCheck;
+// import me.jinky.checks.combat.MultiAuraCheck;
+// import me.jinky.checks.combat.ReachCheck;
+// import me.jinky.checks.movement.BoatCheck;
+// import me.jinky.checks.movement.EntitySpeedCheck;
+// import me.jinky.checks.movement.FlightFCheck;
+// import me.jinky.checks.movement.FloatCheck;
+// import me.jinky.checks.movement.HoverCheck;
+// import me.jinky.checks.movement.SmartFlightCheck;
+// import me.jinky.checks.movement.SmartSpeedCheck;
+// import me.jinky.checks.movement.SpeedCheck;
+// import me.jinky.checks.movement.WaterCheck;
+// import me.jinky.checks.world.AntiCactusBerryCheck;
+// import me.jinky.checks.world.BreakCheck;
+// import me.jinky.checks.world.PlaceCheck;
+// import me.jinky.checks.world.XRayCheck;
+// import me.jinky.command.BACCmd;
+// import me.jinky.fwk.CommandFramework;
+// import me.jinky.handlers.BlockHandler;
+// import me.jinky.handlers.CStatsHandler;
+// import me.jinky.handlers.DamageHandler;
+// import me.jinky.handlers.ExemptHandler;
+// import me.jinky.handlers.MovementHandler;
+// import me.jinky.logger.PlayerLogger;
+// import me.jinky.logger.User;
+// import me.jinky.util.UtilMath;
+// import me.jinky.util.VersionUtil;
+// import net.md_5.bungee.api.chat.TextComponent;
+// import org.bukkit.Bukkit;
+// import org.bukkit.command.Command;
+// import org.bukkit.command.CommandSender;
+// import org.bukkit.entity.Player;
+// import org.bukkit.event.EventHandler;
+// import org.bukkit.event.Listener;
+// import org.bukkit.event.player.PlayerQuitEvent;
+// import org.bukkit.plugin.java.JavaPlugin;
+// import org.bukkit.util.Vector;
+// import org.json.simple.JSONObject;
+// import org.json.simple.parser.JSONParser;
+//
+// public class BAC extends JavaPlugin implements Listener {
+//    private static Object antiLock = new Object();
+//    public static BAC core = null;
+//    public static CommandFramework _fw = null;
+//    public List nonotify = new ArrayList();
+//    private static Map reports = new HashMap();
+//    public List All_Checks = new ArrayList();
+//    public DamageHandler DAMAGEHANDLER = null;
+//    public ExemptHandler EXEMPTHANDLER = null;
+//    public CStatsHandler CSTATSHANDLER = null;
+//    private static String COMPATIBLE_MC = "v1_8";
+//
+//    public void onEnable() {
+//       core = this;
+//       boolean go = true;
+//       if (!VersionUtil.getVersion().startsWith(COMPATIBLE_MC)) {
+//          Bukkit.getConsoleSender().sendMessage(" ");
+//          Bukkit.getConsoleSender().sendMessage(" ");
+//          Bukkit.getConsoleSender().sendMessage(" ");
+//          Bukkit.getConsoleSender().sendMessage("§c§l** Basic Anti-Cheat isn't compatible with this server! **");
+//          Bukkit.getConsoleSender().sendMessage("§cYou are running Basic Anti-Cheat for MC 1.8, this server is running 1." + VersionUtil.getVersion().split("_")[1]);
+//          Bukkit.getConsoleSender().sendMessage("§c§lPlease check the SpigotMC resource page to see if there's a compatible version for your server.");
+//          Bukkit.getConsoleSender().sendMessage(" ");
+//          Bukkit.getConsoleSender().sendMessage(" ");
+//          Bukkit.getConsoleSender().sendMessage(" ");
+//          go = false;
+//       }
+//
+//       if (go) {
+//          this.saveDefaultConfig();
+//          _fw = new CommandFramework(this);
+//          _fw.registerCommands(new BACCmd());
+//          this.DAMAGEHANDLER = new DamageHandler(this);
+//          this.EXEMPTHANDLER = new ExemptHandler(this);
+//          new MovementHandler(this);
+//          new BlockHandler(this);
+//          new PlayerLogger(this);
+//          Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Lag(), 100L, 1L);
+//          this.getServer().getPluginManager().registerEvents(this, this);
+//          Settings.loadConfig();
+//          BungeeHandler.load(this);
+//          Bukkit.getScheduler().runTaskLater(this, () -> {
+//             this.registerCheck(new SpeedCheck());
+//             this.registerCheck(new SmartFlightCheck());
+//             this.registerCheck(new SmartSpeedCheck());
+//             this.registerCheck(new BreakCheck());
+//             this.registerCheck(new PlaceCheck());
+//             this.registerCheck(new KillAuraCheck());
+//             this.registerCheck(new MultiAuraCheck());
+//             this.registerCheck(new BoatCheck());
+//             this.registerCheck(new WaterCheck());
+//             this.registerCheck(new HoverCheck());
+//             this.registerCheck(new FloatCheck());
+//             this.registerCheck(new ReachCheck());
+//             this.registerCheck(new EntitySpeedCheck());
+//             this.registerCheck(new XRayCheck());
+//             this.registerCheck(new AntiCactusBerryCheck());
+//             this.registerCheck(new CriticalCheck());
+//             this.registerCheck(new FlightFCheck());
+//             this.CSTATSHANDLER = new CStatsHandler(this);
+//          }, 100L);
+//       } else {
+//          Bukkit.getPluginManager().disablePlugin(this);
+//       }
+//
+//    }
+//
+//    public static String readableBytes(long bytes) {
+//       int unit = 1024;
+//       if (bytes < (long)unit) {
+//          return bytes + " B";
+//       } else {
+//          int exp = (int)(Math.log((double)bytes) / Math.log((double)unit));
+//          String pre = "kMGTPE".charAt(exp - 1) + "i";
+//          return String.format("%.2f %sB", (double)bytes / Math.pow((double)unit, (double)exp), pre);
+//       }
+//    }
+//
+//    public String getUUID(String player) {
+//       Iterator var4 = Bukkit.getOnlinePlayers().iterator();
+//
+//       while(var4.hasNext()) {
+//          Player p = (Player)var4.next();
+//          if (player.equalsIgnoreCase(p.getName())) {
+//             return p.getUniqueId().toString();
+//          }
+//       }
+//
+//       try {
+//          URL url = new URL("https://api.mojang.com/users/profiles/minecraft/" + player);
+//          String uuid = (String)((JSONObject)(new JSONParser()).parse(new InputStreamReader(url.openStream()))).get("id");
+//          String realUUID = uuid.substring(0, 8) + "-" + uuid.substring(8, 12) + "-" + uuid.substring(12, 16) + "-" + uuid.substring(16, 20) + "-" + uuid.substring(20, 32);
+//          return UUID.fromString(realUUID).toString();
+//       } catch (Exception var5) {
+//          return null;
+//       }
+//    }
+//
+//    public String getCSADDRESS() {
+//       String ip = Bukkit.getServer().getIp();
+//       if (ip == null || ip.length() == 0) {
+//          ip = "127.0.0.1";
+//       }
+//
+//       return ip + ":" + Bukkit.getServer().getPort();
+//    }
+//
+//    private void registerCheck(Check check) {
+//       if (!this.All_Checks.contains(check)) {
+//          this.All_Checks.add(check);
+//       }
+//
+//    }
+//
+//    public void sendMessage(Player p, String msg, Boolean actionbar) {
+//       if (actionbar) {
+//          p.spigot().sendMessage(new TextComponent(Settings.PREFIX + " " + msg));
+//       } else {
+//          p.sendMessage(Settings.PREFIX + " " + msg);
+//       }
+//
+//    }
+//
+//    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+//       return !(sender instanceof Player) ? false : _fw.handleCommand(sender, label, command, args);
+//    }
+//
+//    public static BAC getBAC() {
+//       return core;
+//    }
+//
+//    public User getUser(Player p) {
+//       return new User(p);
+//    }
+//
+//    public JavaPlugin getPlugin() {
+//       return this;
+//    }
+//
+//    public void console(String msg) {
+//       Bukkit.getConsoleSender().sendMessage(Settings.PREFIX + " " + msg);
+//    }
+//
+//    private boolean updateDatabase(Player p) {
+//       synchronized(antiLock) {
+//          List remove = new ArrayList();
+//          Iterator i = ((HashMap)reports.get(p)).keySet().iterator();
+//
+//          Long r;
+//          while(i.hasNext()) {
+//             r = (Long)i.next();
+//             if (System.currentTimeMillis() > r && !remove.contains(r)) {
+//                remove.add(r);
+//             }
+//          }
+//
+//          Iterator var6 = remove.iterator();
+//
+//          while(var6.hasNext()) {
+//             r = (Long)var6.next();
+//             if (((HashMap)reports.get(p)).containsKey(r)) {
+//                ((HashMap)reports.get(p)).remove(r);
+//             }
+//          }
+//
+//          Boolean punishsusc = false;
+//          Map pdata = (Map)CStatsHandler.UC.get(p.getUniqueId());
+//          Integer susc = 0;
+//          String check = "";
+//          Iterator var10 = pdata.entrySet().iterator();
+//
+//          while(var10.hasNext()) {
+//             Entry v = (Entry)var10.next();
+//             susc = susc + (Integer)v.getValue();
+//             if (Settings.ALL_CHECKS.containsKey(v.getKey())) {
+//                Integer cc = (Integer)v.getValue();
+//                Integer limit = (Integer)Settings.ALL_CHECKS.get(v.getKey());
+//                if (limit <= cc) {
+//                   check = (String)v.getKey();
+//                   punishsusc = true;
+//                }
+//             }
+//          }
+//
+//          if (punishsusc && Settings.PUNISH && !Settings.NO_PUNISH_CHECKS.contains(check)) {
+//             getBAC().EXEMPTHANDLER.addExemption(p, 5000, "Punishment Applied");
+//             Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
+//                String reportslist = "";
+//                Map od = new HashMap();
+//
+//                String pid;
+//                Iterator var5;
+//                Integer count;
+//                for(var5 = ((HashMap)reports.get(p)).values().iterator(); var5.hasNext(); od.put(pid, count)) {
+//                   pid = (String)var5.next();
+//                   count = 1;
+//                   if (od.containsKey(pid)) {
+//                      count = (Integer)od.get(pid) + 1;
+//                      od.remove(pid);
+//                   }
+//                }
+//
+//                Entry e;
+//                for(var5 = od.entrySet().iterator(); var5.hasNext(); reportslist = reportslist + (String)e.getKey() + "(" + e.getValue() + "), ") {
+//                   e = (Entry)var5.next();
+//                }
+//
+//                reportslist = reportslist.substring(0, reportslist.length() - 2);
+//                p.setVelocity(new Vector(0, 0, 0));
+//                pid = CStatsHandler.Punish(p.getUniqueId());
+//                Iterator var11 = Settings.PUNISH_COMMAND.iterator();
+//
+//                while(var11.hasNext()) {
+//                   String se = (String)var11.next();
+//                   String m = se.replaceAll("\\[VARIABLE_COLOR\\]", Settings.VARIABLE_COLOR);
+//                   m = m.replaceAll("\\[DISPLAYNAME\\]", p.getDisplayName());
+//                   m = m.replaceAll("\\[USERNAME\\]", p.getName());
+//                   m = m.replaceAll("\\[NAME\\]", p.getName());
+//                   m = m.replaceAll("\\[UUID\\]", p.getUniqueId().toString());
+//                   m = m.replaceAll("\\[OFFENSES\\]", reportslist);
+//                   m = m.replaceAll("\\[PID\\]", pid);
+//                   Bukkit.getScheduler().runTask(getBAC(), () -> {
+//                      if (!BungeeHandler.handleBungeePunish(m)) {
+//                         Bukkit.getServer().dispatchCommand(this.getServer().getConsoleSender(), m);
+//                      }
+//
+//                   });
+//                }
+//
+//             });
+//             return true;
+//          } else {
+//             return false;
+//          }
+//       }
+//    }
+//
+//    public static int getPing(Player p) {
+//       int ping = 0;
+//
+//       try {
+//          Object entityPlayer = p.getClass().getMethod("getHandle").invoke(p);
+//          ping = (Integer)entityPlayer.getClass().getField("ping").get(entityPlayer);
+//       } catch (IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException | NoSuchFieldException | IllegalAccessException var3) {
+//          var3.printStackTrace();
+//       }
+//
+//       if (ping > 0) {
+//          ping /= 2;
+//       }
+//
+//       return ping;
+//    }
+//
+//    public boolean addSuspicion(Player p, String detector) {
+//       if (!Settings.ENABLED) {
+//          return false;
+//       } else if (Settings.DISABLED_CHECKS.contains(detector)) {
+//          return false;
+//       } else {
+//          if (!reports.containsKey(p)) {
+//             reports.put(p, new HashMap());
+//          }
+//
+//          if (this.EXEMPTHANDLER.isExempt(p)) {
+//             return false;
+//          } else {
+//             this.getUser(p).updateLastOffense();
+//             int ping = 0;
+//
+//             try {
+//                Object entityPlayer = p.getClass().getMethod("getHandle").invoke(p);
+//                ping = (Integer)entityPlayer.getClass().getField("ping").get(entityPlayer);
+//             } catch (Exception var8) {
+//                var8.printStackTrace();
+//             }
+//
+//             if (ping > 0) {
+//                ping /= 2;
+//             }
+//
+//             Integer Count = 0;
+//             if (Settings.OFFENSE_EXPIRE_TIME == 0) {
+//                ((HashMap)reports.get(p)).put(System.currentTimeMillis() + System.currentTimeMillis() * 10L, detector);
+//             } else {
+//                ((HashMap)reports.get(p)).put(System.currentTimeMillis() + (long)(Settings.OFFENSE_EXPIRE_TIME * 1000), detector);
+//             }
+//
+//             Iterator var6 = ((HashMap)reports.get(p)).values().iterator();
+//
+//             while(var6.hasNext()) {
+//                String v = (String)var6.next();
+//                if (v.equalsIgnoreCase(detector)) {
+//                   Count = Count + 1;
+//                }
+//             }
+//
+//             if (Count <= 2) {
+//                return false;
+//             } else {
+//                if (Settings.CANCEL_ON_OFFENSE && p.getVehicle() == null) {
+//                   this.EXEMPTHANDLER.addExemptionBlock(p, 100);
+//                   if (!detector.equalsIgnoreCase("Anti-Cactus") && !detector.equalsIgnoreCase("Anti-BerryBush")) {
+//                      if (detector.equalsIgnoreCase("WaterWalk")) {
+//                         p.teleport(p.getLocation().add(0.0D, -0.5D, 0.0D));
+//                      } else if (!detector.equalsIgnoreCase("Criticals") && !detector.equalsIgnoreCase("XRay")) {
+//                         p.teleport(this.getUser(p).LastRegularLocation());
+//                      }
+//                   } else {
+//                      p.damage(0.5D);
+//                   }
+//                }
+//
+//                ++CStatsHandler.OC;
+//                if (!CStatsHandler.CC.containsKey(detector)) {
+//                   CStatsHandler.CC.put(detector, 1);
+//                } else {
+//                   CStatsHandler.CC.put(detector, (Integer)CStatsHandler.CC.get(detector) + 1);
+//                }
+//
+//                if (!(Lag.getTPS() <= Settings.TPS_LAG_THRESHOLD) && ping < 125) {
+//                   Integer c = 1;
+//                   if (CStatsHandler.MS.containsKey(p.getName() + " - " + p.getUniqueId())) {
+//                      c = (Integer)CStatsHandler.MS.get(p.getName() + " - " + p.getUniqueId());
+//                   }
+//
+//                   c = c + 1;
+//                   if (!CStatsHandler.UC.containsKey(p.getUniqueId())) {
+//                      CStatsHandler.UC.put(p.getUniqueId(), new HashMap());
+//                   }
+//
+//                   UUID uuid = p.getUniqueId();
+//                   if (!((Map)CStatsHandler.UC.get(uuid)).containsKey(detector)) {
+//                      ((Map)CStatsHandler.UC.get(uuid)).put(detector, 1);
+//                   } else {
+//                      ((Map)CStatsHandler.UC.get(uuid)).put(detector, (Integer)((Map)CStatsHandler.UC.get(uuid)).get(detector) + 1);
+//                   }
+//
+//                   CStatsHandler.MS.put(p.getName() + " - " + p.getUniqueId(), c);
+//                   if (this.updateDatabase(p)) {
+//                      return false;
+//                   } else {
+//                      String m = Settings.SUSPICION_ALERT;
+//                      m = m.replaceAll("\\[VARIABLE_COLOR\\]", Settings.VARIABLE_COLOR);
+//                      m = m.replaceAll("\\[DISPLAYNAME\\]", p.getDisplayName());
+//                      m = m.replaceAll("\\[USERNAME\\]", p.getName());
+//                      m = m.replaceAll("\\[NAME\\]", p.getName());
+//                      m = m.replaceAll("\\[UUID\\]", p.getUniqueId().toString());
+//                      m = m.replaceAll("\\[SUSPICION\\]", detector);
+//                      m = m.replaceAll("\\[COUNT\\]", String.valueOf(Count - 2));
+//                      m = m.replaceAll("\\[PING\\]", String.valueOf(ping));
+//                      m = m.replaceAll("\\[TPS\\]", String.valueOf(Lag.getNiceTPS()));
+//                      m = m.replaceAll("\\[X\\]", String.valueOf(UtilMath.trim(2, p.getLocation().getX())));
+//                      m = m.replaceAll("\\[Y\\]", String.valueOf(UtilMath.trim(2, p.getLocation().getY())));
+//                      m = m.replaceAll("\\[Z\\]", String.valueOf(UtilMath.trim(2, p.getLocation().getZ())));
+//                      m = m.replaceAll("\\[WORLD\\]", p.getWorld().getName());
+//                      this.broadcast(m);
+//                      BungeeHandler.handleCrossAlert(m);
+//                      return Settings.CANCEL_ON_OFFENSE;
+//                   }
+//                } else {
+//                   return false;
+//                }
+//             }
+//          }
+//       }
+//    }
+//
+//    public void broadcast(String... msgs) {
+//       String[] var5 = msgs;
+//       int var4 = msgs.length;
+//
+//       for(int var3 = 0; var3 < var4; ++var3) {
+//          String m = var5[var3];
+//          this.console(m);
+//       }
+//
+//       Iterator var9 = Bukkit.getOnlinePlayers().iterator();
+//
+//       while(true) {
+//          Player s;
+//          do {
+//             do {
+//                if (!var9.hasNext()) {
+//                   return;
+//                }
+//
+//                s = (Player)var9.next();
+//             } while(!s.hasPermission("bac.verbose"));
+//          } while(this.nonotify.contains(s));
+//
+//          String[] var7 = msgs;
+//          int var6 = msgs.length;
+//
+//          for(int var11 = 0; var11 < var6; ++var11) {
+//             String m = var7[var11];
+//             this.sendMessage(s, m, Settings.ABN);
+//          }
+//       }
+//    }
+//
+//    @EventHandler
+//    public void onQuit(PlayerQuitEvent event) {
+//       Player p = event.getPlayer();
+//       if (reports.containsKey(p)) {
+//          reports.remove(p);
+//       }
+//
+//       if (this.EXEMPTHANDLER.isExempt(p)) {
+//          this.EXEMPTHANDLER.removeExemption(p);
+//       }
+//
+//    }
+// }
+//

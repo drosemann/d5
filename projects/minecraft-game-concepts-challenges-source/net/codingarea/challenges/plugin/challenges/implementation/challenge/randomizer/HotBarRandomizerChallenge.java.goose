@@ -1,0 +1,187 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/implementation/challenge/randomizer/HotBarRandomizerChallenge.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/implementation/challenge/randomizer/HotBarRandomizerChallenge.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/implementation/challenge/randomizer/HotBarRandomizerChallenge.java), unveraendert, als Inline-Doku ----
+// package net.codingarea.challenges.plugin.challenges.implementation.challenge.randomizer;
+//
+// import java.util.Iterator;
+// import javax.annotation.Nonnull;
+// import javax.annotation.Nullable;
+// import net.anweisen.utilities.bukkit.utils.misc.CompatibilityUtils;
+// import net.anweisen.utilities.common.annotations.Since;
+// import net.codingarea.challenges.plugin.challenges.type.abstraction.TimedChallenge;
+// import net.codingarea.challenges.plugin.challenges.type.helper.ChallengeHelper;
+// import net.codingarea.challenges.plugin.content.Message;
+// import net.codingarea.challenges.plugin.management.menu.MenuType;
+// import net.codingarea.challenges.plugin.management.menu.generator.categorised.SettingCategory;
+// import net.codingarea.challenges.plugin.management.scheduler.task.TimerTask;
+// import net.codingarea.challenges.plugin.management.scheduler.timer.TimerStatus;
+// import net.codingarea.challenges.plugin.spigot.events.PlayerInventoryClickEvent;
+// import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+// import net.codingarea.challenges.plugin.utils.misc.InventoryUtils;
+// import org.bukkit.Bukkit;
+// import org.bukkit.Material;
+// import org.bukkit.block.Block;
+// import org.bukkit.entity.Player;
+// import org.bukkit.event.EventHandler;
+// import org.bukkit.event.EventPriority;
+// import org.bukkit.event.block.BlockBreakEvent;
+// import org.bukkit.event.block.BlockExplodeEvent;
+// import org.bukkit.event.entity.EntityExplodeEvent;
+// import org.bukkit.event.inventory.InventoryType;
+// import org.bukkit.event.player.PlayerDropItemEvent;
+// import org.bukkit.event.player.PlayerJoinEvent;
+// import org.bukkit.inventory.Inventory;
+// import org.jetbrains.annotations.NotNull;
+//
+// @Since("2.1.2")
+// public class HotBarRandomizerChallenge extends TimedChallenge {
+//    public HotBarRandomizerChallenge() {
+//       super(MenuType.CHALLENGES, 1, 10, 5);
+//       this.setCategory(SettingCategory.RANDOMIZER);
+//    }
+//
+//    public static void addItems(Player player, boolean force) {
+//       if (force || player.getInventory().isEmpty()) {
+//          player.getInventory().clear();
+//
+//          for(int i = 0; i < 9; ++i) {
+//             player.getInventory().setItem(i, InventoryUtils.getRandomItem(false, true));
+//          }
+//
+//       }
+//    }
+//
+//    @NotNull
+//    public ItemBuilder createDisplayItem() {
+//       return new ItemBuilder(Material.HOPPER_MINECART, Message.forName("item-hotbar-randomizer-challenge"));
+//    }
+//
+//    protected int getSecondsUntilNextActivation() {
+//       return this.getValue() * 60;
+//    }
+//
+//    @Nullable
+//    protected String[] getSettingsDescription() {
+//       return Message.forName("item-time-minutes-description").asArray(this.getValue());
+//    }
+//
+//    public void playValueChangeTitle() {
+//       ChallengeHelper.playChallengeMinutesValueChangeTitle(this, this.getValue());
+//    }
+//
+//    protected void onTimeActivation() {
+//       broadcastFiltered((player) -> {
+//          addItems(player, true);
+//       });
+//       this.restartTimer();
+//    }
+//
+//    @TimerTask(
+//       status = {TimerStatus.RUNNING}
+//    )
+//    public void onStart() {
+//       Bukkit.getScheduler().runTask(plugin, () -> {
+//          broadcastFiltered((player) -> {
+//             addItems(player, false);
+//          });
+//       });
+//    }
+//
+//    @EventHandler(
+//       priority = EventPriority.HIGH
+//    )
+//    public void onJoin(PlayerJoinEvent event) {
+//       if (this.shouldExecuteEffect()) {
+//          if (!ignorePlayer(event.getPlayer())) {
+//             addItems(event.getPlayer(), false);
+//          }
+//       }
+//    }
+//
+//    @EventHandler(
+//       priority = EventPriority.HIGH,
+//       ignoreCancelled = true
+//    )
+//    public void onBreak(BlockBreakEvent event) {
+//       if (this.shouldExecuteEffect()) {
+//          if (!ignorePlayer(event.getPlayer())) {
+//             event.setDropItems(false);
+//          }
+//       }
+//    }
+//
+//    @EventHandler(
+//       priority = EventPriority.HIGH,
+//       ignoreCancelled = true
+//    )
+//    public void onInventoryClick(@Nonnull PlayerInventoryClickEvent event) {
+//       Player player = event.getPlayer();
+//       if (this.shouldExecuteEffect()) {
+//          if (!ignorePlayer(player)) {
+//             Inventory clickedInventory = event.getClickedInventory();
+//             if (event.getCursor() != null) {
+//                if (clickedInventory != null) {
+//                   InventoryType type = CompatibilityUtils.getTopInventory(player).getType();
+//                   if (type != InventoryType.WORKBENCH && type != InventoryType.CRAFTING) {
+//                      if (clickedInventory.getType() != InventoryType.CRAFTING) {
+//                         if (clickedInventory.getType() == InventoryType.PLAYER && event.getInventory().getType() != InventoryType.PLAYER) {
+//                            event.setCancelled(true);
+//                         }
+//
+//                      }
+//                   }
+//                }
+//             }
+//          }
+//       }
+//    }
+//
+//    @EventHandler(
+//       priority = EventPriority.HIGH,
+//       ignoreCancelled = true
+//    )
+//    public void onPlayerDropItem(@Nonnull PlayerDropItemEvent event) {
+//       if (this.shouldExecuteEffect()) {
+//          event.setCancelled(true);
+//       }
+//    }
+//
+//    @EventHandler(
+//       priority = EventPriority.HIGH,
+//       ignoreCancelled = true
+//    )
+//    public void onEntityExplosion(EntityExplodeEvent event) {
+//       if (this.shouldExecuteEffect()) {
+//          Iterator var2 = event.blockList().iterator();
+//
+//          while(var2.hasNext()) {
+//             Block block = (Block)var2.next();
+//             block.setType(Material.AIR);
+//          }
+//
+//       }
+//    }
+//
+//    @EventHandler(
+//       priority = EventPriority.HIGH,
+//       ignoreCancelled = true
+//    )
+//    public void onBlockExplosion(BlockExplodeEvent event) {
+//       if (this.shouldExecuteEffect()) {
+//          Iterator var2 = event.blockList().iterator();
+//
+//          while(var2.hasNext()) {
+//             Block block = (Block)var2.next();
+//             block.setType(Material.AIR);
+//          }
+//
+//       }
+//    }
+// }
+//

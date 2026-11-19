@@ -1,0 +1,28 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\database\action\DatabaseInsertion.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE DatabaseInsertion_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\database\action\DatabaseInsertion.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\database\action\DatabaseInsertion.java), unveraendert, als Inline-Doku ----
+# package net.anweisen.utilities.database.action;
+#
+# import javax.annotation.CheckReturnValue;
+# import javax.annotation.Nonnull;
+# import javax.annotation.Nullable;
+# import net.anweisen.utilities.database.action.hierarchy.SetAction;
+# import net.anweisen.utilities.database.exceptions.DatabaseException;
+#
+# public interface DatabaseInsertion extends DatabaseAction, SetAction {
+#    @Nonnull
+#    @CheckReturnValue
+#    DatabaseInsertion set(@Nonnull String var1, @Nullable Object var2);
+#
+#    @Nullable
+#    Void execute() throws DatabaseException;
+# }
+#

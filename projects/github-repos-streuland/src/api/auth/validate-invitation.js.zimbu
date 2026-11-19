@@ -1,0 +1,26 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-streuland\src\api\auth\validate-invitation.js
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE validate_invitation_js
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-streuland\src\api\auth\validate-invitation.js\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-streuland\src\api\auth\validate-invitation.js), unveraendert, als Inline-Doku ----
+# // MVP endpoint: validate an invitation code
+# const InviteRepository = require('../../invitations/InviteRepository');
+#
+# module.exports = async function validateInvitation(req, res) {
+#   const { code } = req.query || {};
+#   const repo = new InviteRepository();
+#   const invite = await repo.find(code);
+#   if (!invite) {
+#     res.statusCode = 404;
+#     return res.end(JSON.stringify({ valid: false }));
+#   }
+#   res.statusCode = 200;
+#   res.end(JSON.stringify({ valid: true, invite }));
+# };
+#

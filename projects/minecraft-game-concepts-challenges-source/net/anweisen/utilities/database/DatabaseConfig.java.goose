@@ -1,0 +1,96 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/database/DatabaseConfig.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/database/DatabaseConfig.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/database/DatabaseConfig.java), unveraendert, als Inline-Doku ----
+// package net.anweisen.utilities.database;
+//
+// import javax.annotation.Nonnull;
+// import net.anweisen.utilities.common.config.Propertyable;
+//
+// public final class DatabaseConfig {
+//    private final String host;
+//    private final String database;
+//    private final String authDatabase;
+//    private final String password;
+//    private final String user;
+//    private final String file;
+//    private final int port;
+//    private final boolean portIsSet;
+//
+//    public DatabaseConfig(String host, String database, String password, String user, int port) {
+//       this(host, database, (String)null, password, user, port, true, (String)null);
+//    }
+//
+//    public DatabaseConfig(String host, String database, String password, String user) {
+//       this(host, database, (String)null, password, user, 0, false, (String)null);
+//    }
+//
+//    public DatabaseConfig(String host, String database, String authDatabase, String password, String user, int port) {
+//       this(host, database, authDatabase, password, user, port, true, (String)null);
+//    }
+//
+//    public DatabaseConfig(String host, String database, String authDatabase, String password, String user) {
+//       this(host, database, authDatabase, password, user, 0, false, (String)null);
+//    }
+//
+//    public DatabaseConfig(String database, String file) {
+//       this((String)null, database, (String)null, (String)null, (String)null, 0, false, file);
+//    }
+//
+//    public DatabaseConfig(String host, String database, String authDatabase, String password, String user, int port, boolean portIsSet, String file) {
+//       this.host = host;
+//       this.database = database;
+//       this.authDatabase = authDatabase;
+//       this.password = password;
+//       this.user = user;
+//       this.port = port;
+//       this.portIsSet = portIsSet;
+//       this.file = file;
+//    }
+//
+//    public DatabaseConfig(@Nonnull Propertyable config) {
+//       this(config.getString("host"), config.getString("database"), config.getString("auth-database"), config.getString("password"), config.getString("user"), config.getInt("port"), config.contains("port"), config.getString("file"));
+//    }
+//
+//    public int getPort() {
+//       return this.port;
+//    }
+//
+//    public String getAuthDatabase() {
+//       return this.authDatabase;
+//    }
+//
+//    public String getDatabase() {
+//       return this.database;
+//    }
+//
+//    public String getHost() {
+//       return this.host;
+//    }
+//
+//    public String getPassword() {
+//       return this.password;
+//    }
+//
+//    public String getUser() {
+//       return this.user;
+//    }
+//
+//    public boolean isPortSet() {
+//       return this.portIsSet;
+//    }
+//
+//    public String getFile() {
+//       return this.file;
+//    }
+//
+//    public String toString() {
+//       return "DatabaseConfig{host='" + this.host + '\'' + ", database='" + this.database + '\'' + ", authDatabase='" + this.authDatabase + '\'' + ", user='" + this.user + '\'' + ", file='" + this.file + '\'' + ", port=" + this.port + ", portIsSet=" + this.portIsSet + '}';
+//    }
+// }
+//

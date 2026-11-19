@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover an amazing collection of games across multiple genres. Play action, puzzle, and strategy games.">
+    <meta name="theme-color" content="#1a1d2e">
+    <title>Game Collection - Discover & Play</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">🎮 Game Collection</h1>
+            <div class="search-bar">
+                <input 
+                    type="search" 
+                    id="search" 
+                    class="search-input" 
+                    placeholder="Search games..."
+                    aria-label="Search games by name or description"
+                >
+                <button id="search-btn" class="search-btn" aria-label="Search">
+                    <span>Search</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="tabs-navigation" role="tablist" aria-label="Game categories">
+        <button 
+            class="tab active" 
+            data-category="all" 
+            role="tab" 
+            aria-selected="true"
+            aria-controls="all-games"
+        >
+            All Games
+        </button>
+        <button 
+            class="tab" 
+            data-category="action" 
+            role="tab" 
+            aria-selected="false"
+            aria-controls="action-games"
+        >
+            Action
+        </button>
+        <button 
+            class="tab" 
+            data-category="puzzle" 
+            role="tab" 
+            aria-selected="false"
+            aria-controls="puzzle-games"
+        >
+            Puzzle
+        </button>
+        <button 
+            class="tab" 
+            data-category="strategy" 
+            role="tab" 
+            aria-selected="false"
+            aria-controls="strategy-games"
+        >
+            Strategy
+        </button>
+    </nav>
+
+    <main class="main-content">
+        <section class="featured-section">
+            <div class="container">
+                <h2>Featured Game</h2>
+                <article class="featured-game-card">
+                    <div class="featured-image">
+                        <img 
+                            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xNJDB6mWAbJdCybzt9V16t8b4yCXre.png" 
+                            alt="Monster Arena gameplay"
+                            loading="lazy"
+                        >
+                    </div>
+                    <div class="featured-details">
+                        <h3>Monster Arena</h3>
+                        <p class="featured-description">Battle various creatures in a customizable arena setting. Upgrade your character, unlock new abilities, and become the champion!</p>
+                        <button class="play-btn" aria-label="Play Monster Arena">
+                            <span>Play Now</span>
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="action-games" class="game-category" data-category="action">
+            <div class="container">
+                <h2>Action Games</h2>
+                <div class="games-grid">
+                    <article class="game-card" data-category="action">
+                        <div class="game-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%238B7355' width='100' height='100'/%3E%3Ctext x='50' y='50' dominant-baseline='middle' text-anchor='middle' font-size='40'%3E🚀%3C/text%3E%3C/svg%3E" alt="Space Shooter game icon">
+                        </div>
+                        <div class="game-info">
+                            <h3>Space Shooter</h3>
+                            <p>Blast through galaxies, defeat alien ships, and complete thrilling missions.</p>
+                            <button class="play-btn" aria-label="Play Space Shooter">Play</button>
+                        </div>
+                    </article>
+
+                    <article class="game-card" data-category="action">
+                        <div class="game-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23A0522D' width='100' height='100'/%3E%3Ctext x='50' y='50' dominant-baseline='middle' text-anchor='middle' font-size='40'%3E🧱%3C/text%3E%3C/svg%3E" alt="Ninja Runner game icon">
+                        </div>
+                        <div class="game-info">
+                            <h3>Ninja Runner</h3>
+                            <p>Navigate treacherous paths, jump across obstacles, and evade enemies.</p>
+                            <button class="play-btn" aria-label="Play Ninja Runner">Play</button>
+                        </div>
+                    </article>
+
+                    <article class="game-card" data-category="action">
+                        <div class="game-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23CD5C5C' width='100' height='100'/%3E%3Ctext x='50' y='50' dominant-baseline='middle' text-anchor='middle' font-size='40'%3E👹%3C/text%3E%3C/svg%3E" alt="Monster Arena game icon">
+                        </div>
+                        <div class="game-info">
+                            <h3>Monster Arena</h3>
+                            <p>Battle various creatures in customizable arenas. Upgrade and unlock abilities.</p>
+                            <button class="play-btn" aria-label="Play Monster Arena">Play</button>
+                        </div>
+                    </article>
+
+                    <article class="game-card" data-category="action">
+                        <div class="game-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23D3D3D3' width='100' height='100'/%3E%3Ctext x='50' y='50' dominant-baseline='middle' text-anchor='middle' font-size='40'%3E➡️%3C/text%3E%3C/svg%3E" alt="Robot Wars game icon">
+                        </div>
+                        <div class="game-info">
+                            <h3>Robot Wars</h3>
+                            <p>Build and battle custom robots in epic duels. Design, upgrade, and conquer!</p>
+                            <button class="play-btn" aria-label="Play Robot Wars">Play</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="puzzle-games" class="game-category" data-category="puzzle">
+            <div class="container">
+                <h2>Puzzle Games</h2>
+                <div class="games-grid">
+                    <article class="game-card" data-category="puzzle">
+                        <div class="game-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23F5DEB3' width='100' height='100'/%3E%3Ctext x='50' y='50' dominant-baseline='middle' text-anchor='middle' font-size='40'%3E🐘%3C/text%3E%3C/svg%3E" alt="Color Match game icon">
+                        </div>
+                        <div class="game-info">
+                            <h3>Color Match</h3>
+                            <p>Match colors and complete levels. Simple gameplay with progressive difficulty.</p>
+                            <button class="play-btn" aria-label="Play Color Match">Play</button>
+                        </div>
+                    </article>
+
+                    <article class="game-card" data-category="puzzle">
+                        <div class="game-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23DAA520' width='100' height='100'/%3E%3Ctext x='50' y='50' dominant-baseline='middle' text-anchor='middle' font-size='40'%3E🧙%3C/text%3E%3C/svg%3E" alt="Logic Dungeon game icon">
+                        </div>
+                        <div class="game-info">
+                            <h3>Logic Dungeon</h3>
+                            <p>Educational puzzles with digital logic gates. Learn while playing.</p>
+                            <button class="play-btn" aria-label="Play Logic Dungeon">Play</button>
+                        </div>
+                    </article>
+
+                    <article class="game-card" data-category="puzzle">
+                        <div class="game-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23228B22' width='100' height='100'/%3E%3Ctext x='50' y='50' dominant-baseline='middle' text-anchor='middle' font-size='40'%3E🌼%3C/text%3E%3C/svg%3E" alt="Garden Scape game icon">
+                        </div>
+                        <div class="game-info">
+                            <h3>Garden Scape</h3>
+                            <p>Solve puzzles and design your dream garden. Relaxing gameplay with physics.</p>
+                            <button class="play-btn" aria-label="Play Garden Scape">Play</button>
+                        </div>
+                    </article>
+
+                    <article class="game-card" data-category="puzzle">
+                        <div class="game-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23FFD700' width='100' height='100'/%3E%3Ctext x='50' y='50' dominant-baseline='middle' text-anchor='middle' font-size='40'%3E🤖%3C/text%3E%3C/svg%3E" alt="Pixel Robot game icon">
+                        </div>
+                        <div class="game-info">
+                            <h3>Pixel Robot</h3>
+                            <p>Race against time to unscramble words. A word-finding challenge!</p>
+                            <button class="play-btn" aria-label="Play Pixel Robot">Play</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="strategy-games" class="game-category" data-category="strategy">
+            <div class="container">
+                <h2>Strategy Games</h2>
+                <div class="games-grid">
+                    <article class="game-card" data-category="strategy">
+                        <div class="game-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23FFD700' width='100' height='100'/%3E%3Ctext x='50' y='50' dominant-baseline='middle' text-anchor='middle' font-size='40'%3E💰%3C/text%3E%3C/svg%3E" alt="Trade Routes game icon">
+                        </div>
+                        <div class="game-info">
+                            <h3>Trade Routes</h3>
+                            <p>Build trading empires across continents. Economy and resource management.</p>
+                            <button class="play-btn" aria-label="Play Trade Routes">Play</button>
+                        </div>
+                    </article>
+
+                    <article class="game-card" data-category="strategy">
+                        <div class="game-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%238B4513' width='100' height='100'/%3E%3Ctext x='50' y='50' dominant-baseline='middle' text-anchor='middle' font-size='40'%3E🏙️%3C/text%3E%3C/svg%3E" alt="City Planner game icon">
+                        </div>
+                        <div class="game-info">
+                            <h3>City Planner</h3>
+                            <p>Design and manage your own thriving city. Balance budgets and happiness.</p>
+                            <button class="play-btn" aria-label="Play City Planner">Play</button>
+                        </div>
+                    </article>
+
+                    <article class="game-card" data-category="strategy">
+                        <div class="game-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23CD5C5C' width='100' height='100'/%3E%3Ctext x='50' y='50' dominant-baseline='middle' text-anchor='middle' font-size='40'%3E👽%3C/text%3E%3C/svg%3E" alt="Space Colony game icon">
+                        </div>
+                        <div class="game-info">
+                            <h3>Space Colony</h3>
+                            <p>Establish and grow a colony on distant planets. Survive hostile environments.</p>
+                            <button class="play-btn" aria-label="Play Space Colony">Play</button>
+                        </div>
+                    </article>
+
+                    <article class="game-card" data-category="strategy">
+                        <div class="game-image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%23A0522D' width='100' height='100'/%3E%3Ctext x='50' y='50' dominant-baseline='middle' text-anchor='middle' font-size='40'%3E👑%3C/text%3E%3C/svg%3E" alt="Tiny Empire game icon">
+                        </div>
+                        <div class="game-info">
+                            <h3>Tiny Empire</h3>
+                            <p>Build your empire from a small village. Rule wisely in a micro kingdom.</p>
+                            <button class="play-btn" aria-label="Play Tiny Empire">Play</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About</h4>
+                    <p>Discover the best collection of games across multiple genres.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#action-games">Action Games</a></li>
+                        <li><a href="#puzzle-games">Puzzle Games</a></li>
+                        <li><a href="#strategy-games">Strategy Games</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <form class="newsletter-form" aria-label="Newsletter subscription">
+                        <input 
+                            type="email" 
+                            placeholder="Enter your email" 
+                            required
+                            aria-label="Email address"
+                        >
+                        <button type="submit" aria-label="Subscribe to newsletter">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <p class="footer-credit">&copy; 2026 Game Collection. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+﻿# Zimbu-Port-Spiegel von: projects\utilities-desktop-tools-sessionlock\src\main\java\org\example\sessionlock\history\LoginHistory.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE LoginHistory_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\utilities-desktop-tools-sessionlock\src\main\java\org\example\sessionlock\history\LoginHistory.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\utilities-desktop-tools-sessionlock\src\main\java\org\example\sessionlock\history\LoginHistory.java), unveraendert, als Inline-Doku ----
+# public class LoginHistory {
+#     private final Map<UUID, List<String>> loginAttempts = new HashMap<>();
+#
+#     public void recordLoginAttempt(UUID playerId, boolean success) {
+#         String status = success ? "successful" : "failed";
+#         String logEntry = String.format("Login %s at %s", status, LocalDateTime.now());
+#         loginAttempts.computeIfAbsent(playerId, k -> new ArrayList<>()).add(logEntry);
+#     }
+#
+#     public List<String> getLoginHistory(UUID playerId) {
+#         return loginAttempts.getOrDefault(playerId, Collections.emptyList());
+#     }
+# } 

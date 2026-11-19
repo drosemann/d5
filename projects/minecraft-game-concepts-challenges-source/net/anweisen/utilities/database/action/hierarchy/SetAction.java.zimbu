@@ -1,0 +1,21 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\database\action\hierarchy\SetAction.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE SetAction_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\database\action\hierarchy\SetAction.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\database\action\hierarchy\SetAction.java), unveraendert, als Inline-Doku ----
+# package net.anweisen.utilities.database.action.hierarchy;
+#
+# import javax.annotation.Nonnull;
+# import javax.annotation.Nullable;
+#
+# public interface SetAction {
+#    @Nonnull
+#    SetAction set(@Nonnull String var1, @Nullable Object var2);
+# }
+#

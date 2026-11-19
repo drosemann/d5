@@ -1,0 +1,40 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-apocalypseunleashed/src/main/java/apocalypse/commands/HelpCommand.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-apocalypseunleashed/src/main/java/apocalypse/commands/HelpCommand.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-apocalypseunleashed/src/main/java/apocalypse/commands/HelpCommand.java), unveraendert, als Inline-Doku ----
+// package apocalypse.commands;
+//
+// import org.bukkit.ChatColor;
+// import org.bukkit.command.Command;
+// import org.bukkit.command.CommandExecutor;
+// import org.bukkit.command.CommandSender;
+// import apocalypse.disasters.DisasterManager;
+//
+// public class HelpCommand implements CommandExecutor {
+//     private final DisasterManager disasterManager;
+//
+//     public HelpCommand(DisasterManager disasterManager) {
+//         this.disasterManager = disasterManager;
+//     }
+//
+//     @Override
+//     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+//         sender.sendMessage(ChatColor.GOLD + "=== Apocalypse Unleashed Help ===");
+//         sender.sendMessage(ChatColor.YELLOW + "Commands:");
+//         sender.sendMessage(ChatColor.GREEN + "/apocalypse help" + ChatColor.WHITE + " - Shows this help message");
+//         sender.sendMessage(ChatColor.GREEN + "/disaster <type> [radius]" + ChatColor.WHITE + " - Triggers a specific disaster");
+//         sender.sendMessage(ChatColor.GREEN + "/giveitem <item>" + ChatColor.WHITE + " - Gives you a special apocalypse item");
+//         
+//         sender.sendMessage(ChatColor.YELLOW + "\nAvailable Disasters:");
+//         for (String disasterName : disasterManager.getAvailableDisasters()) {
+//             sender.sendMessage(ChatColor.GREEN + "- " + disasterName);
+//         }
+//         
+//         return true;
+//     }
+// }

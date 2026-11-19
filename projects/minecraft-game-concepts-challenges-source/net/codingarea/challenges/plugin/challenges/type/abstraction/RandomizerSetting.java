@@ -1,0 +1,56 @@
+package net.codingarea.challenges.plugin.challenges.type.abstraction;
+
+import javax.annotation.Nonnull;
+import net.anweisen.utilities.common.collection.IRandom;
+import net.anweisen.utilities.common.collection.SeededRandomWrapper;
+import net.anweisen.utilities.common.config.Document;
+import net.codingarea.challenges.plugin.management.menu.MenuType;
+import net.codingarea.challenges.plugin.management.menu.generator.categorised.SettingCategory;
+
+public abstract class RandomizerSetting extends Setting {
+   protected IRandom random = IRandom.create();
+
+   public RandomizerSetting(@Nonnull MenuType menu) {
+      super(menu);
+      this.setCategory(SettingCategory.RANDOMIZER);
+   }
+
+   public RandomizerSetting(@Nonnull MenuType menu, boolean enabledByDefault) {
+      super(menu, enabledByDefault);
+      this.setCategory(SettingCategory.RANDOMIZER);
+   }
+
+   protected abstract void reloadRandomization();
+
+   protected int getMatches(int pairs, int matchesRemaining) {
+      if (pairs * 3 <= matchesRemaining - 3) {
+         return 3;
+      } else {
+         return pairs * 2 <= matchesRemaining - 2 ? 2 : 1;
+      }
+   }
+
+   protected void onEnable() {
+      this.reloadRandomization();
+   }
+
+   public void loadGameState(@Nonnull Document document) {
+      super.loadGameState(document);
+      if (!document.contains("seed")) {
+         this.random = new SeededRandomWrapper();
+      } else {
+         long seed = document.getLong("seed");
+         if (seed != this.random.getSeed()) {
+            this.random = IRandom.create(seed);
+            if (this.isEnabled()) {
+               this.reloadRandomization();
+            }
+         }
+      }
+   }
+
+   public void writeGameState(@Nonnull Document document) {
+      super.writeGameState(document);
+      document.set("seed", this.random.getSeed());
+   }
+}

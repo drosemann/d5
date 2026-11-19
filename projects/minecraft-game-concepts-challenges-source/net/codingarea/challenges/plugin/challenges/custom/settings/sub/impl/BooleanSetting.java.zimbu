@@ -1,0 +1,32 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\custom\settings\sub\impl\BooleanSetting.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE BooleanSetting_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\custom\settings\sub\impl\BooleanSetting.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\custom\settings\sub\impl\BooleanSetting.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.challenges.custom.settings.sub.impl;
+#
+# import net.anweisen.utilities.bukkit.utils.menu.MenuClickInfo;
+# import net.codingarea.challenges.plugin.challenges.custom.settings.sub.ValueSetting;
+# import net.codingarea.challenges.plugin.utils.item.DefaultItem;
+# import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+#
+# public class BooleanSetting extends ValueSetting {
+#    public BooleanSetting(String key, ItemBuilder itemBuilder) {
+#       super(key, itemBuilder);
+#    }
+#
+#    public String onClick(MenuClickInfo info, String value, int slotIndex) {
+#       return value.equals("enabled") ? "disabled" : "enabled";
+#    }
+#
+#    public ItemBuilder getSettingsItem(String value) {
+#       return value.equals("enabled") ? DefaultItem.enabled() : DefaultItem.disabled();
+#    }
+# }
+#

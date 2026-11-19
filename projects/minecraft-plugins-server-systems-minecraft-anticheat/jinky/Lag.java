@@ -1,0 +1,51 @@
+package me.jinky;
+
+import me.jinky.util.UtilMath;
+
+public class Lag implements Runnable {
+   public static int TICK_COUNT = 0;
+   public static long[] TICKS = new long[600];
+   public static long LAST_TICK = 0L;
+
+   public static double getTPS() {
+      return getTPS(100);
+   }
+
+   public static double getTPS(int ticks) {
+      if (TICK_COUNT < ticks) {
+         return 20.0D;
+      } else {
+         try {
+            int target = (TICK_COUNT - 1 - ticks) % TICKS.length;
+            long elapsed = System.currentTimeMillis() - TICKS[target];
+            return (double)ticks / ((double)elapsed / 1000.0D);
+         } catch (Exception var4) {
+            return 20.0D;
+         }
+      }
+   }
+
+   public static double getNiceTPS() {
+      try {
+         double m = UtilMath.trim(2, getTPS());
+         if (m > 20.0D) {
+            m = 20.0D;
+         }
+
+         return m;
+      } catch (Exception var2) {
+         return getTPS();
+      }
+   }
+
+   public static long getElapsed(int tickID) {
+      int var10000 = TICKS.length;
+      long time = TICKS[tickID % TICKS.length];
+      return System.currentTimeMillis() - time;
+   }
+
+   public void run() {
+      TICKS[TICK_COUNT % TICKS.length] = System.currentTimeMillis();
+      ++TICK_COUNT;
+   }
+}

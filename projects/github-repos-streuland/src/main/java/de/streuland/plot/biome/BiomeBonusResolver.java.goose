@@ -1,0 +1,50 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-streuland/src/main/java/de/streuland/plot/biome/BiomeBonusResolver.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-streuland/src/main/java/de/streuland/plot/biome/BiomeBonusResolver.java");
+}
+
+// ---- Original-Code (projects/github-repos-streuland/src/main/java/de/streuland/plot/biome/BiomeBonusResolver.java), unveraendert, als Inline-Doku ----
+// package de.streuland.plot.biome;
+//
+// import org.bukkit.block.Biome;
+//
+// import java.util.Collections;
+// import java.util.Map;
+//
+// /**
+//  * Resolves biome bonus rules from static profiles + optional dynamic overrides.
+//  */
+// public class BiomeBonusResolver {
+//     private final Map<String, BiomeProfile> profiles;
+//
+//     public BiomeBonusResolver(Map<String, BiomeProfile> profiles) {
+//         this.profiles = profiles == null ? Collections.emptyMap() : Collections.unmodifiableMap(profiles);
+//     }
+//
+//     public BiomeRuleSet resolve(Biome biome, BiomeRuleSet override) {
+//         BiomeRuleSet base = resolveBase(biome);
+//         if (override == null) {
+//             return base;
+//         }
+//         BiomeRuleSet merged = new BiomeRuleSet(base.getBuildRules(), base.getResourceMultipliers(), base.getEnvironmentConstraints());
+//         merged.setFarmlandAreaMultiplier(override.getFarmlandAreaMultiplier() != 1.0 ? override.getFarmlandAreaMultiplier() : base.getFarmlandAreaMultiplier());
+//         merged.setMobSpawnRateMultiplier(override.getMobSpawnRateMultiplier() != 1.0 ? override.getMobSpawnRateMultiplier() : base.getMobSpawnRateMultiplier());
+//         merged.setJungleRainHarvestMultiplier(override.getJungleRainHarvestMultiplier() != 1.0 ? override.getJungleRainHarvestMultiplier() : base.getJungleRainHarvestMultiplier());
+//         merged.setSnowyDecayRateMultiplier(override.getSnowyDecayRateMultiplier() != 1.0 ? override.getSnowyDecayRateMultiplier() : base.getSnowyDecayRateMultiplier());
+//         merged.setGrantsNightVision(override.isGrantsNightVision() || base.isGrantsNightVision());
+//         merged.setGrantsHeatResistanceOnSpawn(override.isGrantsHeatResistanceOnSpawn() || base.isGrantsHeatResistanceOnSpawn());
+//         return merged;
+//     }
+//
+//     public BiomeRuleSet resolveBase(Biome biome) {
+//         if (biome == null) {
+//             return new BiomeRuleSet(null, null, null);
+//         }
+//         BiomeProfile profile = profiles.get(biome.name());
+//         return profile == null ? new BiomeRuleSet(null, null, null) : profile.getCombinedRules();
+//     }
+// }
+//

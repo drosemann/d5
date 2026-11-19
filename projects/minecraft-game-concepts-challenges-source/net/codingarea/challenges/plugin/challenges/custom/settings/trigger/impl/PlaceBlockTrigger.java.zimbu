@@ -1,0 +1,39 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\custom\settings\trigger\impl\PlaceBlockTrigger.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE PlaceBlockTrigger_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\custom\settings\trigger\impl\PlaceBlockTrigger.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\custom\settings\trigger\impl\PlaceBlockTrigger.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.challenges.custom.settings.trigger.impl;
+#
+# import net.codingarea.challenges.plugin.challenges.custom.settings.sub.SubSettingsBuilder;
+# import net.codingarea.challenges.plugin.challenges.custom.settings.trigger.ChallengeTrigger;
+# import net.codingarea.challenges.plugin.challenges.type.helper.SubSettingsHelper;
+# import org.bukkit.Material;
+# import org.bukkit.event.EventHandler;
+# import org.bukkit.event.EventPriority;
+# import org.bukkit.event.block.BlockPlaceEvent;
+#
+# public class PlaceBlockTrigger extends ChallengeTrigger {
+#    public PlaceBlockTrigger(String name) {
+#       super(name, (SubSettingsBuilder)SubSettingsHelper.createBlockSettingsBuilder());
+#    }
+#
+#    public Material getMaterial() {
+#       return Material.BRICKS;
+#    }
+#
+#    @EventHandler(
+#       priority = EventPriority.HIGH,
+#       ignoreCancelled = true
+#    )
+#    public void onBlockPlace(BlockPlaceEvent event) {
+#       this.createData().entity(event.getPlayer()).event(event).block(event.getBlock().getType()).execute();
+#    }
+# }
+#

@@ -1,0 +1,17 @@
+﻿# Zimbu-Port-Spiegel von: projects\ai-&-llm-projects-ai-chat-website-talkativecloud\src\main.tsx
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE main_tsx
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\ai-&-llm-projects-ai-chat-website-talkativecloud\src\main.tsx\n")
+  RETURN 0
+
+# ---- Original-Code (projects\ai-&-llm-projects-ai-chat-website-talkativecloud\src\main.tsx), unveraendert, als Inline-Doku ----
+# import { createRoot } from 'react-dom/client'
+# import App from './App.tsx'
+# import './index.css'
+#
+# createRoot(document.getElementById("root")!).render(<App />);
+#

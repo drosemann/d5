@@ -1,0 +1,70 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/fwk/CommandArgs.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/fwk/CommandArgs.java");
+}
+
+// ---- Original-Code (projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/fwk/CommandArgs.java), unveraendert, als Inline-Doku ----
+// package me.jinky.fwk;
+//
+// import org.bukkit.command.CommandSender;
+// import org.bukkit.entity.Player;
+//
+// public class CommandArgs {
+//    private CommandSender sender;
+//    private org.bukkit.command.Command command;
+//    private String label;
+//    private String[] args;
+//
+//    protected CommandArgs(CommandSender sender, org.bukkit.command.Command command, String label, String[] args, int subCommand) {
+//       String[] modArgs = new String[args.length - subCommand];
+//
+//       for(int i = 0; i < args.length - subCommand; ++i) {
+//          modArgs[i] = args[i + subCommand];
+//       }
+//
+//       StringBuffer buffer = new StringBuffer();
+//       buffer.append(label);
+//
+//       for(int x = 0; x < subCommand; ++x) {
+//          buffer.append("." + args[x]);
+//       }
+//
+//       String cmdLabel = buffer.toString();
+//       this.sender = sender;
+//       this.command = command;
+//       this.label = cmdLabel;
+//       this.args = modArgs;
+//    }
+//
+//    public CommandSender getSender() {
+//       return this.sender;
+//    }
+//
+//    public org.bukkit.command.Command getCommand() {
+//       return this.command;
+//    }
+//
+//    public String getLabel() {
+//       return this.label;
+//    }
+//
+//    public String[] getArgs() {
+//       return this.args;
+//    }
+//
+//    public String getNPM() {
+//       return "§cYou do not have permission to perform that action.";
+//    }
+//
+//    public boolean isPlayer() {
+//       return this.sender instanceof Player;
+//    }
+//
+//    public Player getPlayer() {
+//       return this.sender instanceof Player ? (Player)this.sender : null;
+//    }
+// }
+//

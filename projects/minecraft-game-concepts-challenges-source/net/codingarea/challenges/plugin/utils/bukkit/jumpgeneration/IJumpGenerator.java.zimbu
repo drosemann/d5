@@ -1,0 +1,25 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\utils\bukkit\jumpgeneration\IJumpGenerator.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE IJumpGenerator_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\utils\bukkit\jumpgeneration\IJumpGenerator.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\utils\bukkit\jumpgeneration\IJumpGenerator.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.utils.bukkit.jumpgeneration;
+#
+# import javax.annotation.CheckReturnValue;
+# import javax.annotation.Nonnull;
+# import net.anweisen.utilities.common.collection.IRandom;
+# import org.bukkit.block.Block;
+#
+# @FunctionalInterface
+# public interface IJumpGenerator {
+#    @Nonnull
+#    @CheckReturnValue
+#    Block next(@Nonnull IRandom var1, @Nonnull Block var2, boolean var3, boolean var4);
+# }
+#

@@ -1,0 +1,78 @@
+package net.codingarea.challenges.plugin.management.menu;
+
+import java.util.function.Consumer;
+import javax.annotation.Nonnull;
+import lombok.Generated;
+import net.codingarea.challenges.plugin.content.Message;
+import net.codingarea.challenges.plugin.management.menu.generator.MenuGenerator;
+import net.codingarea.challenges.plugin.management.menu.generator.categorised.CategorisedMenuGenerator;
+import net.codingarea.challenges.plugin.management.menu.generator.categorised.SmallCategorisedMenuGenerator;
+import net.codingarea.challenges.plugin.management.menu.generator.implementation.SettingsMenuGenerator;
+import net.codingarea.challenges.plugin.management.menu.generator.implementation.TimerMenuGenerator;
+import net.codingarea.challenges.plugin.management.menu.generator.implementation.custom.MainCustomMenuGenerator;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+
+public enum MenuType {
+   TIMER("timer", Material.CLOCK, new TimerMenuGenerator(), false),
+   GOAL("goal", Material.COMPASS, new SmallCategorisedMenuGenerator()),
+   DAMAGE("damage", Material.IRON_SWORD, new SettingsMenuGenerator()),
+   ITEMS("item_blocks", Material.STICK, new SettingsMenuGenerator()),
+   CHALLENGES("challenges", Material.BOOK, new CategorisedMenuGenerator()),
+   SETTINGS("settings", Material.COMPARATOR, new SettingsMenuGenerator()),
+   CUSTOM("custom", Material.WRITABLE_BOOK, new MainCustomMenuGenerator());
+
+   private final String key;
+   private final Material displayItem;
+   private final MenuGenerator menuGenerator;
+   private final boolean usable;
+
+   private MenuType(@Nonnull String key, @Nonnull Material displayItem, MenuGenerator menuGenerator, boolean usable) {
+      this.key = key;
+      this.displayItem = displayItem;
+      this.menuGenerator = menuGenerator;
+      this.usable = usable;
+      menuGenerator.setMenuType(this);
+   }
+
+   private MenuType(@Nonnull String key, @Nonnull Material displayItem, MenuGenerator menuGenerator) {
+      this(key, displayItem, menuGenerator, true);
+   }
+
+   @Nonnull
+   public String getName() {
+      return ChatColor.stripColor(this.getDisplayName());
+   }
+
+   @Nonnull
+   public String getDisplayName() {
+      return Message.forName("menu-" + this.key).asString();
+   }
+
+   public void executeWithGenerator(Class clazz, Consumer action) {
+      if (clazz.isAssignableFrom(this.menuGenerator.getClass())) {
+         action.accept(this.menuGenerator);
+      }
+
+   }
+
+   @Generated
+   public Material getDisplayItem() {
+      return this.displayItem;
+   }
+
+   @Generated
+   public MenuGenerator getMenuGenerator() {
+      return this.menuGenerator;
+   }
+
+   @Generated
+   public boolean isUsable() {
+      return this.usable;
+   }
+
+   // $FF: synthetic method
+   private static MenuType[] $values() {
+      return new MenuType[]{TIMER, GOAL, DAMAGE, ITEMS, CHALLENGES, SETTINGS, CUSTOM};
+   }
+}

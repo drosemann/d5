@@ -1,0 +1,11 @@
+com\questsystem\plugin\QuestManager.class
+com\questsystem\plugin\QuestConfig.class
+com\questsystem\plugin\ActiveQuest.class
+com\questsystem\plugin\QuestCommand.class
+com\questsystem\plugin\Objective.class
+com\questsystem\plugin\QuestSystemPlugin.class
+com\questsystem\plugin\Quest$QuestType.class
+com\questsystem\plugin\Quest.class
+com\questsystem\plugin\QuestListener.class
+com\questsystem\plugin\Objective$ObjectiveType.class
+com\questsystem\plugin\Reward.class

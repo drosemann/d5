@@ -1,0 +1,18 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-streuland\tests\EndToEndInviteTest.js
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE EndToEndInviteTest_js
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-streuland\tests\EndToEndInviteTest.js\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-streuland\tests\EndToEndInviteTest.js), unveraendert, als Inline-Doku ----
+# // Minimal E2E test scaffold for Invite end-to-end flow MVP
+# describe('EndToEndInviteTest', () => {
+#   test('placeholder', () => {
+#     expect(true).toBe(true);
+#   });
+# });
+#

@@ -1,0 +1,239 @@
+package net.codingarea.challenges.plugin.challenges.implementation.challenge.randomizer;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nonnull;
+import net.anweisen.utilities.bukkit.utils.misc.MinecraftVersion;
+import net.anweisen.utilities.common.annotations.Since;
+import net.codingarea.challenges.plugin.ChallengeAPI;
+import net.codingarea.challenges.plugin.Challenges;
+import net.codingarea.challenges.plugin.challenges.type.abstraction.RandomizerSetting;
+import net.codingarea.challenges.plugin.content.Message;
+import net.codingarea.challenges.plugin.management.menu.MenuType;
+import net.codingarea.challenges.plugin.management.scheduler.task.TimerTask;
+import net.codingarea.challenges.plugin.management.scheduler.timer.TimerStatus;
+import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+import net.codingarea.challenges.plugin.utils.misc.ExperimentalUtils;
+import net.codingarea.challenges.plugin.utils.misc.ListBuilder;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.World;
+import org.bukkit.entity.Animals;
+import org.bukkit.entity.Drowned;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Guardian;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Monster;
+import org.bukkit.entity.SpawnCategory;
+import org.bukkit.entity.WaterMob;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.entity.EntitySpawnEvent;
+
+@Since("2.0")
+public class MobRandomizerChallenge extends RandomizerSetting {
+   private final Map entityRandomizer = new HashMap();
+   private final Map inverseRandomizer = new HashMap();
+   private boolean inSpawn = false;
+   private boolean initialSpawn = false;
+
+   public MobRandomizerChallenge() {
+      super(MenuType.CHALLENGES);
+   }
+
+   protected void onEnable() {
+      super.onEnable();
+      if (this.shouldExecuteEffect()) {
+         this.initialSpawn = true;
+         this.loadAllEntities();
+         this.initialSpawn = false;
+      }
+   }
+
+   protected void onDisable() {
+      super.onDisable();
+      this.unLoadAllEntities();
+   }
+
+   @TimerTask(
+      status = {TimerStatus.PAUSED},
+      async = false
+   )
+   public void onPause() {
+      this.unLoadAllEntities();
+   }
+
+   private void loadAllEntities() {
+      Iterator var1 = ChallengeAPI.getGameWorlds().iterator();
+
+      while(var1.hasNext()) {
+         World world = (World)var1.next();
+         Iterator var3 = world.getLivingEntities().iterator();
+
+         while(var3.hasNext()) {
+            LivingEntity entity = (LivingEntity)var3.next();
+            Bukkit.getScheduler().runTask(Challenges.getInstance(), () -> {
+               if (this.entityRandomizer.containsKey(entity.getType())) {
+                  entity.remove();
+                  entity.getWorld().spawnEntity(entity.getLocation(), (EntityType)this.entityRandomizer.get(entity.getType()));
+               }
+            });
+         }
+      }
+
+   }
+
+   private void unLoadAllEntities() {
+      this.inSpawn = true;
+      Iterator var1 = ChallengeAPI.getGameWorlds().iterator();
+
+      while(var1.hasNext()) {
+         World world = (World)var1.next();
+         Iterator var3 = world.getLivingEntities().iterator();
+
+         while(var3.hasNext()) {
+            LivingEntity entity = (LivingEntity)var3.next();
+            if (this.inverseRandomizer.containsKey(entity.getType())) {
+               entity.remove();
+               EntityType entityType = (EntityType)this.inverseRandomizer.get(entity.getType());
+               entity.getWorld().spawnEntity(entity.getLocation(), entityType);
+            }
+         }
+      }
+
+      this.inSpawn = false;
+   }
+
+   @Nonnull
+   public ItemBuilder createDisplayItem() {
+      return new ItemBuilder(Material.COMMAND_BLOCK_MINECART, Message.forName("item-mob-randomizer-challenge"));
+   }
+
+   protected void reloadRandomization() {
+      List entityTypes = this.getSpawnAbleEntities();
+      List randomEntityTypes = new ArrayList(entityTypes);
+      this.random.shuffle(randomEntityTypes);
+
+      for(int i = 0; i < entityTypes.size(); ++i) {
+         EntityType type = (EntityType)entityTypes.get(i);
+         EntityType randomType = (EntityType)randomEntityTypes.get(i);
+         this.entityRandomizer.put(type, randomType);
+         this.inverseRandomizer.put(randomType, type);
+      }
+
+   }
+
+   public List getSpawnAbleEntities() {
+      ListBuilder builder = (new ListBuilder(ExperimentalUtils.getEntityTypes())).removeIf((type) -> {
+         return !type.isSpawnable();
+      }).removeIf((type) -> {
+         return !type.isAlive();
+      }).remove(EntityType.ENDER_DRAGON).remove(EntityType.WITHER).remove(EntityType.GIANT).remove(EntityType.ILLUSIONER);
+      return builder.build();
+   }
+
+   @EventHandler(
+      priority = EventPriority.HIGH,
+      ignoreCancelled = true
+   )
+   public void onEntitySpawn(@Nonnull EntitySpawnEvent event) {
+      if (this.shouldExecuteEffect()) {
+         if (this.entityRandomizer.containsKey(event.getEntityType())) {
+            if (!this.inSpawn) {
+               event.setCancelled(true);
+               EntityType type = (EntityType)this.entityRandomizer.get(event.getEntityType());
+               Location location = event.getLocation();
+               if (location.getWorld() != null) {
+                  if (this.initialSpawn || this.maySpawn(type, location.getWorld())) {
+                     this.inSpawn = true;
+                     event.getEntity().getWorld().spawnEntity(location, type);
+                     this.inSpawn = false;
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private boolean maySpawn(@Nonnull EntityType newType, @Nonnull World world) {
+      MobRandomizerChallenge.EntityCategory category = this.getEntityCategory(newType);
+      int currentMobCount = this.getCurrentMobCount(category, world);
+      int spawnLimit = this.getEntityCategory(newType).getSpawnLimit(world);
+      return currentMobCount < spawnLimit;
+   }
+
+   private int getCurrentMobCount(@Nonnull MobRandomizerChallenge.EntityCategory entityState, @Nonnull World world) {
+      int mobCount = 0;
+      Iterator var4 = world.getLivingEntities().iterator();
+
+      while(var4.hasNext()) {
+         Entity entity = (Entity)var4.next();
+         if (entity instanceof LivingEntity) {
+            MobRandomizerChallenge.EntityCategory entityTypeState = this.getEntityCategory(entity.getType());
+            if (entityState == entityTypeState) {
+               ++mobCount;
+            }
+         }
+      }
+
+      return mobCount;
+   }
+
+   private MobRandomizerChallenge.EntityCategory getEntityCategory(@Nonnull EntityType type) {
+      Class entity = type.getEntityClass();
+      if (entity == null) {
+         return MobRandomizerChallenge.EntityCategory.OTHER;
+      } else if (Animals.class.isAssignableFrom(entity)) {
+         return MobRandomizerChallenge.EntityCategory.ANIMAL;
+      } else if (!Drowned.class.isAssignableFrom(entity) && !Guardian.class.isAssignableFrom(entity)) {
+         if (Monster.class.isAssignableFrom(entity)) {
+            return MobRandomizerChallenge.EntityCategory.HOSTILE;
+         } else {
+            return WaterMob.class.isAssignableFrom(entity) ? MobRandomizerChallenge.EntityCategory.WATER_ANIMAL : MobRandomizerChallenge.EntityCategory.AMBIENT;
+         }
+      } else {
+         return MobRandomizerChallenge.EntityCategory.WATER_AMBIENT;
+      }
+   }
+
+   public static enum EntityCategory {
+      HOSTILE,
+      AMBIENT,
+      ANIMAL,
+      WATER_ANIMAL,
+      WATER_AMBIENT,
+      OTHER;
+
+      private int getSpawnLimit(@Nonnull World world) {
+         boolean useSpawnCategories = MinecraftVersion.current().isNewerOrEqualThan(MinecraftVersion.V1_19);
+         switch(this) {
+         case AMBIENT:
+            return useSpawnCategories ? world.getSpawnLimit(SpawnCategory.AMBIENT) : world.getAmbientSpawnLimit();
+         case HOSTILE:
+            return useSpawnCategories ? world.getSpawnLimit(SpawnCategory.MONSTER) : world.getMonsterSpawnLimit();
+         case ANIMAL:
+            return useSpawnCategories ? world.getSpawnLimit(SpawnCategory.ANIMAL) : world.getAnimalSpawnLimit();
+         case WATER_AMBIENT:
+            try {
+               return useSpawnCategories ? world.getSpawnLimit(SpawnCategory.WATER_AMBIENT) : world.getWaterAmbientSpawnLimit();
+            } catch (Throwable var4) {
+               Challenges.getInstance().getLogger().error("", new Object[]{var4});
+            }
+         case WATER_ANIMAL:
+            return useSpawnCategories ? world.getSpawnLimit(SpawnCategory.WATER_ANIMAL) : world.getWaterAnimalSpawnLimit();
+         default:
+            return 0;
+         }
+      }
+
+      // $FF: synthetic method
+      private static MobRandomizerChallenge.EntityCategory[] $values() {
+         return new MobRandomizerChallenge.EntityCategory[]{HOSTILE, AMBIENT, ANIMAL, WATER_ANIMAL, WATER_AMBIENT, OTHER};
+      }
+   }
+}

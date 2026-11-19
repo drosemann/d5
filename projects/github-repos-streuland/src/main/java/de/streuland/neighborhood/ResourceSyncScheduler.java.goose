@@ -1,0 +1,45 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-streuland/src/main/java/de/streuland/neighborhood/ResourceSyncScheduler.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-streuland/src/main/java/de/streuland/neighborhood/ResourceSyncScheduler.java");
+}
+
+// ---- Original-Code (projects/github-repos-streuland/src/main/java/de/streuland/neighborhood/ResourceSyncScheduler.java), unveraendert, als Inline-Doku ----
+// package de.streuland.neighborhood;
+//
+// import org.bukkit.scheduler.BukkitTask;
+// import org.bukkit.plugin.java.JavaPlugin;
+//
+// /**
+//  * Daily scheduler that rebalances neighborhood resources.
+//  */
+// public class ResourceSyncScheduler {
+//     private static final long TICKS_PER_DAY = 20L * 60L * 60L * 24L;
+//
+//     private final JavaPlugin plugin;
+//     private final NeighborhoodService neighborhoodService;
+//     private BukkitTask task;
+//
+//     public ResourceSyncScheduler(JavaPlugin plugin, NeighborhoodService neighborhoodService) {
+//         this.plugin = plugin;
+//         this.neighborhoodService = neighborhoodService;
+//     }
+//
+//     public void start() {
+//         stop();
+//         task = plugin.getServer().getScheduler().runTaskTimer(plugin,
+//                 neighborhoodService::balanceClusterResources,
+//                 TICKS_PER_DAY,
+//                 TICKS_PER_DAY);
+//     }
+//
+//     public void stop() {
+//         if (task != null) {
+//             task.cancel();
+//             task = null;
+//         }
+//     }
+// }
+//

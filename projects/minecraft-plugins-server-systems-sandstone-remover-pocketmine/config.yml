@@ -1,0 +1,9 @@
+# SandstoneRemover Configuration
+
+# The world where sandstone blocks should be removed
+world: "world"
+
+# Optional: Set a radius (in blocks) from the world spawn point
+# If set to null, all sandstone blocks in the world will be removed
+# Example: radius: 100
+radius: null

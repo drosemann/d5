@@ -1,0 +1,17 @@
+﻿# Zimbu-Port-Spiegel von: projects\ai-&-llm-projects-ai-chat-website-talkativecloud\src\components\ui\aspect-ratio.tsx
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE aspect_ratio_tsx
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\ai-&-llm-projects-ai-chat-website-talkativecloud\src\components\ui\aspect-ratio.tsx\n")
+  RETURN 0
+
+# ---- Original-Code (projects\ai-&-llm-projects-ai-chat-website-talkativecloud\src\components\ui\aspect-ratio.tsx), unveraendert, als Inline-Doku ----
+# import * as AspectRatioPrimitive from "@radix-ui/react-aspect-ratio"
+#
+# const AspectRatio = AspectRatioPrimitive.Root
+#
+# export { AspectRatio }
+#

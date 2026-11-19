@@ -1,0 +1,43 @@
+﻿// Goose-Port-Spiegel von: projects/archive-unsorted-cascadeprojects/windsurf-project/index.html
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/archive-unsorted-cascadeprojects/windsurf-project/index.html");
+}
+
+// ---- Original-Code (projects/archive-unsorted-cascadeprojects/windsurf-project/index.html), unveraendert, als Inline-Doku ----
+// <!DOCTYPE html>
+// <html lang="de">
+// <head>
+//     <meta charset="UTF-8">
+//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//     <title>Mein Blog</title>
+//     <link rel="stylesheet" href="css/style.css">
+// </head>
+// <body>
+//     <header>
+//         <div class="container">
+//             <h1>Mein Blog</h1>
+//             <div class="search-container">
+//                 <input type="text" id="searchInput" placeholder="Blog durchsuchen...">
+//             </div>
+//         </div>
+//     </header>
+//
+//     <main class="container">
+//         <div id="blog-list" class="blog-grid">
+//             <!-- Blog posts will be dynamically loaded here -->
+//         </div>
+//     </main>
+//
+//     <footer>
+//         <div class="container">
+//             <p>&copy; 2025 Mein Blog. Alle Rechte vorbehalten.</p>
+//         </div>
+//     </footer>
+//
+//     <script src="js/main.js"></script>
+// </body>
+// </html>
+//

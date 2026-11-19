@@ -1,0 +1,73 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\type\abstraction\FirstPlayerAtHeightGoal.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE FirstPlayerAtHeightGoal_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\type\abstraction\FirstPlayerAtHeightGoal.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\type\abstraction\FirstPlayerAtHeightGoal.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.challenges.type.abstraction;
+#
+# import java.util.Collections;
+# import java.util.List;
+# import net.codingarea.challenges.plugin.ChallengeAPI;
+# import net.codingarea.challenges.plugin.content.Message;
+# import net.codingarea.challenges.plugin.content.Prefix;
+# import net.codingarea.challenges.plugin.management.server.ChallengeEndCause;
+# import net.codingarea.challenges.plugin.utils.misc.NameHelper;
+# import org.bukkit.event.EventHandler;
+# import org.bukkit.event.EventPriority;
+# import org.bukkit.event.player.PlayerMoveEvent;
+# import org.jetbrains.annotations.NotNull;
+#
+# public abstract class FirstPlayerAtHeightGoal extends SettingGoal {
+#    private int heightToGetTo;
+#
+#    protected void onEnable() {
+#       this.bossbar.setContent((bar, player) -> {
+#          bar.setTitle(Message.forName("bossbar-first-at-height-goal").asString(this.getHeightToGetTo()));
+#       });
+#       this.bossbar.show();
+#    }
+#
+#    protected void onDisable() {
+#       this.bossbar.hide();
+#    }
+#
+#    public void getWinnersOnEnd(@NotNull List winners) {
+#    }
+#
+#    @EventHandler(
+#       priority = EventPriority.HIGH,
+#       ignoreCancelled = true
+#    )
+#    public void onMove(PlayerMoveEvent event) {
+#       if (event.getTo() != null) {
+#          if (this.shouldExecuteEffect()) {
+#             if (!ignorePlayer(event.getPlayer())) {
+#                if (event.getTo().getBlockY() != event.getFrom().getBlockY()) {
+#                   if (event.getTo().getBlockY() == this.heightToGetTo) {
+#                      Message.forName("height-reached").broadcast(Prefix.CHALLENGES, NameHelper.getName(event.getPlayer()), this.getHeightToGetTo());
+#                      ChallengeAPI.endChallenge(ChallengeEndCause.GOAL_REACHED, () -> {
+#                         return Collections.singletonList(event.getPlayer());
+#                      });
+#                   }
+#
+#                }
+#             }
+#          }
+#       }
+#    }
+#
+#    public int getHeightToGetTo() {
+#       return this.heightToGetTo;
+#    }
+#
+#    protected void setHeightToGetTo(int heightToGetTo) {
+#       this.heightToGetTo = heightToGetTo;
+#    }
+# }
+#

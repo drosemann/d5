@@ -1,0 +1,69 @@
+package apocalypse.commands;
+
+import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import apocalypse.items.ItemManager;
+
+public class GiveItemCommand implements CommandExecutor {
+    private final ItemManager itemManager;
+
+    public GiveItemCommand(ItemManager itemManager) {
+        this.itemManager = itemManager;
+    }
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (args.length < 1) {
+            sender.sendMessage("§cUsage: /giveitem <item> [player] [amount]");
+            return true;
+        }
+
+        Player target;
+        if (args.length >= 2) {
+            target = Bukkit.getPlayer(args[1]);
+            if (target == null) {
+                sender.sendMessage("§cPlayer not found!");
+                return true;
+            }
+        } else if (sender instanceof Player) {
+            target = (Player) sender;
+        } else {
+            sender.sendMessage("§cConsole must specify a player!");
+            return true;
+        }
+
+        int amount = 1;
+        if (args.length >= 3) {
+            try {
+                amount = Integer.parseInt(args[2]);
+                if (amount < 1) {
+                    sender.sendMessage("§cAmount must be greater than 0!");
+                    return true;
+                }
+            } catch (NumberFormatException e) {
+                sender.sendMessage("§cInvalid amount!");
+                return true;
+            }
+        }
+
+        ItemStack item = itemManager.createItem(args[0]);
+        if (item == null) {
+            sender.sendMessage("§cInvalid item name!");
+            return true;
+        }
+
+        item.setAmount(amount);
+        target.getInventory().addItem(item);
+        
+        if (sender != target) {
+            sender.sendMessage("§aGave " + amount + "x " + args[0] + " to " + target.getName());
+        }
+        target.sendMessage("§aReceived " + amount + "x " + args[0]);
+
+        return true;
+    }
+}

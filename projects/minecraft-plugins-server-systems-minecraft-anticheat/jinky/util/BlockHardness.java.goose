@@ -1,0 +1,226 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/util/BlockHardness.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/util/BlockHardness.java");
+}
+
+// ---- Original-Code (projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/util/BlockHardness.java), unveraendert, als Inline-Doku ----
+// package me.jinky.util;
+//
+// import org.bukkit.Material;
+//
+// public enum BlockHardness {
+//    STONE(1.5D),
+//    GRASS(0.6D),
+//    DIRT(0.5D),
+//    COBBLESTONE(2.0D),
+//    WOOD(2.0D),
+//    SAPLING(0.0D),
+//    WATER(100.0D),
+//    STATIONARY_WATER(100.0D),
+//    LAVA(0.0D),
+//    STATIONARY_LAVA(100.0D),
+//    SAND(0.5D),
+//    GRAVEL(0.6D),
+//    GOLD_ORE(3.0D),
+//    IRON_ORE(3.0D),
+//    COAL_ORE(3.0D),
+//    LOG(2.0D),
+//    LOG_2(2.0D),
+//    LEAVES(0.2D),
+//    LEAVES_2(0.2D),
+//    SPONGE(0.6D),
+//    GLASS(0.3D),
+//    LAPIS_ORE(3.0D),
+//    LAPIS_BLOCK(3.0D),
+//    DISPENSER(3.5D),
+//    DROPPER(3.5D),
+//    SANDSTONE(0.8D),
+//    NOTE_BLOCK(0.8D),
+//    BED(0.2D),
+//    RAILS(0.7D),
+//    DETECTOR_RAIL(0.7D),
+//    POWERED_RAIL(0.7D),
+//    ACTIVATOR_RAIL(0.7D),
+//    WEB(4.0D),
+//    LONG_GRASS(0.0D),
+//    DOUBLE_PLANT(0.0D),
+//    DEAD_BUSH(0.0D),
+//    WOOL(0.8D),
+//    YELLOW_FLOWER(0.0D),
+//    RED_ROSE(0.0D),
+//    BROWN_MUSHROOM(0.0D),
+//    RED_MUSHROOM(0.0D),
+//    GOLD_BLOCK(3.0D),
+//    IRON_BLOCK(5.0D),
+//    DOUBLE_STEP(2.0D),
+//    STEP(2.0D),
+//    BRICK(2.0D),
+//    TNT(0.0D),
+//    BOOKSHELF(1.5D),
+//    MOSSY_COBBLESTONE(2.0D),
+//    OBSIDIAN(50.0D),
+//    TORCH(0.0D),
+//    FIRE(0.0D),
+//    MOB_SPAWNER(5.0D),
+//    CHEST(2.5D),
+//    TRAPPED_CHEST(2.5D),
+//    REDSTONE_WIRE(0.0D),
+//    DIAMOND_ORE(3.0D),
+//    DIAMOND_BLOCK(5.0D),
+//    WORKBENCH(2.5D),
+//    SOIL(0.6D),
+//    FURNACE(3.5D),
+//    BURNING_FURNACE(3.5D),
+//    WOODEN_DOOR(3.0D),
+//    LADDER(0.4D),
+//    LEVER(0.5D),
+//    IRON_DOOR_BLOCK(5.0D),
+//    HOPPER(2.0D),
+//    STONE_PLATE(0.5D),
+//    WOOD_PLATE(0.5D),
+//    GOLD_PLATE(0.5D),
+//    IRON_PLATE(0.5D),
+//    QUARTZ_BLOCK(0.8D),
+//    QUARTZ_ORE(3.0D),
+//    REDSTONE_BLOCK(5.0D),
+//    REDSTONE_ORE(3.0D),
+//    GLOWING_REDSTONE_ORE(3.0D),
+//    REDSTONE_TORCH_OFF(0.0D),
+//    REDSTONE_TORCH_ON(0.0D),
+//    REDSTONE_COMPARATOR_OFF(0.0D),
+//    REDSTONE_COMPARATOR_ON(0.0D),
+//    DAYLIGHT_DETECTOR(0.2D),
+//    STONE_BUTTON(0.5D),
+//    SNOW(0.1D),
+//    ICE(0.5D),
+//    PACKED_ICE(0.5D),
+//    SNOW_BLOCK(0.2D),
+//    CACTUS(0.4D),
+//    CLAY(0.6D),
+//    HARD_CLAY(1.25D),
+//    STAINED_CLAY(1.25D),
+//    SUGAR_CANE_BLOCK(0.0D),
+//    JUKEBOX(2.0D),
+//    FENCE(2.0D),
+//    NETHERRACK(0.4D),
+//    SOUL_SAND(0.5D),
+//    GLOWSTONE(0.3D),
+//    PORTAL(-1.0D),
+//    CAKE_BLOCK(0.5D),
+//    LOCKED_CHEST(0.0D),
+//    TRAP_DOOR(3.0D),
+//    MONSTER_EGGS(0.75D),
+//    SMOOTH_BRICK(1.5D),
+//    IRON_FENCE(5.0D),
+//    THIN_GLASS(0.3D),
+//    STAINED_GLASS(0.3D),
+//    STAINED_GLASS_PANE(0.3D),
+//    PUMPKIN_STEM(0.0D),
+//    MELON_STEM(0.0D),
+//    VINE(0.2D),
+//    FENCE_GATE(2.0D),
+//    MYCEL(0.6D),
+//    WATER_LILY(0.0D),
+//    NETHER_BRICK(2.0D),
+//    NETHER_FENCE(2.0D),
+//    ENCHANTMENT_TABLE(5.0D),
+//    BREWING_STAND(0.5D),
+//    CAULDRON(2.0D),
+//    ENDER_PORTAL(-1.0D),
+//    ENDER_PORTAL_FRAME(-1.0D),
+//    DRAGON_EGG(3.0D),
+//    REDSTONE_LAMP_OFF(0.3D),
+//    REDSTONE_LAMP_ON(0.3D),
+//    WOOD_DOUBLE_STEP(2.0D),
+//    WOOD_STEP(2.0D),
+//    COCOA(0.2D),
+//    EMERALD_ORE(3.0D),
+//    ENDER_CHEST(22.5D),
+//    EMERALD_BLOCK(5.0D),
+//    FLOWER_POT(0.0D),
+//    WOOD_BUTTON(0.5D),
+//    ANVIL(5.0D),
+//    HUGE_MUSHROOM_1(0.2D),
+//    HUGE_MUSHROOM_2(0.2D),
+//    BED_BLOCK(0.2D),
+//    WOOD_STAIRS(2.0D),
+//    COBBLESTONE_STAIRS(2.0D),
+//    BRICK_STAIRS(2.0D),
+//    SMOOTH_STAIRS(1.5D),
+//    NETHER_BRICK_STAIRS(2.0D),
+//    SPRUCE_WOOD_STAIRS(2.0D),
+//    BIRCH_WOOD_STAIRS(2.0D),
+//    JUNGLE_WOOD_STAIRS(2.0D),
+//    DARK_OAK_STAIRS(2.0D),
+//    ACACIA_STAIRS(2.0D),
+//    QUARTZ_STAIRS(0.8D),
+//    SANDSTONE_STAIRS(0.8D),
+//    COMMAND(0.0D),
+//    BEACON(3.0D),
+//    COBBLE_WALL(2.0D),
+//    CROPS(0.0D),
+//    CARROT(0.0D),
+//    POTATO(0.0D),
+//    SKULL(1.0D),
+//    NETHER_WART_BLOCK(0.0D),
+//    SIGN_POST(1.0D),
+//    WALL_SIGN(1.0D),
+//    PUMPKIN(1.0D),
+//    JACK_O_LANTERN(1.0D),
+//    DIODE_BLOCK_ON(0.0D),
+//    DIODE_BLOCK_OFF(0.0D),
+//    MELON_BLOCK(1.0D),
+//    ENDER_STONE(3.0D),
+//    TRIPWIRE(0.0D),
+//    TRIPWIRE_HOOK(0.0D),
+//    HAY_BLOCK(0.5D),
+//    CARPET(0.1D),
+//    COAL_BLOCK(5.0D),
+//    PISTON_BASE(0.7D),
+//    PISTON_EXTENSION(0.7D),
+//    PISTON_MOVING_PIECE(0.7D),
+//    PISTON_STICKY_BASE(0.7D),
+//    SLIME_BLOCK(0.0D);
+//
+//    Material mat = Material.getMaterial(this.name());
+//    double hardness;
+//
+//    public double getHardness() {
+//       return this.hardness;
+//    }
+//
+//    private BlockHardness(double hard) {
+//       this.hardness = hard;
+//    }
+//
+//    public static double getBlockHardness(Material m) {
+//       try {
+//          BlockHardness h = getHardness(m);
+//          return h == null ? 0.0D : h.hardness;
+//       } catch (Exception var2) {
+//          return 0.0D;
+//       }
+//    }
+//
+//    public static boolean hasBlockHardness(Material m) {
+//       return getHardness(m) != null;
+//    }
+//
+//    public static BlockHardness getHardness(Material m) {
+//       BlockHardness[] var4;
+//       int var3 = (var4 = values()).length;
+//
+//       for(int var2 = 0; var2 < var3; ++var2) {
+//          BlockHardness f = var4[var2];
+//          if (f.name().toString().equalsIgnoreCase(m.name())) {
+//             return f;
+//          }
+//       }
+//
+//       return null;
+//    }
+// }
+//

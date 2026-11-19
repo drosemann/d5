@@ -1,0 +1,127 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-streuland\src\main\java\de\streuland\rules\RuleEngine.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE RuleEngine_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-streuland\src\main\java\de\streuland\rules\RuleEngine.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-streuland\src\main\java\de\streuland\rules\RuleEngine.java), unveraendert, als Inline-Doku ----
+# package de.streuland.rules;
+#
+# import de.streuland.plot.Plot;
+# import de.streuland.plot.PlotData;
+# import de.streuland.plot.PlotManager;
+# import de.streuland.plot.biome.BiomeBonusService;
+# import de.streuland.plot.biome.BiomeRuleSet;
+# import org.bukkit.Location;
+# import org.bukkit.block.Biome;
+# import org.bukkit.entity.Player;
+# import org.bukkit.event.Cancellable;
+# import org.bukkit.event.Event;
+#
+# import java.util.ArrayList;
+# import java.util.Collection;
+# import java.util.List;
+# import java.util.Map;
+# import java.util.UUID;
+# import java.util.concurrent.ConcurrentHashMap;
+#
+# public class RuleEngine {
+#     private final PlotManager plotManager;
+#     private final PlotLevelProvider plotLevelProvider;
+#     private final List<RuleProvider> providers = new ArrayList<>();
+#     private final List<Rule> rules = new ArrayList<>();
+#     private final Map<UUID, Map<String, Long>> cooldowns = new ConcurrentHashMap<>();
+#     private BiomeBonusService biomeBonusService;
+#
+#     public RuleEngine(PlotManager plotManager, PlotLevelProvider plotLevelProvider) {
+#         this.plotManager = plotManager;
+#         this.plotLevelProvider = plotLevelProvider;
+#     }
+#
+#     public void registerProvider(RuleProvider provider) {
+#         providers.add(provider);
+#     }
+#
+#     public void reload() {
+#         rules.clear();
+#         for (RuleProvider provider : providers) {
+#             Collection<Rule> loaded = provider.loadRules(this);
+#             if (loaded != null) {
+#                 rules.addAll(loaded);
+#             }
+#         }
+#     }
+#
+#     public void handle(RuleTrigger trigger, Event event, Player player, Location location) {
+#         Plot plot = location != null ? plotManager.getPlotAt(location.getWorld(), location.getBlockX(), location.getBlockZ()) : null;
+#         int plotLevel = plot != null ? plotLevelProvider.getPlotLevel(plot) : 0;
+#         Biome biome = location != null ? location.getBlock().getBiome() : null;
+#         RuleContext context = new RuleContext(trigger, event, player, plot, location, plotLevel, biome, this);
+#         enforceBiomeConstraints(context);
+#         for (Rule rule : rules) {
+#             if (rule.getTrigger() == trigger && rule.matches(context)) {
+#                 rule.execute(context);
+#             }
+#         }
+#     }
+#
+#     public boolean isOnCooldown(Player player, String key) {
+#         if (player == null) {
+#             return false;
+#         }
+#         Map<String, Long> playerCooldowns = cooldowns.get(player.getUniqueId());
+#         if (playerCooldowns == null) {
+#             return false;
+#         }
+#         Long expires = playerCooldowns.get(key);
+#         return expires != null && expires > System.currentTimeMillis();
+#     }
+#
+#     public void setCooldown(Player player, String key, long durationMillis) {
+#         if (player == null) {
+#             return;
+#         }
+#         cooldowns.computeIfAbsent(player.getUniqueId(), id -> new ConcurrentHashMap<>())
+#                 .put(key, System.currentTimeMillis() + durationMillis);
+#     }
+#
+#     public void setBiomeBonusService(BiomeBonusService biomeBonusService) {
+#         this.biomeBonusService = biomeBonusService;
+#     }
+#
+#
+#     public void notifyQuestCompleted(Player player, Plot plot, de.streuland.quest.QuestDefinition quest, PlotData plotData) {
+#         if (player == null || plot == null || quest == null) {
+#             return;
+#         }
+#         player.sendMessage("§bRuleEngine: Quest-Belohnung ausgelöst für " + quest.getTitle());
+#         Location location = player.getLocation();
+#         RuleContext context = new RuleContext(RuleTrigger.ENTITY_SPAWN, null, player, plot, location,
+#                 plotLevelProvider.getPlotLevel(plot), location.getBlock().getBiome(), this);
+#         for (Rule rule : rules) {
+#             if (rule.getTrigger() == RuleTrigger.ENTITY_SPAWN && rule.matches(context)) {
+#                 rule.execute(context);
+#             }
+#         }
+#     }
+#     private void enforceBiomeConstraints(RuleContext context) {
+#         if (biomeBonusService == null || context.getPlot() == null || context.getLocation() == null) {
+#             return;
+#         }
+#         BiomeRuleSet ruleSet = biomeBonusService.getRuleSetForBiome(context.getBiome());
+#         Integer maxHeight = ruleSet.getEnvironmentConstraints().get("max-build-height");
+#         if (maxHeight != null && context.getTrigger() == RuleTrigger.BLOCK_PLACE
+#                 && context.getLocation().getBlockY() > maxHeight
+#                 && context.getEvent() instanceof Cancellable) {
+#             ((Cancellable) context.getEvent()).setCancelled(true);
+#             if (context.getPlayer() != null) {
+#                 context.getPlayer().sendMessage("§cBiome-Regel: Maximale Bauhöhe " + maxHeight + " in diesem Plot.");
+#             }
+#         }
+#     }
+# }
+#

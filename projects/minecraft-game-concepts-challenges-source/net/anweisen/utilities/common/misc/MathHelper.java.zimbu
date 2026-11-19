@@ -1,0 +1,22 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\misc\MathHelper.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE MathHelper_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\misc\MathHelper.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\misc\MathHelper.java), unveraendert, als Inline-Doku ----
+# package net.anweisen.utilities.common.misc;
+#
+# public final class MathHelper {
+#    private MathHelper() {
+#    }
+#
+#    public static double percentage(double total, double proportion) {
+#       return proportion == 0.0D ? 0.0D : proportion * 100.0D / total;
+#    }
+# }
+#

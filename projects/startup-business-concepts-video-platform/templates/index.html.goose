@@ -1,0 +1,40 @@
+﻿// Goose-Port-Spiegel von: projects/startup-business-concepts-video-platform/templates/index.html
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/startup-business-concepts-video-platform/templates/index.html");
+}
+
+// ---- Original-Code (projects/startup-business-concepts-video-platform/templates/index.html), unveraendert, als Inline-Doku ----
+// {% extends "base.html" %}
+//
+// {% block title %}Video Platform - Home{% endblock %}
+//
+// {% block content %}
+// <div class="row mt-4">
+//     <div class="col-12">
+//         <h1 class="mb-4">Latest Videos</h1>
+//     </div>
+//     {% for video in videos %}
+//     <div class="col-md-4 mb-4">
+//         <div class="card">
+//             <video class="card-img-top video-thumbnail" controls>
+//                 <source src="{{ url_for('static', filename='uploads/' + video.filename) }}" type="video/mp4">
+//                 Your browser does not support the video tag.
+//             </video>
+//             <div class="card-body">
+//                 <h5 class="card-title">{{ video.title }}</h5>
+//                 <p class="card-text">{{ video.description }}</p>
+//                 <a href="{{ url_for('view_video', video_id=video.id) }}" class="btn btn-primary">Watch Video</a>
+//             </div>
+//         </div>
+//     </div>
+//     {% else %}
+//     <div class="col-12">
+//         <p class="alert alert-info">No videos uploaded yet.</p>
+//     </div>
+//     {% endfor %}
+// </div>
+// {% endblock %}
+//

@@ -1,0 +1,7 @@
+allowed-ips:
+  - 127.0.0.1:25565
+  - mc.example.com
+  - 192.168.1.10
+default-port: 25565
+message-success: "Verbindung erfolgreich zu {IP} hergestellt!"
+message-error: "Verbindung zu {IP} fehlgeschlagen. Bitte überprüfe die Adresse." 

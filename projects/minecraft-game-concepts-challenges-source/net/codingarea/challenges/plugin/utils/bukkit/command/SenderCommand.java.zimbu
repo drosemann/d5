@@ -1,0 +1,35 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\utils\bukkit\command\SenderCommand.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE SenderCommand_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\utils\bukkit\command\SenderCommand.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\utils\bukkit\command\SenderCommand.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.utils.bukkit.command;
+#
+# import javax.annotation.Nonnull;
+# import net.anweisen.utilities.bukkit.utils.logging.Logger;
+# import net.codingarea.challenges.plugin.content.Prefix;
+# import org.bukkit.command.Command;
+# import org.bukkit.command.CommandExecutor;
+# import org.bukkit.command.CommandSender;
+#
+# public interface SenderCommand extends CommandExecutor {
+#    default boolean onCommand(@Nonnull CommandSender sender, @Nonnull Command command, @Nonnull String label, @Nonnull String[] args) {
+#       try {
+#          this.onCommand(sender, args);
+#       } catch (Exception var6) {
+#          sender.sendMessage(Prefix.CHALLENGES + "§cSomething went wrong while executing the command");
+#          Logger.error("Something went wrong while processing the command '{}'", label, var6);
+#       }
+#
+#       return true;
+#    }
+#
+#    void onCommand(@Nonnull CommandSender var1, @Nonnull String[] var2) throws Exception;
+# }
+#

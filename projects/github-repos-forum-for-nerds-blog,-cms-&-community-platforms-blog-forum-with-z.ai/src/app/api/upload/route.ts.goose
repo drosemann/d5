@@ -1,0 +1,30 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-forum-with-z.ai/src/app/api/upload/route.ts
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-forum-with-z.ai/src/app/api/upload/route.ts");
+}
+
+// ---- Original-Code (projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-forum-with-z.ai/src/app/api/upload/route.ts), unveraendert, als Inline-Doku ----
+// import { NextRequest } from "next/server";
+//
+// // POST /api/upload - Upload a file
+// export async function POST(req: NextRequest) {
+//   try {
+//     // For now, we'll return a mock response since we're having issues with the file upload implementation
+//     // In a real implementation, you would handle file uploads here
+//     
+//     return Response.json({
+//       url: "/uploads/mock-file.png",
+//       filename: "mock-file.png",
+//       size: 12345
+//     });
+//   } catch (error) {
+//     console.error("Error uploading file:", error);
+//     return Response.json(
+//       { error: "Failed to upload file" },
+//       { status: 500 }
+//     );
+//   }
+// }

@@ -1,0 +1,42 @@
+name: ApocalypseUnleashed
+version: '1.0'
+main: apocalypse.ApocalypsePlugin
+api-version: '1.21'
+author: d5niel
+description: Unleash catastrophic disasters and chaos upon your world - meteors, earthquakes, volcanoes, and more!
+website: https://github.com/d5niel/ApocalypseUnleashed
+
+commands:
+  apocalypse:
+    description: Unleash catastrophic disasters
+    usage: /apocalypse <disaster> [args]
+    permission: apocalypse.admin
+    aliases: [apoc]
+  apochelp:
+    description: Show help information for Apocalypse Unleashed
+    usage: /apochelp
+    permission: apocalypse.help
+    aliases: [ahelp]
+  disaster:
+    description: Unleash a specific disaster
+    usage: /disaster <type> [args]
+    permission: apocalypse.admin
+  apocitem:
+    description: Get apocalyptic items
+    usage: /apocitem <item>
+    permission: apocalypse.items
+    aliases: [aitem]
+
+permissions:
+  apocalypse.*:
+    description: Access to all Apocalypse Unleashed features
+    default: op
+    children:
+      apocalypse.admin: true
+      apocalypse.items: true
+  apocalypse.admin:
+    description: Unleash disasters and manage chaos
+    default: op
+  apocalypse.items:
+    description: Obtain apocalyptic items
+    default: op

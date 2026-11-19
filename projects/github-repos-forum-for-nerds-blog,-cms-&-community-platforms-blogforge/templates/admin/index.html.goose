@@ -1,0 +1,77 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blogforge/templates/admin/index.html
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blogforge/templates/admin/index.html");
+}
+
+// ---- Original-Code (projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blogforge/templates/admin/index.html), unveraendert, als Inline-Doku ----
+// {% extends "base.html" %}
+//
+// {% block title %}Admin Dashboard{% endblock %}
+//
+// {% block content %}
+// <div class="d-flex justify-content-between align-items-center mb-4">
+//     <h1>Post Management</h1>
+//     <a href="{{ url_for('admin.create_post') }}" class="btn btn-primary">Create New Post</a>
+// </div>
+//
+// <div class="table-responsive">
+//     <table class="table table-striped">
+//         <thead>
+//             <tr>
+//                 <th>Title</th>
+//                 <th>Author</th>
+//                 <th>Created</th>
+//                 <th>Status</th>
+//                 <th>Actions</th>
+//             </tr>
+//         </thead>
+//         <tbody>
+//             {% for post in posts %}
+//             <tr>
+//                 <td>{{ post.title }}</td>
+//                 <td>{{ post.author.username }}</td>
+//                 <td>{{ post.created_at.strftime('%Y-%m-%d') }}</td>
+//                 <td>
+//                     <span class="badge {% if post.published %}bg-success{% else %}bg-secondary{% endif %}">
+//                         {{ 'Published' if post.published else 'Draft' }}
+//                     </span>
+//                 </td>
+//                 <td>
+//                     <div class="btn-group">
+//                         <a href="{{ url_for('blog.post_detail', slug=post.slug) }}" class="btn btn-sm btn-info">View</a>
+//                         <a href="{{ url_for('admin.edit_post', id=post.id) }}" class="btn btn-sm btn-warning">Edit</a>
+//                         <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ post.id }}">
+//                             Delete
+//                         </button>
+//                     </div>
+//                     
+//                     <!-- Delete Modal -->
+//                     <div class="modal fade" id="deleteModal{{ post.id }}" tabindex="-1">
+//                         <div class="modal-dialog">
+//                             <div class="modal-content">
+//                                 <div class="modal-header">
+//                                     <h5 class="modal-title">Confirm Delete</h5>
+//                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+//                                 </div>
+//                                 <div class="modal-body">
+//                                     Are you sure you want to delete "{{ post.title }}"?
+//                                 </div>
+//                                 <div class="modal-footer">
+//                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+//                                     <form action="{{ url_for('admin.delete_post', id=post.id) }}" method="POST" class="d-inline">
+//                                         <button type="submit" class="btn btn-danger">Delete</button>
+//                                     </form>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </td>
+//             </tr>
+//             {% endfor %}
+//         </tbody>
+//     </table>
+// </div>
+// {% endblock %}

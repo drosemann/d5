@@ -1,0 +1,35 @@
+package com.example.broadcastrestart;
+
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+
+public class BroadcastRestartCommand implements CommandExecutor {
+    private final BroadcastRestartPlugin plugin;
+
+    public BroadcastRestartCommand(BroadcastRestartPlugin plugin) {
+        this.plugin = plugin;
+    }
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (args.length != 1) {
+            sender.sendMessage("Usage: /broadcastrestart <minutes>");
+            return false;
+        }
+
+        int minutes;
+        try {
+            minutes = Integer.parseInt(args[0]);
+        } catch (NumberFormatException e) {
+            sender.sendMessage("Invalid number of minutes.");
+            return false;
+        }
+
+        int totalSeconds = minutes * 60;
+        new CountdownTask(totalSeconds).runTaskTimer(plugin, 0, 20);
+        return true;
+    }
+}

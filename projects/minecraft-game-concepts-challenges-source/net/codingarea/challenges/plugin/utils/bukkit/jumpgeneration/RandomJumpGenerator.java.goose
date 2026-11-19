@@ -1,0 +1,59 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/utils/bukkit/jumpgeneration/RandomJumpGenerator.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/utils/bukkit/jumpgeneration/RandomJumpGenerator.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/utils/bukkit/jumpgeneration/RandomJumpGenerator.java), unveraendert, als Inline-Doku ----
+// package net.codingarea.challenges.plugin.utils.bukkit.jumpgeneration;
+//
+// import javax.annotation.CheckReturnValue;
+// import javax.annotation.Nonnull;
+// import net.anweisen.utilities.common.collection.IRandom;
+// import org.bukkit.block.Block;
+//
+// public class RandomJumpGenerator implements IJumpGenerator {
+//    @Nonnull
+//    @CheckReturnValue
+//    public Block next(@Nonnull IRandom random, @Nonnull Block startingPoint, boolean includeFourBlockJumps, boolean includeUpGoing) {
+//       int layer = random.nextInt(includeUpGoing ? 3 : 2) - 1;
+//       int range = layer == 0 ? 4 : 3;
+//       int mainDirection = random.nextInt(range * 2) - range;
+//       int mainDirectionValue = Math.abs(mainDirection);
+//       if (mainDirectionValue < 2) {
+//          mainDirection = (Integer)random.choose((Object[])(-range, range));
+//          mainDirectionValue = Math.abs(mainDirection);
+//       }
+//
+//       int secondDirection = this.determineSecondDirection(random, mainDirectionValue, range);
+//       return this.translate(startingPoint, random, layer, mainDirection, secondDirection);
+//    }
+//
+//    protected int determineSecondDirection(@Nonnull IRandom random, int mainDirection, int range) {
+//       if (mainDirection != range && mainDirection != range - 1) {
+//          if (mainDirection == range - 2) {
+//             return (Integer)random.choose((Object[])(-2, -1, 0, 1, 2));
+//          } else if (mainDirection == range - 3) {
+//             return (Integer)random.choose((Object[])(-3, -2, -1, 0, 1, 2, 3));
+//          } else if (mainDirection != range - 4 && mainDirection != range - 5) {
+//             throw new IllegalArgumentException("Could not determine second direction for main direction " + mainDirection + ", range " + range);
+//          } else {
+//             return (Integer)random.choose((Object[])(-4, -3, -2, -1, 0, 1, 2, 3, 4));
+//          }
+//       } else {
+//          return (Integer)random.choose((Object[])(-1, 0, 1));
+//       }
+//    }
+//
+//    @Nonnull
+//    @CheckReturnValue
+//    protected Block translate(@Nonnull Block startingPoint, @Nonnull IRandom random, int layer, int mainDirection, int secondDirection) {
+//       boolean intoX = random.nextBoolean();
+//       int x = intoX ? mainDirection : secondDirection;
+//       int z = intoX ? secondDirection : mainDirection;
+//       return startingPoint.getRelative(x, layer, z);
+//    }
+// }
+//

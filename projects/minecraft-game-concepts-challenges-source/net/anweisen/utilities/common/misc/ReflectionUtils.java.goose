@@ -1,0 +1,280 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/common/misc/ReflectionUtils.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/common/misc/ReflectionUtils.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/common/misc/ReflectionUtils.java), unveraendert, als Inline-Doku ----
+// package net.anweisen.utilities.common.misc;
+//
+// import java.lang.annotation.Annotation;
+// import java.lang.reflect.Field;
+// import java.lang.reflect.Method;
+// import java.util.ArrayList;
+// import java.util.Arrays;
+// import java.util.Collection;
+// import java.util.Iterator;
+// import java.util.List;
+// import java.util.function.Consumer;
+// import javax.annotation.CheckReturnValue;
+// import javax.annotation.Nonnull;
+// import javax.annotation.Nullable;
+// import net.anweisen.utilities.common.collection.ArrayWalker;
+// import net.anweisen.utilities.common.collection.ClassWalker;
+// import net.anweisen.utilities.common.collection.PublicSecurityManager;
+// import net.anweisen.utilities.common.collection.WrappedException;
+//
+// public final class ReflectionUtils {
+//    private ReflectionUtils() {
+//    }
+//
+//    @Nonnull
+//    public static Collection getPublicMethodsAnnotatedWith(@Nonnull Class clazz, @Nonnull Class classOfAnnotation) {
+//       List annotatedMethods = new ArrayList();
+//       Method[] var3 = clazz.getMethods();
+//       int var4 = var3.length;
+//
+//       for(int var5 = 0; var5 < var4; ++var5) {
+//          Method method = var3[var5];
+//          if (method.isAnnotationPresent(classOfAnnotation)) {
+//             annotatedMethods.add(method);
+//          }
+//       }
+//
+//       return annotatedMethods;
+//    }
+//
+//    @Nonnull
+//    public static Collection getMethodsAnnotatedWith(@Nonnull Class clazz, @Nonnull Class classOfAnnotation) {
+//       List annotatedMethods = new ArrayList();
+//       Iterator var3 = ClassWalker.walk(clazz).iterator();
+//
+//       while(var3.hasNext()) {
+//          Class currentClass = (Class)var3.next();
+//          Method[] var5 = currentClass.getDeclaredMethods();
+//          int var6 = var5.length;
+//
+//          for(int var7 = 0; var7 < var6; ++var7) {
+//             Method method = var5[var7];
+//             if (method.isAnnotationPresent(classOfAnnotation)) {
+//                annotatedMethods.add(method);
+//             }
+//          }
+//       }
+//
+//       return annotatedMethods;
+//    }
+//
+//    @Nonnull
+//    public static Method getInheritedPrivateMethod(@Nonnull Class clazz, @Nonnull String name, @Nonnull Class... parameterTypes) throws NoSuchMethodException {
+//       Iterator var3 = ClassWalker.walk(clazz).iterator();
+//
+//       while(var3.hasNext()) {
+//          Class current = (Class)var3.next();
+//
+//          try {
+//             return current.getDeclaredMethod(name, parameterTypes);
+//          } catch (Throwable var6) {
+//          }
+//       }
+//
+//       throw new NoSuchMethodException(name);
+//    }
+//
+//    @Nonnull
+//    public static Field getInheritedPrivateField(@Nonnull Class clazz, @Nonnull String name) throws NoSuchFieldException {
+//       Iterator var2 = ClassWalker.walk(clazz).iterator();
+//
+//       while(var2.hasNext()) {
+//          Class current = (Class)var2.next();
+//
+//          try {
+//             return current.getDeclaredField(name);
+//          } catch (Throwable var5) {
+//          }
+//       }
+//
+//       throw new NoSuchFieldException(name);
+//    }
+//
+//    @Nonnull
+//    public static Enum getFirstEnumByNames(@Nonnull Class classOfEnum, @Nonnull String... names) {
+//       String[] var2 = names;
+//       int var3 = names.length;
+//       int var4 = 0;
+//
+//       while(var4 < var3) {
+//          String name = var2[var4];
+//
+//          try {
+//             return Enum.valueOf(classOfEnum, name);
+//          } catch (NoSuchFieldError | IllegalArgumentException var7) {
+//             ++var4;
+//          }
+//       }
+//
+//       throw new IllegalArgumentException("No enum found in " + classOfEnum.getName() + " for " + Arrays.toString(names));
+//    }
+//
+//    public static void forEachInArray(@Nonnull Object array, @Nonnull Consumer action) {
+//       iterableArray(array).forEach(action);
+//    }
+//
+//    @Nonnull
+//    @CheckReturnValue
+//    public static Iterable iterableArray(@Nonnull Object array) {
+//       return ArrayWalker.walk(array);
+//    }
+//
+//    @CheckReturnValue
+//    public static Class getCaller(int index) {
+//       try {
+//          return (new PublicSecurityManager()).getPublicClassContext()[index + 2];
+//       } catch (Exception var2) {
+//          throw new WrappedException(var2);
+//       }
+//    }
+//
+//    @CheckReturnValue
+//    public static Class getCaller() {
+//       return getCaller(2);
+//    }
+//
+//    @Nonnull
+//    public static String getCallerName() {
+//       StackTraceElement[] trace = Thread.currentThread().getStackTrace();
+//       StackTraceElement element = trace[3];
+//       String className = StringUtils.getAfterLastIndex(element.getClassName(), ".");
+//       return className + "." + element.getMethodName();
+//    }
+//
+//    @Nonnull
+//    public static Field getEnumAsField(@Nonnull Enum enun) {
+//       Class classOfEnum = enun.getClass();
+//
+//       try {
+//          return classOfEnum.getField(enun.name());
+//       } catch (NoSuchFieldException var3) {
+//          throw new WrappedException(var3);
+//       }
+//    }
+//
+//    @Nonnull
+//    public static Annotation[] getEnumAnnotations(@Nonnull Enum enun) {
+//       Field field = getEnumAsField(enun);
+//       return field.getAnnotations();
+//    }
+//
+//    public static Annotation getEnumAnnotation(@Nonnull Enum enun, Class classOfAnnotation) {
+//       Field field = getEnumAsField(enun);
+//       return field.getAnnotation(classOfAnnotation);
+//    }
+//
+//    @Nullable
+//    public static Enum getEnumOrNull(@Nullable String name, @Nonnull Class classOfEnum) {
+//       try {
+//          return name == null ? null : Enum.valueOf(classOfEnum, name);
+//       } catch (Exception var3) {
+//          return null;
+//       }
+//    }
+//
+//    @Nullable
+//    public static Class getClassOrNull(@Nullable String name) {
+//       try {
+//          return name == null ? null : Class.forName(name);
+//       } catch (Exception var2) {
+//          return null;
+//       }
+//    }
+//
+//    @Nullable
+//    public static Class getClassOrNull(@Nullable String name, boolean initialize, @Nonnull ClassLoader classLoader) {
+//       try {
+//          return name == null ? null : Class.forName(name, initialize, classLoader);
+//       } catch (Exception var4) {
+//          return null;
+//       }
+//    }
+//
+//    @Nullable
+//    public static Object invokeMethodOrNull(@Nullable Object instance, @Nonnull Method method) {
+//       try {
+//          if (!method.isAccessible()) {
+//             method.setAccessible(true);
+//          }
+//
+//          return method.invoke(instance);
+//       } catch (Throwable var3) {
+//          return null;
+//       }
+//    }
+//
+//    @Nullable
+//    public static Object invokeStaticMethodOrNull(@Nonnull Class clazz, @Nonnull String method) {
+//       try {
+//          return invokeMethodOrNull((Object)null, (Method)clazz.getMethod(method));
+//       } catch (NoSuchMethodException var3) {
+//          return null;
+//       }
+//    }
+//
+//    @Nullable
+//    public static Object invokeMethodOrNull(@Nonnull Object instance, @Nonnull String method) {
+//       try {
+//          return invokeMethodOrNull(instance, instance.getClass().getDeclaredMethod(method));
+//       } catch (NoSuchMethodException var3) {
+//          return null;
+//       }
+//    }
+//
+//    @Nullable
+//    public static Object getAnnotationValue(@Nonnull Annotation annotation) {
+//       return invokeMethodOrNull(annotation, (String)"value");
+//    }
+//
+//    @Nullable
+//    public static Enum getEnumByAlternateNames(@Nonnull Class classOfE, @Nonnull String input) {
+//       Enum[] values = (Enum[])invokeStaticMethodOrNull(classOfE, "values");
+//       String[] methodNames = new String[]{"getName", "getNames", "getAlias", "getAliases", "getKey", "getKeys", "name", "toString", "ordinal", "getId", "id"};
+//       Enum[] var4 = values;
+//       int var5 = values.length;
+//
+//       for(int var6 = 0; var6 < var5; ++var6) {
+//          Enum value = var4[var6];
+//          String[] var8 = methodNames;
+//          int var9 = methodNames.length;
+//
+//          for(int var10 = 0; var10 < var9; ++var10) {
+//             String method = var8[var10];
+//             if (check(input, invokeMethodOrNull(value, (String)method))) {
+//                return value;
+//             }
+//          }
+//       }
+//
+//       return null;
+//    }
+//
+//    private static boolean check(@Nonnull String input, @Nullable Object value) {
+//       if (value == null) {
+//          return false;
+//       } else {
+//          if (value.getClass().isArray()) {
+//             Iterator var2 = iterableArray(value).iterator();
+//
+//             while(var2.hasNext()) {
+//                Object key = var2.next();
+//                if (input.equalsIgnoreCase(String.valueOf(key))) {
+//                   return true;
+//                }
+//             }
+//          }
+//
+//          return input.equalsIgnoreCase(String.valueOf(value));
+//       }
+//    }
+// }
+//

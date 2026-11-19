@@ -1,0 +1,19 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-guestbook-html-css-javascript\php\stats.php
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE stats_php
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-guestbook-html-css-javascript\php\stats.php\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-guestbook-html-css-javascript\php\stats.php), unveraendert, als Inline-Doku ----
+# <?php
+# // Track visitor information
+# $visitor_data = [
+#     'ip' => $_SERVER['REMOTE_ADDR'],
+#     'browser' => $_SERVER['HTTP_USER_AGENT'],
+#     'visited_at' => date('Y-m-d H:i:s'),
+#     'page' => $_SERVER['REQUEST_URI']
+# ]; 

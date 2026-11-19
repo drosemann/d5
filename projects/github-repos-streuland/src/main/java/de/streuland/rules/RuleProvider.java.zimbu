@@ -1,0 +1,19 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-streuland\src\main\java\de\streuland\rules\RuleProvider.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE RuleProvider_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-streuland\src\main\java\de\streuland\rules\RuleProvider.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-streuland\src\main\java\de\streuland\rules\RuleProvider.java), unveraendert, als Inline-Doku ----
+# package de.streuland.rules;
+#
+# import java.util.Collection;
+#
+# public interface RuleProvider {
+#     Collection<Rule> loadRules(RuleEngine engine);
+# }
+#

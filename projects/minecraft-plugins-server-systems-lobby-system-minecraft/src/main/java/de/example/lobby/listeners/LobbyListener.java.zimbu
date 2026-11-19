@@ -1,0 +1,36 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-plugins-server-systems-lobby-system-minecraft\src\main\java\de\example\lobby\listeners\LobbyListener.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE LobbyListener_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-plugins-server-systems-lobby-system-minecraft\src\main\java\de\example\lobby\listeners\LobbyListener.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-plugins-server-systems-lobby-system-minecraft\src\main\java\de\example\lobby\listeners\LobbyListener.java), unveraendert, als Inline-Doku ----
+# package de.example.lobby.listeners;
+#
+# import de.example.lobby.LobbyPlugin;
+# import org.bukkit.event.EventHandler;
+# import org.bukkit.event.Listener;
+# import org.bukkit.event.inventory.InventoryClickEvent;
+# import org.bukkit.event.player.PlayerInteractEvent;
+#
+# public class LobbyListener implements Listener {
+#     private final LobbyPlugin plugin;
+#     
+#     public LobbyListener(LobbyPlugin plugin) {
+#         this.plugin = plugin;
+#     }
+#     
+#     @EventHandler
+#     public void onPlayerInteract(PlayerInteractEvent event) {
+#         // Move event handling logic here
+#     }
+#     
+#     @EventHandler
+#     public void onInventoryClick(InventoryClickEvent event) {
+#         // Move inventory click handling here
+#     }
+# } 

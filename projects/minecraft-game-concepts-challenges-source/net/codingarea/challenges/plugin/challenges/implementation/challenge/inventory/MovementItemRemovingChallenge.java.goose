@@ -1,0 +1,82 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/implementation/challenge/inventory/MovementItemRemovingChallenge.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/implementation/challenge/inventory/MovementItemRemovingChallenge.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/implementation/challenge/inventory/MovementItemRemovingChallenge.java), unveraendert, als Inline-Doku ----
+// package net.codingarea.challenges.plugin.challenges.implementation.challenge.inventory;
+//
+// import javax.annotation.Nonnull;
+// import net.anweisen.utilities.common.annotations.Since;
+// import net.codingarea.challenges.plugin.challenges.type.abstraction.SettingModifier;
+// import net.codingarea.challenges.plugin.challenges.type.helper.ChallengeHelper;
+// import net.codingarea.challenges.plugin.content.Message;
+// import net.codingarea.challenges.plugin.management.menu.MenuType;
+// import net.codingarea.challenges.plugin.management.menu.generator.categorised.SettingCategory;
+// import net.codingarea.challenges.plugin.utils.item.DefaultItem;
+// import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+// import net.codingarea.challenges.plugin.utils.misc.BlockUtils;
+// import net.codingarea.challenges.plugin.utils.misc.InventoryUtils;
+// import org.bukkit.Material;
+// import org.bukkit.event.EventHandler;
+// import org.bukkit.event.EventPriority;
+// import org.bukkit.event.player.PlayerMoveEvent;
+//
+// @Since("2.0")
+// public class MovementItemRemovingChallenge extends SettingModifier {
+//    public static final int BLOCK = 1;
+//
+//    public MovementItemRemovingChallenge() {
+//       super(MenuType.CHALLENGES, 1, 2, 2);
+//       this.setCategory(SettingCategory.INVENTORY);
+//    }
+//
+//    @Nonnull
+//    public ItemBuilder createDisplayItem() {
+//       return new ItemBuilder(Material.DETECTOR_RAIL, Message.forName("item-block-chunk-item-remove-challenge"));
+//    }
+//
+//    @Nonnull
+//    public ItemBuilder createSettingsItem() {
+//       if (!this.isEnabled()) {
+//          return DefaultItem.disabled();
+//       } else {
+//          return this.getValue() == 1 ? DefaultItem.create(Material.GRASS_BLOCK, Message.forName("item-block-chunk-item-remove-challenge-block")) : DefaultItem.create(Material.BOOK, Message.forName("item-block-chunk-item-remove-challenge-chunk"));
+//       }
+//    }
+//
+//    public void playValueChangeTitle() {
+//       if (this.getValue() == 1) {
+//          ChallengeHelper.playChangeChallengeValueTitle(this, (Object)Message.forName("item-block-chunk-item-remove-challenge-block"));
+//       } else {
+//          ChallengeHelper.playChangeChallengeValueTitle(this, (Object)Message.forName("item-block-chunk-item-remove-challenge-chunk"));
+//       }
+//
+//    }
+//
+//    @EventHandler(
+//       priority = EventPriority.HIGH,
+//       ignoreCancelled = true
+//    )
+//    public void onPlayerMove(@Nonnull PlayerMoveEvent event) {
+//       if (this.shouldExecuteEffect()) {
+//          if (!ignorePlayer(event.getPlayer())) {
+//             if (event.getTo() != null) {
+//                if (this.getValue() == 1) {
+//                   if (BlockUtils.isSameBlockLocationIgnoreHeight(event.getFrom(), event.getTo())) {
+//                      return;
+//                   }
+//                } else if (BlockUtils.isSameChunk(event.getFrom().getChunk(), event.getTo().getChunk())) {
+//                   return;
+//                }
+//
+//                InventoryUtils.removeRandomItem(event.getPlayer().getInventory());
+//             }
+//          }
+//       }
+//    }
+// }
+//

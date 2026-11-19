@@ -1,0 +1,21 @@
+﻿# Zimbu-Port-Spiegel von: projects\learning-projects-python-programming\old\fizzbuzz.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE fizzbuzz_py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\learning-projects-python-programming\old\fizzbuzz.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\learning-projects-python-programming\old\fizzbuzz.py), unveraendert, als Inline-Doku ----
+# # hier brauchte ich hilfe von ki
+# for i in range(1, 101):
+#     if i % 3 == 0 and i % 5 == 0:
+#         print("FizzBuzz")
+#     elif i % 3 == 0:
+#         print("Fizz")
+#     elif i % 5 == 0:
+#         print("Buzz")
+#     else:
+#         print(i)

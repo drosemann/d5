@@ -1,0 +1,23 @@
+"""Login mit Passwort-Hash (bcrypt), Session-Token (JWT), Rate-Limit."""
+import time
+from passlib.context import CryptContext
+from jose import jwt
+from app.core.config import settings
+
+pwd = CryptContext(schemes=["bcrypt"], deprecated="auto")
+_versuche: dict[str, list[float]] = {}
+
+def hash_passwort(klar: str) -> str: return pwd.hash(klar)
+def pruefe_passwort(klar: str, h: str) -> bool: return pwd.verify(klar, h)
+def erstelle_token(sub: str) -> str:
+    return jwt.encode({"sub": sub}, settings.secret_key, algorithm="HS256"})
+def lese_token(token: str) -> str | None:
+    try: return jwt.decode(token, settings.secret_key, algorithms=["HS256"])["sub"]
+    except Exception: return None
+
+def rate_limit(schluessel: str, max_in_minute: int = 10) -> bool:
+    """True = erlaubt. Schützt Login vor Brute Force."""
+    jetzt = time.time()
+    lst = [t for t in _versuche.get(schluessel, []) if jetzt - t < 60]
+    if len(lst) >= max_in_minute: return False
+    lst.append(jetzt); _versuche[schluessel] = lst; return True

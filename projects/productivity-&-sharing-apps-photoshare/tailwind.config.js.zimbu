@@ -1,0 +1,20 @@
+﻿# Zimbu-Port-Spiegel von: projects\productivity-&-sharing-apps-photoshare\tailwind.config.js
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE tailwind_config_js
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\productivity-&-sharing-apps-photoshare\tailwind.config.js\n")
+  RETURN 0
+
+# ---- Original-Code (projects\productivity-&-sharing-apps-photoshare\tailwind.config.js), unveraendert, als Inline-Doku ----
+# const { } = require('tailwindcss/defaultTheme');
+#
+# module.exports = {
+#   mode: 'jit',
+#   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+#   variants: {
+#     extend: {},
+#   },
+# };

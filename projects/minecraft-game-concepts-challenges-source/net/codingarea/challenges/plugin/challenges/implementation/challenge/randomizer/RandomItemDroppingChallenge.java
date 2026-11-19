@@ -1,0 +1,79 @@
+package net.codingarea.challenges.plugin.challenges.implementation.challenge.randomizer;
+
+import java.util.Iterator;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import net.anweisen.utilities.common.annotations.Since;
+import net.codingarea.challenges.plugin.challenges.type.abstraction.TimedChallenge;
+import net.codingarea.challenges.plugin.challenges.type.helper.ChallengeHelper;
+import net.codingarea.challenges.plugin.content.Message;
+import net.codingarea.challenges.plugin.management.menu.MenuType;
+import net.codingarea.challenges.plugin.management.menu.generator.categorised.SettingCategory;
+import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+import net.codingarea.challenges.plugin.utils.misc.InventoryUtils;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+
+@Since("2.0")
+public class RandomItemDroppingChallenge extends TimedChallenge {
+   public RandomItemDroppingChallenge() {
+      super(MenuType.CHALLENGES, 1, 60, 5);
+      this.setCategory(SettingCategory.RANDOMIZER);
+   }
+
+   public static void dropRandomItem(Player player) {
+      if (player.getInventory().getContents().length > 0) {
+         dropRandomItem(player.getLocation(), player.getInventory());
+      }
+   }
+
+   public static void dropRandomItem(@Nonnull Location location, @Nonnull Inventory inventory) {
+      if (location.getWorld() != null) {
+         int slot = InventoryUtils.getRandomFullSlot(inventory);
+         if (slot != -1) {
+            ItemStack item = inventory.getItem(slot);
+            if (item != null) {
+               inventory.setItem(slot, (ItemStack)null);
+               InventoryUtils.dropItemByPlayer(location, item);
+            }
+         }
+      }
+   }
+
+   @Nonnull
+   public ItemBuilder createDisplayItem() {
+      return new ItemBuilder(Material.DISPENSER, Message.forName("item-random-dropping-challenge"));
+   }
+
+   @Nullable
+   protected String[] getSettingsDescription() {
+      return Message.forName("item-time-seconds-description").asArray(this.getValue());
+   }
+
+   public void playValueChangeTitle() {
+      ChallengeHelper.playChallengeSecondsValueChangeTitle(this, this.getValue());
+   }
+
+   protected int getSecondsUntilNextActivation() {
+      return this.getValue();
+   }
+
+   protected void onTimeActivation() {
+      this.restartTimer();
+      Bukkit.getScheduler().runTask(plugin, () -> {
+         Iterator var0 = Bukkit.getOnlinePlayers().iterator();
+
+         while(var0.hasNext()) {
+            Player player = (Player)var0.next();
+            if (!ignorePlayer(player)) {
+               dropRandomItem(player);
+            }
+         }
+
+      });
+   }
+}

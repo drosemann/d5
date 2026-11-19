@@ -1,0 +1,18 @@
+﻿# Zimbu-Port-Spiegel von: projects\cloud-hosting-saas-vercel-clone\build-server\main.sh
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE main_sh
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\cloud-hosting-saas-vercel-clone\build-server\main.sh\n")
+  RETURN 0
+
+# ---- Original-Code (projects\cloud-hosting-saas-vercel-clone\build-server\main.sh), unveraendert, als Inline-Doku ----
+# #!/bin/bash
+#
+# export GIT_REPOSITORY__URL="$GIT_REPOSITORY__URL"
+#
+# git clone "$GIT_REPOSITORY__URL" /home/app/output
+#
+# exec node script.js

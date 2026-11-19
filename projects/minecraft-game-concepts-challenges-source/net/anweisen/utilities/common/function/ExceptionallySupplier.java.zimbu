@@ -1,0 +1,34 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\function\ExceptionallySupplier.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE ExceptionallySupplier_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\function\ExceptionallySupplier.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\function\ExceptionallySupplier.java), unveraendert, als Inline-Doku ----
+# package net.anweisen.utilities.common.function;
+#
+# import java.util.concurrent.Callable;
+# import java.util.function.Supplier;
+# import net.anweisen.utilities.common.collection.WrappedException;
+#
+# @FunctionalInterface
+# public interface ExceptionallySupplier extends Supplier, Callable {
+#    default Object get() {
+#       try {
+#          return this.getExceptionally();
+#       } catch (Exception var2) {
+#          throw WrappedException.rethrow(var2);
+#       }
+#    }
+#
+#    default Object call() throws Exception {
+#       return this.getExceptionally();
+#    }
+#
+#    Object getExceptionally() throws Exception;
+# }
+#

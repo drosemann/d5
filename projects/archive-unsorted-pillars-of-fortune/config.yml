@@ -1,0 +1,51 @@
+# Pillars of Fortune Configuration
+# Time in seconds between item drops
+item-drop-interval: 5
+
+# Maximum number of items to give at once (1-64)
+max-items-per-drop: 1
+
+# Minimum number of items to give at once (1-64)
+min-items-per-drop: 1
+
+# Whether to send a title message when receiving items
+send-title-message: true
+
+# Whether to send a chat message when receiving items
+send-chat-message: true
+
+# Whether to play a sound when receiving items
+play-sound: true
+
+# Sound to play when receiving items (leave empty to disable)
+sound-effect: "ENTITY_EXPERIENCE_ORB_PICKUP"
+
+# Whether to exclude dangerous/admin items by default
+exclude-dangerous-items: true
+
+# Items to exclude from random drops (Material names)
+excluded-items:
+  - BEDROCK
+  - BARRIER
+  - COMMAND_BLOCK
+  - CHAIN_COMMAND_BLOCK
+  - REPEATING_COMMAND_BLOCK
+  - COMMAND_BLOCK_MINECART
+  - STRUCTURE_BLOCK
+  - STRUCTURE_VOID
+  - JIGSAW
+  - DEBUG_STICK
+  - KNOWLEDGE_BOOK
+  - SPAWNER
+
+# Items to include specifically (leave empty to include all non-excluded items)
+# If this list is not empty, ONLY these items will be used
+included-items: []
+
+# Message settings
+messages:
+  item-received: "&a&lFORTUNE! &7You received &e%amount%x %item%"
+  fortune-enabled: "&a&lPillars of Fortune &7has been &aenabled&7!"
+  fortune-disabled: "&c&lPillars of Fortune &7has been &cdisabled&7!"
+  title-received: "&6&lFORTUNE!"
+  subtitle-received: "&7+%amount%x &e%item%"

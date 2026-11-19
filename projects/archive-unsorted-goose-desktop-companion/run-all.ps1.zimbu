@@ -1,0 +1,15 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-goose-desktop-companion\run-all.ps1
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE run_all_ps1
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-goose-desktop-companion\run-all.ps1\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-goose-desktop-companion\run-all.ps1), unveraendert, als Inline-Doku ----
+# Get-ChildItem -Filter "goose-*.ps1" | Where-Object { $_.Name -ne "run-all.ps1" } | ForEach-Object {
+#     Start-Process powershell -ArgumentList "-ExecutionPolicy Bypass -File `"$($_.FullName)`""
+# }
+#

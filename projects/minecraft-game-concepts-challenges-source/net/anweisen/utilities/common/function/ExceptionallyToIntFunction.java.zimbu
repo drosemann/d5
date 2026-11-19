@@ -1,0 +1,29 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\function\ExceptionallyToIntFunction.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE ExceptionallyToIntFunction_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\function\ExceptionallyToIntFunction.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\function\ExceptionallyToIntFunction.java), unveraendert, als Inline-Doku ----
+# package net.anweisen.utilities.common.function;
+#
+# import java.util.function.ToIntFunction;
+# import net.anweisen.utilities.common.collection.WrappedException;
+#
+# @FunctionalInterface
+# public interface ExceptionallyToIntFunction extends ToIntFunction {
+#    default int applyAsInt(Object t) {
+#       try {
+#          return this.applyExceptionally(t);
+#       } catch (Exception var3) {
+#          throw WrappedException.rethrow(var3);
+#       }
+#    }
+#
+#    int applyExceptionally(Object var1) throws Exception;
+# }
+#

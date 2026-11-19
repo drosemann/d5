@@ -1,0 +1,226 @@
+package net.codingarea.challenges.plugin.challenges.type.abstraction;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.CheckReturnValue;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import lombok.Generated;
+import net.anweisen.utilities.common.annotations.DeprecatedSince;
+import net.anweisen.utilities.common.collection.IRandom;
+import net.anweisen.utilities.common.config.Document;
+import net.codingarea.challenges.plugin.ChallengeAPI;
+import net.codingarea.challenges.plugin.Challenges;
+import net.codingarea.challenges.plugin.challenges.type.IChallenge;
+import net.codingarea.challenges.plugin.challenges.type.helper.ChallengeHelper;
+import net.codingarea.challenges.plugin.management.menu.MenuType;
+import net.codingarea.challenges.plugin.management.menu.generator.categorised.SettingCategory;
+import net.codingarea.challenges.plugin.management.server.scoreboard.ChallengeBossBar;
+import net.codingarea.challenges.plugin.management.server.scoreboard.ChallengeScoreboard;
+import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
+import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
+import org.bukkit.inventory.ItemStack;
+
+public abstract class AbstractChallenge implements IChallenge, Listener {
+   protected static final Challenges plugin = Challenges.getInstance();
+   protected static final IRandom globalRandom = IRandom.create();
+   private static final Map firstInstanceByClass = new HashMap();
+   private static final boolean ignoreCreativePlayers;
+   private static final boolean ignoreSpectatorPlayers;
+   protected final MenuType menu;
+   protected final ChallengeBossBar bossbar = new ChallengeBossBar();
+   protected final ChallengeScoreboard scoreboard = new ChallengeScoreboard();
+   protected SettingCategory category;
+   private String name;
+   private ItemStack cachedDisplayItem;
+
+   public AbstractChallenge(@Nonnull MenuType menu) {
+      this.menu = menu;
+      firstInstanceByClass.put(this.getClass(), this);
+   }
+
+   @Nonnull
+   public static AbstractChallenge getFirstInstance(@Nonnull Class classOfChallenge) {
+      return (AbstractChallenge)classOfChallenge.cast(firstInstanceByClass.get(classOfChallenge));
+   }
+
+   public static void broadcast(@Nonnull Consumer action) {
+      Bukkit.getOnlinePlayers().forEach(action);
+   }
+
+   public static void broadcastFiltered(@Nonnull Consumer action) {
+      Iterator var1 = Bukkit.getOnlinePlayers().iterator();
+
+      while(var1.hasNext()) {
+         Player player = (Player)var1.next();
+         if (!ignorePlayer(player)) {
+            action.accept(player);
+         }
+      }
+
+   }
+
+   public static void broadcastIgnored(@Nonnull Consumer action) {
+      Iterator var1 = Bukkit.getOnlinePlayers().iterator();
+
+      while(var1.hasNext()) {
+         Player player = (Player)var1.next();
+         if (ignorePlayer(player)) {
+            action.accept(player);
+         }
+      }
+
+   }
+
+   @CheckReturnValue
+   public static boolean ignorePlayer(@Nonnull Player player) {
+      return ignoreGameMode(player.getGameMode());
+   }
+
+   @CheckReturnValue
+   public static boolean ignoreGameMode(@Nonnull GameMode gameMode) {
+      return isIgnoreSpectatorPlayers() && gameMode == GameMode.SPECTATOR || isIgnoreCreativePlayers() && gameMode == GameMode.CREATIVE;
+   }
+
+   @Nonnull
+   public final MenuType getType() {
+      return this.menu;
+   }
+
+   public SettingCategory getCategory() {
+      return this.category;
+   }
+
+   protected final void updateItems() {
+      ChallengeHelper.updateItems(this);
+   }
+
+   @Nonnull
+   public ItemStack getDisplayItem() {
+      if (this.cachedDisplayItem != null) {
+         return this.cachedDisplayItem.clone();
+      } else {
+         this.cachedDisplayItem = this.createDisplayItem().build();
+         return this.cachedDisplayItem.clone();
+      }
+   }
+
+   @Nonnull
+   public ItemStack getSettingsItem() {
+      ItemBuilder item = this.createSettingsItem();
+      String[] description = this.getSettingsDescription();
+      if (description != null && this.isEnabled()) {
+         item.appendLore(" ");
+         item.appendLore(description);
+      }
+
+      return item.build();
+   }
+
+   @Nullable
+   protected String[] getSettingsDescription() {
+      return null;
+   }
+
+   @Nonnull
+   public abstract ItemBuilder createDisplayItem();
+
+   @Nonnull
+   public abstract ItemBuilder createSettingsItem();
+
+   @Nonnull
+   public String getUniqueGamestateName() {
+      return this.getUniqueName();
+   }
+
+   @Nonnull
+   public String getUniqueName() {
+      return this.name != null ? this.name : (this.name = this.getClass().getSimpleName().toLowerCase().replace("setting", "").replace("challenge", "").replace("modifier", "").replace("goal", ""));
+   }
+
+   public void handleShutdown() {
+   }
+
+   public void writeGameState(@Nonnull Document document) {
+   }
+
+   public void loadGameState(@Nonnull Document document) {
+   }
+
+   public void writeSettings(@Nonnull Document document) {
+   }
+
+   public void loadSettings(@Nonnull Document document) {
+   }
+
+   @CheckReturnValue
+   protected boolean shouldExecuteEffect() {
+      return this.isEnabled() && ChallengeAPI.isStarted() && !ChallengeAPI.isWorldInUse();
+   }
+
+   /** @deprecated */
+   @Deprecated
+   @DeprecatedSince("2.1.0")
+   public void kill(@Nonnull Player player) {
+      ChallengeHelper.kill(player);
+   }
+
+   /** @deprecated */
+   @Deprecated
+   @DeprecatedSince("2.1.0")
+   public void kill(@Nonnull Player player, int delay) {
+      ChallengeHelper.kill(player, delay);
+   }
+
+   @Nonnull
+   protected final Document getGameStateData() {
+      return plugin.getConfigManager().getGamestateConfig().getDocument(this.getUniqueGamestateName());
+   }
+
+   @Nonnull
+   protected final Document getPlayerData(@Nonnull UUID player) {
+      return this.getGameStateData().getDocument("player").getDocument(player.toString());
+   }
+
+   @Nonnull
+   protected final Document getPlayerData(@Nonnull Player player) {
+      return this.getPlayerData(player.getUniqueId());
+   }
+
+   @Generated
+   public static boolean isIgnoreCreativePlayers() {
+      return ignoreCreativePlayers;
+   }
+
+   @Generated
+   public static boolean isIgnoreSpectatorPlayers() {
+      return ignoreSpectatorPlayers;
+   }
+
+   @Generated
+   public ChallengeBossBar getBossbar() {
+      return this.bossbar;
+   }
+
+   @Generated
+   public ChallengeScoreboard getScoreboard() {
+      return this.scoreboard;
+   }
+
+   @Generated
+   public void setCategory(SettingCategory category) {
+      this.category = category;
+   }
+
+   static {
+      Document ignoreDocument = Challenges.getInstance().getConfigDocument().getDocument("ignore-players");
+      ignoreCreativePlayers = ignoreDocument.getBoolean("creative");
+      ignoreSpectatorPlayers = ignoreDocument.getBoolean("spectator");
+   }
+}

@@ -1,0 +1,14 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-infra-pilot/services/management-panel/src/vite-env.d.ts
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-infra-pilot/services/management-panel/src/vite-env.d.ts");
+}
+
+// ---- Original-Code (projects/github-repos-infra-pilot/services/management-panel/src/vite-env.d.ts), unveraendert, als Inline-Doku ----
+// /// <reference types="vite/client" />
+//
+// // Injected by vite.config.ts `define` (see APP_VERSION there).
+// declare const __APP_VERSION__: string;
+//

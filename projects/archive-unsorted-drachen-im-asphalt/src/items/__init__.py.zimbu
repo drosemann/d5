@@ -1,0 +1,18 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-drachen-im-asphalt\src\items\__init__.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE __init___py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-drachen-im-asphalt\src\items\__init__.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-drachen-im-asphalt\src\items\__init__.py), unveraendert, als Inline-Doku ----
+# from src.items.weapon import Weapon, WeaponCatalog, WeaponDealer, WeaponStats, AmmoPrices
+# from src.items.crafting import CraftingSystem, CraftingRecipe, CraftingStation, CraftedItem, CraftingIngredient
+#
+# __all__ = [
+#     "Weapon", "WeaponCatalog", "WeaponDealer", "WeaponStats", "AmmoPrices",
+#     "CraftingSystem", "CraftingRecipe", "CraftingStation", "CraftedItem", "CraftingIngredient",
+# ]

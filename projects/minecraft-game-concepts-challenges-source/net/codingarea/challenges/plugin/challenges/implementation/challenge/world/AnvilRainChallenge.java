@@ -1,0 +1,268 @@
+package net.codingarea.challenges.plugin.challenges.implementation.challenge.world;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
+import javax.annotation.Nonnull;
+import net.anweisen.utilities.bukkit.utils.misc.BukkitReflectionUtils;
+import net.codingarea.challenges.plugin.challenges.type.abstraction.MenuSetting;
+import net.codingarea.challenges.plugin.content.Message;
+import net.codingarea.challenges.plugin.management.menu.MenuType;
+import net.codingarea.challenges.plugin.management.menu.generator.categorised.SettingCategory;
+import net.codingarea.challenges.plugin.management.scheduler.task.ScheduledTask;
+import net.codingarea.challenges.plugin.management.scheduler.task.TimerTask;
+import net.codingarea.challenges.plugin.management.scheduler.timer.TimerStatus;
+import net.codingarea.challenges.plugin.management.stats.Statistic;
+import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+import org.bukkit.Bukkit;
+import org.bukkit.Chunk;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.World;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.FallingBlock;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.entity.EntityChangeBlockEvent;
+import org.bukkit.event.entity.EntityDropItemEvent;
+
+public class AnvilRainChallenge extends MenuSetting {
+   private final Random random = new Random();
+   int currentTime = 0;
+
+   public AnvilRainChallenge() {
+      super(MenuType.CHALLENGES, Message.forName("menu-anvil-rain-challenge-settings"));
+      this.setCategory(SettingCategory.WORLD);
+      this.registerSetting("time", new MenuSetting.NumberSubSetting(() -> {
+         return new ItemBuilder(Material.CLOCK, Message.forName("item-anvil-rain-time-challenge"));
+      }, (value) -> {
+         return null;
+      }, (value) -> {
+         return "§e" + value + " §7" + Message.forName(value == 1 ? "second" : "seconds").asString();
+      }, 1, 30, 7));
+      this.registerSetting("count", new MenuSetting.NumberSubSetting(() -> {
+         return new ItemBuilder(Material.FLINT, Message.forName("item-anvil-rain-count-challenge"));
+      }, 1, 30, 8));
+      this.registerSetting("range", new MenuSetting.NumberSubSetting(() -> {
+         return new ItemBuilder(Material.COMPASS, Message.forName("item-anvil-rain-range-challenge"));
+      }, (value) -> {
+         return null;
+      }, (value) -> {
+         return "§e" + value + " §7" + (value == 1 ? "chunk" : "chunks");
+      }, 1, 3, 2));
+      this.registerSetting("damage", new MenuSetting.NumberSubSetting(() -> {
+         return new ItemBuilder(Material.IRON_SWORD, Message.forName("item-anvil-rain-damage-challenge"));
+      }, (value) -> {
+         return null;
+      }, (value) -> {
+         return "§e" + Statistic.Display.HEARTS.formatChat((double)value);
+      }, 1, 60, 30));
+   }
+
+   protected void onDisable() {
+      this.removeAnvils();
+   }
+
+   @TimerTask(
+      async = false,
+      status = {TimerStatus.PAUSED}
+   )
+   public void onPause() {
+      this.removeAnvils();
+   }
+
+   private void removeAnvils() {
+      Iterator var1 = Bukkit.getWorlds().iterator();
+
+      while(var1.hasNext()) {
+         World world = (World)var1.next();
+         Iterator var3 = world.getEntitiesByClass(FallingBlock.class).iterator();
+
+         while(var3.hasNext()) {
+            FallingBlock entity = (FallingBlock)var3.next();
+            String name = entity.getBlockData().getMaterial().name();
+            if (name.contains("ANVIL")) {
+               entity.remove();
+            }
+         }
+      }
+
+   }
+
+   @Nonnull
+   public ItemBuilder createDisplayItem() {
+      return new ItemBuilder(Material.ANVIL, Message.forName("item-anvil-rain-challenge"));
+   }
+
+   @ScheduledTask(
+      ticks = 20,
+      async = false
+   )
+   public void onSecond() {
+      ++this.currentTime;
+      if (this.currentTime > this.getSetting("time").getAsInt()) {
+         this.currentTime = 0;
+         this.handleTimeActivation();
+      }
+
+   }
+
+   private void handleTimeActivation() {
+      List chunks = new ArrayList();
+      Iterator var2 = Bukkit.getOnlinePlayers().iterator();
+
+      while(true) {
+         Player player;
+         do {
+            if (!var2.hasNext()) {
+               return;
+            }
+
+            player = (Player)var2.next();
+         } while(ignorePlayer(player));
+
+         List targetChunks = this.getTargetChunks(player.getLocation().getChunk());
+         Iterator var5 = targetChunks.iterator();
+
+         while(var5.hasNext()) {
+            Chunk targetChunk = (Chunk)var5.next();
+            if (!chunks.contains(targetChunk)) {
+               chunks.add(targetChunk);
+               this.spawnAnvils(targetChunk, this.getHeight(player.getLocation().getBlockY()));
+            }
+         }
+      }
+   }
+
+   private void spawnAnvils(@Nonnull Chunk chunk, int height) {
+      for(int i = 0; i < this.getCount(); ++i) {
+         Block block = this.getRandomBlockInChunk(chunk, height);
+         Location location = block.getLocation().add(0.5D, 0.0D, 0.5D);
+         block.getWorld().spawnFallingBlock(location, Material.ANVIL, (byte)0);
+      }
+
+   }
+
+   private List getTargetChunks(@Nonnull Chunk origin) {
+      List chunks = new ArrayList();
+      int originX = origin.getX();
+      int originZ = origin.getZ();
+      int range = this.getRange();
+
+      for(int x = -range; x <= range; ++x) {
+         for(int z = -range; z <= range; ++z) {
+            Chunk chunkAt = origin.getWorld().getChunkAt(originX + x, originZ + z);
+            chunks.add(chunkAt);
+         }
+      }
+
+      return chunks;
+   }
+
+   private Block getRandomBlockInChunk(@Nonnull Chunk chunk, int y) {
+      int x = this.random.nextInt(16);
+      int z = this.random.nextInt(16);
+      return chunk.getBlock(x, y, z);
+   }
+
+   @EventHandler(
+      priority = EventPriority.HIGH,
+      ignoreCancelled = true
+   )
+   public void onEntityChangeBlock(@Nonnull EntityChangeBlockEvent event) {
+      if (this.shouldExecuteEffect()) {
+         if (event.getEntity() instanceof FallingBlock) {
+            String name = ((FallingBlock)event.getEntity()).getBlockData().getMaterial().name();
+            if (name.contains("ANVIL")) {
+               Block block = event.getBlock().getLocation().subtract(0.0D, 1.0D, 0.0D).getBlock();
+               if (!BukkitReflectionUtils.isAir(block.getType())) {
+                  event.getBlock().setType(Material.AIR);
+                  event.setCancelled(true);
+                  event.getEntity().remove();
+                  this.destroyRandomBlocks(event.getBlock().getLocation());
+                  this.applyDamageToNearEntities(event.getBlock().getLocation().add(0.5D, 0.5D, 0.5D));
+               }
+            }
+         }
+      }
+   }
+
+   @EventHandler(
+      priority = EventPriority.HIGH,
+      ignoreCancelled = true
+   )
+   public void onDrop(@Nonnull EntityDropItemEvent event) {
+      if (event.getItemDrop().getItemStack().getType() == Material.ANVIL) {
+         if (event.getEntityType() == EntityType.FALLING_BLOCK) {
+            String name = ((FallingBlock)event.getEntity()).getBlockData().getMaterial().name();
+            if (name.contains("ANVIL")) {
+               event.setCancelled(true);
+               this.destroyRandomBlocks(event.getEntity().getLocation());
+               this.applyDamageToNearEntities(event.getEntity().getLocation().getBlock().getLocation().add(0.5D, 0.5D, 0.5D));
+            }
+         }
+      }
+   }
+
+   public void destroyRandomBlocks(@Nonnull Location origin) {
+      int i = this.random.nextInt(2);
+      if (i != 0) {
+         int blocks = this.getCount() < 16 ? 0 : 1;
+
+         while(true) {
+            if (blocks < 2 && origin.getBlockY() > 1) {
+               if (origin.getBlock().getType() != Material.WATER && origin.getBlock().getType() != Material.LAVA) {
+                  origin.subtract(0.0D, 1.0D, 0.0D);
+                  if (origin.getBlock().isPassable()) {
+                     --blocks;
+                  }
+
+                  origin.getBlock().setType(Material.AIR);
+                  ++blocks;
+                  continue;
+               }
+
+               return;
+            }
+
+            return;
+         }
+      }
+   }
+
+   public void applyDamageToNearEntities(@Nonnull Location location) {
+      if (location.getWorld() != null) {
+         Iterator var2 = location.getWorld().getNearbyEntities(location, 0.25D, 0.25D, 0.25D).iterator();
+
+         while(var2.hasNext()) {
+            Entity entity = (Entity)var2.next();
+            if (entity instanceof LivingEntity) {
+               LivingEntity livingEntity = (LivingEntity)entity;
+               livingEntity.damage((double)this.getDamage());
+            }
+         }
+
+      }
+   }
+
+   private int getRange() {
+      return this.getSetting("range").getAsInt();
+   }
+
+   private int getCount() {
+      return this.getSetting("count").getAsInt();
+   }
+
+   private int getDamage() {
+      return this.getSetting("damage").getAsInt();
+   }
+
+   private int getHeight(int currentHeight) {
+      return currentHeight + 50;
+   }
+}

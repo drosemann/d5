@@ -1,0 +1,32 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-infra-pilot\services\management-panel\src\components\PageHeader.tsx
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE PageHeader_tsx
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-infra-pilot\services\management-panel\src\components\PageHeader.tsx\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-infra-pilot\services\management-panel\src\components\PageHeader.tsx), unveraendert, als Inline-Doku ----
+# import type { ReactNode } from 'react';
+#
+# type PageHeaderProps = {
+#   eyebrow: string;
+#   children: ReactNode;
+#   actions?: ReactNode;
+# };
+#
+# export const PageHeader = ({ eyebrow, children, actions }: PageHeaderProps) => (
+#   <>
+#     <div className="flex items-start justify-between">
+#       <div>
+#         <p className="eyebrow">{eyebrow}</p>
+#         {children}
+#       </div>
+#       {actions}
+#     </div>
+#     <div className="page-rule" />
+#   </>
+# );
+#

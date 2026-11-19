@@ -1,0 +1,239 @@
+package de.example.lobby;
+
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class LobbyPlugin extends JavaPlugin implements Listener {
+
+    private Map<String, Location> teleportLocations = new HashMap<>();
+
+    @Override
+    public void onEnable() {
+        getServer().getPluginManager().registerEvents(this, this);
+        // Lade gespeicherte Orte beim Start des Plugins
+        loadTeleportLocations();
+    }
+
+    @Override
+    public void onDisable() {
+        // Speichere Orte beim Stoppen des Plugins
+        saveTeleportLocations();
+    }
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!(sender instanceof Player)) {
+            sender.sendMessage("Dieser Befehl kann nur von einem Spieler ausgeführt werden.");
+            return true;
+        }
+
+        Player player = (Player) sender;
+
+        if (command.getName().equalsIgnoreCase("ConnectHub")) {
+            if (args.length >= 3) {
+                if (args[0].equalsIgnoreCase("teleport")) {
+                    if (args[1].equalsIgnoreCase("add")) {
+                        addTeleportLocation(player, args[2], player.getLocation());
+                        player.sendMessage("Teleportationsort " + args[2] + " hinzugefügt.");
+                    } else if (args[1].equalsIgnoreCase("remove")) {
+                        removeTeleportLocation(player, args[2]);
+                        player.sendMessage("Teleportationsort " + args[2] + " entfernt.");
+                    } else if (args[1].equalsIgnoreCase("to")) {
+                        teleportToLocation(player, args[2]);
+                    }
+                }
+            }
+        }
+
+        return true;
+    }
+
+    @EventHandler
+    public void onPlayerInteract(PlayerInteractEvent event) {
+        Player player = event.getPlayer();
+        ItemStack item = event.getItem();
+
+        if (item == null || item.getType() == Material.AIR) {
+            return;
+        }
+
+        // Kompass für Teleportation
+        if (item.getType() == Material.COMPASS) {
+            openTeleportationGUI(player);
+        }
+
+        // Diamant für Outfits
+        if (item.getType() == Material.DIAMOND) {
+            openOutfitGUI(player);
+        }
+
+        // Blatt Papier mit Infos
+        if (item.getType() == Material.PAPER) {
+            openInfoGUI(player);
+        }
+    }
+
+    @EventHandler
+    public void onInventoryClick(InventoryClickEvent event) {
+        Player player = (Player) event.getWhoClicked();
+        ItemStack clickedItem = event.getCurrentItem();
+
+        if (clickedItem != null && clickedItem.getType() != Material.AIR) {
+            String itemName = clickedItem.getItemMeta().getDisplayName();
+
+            if (event.getView().getTitle().equals("Teleportation")) {
+                event.setCancelled(true); // Verhindere, dass Items aus dem GUI gezogen werden
+
+                // Handle Klicks im Teleportations-GUI
+                // Hier kannst du den Teleportationscode implementieren
+                player.sendMessage("Teleportiere dich irgendwohin...");
+                player.closeInventory(); // Schließe das GUI nach dem Teleport
+            } else if (event.getView().getTitle().equals("Outfits")) {
+                event.setCancelled(true); // Verhindere, dass Items aus dem GUI gezogen werden
+
+                // Handle Klicks im Outfits-GUI
+                equipArmorSet(player, itemName);
+            } else if (event.getView().getTitle().equals("Informationen")) {
+                event.setCancelled(true); // Verhindere, dass Items aus dem GUI gezogen werden
+
+                // Handle Klicks im Info-GUI
+                // Hier kannst du Code implementieren, um Informationen anzuzeigen
+                player.sendMessage("Du hast das Info-Item " + itemName + " ausgewählt.");
+            }
+        }
+    }
+
+    private void openTeleportationGUI(Player player) {
+        Inventory teleportationGUI = Bukkit.createInventory(null, 9, "Teleportation");
+
+        // Füge Items zum Teleportations-GUI hinzu
+        teleportationGUI.setItem(0, createGUIItem(Material.DIAMOND_SWORD, "Teleport zu A"));
+        teleportationGUI.setItem(1, createGUIItem(Material.GOLDEN_APPLE, "Teleport zu B"));
+        teleportationGUI.setItem(8, createGUIItem(Material.BARRIER, "Schließen"));
+
+        player.openInventory(teleportationGUI);
+    }
+
+    private void openOutfitGUI(Player player) {
+        Inventory outfitGUI = Bukkit.createInventory(null, 9, "Outfits");
+
+        // Füge Items zum Outfit-GUI hinzu
+        outfitGUI.setItem(0, createGUIItem(Material.DIAMOND_HELMET, "Diamantrüstung"));
+        outfitGUI.setItem(1, createGUIItem(Material.GOLDEN_HELMET, "Goldrüstung"));
+        outfitGUI.setItem(2, createGUIItem(Material.IRON_HELMET, "Eisenrüstung"));
+        outfitGUI.setItem(3, createGUIItem(Material.CHAINMAIL_HELMET, "Kettenrüstung"));
+        outfitGUI.setItem(8, createGUIItem(Material.BARRIER, "Schließen"));
+
+        player.openInventory(outfitGUI);
+    }
+
+    private void openInfoGUI(Player player) {
+        Inventory infoGUI = Bukkit.createInventory(null, 9, "Informationen");
+
+        // Füge Items zum Info-GUI hinzu
+        infoGUI.setItem(0, createGUIItem(Material.PAPER, "Infos über die Lobby"));
+        infoGUI.setItem(8, createGUIItem(Material.BOOK, "Schließen"));
+
+        player.openInventory(infoGUI);
+    }
+
+    private ItemStack createGUIItem(Material material, String displayName) {
+        ItemStack item = new ItemStack(material);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(displayName);
+        item.setItemMeta(meta);
+        return item;
+    }
+
+    private void equipArmorSet(Player player, String armorSetName) {
+        ItemStack helmet = null;
+        ItemStack chestplate = null;
+        ItemStack leggings = null;
+        ItemStack boots = null;
+
+        switch (armorSetName) {
+            case "Diamantrüstung":
+                helmet = new ItemStack(Material.DIAMOND_HELMET);
+                chestplate = new ItemStack(Material.DIAMOND_CHESTPLATE);
+                leggings = new ItemStack(Material.DIAMOND_LEGGINGS);
+                boots = new ItemStack(Material.DIAMOND_BOOTS);
+                break;
+            case "Goldrüstung":
+                helmet = new ItemStack(Material.GOLDEN_HELMET);
+                chestplate = new ItemStack(Material.GOLDEN_CHESTPLATE);
+                leggings = new ItemStack(Material.GOLDEN_LEGGINGS);
+                boots = new ItemStack(Material.GOLDEN_BOOTS);
+                break;
+            case "Eisenrüstung":
+                helmet = new ItemStack(Material.IRON_HELMET);
+                chestplate = new ItemStack(Material.IRON_CHESTPLATE);
+                leggings = new ItemStack(Material.IRON_LEGGINGS);
+                boots = new ItemStack(Material.IRON_BOOTS);
+                break;
+            case "Kettenrüstung":
+                helmet = new ItemStack(Material.CHAINMAIL_HELMET);
+                chestplate = new ItemStack(Material.CHAINMAIL_CHESTPLATE);
+                leggings = new ItemStack(Material.CHAINMAIL_LEGGINGS);
+                boots = new ItemStack(Material.CHAINMAIL_BOOTS);
+                break;
+            default:
+                break;
+        }
+
+        // Setze die Rüstungsteile
+        player.getInventory().setHelmet(helmet);
+        player.getInventory().setChestplate(chestplate);
+        player.getInventory().setLeggings(leggings);
+        player.getInventory().setBoots(boots);
+
+        // Gib dem Spieler einen Effekt (optional)
+        player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 300, 1));
+
+        player.sendMessage("Du hast das Outfit " + armorSetName + " angezogen.");
+    }
+
+    private void addTeleportLocation(Player player, String name, Location location) {
+        teleportLocations.put(name, location);
+    }
+
+    private void removeTeleportLocation(Player player, String name) {
+        teleportLocations.remove(name);
+    }
+
+    private void teleportToLocation(Player player, String name) {
+        Location location = teleportLocations.get(name);
+
+        if (location != null) {
+            player.teleport(location);
+            player.sendMessage("Du wurdest zu " + name + " teleportiert.");
+        } else {
+            player.sendMessage("Der Teleportationsort " + name + " existiert nicht.");
+        }
+    }
+
+    private void loadTeleportLocations() {
+        // Hier könntest du Code implementieren, um gespeicherte Orte beim Start des Plugins zu laden
+    }
+
+    private void saveTeleportLocations() {
+        // Hier könntest du Code implementieren, um Orte beim Stoppen des Plugins zu speichern
+    }
+}

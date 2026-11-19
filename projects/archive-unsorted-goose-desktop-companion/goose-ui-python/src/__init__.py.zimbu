@@ -1,0 +1,29 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-goose-desktop-companion\goose-ui-python\src\__init__.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE __init___py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-goose-desktop-companion\goose-ui-python\src\__init__.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-goose-desktop-companion\goose-ui-python\src\__init__.py), unveraendert, als Inline-Doku ----
+# """
+# Goose Desktop Companion - Python UI Layer
+# Version 2.0 - PyQt5 Cross-Platform Rewrite
+# """
+#
+# __version__ = "2.0.0"
+# __author__ = "Goose Desktop Companion Contributors"
+#
+# import logging
+#
+# # Configure logging
+# logging.basicConfig(
+#     level=logging.INFO,
+#     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+# )
+#
+# logger = logging.getLogger(__name__)
+#

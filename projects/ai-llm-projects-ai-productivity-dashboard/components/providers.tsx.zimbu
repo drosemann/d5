@@ -1,0 +1,36 @@
+﻿# Zimbu-Port-Spiegel von: projects\ai-llm-projects-ai-productivity-dashboard\components\providers.tsx
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE providers_tsx
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\ai-llm-projects-ai-productivity-dashboard\components\providers.tsx\n")
+  RETURN 0
+
+# ---- Original-Code (projects\ai-llm-projects-ai-productivity-dashboard\components\providers.tsx), unveraendert, als Inline-Doku ----
+# 'use client'
+#
+# import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+# import { useState } from 'react'
+#
+# export function Providers({ children }: { children: React.ReactNode }) {
+#   const [queryClient] = useState(
+#     () =>
+#       new QueryClient({
+#         defaultOptions: {
+#           queries: {
+#             staleTime: 30_000,
+#             refetchOnWindowFocus: false,
+#           },
+#         },
+#       })
+#   )
+#
+#   return (
+#     <QueryClientProvider client={queryClient}>
+#       {children}
+#     </QueryClientProvider>
+#   )
+# }
+#

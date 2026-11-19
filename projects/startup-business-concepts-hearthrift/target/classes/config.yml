@@ -1,0 +1,43 @@
+# World Configuration
+worlds:
+  entry:
+    name: "ENTRY"
+    description: "Starting world for new players"
+    gamemode: ADVENTURE
+  rift:
+    name: "RIFT"
+    description: "Dangerous world with no rules"
+    gamemode: SURVIVAL
+    difficulty: HARD
+    pvp: true
+
+# Tutorial Settings
+tutorial:
+  enabled: true
+  steps:
+    - title: "Welcome to HearthRift"
+      description: "Your journey begins here in the ENTRY world"
+    - title: "Your Personal World"
+      description: "A world just for you is being created"
+    - title: "The Rift"
+      description: "Venture into the Rift for greater rewards and challenges"
+
+# World Generation Settings
+world-generation:
+  default-size: 1000
+  border-damage: true
+  void-type: true
+
+# Permission Settings
+permissions:
+  default:
+    max-guests: 5
+    can-modify-permissions: false
+  vip:
+    max-guests: 10
+    can-modify-permissions: true
+
+# Performance Settings
+performance:
+  max-concurrent-world-generations: 3
+  world-unload-delay: 300 # seconds

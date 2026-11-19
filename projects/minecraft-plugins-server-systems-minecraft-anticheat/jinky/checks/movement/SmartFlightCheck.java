@@ -1,0 +1,113 @@
+package me.jinky.checks.movement;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import me.jinky.BAC;
+import me.jinky.checks.Check;
+import me.jinky.checks.CheckResult;
+import me.jinky.logger.User;
+import me.jinky.util.JVelocity;
+import me.jinky.util.UtilBlock;
+import me.jinky.util.UtilMath;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
+import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
+import org.bukkit.event.player.PlayerMoveEvent;
+
+public class SmartFlightCheck extends Check {
+   private static Map gc = new HashMap();
+   private static Map sc = new HashMap();
+   private static Map fl = new HashMap();
+   private static Map fr = new HashMap();
+
+   public String getName() {
+      return "SmartFlyCheck";
+   }
+
+   public String getEventCall() {
+      return "PlayerMoveEvent";
+   }
+
+   public CheckResult performCheck(User u, Event e) {
+      Player p = u.getPlayer();
+      if (!p.isInsideVehicle() && !p.isFlying() && !p.getLocation().getBlock().isLiquid() && !p.getLocation().getBlock().getRelative(BlockFace.DOWN).isLiquid() && !p.isInsideVehicle()) {
+         PlayerMoveEvent ev = (PlayerMoveEvent)e;
+         JVelocity v = new JVelocity(ev.getFrom(), ev.getTo());
+         Double h = v.yoffset();
+         if (UtilBlock.onStairs(p)) {
+            BAC.getBAC().EXEMPTHANDLER.addExemption(p, 5, "on stairs");
+         }
+
+         Boolean aroundwater = false;
+         Iterator var9 = UtilBlock.getSurrounding(p.getLocation().getBlock(), true).iterator();
+
+         while(var9.hasNext()) {
+            Block b = (Block)var9.next();
+            if (b.isLiquid()) {
+               aroundwater = true;
+               break;
+            }
+         }
+
+         Boolean inwater = UtilBlock.isSwimming(p);
+         if (!gc.containsKey(p)) {
+            gc.put(p, 0);
+         }
+
+         if (!fr.containsKey(p)) {
+            fr.put(p, 0.0D);
+         }
+
+         if (!sc.containsKey(p)) {
+            sc.put(p, 0);
+         }
+
+         if (!fl.containsKey(p)) {
+            fl.put(p, 0);
+         }
+
+         if (h >= 0.12D && UtilBlock.climbable(p.getLocation().getBlock()) && !aroundwater) {
+            fl.put(p, (Integer)fl.get(p) + 1);
+         } else {
+            fl.put(p, 0);
+         }
+
+         if (h == 0.2D && !UtilBlock.climbable(p.getLocation().getBlock())) {
+            sc.put(p, (Integer)sc.get(p) + 1);
+         } else {
+            sc.put(p, 0);
+         }
+
+         if (!UtilBlock.climbable(p.getLocation().getBlock()) && h.equals(fr.get(p)) && u.isFalling() && h > -0.3D && !inwater) {
+            gc.put(p, (Integer)gc.get(p) + 1);
+         } else {
+            gc.put(p, 0);
+         }
+
+         if ((Integer)gc.get(p) > 4 && !inwater) {
+            gc.put(p, 0);
+            if (!UtilBlock.climbable(p.getLocation().getBlock())) {
+               return new CheckResult("Glide/SlowFall", false, "slower than usual & steady rate");
+            }
+         }
+
+         if ((Integer)sc.get(p) > 4 && !inwater) {
+            sc.put(p, 0);
+            return new CheckResult("Spider", false, "abnormal y increase");
+         } else if ((Integer)fl.get(p) > 4) {
+            fl.put(p, 0);
+            return new CheckResult("FastClimb", false, "climbed at " + UtilMath.trim(4, h) + ", max possible is 0.120");
+         } else {
+            if (h < 0.001D) {
+               fr.put(p, h);
+            }
+
+            return new CheckResult("SmartFlight", true, "pass");
+         }
+      } else {
+         return new CheckResult("SmartFlight", true, "pass");
+      }
+   }
+}

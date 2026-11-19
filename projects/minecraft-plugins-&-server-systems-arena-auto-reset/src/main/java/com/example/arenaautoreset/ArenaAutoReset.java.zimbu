@@ -1,0 +1,27 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-plugins-&-server-systems-arena-auto-reset\src\main\java\com\example\arenaautoreset\ArenaAutoReset.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE ArenaAutoReset_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-plugins-&-server-systems-arena-auto-reset\src\main\java\com\example\arenaautoreset\ArenaAutoReset.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-plugins-&-server-systems-arena-auto-reset\src\main\java\com\example\arenaautoreset\ArenaAutoReset.java), unveraendert, als Inline-Doku ----
+# package com.example.arenaautoreset;
+#
+# import org.bukkit.plugin.java.JavaPlugin;
+#
+# public class ArenaAutoReset extends JavaPlugin {
+#     @Override
+#     public void onEnable() {
+#         getLogger().info("Arena Auto Reset plugin has been enabled!");
+#     }
+#
+#     @Override
+#     public void onDisable() {
+#         getLogger().info("Arena Auto Reset plugin has been disabled!");
+#     }
+# }
+#

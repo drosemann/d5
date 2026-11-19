@@ -1,0 +1,37 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-forum-for-nerds\Blog, CMS & Community Platforms\blog-forum-z.ai\src\components\ui\sonner.tsx
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE sonner_tsx
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-forum-for-nerds\Blog, CMS & Community Platforms\blog-forum-z.ai\src\components\ui\sonner.tsx\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-forum-for-nerds\Blog, CMS & Community Platforms\blog-forum-z.ai\src\components\ui\sonner.tsx), unveraendert, als Inline-Doku ----
+# "use client"
+#
+# import { useTheme } from "next-themes"
+# import { Toaster as Sonner, ToasterProps } from "sonner"
+#
+# const Toaster = ({ ...props }: ToasterProps) => {
+#   const { theme = "system" } = useTheme()
+#
+#   return (
+#     <Sonner
+#       theme={theme as ToasterProps["theme"]}
+#       className="toaster group"
+#       style={
+#         {
+#           "--normal-bg": "var(--popover)",
+#           "--normal-text": "var(--popover-foreground)",
+#           "--normal-border": "var(--border)",
+#         } as React.CSSProperties
+#       }
+#       {...props}
+#     />
+#   )
+# }
+#
+# export { Toaster }
+#

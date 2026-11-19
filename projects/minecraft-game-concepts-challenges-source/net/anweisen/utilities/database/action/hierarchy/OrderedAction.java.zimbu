@@ -1,0 +1,22 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\database\action\hierarchy\OrderedAction.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE OrderedAction_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\database\action\hierarchy\OrderedAction.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\database\action\hierarchy\OrderedAction.java), unveraendert, als Inline-Doku ----
+# package net.anweisen.utilities.database.action.hierarchy;
+#
+# import javax.annotation.Nonnull;
+# import javax.annotation.Nullable;
+# import net.anweisen.utilities.database.Order;
+#
+# public interface OrderedAction {
+#    @Nullable
+#    OrderedAction orderBy(@Nonnull String var1, @Nonnull Order var2);
+# }
+#

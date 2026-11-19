@@ -1,0 +1,63 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-old-python-openworldminigame/combat/combat.py
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-old-python-openworldminigame/combat/combat.py");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-old-python-openworldminigame/combat/combat.py), unveraendert, als Inline-Doku ----
+// import random
+//
+// class Character:
+//     def __init__(self, name, health, attack_power):
+//         # Initialize the character with a name, health points, and attack power
+//         self.name = name
+//         self.health = health
+//         self.attack_power = attack_power
+//
+//     def is_alive(self):
+//         # Check if the character is still alive
+//         return self.health > 0
+//
+//     def attack(self, other):
+//         # Calculate damage and apply it to the other character
+//         damage = random.randint(1, self.attack_power)
+//         other.health -= damage
+//         print(f"{self.name} attacks {other.name} for {damage} damage!")
+//
+//     def heal(self, amount):
+//         # Heal the character by a specified amount
+//         self.health += amount
+//         print(f"{self.name} heals for {amount} health points!")
+//
+// class Combat:
+//     def __init__(self, player, enemy):
+//         # Initialize the combat with a player and an enemy
+//         self.player = player
+//         self.enemy = enemy
+//
+//     def start_combat(self):
+//         # Start the combat loop
+//         print(f"A wild {self.enemy.name} appears!")
+//         while self.player.is_alive() and self.enemy.is_alive():
+//             # Player's turn to attack
+//             self.player.attack(self.enemy)
+//             if self.enemy.is_alive():
+//                 # Enemy's turn to attack
+//                 self.enemy.attack(self.player)
+//             print(f"{self.player.name} HP: {self.player.health}, {self.enemy.name} HP: {self.enemy.health}")
+//
+//         # Determine the outcome of the combat
+//         if self.player.is_alive():
+//             print(f"{self.player.name} has defeated {self.enemy.name}!")
+//         else:
+//             print(f"{self.player.name} has been defeated by {self.enemy.name}!")
+//
+// # Example usage
+// if __name__ == "__main__":
+//     player = Character(name="Hero", health=100, attack_power=20)
+//     enemy = Character(name="Goblin", health=50, attack_power=15)
+//
+//     combat = Combat(player, enemy)
+//     combat.start_combat() 

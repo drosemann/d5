@@ -1,0 +1,23 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\database\action\DatabaseCountEntries.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE DatabaseCountEntries_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\database\action\DatabaseCountEntries.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\database\action\DatabaseCountEntries.java), unveraendert, als Inline-Doku ----
+# package net.anweisen.utilities.database.action;
+#
+# import javax.annotation.Nonnegative;
+# import javax.annotation.Nonnull;
+# import net.anweisen.utilities.database.exceptions.DatabaseException;
+#
+# public interface DatabaseCountEntries extends DatabaseAction {
+#    @Nonnull
+#    @Nonnegative
+#    Long execute() throws DatabaseException;
+# }
+#

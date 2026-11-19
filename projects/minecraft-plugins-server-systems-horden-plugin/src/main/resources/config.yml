@@ -1,0 +1,313 @@
+# HordePlugin Konfiguration v1.0.0
+# Definiere Horden mit Wellen, Mobs und Loot
+
+# ============================================
+# HORDEN-DEFINITIONEN
+# ============================================
+
+hordes:
+  
+  # ════════════════════════════════════════
+  # 1. Der verfluchte Kreuzzug
+  # ════════════════════════════════════════
+  verfluchter-kreuzzug:
+    display-name: "§6Der verfluchte Kreuzzug"
+    min-duration: 600  # 10 Minuten
+    max-duration: 1200 # 20 Minuten
+    
+    waves:
+      wave_1:
+        wave-number: 1
+        mob-type: SKELETON
+        mob-count: 12
+        armor-type: GOLD
+        armor-color: GOLD
+        spawn-delay: 8
+        loot-items:
+          - koenig_siegel
+          - knochen_krieger
+          - gold_fragment
+
+      wave_2:
+        wave-number: 2
+        mob-type: SKELETON
+        mob-count: 15
+        armor-type: GOLD
+        armor-color: GOLD
+        spawn-delay: 10
+        loot-items:
+          - koenig_siegel
+          - heilige_ruine
+          - gold_staub
+
+      wave_3:
+        wave-number: 3
+        mob-type: WITHER_SKELETON
+        mob-count: 8
+        armor-type: GOLD
+        armor-color: GOLD
+        spawn-delay: 12
+        loot-items:
+          - verfluchtes_stigma
+          - koenig_siegel
+
+  # ════════════════════════════════════════
+  # 2. Tiefen-Horde
+  # ════════════════════════════════════════
+  tiefen-horde:
+    display-name: "§bTiefen-Horde"
+    min-duration: 600
+    max-duration: 1200
+
+    waves:
+      wave_1:
+        wave-number: 1
+        mob-type: ZOMBIE
+        mob-count: 14
+        armor-type: LEATHER
+        armor-color: BLUE
+        spawn-delay: 7
+        loot-items:
+          - ozean_herz
+          - tiefenseide
+          - perl_staub
+
+      wave_2:
+        wave-number: 2
+        mob-type: DROWNED
+        mob-count: 10
+        armor-type: LEATHER
+        armor-color: BLUE
+        spawn-delay: 9
+        loot-items:
+          - ozean_herz
+          - trident_fragment
+          - aquamarin
+
+      wave_3:
+        wave-number: 3
+        mob-type: ZOMBIE
+        mob-count: 12
+        armor-type: LEATHER
+        armor-color: BLUE
+        spawn-delay: 8
+        loot-items:
+          - geheimnis_tiefen
+          - ozean_herz
+
+  # ════════════════════════════════════════
+  # 3. Wüsten-Plage
+  # ════════════════════════════════════════
+  wuesten-plage:
+    display-name: "§eWüsten-Plage"
+    min-duration: 600
+    max-duration: 1200
+
+    waves:
+      wave_1:
+        wave-number: 1
+        mob-type: HUSK
+        mob-count: 13
+        armor-type: IRON
+        armor-color: ORANGE
+        spawn-delay: 8
+        loot-items:
+          - sonnen_tuch
+          - wuesten_kristall
+          - sand_stein
+
+      wave_2:
+        wave-number: 2
+        mob-type: HUSK
+        mob-count: 16
+        armor-type: IRON
+        armor-color: ORANGE
+        spawn-delay: 10
+        loot-items:
+          - sonnen_tuch
+          - pharao_amulett
+          - glitzer_sand
+
+      wave_3:
+        wave-number: 3
+        mob-type: ZOMBIE
+        mob-count: 11
+        armor-type: IRON
+        armor-color: ORANGE
+        spawn-delay: 9
+        loot-items:
+          - verbrannte_schrolle
+          - sonnen_tuch
+
+# ============================================
+# LOOT-ITEMS (Optional - für Erweiterungen)
+# ============================================
+
+loot:
+  
+  # Verfluchter Kreuzzug Items
+  koenig_siegel:
+    display-name: "Königliches Siegel"
+    color: "§6"
+    chance: 0.025  # 2.5%
+    lore: "Das Siegel eines längst verstorbenen Königs"
+    sound: "ENTITY_LIGHTNING_BOLT_THUNDER"
+    rarity: EPIC
+
+  knochen_krieger:
+    display-name: "Knochen des Kriegers"
+    color: "§8"
+    chance: 0.15  # 15%
+    lore: "Verstärkte Skelett-Knochen"
+    sound: "BLOCK_BONE_BLOCK_BREAK"
+    rarity: RARE
+
+  gold_fragment:
+    display-name: "Gold-Fragment"
+    color: "§6"
+    chance: 0.5  # 50%
+    lore: "Ein Fragment aus der Horde"
+    sound: "ENTITY_ITEM_PICKUP"
+    rarity: COMMON
+
+  gold_staub:
+    display-name: "Goldener Staub"
+    color: "§6"
+    chance: 0.3  # 30%
+    lore: "Glitzernder Staub"
+    sound: "ENTITY_ITEM_PICKUP"
+    rarity: COMMON
+
+  heilige_ruine:
+    display-name: "Heilige Ruinen-Essenz"
+    color: "§d"
+    chance: 0.1  # 10%
+    lore: "Mystische Energie aus alten Ruinen"
+    sound: "ENTITY_ENDERMAN_TELEPORT"
+    rarity: RARE
+
+  verfluchtes_stigma:
+    display-name: "Verfluchtes Stigma"
+    color: "§c"
+    chance: 0.005  # 0.5%
+    lore: "Ein verdorbenes Zeichen der Verdammnis"
+    sound: "ENTITY_WITHER_SPAWN"
+    rarity: LEGENDARY
+
+  # Tiefen-Horde Items
+  ozean_herz:
+    display-name: "Herz des Ozeans (Fragment)"
+    color: "§b"
+    chance: 0.025  # 2.5%
+    lore: "Ein mystisches Artefakt aus der Tiefe"
+    sound: "ENTITY_LIGHTNING_BOLT_THUNDER"
+    rarity: EPIC
+
+  tiefenseide:
+    display-name: "Tiefenseide"
+    color: "§9"
+    chance: 0.15  # 15%
+    lore: "Stoff aus den Tiefen des Ozeans"
+    sound: "BLOCK_WATERLILY_PLACE"
+    rarity: RARE
+
+  perl_staub:
+    display-name: "Perl-Staub"
+    color: "§f"
+    chance: 0.5  # 50%
+    lore: "Funkelnder Perlen-Staub"
+    sound: "ENTITY_ITEM_PICKUP"
+    rarity: COMMON
+
+  trident_fragment:
+    display-name: "Dreizack-Fragment"
+    color: "§1"
+    chance: 0.12  # 12%
+    lore: "Ein Fragment eines verlorenen Dreizacks"
+    sound: "ENTITY_TRIDENT_HIT"
+    rarity: RARE
+
+  aquamarin:
+    display-name: "Aquamarin"
+    color: "§b"
+    chance: 0.08  # 8%
+    lore: "Ein kostbarer Edelstein"
+    sound: "ENTITY_ITEM_PICKUP"
+    rarity: RARE
+
+  geheimnis_tiefen:
+    display-name: "Geheimnis der Tiefen"
+    color: "§5"
+    chance: 0.003  # 0.3%
+    lore: "Ein uraltes Geheimnis der Ozeane"
+    sound: "ENTITY_LIGHTNING_BOLT_THUNDER"
+    rarity: LEGENDARY
+
+  # Wüsten-Plage Items
+  sonnen_tuch:
+    display-name: "Sonnengewebtes Tuch"
+    color: "§e"
+    chance: 0.025  # 2.5%
+    lore: "Glüht in der Sonne"
+    sound: "ENTITY_LIGHTNING_BOLT_THUNDER"
+    rarity: EPIC
+
+  wuesten_kristall:
+    display-name: "Wüsten-Kristall"
+    color: "§6"
+    chance: 0.15  # 15%
+    lore: "Ein funkelnder Kristall"
+    sound: "BLOCK_AMETHYST_BLOCK_BREAK"
+    rarity: RARE
+
+  sand_stein:
+    display-name: "Sand-Stein"
+    color: "§d"
+    chance: 0.5  # 50%
+    lore: "Ein Fragment aus den Wüsten"
+    sound: "ENTITY_ITEM_PICKUP"
+    rarity: COMMON
+
+  pharao_amulett:
+    display-name: "Pharao-Amulett"
+    color: "§6"
+    chance: 0.1  # 10%
+    lore: "Ein mystisches Amulett aus uralten Zeiten"
+    sound: "ENTITY_ENDERMAN_TELEPORT"
+    rarity: RARE
+
+  glitzer_sand:
+    display-name: "Glitzernder Sand"
+    color: "§e"
+    chance: 0.3  # 30%
+    lore: "Sand mit magischen Partikeln"
+    sound: "ENTITY_ITEM_PICKUP"
+    rarity: COMMON
+
+  verbrannte_schrolle:
+    display-name: "Verbrannte Schrolle"
+    color: "§4"
+    chance: 0.08  # 8%
+    lore: "Eine alte, teilweise verbrannte Schrolle"
+    sound: "ENTITY_GENERIC_BURN"
+    rarity: RARE
+
+# ============================================
+# SYSTEM-EINSTELLUNGEN
+# ============================================
+
+system:
+  # Sounds aktivieren
+  enable-sounds: true
+  
+  # Partikel-Effekte aktivieren
+  enable-particles: true
+  
+  # Broadcast-Nachrichten
+  broadcast-rare-loots: true
+  
+  # Xp-Multiplikator
+  xp-multiplier: 1.5
+  
+  # Spezial-Effekte-Chance
+  special-effect-chance: 0.3

@@ -1,0 +1,15 @@
+﻿# Zimbu-Port-Spiegel von: projects\cloud-hosting-saas-vercel-clone\frontend-nextjs\.eslintrc.json
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE _eslintrc_json
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\cloud-hosting-saas-vercel-clone\frontend-nextjs\.eslintrc.json\n")
+  RETURN 0
+
+# ---- Original-Code (projects\cloud-hosting-saas-vercel-clone\frontend-nextjs\.eslintrc.json), unveraendert, als Inline-Doku ----
+# {
+#   "extends": "next/core-web-vitals"
+# }
+#

@@ -1,0 +1,139 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/utils/misc/CommandHelper.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/utils/misc/CommandHelper.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/utils/misc/CommandHelper.java), unveraendert, als Inline-Doku ----
+// package net.codingarea.challenges.plugin.utils.misc;
+//
+// import java.util.ArrayList;
+// import java.util.Arrays;
+// import java.util.Iterator;
+// import java.util.LinkedList;
+// import java.util.List;
+// import java.util.concurrent.ThreadLocalRandom;
+// import javax.annotation.Nonnull;
+// import javax.annotation.Nullable;
+// import org.bukkit.Bukkit;
+// import org.bukkit.Location;
+// import org.bukkit.command.BlockCommandSender;
+// import org.bukkit.command.CommandSender;
+// import org.bukkit.entity.Player;
+//
+// public final class CommandHelper {
+//    private CommandHelper() {
+//    }
+//
+//    public static List getCompletions(CommandSender sender) {
+//       LinkedList list = new LinkedList();
+//       Player player = sender instanceof Player ? (Player)sender : null;
+//       Bukkit.getOnlinePlayers().forEach((player1) -> {
+//          if (player == null || player.canSee(player1)) {
+//             list.add(player1.getName());
+//          }
+//
+//       });
+//       list.addAll(Arrays.asList("@a", "@r", "@p", "@s"));
+//       return list;
+//    }
+//
+//    public static List getPlayers(@Nonnull CommandSender sender, @Nonnull String input) {
+//       ArrayList list = new ArrayList();
+//       Location senderLocation = getSenderLocation(sender);
+//       byte var5 = -1;
+//       switch(input.hashCode()) {
+//       case 2081:
+//          if (input.equals("@a")) {
+//             var5 = 0;
+//          }
+//          break;
+//       case 2096:
+//          if (input.equals("@p")) {
+//             var5 = 2;
+//          }
+//          break;
+//       case 2098:
+//          if (input.equals("@r")) {
+//             var5 = 1;
+//          }
+//          break;
+//       case 2099:
+//          if (input.equals("@s")) {
+//             var5 = 3;
+//          }
+//       }
+//
+//       Player nearestPlayer;
+//       switch(var5) {
+//       case 0:
+//          list.addAll(Bukkit.getOnlinePlayers());
+//          break;
+//       case 1:
+//          list.add((Player)(new ArrayList(Bukkit.getOnlinePlayers())).get(ThreadLocalRandom.current().nextInt(Bukkit.getOnlinePlayers().size())));
+//          break;
+//       case 2:
+//          if (senderLocation != null) {
+//             nearestPlayer = getNearestPlayer(senderLocation);
+//             if (nearestPlayer != null) {
+//                list.add(nearestPlayer);
+//             }
+//          }
+//          break;
+//       case 3:
+//          if (sender instanceof Player) {
+//             list.add((Player)sender);
+//          }
+//          break;
+//       default:
+//          nearestPlayer = Bukkit.getPlayer(input);
+//          if (nearestPlayer != null) {
+//             list.add(nearestPlayer);
+//          }
+//       }
+//
+//       return list;
+//    }
+//
+//    @Nullable
+//    public static Location getSenderLocation(@Nonnull CommandSender sender) {
+//       if (sender instanceof Player) {
+//          return ((Player)sender).getLocation();
+//       } else {
+//          return sender instanceof BlockCommandSender ? ((BlockCommandSender)sender).getBlock().getLocation() : null;
+//       }
+//    }
+//
+//    @Nullable
+//    public static Player getNearestPlayer(@Nonnull Location location) {
+//       if (location.getWorld() == null) {
+//          return null;
+//       } else {
+//          Player currentPlayer = null;
+//          double playersDistance = -1.0D;
+//          Iterator var4 = Bukkit.getOnlinePlayers().iterator();
+//
+//          while(true) {
+//             Player player;
+//             double distance;
+//             do {
+//                do {
+//                   if (!var4.hasNext()) {
+//                      return currentPlayer;
+//                   }
+//
+//                   player = (Player)var4.next();
+//                } while(location.getWorld() != player.getWorld());
+//
+//                distance = location.distance(player.getLocation());
+//             } while(playersDistance != -1.0D && !(distance < playersDistance));
+//
+//             currentPlayer = player;
+//             playersDistance = distance;
+//          }
+//       }
+//    }
+// }
+//

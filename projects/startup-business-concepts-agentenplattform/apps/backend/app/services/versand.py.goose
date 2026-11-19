@@ -1,0 +1,84 @@
+﻿// Goose-Port-Spiegel von: projects/startup-business-concepts-agentenplattform/apps/backend/app/services/versand.py
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/startup-business-concepts-agentenplattform/apps/backend/app/services/versand.py");
+}
+
+// ---- Original-Code (projects/startup-business-concepts-agentenplattform/apps/backend/app/services/versand.py), unveraendert, als Inline-Doku ----
+// """Benachrichtigungsversand: PWA-intern, E-Mail (Allowlist), Web Push (VAPID).
+//
+// Standard: echter externer Versand ist AUS. E-Mail läuft nur mit
+// MAIL_SMTP_* + MAIL_ALLOWLIST und expliziter Aktivierung (outbound_mail_enabled).
+// Web Push läuft nur mit VAPID_* + aktiviertem Push-Abo. Alles andere endet als
+// „suppressed" mit ehrlichem Grund – nie als vorgetäuschter Versand.
+// """
+// from __future__ import annotations
+// import os, smtplib
+// from email.message import EmailMessage
+// from sqlalchemy.orm import Session
+// from app.db import models
+// from app.core.config import settings
+// from app.core.logging import get_logger
+//
+// log = get_logger("versand")
+//
+// def _allowlist() -> list[str]:
+//     return [a.strip().lower() for a in os.environ.get("MAIL_ALLOWLIST", "").split(",") if a.strip()]
+//
+// def mailversand_bereit() -> tuple[bool, str]:
+//     if not settings.outbound_mail_enabled: return False, "Mailversand deaktiviert (Einstellung)."
+//     if not (os.environ.get("MAIL_SMTP_HOST") and os.environ.get("MAIL_SMTP_ABSENDER")):
+//         return False, "SMTP nicht konfiguriert (MAIL_SMTP_HOST/ABSENDER)."
+//     return True, "ok"
+//
+// def push_bereit() -> tuple[bool, str]:
+//     if not os.environ.get("VAPID_PRIVAT"):
+//         return False, "Web Push nicht konfiguriert (VAPID_PRIVAT fehlt)."
+//     return True, "ok"
+//
+// def sende_mail(empfaenger: str, betreff: str, text: str) -> tuple[bool, str]:
+//     """Sendet genau eine Mail – nur an Allowlist-Adressen."""
+//     bereit, grund = mailversand_bereit()
+//     if not bereit: return False, grund
+//     if empfaenger.strip().lower() not in _allowlist():
+//         return False, "Empfänger nicht auf der Allowlist."
+//     try:
+//         msg = EmailMessage()
+//         msg["From"] = os.environ["MAIL_SMTP_ABSENDER"]; msg["To"] = empfaenger
+//         msg["Subject"] = betreff; msg.set_content(text[:5000])
+//         with smtplib.SMTP(os.environ["MAIL_SMTP_HOST"], int(os.environ.get("MAIL_SMTP_PORT", "587")),
+//                           timeout=20) as s:
+//             s.starttls()
+//             if os.environ.get("MAIL_SMTP_USER"):
+//                 s.login(os.environ["MAIL_SMTP_USER"], os.environ.get("MAIL_SMTP_PASSWORT", ""))
+//             s.send_message(msg)
+//         return True, "versendet"
+//     except Exception as e:  # noqa: BLE001 – Fehler an Aufrufer, nie still
+//         return False, f"SMTP-Fehler: {e}"
+//
+// def ausstehende_versenden(db: Session) -> dict:
+//     """Arbeitet pending-Notifications ab: pwa→sent, mail→echter Versand/Suppression."""
+//     offen = db.query(models.Notification).filter_by(status="pending").limit(50).all()
+//     versendet, unterdrueckt, fehler = 0, 0, 0
+//     for n in offen:
+//         if n.kanal == "pwa":
+//             n.status = "sent"; versendet += 1  # PWA-intern: Ablage = Zustellung
+//         elif n.kanal == "mail":
+//             # Empfänger steht im Textkopf „An: addr | …" oder Default aus Allowlist[0]
+//             empfaenger = (_allowlist()[:1] + [""])[0]
+//             ok, grund = sende_mail(empfaenger, "Agentenplattform", n.text)
+//             n.status = "sent" if ok else ("suppressed" if "deaktiviert" in grund or "Allowlist" in grund or "konfiguriert" in grund else "failed")
+//             versendet, unterdrueckt, fehler = versendet + (ok), unterdrueckt + (not ok and n.status == "suppressed"), fehler + (n.status == "failed")
+//             if not ok: log.info(f"Mail unterdrückt/fehlgeschlagen: {grund}")
+//         elif n.kanal == "push":
+//             ok, grund = push_bereit()
+//             n.status = "sent" if ok else "suppressed"
+//             if ok: versendet += 1  # echte Push-Zustellung folgt nach VAPID-Aktivierung
+//             else: unterdrueckt += 1; log.info(f"Push unterdrückt: {grund}")
+//         else:
+//             n.status = "suppressed"; unterdrueckt += 1
+//     db.commit()
+//     return {"versendet": versendet, "unterdrueckt": unterdrueckt, "fehler": fehler}
+//

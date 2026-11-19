@@ -1,0 +1,28 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\annotations\AlsoKnownAs.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE AlsoKnownAs_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\annotations\AlsoKnownAs.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\annotations\AlsoKnownAs.java), unveraendert, als Inline-Doku ----
+# package net.anweisen.utilities.common.annotations;
+#
+# import java.lang.annotation.Documented;
+# import java.lang.annotation.ElementType;
+# import java.lang.annotation.Retention;
+# import java.lang.annotation.RetentionPolicy;
+# import java.lang.annotation.Target;
+# import javax.annotation.Nonnull;
+#
+# @Documented
+# @Retention(RetentionPolicy.CLASS)
+# @Target({ElementType.FIELD, ElementType.METHOD, ElementType.TYPE})
+# public @interface AlsoKnownAs {
+#    @Nonnull
+#    String[] value();
+# }
+#

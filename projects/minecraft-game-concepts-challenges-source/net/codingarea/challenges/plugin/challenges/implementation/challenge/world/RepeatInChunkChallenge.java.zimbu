@@ -1,0 +1,343 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\implementation\challenge\world\RepeatInChunkChallenge.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE RepeatInChunkChallenge_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\implementation\challenge\world\RepeatInChunkChallenge.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\implementation\challenge\world\RepeatInChunkChallenge.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.challenges.implementation.challenge.world;
+#
+# import com.google.common.collect.Lists;
+# import java.util.HashMap;
+# import java.util.HashSet;
+# import java.util.Iterator;
+# import java.util.List;
+# import java.util.Map;
+# import java.util.Objects;
+# import java.util.Set;
+# import java.util.Map.Entry;
+# import net.anweisen.utilities.bukkit.utils.logging.Logger;
+# import net.anweisen.utilities.common.annotations.Since;
+# import net.anweisen.utilities.common.collection.pair.Triple;
+# import net.anweisen.utilities.common.config.Document;
+# import net.anweisen.utilities.common.config.document.GsonDocument;
+# import net.codingarea.challenges.plugin.ChallengeAPI;
+# import net.codingarea.challenges.plugin.challenges.type.abstraction.Setting;
+# import net.codingarea.challenges.plugin.content.Message;
+# import net.codingarea.challenges.plugin.management.menu.MenuType;
+# import net.codingarea.challenges.plugin.management.menu.generator.categorised.SettingCategory;
+# import net.codingarea.challenges.plugin.spigot.events.PlayerIgnoreStatusChangeEvent;
+# import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+# import org.bukkit.Bukkit;
+# import org.bukkit.Chunk;
+# import org.bukkit.Material;
+# import org.bukkit.World;
+# import org.bukkit.block.Block;
+# import org.bukkit.block.data.BlockData;
+# import org.bukkit.entity.Entity;
+# import org.bukkit.entity.Player;
+# import org.bukkit.event.EventHandler;
+# import org.bukkit.event.EventPriority;
+# import org.bukkit.event.block.BlockBreakEvent;
+# import org.bukkit.event.block.BlockPlaceEvent;
+# import org.bukkit.event.player.PlayerMoveEvent;
+# import org.bukkit.event.player.PlayerTeleportEvent;
+# import org.bukkit.event.vehicle.VehicleMoveEvent;
+# import org.bukkit.event.world.ChunkUnloadEvent;
+# import org.jetbrains.annotations.NotNull;
+#
+# @Since("2.1.1")
+# public class RepeatInChunkChallenge extends Setting {
+#    private final Map changedBlocks = new HashMap();
+#    private final Set updatedChunks = new HashSet();
+#
+#    public RepeatInChunkChallenge() {
+#       super(MenuType.CHALLENGES);
+#       this.setCategory(SettingCategory.WORLD);
+#    }
+#
+#    @NotNull
+#    public ItemBuilder createDisplayItem() {
+#       return new ItemBuilder(Material.GRASS_BLOCK, Message.forName("item-repeat-chunk-challenge"));
+#    }
+#
+#    public void writeGameState(@NotNull Document document) {
+#       GsonDocument changedDocument = new GsonDocument();
+#       Iterator var3 = this.changedBlocks.entrySet().iterator();
+#
+#       while(var3.hasNext()) {
+#          Entry entry = (Entry)var3.next();
+#          List list = Lists.newLinkedList();
+#          Iterator var6 = ((Map)entry.getValue()).entrySet().iterator();
+#
+#          while(var6.hasNext()) {
+#             Entry blockEntry = (Entry)var6.next();
+#             GsonDocument blockDocument = new GsonDocument();
+#             Triple pos = (Triple)blockEntry.getKey();
+#             blockDocument.set("x", pos.getFirst());
+#             blockDocument.set("y", pos.getSecond());
+#             blockDocument.set("z", pos.getThird());
+#             blockDocument.set("data", ((BlockData)blockEntry.getValue()).getAsString());
+#             list.add(blockDocument);
+#          }
+#
+#          if (!list.isEmpty()) {
+#             changedDocument.set((String)entry.getKey(), list);
+#          }
+#       }
+#
+#       document.set("changed-blocks", changedDocument);
+#    }
+#
+#    public void loadGameState(@NotNull Document document) {
+#       this.changedBlocks.clear();
+#       Document changedDocument = document.getDocument("changed-blocks");
+#       Iterator var3 = Bukkit.getWorlds().iterator();
+#
+#       label42:
+#       while(var3.hasNext()) {
+#          World world = (World)var3.next();
+#          List list = changedDocument.getDocumentList(world.getName());
+#          Map blockMap = (Map)this.changedBlocks.getOrDefault(world.getName(), new HashMap());
+#          this.changedBlocks.putIfAbsent(world.getName(), blockMap);
+#          Iterator var7 = list.iterator();
+#
+#          while(true) {
+#             while(true) {
+#                while(true) {
+#                   if (!var7.hasNext()) {
+#                      continue label42;
+#                   }
+#
+#                   Document blockDocument = (Document)var7.next();
+#                   int x = blockDocument.getInt("x");
+#                   int y = blockDocument.getInt("y");
+#                   int z = blockDocument.getInt("z");
+#                   if (x >= 0 && z >= 0) {
+#                      Triple pos = new Triple(x, y, z);
+#                      String data = blockDocument.getString("data");
+#                      if (data != null) {
+#                         BlockData blockData;
+#                         try {
+#                            blockData = Bukkit.createBlockData(data);
+#                         } catch (IllegalArgumentException var16) {
+#                            Logger.error("RepeatInChunkChallenge: Invalid Change Data: {}, {}, {}, {}, {}", world.getName(), x, y, z, data);
+#                            continue;
+#                         }
+#
+#                         blockMap.put(pos, blockData);
+#                      } else {
+#                         Logger.error("RepeatInChunkChallenge: Invalid Change Data: {}, {}, {}, {}, {}", world.getName(), x, y, z, null);
+#                      }
+#                   } else {
+#                      Logger.error("RepeatInChunkChallenge: Invalid Change Position: {}, {}, {}, {}", world.getName(), x, y, z);
+#                   }
+#                }
+#             }
+#          }
+#       }
+#
+#    }
+#
+#    protected void onEnable() {
+#       Iterator var1 = ChallengeAPI.getIngamePlayers().iterator();
+#
+#       while(var1.hasNext()) {
+#          Player player = (Player)var1.next();
+#          this.updateSurroundingChunks(player.getLocation().getChunk(), false);
+#       }
+#
+#    }
+#
+#    private void changeBlockInEveryChunk(World world, int x, int y, int z, BlockData data, Block exception) {
+#       this.updatedChunks.clear();
+#       Bukkit.getScheduler().runTask(plugin, () -> {
+#          Map map = (Map)this.changedBlocks.getOrDefault(world.getName(), new HashMap());
+#          this.changedBlocks.putIfAbsent(world.getName(), map);
+#          map.put(new Triple(x, y, z), data);
+#          Iterator var8 = ChallengeAPI.getIngamePlayers().iterator();
+#
+#          while(var8.hasNext()) {
+#             Player player = (Player)var8.next();
+#             Iterator var10 = this.getSurroundingChunks(player.getLocation().getChunk(), false).iterator();
+#
+#             while(var10.hasNext()) {
+#                Chunk chunk = (Chunk)var10.next();
+#                Block block = chunk.getBlock(x, y, z);
+#                if (!Objects.equals(exception, block)) {
+#                   this.setBlockData(block, data, true);
+#                }
+#             }
+#          }
+#
+#       });
+#    }
+#
+#    private List getSurroundingChunks(Chunk center, boolean onlyBorder) {
+#       int range = 8;
+#       int centerX = center.getX();
+#       int centerZ = center.getZ();
+#       List chunks = Lists.newLinkedList();
+#
+#       for(int x = -range; x <= range; ++x) {
+#          for(int z = -range; z <= range; ++z) {
+#             if (!onlyBorder || x == -range || x == range || z == -range || z == range) {
+#                Chunk chunkAt = center.getWorld().getChunkAt(centerX + x, centerZ + z);
+#                if (!this.updatedChunks.contains(chunkAt)) {
+#                   chunks.add(chunkAt);
+#                }
+#             }
+#          }
+#       }
+#
+#       return chunks;
+#    }
+#
+#    private void updateSurroundingChunks(Chunk center, boolean onlyBorder) {
+#       Iterator var3 = this.getSurroundingChunks(center, onlyBorder).iterator();
+#
+#       while(var3.hasNext()) {
+#          Chunk chunk = (Chunk)var3.next();
+#          this.updateChunk(chunk);
+#       }
+#
+#    }
+#
+#    private void updateChunk(Chunk chunk) {
+#       this.updatedChunks.add(chunk);
+#       Map dataMap = (Map)this.changedBlocks.getOrDefault(chunk.getWorld().getName(), new HashMap());
+#       Iterator var3 = dataMap.entrySet().iterator();
+#
+#       while(var3.hasNext()) {
+#          Entry blockEntry = (Entry)var3.next();
+#          Triple pos = (Triple)blockEntry.getKey();
+#          BlockData blockData = (BlockData)blockEntry.getValue();
+#          Block block = chunk.getBlock((Integer)pos.getFirst(), (Integer)pos.getSecond(), (Integer)pos.getThird());
+#          if (!block.getBlockData().matches(blockData)) {
+#             this.setBlockData(block, blockData, false);
+#          }
+#       }
+#
+#    }
+#
+#    private void setBlockData(Block block, BlockData blockData, boolean update) {
+#       if (block.getType() != Material.END_PORTAL && block.getType() != Material.END_PORTAL_FRAME && block.getType() != Material.END_GATEWAY) {
+#          block.setBlockData(blockData, update);
+#       }
+#    }
+#
+#    private int getRelativeChunkCoordinate(int worldCoordinate) {
+#       return worldCoordinate & 15;
+#    }
+#
+#    @EventHandler(
+#       priority = EventPriority.HIGH,
+#       ignoreCancelled = true
+#    )
+#    public void onPlace(BlockPlaceEvent event) {
+#       if (this.shouldExecuteEffect()) {
+#          if (!ignorePlayer(event.getPlayer())) {
+#             Block block = event.getBlock();
+#             this.changeBlockInEveryChunk(event.getBlock().getWorld(), this.getRelativeChunkCoordinate(block.getX()), block.getY(), this.getRelativeChunkCoordinate(block.getZ()), block.getBlockData(), event.getBlock());
+#          }
+#       }
+#    }
+#
+#    @EventHandler(
+#       priority = EventPriority.HIGH,
+#       ignoreCancelled = true
+#    )
+#    public void onBreak(BlockBreakEvent event) {
+#       if (this.shouldExecuteEffect()) {
+#          if (!ignorePlayer(event.getPlayer())) {
+#             Block block = event.getBlock();
+#             this.changeBlockInEveryChunk(event.getBlock().getWorld(), this.getRelativeChunkCoordinate(block.getX()), block.getY(), this.getRelativeChunkCoordinate(block.getZ()), Bukkit.createBlockData(Material.AIR), event.getBlock());
+#          }
+#       }
+#    }
+#
+#    @EventHandler(
+#       priority = EventPriority.MONITOR,
+#       ignoreCancelled = true
+#    )
+#    public void onMove(PlayerMoveEvent event) {
+#       if (event.getTo() != null) {
+#          if (this.shouldExecuteEffect()) {
+#             if (!ignorePlayer(event.getPlayer())) {
+#                if (event.getTo().getChunk() != event.getFrom().getChunk()) {
+#                   this.updateSurroundingChunks(event.getTo().getChunk(), true);
+#                }
+#             }
+#          }
+#       }
+#    }
+#
+#    @EventHandler(
+#       priority = EventPriority.MONITOR,
+#       ignoreCancelled = true
+#    )
+#    public void onMove(VehicleMoveEvent event) {
+#       if (this.shouldExecuteEffect()) {
+#          boolean anyMatch = false;
+#          Iterator var3 = event.getVehicle().getPassengers().iterator();
+#
+#          while(var3.hasNext()) {
+#             Entity passenger = (Entity)var3.next();
+#             if (passenger instanceof Player) {
+#                anyMatch = true;
+#                break;
+#             }
+#          }
+#
+#          if (anyMatch) {
+#             if (event.getTo().getChunk() != event.getFrom().getChunk()) {
+#                this.updateSurroundingChunks(event.getTo().getChunk(), true);
+#             }
+#          }
+#       }
+#    }
+#
+#    @EventHandler(
+#       priority = EventPriority.MONITOR,
+#       ignoreCancelled = true
+#    )
+#    public void onTeleport(PlayerTeleportEvent event) {
+#       if (event.getTo() != null) {
+#          if (this.shouldExecuteEffect()) {
+#             if (!ignorePlayer(event.getPlayer())) {
+#                if (event.getTo().getChunk() != event.getFrom().getChunk()) {
+#                   this.updateSurroundingChunks(event.getTo().getChunk(), false);
+#                }
+#             }
+#          }
+#       }
+#    }
+#
+#    @EventHandler(
+#       priority = EventPriority.HIGH,
+#       ignoreCancelled = true
+#    )
+#    public void onGamemodeChange(PlayerIgnoreStatusChangeEvent event) {
+#       if (this.shouldExecuteEffect()) {
+#          if (event.isNotIgnored()) {
+#             this.updateSurroundingChunks(event.getPlayer().getLocation().getChunk(), false);
+#          }
+#
+#       }
+#    }
+#
+#    @EventHandler(
+#       priority = EventPriority.HIGH,
+#       ignoreCancelled = true
+#    )
+#    public void onChunkUnload(ChunkUnloadEvent event) {
+#       if (this.shouldExecuteEffect()) {
+#          this.updatedChunks.remove(event.getChunk());
+#       }
+#    }
+# }
+#

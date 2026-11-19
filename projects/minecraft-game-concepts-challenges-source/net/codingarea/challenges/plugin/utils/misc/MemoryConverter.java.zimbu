@@ -1,0 +1,21 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\utils\misc\MemoryConverter.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE MemoryConverter_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\utils\misc\MemoryConverter.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\utils\misc\MemoryConverter.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.utils.misc;
+#
+# public class MemoryConverter {
+#    private static final long GIGABYTE = 1073741824L;
+#
+#    public static int getGB(long bytes) {
+#       return (int)(bytes / 1073741824L);
+#    }
+# }
+#

@@ -1,0 +1,83 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/checks/movement/FlightFCheck.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/checks/movement/FlightFCheck.java");
+}
+
+// ---- Original-Code (projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/checks/movement/FlightFCheck.java), unveraendert, als Inline-Doku ----
+// package me.jinky.checks.movement;
+//
+// import java.util.HashMap;
+// import java.util.List;
+// import java.util.Map;
+// import me.jinky.checks.Check;
+// import me.jinky.checks.CheckResult;
+// import me.jinky.logger.PlayerLogger;
+// import me.jinky.logger.User;
+// import me.jinky.util.UtilBlock;
+// import me.jinky.util.UtilMath;
+// import me.jinky.util.UtilTime;
+// import me.jinky.util.VersionUtil;
+// import org.bukkit.Location;
+// import org.bukkit.Material;
+// import org.bukkit.event.Event;
+// import org.bukkit.event.player.PlayerMoveEvent;
+//
+// public class FlightFCheck extends Check {
+//    private static Map uvl = new HashMap();
+//    private static Map ls = new HashMap();
+//
+//    public String getName() {
+//       return "Flight";
+//    }
+//
+//    public String getEventCall() {
+//       return "PlayerMoveEvent";
+//    }
+//
+//    public CheckResult performCheck(User u, Event e) {
+//       PlayerMoveEvent ev = (PlayerMoveEvent)e;
+//       Location to = ev.getTo();
+//       Location from = ev.getFrom();
+//       if (!u.isBouncing() && !VersionUtil.isSwimming(u.getPlayer())) {
+//          if (from == null) {
+//             return new CheckResult("Flight", true, "not enough data");
+//          } else {
+//             double movementSpeed = UtilMath.getHorizontalDistance(to, from);
+//             if (!ls.containsKey(u.getPlayer())) {
+//                ls.put(u.getPlayer(), movementSpeed);
+//                return new CheckResult("Flight", true, "not enough data");
+//             } else {
+//                double LastSpeed = (Double)ls.get(u.getPlayer());
+//                double prediction = LastSpeed * 0.9100000262260437D + 0.025D;
+//                int vl = 0;
+//                if (uvl.containsKey(u.getPlayer())) {
+//                   vl = (Integer)uvl.get(u.getPlayer());
+//                }
+//
+//                double diff = Math.abs(movementSpeed - prediction);
+//                List nearby = UtilBlock.getSurroundingMat(u.getBlock(), true);
+//                if (!u.getPlayer().isOnGround() && !VersionUtil.isFlying(u.getPlayer()) && !nearby.contains(Material.LADDER) && !nearby.contains(Material.VINE) && !VersionUtil.isSwimming(u.getPlayer()) && to.getY() >= from.getY() && UtilTime.elapsed(PlayerLogger.getLogger().getLastVelocity(u.getPlayer()), 1000L) && !nearby.contains(Material.WATER) && !nearby.contains(Material.STATIONARY_WATER) && u.getPlayer().getVehicle() == null) {
+//                   if (diff > 0.04D) {
+//                      if (vl++ > 7) {
+//                         return new CheckResult("Flight", false, "Type F");
+//                      }
+//                   } else {
+//                      vl -= vl > 0 ? 1 : 0;
+//                   }
+//                } else {
+//                   vl = 0;
+//                }
+//
+//                uvl.put(u.getPlayer(), vl);
+//                return new CheckResult("Flight", true, "pass");
+//             }
+//          }
+//       } else {
+//          return new CheckResult("Flight", true, "bouncing/swimming");
+//       }
+//    }
+// }
+//

@@ -1,0 +1,18 @@
+﻿# Zimbu-Port-Spiegel von: projects\productivity-&-sharing-apps-shortify\database\init.sql
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE init_sql
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\productivity-&-sharing-apps-shortify\database\init.sql\n")
+  RETURN 0
+
+# ---- Original-Code (projects\productivity-&-sharing-apps-shortify\database\init.sql), unveraendert, als Inline-Doku ----
+# CREATE TABLE IF NOT EXISTS urls (
+#     id INT AUTO_INCREMENT PRIMARY KEY,
+#     original_url VARCHAR(2048) NOT NULL,
+#     short_code VARCHAR(10) UNIQUE NOT NULL,
+#     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+#     visits INT DEFAULT 0
+# );

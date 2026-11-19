@@ -1,0 +1,27 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-chat-app\client\vite.config.js
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE vite_config_js
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-chat-app\client\vite.config.js\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-chat-app\client\vite.config.js), unveraendert, als Inline-Doku ----
+# import { defineConfig } from 'vite'
+# import react from '@vitejs/plugin-react'
+#
+# export default defineConfig({
+#   plugins: [react()],
+#   server: {
+#     port: 5173,
+#     proxy: {
+#       '/api': {
+#         target: 'http://localhost:3000',
+#         changeOrigin: true
+#       }
+#     }
+#   }
+# })
+#

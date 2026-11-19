@@ -1,0 +1,45 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-plugins-server-systems-minecraft-minigame-template\src\main\java\GameCommands.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE GameCommands_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-plugins-server-systems-minecraft-minigame-template\src\main\java\GameCommands.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-plugins-server-systems-minecraft-minigame-template\src\main\java\GameCommands.java), unveraendert, als Inline-Doku ----
+# package com.example.minigame;
+#
+# import org.bukkit.command.Command;
+# import org.bukkit.command.CommandExecutor;
+# import org.bukkit.command.CommandSender;
+# import org.bukkit.entity.Player;
+#
+# public class GameCommands implements CommandExecutor {
+#     private final MinigamePlugin plugin;
+#     private final PlayerScore playerScore;
+#
+#     public GameCommands(MinigamePlugin plugin, PlayerScore playerScore) {
+#         this.plugin = plugin;
+#         this.playerScore = playerScore;
+#     }
+#
+#     @Override
+#     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+#         if (command.getName().equalsIgnoreCase("startgame")) {
+#             if (sender instanceof Player) {
+#                 // Logic to start the game
+#                 plugin.getLogger().info("Game started!");
+#                 return true;
+#             }
+#         } else if (command.getName().equalsIgnoreCase("endgame")) {
+#             if (sender instanceof Player) {
+#                 // Logic to end the game
+#                 plugin.getLogger().info("Game ended!");
+#                 return true;
+#             }
+#         }
+#         return false;
+#     }
+# } 

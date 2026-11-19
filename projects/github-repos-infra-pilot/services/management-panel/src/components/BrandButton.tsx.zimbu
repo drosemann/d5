@@ -1,0 +1,30 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-infra-pilot\services\management-panel\src\components\BrandButton.tsx
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE BrandButton_tsx
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-infra-pilot\services\management-panel\src\components\BrandButton.tsx\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-infra-pilot\services\management-panel\src\components\BrandButton.tsx), unveraendert, als Inline-Doku ----
+# import React from 'react';
+#
+# type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+#   label: string;
+# };
+#
+# export const BrandButton: React.FC<Props> = ({ label, ...rest }) => {
+#   return (
+#     <button
+#       className="primary-button disabled:opacity-50"
+#       {...rest}
+#     >
+#       {label}
+#     </button>
+#   );
+# };
+#
+# export default BrandButton;
+#

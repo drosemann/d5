@@ -1,0 +1,22 @@
+name: PillarsOfFortune
+version: '${project.version}'
+main: com.yourname.pillarsoffortune.PillarsOfFortune
+api-version: '1.21.5'
+authors: [Daniel]
+description: A plugin that gives players random items at configurable intervals
+website: https://github.com/daaanieltv/pillars-of-fortune
+
+commands:
+  fortune:
+    description: Toggle Pillars of Fortune for yourself
+    usage: /fortune toggle
+    permission: pillarsoffortune.toggle
+    aliases: [pof, fortunetoggle]
+
+permissions:
+  pillarsoffortune.toggle:
+    description: Allows toggling Pillars of Fortune
+    default: true
+  pillarsoffortune.admin:
+    description: Admin permissions for Pillars of Fortune
+    default: op

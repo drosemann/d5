@@ -1,0 +1,352 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-infra-pilot/services/management-panel/src/index.css
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-infra-pilot/services/management-panel/src/index.css");
+}
+
+// ---- Original-Code (projects/github-repos-infra-pilot/services/management-panel/src/index.css), unveraendert, als Inline-Doku ----
+// @import "tailwindcss";
+//
+// @custom-variant dark (&:where(.dark, .dark *));
+//
+// @theme {
+//   --color-brand-primary: #0071e3;
+//   --color-brand-primary-dark: #0077ed;
+//   --color-brand-secondary: #6e6e73;
+//   --color-brand-accent: #0071e3;
+// }
+//
+// :root {
+//   --brand-primary: #0071e3;
+//   --brand-primary-dark: #0077ed;
+//   --brand-secondary: #6e6e73;
+//   --brand-accent: #0071e3;
+//   --bg-primary: #ffffff;
+//   --bg-secondary: #f5f5f7;
+//   --bg-card: #ffffff;
+//   --text-primary: #1d1d1f;
+//   --text-secondary: #6e6e73;
+//   --border-color: #e5e5ea;
+//   --spacing-unit: 4px;
+//   --border-radius: 12px;
+//   --font-family:
+//     "Inter Variable", ui-sans-serif, system-ui, -apple-system,
+//     BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+//     "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+//     "Segoe UI Symbol", "Noto Color Emoji";
+// }
+//
+// .dark {
+//   --bg-primary: #000000;
+//   --bg-secondary: #161617;
+//   --bg-card: #1c1c1e;
+//   --text-primary: #f5f5f7;
+//   --text-secondary: #98989f;
+//   --border-color: #2c2c2e;
+// }
+//
+// .accent-text {
+//   @apply text-slate-600;
+// }
+//
+// body {
+//   font-family: var(--font-family);
+//   color: var(--text-primary);
+//   background: var(--bg-primary);
+//   line-height: 1.5;
+//   -webkit-font-smoothing: antialiased;
+// }
+//
+// /* Calm shell: near-black with a faint top light, no glows or textures. */
+// .ara-shell {
+//   background: #080a10;
+// }
+//
+// .ara-surface {
+//   position: relative;
+//   isolation: isolate;
+// }
+//
+// .card {
+//   background: rgba(255, 255, 255, 0.04);
+//   border: 1px solid rgba(255, 255, 255, 0.09);
+//   border-radius: var(--border-radius);
+// }
+//
+// .input-field::placeholder {
+//   color: var(--text-secondary);
+// }
+//
+// .primary-button:disabled,
+// .secondary-button:disabled {
+//   opacity: 0.4;
+//   cursor: not-allowed;
+// }
+//
+// .auth-button {
+//   @apply w-full py-2 rounded-xl text-white font-medium transition-colors;
+//   background-color: rgba(0, 122, 255, 0.55);
+//   background-image: linear-gradient(
+//     180deg,
+//     rgba(255, 255, 255, 0.22),
+//     rgba(255, 255, 255, 0.05)
+//   );
+//   -webkit-backdrop-filter: blur(12px) saturate(1.6);
+//   backdrop-filter: blur(12px) saturate(1.6);
+//   border: 1px solid rgba(255, 255, 255, 0.2);
+//   box-shadow: var(--glass-highlight), 0 4px 20px rgba(0, 122, 255, 0.35);
+// }
+//
+// .auth-button:hover {
+//   background-color: rgba(0, 122, 255, 0.7);
+// }
+//
+// .auth-button:active {
+//   opacity: 0.85;
+// }
+//
+// .link-text {
+//   @apply text-blue-500 hover:underline cursor-pointer font-medium;
+// }
+//
+// /* Section label and hairline rule for page rhythm.
+//    Status color doctrine — emerald = ok/healthy, amber = warning,
+//    red = danger. No new accent colors without a status meaning. */
+// .eyebrow {
+//   font-size: 0.65rem;
+//   font-weight: 600;
+//   letter-spacing: 0.2em;
+//   text-transform: uppercase;
+//   color: var(--text-secondary);
+//   margin-bottom: 0.5rem;
+// }
+//
+// .page-rule {
+//   margin-top: 1rem;
+//   border-top: 1px solid rgba(255, 255, 255, 0.08);
+// }
+//
+// /* Liquid Glass material system (Apple HIG, "26" generation).
+//    Rules applied here:
+//    - Glass lives on CHROME only (sidebar, header, controls, sheets). Content
+//      cards stay opaque for legibility.
+//    - One glass layer per region: never stack glass on glass.
+//    - Regular variant everywhere (clear is only for rich media, which this
+//      panel has none of). Never mix variants in one context.
+//    - Modest blur radii: backdrop blur is GPU-expensive; small radii composite
+//      much faster. No live animation runs behind glass.
+//    - Specular response to motion is native-only; on web it is approximated
+//      with a static top-edge highlight. */
+// :root {
+//   --glass-chrome-bg: rgba(22, 22, 26, 0.55);
+//   --glass-control-bg: rgba(255, 255, 255, 0.08);
+//   --glass-sheet-bg: rgba(26, 26, 31, 0.62);
+//   --glass-border: rgba(255, 255, 255, 0.14);
+//   --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.22);
+//   --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+// }
+//
+// .glass-chrome {
+//   background-color: var(--glass-chrome-bg);
+//   background-image: linear-gradient(
+//     180deg,
+//     rgba(255, 255, 255, 0.09),
+//     rgba(255, 255, 255, 0.02)
+//   );
+//   -webkit-backdrop-filter: blur(20px) saturate(1.7);
+//   backdrop-filter: blur(20px) saturate(1.7);
+//   box-shadow: var(--glass-highlight), var(--glass-shadow);
+// }
+//
+// .glass-control {
+//   background-color: var(--glass-control-bg);
+//   background-image: linear-gradient(
+//     180deg,
+//     rgba(255, 255, 255, 0.1),
+//     rgba(255, 255, 255, 0.03)
+//   );
+//   -webkit-backdrop-filter: blur(12px) saturate(1.5);
+//   backdrop-filter: blur(12px) saturate(1.5);
+//   border: 1px solid rgba(255, 255, 255, 0.12);
+//   box-shadow: var(--glass-highlight);
+// }
+//
+// .glass-tint {
+//   background-color: rgba(0, 122, 255, 0.55);
+//   background-image: linear-gradient(
+//     180deg,
+//     rgba(255, 255, 255, 0.22),
+//     rgba(255, 255, 255, 0.05)
+//   );
+//   -webkit-backdrop-filter: blur(12px) saturate(1.6);
+//   backdrop-filter: blur(12px) saturate(1.6);
+//   border: 1px solid rgba(255, 255, 255, 0.2);
+//   box-shadow: var(--glass-highlight), 0 4px 20px rgba(0, 122, 255, 0.35);
+// }
+//
+// .glass-sheet {
+//   background-color: var(--glass-sheet-bg);
+//   background-image: linear-gradient(
+//     180deg,
+//     rgba(255, 255, 255, 0.1),
+//     rgba(255, 255, 255, 0.03)
+//   );
+//   -webkit-backdrop-filter: blur(28px) saturate(1.8);
+//   backdrop-filter: blur(28px) saturate(1.8);
+//   border: 1px solid var(--glass-border);
+//   border-radius: 20px;
+//   box-shadow:
+//     var(--glass-highlight),
+//     0 24px 80px rgba(0, 0, 0, 0.5);
+// }
+//
+// .primary-button {
+//   @apply px-6 py-3 rounded-full text-white text-sm font-semibold transition-colors;
+//   background-color: rgba(0, 122, 255, 0.55);
+//   background-image: linear-gradient(
+//     180deg,
+//     rgba(255, 255, 255, 0.22),
+//     rgba(255, 255, 255, 0.05)
+//   );
+//   -webkit-backdrop-filter: blur(12px) saturate(1.6);
+//   backdrop-filter: blur(12px) saturate(1.6);
+//   border: 1px solid rgba(255, 255, 255, 0.2);
+//   box-shadow: var(--glass-highlight), 0 4px 20px rgba(0, 122, 255, 0.35);
+// }
+//
+// .primary-button:hover {
+//   background-color: rgba(0, 122, 255, 0.7);
+// }
+//
+// .secondary-button {
+//   @apply px-6 py-3 rounded-full text-sm font-semibold text-white transition-colors;
+//   background-color: var(--glass-control-bg);
+//   background-image: linear-gradient(
+//     180deg,
+//     rgba(255, 255, 255, 0.1),
+//     rgba(255, 255, 255, 0.03)
+//   );
+//   -webkit-backdrop-filter: blur(12px) saturate(1.5);
+//   backdrop-filter: blur(12px) saturate(1.5);
+//   border: 1px solid rgba(255, 255, 255, 0.12);
+//   box-shadow: var(--glass-highlight);
+// }
+//
+// .secondary-button:hover {
+//   background-color: rgba(255, 255, 255, 0.14);
+// }
+//
+// .input-field {
+//   @apply px-3 py-2 rounded-xl border focus:outline-none focus:border-blue-500 transition-colors;
+//   background-color: rgba(255, 255, 255, 0.06);
+//   -webkit-backdrop-filter: blur(12px) saturate(1.4);
+//   backdrop-filter: blur(12px) saturate(1.4);
+//   border-color: rgba(255, 255, 255, 0.12);
+//   color: var(--text-primary);
+// }
+//
+// /* Reduce Transparency: glass falls back to opaque chrome. */
+// @media (prefers-reduced-transparency: reduce) {
+//   .glass-chrome,
+//   .glass-control,
+//   .glass-tint,
+//   .glass-sheet,
+//   .primary-button,
+//   .secondary-button,
+//   .input-field {
+//     -webkit-backdrop-filter: none;
+//     backdrop-filter: none;
+//     background-image: none;
+//   }
+//   .glass-chrome {
+//     background-color: #161617;
+//   }
+//   .glass-sheet {
+//     background-color: #1c1c1e;
+//   }
+//   .glass-control,
+//   .secondary-button,
+//   .input-field {
+//     background-color: #2c2c2e;
+//   }
+//   .glass-tint,
+//   .primary-button {
+//     background-color: #0071e3;
+//   }
+// }
+//
+// /* Accessibility: Reduced motion */
+// @media (prefers-reduced-motion: reduce) {
+//   *,
+//   *::before,
+//   *::after {
+//     animation-duration: 0.01ms !important;
+//     animation-iteration-count: 1 !important;
+//     transition-duration: 0.01ms !important;
+//     scroll-behavior: auto !important;
+//   }
+// }
+//
+// .tooltip {
+//   position: relative;
+//   display: inline-block;
+// }
+// .tooltiptext {
+//   visibility: hidden;
+//   width: max-content;
+//   background: #111;
+//   color: #fff;
+//   text-align: center;
+//   padding: 6px 8px;
+//   border-radius: 6px;
+//   position: absolute;
+//   z-index: 1;
+//   bottom: 125%;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   opacity: 0;
+//   transition: opacity 0.2s ease-in-out;
+//   white-space: nowrap;
+// }
+// .tooltip:hover .tooltiptext {
+//   visibility: visible;
+//   opacity: 1;
+// }
+//
+// /* Accessibility: Focus-visible styles */
+// :focus-visible {
+//   outline: 2px solid #0071e3;
+//   outline-offset: 2px;
+//   border-radius: 4px;
+// }
+//
+// /* Accessibility: Screen reader only utility */
+// .sr-only {
+//   position: absolute;
+//   width: 1px;
+//   height: 1px;
+//   padding: 0;
+//   margin: -1px;
+//   overflow: hidden;
+//   clip: rect(0, 0, 0, 0);
+//   white-space: nowrap;
+//   border-width: 0;
+// }
+//
+// .sr-only:focus {
+//   position: fixed;
+//   width: auto;
+//   height: auto;
+//   padding: 8px 16px;
+//   margin: 8px;
+//   overflow: visible;
+//   clip: auto;
+//   white-space: normal;
+//   background: #0071e3;
+//   color: white;
+//   border-radius: 8px;
+//   z-index: 9999;
+// }
+//

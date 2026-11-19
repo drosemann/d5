@@ -1,0 +1,231 @@
+﻿// Goose-Port-Spiegel von: projects/ai-llm-projects-ai-productivity-dashboard/components/chat/CommandInput.tsx
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/ai-llm-projects-ai-productivity-dashboard/components/chat/CommandInput.tsx");
+}
+
+// ---- Original-Code (projects/ai-llm-projects-ai-productivity-dashboard/components/chat/CommandInput.tsx), unveraendert, als Inline-Doku ----
+// 'use client'
+//
+// import { useState, useRef, useCallback } from 'react'
+// import { Paperclip, Globe, Wrench, Mic, ArrowUp, Square, CalendarRange, Search, BarChart2, PenLine, Zap, MoreHorizontal } from 'lucide-react'
+// import { Button } from '@/components/ui/button'
+// import { Textarea } from '@/components/ui/textarea'
+// import { cn } from '@/lib/utils'
+// import { useChatStore } from '@/stores/chatStore'
+// import { streamOllamaChat } from '@/lib/ollamaClient'
+// import type { Message } from '@/types'
+// import { useUIStore } from '@/stores/uiStore'
+// import type { LucideIcon } from 'lucide-react'
+//
+// interface QuickAction {
+//   label: string
+//   icon: LucideIcon
+// }
+//
+// const QUICK_ACTIONS: QuickAction[] = [
+//   { label: 'Schedule & Plan', icon: CalendarRange },
+//   { label: 'Deep Research', icon: Search },
+//   { label: 'Analyze Data', icon: BarChart2 },
+//   { label: 'Create', icon: PenLine },
+//   { label: 'Automate', icon: Zap },
+//   { label: 'More', icon: MoreHorizontal },
+// ]
+//
+// const SYSTEM_PROMPT = `You are a proactive AI chief of staff. You work autonomously in the background, 
+// surface decisions for human approval, track background jobs, manage memory, and integrate with the user's calendar. 
+// You are concise, helpful, and proactive. You always explain your reasoning briefly.`
+//
+// export function CommandInput() {
+//   const [value, setValue] = useState('')
+//   const [webAccess, setWebAccess] = useState(false)
+//   const textareaRef = useRef<HTMLTextAreaElement>(null)
+//
+//   const {
+//     messages,
+//     appendMessage,
+//     isStreaming,
+//     stopStream,
+//     setIsStreaming,
+//     setAbortController,
+//     appendStreamingContent,
+//     clearStreamingContent,
+//     streamingContent,
+//     currentModel,
+//   } = useChatStore()
+//
+//   const { setActiveView } = useUIStore()
+//
+//   const handleSubmit = useCallback(async () => {
+//     const trimmed = value.trim()
+//     if (!trimmed || isStreaming) return
+//
+//     setValue('')
+//     setActiveView('chat')
+//
+//     const userMsg: Message = {
+//       id: crypto.randomUUID(),
+//       conversation_id: 'local',
+//       user_id: 'user-1',
+//       role: 'user',
+//       content: trimmed,
+//       attachments: [],
+//       created_at: new Date().toISOString(),
+//     }
+//     appendMessage(userMsg)
+//
+//     const ctrl = new AbortController()
+//     setAbortController(ctrl)
+//     setIsStreaming(true)
+//     clearStreamingContent()
+//
+//     const history = [
+//       { role: 'system' as const, content: SYSTEM_PROMPT },
+//       ...messages.map((m) => ({ role: m.role as 'user' | 'assistant' | 'system', content: m.content })),
+//       { role: 'user' as const, content: trimmed },
+//     ]
+//
+//     try {
+//       let fullContent = ''
+//       for await (const chunk of streamOllamaChat(history, currentModel, ctrl.signal)) {
+//         fullContent += chunk
+//         appendStreamingContent(chunk)
+//       }
+//
+//       const assistantMsg: Message = {
+//         id: crypto.randomUUID(),
+//         conversation_id: 'local',
+//         user_id: 'user-1',
+//         role: 'assistant',
+//         content: fullContent || streamingContent,
+//         attachments: [],
+//         created_at: new Date().toISOString(),
+//       }
+//       appendMessage(assistantMsg)
+//     } catch (err: unknown) {
+//       if (err instanceof Error && err.name !== 'AbortError') {
+//         const errMsg: Message = {
+//           id: crypto.randomUUID(),
+//           conversation_id: 'local',
+//           user_id: 'user-1',
+//           role: 'assistant',
+//           content:
+//             'Local AI engine unavailable. Start Ollama or check your NEXT_PUBLIC_OLLAMA_URL setting.',
+//           attachments: [],
+//           created_at: new Date().toISOString(),
+//         }
+//         appendMessage(errMsg)
+//       }
+//     } finally {
+//       setIsStreaming(false)
+//       setAbortController(null)
+//       clearStreamingContent()
+//     }
+//   }, [
+//     value,
+//     isStreaming,
+//     messages,
+//     currentModel,
+//     appendMessage,
+//     setAbortController,
+//     setIsStreaming,
+//     appendStreamingContent,
+//     clearStreamingContent,
+//     streamingContent,
+//     setActiveView,
+//   ])
+//
+//   const handleKeyDown = (e: React.KeyboardEvent) => {
+//     if (e.key === 'Enter' && !e.shiftKey) {
+//       e.preventDefault()
+//       handleSubmit()
+//     }
+//   }
+//
+//   return (
+//     <div className="px-4 pb-4 pt-2">
+//       {/* Input box */}
+//       <div className="border border-border bg-card rounded-2xl shadow-sm overflow-hidden focus-within:border-ring/50 focus-within:shadow-md transition-all">
+//         <Textarea
+//           ref={textareaRef}
+//           value={value}
+//           onChange={(e) => setValue(e.target.value)}
+//           onKeyDown={handleKeyDown}
+//           placeholder="Ask anything. Or tell me what you want done."
+//           className="resize-none border-0 bg-transparent shadow-none focus-visible:ring-0 min-h-[52px] max-h-40 px-4 py-3.5 text-sm placeholder:text-muted-foreground"
+//           rows={1}
+//         />
+//         <div className="flex items-center justify-between px-3 pb-2.5 gap-2">
+//           <div className="flex items-center gap-1">
+//             <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground">
+//               <Paperclip className="w-4 h-4" />
+//               <span className="sr-only">Attach file</span>
+//             </Button>
+//             <Button
+//               variant="ghost"
+//               size="icon"
+//               className={cn(
+//                 'h-8 w-8 transition-colors',
+//                 webAccess ? 'text-primary bg-primary/10' : 'text-muted-foreground hover:text-foreground'
+//               )}
+//               onClick={() => setWebAccess(!webAccess)}
+//             >
+//               <Globe className="w-4 h-4" />
+//               <span className="sr-only">Web access</span>
+//             </Button>
+//             <Button variant="ghost" size="sm" className="h-8 px-3 text-muted-foreground hover:text-foreground gap-1.5 text-xs">
+//               <Wrench className="w-3.5 h-3.5" />
+//               Tools
+//             </Button>
+//           </div>
+//           <div className="flex items-center gap-1.5">
+//             <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground">
+//               <Mic className="w-4 h-4" />
+//               <span className="sr-only">Voice input</span>
+//             </Button>
+//             {isStreaming ? (
+//               <Button
+//                 size="icon"
+//                 className="h-8 w-8 bg-foreground text-background hover:bg-foreground/90 rounded-full"
+//                 onClick={stopStream}
+//               >
+//                 <Square className="w-3 h-3 fill-current" />
+//                 <span className="sr-only">Stop</span>
+//               </Button>
+//             ) : (
+//               <Button
+//                 size="icon"
+//                 className="h-8 w-8 bg-foreground text-background hover:bg-foreground/90 rounded-full disabled:opacity-30"
+//                 onClick={handleSubmit}
+//                 disabled={!value.trim()}
+//               >
+//                 <ArrowUp className="w-4 h-4" />
+//                 <span className="sr-only">Send</span>
+//               </Button>
+//             )}
+//           </div>
+//         </div>
+//       </div>
+//
+//       {/* Quick actions strip */}
+//       <div className="flex items-center gap-2 mt-2.5 overflow-x-auto scrollbar-hide pb-0.5">
+//         {QUICK_ACTIONS.map((action) => {
+//           const Icon = action.icon
+//           return (
+//             <button
+//               key={action.label}
+//               className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground bg-muted/60 hover:bg-muted px-3 py-1.5 rounded-full whitespace-nowrap transition-colors shrink-0"
+//               onClick={() => setValue(action.label + ': ')}
+//             >
+//               <Icon className="w-3.5 h-3.5 shrink-0" />
+//               {action.label}
+//             </button>
+//           )
+//         })}
+//       </div>
+//     </div>
+//   )
+// }
+//

@@ -1,0 +1,25 @@
+﻿# Zimbu-Port-Spiegel von: projects\ai-llm-projects-ai-productivity-dashboard\components\ui\skeleton.tsx
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE skeleton_tsx
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\ai-llm-projects-ai-productivity-dashboard\components\ui\skeleton.tsx\n")
+  RETURN 0
+
+# ---- Original-Code (projects\ai-llm-projects-ai-productivity-dashboard\components\ui\skeleton.tsx), unveraendert, als Inline-Doku ----
+# import { cn } from '@/lib/utils'
+#
+# function Skeleton({ className, ...props }: React.ComponentProps<'div'>) {
+#   return (
+#     <div
+#       data-slot="skeleton"
+#       className={cn('bg-accent animate-pulse rounded-md', className)}
+#       {...props}
+#     />
+#   )
+# }
+#
+# export { Skeleton }
+#

@@ -1,0 +1,12 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-rebioot\notebook-renderer-react-sample\src\client\style.css
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE style_css
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-rebioot\notebook-renderer-react-sample\src\client\style.css\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-rebioot\notebook-renderer-react-sample\src\client\style.css), unveraendert, als Inline-Doku ----
+

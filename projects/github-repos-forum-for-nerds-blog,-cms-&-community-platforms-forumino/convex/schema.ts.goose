@@ -1,0 +1,45 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-forumino/convex/schema.ts
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-forumino/convex/schema.ts");
+}
+
+// ---- Original-Code (projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-forumino/convex/schema.ts), unveraendert, als Inline-Doku ----
+// import { defineSchema, defineTable } from "convex/server";
+// import { v } from "convex/values";
+// import { authTables } from "@convex-dev/auth/server";
+//
+// const applicationTables = {
+//   categories: defineTable({
+//     name: v.string(),
+//     description: v.string(),
+//     order: v.number(),
+//   }),
+//
+//   threads: defineTable({
+//     title: v.string(),
+//     categoryId: v.id("categories"),
+//     authorId: v.id("users"),
+//     isPinned: v.optional(v.boolean()),
+//     isLocked: v.optional(v.boolean()),
+//     lastPostTime: v.number(),
+//   })
+//     .index("by_category", ["categoryId"])
+//     .index("by_recent", ["lastPostTime"]),
+//
+//   posts: defineTable({
+//     threadId: v.id("threads"),
+//     authorId: v.id("users"),
+//     content: v.string(),
+//     isEdited: v.optional(v.boolean()),
+//   })
+//     .index("by_thread", ["threadId"]),
+// };
+//
+// export default defineSchema({
+//   ...authTables,
+//   ...applicationTables,
+// });
+//

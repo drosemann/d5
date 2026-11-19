@@ -1,0 +1,84 @@
+﻿# Zimbu-Port-Spiegel von: projects\utilities-desktop-tools-keyboard-automation-tool-python\keyboard_automation\key_presser.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE key_presser_py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\utilities-desktop-tools-keyboard-automation-tool-python\keyboard_automation\key_presser.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\utilities-desktop-tools-keyboard-automation-tool-python\keyboard_automation\key_presser.py), unveraendert, als Inline-Doku ----
+# import keyboard
+# import pyautogui
+# import time
+# import random
+# from typing import Union, Tuple, List, Dict
+#
+# class KeyPresser:
+#     def __init__(self, interval: float = 0.5):
+#         self.interval = interval
+#
+#     def press_alternating_keys(self, key_pair: Tuple[str, str], randomize: bool = False) -> None:
+#         """Alternates between pressing two keys continuously"""
+#         try:
+#             while True:
+#                 for key in key_pair:
+#                     keyboard.press(key)
+#                     keyboard.release(key)
+#                     if randomize:
+#                         time.sleep(random.uniform(self.interval * 0.5, self.interval * 1.5))
+#                     else:
+#                         time.sleep(self.interval)
+#         except KeyboardInterrupt:
+#             print("\nStopped key alternation.")
+#
+#     def type_sequence(self, sequence: str, repetitions: int) -> None:
+#         """Types a specific sequence multiple times"""
+#         try:
+#             for _ in range(repetitions):
+#                 pyautogui.typewrite(sequence)
+#                 time.sleep(self.interval)
+#         except KeyboardInterrupt:
+#             print("\nStopped sequence typing.")
+#
+#     def hold_key(self, key: str, duration: float) -> None:
+#         """Holds down a key for a specified duration"""
+#         try:
+#             print(f"Holding '{key}' for {duration} seconds...")
+#             keyboard.press(key)
+#             time.sleep(duration)
+#             keyboard.release(key)
+#             print(f"Released '{key}'")
+#         except KeyboardInterrupt:
+#             keyboard.release(key)
+#             print(f"\nReleased '{key}' early due to interruption.")
+#
+#     def perform_key_combo(self, combo: List[str]) -> None:
+#         """Performs a key combination"""
+#         try:
+#             print(f"Performing key combo: {'+'.join(combo)}")
+#             keyboard.press_and_release('+'.join(combo))
+#         except KeyboardInterrupt:
+#             print("\nKey combo interrupted.")
+#
+#     def record_and_playback(self, duration: float, playback_times: int) -> None:
+#         """Records keyboard input for a duration and plays it back multiple times"""
+#         print(f"Recording for {duration} seconds... Press keys now.")
+#         recorded = keyboard.record(duration=duration)
+#         print("Recording finished. Playing back...")
+#         try:
+#             for _ in range(playback_times):
+#                 keyboard.play(recorded)
+#                 time.sleep(self.interval)
+#         except KeyboardInterrupt:
+#             print("\nPlayback interrupted.")
+#
+#     def type_with_delay(self, text: str, char_delay: float) -> None:
+#         """Types text with a delay between each character"""
+#         try:
+#             for char in text:
+#                 pyautogui.typewrite(char)
+#                 time.sleep(char_delay)
+#         except KeyboardInterrupt:
+#             print("\nTyping interrupted.") 

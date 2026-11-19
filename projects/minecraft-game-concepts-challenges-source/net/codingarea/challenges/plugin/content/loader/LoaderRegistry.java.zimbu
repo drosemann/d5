@@ -1,0 +1,144 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\content\loader\LoaderRegistry.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE LoaderRegistry_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\content\loader\LoaderRegistry.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\content\loader\LoaderRegistry.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.content.loader;
+#
+# import java.util.ArrayList;
+# import java.util.Arrays;
+# import java.util.Collection;
+# import java.util.HashMap;
+# import java.util.Iterator;
+# import java.util.Map;
+# import java.util.concurrent.atomic.AtomicInteger;
+# import javax.annotation.Nonnull;
+# import net.anweisen.utilities.bukkit.utils.logging.Logger;
+# import net.codingarea.challenges.plugin.Challenges;
+# import net.codingarea.challenges.plugin.utils.logging.ConsolePrint;
+#
+# public final class LoaderRegistry {
+#    private static final AtomicInteger loading = new AtomicInteger();
+#    private final Map subscribers = new HashMap();
+#    private final Collection loaders;
+#
+#    public LoaderRegistry(@Nonnull ContentLoader... loaders) {
+#       this.loaders = Arrays.asList(loaders);
+#    }
+#
+#    private static void execute(@Nonnull Class classOfLoader, @Nonnull Runnable action) {
+#       try {
+#          action.run();
+#       } catch (Exception var3) {
+#          Logger.error("Could not execute subscriber for {}", classOfLoader.getSimpleName(), var3);
+#       }
+#
+#    }
+#
+#    public void load() {
+#       if (this.isLoading()) {
+#          ConsolePrint.alreadyExecutingContentLoader();
+#       } else {
+#          this.loaders.forEach(this::executeLoader);
+#       }
+#    }
+#
+#    private void executeLoader(@Nonnull ContentLoader loader) {
+#       loading.incrementAndGet();
+#       loader.load();
+#       loading.decrementAndGet();
+#       this.handleCompleteLoading(loader.getClass());
+#    }
+#
+#    private void handleCompleteLoading(@Nonnull Class classOfLoader) {
+#       Logger.debug("{} finished loading. {} loader(s) left", classOfLoader.getSimpleName(), loading);
+#       if (loading.get() == 0) {
+#          Logger.info("All loaders finished loading");
+#       }
+#
+#       if (Challenges.getInstance().isEnabled()) {
+#          LoaderRegistry.Subscribers subscribers = (LoaderRegistry.Subscribers)this.subscribers.get(classOfLoader);
+#          if (subscribers == null) {
+#             return;
+#          }
+#
+#          subscribers.execute();
+#       }
+#
+#    }
+#
+#    public void enable() {
+#       Iterator var1 = this.subscribers.values().iterator();
+#
+#       while(var1.hasNext()) {
+#          LoaderRegistry.Subscribers subscribers = (LoaderRegistry.Subscribers)var1.next();
+#          if (!subscribers.executed) {
+#             subscribers.execute();
+#          }
+#       }
+#
+#    }
+#
+#    public void disable() {
+#       this.subscribers.clear();
+#    }
+#
+#    public boolean isLoading() {
+#       return loading.get() > 0;
+#    }
+#
+#    public void subscribe(@Nonnull Class classOfLoader, @Nonnull Runnable action) {
+#       LoaderRegistry.Subscribers subscribers = (LoaderRegistry.Subscribers)this.subscribers.computeIfAbsent(classOfLoader, (key) -> {
+#          return new LoaderRegistry.Subscribers(classOfLoader);
+#       });
+#       subscribers.actions.add(action);
+#       if (subscribers.executed) {
+#          execute(classOfLoader, action);
+#       }
+#
+#    }
+#
+#    public ContentLoader getFirstLoaderByClass(@Nonnull Class clazz) {
+#       Iterator var2 = this.loaders.iterator();
+#
+#       ContentLoader loader;
+#       do {
+#          if (!var2.hasNext()) {
+#             return null;
+#          }
+#
+#          loader = (ContentLoader)var2.next();
+#       } while(!loader.getClass().equals(clazz));
+#
+#       return loader;
+#    }
+#
+#    private static class Subscribers {
+#       private final Class loader;
+#       private final Collection actions = new ArrayList(1);
+#       private boolean executed = false;
+#
+#       public Subscribers(Class loader) {
+#          this.loader = loader;
+#       }
+#
+#       public void execute() {
+#          Logger.debug("Executing subscribers for {}", this.loader.getSimpleName());
+#          this.executed = true;
+#          Iterator var1 = this.actions.iterator();
+#
+#          while(var1.hasNext()) {
+#             Runnable subscriber = (Runnable)var1.next();
+#             LoaderRegistry.execute(this.loader, subscriber);
+#          }
+#
+#       }
+#    }
+# }
+#

@@ -1,0 +1,61 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/spigot/listener/GeneratorWorldsListener.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/spigot/listener/GeneratorWorldsListener.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/spigot/listener/GeneratorWorldsListener.java), unveraendert, als Inline-Doku ----
+// package net.codingarea.challenges.plugin.spigot.listener;
+//
+// import net.codingarea.challenges.plugin.Challenges;
+// import net.codingarea.challenges.plugin.management.server.GeneratorWorldPortalManager;
+// import org.bukkit.Location;
+// import org.bukkit.World;
+// import org.bukkit.World.Environment;
+// import org.bukkit.entity.Player;
+// import org.bukkit.event.EventHandler;
+// import org.bukkit.event.EventPriority;
+// import org.bukkit.event.Listener;
+// import org.bukkit.event.player.PlayerTeleportEvent;
+// import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
+//
+// public class GeneratorWorldsListener implements Listener {
+//    @EventHandler(
+//       priority = EventPriority.LOW
+//    )
+//    public void onChangeWorld(PlayerTeleportEvent event) {
+//       if (event.getTo() != null) {
+//          GeneratorWorldPortalManager worldManager = Challenges.getInstance().getGeneratorWorldPortalManager();
+//          Player player = event.getPlayer();
+//          World from = event.getFrom().getWorld();
+//          World to = event.getTo().getWorld();
+//          if (from != null && to != null) {
+//             if (from != to) {
+//                boolean wasCustomWorld = worldManager.isCustomWorld(from.getName());
+//                boolean isCustomWorld = worldManager.isCustomWorld(to.getName());
+//                if (wasCustomWorld && !isCustomWorld) {
+//                   if (to.getEnvironment() == Environment.NETHER || to.getEnvironment() == Environment.THE_END) {
+//                      worldManager.setLastLocation(player, event.getFrom());
+//                   }
+//                } else if (!wasCustomWorld) {
+//                   if (event.getCause() != TeleportCause.END_PORTAL && event.getCause() != TeleportCause.NETHER_PORTAL) {
+//                      return;
+//                   }
+//
+//                   if (from.getEnvironment() == Environment.NETHER || from.getEnvironment() == Environment.THE_END) {
+//                      Location location = worldManager.getAndRemoveLastWorld(player);
+//                      if (location != null) {
+//                         location = location.getBlock().getLocation().clone();
+//                         event.setTo(location);
+//                      }
+//                   }
+//                }
+//
+//             }
+//          }
+//       }
+//    }
+// }
+//

@@ -1,0 +1,30 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\custom\settings\action\EntityTargetAction.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE EntityTargetAction_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\custom\settings\action\EntityTargetAction.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\custom\settings\action\EntityTargetAction.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.challenges.custom.settings.action;
+#
+# import java.util.function.Supplier;
+# import net.codingarea.challenges.plugin.challenges.custom.settings.sub.SubSettingsBuilder;
+#
+# public abstract class EntityTargetAction extends ChallengeAction implements IEntityTargetAction {
+#    public EntityTargetAction(String name, SubSettingsBuilder subSettingsBuilder) {
+#       super(name, subSettingsBuilder);
+#    }
+#
+#    public EntityTargetAction(String name) {
+#       super(name);
+#    }
+#
+#    public EntityTargetAction(String name, Supplier builderSupplier) {
+#       super(name, builderSupplier);
+#    }
+# }
+#

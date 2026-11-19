@@ -1,0 +1,83 @@
+﻿// Goose-Port-Spiegel von: projects/startup-business-concepts-agentenplattform/apps/backend/app/services/quellen.py
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/startup-business-concepts-agentenplattform/apps/backend/app/services/quellen.py");
+}
+
+// ---- Original-Code (projects/startup-business-concepts-agentenplattform/apps/backend/app/services/quellen.py), unveraendert, als Inline-Doku ----
+// """Markt-Quellenadapter: Demo-Adapter + generischer RSS-Import.
+//
+// Regeln: keine Anmeldeschranken/CAPTCHAs umgehen; nur zulässige, frei
+// abrufbare Quellen. Jeder Import ist dedupliziert, gerankt und mit
+// Abrufzeit + Quelle protokolliert.
+// """
+// from __future__ import annotations
+// import re
+// import xml.etree.ElementTree as ET
+// from datetime import datetime
+// from sqlalchemy.orm import Session
+// from app.db import models
+// from app.services.markt import ist_duplikat, ranking
+// from app.tools.registry import ssrf_geprueft
+// from app.core.logging import get_logger
+//
+// log = get_logger("quellen")
+//
+// def demo_inserate(profil_name: str) -> list[dict]:
+//     """Klar gekennzeichnete Beispiel-Daten (keine echten Abrufe)."""
+//     return [
+//         {"titel": f"[Demo] 2-Zimmer-Wohnung ({profil_name})", "preis": 650.0,
+//          "url": "https://beispiel.invalid/demo-wohnung-1"},
+//         {"titel": f"[Demo] 3-Zimmer-Wohnung ({profil_name})", "preis": 890.0,
+//          "url": "https://beispiel.invalid/demo-wohnung-2"},
+//     ]
+//
+// def rss_importieren(feed_url: str, max_eintraege: int = 20) -> list[dict]:
+//     """Holt einen öffentlichen RSS/Atom-Feed (SSRF-geprüft)."""
+//     if not ssrf_geprueft(feed_url):
+//         raise ValueError("Feed-URL blockiert (SSRF-Schutz)")
+//     import urllib.request
+//     req = urllib.request.Request(feed_url, headers={"User-Agent": "Agentenplattform/1.0"})
+//     with urllib.request.urlopen(req, timeout=20) as r:  # noqa: S310 – URL ist geprüft
+//         roh = r.read(512 * 1024)  # Größenlimit 512 KB
+//     wurzel = ET.fromstring(roh)
+//     eintraege = []
+//     for item in list(wurzel.iter("item"))[:max_eintraege] + list(wurzel.iter("{http://www.w3.org/2005/Atom}entry"))[:max_eintraege]:
+//         titel = (item.findtext("title") or item.findtext("{http://www.w3.org/2005/Atom}title") or "").strip()
+//         link = (item.findtext("link") or "").strip()
+//         if not link:
+//             link_el = item.find("{http://www.w3.org/2005/Atom}link")
+//             if link_el is not None: link = (link_el.get("href") or "").strip()
+//         beschreibung = (item.findtext("description") or item.findtext("{http://www.w3.org/2005/Atom}summary") or "")
+//         preis = _preis_aus_text(titel + " " + beschreibung)
+//         if titel and link: eintraege.append({"titel": titel, "preis": preis, "url": link})
+//     return eintraege
+//
+// def _preis_aus_text(text: str) -> float | None:
+//     m = re.search(r"(\d[\d\s.]*)\s*€", text)
+//     if not m: return None
+//     try: return float(m.group(1).replace(".", "").replace(" ", ""))
+//     except ValueError: return None
+//
+// def import_lauf(profil_id: str, max_preis: float, db: Session,
+//                quelle: str = "demo", feed_url: str = "") -> dict:
+//     """Importiert Inserate eines Profils, dedupliziert, rankt. Idempotent via URL."""
+//     roh = demo_inserate(profil_id) if quelle == "demo" else rss_importieren(feed_url)
+//     neu, doppelt = 0, 0
+//     vorhanden = {l.url for l in db.query(models.Listing).filter_by(profil_id=profil_id).all()}
+//     for e in roh:
+//         if any(ist_duplikat(e["url"], v) for v in vorhanden):
+//             doppelt += 1; continue
+//         db.add(models.Listing(profil_id=profil_id, titel=e["titel"][:300],
+//                               preis=e["preis"], url=e["url"][:500],
+//                               ranking=ranking(e["preis"], max_preis)))
+//         vorhanden.add(e["url"]); neu += 1
+//     db.add(models.Event(type="market.listing_found", source=f"quellen:{quelle}",
+//                         ref_id=profil_id,
+//                         payload={"neu": neu, "doppelt": doppelt}))
+//     db.commit()
+//     log.info(f"Import {profil_id}: {neu} neu, {doppelt} doppelt")
+//     return {"neu": neu, "doppelt": doppelt, "quelle": quelle}
+//

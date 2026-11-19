@@ -1,0 +1,27 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\database\exceptions\UnsignedDatabaseException.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE UnsignedDatabaseException_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\database\exceptions\UnsignedDatabaseException.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\database\exceptions\UnsignedDatabaseException.java), unveraendert, als Inline-Doku ----
+# package net.anweisen.utilities.database.exceptions;
+#
+# import javax.annotation.Nonnull;
+# import net.anweisen.utilities.common.collection.WrappedException;
+#
+# public class UnsignedDatabaseException extends WrappedException {
+#    public UnsignedDatabaseException(@Nonnull DatabaseException cause) {
+#       super(cause);
+#    }
+#
+#    @Nonnull
+#    public DatabaseException getCause() {
+#       return (DatabaseException)super.getCause();
+#    }
+# }
+#

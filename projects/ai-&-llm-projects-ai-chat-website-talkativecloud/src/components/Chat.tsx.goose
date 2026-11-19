@@ -1,0 +1,140 @@
+﻿// Goose-Port-Spiegel von: projects/ai-&-llm-projects-ai-chat-website-talkativecloud/src/components/Chat.tsx
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/ai-&-llm-projects-ai-chat-website-talkativecloud/src/components/Chat.tsx");
+}
+
+// ---- Original-Code (projects/ai-&-llm-projects-ai-chat-website-talkativecloud/src/components/Chat.tsx), unveraendert, als Inline-Doku ----
+//
+// import React, { useState, useRef, useEffect } from 'react';
+// import Message, { MessageProps } from './Message';
+// import MessageInput from './MessageInput';
+// import PromptSuggestion from './PromptSuggestion';
+// import { Zap, Shield, FileText } from 'lucide-react';
+// import FeatureCard from './FeatureCard';
+//
+// const Chat: React.FC = () => {
+//   const [messages, setMessages] = useState<MessageProps[]>([]);
+//   const [isTyping, setIsTyping] = useState(false);
+//   const messagesEndRef = useRef<HTMLDivElement>(null);
+//
+//   const samplePrompts = [
+//     "Create a JavaScript game",
+//     "Design a system architecture",
+//     "Explain quantum computing",
+//     "Help with React hooks"
+//   ];
+//
+//   const features = [
+//     {
+//       icon: Zap,
+//       title: "Ultra-Fast Responses",
+//       description: "Experience instantaneous AI responses powered by cutting-edge cloud processing technology."
+//     },
+//     {
+//       icon: Shield,
+//       title: "Privacy First",
+//       description: "We prioritize your privacy and are committed to safeguarding your data with end-to-end encryption."
+//     },
+//     {
+//       icon: FileText,
+//       title: "Proprietary Model",
+//       description: "Receive superior answers from our proprietary, self-trained model optimized for creative solutions."
+//     }
+//   ];
+//
+//   const scrollToBottom = () => {
+//     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+//   };
+//
+//   useEffect(() => {
+//     scrollToBottom();
+//   }, [messages]);
+//
+//   const handleSendMessage = (content: string) => {
+//     // Add user message
+//     setMessages(prev => [...prev, { role: 'user', content }]);
+//     
+//     // Simulate AI thinking
+//     setIsTyping(true);
+//     
+//     // Simulate AI response after a delay
+//     setTimeout(() => {
+//       const responses: Record<string, string> = {
+//         "Create a JavaScript game": "I'd be happy to help you create a JavaScript game! We could start with a simple game like Tic-Tac-Toe or Snake. Would you like me to provide the basic structure and code for a particular game?",
+//         "Design a system architecture": "Designing a system architecture involves several considerations including scalability, reliability, and security. Could you provide more details about the specific system you're building? This would help me tailor my recommendations for your use case.",
+//         "Explain quantum computing": "Quantum computing leverages the principles of quantum mechanics to process information. Unlike classical computers that use bits (0 or 1), quantum computers use quantum bits or 'qubits' that can exist in multiple states simultaneously, enabling them to solve certain complex problems much faster than traditional computers."
+//       };
+//       
+//       const defaultResponse = "Thanks for your message! I'm TalkativeCloud, an AI assistant ready to help with your questions and tasks. How can I assist you today?";
+//       
+//       setMessages(prev => [...prev, { 
+//         role: 'assistant', 
+//         content: responses[content] || defaultResponse
+//       }]);
+//       
+//       setIsTyping(false);
+//     }, 1500);
+//   };
+//
+//   const handlePromptClick = (prompt: string) => {
+//     handleSendMessage(prompt);
+//   };
+//
+//   const hasMessages = messages.length > 0;
+//
+//   return (
+//     <div className="flex flex-col h-screen pt-16 pb-6">
+//       <div className="flex-1 overflow-y-auto px-4 lg:px-0 max-w-4xl mx-auto w-full">
+//         {!hasMessages ? (
+//           <div className="flex flex-col items-center justify-center h-full">
+//             <h1 className="text-4xl font-bold text-gradient mb-2">AI Assistant</h1>
+//             <p className="text-gray-400 mb-12">Powered by TalkativeCloud</p>
+//             
+//             <div className="flex flex-wrap gap-3 justify-center mb-12">
+//               {samplePrompts.map((prompt) => (
+//                 <PromptSuggestion 
+//                   key={prompt} 
+//                   text={prompt} 
+//                   onClick={handlePromptClick} 
+//                 />
+//               ))}
+//             </div>
+//             
+//             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mt-8">
+//               {features.map((feature) => (
+//                 <FeatureCard 
+//                   key={feature.title} 
+//                   icon={feature.icon} 
+//                   title={feature.title} 
+//                   description={feature.description} 
+//                 />
+//               ))}
+//             </div>
+//           </div>
+//         ) : (
+//           <div className="py-4">
+//             {messages.map((message, index) => (
+//               <Message key={index} {...message} />
+//             ))}
+//             {isTyping && (
+//               <div className="bg-dark-300/80 text-gray-100 py-3 px-5 rounded-2xl max-w-[80%] mb-3 rounded-tl-sm border border-white/5 mr-auto shadow-sm">
+//                 <p className="typing-indicator text-sm md:text-base">AI is thinking...</p>
+//               </div>
+//             )}
+//             <div ref={messagesEndRef} />
+//           </div>
+//         )}
+//       </div>
+//       
+//       <div className="px-4 lg:px-0 max-w-4xl mx-auto w-full mt-4">
+//         <MessageInput onSendMessage={handleSendMessage} />
+//       </div>
+//     </div>
+//   );
+// };
+//
+// export default Chat;
+//

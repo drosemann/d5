@@ -1,0 +1,62 @@
+"""Tagesplanung: harte Grenzen, Puffer, Konflikterkennung, Replanung.
+
+- Fixe Termine (fix=True) sind unverrückbar (Schlaf, Schule, Arbeit).
+- Flexible Aufgaben füllen freie Lücken mit Puffer (Standard 15 Min).
+- Konflikte (Überlappung fix/fix) werden gemeldet, nicht still aufgelöst.
+- Der Planner ändert nie ungefragt Kalenderdaten – er gibt nur Vorschläge zurück.
+"""
+from __future__ import annotations
+from datetime import datetime, timedelta
+from sqlalchemy.orm import Session
+from app.db import models
+
+PUFFER_MIN = 15
+
+def _fenster(tag: datetime) -> tuple[datetime, datetime]:
+    start = tag.replace(hour=0, minute=0, second=0, microsecond=0)
+    return start, start + timedelta(days=1)
+
+def konflikte_finden(fixe: list[models.CalendarItem]) -> list[dict]:
+    """Findet Überlappungen zwischen fixen Terminen."""
+    konflikte = []
+    sortiert = sorted(fixe, key=lambda c: c.beginn)
+    for a, b in zip(sortiert, sortiert[1:]):
+        if b.beginn < a.ende:
+            konflikte.append({"typ": "fix_ueberlappung",
+                              "a": a.titel, "b": b.titel,
+                              "hinweis": "Zwei fixe Termine überlappen – manuell auflösen."})
+    return konflikte
+
+def tagesplan_bauen(db: Session, tag: datetime | None = None) -> dict:
+    tag = tag or datetime.utcnow()
+    start, ende = _fenster(tag)
+    termine = (db.query(models.CalendarItem)
+               .filter(models.CalendarItem.beginn >= start,
+                        models.CalendarItem.beginn < ende)
+               .order_by(models.CalendarItem.beginn).all())
+    fixe = [t for t in termine if t.fix]
+    konflikte = konflikte_finden(fixe)
+    # Freie Lücken zwischen fixen Terminen berechnen
+    luecken, cursor = [], start
+    for t in fixe:
+        if t.beginn > cursor:
+            luecken.append({"von": cursor.isoformat(), "bis": t.beginn.isoformat(),
+                            "minuten": int((t.beginn - cursor).total_seconds() // 60)})
+        cursor = max(cursor, t.ende)
+    if cursor < ende:
+        luecken.append({"von": cursor.isoformat(), "bis": ende.isoformat(),
+                        "minuten": int((ende - cursor).total_seconds() // 60)})
+    bloecke = [{"titel": t.titel, "von": t.beginn.isoformat(), "bis": t.ende.isoformat(),
+                "fix": True} for t in fixe]
+    vorschlag = []
+    for l in luecken:
+        nutzbar = l["minuten"] - PUFFER_MIN
+        if nutzbar >= 30:
+            vorschlag.append({"lücke_von": l["von"], "empfehlung":
+                              f"{nutzbar} Min frei – flexible Aufgabe + {PUFFER_MIN} Min Puffer einplanen."})
+    db.add(models.Event(type="task.completed", source="planner", ref_id="tagesplan",
+                        payload={"fix": len(fixe), "konflikte": len(konflikte)}))
+    db.commit()
+    return {"tag": start.date().isoformat(), "fixe_termine": bloecke,
+            "luecken": luecken, "vorschlaege": vorschlag, "konflikte": konflikte,
+            "hinweis": "Vorschlag – keine Kalenderänderung ohne deine Freigabe."}

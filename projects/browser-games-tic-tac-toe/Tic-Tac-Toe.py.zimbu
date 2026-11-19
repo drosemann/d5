@@ -1,0 +1,95 @@
+﻿# Zimbu-Port-Spiegel von: projects\browser-games-tic-tac-toe\Tic-Tac-Toe.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE Tic_Tac_Toe_py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\browser-games-tic-tac-toe\Tic-Tac-Toe.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\browser-games-tic-tac-toe\Tic-Tac-Toe.py), unveraendert, als Inline-Doku ----
+# import random
+#
+# def tictactoe():
+#     board = [" " for _ in range(9)]
+#     spieler = "X"
+#     spielende = False
+#     spieler_x_punkte = 0
+#     spieler_o_punkte = 0
+#     unentschieden_punkte = 0
+#
+#     def zeige_brett():
+#         print("---------")
+#         for i in range(3):
+#             print(f"| {board[i*3]} | {board[i*3+1]} | {board[i*3+2]} |")
+#             print("---------")
+#
+#     def gültiger_zug(position):
+#         if position >= 0 and position <= 8 and board[position] == " ":
+#             return True
+#         return False
+#
+#     def gewonnen():
+#         gewinnmöglichkeiten = [
+#             [0, 1, 2], [3, 4, 5], [6, 7, 8],  # Horizontale
+#             [0, 3, 6], [1, 4, 7], [2, 5, 8],  # Vertikale
+#             [0, 4, 8], [2, 4, 6]  # Diagonale
+#         ]
+#
+#         for möglichkeit in gewinnmöglichkeiten:
+#             if board[möglichkeit[0]] == board[möglichkeit[1]] == board[möglichkeit[2]] != " ":
+#                 return True
+#         return False
+#
+#     def unentschieden():
+#         return " " not in board
+#
+#     def zug_spiel(spieler):
+#         position = int(input(f"Spieler {spieler}, wähle eine Position (0-8): "))
+#
+#         if gültiger_zug(position):
+#             board[position] = spieler
+#             zeige_brett()
+#             if gewonnen():
+#                 print(f"Spieler {spieler} hat gewonnen!")
+#                 return True
+#             if unentschieden():
+#                 print("Unentschieden!")
+#                 return True
+#             return False
+#         else:
+#             print("Ungültiger Zug!")
+#             return zug_spiel(spieler)
+#
+#     def ai_zug():
+#         freie_positionen = [i for i, feld in enumerate(board) if feld == " "]
+#         return random.choice(freie_positionen)
+#
+#     zeige_brett()
+#
+#     while not spielende:
+#         if spieler == "X":
+#             spielende = zug_spiel(spieler)
+#             if spielende:
+#                 spieler_x_punkte += 1
+#         else:
+#             print("KI macht einen Zug...")
+#             position = ai_zug()
+#             board[position] = spieler
+#             zeige_brett()
+#             if gewonnen():
+#                 print(f"Spieler {spieler} hat gewonnen!")
+#                 spieler_o_punkte += 1
+#                 spielende = True
+#             elif unentschieden():
+#                 print("Unentschieden!")
+#                 unentschieden_punkte += 1
+#                 spielende = True
+#
+#         spieler = "O" if spieler == "X" else "X"
+#
+#     print(f"Endstand: X - {spieler_x_punkte}, O - {spieler_o_punkte}, Unentschieden - {unentschieden_punkte}")
+#
+# tictactoe()
+#

@@ -1,0 +1,28 @@
+﻿# Zimbu-Port-Spiegel von: projects\personal-&-client-websites-portfolio\components\ui\spinner.tsx
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE spinner_tsx
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\personal-&-client-websites-portfolio\components\ui\spinner.tsx\n")
+  RETURN 0
+
+# ---- Original-Code (projects\personal-&-client-websites-portfolio\components\ui\spinner.tsx), unveraendert, als Inline-Doku ----
+# import { Loader2Icon } from 'lucide-react'
+#
+# import { cn } from '@/lib/utils'
+#
+# function Spinner({ className, ...props }: React.ComponentProps<'svg'>) {
+#   return (
+#     <Loader2Icon
+#       role="status"
+#       aria-label="Loading"
+#       className={cn('size-4 animate-spin', className)}
+#       {...props}
+#     />
+#   )
+# }
+#
+# export { Spinner }
+#

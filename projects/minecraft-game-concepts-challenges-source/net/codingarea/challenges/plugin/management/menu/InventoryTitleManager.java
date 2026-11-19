@@ -1,0 +1,72 @@
+package net.codingarea.challenges.plugin.management.menu;
+
+import javax.annotation.Nonnull;
+import net.codingarea.challenges.plugin.content.Message;
+
+public final class InventoryTitleManager {
+   private InventoryTitleManager() {
+   }
+
+   @Nonnull
+   public static String getTitle(@Nonnull String name) {
+      return "§8» " + Message.forName("inventory-color").asString() + name;
+   }
+
+   @Nonnull
+   public static String getMainMenuTitle() {
+      return getTitle(Message.forName("menu-title").asString());
+   }
+
+   @Nonnull
+   public static String getTitle(@Nonnull MenuType menu, int page) {
+      return getTitle(menu.getName(), String.valueOf(page + 1));
+   }
+
+   @Nonnull
+   public static String getTitle(@Nonnull MenuType menu, String... sub) {
+      return getTitle(menu.getName(), sub);
+   }
+
+   @Nonnull
+   public static String getTitle(@Nonnull String menu, String... sub) {
+      String name = menu;
+      String[] var3 = sub;
+      int var4 = sub.length;
+
+      for(int var5 = 0; var5 < var4; ++var5) {
+         String s = var3[var5];
+         name = name + getTitleSplitter() + s;
+      }
+
+      return getTitle(name);
+   }
+
+   @Nonnull
+   public static String getTitleSplitter() {
+      return " §8┃ " + Message.forName("inventory-color").asString();
+   }
+
+   @Nonnull
+   public static String getMenuSettingTitle(@Nonnull MenuType menu, @Nonnull String name, int page, boolean showPages) {
+      StringBuilder var10000 = (new StringBuilder()).append(menu.getName()).append(getTitleSplitter()).append(name);
+      if (showPages) {
+      }
+
+      return getTitle(var10000.append("").toString());
+   }
+
+   @Nonnull
+   public static String getStatsTitle(@Nonnull String playerName) {
+      return getTitle("§2Stats §8┃ §2" + playerName);
+   }
+
+   @Nonnull
+   public static String getLeaderboardTitle() {
+      return getTitle("§2Leaderboard");
+   }
+
+   @Nonnull
+   public static String getLeaderboardTitle(@Nonnull String name, int page) {
+      return getTitle("§2" + name + " §8┃ §2" + page);
+   }
+}

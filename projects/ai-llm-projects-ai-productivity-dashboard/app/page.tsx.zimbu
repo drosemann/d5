@@ -1,0 +1,19 @@
+﻿# Zimbu-Port-Spiegel von: projects\ai-llm-projects-ai-productivity-dashboard\app\page.tsx
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE page_tsx
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\ai-llm-projects-ai-productivity-dashboard\app\page.tsx\n")
+  RETURN 0
+
+# ---- Original-Code (projects\ai-llm-projects-ai-productivity-dashboard\app\page.tsx), unveraendert, als Inline-Doku ----
+# import { getServerUser } from '@/lib/supabaseServer'
+# import { AppShell } from '@/components/layout/AppShell'
+#
+# export default async function HomePage() {
+#   const user = await getServerUser()
+#   return <AppShell user={user} />
+# }
+#

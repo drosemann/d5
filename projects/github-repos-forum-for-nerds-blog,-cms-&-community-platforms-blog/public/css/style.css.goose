@@ -1,0 +1,168 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog/public/css/style.css
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog/public/css/style.css");
+}
+
+// ---- Original-Code (projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog/public/css/style.css), unveraendert, als Inline-Doku ----
+// :root {
+//     --primary-color: #1a1a1a;
+//     --secondary-color: #00ffe1;
+//     --text-color: #ffffff;
+//     --background-color: #121212;
+//     --card-background: #1e1e1e;
+//     --accent-color: #ff1956;
+// }
+//
+// * {
+//     margin: 0;
+//     padding: 0;
+//     box-sizing: border-box;
+// }
+//
+// body {
+//     font-family: 'Inter', sans-serif;
+//     line-height: 1.6;
+//     background-color: var(--background-color);
+//     color: var(--text-color);
+//     min-height: 100vh;
+//     display: flex;
+//     flex-direction: column;
+// }
+//
+// /* Header & Navigation */
+// header {
+//     background-color: var(--primary-color);
+//     position: fixed;
+//     width: 100%;
+//     top: 0;
+//     z-index: 1000;
+//     padding: 1rem 0;
+// }
+//
+// nav {
+//     max-width: 1200px;
+//     margin: 0 auto;
+//     padding: 0.5rem 1rem;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
+//
+// .logo-img {
+//     height: 40px;
+//     width: auto;
+// }
+//
+// /* Main Content */
+// main {
+//     max-width: 800px;
+//     margin: 80px auto 0;
+//     padding: 2rem;
+//     flex: 1;
+// }
+//
+// /* Articles Grid */
+// .articles-grid {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 2rem;
+// }
+//
+// .article-card {
+//     background: var(--card-background);
+//     border-radius: 15px;
+//     overflow: hidden;
+//     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+//     transition: all 0.3s ease;
+//     border: 1px solid rgba(255,255,255,0.1);
+// }
+//
+// .article-card:hover {
+//     transform: translateY(-5px);
+//     box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+//     border-color: var(--secondary-color);
+// }
+//
+// .article-card img {
+//     width: 100%;
+//     height: 300px;
+//     object-fit: cover;
+//     transition: transform 0.3s ease;
+// }
+//
+// .article-card:hover img {
+//     transform: scale(1.05);
+// }
+//
+// .article-card-content {
+//     padding: 2rem;
+// }
+//
+// .article-card h3 {
+//     font-size: 1.5rem;
+//     margin-bottom: 1rem;
+//     color: var(--text-color);
+//     font-weight: 600;
+// }
+//
+// .article-card p {
+//     color: rgba(255,255,255,0.8);
+//     line-height: 1.6;
+//     margin-bottom: 1rem;
+// }
+//
+// .article-meta {
+//     color: var(--secondary-color);
+//     font-size: 0.9rem;
+//     font-weight: 500;
+// }
+//
+// /* Sidebar */
+// .sidebar {
+//     background: var(--card-background);
+//     padding: 1.5rem;
+//     border-radius: 10px;
+//     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+// }
+//
+// .search-box input {
+//     width: 100%;
+//     padding: 0.8rem;
+//     border: 1px solid #ddd;
+//     border-radius: 5px;
+//     margin-bottom: 1.5rem;
+// }
+//
+// /* Footer */
+// footer {
+//     background: var(--primary-color);
+//     color: rgba(255,255,255,0.7);
+//     padding: 1.5rem 0;
+//     margin-top: auto;
+//     text-align: center;
+//     font-size: 0.9rem;
+// }
+//
+// /* Smooth scrolling */
+// html {
+//     scroll-behavior: smooth;
+// }
+//
+// /* Responsive Design */
+// @media (max-width: 768px) {
+//     main {
+//         grid-template-columns: 1fr;
+//     }
+//
+//     .nav-links {
+//         display: none;
+//     }
+//
+//     .hero h1 {
+//         font-size: 2rem;
+//     }
+// }
+//

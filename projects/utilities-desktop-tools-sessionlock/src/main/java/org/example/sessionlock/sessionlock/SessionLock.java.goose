@@ -1,0 +1,122 @@
+﻿// Goose-Port-Spiegel von: projects/utilities-desktop-tools-sessionlock/src/main/java/org/example/sessionlock/sessionlock/SessionLock.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/utilities-desktop-tools-sessionlock/src/main/java/org/example/sessionlock/sessionlock/SessionLock.java");
+}
+
+// ---- Original-Code (projects/utilities-desktop-tools-sessionlock/src/main/java/org/example/sessionlock/sessionlock/SessionLock.java), unveraendert, als Inline-Doku ----
+// package com.example.sessionlockplugin;
+//
+// import org.bukkit.command.Command;
+// import org.bukkit.command.CommandExecutor;
+// import org.bukkit.command.CommandSender;
+// import org.bukkit.entity.Player;
+// import org.bukkit.event.EventHandler;
+// import org.bukkit.event.Listener;
+// import org.bukkit.event.player.PlayerJoinEvent;
+// import org.bukkit.event.player.PlayerQuitEvent;
+// import org.bukkit.metadata.FixedMetadataValue;
+// import org.bukkit.plugin.java.JavaPlugin;
+//
+// import java.util.HashMap;
+// import java.util.UUID;
+//
+// public class SessionLockPlugin extends JavaPlugin implements Listener {
+//
+//     private final HashMap<UUID, Boolean> playerLoginStatus = new HashMap<>();
+//     private final HashMap<UUID, String> playerIps = new HashMap<>();
+//     private final HashMap<UUID, Long> playerLastActiveTime = new HashMap<>();
+//     private final long sessionTimeout = 300000; // 5 minutes in milliseconds
+//     private final SessionLogger sessionLogger = new SessionLogger();
+//     private final TwoFactorAuth twoFactorAuth = new TwoFactorAuth();
+//     private final IpWhitelist ipWhitelist = new IpWhitelist();
+//     private final LoginHistory loginHistory = new LoginHistory();
+//     private final ConfigManager configManager = new ConfigManager(getConfig());
+//     private final NotificationManager notificationManager = new NotificationManager();
+//
+//     @Override
+//     public void onEnable() {
+//         getServer().getPluginManager().registerEvents(this, this);
+//         getCommand("login").setExecutor(new LoginCommandExecutor(this));
+//         getServer().getScheduler().runTaskTimer(this, this::checkSessionTimeout, 0, 20); // Check every second
+//     }
+//
+//     private void checkSessionTimeout() {
+//         long currentTime = System.currentTimeMillis();
+//         for (UUID playerId : playerLastActiveTime.keySet()) {
+//             if (currentTime - playerLastActiveTime.get(playerId) > sessionTimeout) {
+//                 Player player = getServer().getPlayer(playerId);
+//                 if (player != null) {
+//                     player.sendMessage("Your session has timed out due to inactivity. Please log in again.");
+//                     playerLoginStatus.put(playerId, false);
+//                 }
+//             }
+//         }
+//     }
+//
+//     @EventHandler
+//     public void onPlayerJoin(PlayerJoinEvent event) {
+//         Player player = event.getPlayer();
+//         UUID playerId = player.getUniqueId();
+//         String currentIp = player.getAddress().getAddress().getHostAddress();
+//
+//         if (playerIps.containsKey(playerId)) {
+//             String storedIpAddress = playerIps.get(playerId);
+//             if (storedIpAddress.equals(currentIp)) {
+//                 player.sendMessage("Welcome back, you are logged in automatically!");
+//                 playerLoginStatus.put(playerId, true);
+//                 player.setMetadata("sessionLock", new FixedMetadataValue(this, true));
+//             } else {
+//                 player.sendMessage("You are logging in from a different IP address, please log in manually.");
+//                 playerLoginStatus.put(playerId, false);
+//             }
+//         } else {
+//             playerIps.put(playerId, currentIp);
+//             playerLoginStatus.put(playerId, true);
+//         }
+//         playerLastActiveTime.put(playerId, System.currentTimeMillis());
+//     }
+//
+//     @EventHandler
+//     public void onPlayerQuit(PlayerQuitEvent event) {
+//         playerLastActiveTime.remove(event.getPlayer().getUniqueId());
+//     }
+//
+//     public class LoginCommandExecutor implements CommandExecutor {
+//         private final SessionLockPlugin plugin;
+//
+//         public LoginCommandExecutor(SessionLockPlugin plugin) {
+//             this.plugin = plugin;
+//         }
+//
+//         @Override
+//         public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+//             if (sender instanceof Player) {
+//                 Player player = (Player) sender;
+//                 UUID playerId = player.getUniqueId();
+//                 if (plugin.playerLoginStatus.containsKey(playerId) && !plugin.playerLoginStatus.get(playerId)) {
+//                     player.sendMessage("Please enter your login information.");
+//                     player.setMetadata("sessionLock", new FixedMetadataValue(plugin, true));
+//                     plugin.playerLoginStatus.put(playerId, true);
+//                 } else {
+//                     player.sendMessage("You are already logged in.");
+//                 }
+//             } else {
+//                 sender.sendMessage("You must be a player to use this command.");
+//             }
+//             return true;
+//         }
+//     }
+//
+//     @EventHandler
+//     public void onPlayerLogin(PlayerLoginEvent event) {
+//         UUID playerId = event.getPlayer().getUniqueId();
+//         boolean success = // logic to determine if login is successful
+//         sessionLogger.logLoginAttempt(playerId, success);
+//         loginHistory.recordLoginAttempt(playerId, success);
+//         notificationManager.notifyPlayer(event.getPlayer(), success ? configManager.getLoginSuccessMessage() : configManager.getLoginFailureMessage());
+//     }
+// }
+//

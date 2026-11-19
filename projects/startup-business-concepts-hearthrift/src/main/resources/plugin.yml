@@ -1,0 +1,18 @@
+name: Hearthrift
+version: '${project.version}'
+main: com.hearthrift.Hearthrift
+api-version: '1.21'
+authors: [YourName]
+description: A Paper plugin for managing player homes and teleportation
+depend: [Multiverse-Core]
+commands:
+  world:
+    description: Main command for managing your world
+    usage: /world <home|rift|invite|kick|trust|untrust> [player]
+    aliases: [w]
+    permission: hearthrift.world
+  
+permissions:
+  hearthrift.world:
+    description: Allows use of world management commands
+    default: true

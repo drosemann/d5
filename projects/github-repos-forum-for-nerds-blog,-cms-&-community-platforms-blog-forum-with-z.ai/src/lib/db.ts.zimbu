@@ -1,0 +1,24 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-forum-with-z.ai\src\lib\db.ts
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE db_ts
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-forum-with-z.ai\src\lib\db.ts\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-forum-with-z.ai\src\lib\db.ts), unveraendert, als Inline-Doku ----
+# import { PrismaClient } from '@prisma/client'
+#
+# const globalForPrisma = globalThis as unknown as {
+#   prisma: PrismaClient | undefined
+# }
+#
+# export const db =
+#   globalForPrisma.prisma ??
+#   new PrismaClient({
+#     log: ['query'],
+#   })
+#
+# if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = db

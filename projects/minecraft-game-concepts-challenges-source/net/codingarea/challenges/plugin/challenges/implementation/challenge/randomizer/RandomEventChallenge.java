@@ -1,0 +1,205 @@
+package net.codingarea.challenges.plugin.challenges.implementation.challenge.randomizer;
+
+import java.util.Objects;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import net.anweisen.utilities.bukkit.utils.logging.Logger;
+import net.anweisen.utilities.bukkit.utils.misc.BukkitReflectionUtils;
+import net.anweisen.utilities.common.annotations.Since;
+import net.codingarea.challenges.plugin.challenges.type.abstraction.TimedChallenge;
+import net.codingarea.challenges.plugin.challenges.type.helper.ChallengeHelper;
+import net.codingarea.challenges.plugin.content.Message;
+import net.codingarea.challenges.plugin.content.Prefix;
+import net.codingarea.challenges.plugin.management.menu.MenuType;
+import net.codingarea.challenges.plugin.management.menu.generator.categorised.SettingCategory;
+import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+import net.codingarea.challenges.plugin.utils.misc.MinecraftNameWrapper;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.World.Environment;
+import org.bukkit.block.Block;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+
+@Since("2.0")
+public class RandomEventChallenge extends TimedChallenge {
+   private final RandomEventChallenge.Event[] events;
+
+   public RandomEventChallenge() {
+      super(MenuType.CHALLENGES, 1, 10, 3, false);
+      this.setCategory(SettingCategory.RANDOMIZER);
+      this.events = new RandomEventChallenge.Event[]{new RandomEventChallenge.SpeedEvent(), new RandomEventChallenge.SpawnEntitiesEvent(), new RandomEventChallenge.HoleEvent(), new RandomEventChallenge.FlyEvent(), new RandomEventChallenge.CobWebEvent(), new RandomEventChallenge.ReplaceOresEvent(), new RandomEventChallenge.SicknessEvent()};
+   }
+
+   @Nonnull
+   public ItemBuilder createDisplayItem() {
+      return new ItemBuilder(Material.CLOCK, Message.forName("item-random-event-challenge").asItemDescription(this.events.length));
+   }
+
+   @Nullable
+   protected String[] getSettingsDescription() {
+      return Message.forName("item-time-seconds-range-description").asArray(this.getValue() * 60 - 30, this.getValue() * 60 + 30);
+   }
+
+   public void playValueChangeTitle() {
+      ChallengeHelper.playChallengeSecondsRangeValueChangeTitle(this, this.getValue() * 60 - 30, this.getValue() * 60 + 30);
+   }
+
+   protected int getSecondsUntilNextActivation() {
+      return globalRandom.around(this.getValue() * 60, 30);
+   }
+
+   protected void onTimeActivation() {
+      this.restartTimer();
+      RandomEventChallenge.Event event = (RandomEventChallenge.Event)globalRandom.choose((Object[])this.events);
+      Logger.debug("Running random event {}", event.getClass().getSimpleName());
+      event.getActivationMessage().broadcastRandom(globalRandom, Prefix.CHALLENGES);
+      Objects.requireNonNull(event);
+      broadcastFiltered(event::run);
+   }
+
+   public interface Event {
+      @Nonnull
+      Message getActivationMessage();
+
+      void run(@Nonnull Player var1);
+   }
+
+   public static class SpeedEvent implements RandomEventChallenge.Event {
+      @Nonnull
+      public Message getActivationMessage() {
+         return Message.forName("random-event-speed");
+      }
+
+      public void run(@Nonnull Player player) {
+         player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 200, 99));
+      }
+   }
+
+   public class SpawnEntitiesEvent implements RandomEventChallenge.Event {
+      @Nonnull
+      public Message getActivationMessage() {
+         return Message.forName("random-event-entities");
+      }
+
+      public void run(@Nonnull Player player) {
+         EntityType type = (EntityType)RandomEventChallenge.globalRandom.choose((Object[])(EntityType.PIG, EntityType.CHICKEN, EntityType.CAT, EntityType.SILVERFISH, EntityType.WOLF));
+
+         for(int i = 0; i < RandomEventChallenge.globalRandom.nextInt(5) + 5; ++i) {
+            Location randomLocation = player.getLocation().add((double)(RandomEventChallenge.globalRandom.nextInt(10) - 5), -10.0D, (double)RandomEventChallenge.globalRandom.nextInt(5));
+            if (randomLocation.getWorld() == null) {
+               return;
+            }
+
+            while(!randomLocation.getBlock().isPassable() && randomLocation.getBlockY() < randomLocation.getWorld().getMaxHeight()) {
+               randomLocation.add(0.0D, 1.0D, 0.0D);
+            }
+
+            randomLocation.getWorld().spawnEntity(randomLocation, type);
+         }
+
+      }
+   }
+
+   public static class HoleEvent implements RandomEventChallenge.Event {
+      @Nonnull
+      public Message getActivationMessage() {
+         return Message.forName("random-event-hole");
+      }
+
+      public void run(@Nonnull Player player) {
+         Location location = player.getLocation().getBlock().getLocation();
+
+         for(int x = -1; x <= 1; ++x) {
+            for(int z = -1; z <= 1; ++z) {
+               for(int y = 1; y >= -8; --y) {
+                  location.clone().add((double)x, (double)y, (double)z).getBlock().setType(Material.AIR, true);
+               }
+            }
+         }
+
+      }
+   }
+
+   public static class FlyEvent implements RandomEventChallenge.Event {
+      @Nonnull
+      public Message getActivationMessage() {
+         return Message.forName("random-event-fly");
+      }
+
+      public void run(@Nonnull Player player) {
+         player.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 60, 5));
+      }
+   }
+
+   public class CobWebEvent implements RandomEventChallenge.Event {
+      @Nonnull
+      public Message getActivationMessage() {
+         return Message.forName("random-event-webs");
+      }
+
+      public void run(@Nonnull Player player) {
+         for(int i = 0; i < 13; ++i) {
+            Location randomLocation = player.getLocation().add((double)(RandomEventChallenge.globalRandom.nextInt(10) - 5), -20.0D, (double)RandomEventChallenge.globalRandom.nextInt(5));
+            if (randomLocation.getWorld() == null) {
+               return;
+            }
+
+            while(!randomLocation.getBlock().isPassable() && randomLocation.getBlockY() < randomLocation.getWorld().getMaxHeight()) {
+               randomLocation.add(0.0D, 1.0D, 0.0D);
+            }
+
+            randomLocation.getBlock().setType(Material.COBWEB, false);
+         }
+
+      }
+   }
+
+   public static class ReplaceOresEvent implements RandomEventChallenge.Event {
+      @Nonnull
+      public Message getActivationMessage() {
+         return Message.forName("random-event-ores");
+      }
+
+      public void run(@Nonnull Player player) {
+         Location location = player.getLocation();
+         Bukkit.getScheduler().runTaskAsynchronously(RandomEventChallenge.plugin, () -> {
+            for(int x = -100; x <= 100; ++x) {
+               for(int z = -100; z <= 100; ++z) {
+                  Bukkit.getScheduler().runTask(RandomEventChallenge.plugin, () -> {
+                     if (location.getWorld() != null) {
+                        for(int y = BukkitReflectionUtils.getMinHeight(location.getWorld()); y < 80; ++y) {
+                           Location current = location.clone().add((double)x, 0.0D, (double)z);
+                           current.setY((double)y);
+                           Block block = current.getBlock();
+                           if (block.getType().name().contains("ORE")) {
+                              Environment environment = location.getWorld().getEnvironment();
+                              block.setType(environment == Environment.NETHER ? Material.NETHERRACK : (environment == Environment.THE_END ? Material.END_STONE : Material.STONE), true);
+                           }
+                        }
+
+                     }
+                  });
+               }
+            }
+
+         });
+      }
+   }
+
+   public static class SicknessEvent implements RandomEventChallenge.Event {
+      @Nonnull
+      public Message getActivationMessage() {
+         return Message.forName("random-event-sickness");
+      }
+
+      public void run(@Nonnull Player player) {
+         player.addPotionEffect(new PotionEffect(MinecraftNameWrapper.NAUSEA, 140, 0));
+         player.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 60, 1));
+         player.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 100, 1));
+      }
+   }
+}

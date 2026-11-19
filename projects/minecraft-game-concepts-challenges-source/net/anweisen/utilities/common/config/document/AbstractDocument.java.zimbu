@@ -1,0 +1,167 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\config\document\AbstractDocument.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE AbstractDocument_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\config\document\AbstractDocument.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\config\document\AbstractDocument.java), unveraendert, als Inline-Doku ----
+# package net.anweisen.utilities.common.config.document;
+#
+# import java.util.Base64;
+# import java.util.HashMap;
+# import java.util.List;
+# import java.util.Map;
+# import java.util.function.Function;
+# import java.util.stream.Collectors;
+# import javax.annotation.CheckReturnValue;
+# import javax.annotation.Nonnull;
+# import javax.annotation.Nullable;
+# import net.anweisen.utilities.common.config.Document;
+# import net.anweisen.utilities.common.config.Propertyable;
+# import net.anweisen.utilities.common.config.document.readonly.ReadOnlyDocumentWrapper;
+# import net.anweisen.utilities.common.config.exceptions.ConfigReadOnlyException;
+# import net.anweisen.utilities.common.misc.BukkitReflectionSerializationUtils;
+#
+# public abstract class AbstractDocument extends AbstractConfig implements Document {
+#    protected final Document root;
+#    protected final Document parent;
+#
+#    public AbstractDocument(@Nonnull Document root, @Nullable Document parent) {
+#       this.root = root;
+#       this.parent = parent;
+#    }
+#
+#    public AbstractDocument() {
+#       this.root = this;
+#       this.parent = null;
+#    }
+#
+#    @Nonnull
+#    public Object getSerializable(@Nonnull String path, @Nonnull Object def) {
+#       Object value = this.getSerializable(path, def.getClass());
+#       return value == null ? def : value;
+#    }
+#
+#    @Nullable
+#    public Object getSerializable(@Nonnull String path, @Nonnull Class classOfT) {
+#       return !this.contains(path) ? null : BukkitReflectionSerializationUtils.deserializeObject(this.getDocument(path).values(), classOfT);
+#    }
+#
+#    @Nonnull
+#    public List getSerializableList(@Nonnull String path, @Nonnull Class classOfT) {
+#       return (List)this.getDocumentList(path).stream().map(Propertyable::values).map((map) -> {
+#          return BukkitReflectionSerializationUtils.deserializeObject(map, classOfT);
+#       }).collect(Collectors.toList());
+#    }
+#
+#    @Nonnull
+#    public Map mapDocuments(@Nonnull Function keyMapper, @Nonnull Function valueMapper) {
+#       return this.map(this.children(), keyMapper, valueMapper);
+#    }
+#
+#    @Nonnull
+#    public Object mapDocument(@Nonnull String path, @Nonnull Function mapper) {
+#       Document document = this.getDocument(path);
+#       return mapper.apply(document);
+#    }
+#
+#    @Nullable
+#    public Object mapDocumentNullable(@Nonnull String path, @Nonnull Function mapper) {
+#       return !this.contains(path) ? null : this.mapDocument(path, mapper);
+#    }
+#
+#    @Nonnull
+#    public Document getDocument(@Nonnull String path) {
+#       Document document = this.getDocument0(path, this.root, this);
+#       return (Document)(this.isReadonly() && !document.isReadonly() ? new ReadOnlyDocumentWrapper(document) : document);
+#    }
+#
+#    @Nonnull
+#    public Document set(@Nonnull String path, @Nullable Object value) {
+#       if (this.isReadonly()) {
+#          throw new ConfigReadOnlyException("set");
+#       } else {
+#          if (value instanceof byte[]) {
+#             value = Base64.getEncoder().encodeToString((byte[])((byte[])value));
+#          }
+#
+#          this.set0(path, value);
+#          return this;
+#       }
+#    }
+#
+#    @Nonnull
+#    public Document set(@Nonnull Object object) {
+#       if (this.isReadonly()) {
+#          throw new ConfigReadOnlyException("set");
+#       } else {
+#          Document.of(object).forEach(this::set);
+#          return this;
+#       }
+#    }
+#
+#    @Nonnull
+#    public Document remove(@Nonnull String path) {
+#       if (this.isReadonly()) {
+#          throw new ConfigReadOnlyException("remove");
+#       } else {
+#          this.remove0(path);
+#          return this;
+#       }
+#    }
+#
+#    @Nonnull
+#    public Document clear() {
+#       if (this.isReadonly()) {
+#          throw new ConfigReadOnlyException("clear");
+#       } else {
+#          this.clear0();
+#          return this;
+#       }
+#    }
+#
+#    @Nonnull
+#    @CheckReturnValue
+#    public Document readonly() {
+#       return (Document)(this.isReadonly() ? this : new ReadOnlyDocumentWrapper(this));
+#    }
+#
+#    @Nonnull
+#    protected abstract Document getDocument0(@Nonnull String var1, @Nonnull Document var2, @Nullable Document var3);
+#
+#    protected abstract void set0(@Nonnull String var1, @Nullable Object var2);
+#
+#    protected abstract void remove0(@Nonnull String var1);
+#
+#    protected abstract void clear0();
+#
+#    @Nonnull
+#    public Map children() {
+#       Map map = new HashMap();
+#       this.keys().forEach((key) -> {
+#          if (this.isDocument(key)) {
+#             map.put(key, this.getDocument(key));
+#          }
+#       });
+#       return map;
+#    }
+#
+#    public boolean hasChildren(@Nonnull String path) {
+#       return !this.getDocument(path).isEmpty();
+#    }
+#
+#    @Nonnull
+#    public Document getRoot() {
+#       return this.root;
+#    }
+#
+#    @Nullable
+#    public Document getParent() {
+#       return this.parent;
+#    }
+# }
+#

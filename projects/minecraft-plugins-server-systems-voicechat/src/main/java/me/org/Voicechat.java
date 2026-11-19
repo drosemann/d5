@@ -1,0 +1,92 @@
+package com.example.voicechat;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.player.ClientPlayerEntity;
+import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.InputEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
+import org.lwjgl.glfw.GLFW;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+@OnlyIn(Dist.CLIENT)
+public class VoiceChatMod {
+
+    private static final KeyBinding TOGGLE_VOICE_CHAT_KEY = new KeyBinding("key.voicechat.toggle", GLFW.GLFW_KEY_V, "key.categories.voicechat");
+
+    private boolean voiceChatEnabled = false;
+    private Map<String, List<ClientPlayerEntity>> channels = new HashMap<>();
+    private Map<ClientPlayerEntity, Boolean> mutedPlayers = new HashMap<>();
+    private Map<ClientPlayerEntity, Float> playerVolumes = new HashMap<>();
+
+    public VoiceChatMod() {
+        // Register the key binding
+        ClientRegistry.registerKeyBinding(TOGGLE_VOICE_CHAT_KEY);
+    }
+
+    @SubscribeEvent
+    public void onKeyInput(InputEvent.KeyInputEvent event) {
+        if (TOGGLE_VOICE_CHAT_KEY.isPressed()) {
+            // Toggle the voice chat status
+            voiceChatEnabled = !voiceChatEnabled;
+            Minecraft.getInstance().player.sendMessage(new StringTextComponent("Voice chat is now " + (voiceChatEnabled ? "enabled" : "disabled") + "."));
+        }
+    }
+
+    public boolean isVoiceChatEnabled() {
+        return voiceChatEnabled;
+    }
+
+    public void createChannel(String channelName) {
+        channels.put(channelName, new ArrayList<>());
+    }
+
+    public void joinChannel(ClientPlayerEntity player, String channelName) {
+        if (channels.containsKey(channelName)) {
+            channels.get(channelName).add(player);
+            player.sendMessage(new StringTextComponent("Joined channel: " + channelName));
+        } else {
+            player.sendMessage(new StringTextComponent("Channel does not exist."));
+        }
+    }
+
+    public void leaveChannel(ClientPlayerEntity player, String channelName) {
+        if (channels.containsKey(channelName)) {
+            channels.get(channelName).remove(player);
+            player.sendMessage(new StringTextComponent("Left channel: " + channelName));
+        }
+    }
+
+    public void mutePlayer(ClientPlayerEntity target) {
+        mutedPlayers.put(target, true);
+    }
+
+    public void unmutePlayer(ClientPlayerEntity target) {
+        mutedPlayers.put(target, false);
+    }
+
+    public boolean isMuted(ClientPlayerEntity player) {
+        return mutedPlayers.getOrDefault(player, false);
+    }
+
+    public void setVolume(ClientPlayerEntity player, float volume) {
+        playerVolumes.put(player, volume);
+    }
+
+    public float getVolume(ClientPlayerEntity player) {
+        return playerVolumes.getOrDefault(player, 1.0f); // Default volume
+    }
+
+    public void notifyPlayers(String message) {
+        for (ClientPlayerEntity player : channels.values()) {
+            player.sendMessage(new StringTextComponent(message));
+        }
+    }
+}

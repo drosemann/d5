@@ -1,0 +1,85 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-chat-app\webapp\style.css
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE style_css
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-chat-app\webapp\style.css\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-chat-app\webapp\style.css), unveraendert, als Inline-Doku ----
+# body {
+#     font-family: Arial, sans-serif;
+#     background: #f0f2f5;
+#     margin: 0;
+#     padding: 0;
+# }
+# .chat-container {
+#     max-width: 400px;
+#     margin: 40px auto;
+#     background: #fff;
+#     border-radius: 8px;
+#     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+#     overflow: hidden;
+#     display: flex;
+#     flex-direction: column;
+#     height: 80vh;
+# }
+# header {
+#     background: #0078d7;
+#     color: #fff;
+#     padding: 16px;
+#     text-align: center;
+# }
+# #username {
+#     margin-top: 10px;
+#     width: 80%;
+#     padding: 6px;
+#     border-radius: 4px;
+#     border: none;
+# }
+# #chat-box {
+#     flex: 1;
+#     padding: 16px;
+#     overflow-y: auto;
+#     background: #f9f9f9;
+# }
+# .message {
+#     margin-bottom: 12px;
+#     padding: 8px 12px;
+#     background: #e6f0fa;
+#     border-radius: 6px;
+#     position: relative;
+# }
+# .message .meta {
+#     font-size: 0.8em;
+#     color: #888;
+#     margin-bottom: 2px;
+# }
+# #chat-form {
+#     display: flex;
+#     border-top: 1px solid #eee;
+#     background: #fafafa;
+#     padding: 10px;
+# }
+# #message {
+#     flex: 1;
+#     padding: 8px;
+#     border-radius: 4px;
+#     border: 1px solid #ccc;
+# }
+# button {
+#     background: #0078d7;
+#     color: #fff;
+#     border: none;
+#     padding: 8px 16px;
+#     border-radius: 4px;
+#     margin-left: 8px;
+#     cursor: pointer;
+#     transition: background 0.2s;
+# }
+# button:hover {
+#     background: #005fa3;
+# }
+#

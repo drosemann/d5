@@ -1,0 +1,12 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-plugins-&-server-systems-bedwars\version.json
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE version_json
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-plugins-&-server-systems-bedwars\version.json\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-plugins-&-server-systems-bedwars\version.json), unveraendert, als Inline-Doku ----
+

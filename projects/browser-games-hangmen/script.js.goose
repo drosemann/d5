@@ -1,0 +1,165 @@
+﻿// Goose-Port-Spiegel von: projects/browser-games-hangmen/script.js
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/browser-games-hangmen/script.js");
+}
+
+// ---- Original-Code (projects/browser-games-hangmen/script.js), unveraendert, als Inline-Doku ----
+// document.addEventListener('DOMContentLoaded', () => {
+//     const wordDisplay = document.getElementById('word-display');
+//     const guessInput = document.getElementById('guess-input');
+//     const guessButton = document.getElementById('guess-button');
+//     const message = document.getElementById('message');
+//
+//     const word = 'JAVASCRIPT';
+//     let guessedWord = '_'.repeat(word.length);
+//     let incorrectGuesses = 0;
+//
+//     message.textContent = '';
+//
+//     guessInput.addEventListener('input', () => {
+//         guessInput.value = guessInput.value.toUpperCase();
+//     });
+//
+//     guessInput.addEventListener('keydown', (event) => {
+//         if (event.key === 'Enter') {
+//             event.preventDefault();
+//             guessButton.click();
+//         }
+//     });
+//
+//     guessButton.addEventListener('click', () => {
+//         const guess = guessInput.value.toUpperCase();
+//
+//         if (guess.length === 1 && /^[A-Z]$/.test(guess)) {
+//             let newGuessedWord = '';
+//             let correctGuess = false;
+//
+//             for (let i = 0; i < word.length; i++) {
+//                 if (word[i] === guess) {
+//                     newGuessedWord += guess;
+//                     correctGuess = true;
+//                 } else {
+//                     newGuessedWord += guessedWord[i];
+//                 }
+//             }
+//
+//             guessedWord = newGuessedWord;
+//             wordDisplay.textContent = guessedWord.split('').join(' ');
+//
+//             if (!correctGuess) {
+//                 message.textContent = 'Incorrect guess!';
+//                 incorrectGuesses++;
+//             } else {
+//                 message.textContent = '';
+//             }
+//
+//             if (guessedWord === word) {
+//                 message.textContent = 'Congratulations! You guessed the word!';
+//                 guessButton.disabled = true;
+//             }
+//         } else {
+//             message.textContent = 'Please enter a valid letter.';
+//         }
+//     });
+//
+//     wordDisplay.textContent = guessedWord.split('').join(' ');
+//
+//     guessButton.addEventListener('click', () => {
+//         const guess = guessInput.value.toUpperCase();
+//         guessInput.value = '';
+//
+//         if (guess.length === 1 && /^[A-Z]$/.test(guess)) {
+//             let newGuessedWord = '';
+//             let correctGuess = false;
+//
+//             for (let i = 0; i < word.length; i++) {
+//                 if (word[i] === guess) {
+//                     newGuessedWord += guess;
+//                     correctGuess = true;
+//                 } else {
+//                     newGuessedWord += guessedWord[i];
+//                 }
+//             }
+//
+//             guessedWord = newGuessedWord;
+//             wordDisplay.textContent = guessedWord.split('').join(' ');
+//
+//             if (!correctGuess) {
+//                 message.textContent = 'Incorrect guess!';
+//             } else {
+//                 message.textContent = '';
+//             }
+//
+//             if (guessedWord === word) {
+//                 message.textContent = 'Congratulations! You guessed the word!';
+//                 guessButton.disabled = true;
+//             }
+//         } else {
+//             message.textContent = 'Please enter a valid letter.';
+//         }
+//     });
+//
+//     guessInput.addEventListener('input', () => {
+//         const guess = guessInput.value.toUpperCase();
+//         guessInput.value = guess;
+//     });
+//
+//     guessInput.addEventListener('keydown', (event) => {
+//         if (event.key === 'Enter') {
+//             event.preventDefault();
+//             guessButton.click();
+//         }
+//     });
+//
+//     guessButton.addEventListener('click', () => {
+//         const guess = guessInput.value.toUpperCase();
+//         guessInput.value = '';
+//
+//         if (guess.length === 1 && /^[A-Z]$/.test(guess)) {
+//             let newGuessedWord = '';
+//             let correctGuess = false;
+//
+//             for (let i = 0; i < word.length; i++) {
+//                 if (word[i] === guess) {
+//                     newGuessedWord += guess;
+//                     correctGuess = true;
+//                 } else {
+//                     newGuessedWord += guessedWord[i];
+//                 }
+//             }
+//
+//             guessedWord = newGuessedWord;
+//             wordDisplay.textContent = guessedWord.split('').join(' ');
+//
+//             if (!correctGuess) {
+//                 message.textContent = 'Incorrect guess!';
+//             } else {
+//                 message.textContent = '';
+//             }
+//
+//             if (guessedWord === word) {
+//                 message.textContent = 'Congratulations! You guessed the word!';
+//                 guessButton.disabled = true;
+//             }
+//         } else {
+//             message.textContent = 'Please enter a valid letter.';
+//         }
+//     });
+//
+//     function createSnowflake() {
+//         const snowflake = document.createElement('div');
+//         snowflake.classList.add('snowflake');
+//         snowflake.style.left = Math.random() * 100 + 'vw';
+//         snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+//         document.getElementById('snow-container').appendChild(snowflake);
+//
+//         setTimeout(() => {
+//             snowflake.remove();
+//         }, 5000);
+//     }
+//
+//     setInterval(createSnowflake, 100);
+// });

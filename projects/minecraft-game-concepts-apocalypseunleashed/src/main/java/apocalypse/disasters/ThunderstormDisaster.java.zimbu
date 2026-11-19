@@ -1,0 +1,136 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-apocalypseunleashed\src\main\java\apocalypse\disasters\ThunderstormDisaster.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE ThunderstormDisaster_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-apocalypseunleashed\src\main\java\apocalypse\disasters\ThunderstormDisaster.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-apocalypseunleashed\src\main\java\apocalypse\disasters\ThunderstormDisaster.java), unveraendert, als Inline-Doku ----
+# package apocalypse.disasters;
+#
+# import org.bukkit.Location;
+# import org.bukkit.World;
+# import org.bukkit.Material;
+# import org.bukkit.Particle;
+# import org.bukkit.Sound;
+# import org.bukkit.block.Block;
+# import org.bukkit.scheduler.BukkitRunnable;
+# import apocalypse.tasks.ThunderstormTask;
+#
+# public class ThunderstormDisaster extends Disaster {
+#     private static final int RADIUS = 25;
+#     private BukkitRunnable stormTask;
+#     
+#     public ThunderstormDisaster(World world, Location location) {
+#         super(world, location);
+#     }
+#
+#     @Override
+#     public void start() {
+#         Location center = location.clone();
+#         
+#         // Set to stormy weather
+#         world.setStorm(true);
+#         world.setThundering(true);
+#         
+#         // Initial storm effects
+#         createDisasterCloud(Particle.CLOUD, RADIUS, 100);
+#         createDisasterSphere(Particle.FALLING_WATER, RADIUS);
+#         
+#         stormTask = new BukkitRunnable() {
+#             @Override
+#             public void run() {
+#                 // Create storm cloud effects
+#                 for(int i = 0; i < 20; i++) {
+#                     double x = center.getX() + (Math.random() * RADIUS * 2) - RADIUS;
+#                     double z = center.getZ() + (Math.random() * RADIUS * 2) - RADIUS;
+#                     Location cloudLoc = new Location(world, x, center.getY() + 20, z);
+#                     
+#                     // Storm cloud particles
+#                     world.spawnParticle(Particle.CLOUD, cloudLoc, 5, 2, 1, 2, 0);
+#                     world.spawnParticle(Particle.FALLING_WATER, cloudLoc, 50, 0.5, 0.5, 0.5, 0);
+#                     
+#                     // Lightning effect particles
+#                     if(Math.random() < 0.1) {
+#                         world.spawnParticle(Particle.FLASH, cloudLoc, 1, 0, 0, 0, 0);
+#                     }
+#                 }
+#                 
+#                 // Random lightning strikes
+#                 if(Math.random() < 0.3) { // 30% chance each tick
+#                     double angle = Math.random() * Math.PI * 2;
+#                     double distance = Math.random() * RADIUS;
+#                     int x = (int)(Math.cos(angle) * distance);
+#                     int z = (int)(Math.sin(angle) * distance);
+#                     Location strikeLoc = center.clone().add(x, 0, z);
+#                     strikeLoc.setY(world.getHighestBlockYAt(strikeLoc));
+#                     
+#                     // Pre-lightning effect
+#                     world.spawnParticle(Particle.FLASH, strikeLoc.clone().add(0, 10, 0), 3, 0.5, 5, 0.5, 0);
+#                     
+#                     world.strikeLightning(strikeLoc);
+#                     
+#                     // Chance to start fires
+#                     if(Math.random() < 0.3) {
+#                         Block strikeBlock = strikeLoc.getBlock();
+#                         if(strikeBlock.getType() == Material.AIR) {
+#                             strikeBlock.setType(Material.FIRE);
+#                         }
+#                     }
+#                 }
+#                 
+#                 // Rain particles and effects
+#                 for(int i = 0; i < 50; i++) {
+#                     double x = center.getX() + (Math.random() - 0.5) * RADIUS * 2;
+#                     double y = center.getY() + 20;
+#                     double z = center.getZ() + (Math.random() - 0.5) * RADIUS * 2;
+#                     Location rainLoc = new Location(world, x, y, z);
+#                     world.spawnParticle(Particle.DRIPPING_WATER, rainLoc, 1, 0, 0, 0, 0);
+#                 }
+#                 
+#                 // Thunder sound effects
+#                 if(Math.random() < 0.1) {
+#                     playDisasterSound(Sound.ENTITY_LIGHTNING_BOLT_THUNDER, 3.0f, 0.8f);
+#                 }
+#             }
+#         };
+#         stormTask.runTaskTimer(apocalypse.ApocalypsePlugin.getInstance(), 0L, 5L);
+#     }
+#
+#     @Override
+#     public void stop() {
+#         if(stormTask != null) {
+#             stormTask.cancel();
+#         }
+#         
+#         // Clear weather
+#         world.setStorm(false);
+#         world.setThundering(false);
+#         
+#         // Create dissipating effects
+#         createDisasterCloud(Particle.CLOUD, RADIUS, 50);
+#         world.spawnParticle(Particle.FLASH, location.clone().add(0, 20, 0), 5, RADIUS/2, 2, RADIUS/2, 0);
+#         playDisasterSound(Sound.ENTITY_LIGHTNING_BOLT_THUNDER, 1.0f, 0.5f);
+#         
+#         // Extinguish any fires
+#         Location center = location.clone();
+#         for(int x = -RADIUS; x <= RADIUS; x++) {
+#             for(int y = -5; y <= 10; y++) {
+#                 for(int z = -RADIUS; z <= RADIUS; z++) {
+#                     Location blockLoc = center.clone().add(x, y, z);
+#                     if(blockLoc.getBlock().getType() == Material.FIRE) {
+#                         blockLoc.getBlock().setType(Material.AIR);
+#                     }
+#                 }
+#             }
+#         }
+#     }
+#
+#     @Override
+#     public String getName() {
+#         return "thunderstorm";
+#     }
+# }

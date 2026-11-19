@@ -1,0 +1,56 @@
+package net.codingarea.challenges.plugin.spigot.listener;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nonnull;
+import net.codingarea.challenges.plugin.Challenges;
+import net.codingarea.challenges.plugin.content.Prefix;
+import net.codingarea.challenges.plugin.content.loader.LanguageLoader;
+import net.codingarea.challenges.plugin.utils.misc.FontUtils;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginCommand;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+
+public class HelpListener implements Listener {
+   @EventHandler(
+      priority = EventPriority.MONITOR
+   )
+   public void onCommand(@Nonnull PlayerCommandPreprocessEvent event) {
+      String message = event.getMessage().toLowerCase();
+      if (!message.isEmpty()) {
+         String[] args = message.substring(1).trim().split(" ");
+         String commandName = args[0];
+         if (commandName.contains(":")) {
+            commandName = commandName.substring(commandName.indexOf(58) + 1);
+         }
+
+         PluginCommand command = Challenges.getInstance().getCommand("help");
+         if (command != null) {
+            List names = new ArrayList(command.getAliases());
+            names.add("help");
+            if (names.contains(commandName)) {
+               Player sender = event.getPlayer();
+               this.sendMessage(sender, "§7This server is running §e§lChallenges §ev" + Challenges.getInstance().getVersion());
+               this.sendMessage(sender, "");
+               this.sendMessage(sender, "§7Made by §eCodingArea §8(§eanweisen & KxmischesDomi§8)");
+               this.sendMessage(sender, "§7Visit the source at §egithub.com/anweisen/Challenges");
+               this.sendMessage(sender, "§7Download at §espigotmc.org/resources/80548");
+               this.sendMessage(sender, "§7For more join our discord §ediscord.gg/74Ay5zF");
+            }
+         }
+      }
+   }
+
+   public void sendMessage(CommandSender sender, String msg) {
+      LanguageLoader languageLoader = (LanguageLoader)Challenges.getInstance().getLoaderRegistry().getFirstLoaderByClass(LanguageLoader.class);
+      if (languageLoader != null && languageLoader.isSmallCapsFont()) {
+         msg = FontUtils.toSmallCaps(msg);
+      }
+
+      sender.sendMessage(Prefix.CHALLENGES + msg);
+   }
+}

@@ -1,0 +1,13 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-infra-pilot\services\discord-service\data\code_review_config.json
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE code_review_config_json
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-infra-pilot\services\discord-service\data\code_review_config.json\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-infra-pilot\services\discord-service\data\code_review_config.json), unveraendert, als Inline-Doku ----
+# {}
+#

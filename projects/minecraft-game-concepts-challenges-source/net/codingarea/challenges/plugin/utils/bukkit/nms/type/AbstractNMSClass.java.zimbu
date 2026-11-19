@@ -1,0 +1,25 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\utils\bukkit\nms\type\AbstractNMSClass.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE AbstractNMSClass_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\utils\bukkit\nms\type\AbstractNMSClass.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\utils\bukkit\nms\type\AbstractNMSClass.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.utils.bukkit.nms.type;
+#
+# public abstract class AbstractNMSClass {
+#    protected final Class nmsClass;
+#
+#    public AbstractNMSClass(Class nmsClass) {
+#       this.nmsClass = nmsClass;
+#    }
+#
+#    public Class getNMSClass() {
+#       return this.nmsClass;
+#    }
+# }
+#

@@ -1,0 +1,21 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-plugins-&-server-systems-bedwars\src\main\java\org\bedwars\bedwarsproject\game\GameLogic.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE GameLogic_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-plugins-&-server-systems-bedwars\src\main\java\org\bedwars\bedwarsproject\game\GameLogic.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-plugins-&-server-systems-bedwars\src\main\java\org\bedwars\bedwarsproject\game\GameLogic.java), unveraendert, als Inline-Doku ----
+# package org.bedwars.bedwarsproject;
+#
+# public class GameLogic {
+#
+#     public void manageGameplay() {
+#         // Logic to manage core gameplay mechanics
+#         System.out.println("Managing game logic.");
+#     }
+# }
+#

@@ -1,0 +1,85 @@
+package net.anweisen.utilities.database.internal.abstraction;
+
+import java.util.Objects;
+import javax.annotation.Nonnull;
+import net.anweisen.utilities.database.Database;
+import net.anweisen.utilities.database.SpecificDatabase;
+import net.anweisen.utilities.database.action.DatabaseCountEntries;
+import net.anweisen.utilities.database.action.DatabaseDeletion;
+import net.anweisen.utilities.database.action.DatabaseInsertion;
+import net.anweisen.utilities.database.action.DatabaseInsertionOrUpdate;
+import net.anweisen.utilities.database.action.DatabaseQuery;
+import net.anweisen.utilities.database.action.DatabaseUpdate;
+
+public class DefaultSpecificDatabase implements SpecificDatabase {
+   protected final Database parent;
+   protected final String name;
+
+   public DefaultSpecificDatabase(@Nonnull Database parent, @Nonnull String name) {
+      this.parent = parent;
+      this.name = name;
+   }
+
+   public boolean isConnected() {
+      return this.parent.isConnected();
+   }
+
+   @Nonnull
+   public String getName() {
+      return this.name;
+   }
+
+   @Nonnull
+   public DatabaseCountEntries countEntries() {
+      return this.parent.countEntries(this.name);
+   }
+
+   @Nonnull
+   public DatabaseQuery query() {
+      return this.parent.query(this.name);
+   }
+
+   @Nonnull
+   public DatabaseUpdate update() {
+      return this.parent.update(this.name);
+   }
+
+   @Nonnull
+   public DatabaseInsertion insert() {
+      return this.parent.insert(this.name);
+   }
+
+   @Nonnull
+   public DatabaseInsertionOrUpdate insertOrUpdate() {
+      return this.parent.insertOrUpdate(this.name);
+   }
+
+   @Nonnull
+   public DatabaseDeletion delete() {
+      return this.parent.delete(this.name);
+   }
+
+   @Nonnull
+   public Database getParent() {
+      return this.parent;
+   }
+
+   public String toString() {
+      return "SpecificDatabase[" + this.name + "]";
+   }
+
+   public boolean equals(Object o) {
+      if (this == o) {
+         return true;
+      } else if (o != null && this.getClass() == o.getClass()) {
+         DefaultSpecificDatabase that = (DefaultSpecificDatabase)o;
+         return Objects.equals(this.parent, that.parent) && Objects.equals(this.name, that.name);
+      } else {
+         return false;
+      }
+   }
+
+   public int hashCode() {
+      return Objects.hash(new Object[]{this.parent, this.name});
+   }
+}

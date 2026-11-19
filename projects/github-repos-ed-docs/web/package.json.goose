@@ -1,0 +1,35 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-ed-docs/web/package.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-ed-docs/web/package.json");
+}
+
+// ---- Original-Code (projects/github-repos-ed-docs/web/package.json), unveraendert, als Inline-Doku ----
+// {
+//   "name": "ed-docs",
+//   "version": "0.1.0",
+//   "private": true,
+//   "description": "An offline-first Markdown workspace with ed and vi-inspired commands",
+//   "type": "module",
+//   "scripts": {
+//     "dev": "vite",
+//     "build": "vite build",
+//     "preview": "vite preview",
+//     "typecheck": "tsc --noEmit"
+//   },
+//   "dependencies": {
+//     "react": "^18.3.1",
+//     "react-dom": "^18.3.1"
+//   },
+//   "devDependencies": {
+//     "@types/node": "^22.15.30",
+//     "@types/react": "^18.3.23",
+//     "@types/react-dom": "^18.3.7",
+//     "@vitejs/plugin-react": "^4.3.4",
+//     "typescript": "^5.8.3",
+//     "vite": "^6.1.0"
+//   }
+// }
+//

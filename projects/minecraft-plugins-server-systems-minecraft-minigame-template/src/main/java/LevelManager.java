@@ -1,0 +1,52 @@
+import java.util.ArrayList;
+
+public class LevelManager {
+    private ArrayList<Level> levels;
+    private int currentLevelIndex;
+
+    public LevelManager() {
+        levels = new ArrayList<>();
+        currentLevelIndex = 0;
+    }
+
+    public void addLevel(Level level) {
+        levels.add(level);
+    }
+
+    public Level getCurrentLevel() {
+        if (currentLevelIndex < levels.size()) {
+            return levels.get(currentLevelIndex);
+        }
+        return null; // No more levels
+    }
+
+    public boolean advanceToNextLevel() {
+        if (currentLevelIndex + 1 < levels.size()) {
+            currentLevelIndex++;
+            return true;
+        }
+        return false; // No more levels to advance to
+    }
+
+    public void reset() {
+        currentLevelIndex = 0;
+    }
+
+    public static class Level {
+        private final String name;
+        private final String description;
+
+        public Level(String name, String description) {
+            this.name = name;
+            this.description = description;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+    }
+}

@@ -1,0 +1,20 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-streuland\src\main\java\de\streuland\plot\upgrade\PlotUpgradeStorage.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE PlotUpgradeStorage_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-streuland\src\main\java\de\streuland\plot\upgrade\PlotUpgradeStorage.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-streuland\src\main\java\de\streuland\plot\upgrade\PlotUpgradeStorage.java), unveraendert, als Inline-Doku ----
+# package de.streuland.plot.upgrade;
+#
+# import java.util.Optional;
+#
+# public interface PlotUpgradeStorage {
+#     Optional<PlotProgressionState> load(String plotId);
+#     void save(String plotId, PlotProgressionState state);
+# }
+#

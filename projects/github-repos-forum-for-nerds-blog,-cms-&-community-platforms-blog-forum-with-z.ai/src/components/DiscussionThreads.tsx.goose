@@ -1,0 +1,1022 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-forum-with-z.ai/src/components/DiscussionThreads.tsx
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-forum-with-z.ai/src/components/DiscussionThreads.tsx");
+}
+
+// ---- Original-Code (projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-forum-with-z.ai/src/components/DiscussionThreads.tsx), unveraendert, als Inline-Doku ----
+// 'use client'
+//
+// import { useState, useEffect, useRef } from 'react'
+// import { motion, useScroll, useTransform } from 'framer-motion'
+// import { Button } from '@/components/ui/button'
+// import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+// import { Badge } from '@/components/ui/badge'
+// import { Input } from '@/components/ui/input'
+// import { Textarea } from '@/components/ui/textarea'
+// import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+// import { 
+//   Search, 
+//   Filter, 
+//   ArrowUp, 
+//   ArrowDown, 
+//   MessageCircle, 
+//   Share, 
+//   Eye,
+//   Clock,
+//   User,
+//   Calendar,
+//   ArrowLeft,
+//   Bookmark,
+//   TrendingUp,
+//   Star,
+//   Plus,
+//   Hash,
+//   Pin,
+//   Lock,
+//   Flame,
+//   Users,
+//   Zap,
+//   Rocket
+// } from 'lucide-react'
+//
+// const discussionThreads = [
+//   {
+//     id: 1,
+//     title: "What's the most exciting AI breakthrough you've seen this year?",
+//     content: `I've been following AI developments closely, and I'm curious what everyone thinks are the most exciting breakthroughs we've seen this year.
+//
+// For me, it's got to be the advances in multimodal AI systems. The ability to process and understand text, images, audio, and video simultaneously is opening up so many possibilities.
+//
+// What about you all? What breakthroughs have you been most excited about?`,
+//     author: "Dr. Sarah Chen",
+//     date: "2024-01-15T14:30:00Z",
+//     votes: 342,
+//     replies: 89,
+//     views: 1523,
+//     tags: ["AI", "Breakthroughs", "Discussion"],
+//     category: "general",
+//     pinned: true,
+//     locked: false,
+//     trending: true,
+//     avatar: "SC",
+//     lastReply: {
+//       author: "Alex Johnson",
+//       time: "2 hours ago"
+//     }
+//   },
+//   {
+//     id: 2,
+//     title: "Quantum computing vs Classical computing: The ultimate showdown",
+//     content: `Let's have a comprehensive discussion about the differences between quantum and classical computing.
+//
+// **Quantum Computing Advantages:**
+// - Exponential speedup for certain problems
+// - Ability to simulate quantum systems natively
+// - Potential for breakthroughs in cryptography and drug discovery
+//
+// **Classical Computing Advantages:**
+// - Mature and stable technology
+// - Lower cost and easier to program
+// - Better suited for everyday computing tasks
+//
+// What are your thoughts? When do you think quantum computing will become mainstream?`,
+//     author: "Prof. Michael Rodriguez",
+//     date: "2024-01-14T09:15:00Z",
+//     votes: 256,
+//     replies: 67,
+//     views: 987,
+//     tags: ["Quantum", "Computing", "Debate"],
+//     category: "technical",
+//     pinned: false,
+//     locked: false,
+//     trending: true,
+//     avatar: "MR",
+//     lastReply: {
+//       author: "Maria Garcia",
+//       time: "5 hours ago"
+//     }
+//   },
+//   {
+//     id: 3,
+//     title: "The ethics of AI in creative industries",
+//     content: `As AI becomes more capable of creating art, music, and writing, we need to have a serious discussion about the ethical implications.
+//
+// **Questions to consider:**
+// 1. Should AI-generated art be considered "real" art?
+// 2. How do we credit human artists whose work was used to train AI models?
+// 3. What impact will this have on human creativity and artistic professions?
+// 4. How can we ensure fair compensation for human creators?
+//
+// I'd love to hear different perspectives on this complex issue.`,
+//     author: "Emma Thompson",
+//     date: "2024-01-13T16:45:00Z",
+//     votes: 189,
+//     replies: 124,
+//     views: 2134,
+//     tags: ["Ethics", "AI", "Creative", "Art"],
+//     category: "ethics",
+//     pinned: true,
+//     locked: false,
+//     trending: false,
+//     avatar: "ET",
+//     lastReply: {
+//       author: "David Kim",
+//       time: "1 hour ago"
+//     }
+//   },
+//   {
+//     id: 4,
+//     title: "Space exploration: Public vs Private sector",
+//     content: `With companies like SpaceX, Blue Origin, and others making huge strides in space technology, I'm curious about the community's thoughts on the balance between public and private space exploration.
+//
+// **Public Sector (NASA, ESA, etc.):**
+// - Focus on scientific research
+// - Long-term missions
+// - International collaboration
+// - Taxpayer funding
+//
+// **Private Sector:**
+// - Innovation and efficiency
+// - Commercial applications
+// - Faster development cycles
+// - Private investment
+//
+// What do you think is the right balance? Should space exploration be primarily public, private, or a mix of both?`,
+//     author: "James Wilson",
+//     date: "2024-01-12T11:20:00Z",
+//     votes: 167,
+//     replies: 45,
+//     views: 756,
+//     tags: ["Space", "Exploration", "Policy"],
+//     category: "space",
+//     pinned: false,
+//     locked: false,
+//     trending: false,
+//     avatar: "JW",
+//     lastReply: {
+//       author: "Lisa Chen",
+//       time: "3 hours ago"
+//     }
+//   },
+//   {
+//     id: 5,
+//     title: "Machine Learning in Healthcare: Miracle or Menace?",
+//     content: `ML is revolutionizing healthcare, but it comes with both incredible potential and serious risks.
+//
+// **Benefits:**
+// - Early disease detection
+// - Personalized treatment plans
+// - Drug discovery acceleration
+// - Medical imaging analysis
+//
+// **Risks:**
+// - Data privacy concerns
+// - Algorithmic bias
+// - Over-reliance on technology
+// - Regulatory challenges
+//
+// Where do you stand? Are you optimistic about ML in healthcare, or do you think we need to be more cautious?`,
+//     author: "Dr. Rachel Green",
+//     date: "2024-01-11T13:10:00Z",
+//     votes: 298,
+//     replies: 156,
+//     views: 1876,
+//     tags: ["Healthcare", "ML", "Ethics", "Medicine"],
+//     category: "healthcare",
+//     pinned: false,
+//     locked: false,
+//     trending: true,
+//     avatar: "RG",
+//     lastReply: {
+//       author: "Tom Anderson",
+//       time: "30 minutes ago"
+//     }
+//   }
+// ]
+//
+// const replies = [
+//   {
+//     id: 1,
+//     threadId: 1,
+//     author: "Alex Johnson",
+//     avatar: "AJ",
+//     content: "For me, it's definitely the progress in large language models. The way they can understand context and generate human-like responses is mind-blowing. I've been using them for coding assistance and they've saved me countless hours!",
+//     date: "2024-01-15T15:45:00Z",
+//     votes: 45,
+//     isReplyTo: null
+//   },
+//   {
+//     id: 2,
+//     threadId: 1,
+//     author: "Maria Garcia",
+//     avatar: "MG",
+//     content: "I'm excited about the advances in computer vision. The new models can understand complex scenes and even predict what might happen next. It's like we're giving computers the ability to 'see' and understand the world like humans do.",
+//     date: "2024-01-15T16:20:00Z",
+//     votes: 32,
+//     isReplyTo: null
+//   },
+//   {
+//     id: 3,
+//     threadId: 1,
+//     author: "David Kim",
+//     avatar: "DK",
+//     content: "@Alex Johnson I agree! The coding assistance has been revolutionary. I've found that LLMs are particularly good at explaining complex concepts and suggesting optimizations I wouldn't have thought of.",
+//     date: "2024-01-15T17:10:00Z",
+//     votes: 18,
+//     isReplyTo: 1
+//   },
+//   {
+//     id: 4,
+//     threadId: 1,
+//     author: "Lisa Chen",
+//     avatar: "LC",
+//     content: "What about reinforcement learning? The recent breakthroughs in training agents to master complex games and even real-world tasks are incredible. We're getting closer to general-purpose AI that can adapt to new situations.",
+//     date: "2024-01-15T18:30:00Z",
+//     votes: 27,
+//     isReplyTo: null
+//   }
+// ]
+//
+// const categories = [
+//   { id: 'all', name: 'All Categories', icon: Hash },
+//   { id: 'general', name: 'General', icon: MessageCircle },
+//   { id: 'technical', name: 'Technical', icon: Zap },
+//   { id: 'ethics', name: 'Ethics', icon: Star },
+//   { id: 'space', name: 'Space', icon: Rocket },
+//   { id: 'healthcare', name: 'Healthcare', icon: Users }
+// ]
+//
+// const DiscussionThreads = () => {
+//   const [selectedThread, setSelectedThread] = useState<typeof discussionThreads[0] | null>(null)
+//   const [searchTerm, setSearchTerm] = useState('')
+//   const [selectedCategory, setSelectedCategory] = useState('all')
+//   const [sortBy, setSortBy] = useState('trending')
+//   const [newReply, setNewReply] = useState('')
+//   const [userVotes, setUserVotes] = useState<Record<number, number>>({})
+//   const containerRef = useRef<HTMLDivElement>(null)
+//
+//   const { scrollYProgress } = useScroll({
+//     target: containerRef,
+//     offset: ["start start", "end end"]
+//   })
+//
+//   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
+//   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"])
+//
+//   const filteredThreads = discussionThreads.filter(thread => {
+//     const matchesSearch = thread.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+//                          thread.content.toLowerCase().includes(searchTerm.toLowerCase()) ||
+//                          thread.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+//     
+//     const matchesCategory = selectedCategory === 'all' || thread.category === selectedCategory
+//     
+//     return matchesSearch && matchesCategory
+//   })
+//
+//   const sortedThreads = [...filteredThreads].sort((a, b) => {
+//     if (sortBy === 'trending') {
+//       return (b.trending ? 1 : 0) - (a.trending ? 1 : 0) || b.votes - a.votes
+//     } else if (sortBy === 'recent') {
+//       return new Date(b.date).getTime() - new Date(a.date).getTime()
+//     } else if (sortBy === 'votes') {
+//       return b.votes - a.votes
+//     } else if (sortBy === 'replies') {
+//       return b.replies - a.replies
+//     }
+//     return 0
+//   })
+//
+//   const threadReplies = selectedThread ? replies.filter(reply => reply.threadId === selectedThread.id) : []
+//
+//   const handleVote = (threadId: number, voteType: 'up' | 'down') => {
+//     setUserVotes(prev => {
+//       const currentVote = prev[threadId] || 0
+//       if (currentVote === voteType ? 1 : -1) {
+//         // Remove vote
+//         const newVotes = { ...prev }
+//         delete newVotes[threadId]
+//         return newVotes
+//       } else {
+//         // Add or change vote
+//         return { ...prev, [threadId]: voteType === 'up' ? 1 : -1 }
+//       }
+//     })
+//   }
+//
+//   const handleReplyVote = (replyId: number, voteType: 'up' | 'down') => {
+//     // Similar logic for reply votes
+//     console.log('Reply vote:', replyId, voteType)
+//   }
+//
+//   const handleReply = () => {
+//     if (newReply.trim()) {
+//       // In a real app, this would submit to the backend
+//       console.log('New reply:', newReply)
+//       setNewReply('')
+//     }
+//   }
+//
+//   const formatTimeAgo = (dateString: string) => {
+//     const date = new Date(dateString)
+//     const now = new Date()
+//     const diffInHours = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60))
+//     
+//     if (diffInHours < 1) return 'Just now'
+//     if (diffInHours < 24) return `${diffInHours} hour${diffInHours > 1 ? 's' : ''} ago`
+//     const diffInDays = Math.floor(diffInHours / 24)
+//     return `${diffInDays} day${diffInDays > 1 ? 's' : ''} ago`
+//   }
+//
+//   if (selectedThread) {
+//     return (
+//       <div ref={containerRef} className="space-y-8">
+//         {/* Parallax Background */}
+//         <motion.div
+//           className="fixed inset-0 -z-10"
+//           style={{ y: backgroundY }}
+//         >
+//           <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 via-black/50 to-black"></div>
+//         </motion.div>
+//
+//         {/* Back Button */}
+//         <motion.div
+//           initial={{ opacity: 0, x: -30 }}
+//           animate={{ opacity: 1, x: 0 }}
+//           transition={{ duration: 0.5 }}
+//         >
+//           <Button
+//             variant="outline"
+//             onClick={() => setSelectedThread(null)}
+//             className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20"
+//           >
+//             <ArrowLeft className="w-4 h-4 mr-2" />
+//             Back to Discussions
+//           </Button>
+//         </motion.div>
+//
+//         {/* Thread Header */}
+//         <motion.div
+//           initial={{ opacity: 0, y: 30 }}
+//           animate={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.8 }}
+//           style={{ y: textY }}
+//         >
+//           <Card className="bg-black/30 border border-white/10 backdrop-blur-md">
+//             <CardHeader className="pb-6">
+//               <div className="flex items-start justify-between mb-4">
+//                 <div className="flex items-center space-x-3">
+//                   <Avatar className="w-12 h-12">
+//                     <AvatarFallback className="bg-purple-600 text-white">
+//                       {selectedThread.avatar}
+//                     </AvatarFallback>
+//                   </Avatar>
+//                   <div>
+//                     <div className="text-white font-semibold">{selectedThread.author}</div>
+//                     <div className="text-sm text-gray-400 flex items-center space-x-2">
+//                       <Calendar className="w-4 h-4" />
+//                       <span>{new Date(selectedThread.date).toLocaleDateString()}</span>
+//                       <Clock className="w-4 h-4 ml-2" />
+//                       <span>{formatTimeAgo(selectedThread.date)}</span>
+//                     </div>
+//                   </div>
+//                 </div>
+//                 
+//                 <div className="flex items-center space-x-2">
+//                   {selectedThread.pinned && (
+//                     <Badge className="bg-blue-600 text-white">
+//                       <Pin className="w-3 h-3 mr-1" />
+//                       Pinned
+//                     </Badge>
+//                   )}
+//                   {selectedThread.trending && (
+//                     <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white">
+//                       <Flame className="w-3 h-3 mr-1" />
+//                       Trending
+//                     </Badge>
+//                   )}
+//                   {selectedThread.locked && (
+//                     <Badge className="bg-gray-600 text-white">
+//                       <Lock className="w-3 h-3 mr-1" />
+//                       Locked
+//                     </Badge>
+//                   )}
+//                 </div>
+//               </div>
+//               
+//               <CardTitle className="text-2xl md:text-3xl font-bold text-white mb-4">
+//                 {selectedThread.title}
+//               </CardTitle>
+//               
+//               <div className="flex flex-wrap gap-2 mb-4">
+//                 {selectedThread.tags.map((tag) => (
+//                   <Badge 
+//                     key={tag} 
+//                     variant="outline" 
+//                     className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20"
+//                   >
+//                     {tag}
+//                   </Badge>
+//                 ))}
+//               </div>
+//               
+//               <div className="flex items-center space-x-6 text-sm text-gray-400">
+//                 <div className="flex items-center space-x-1">
+//                   <Eye className="w-4 h-4" />
+//                   <span>{selectedThread.views.toLocaleString()} views</span>
+//                 </div>
+//                 <div className="flex items-center space-x-1">
+//                   <MessageCircle className="w-4 h-4" />
+//                   <span>{selectedThread.replies} replies</span>
+//                 </div>
+//                 <div className="flex items-center space-x-1">
+//                   <Users className="w-4 h-4" />
+//                   <span>{selectedThread.votes} votes</span>
+//                 </div>
+//               </div>
+//             </CardHeader>
+//             
+//             <CardContent className="p-6 pt-0">
+//               <div className="prose prose-invert max-w-none">
+//                 <div className="text-gray-300 leading-relaxed whitespace-pre-line">
+//                   {selectedThread.content}
+//                 </div>
+//               </div>
+//               
+//               <div className="flex items-center space-x-4 mt-6">
+//                 <div className="flex items-center space-x-2">
+//                   <Button
+//                     variant="outline"
+//                     size="sm"
+//                     onClick={() => handleVote(selectedThread.id, 'up')}
+//                     className={`border-purple-500/50 ${
+//                       userVotes[selectedThread.id] === 1 
+//                         ? 'bg-purple-600/20 text-purple-400' 
+//                         : 'text-purple-400 hover:bg-purple-500/20'
+//                     }`}
+//                   >
+//                     <ArrowUp className="w-4 h-4" />
+//                   </Button>
+//                   <span className="text-white font-medium min-w-[2rem] text-center">
+//                     {selectedThread.votes + (userVotes[selectedThread.id] || 0)}
+//                   </span>
+//                   <Button
+//                     variant="outline"
+//                     size="sm"
+//                     onClick={() => handleVote(selectedThread.id, 'down')}
+//                     className={`border-purple-500/50 ${
+//                       userVotes[selectedThread.id] === -1 
+//                         ? 'bg-purple-600/20 text-purple-400' 
+//                         : 'text-purple-400 hover:bg-purple-500/20'
+//                     }`}
+//                   >
+//                     <ArrowDown className="w-4 h-4" />
+//                   </Button>
+//                 </div>
+//                 
+//                 <Button variant="outline" className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20">
+//                   <Share className="w-4 h-4 mr-2" />
+//                   Share
+//                 </Button>
+//                 
+//                 <Button variant="outline" className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20">
+//                   <Bookmark className="w-4 h-4 mr-2" />
+//                   Save
+//                 </Button>
+//               </div>
+//             </CardContent>
+//           </Card>
+//         </motion.div>
+//
+//         {/* Replies Section */}
+//         <motion.div
+//           initial={{ opacity: 0, y: 30 }}
+//           animate={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.8, delay: 0.2 }}
+//           className="space-y-6"
+//         >
+//           <div className="flex items-center justify-between">
+//             <h2 className="text-2xl font-bold text-white">
+//               Replies ({threadReplies.length})
+//             </h2>
+//             <select className="bg-black/30 border border-white/10 text-white px-3 py-2 rounded-lg focus:border-purple-500/50">
+//               <option>Best</option>
+//               <option>Most Recent</option>
+//               <option>Most Votes</option>
+//             </select>
+//           </div>
+//
+//           {/* Reply Input */}
+//           {!selectedThread.locked && (
+//             <Card className="bg-black/30 border border-white/10">
+//               <CardContent className="p-6">
+//                 <div className="space-y-4">
+//                   <Textarea
+//                     placeholder="Share your thoughts..."
+//                     value={newReply}
+//                     onChange={(e) => setNewReply(e.target.value)}
+//                     className="bg-black/30 border-white/10 text-white placeholder-gray-400 focus:border-purple-500/50"
+//                     rows={4}
+//                   />
+//                   <div className="flex items-center justify-between">
+//                     <div className="text-sm text-gray-400">
+//                       Be respectful and constructive
+//                     </div>
+//                     <Button
+//                       onClick={handleReply}
+//                       className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
+//                     >
+//                       Post Reply
+//                     </Button>
+//                   </div>
+//                 </div>
+//               </CardContent>
+//             </Card>
+//           )}
+//
+//           {/* Replies List */}
+//           <div className="space-y-4">
+//             {threadReplies.map((reply, index) => (
+//               <motion.div
+//                 key={reply.id}
+//                 initial={{ opacity: 0, y: 30 }}
+//                 animate={{ opacity: 1, y: 0 }}
+//                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+//                 className="relative"
+//               >
+//                 {reply.isReplyTo && (
+//                   <div className="absolute left-8 top-0 bottom-0 w-px bg-purple-500/30"></div>
+//                 )}
+//                 
+//                 <Card className="bg-black/30 border border-white/10 hover:border-purple-500/50 transition-all duration-300">
+//                   <CardContent className="p-6">
+//                     <div className="flex items-start space-x-4">
+//                       <Avatar className="w-10 h-10">
+//                         <AvatarFallback className="bg-purple-600 text-white">
+//                           {reply.avatar}
+//                         </AvatarFallback>
+//                       </Avatar>
+//                       
+//                       <div className="flex-1">
+//                         <div className="flex items-center justify-between mb-2">
+//                           <div className="flex items-center space-x-2">
+//                             <span className="text-white font-semibold">{reply.author}</span>
+//                             <span className="text-sm text-gray-400">
+//                               {formatTimeAgo(reply.date)}
+//                             </span>
+//                           </div>
+//                           
+//                           <div className="flex items-center space-x-2">
+//                             <Button
+//                               variant="ghost"
+//                               size="sm"
+//                               onClick={() => handleReplyVote(reply.id, 'up')}
+//                               className="text-purple-400 hover:text-purple-300"
+//                             >
+//                               <ArrowUp className="w-4 h-4" />
+//                             </Button>
+//                             <span className="text-white text-sm min-w-[1rem] text-center">
+//                               {reply.votes}
+//                             </span>
+//                             <Button
+//                               variant="ghost"
+//                               size="sm"
+//                               onClick={() => handleReplyVote(reply.id, 'down')}
+//                               className="text-purple-400 hover:text-purple-300"
+//                             >
+//                               <ArrowDown className="w-4 h-4" />
+//                             </Button>
+//                           </div>
+//                         </div>
+//                         
+//                         <div className="text-gray-300 mb-4">
+//                           {reply.content}
+//                         </div>
+//                         
+//                         <div className="flex items-center space-x-4 text-sm">
+//                           <Button variant="ghost" size="sm" className="text-purple-400 hover:text-purple-300">
+//                             Reply
+//                           </Button>
+//                           <Button variant="ghost" size="sm" className="text-purple-400 hover:text-purple-300">
+//                             Share
+//                           </Button>
+//                         </div>
+//                       </div>
+//                     </div>
+//                   </CardContent>
+//                 </Card>
+//               </motion.div>
+//             ))}
+//           </div>
+//         </motion.div>
+//       </div>
+//     )
+//   }
+//
+//   return (
+//     <div ref={containerRef} className="space-y-8">
+//       {/* Parallax Background */}
+//       <motion.div
+//         className="fixed inset-0 -z-10"
+//         style={{ y: backgroundY }}
+//       >
+//         <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 via-black/50 to-black"></div>
+//       </motion.div>
+//
+//       {/* Header */}
+//       <motion.div
+//         initial={{ opacity: 0, y: 30 }}
+//         animate={{ opacity: 1, y: 0 }}
+//         transition={{ duration: 0.8 }}
+//         style={{ y: textY }}
+//         className="text-center"
+//       >
+//         <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+//           Discussion Threads
+//         </h1>
+//         <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+//           Join the cosmic conversation with thinkers, innovators, and dreamers from around the world
+//         </p>
+//       </motion.div>
+//
+//       {/* Search and Filter */}
+//       <motion.div
+//         initial={{ opacity: 0, y: 30 }}
+//         animate={{ opacity: 1, y: 0 }}
+//         transition={{ duration: 0.8, delay: 0.2 }}
+//         className="flex flex-col lg:flex-row gap-4 items-center"
+//       >
+//         <div className="relative flex-1 w-full">
+//           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+//           <Input
+//             placeholder="Search discussions..."
+//             value={searchTerm}
+//             onChange={(e) => setSearchTerm(e.target.value)}
+//             className="pl-10 bg-black/30 border-white/10 text-white placeholder-gray-400 focus:border-purple-500/50"
+//           />
+//         </div>
+//         
+//         <div className="flex gap-2 flex-wrap">
+//           <select
+//             value={selectedCategory}
+//             onChange={(e) => setSelectedCategory(e.target.value)}
+//             className="bg-black/30 border border-white/10 text-white px-3 py-2 rounded-lg focus:border-purple-500/50"
+//           >
+//             {categories.map(category => (
+//               <option key={category.id} value={category.id}>{category.name}</option>
+//             ))}
+//           </select>
+//           
+//           <select
+//             value={sortBy}
+//             onChange={(e) => setSortBy(e.target.value)}
+//             className="bg-black/30 border border-white/10 text-white px-3 py-2 rounded-lg focus:border-purple-500/50"
+//           >
+//             <option value="trending">Trending</option>
+//             <option value="recent">Most Recent</option>
+//             <option value="votes">Most Votes</option>
+//             <option value="replies">Most Replies</option>
+//           </select>
+//         </div>
+//         
+//         <Button
+//           className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-6 py-3"
+//         >
+//           <Plus className="w-5 h-5 mr-2" />
+//           New Discussion
+//         </Button>
+//       </motion.div>
+//
+//       {/* Stats */}
+//       <motion.div
+//         initial={{ opacity: 0, y: 30 }}
+//         animate={{ opacity: 1, y: 0 }}
+//         transition={{ duration: 0.8, delay: 0.3 }}
+//         className="grid grid-cols-2 md:grid-cols-4 gap-4"
+//       >
+//         <div className="bg-black/30 border border-white/10 rounded-lg p-4 text-center">
+//           <div className="text-2xl font-bold text-purple-400">{discussionThreads.length}</div>
+//           <div className="text-sm text-gray-400">Total Threads</div>
+//         </div>
+//         <div className="bg-black/30 border border-white/10 rounded-lg p-4 text-center">
+//           <div className="text-2xl font-bold text-blue-400">
+//             {discussionThreads.reduce((sum, thread) => sum + thread.replies, 0)}
+//           </div>
+//           <div className="text-sm text-gray-400">Total Replies</div>
+//         </div>
+//         <div className="bg-black/30 border border-white/10 rounded-lg p-4 text-center">
+//           <div className="text-2xl font-bold text-pink-400">
+//             {discussionThreads.filter(t => t.trending).length}
+//           </div>
+//           <div className="text-sm text-gray-400">Trending</div>
+//         </div>
+//         <div className="bg-black/30 border border-white/10 rounded-lg p-4 text-center">
+//           <div className="text-2xl font-bold text-yellow-400">
+//             {discussionThreads.filter(t => t.pinned).length}
+//           </div>
+//           <div className="text-sm text-gray-400">Pinned</div>
+//         </div>
+//       </motion.div>
+//
+//       {/* Pinned Threads */}
+//       {sortedThreads.filter(t => t.pinned).length > 0 && (
+//         <motion.div
+//           initial={{ opacity: 0, y: 30 }}
+//           animate={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.8, delay: 0.4 }}
+//           className="space-y-4"
+//         >
+//           <h2 className="text-2xl font-bold text-white flex items-center">
+//             <Pin className="w-6 h-6 mr-2 text-blue-400" />
+//             Pinned Discussions
+//           </h2>
+//           
+//           {sortedThreads.filter(t => t.pinned).map((thread, index) => (
+//             <motion.div
+//               key={thread.id}
+//               initial={{ opacity: 0, x: -30 }}
+//               animate={{ opacity: 1, x: 0 }}
+//               transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+//               whileHover={{ 
+//                 scale: 1.02,
+//                 boxShadow: "0 10px 30px rgba(139, 92, 246, 0.2)"
+//               }}
+//               className="cursor-pointer"
+//               onClick={() => setSelectedThread(thread)}
+//             >
+//               <Card className="bg-black/30 border border-white/10 hover:border-purple-500/50 transition-all duration-300">
+//                 <CardContent className="p-6">
+//                   <div className="flex items-start space-x-4">
+//                     <div className="flex flex-col items-center space-y-2">
+//                       <Button
+//                         variant="ghost"
+//                         size="sm"
+//                         onClick={(e) => {
+//                           e.stopPropagation()
+//                           handleVote(thread.id, 'up')
+//                         }}
+//                         className={`p-1 ${
+//                           userVotes[thread.id] === 1 
+//                             ? 'text-purple-400' 
+//                             : 'text-gray-400 hover:text-purple-400'
+//                         }`}
+//                       >
+//                         <ArrowUp className="w-4 h-4" />
+//                       </Button>
+//                       <span className="text-white font-medium text-sm min-w-[2rem] text-center">
+//                         {thread.votes + (userVotes[thread.id] || 0)}
+//                       </span>
+//                       <Button
+//                         variant="ghost"
+//                         size="sm"
+//                         onClick={(e) => {
+//                           e.stopPropagation()
+//                           handleVote(thread.id, 'down')
+//                         }}
+//                         className={`p-1 ${
+//                           userVotes[thread.id] === -1 
+//                             ? 'text-purple-400' 
+//                             : 'text-gray-400 hover:text-purple-400'
+//                         }`}
+//                       >
+//                         <ArrowDown className="w-4 h-4" />
+//                       </Button>
+//                     </div>
+//                     
+//                     <div className="flex-1">
+//                       <div className="flex items-center space-x-2 mb-2">
+//                         <Badge className="bg-blue-600 text-white">
+//                           <Pin className="w-3 h-3 mr-1" />
+//                           Pinned
+//                         </Badge>
+//                         {thread.trending && (
+//                           <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white">
+//                             <Flame className="w-3 h-3 mr-1" />
+//                             Trending
+//                           </Badge>
+//                         )}
+//                         {thread.locked && (
+//                           <Badge className="bg-gray-600 text-white">
+//                             <Lock className="w-3 h-3 mr-1" />
+//                             Locked
+//                           </Badge>
+//                         )}
+//                       </div>
+//                       
+//                       <h3 className="text-lg font-bold text-white mb-2 hover:text-purple-400 transition-colors duration-300">
+//                         {thread.title}
+//                       </h3>
+//                       <p className="text-gray-300 text-sm mb-4 line-clamp-2">
+//                         {thread.content}
+//                       </p>
+//                       
+//                       <div className="flex items-center justify-between">
+//                         <div className="flex items-center space-x-4 text-sm text-gray-400">
+//                           <div className="flex items-center space-x-1">
+//                             <MessageCircle className="w-4 h-4" />
+//                             <span>{thread.replies} replies</span>
+//                           </div>
+//                           <div className="flex items-center space-x-1">
+//                             <Eye className="w-4 h-4" />
+//                             <span>{thread.views.toLocaleString()} views</span>
+//                           </div>
+//                           <div className="flex items-center space-x-1">
+//                             <Clock className="w-4 h-4" />
+//                             <span>{formatTimeAgo(thread.date)}</span>
+//                           </div>
+//                         </div>
+//                         
+//                         <div className="flex items-center space-x-2">
+//                           <Avatar className="w-6 h-6">
+//                             <AvatarFallback className="bg-purple-600 text-white text-xs">
+//                               {thread.avatar}
+//                             </AvatarFallback>
+//                           </Avatar>
+//                           <span className="text-sm text-white">{thread.author}</span>
+//                         </div>
+//                       </div>
+//                       
+//                       <div className="flex flex-wrap gap-2 mt-4">
+//                         {thread.tags.map((tag) => (
+//                           <Badge 
+//                             key={tag} 
+//                             variant="outline" 
+//                             className="text-xs border-purple-500/50 text-purple-400 hover:bg-purple-500/20"
+//                           >
+//                             {tag}
+//                           </Badge>
+//                         ))}
+//                       </div>
+//                     </div>
+//                   </div>
+//                 </CardContent>
+//               </Card>
+//             </motion.div>
+//           ))}
+//         </motion.div>
+//       )}
+//
+//       {/* All Threads */}
+//       <motion.div
+//         initial={{ opacity: 0, y: 30 }}
+//         animate={{ opacity: 1, y: 0 }}
+//         transition={{ duration: 0.8, delay: 0.6 }}
+//         className="space-y-4"
+//       >
+//         <h2 className="text-2xl font-bold text-white">All Discussions</h2>
+//         
+//         <div className="space-y-4">
+//           {sortedThreads.filter(t => !t.pinned).map((thread, index) => (
+//             <motion.div
+//               key={thread.id}
+//               initial={{ opacity: 0, x: -30 }}
+//               animate={{ opacity: 1, x: 0 }}
+//               transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+//               whileHover={{ 
+//                 scale: 1.01,
+//                 boxShadow: "0 10px 30px rgba(139, 92, 246, 0.2)"
+//               }}
+//               className="cursor-pointer"
+//               onClick={() => setSelectedThread(thread)}
+//             >
+//               <Card className="bg-black/30 border border-white/10 hover:border-purple-500/50 transition-all duration-300">
+//                 <CardContent className="p-6">
+//                   <div className="flex items-start space-x-4">
+//                     <div className="flex flex-col items-center space-y-2">
+//                       <Button
+//                         variant="ghost"
+//                         size="sm"
+//                         onClick={(e) => {
+//                           e.stopPropagation()
+//                           handleVote(thread.id, 'up')
+//                         }}
+//                         className={`p-1 ${
+//                           userVotes[thread.id] === 1 
+//                             ? 'text-purple-400' 
+//                             : 'text-gray-400 hover:text-purple-400'
+//                         }`}
+//                       >
+//                         <ArrowUp className="w-4 h-4" />
+//                       </Button>
+//                       <span className="text-white font-medium text-sm min-w-[2rem] text-center">
+//                         {thread.votes + (userVotes[thread.id] || 0)}
+//                       </span>
+//                       <Button
+//                         variant="ghost"
+//                         size="sm"
+//                         onClick={(e) => {
+//                           e.stopPropagation()
+//                           handleVote(thread.id, 'down')
+//                         }}
+//                         className={`p-1 ${
+//                           userVotes[thread.id] === -1 
+//                             ? 'text-purple-400' 
+//                             : 'text-gray-400 hover:text-purple-400'
+//                         }`}
+//                       >
+//                         <ArrowDown className="w-4 h-4" />
+//                       </Button>
+//                     </div>
+//                     
+//                     <div className="flex-1">
+//                       <div className="flex items-center space-x-2 mb-2">
+//                         {thread.trending && (
+//                           <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white">
+//                             <Flame className="w-3 h-3 mr-1" />
+//                             Trending
+//                           </Badge>
+//                         )}
+//                         {thread.locked && (
+//                           <Badge className="bg-gray-600 text-white">
+//                             <Lock className="w-3 h-3 mr-1" />
+//                             Locked
+//                           </Badge>
+//                         )}
+//                       </div>
+//                       
+//                       <h3 className="text-lg font-bold text-white mb-2 hover:text-purple-400 transition-colors duration-300">
+//                         {thread.title}
+//                       </h3>
+//                       <p className="text-gray-300 text-sm mb-4 line-clamp-2">
+//                         {thread.content}
+//                       </p>
+//                       
+//                       <div className="flex items-center justify-between">
+//                         <div className="flex items-center space-x-4 text-sm text-gray-400">
+//                           <div className="flex items-center space-x-1">
+//                             <MessageCircle className="w-4 h-4" />
+//                             <span>{thread.replies} replies</span>
+//                           </div>
+//                           <div className="flex items-center space-x-1">
+//                             <Eye className="w-4 h-4" />
+//                             <span>{thread.views.toLocaleString()} views</span>
+//                           </div>
+//                           <div className="flex items-center space-x-1">
+//                             <Clock className="w-4 h-4" />
+//                             <span>{formatTimeAgo(thread.date)}</span>
+//                           </div>
+//                         </div>
+//                         
+//                         <div className="flex items-center space-x-2">
+//                           <Avatar className="w-6 h-6">
+//                             <AvatarFallback className="bg-purple-600 text-white text-xs">
+//                               {thread.avatar}
+//                             </AvatarFallback>
+//                           </Avatar>
+//                           <span className="text-sm text-white">{thread.author}</span>
+//                         </div>
+//                       </div>
+//                       
+//                       <div className="flex flex-wrap gap-2 mt-4">
+//                         {thread.tags.map((tag) => (
+//                           <Badge 
+//                             key={tag} 
+//                             variant="outline" 
+//                             className="text-xs border-purple-500/50 text-purple-400 hover:bg-purple-500/20"
+//                           >
+//                             {tag}
+//                           </Badge>
+//                         ))}
+//                       </div>
+//                     </div>
+//                   </div>
+//                 </CardContent>
+//               </Card>
+//             </motion.div>
+//           ))}
+//         </div>
+//       </motion.div>
+//
+//       {/* Empty State */}
+//       {sortedThreads.length === 0 && (
+//         <motion.div
+//           initial={{ opacity: 0, y: 30 }}
+//           animate={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.8 }}
+//           className="text-center py-16"
+//         >
+//           <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center">
+//             <MessageCircle className="w-12 h-12 text-white" />
+//           </div>
+//           <h3 className="text-2xl font-bold text-white mb-4">No Discussions Found</h3>
+//           <p className="text-gray-400 mb-6">
+//             We couldn't find any discussions matching your search. Try adjusting your filters or search terms.
+//           </p>
+//           <Button 
+//             onClick={() => {
+//               setSearchTerm('')
+//               setSelectedCategory('all')
+//             }}
+//             className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-6 py-3"
+//           >
+//             Clear Filters
+//           </Button>
+//         </motion.div>
+//       )}
+//     </div>
+//   )
+// }
+//
+// export default DiscussionThreads

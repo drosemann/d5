@@ -1,0 +1,22 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\database\action\DatabaseListTables.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE DatabaseListTables_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\database\action\DatabaseListTables.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\database\action\DatabaseListTables.java), unveraendert, als Inline-Doku ----
+# package net.anweisen.utilities.database.action;
+#
+# import java.util.List;
+# import javax.annotation.Nonnull;
+# import net.anweisen.utilities.database.exceptions.DatabaseException;
+#
+# public interface DatabaseListTables extends DatabaseAction {
+#    @Nonnull
+#    List execute() throws DatabaseException;
+# }
+#

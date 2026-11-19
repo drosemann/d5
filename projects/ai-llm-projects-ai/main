@@ -1,0 +1,24 @@
+# Beispiel einer AI für Hauspreisvorhersagen
+
+# Importieren von notwendigen Bibliotheken
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+
+# Laden der Daten in einen Pandas DataFrame
+data = pd.read_csv("hauspreise.csv")
+
+# Trennen der Daten in Eingabefeaturen (X) und Zielvariablen (y)
+X = data[['Größe', 'Zimmer', 'Baujahr', 'Entfernung zum Stadtzentrum']]
+y = data['Preis']
+
+# Trennen der Daten in Trainings- und Testdaten
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Erstellen eines Linear Regression Modells
+model = LinearRegression()
+
+# Trainieren des Modells mit den Trainingsdaten
+model.fit(X_train, y_train)
+
+# Vorhersagen mit dem Modell auf den Testdaten

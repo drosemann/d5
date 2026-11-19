@@ -1,0 +1,15 @@
+﻿# Zimbu-Port-Spiegel von: projects\learning-projects-python-programming\old\1+2.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE M_1_2_py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\learning-projects-python-programming\old\1+2.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\learning-projects-python-programming\old\1+2.py), unveraendert, als Inline-Doku ----
+# num1 = 1
+# num2 = 2
+# add = num1 + num2
+# print("The sum of num1 and num2 is", add)

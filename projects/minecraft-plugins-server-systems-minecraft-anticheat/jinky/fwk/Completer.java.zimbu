@@ -1,0 +1,26 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-plugins-server-systems-minecraft-anticheat\jinky\fwk\Completer.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE Completer_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-plugins-server-systems-minecraft-anticheat\jinky\fwk\Completer.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-plugins-server-systems-minecraft-anticheat\jinky\fwk\Completer.java), unveraendert, als Inline-Doku ----
+# package me.jinky.fwk;
+#
+# import java.lang.annotation.ElementType;
+# import java.lang.annotation.Retention;
+# import java.lang.annotation.RetentionPolicy;
+# import java.lang.annotation.Target;
+#
+# @Target({ElementType.METHOD})
+# @Retention(RetentionPolicy.RUNTIME)
+# public @interface Completer {
+#    String name();
+#
+#    String[] aliases() default {};
+# }
+#

@@ -1,0 +1,27 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-goose-desktop-companion\goose-ui-python\main.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE main_py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-goose-desktop-companion\goose-ui-python\main.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-goose-desktop-companion\goose-ui-python\main.py), unveraendert, als Inline-Doku ----
+# """
+# Goose Desktop Companion - Entry Point
+# """
+#
+# import sys
+# from pathlib import Path
+#
+# # Add src to path
+# sys.path.insert(0, str(Path(__file__).parent / "src"))
+#
+# from app import main
+#
+#
+# if __name__ == "__main__":
+#     sys.exit(main())
+#

@@ -1,0 +1,46 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-infra-pilot\services\management-panel\src\components\accessibility\Announcements.tsx
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE Announcements_tsx
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-infra-pilot\services\management-panel\src\components\accessibility\Announcements.tsx\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-infra-pilot\services\management-panel\src\components\accessibility\Announcements.tsx), unveraendert, als Inline-Doku ----
+# import { useEffect, useState } from 'react';
+#
+# let announcementQueue: string[] = [];
+# let listener: ((msg: string) => void) | null = null;
+#
+# export function announce(message: string) {
+#   if (listener) {
+#     listener(message);
+#   } else {
+#     announcementQueue.push(message);
+#   }
+# }
+#
+# export const Announcements = () => {
+#   const [message, setMessage] = useState('');
+#
+#   useEffect(() => {
+#     listener = setMessage;
+#     announcementQueue.forEach((m) => setMessage(m));
+#     announcementQueue = [];
+#     return () => { listener = null; };
+#   }, []);
+#
+#   return (
+#     <div
+#       role="status"
+#       aria-live="polite"
+#       aria-atomic="true"
+#       className="sr-only"
+#     >
+#       {message}
+#     </div>
+#   );
+# };
+#

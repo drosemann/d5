@@ -1,0 +1,39 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-open-world-minigame\npc\npc.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE npc_py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-open-world-minigame\npc\npc.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-open-world-minigame\npc\npc.py), unveraendert, als Inline-Doku ----
+# class NPC:
+#     def __init__(self, name, role, dialogue):
+#         # Initialize the NPC with a name, role, and dialogue
+#         self.name = name
+#         self.role = role  # Role could be 'quest-giver', 'shopkeeper', 'lore', etc.
+#         self.dialogue = dialogue  # Dialogue options for the NPC
+#         self.quests = []  # List to hold quests offered by the NPC
+#
+#     def add_quest(self, quest):
+#         # Add a quest to the NPC's list of quests
+#         self.quests.append(quest)
+#
+#     def interact(self):
+#         # Display the NPC's dialogue
+#         print(f"{self.name} ({self.role}): {self.dialogue}")
+#
+#     def show_quests(self):
+#         # Show available quests from the NPC
+#         if self.quests:
+#             print(f"{self.name} has the following quests:")
+#             for quest in self.quests:
+#                 print(f"- {quest.title}: {quest.description}")
+#         else:
+#             print(f"{self.name} has no quests available.")
+#
+#     def sell_item(self, item, price):
+#         # Simulate selling an item
+#         print(f"{self.name} sells {item} for {price} gold.") 

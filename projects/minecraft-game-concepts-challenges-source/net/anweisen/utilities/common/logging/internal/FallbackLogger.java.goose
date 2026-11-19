@@ -1,0 +1,72 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/common/logging/internal/FallbackLogger.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/common/logging/internal/FallbackLogger.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/common/logging/internal/FallbackLogger.java), unveraendert, als Inline-Doku ----
+// package net.anweisen.utilities.common.logging.internal;
+//
+// import java.io.PrintStream;
+// import java.time.OffsetDateTime;
+// import java.time.format.DateTimeFormatter;
+// import javax.annotation.CheckReturnValue;
+// import javax.annotation.Nonnull;
+// import javax.annotation.Nullable;
+// import net.anweisen.utilities.common.logging.ILogger;
+// import net.anweisen.utilities.common.logging.LogLevel;
+//
+// public class FallbackLogger implements ILogger {
+//    protected final PrintStream stream;
+//    protected final String name;
+//    protected LogLevel level;
+//
+//    public FallbackLogger(@Nullable String name) {
+//       this.stream = System.err;
+//       this.level = LogLevel.INFO;
+//       this.name = name;
+//    }
+//
+//    public FallbackLogger() {
+//       this((String)null);
+//    }
+//
+//    public void log(@Nonnull LogLevel level, @Nullable String message, @Nonnull Object... args) {
+//       if (this.isLevelEnabled(level)) {
+//          this.stream.println(getLogMessage(level, ILogger.formatMessage(message, args), this.name));
+//          Object[] var4 = args;
+//          int var5 = args.length;
+//
+//          for(int var6 = 0; var6 < var5; ++var6) {
+//             Object arg = var4[var6];
+//             if (arg instanceof Throwable) {
+//                ((Throwable)arg).printStackTrace(this.stream);
+//             }
+//          }
+//
+//       }
+//    }
+//
+//    @Nonnull
+//    public FallbackLogger setMinLevel(@Nonnull LogLevel level) {
+//       this.level = level;
+//       return this;
+//    }
+//
+//    @Nonnull
+//    public LogLevel getMinLevel() {
+//       return this.level;
+//    }
+//
+//    @Nonnull
+//    @CheckReturnValue
+//    public static String getLogMessage(@Nonnull LogLevel level, @Nonnull String message, @Nullable String name) {
+//       Thread thread = Thread.currentThread();
+//       String threadName = thread.getName();
+//       String time = OffsetDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss.SSS"));
+//       return name == null ? String.format("[%s: %s/%s]: %s", time, threadName, level.getUpperCaseName(), message) : String.format("[%s: %s/%s] %s: %s", time, threadName, level.getUpperCaseName(), name, message);
+//    }
+// }
+//

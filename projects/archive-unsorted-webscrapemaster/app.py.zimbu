@@ -1,0 +1,23 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-webscrapemaster\app.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE app_py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-webscrapemaster\app.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-webscrapemaster\app.py), unveraendert, als Inline-Doku ----
+# from flask import Flask, request, jsonify
+#
+# app = Flask(__name__)
+#
+# @app.route('/submit-url', methods=['POST'])
+# def submit_url():
+#     url = request.json.get('url')
+#     # Placeholder for URL processing logic
+#     return jsonify({'message': 'URL received', 'url': url})
+#
+# if __name__ == '__main__':
+#     app.run(debug=True)

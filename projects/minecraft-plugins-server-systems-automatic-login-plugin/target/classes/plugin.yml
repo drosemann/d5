@@ -1,0 +1,15 @@
+name: SessionLockPlugin
+version: 1.0.0
+api-version: 1.21.10
+main: com.example.sessionlock.SessionLockPlugin
+description: Automatic login with session lock based on IP address
+authors:
+  - YourName
+
+commands:
+  login:
+    description: Login to your account
+    usage: /<command>
+  register:
+    description: Register a new account
+    usage: /<command> <password> <password>

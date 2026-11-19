@@ -1,0 +1,25 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-webscrapemaster\scheduler.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE scheduler_py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-webscrapemaster\scheduler.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-webscrapemaster\scheduler.py), unveraendert, als Inline-Doku ----
+# # scheduler.py
+# # This module handles scheduling scraping tasks at specific intervals or times.
+#
+# import schedule
+# import time
+#
+# def schedule_scraping(task, interval):
+#     # Schedule the scraping task
+#     schedule.every(interval).minutes.do(task)
+#
+#     while True:
+#         schedule.run_pending()
+#         time.sleep(1)
+#

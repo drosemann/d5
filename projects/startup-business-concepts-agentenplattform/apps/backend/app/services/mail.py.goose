@@ -1,0 +1,34 @@
+﻿// Goose-Port-Spiegel von: projects/startup-business-concepts-agentenplattform/apps/backend/app/services/mail.py
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/startup-business-concepts-agentenplattform/apps/backend/app/services/mail.py");
+}
+
+// ---- Original-Code (projects/startup-business-concepts-agentenplattform/apps/backend/app/services/mail.py), unveraendert, als Inline-Doku ----
+// """E-Mail-Eingang: ein Postfach, Absenderprüfung, Demo-/Testmodus."""
+// import re
+// from app.core.config import settings
+//
+// def normalisiere_absender(raw: str) -> str:
+//     """Schützt vor Anzeigenamen-Tricks: nutzt letzte <addr> bzw. plain."""
+//     m = re.search(r"<([^>]+)>", raw or "")
+//     addr = (m.group(1) if m else (raw or "")).strip().lower()
+//     return addr
+//
+// def absender_erlaubt(raw_from: str) -> bool:
+//     return normalisiere_absender(raw_from) == settings.allowed_email_sender.lower()
+//
+// def praefix_erkennen(betreff: str, text: str) -> str | None:
+//     """Explizite Präfixe wie @finance, @youtube, @planner."""
+//     for p in ["@finance", "@youtube", "@planner", "@safety", "@health"]:
+//         if p in (betreff + " " + text).lower(): return p.lstrip("@")
+//     return None
+//
+// def anhang_geprueft(dateiname: str, groesse: int, erlaube=("pdf","csv","png","jpg","txt","json")) -> tuple[bool,str]:
+//     end = dateiname.rsplit(".",1)[-1].lower() if "." in dateiname else ""
+//     if end not in erlaube: return False, f"Dateityp .{end} abgelehnt"
+//     if groesse > 15*1024*1024: return False, "Anhang zu groß (max. 15 MB)"
+//     return True, "ok"
+//

@@ -1,0 +1,61 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-plugins-server-systems-voicechat/src/main/java/me/org/Voicechatstatus.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-plugins-server-systems-voicechat/src/main/java/me/org/Voicechatstatus.java");
+}
+
+// ---- Original-Code (projects/minecraft-plugins-server-systems-voicechat/src/main/java/me/org/Voicechatstatus.java), unveraendert, als Inline-Doku ----
+// import org.bukkit.Bukkit;
+// import org.bukkit.ChatColor;
+// import org.bukkit.command.Command;
+// import org.bukkit.command.CommandSender;
+// import org.bukkit.entity.Player;
+// import org.bukkit.event.EventHandler;
+// import org.bukkit.event.Listener;
+// import org.bukkit.event.player.AsyncPlayerChatEvent;
+// import org.bukkit.plugin.java.JavaPlugin;
+//
+// import java.util.HashMap;
+// import java.util.Map;
+//
+// public class VoiceChatPlugin extends JavaPlugin implements Listener {
+//
+//     // Map to store players in voice chat
+//     private Map<Player, Boolean> voiceChatPlayers = new HashMap<>();
+//
+//     @Override
+//     public void onEnable() {
+//         // Register this class as a listener
+//         Bukkit.getPluginManager().registerEvents(this, this);
+//     }
+//
+//     @Override
+//     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+//         if (command.getName().equalsIgnoreCase("voicechat")) {
+//             // Check if the sender is a player
+//             if (sender instanceof Player) {
+//                 Player player = (Player) sender;
+//                 // Toggle the player's voice chat status
+//                 if (voiceChatPlayers.containsKey(player)) {
+//                     voiceChatPlayers.put(player, !voiceChatPlayers.get(player));
+//                 } else {
+//                     voiceChatPlayers.put(player, true);
+//                 }
+//                 player.sendMessage(ChatColor.GOLD + "Voice chat is now " + (voiceChatPlayers.get(player) ? "enabled" : "disabled") + ".");
+//                 return true;
+//             }
+//         }
+//         return false;
+//     }
+//
+//     @EventHandler
+//     public void onPlayerChat(AsyncPlayerChatEvent event) {
+//         Player player = event.getPlayer();
+//         // Check if the player is in voice chat
+//         if (voiceChatPlayers.containsKey(player) && voiceChatPlayers.get(player)) {
+//             event.setFormat(ChatColor.GOLD + "[Voice Chat] " + event.getFormat());
+//         }
+//     }
+// }

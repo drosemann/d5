@@ -1,0 +1,109 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/management/menu/generator/implementation/custom/MainCustomMenuGenerator.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/management/menu/generator/implementation/custom/MainCustomMenuGenerator.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/management/menu/generator/implementation/custom/MainCustomMenuGenerator.java), unveraendert, als Inline-Doku ----
+// package net.codingarea.challenges.plugin.management.menu.generator.implementation.custom;
+//
+// import javax.annotation.Nonnull;
+// import net.anweisen.utilities.bukkit.utils.animation.SoundSample;
+// import net.anweisen.utilities.bukkit.utils.menu.MenuClickInfo;
+// import net.codingarea.challenges.plugin.Challenges;
+// import net.codingarea.challenges.plugin.challenges.custom.CustomChallenge;
+// import net.codingarea.challenges.plugin.challenges.type.IChallenge;
+// import net.codingarea.challenges.plugin.content.Message;
+// import net.codingarea.challenges.plugin.content.Prefix;
+// import net.codingarea.challenges.plugin.management.menu.InventoryTitleManager;
+// import net.codingarea.challenges.plugin.management.menu.generator.ChallengeMenuGenerator;
+// import net.codingarea.challenges.plugin.management.menu.info.ChallengeMenuClickInfo;
+// import net.codingarea.challenges.plugin.utils.item.DefaultItem;
+// import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+// import org.bukkit.Material;
+// import org.bukkit.inventory.Inventory;
+//
+// public class MainCustomMenuGenerator extends ChallengeMenuGenerator {
+//    public static final int[] SLOTS = new int[]{10, 11, 12, 13, 14, 15, 16};
+//    public static final int[] NAVIGATION_SLOTS = new int[]{36, 44};
+//    public static final int SIZE = 45;
+//    private static final int VIEW_SLOT = 21;
+//    private static final int CREATE_SLOT = 23;
+//    private static final int maxCustomChallenges = Challenges.getInstance().getConfigDocument().getInt("custom-challenge-settings.max-challenges");
+//
+//    public MainCustomMenuGenerator() {
+//       super(1);
+//    }
+//
+//    protected String getTitle(int page) {
+//       return page != 0 ? InventoryTitleManager.getTitle(this.getMenuType(), Message.forName("custom-title-view").asString(), String.valueOf(page)) : InventoryTitleManager.getTitle(this.getMenuType(), "Menu");
+//    }
+//
+//    public void executeClickAction(@Nonnull IChallenge challenge, @Nonnull MenuClickInfo info, int itemIndex) {
+//       if (itemIndex != 0 && itemIndex != 2) {
+//          if (challenge instanceof CustomChallenge) {
+//             InfoMenuGenerator infoMenuGenerator = new InfoMenuGenerator((CustomChallenge)challenge);
+//             infoMenuGenerator.open(info.getPlayer(), 0);
+//             SoundSample.CLICK.play(info.getPlayer());
+//          }
+//       } else {
+//          challenge.handleClick(new ChallengeMenuClickInfo(info, itemIndex == 0));
+//       }
+//
+//    }
+//
+//    public void generatePage(@Nonnull Inventory inventory, int page) {
+//       if (page == 0) {
+//          inventory.setItem(21, (new ItemBuilder(Material.BOOK, Message.forName("custom-main-view-challenges"))).build());
+//          inventory.setItem(23, (new ItemBuilder(Material.WRITABLE_BOOK, Message.forName("custom-main-create-challenge"))).build());
+//       }
+//
+//    }
+//
+//    public void onPreChallengePageClicking(@Nonnull MenuClickInfo info, int page) {
+//       if (info.getSlot() == 21) {
+//          if (Challenges.getInstance().getCustomChallengesLoader().getCustomChallenges().size() == 0) {
+//             Message.forName("custom-not-loaded").send(info.getPlayer(), Prefix.CUSTOM);
+//             return;
+//          }
+//
+//          this.open(info.getPlayer(), 1);
+//          SoundSample.PLOP.play(info.getPlayer());
+//       } else if (info.getSlot() == 23) {
+//          if (ChallengeMenuGenerator.playNoPermissionsEffect(info.getPlayer())) {
+//             return;
+//          }
+//
+//          if (Challenges.getInstance().getCustomChallengesLoader().getCustomChallenges().size() > maxCustomChallenges) {
+//             Message.forName("custom-limit").send(info.getPlayer(), Prefix.CUSTOM, maxCustomChallenges);
+//             SoundSample.BASS_OFF.play(info.getPlayer());
+//             return;
+//          }
+//
+//          (new InfoMenuGenerator()).open(info.getPlayer(), 0);
+//          SoundSample.PLING.play(info.getPlayer());
+//       }
+//
+//    }
+//
+//    public void setSettingsItems(@Nonnull Inventory inventory, @Nonnull IChallenge challenge, int topSlot) {
+//       inventory.setItem(this.getSlots()[topSlot], this.getDisplayItemBuilder(challenge).build());
+//       inventory.setItem(this.getSlots()[topSlot] + 9, DefaultItem.customize().build());
+//       inventory.setItem(this.getSlots()[topSlot] + 18, this.getSettingsItem(challenge));
+//    }
+//
+//    public int[] getSlots() {
+//       return SLOTS;
+//    }
+//
+//    public int getSize() {
+//       return 45;
+//    }
+//
+//    public int[] getNavigationSlots(int page) {
+//       return page == 0 ? new int[]{NAVIGATION_SLOTS[0]} : NAVIGATION_SLOTS;
+//    }
+// }
+//

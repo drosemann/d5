@@ -1,0 +1,51 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\implementation\goal\forcebattle\targets\HeightTarget.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE HeightTarget_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\implementation\goal\forcebattle\targets\HeightTarget.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\implementation\goal\forcebattle\targets\HeightTarget.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.challenges.implementation.goal.forcebattle.targets;
+#
+# import net.codingarea.challenges.plugin.challenges.implementation.goal.forcebattle.ExtremeForceBattleGoal;
+# import net.codingarea.challenges.plugin.content.Message;
+# import org.bukkit.entity.Player;
+#
+# public class HeightTarget extends ForceTarget {
+#    public HeightTarget(Integer target) {
+#       super(target);
+#    }
+#
+#    public boolean check(Player player) {
+#       return player.getLocation().getBlockY() == (Integer)this.target;
+#    }
+#
+#    public Object toMessage() {
+#       return this.target;
+#    }
+#
+#    public String getName() {
+#       return ((Integer)this.target).toString();
+#    }
+#
+#    public Message getNewTargetMessage() {
+#       return Message.forName("extreme-force-battle-new-height");
+#    }
+#
+#    public Message getCompletedMessage() {
+#       return Message.forName("extreme-force-battle-reached-height");
+#    }
+#
+#    public ExtremeForceBattleGoal.TargetType getType() {
+#       return ExtremeForceBattleGoal.TargetType.HEIGHT;
+#    }
+#
+#    public Message getScoreboardDisplayMessage() {
+#       return Message.forName("force-battle-height-target-display");
+#    }
+# }
+#

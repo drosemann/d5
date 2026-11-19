@@ -1,0 +1,161 @@
+package net.anweisen.utilities.common.misc;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import javax.annotation.CheckReturnValue;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import net.anweisen.utilities.common.logging.ILogger;
+
+public final class SimpleCollectionUtils {
+   /** @deprecated */
+   @Deprecated
+   public static final String REGEX_1 = ",";
+   /** @deprecated */
+   @Deprecated
+   public static final String REGEX_2 = "=";
+   private static final ILogger logger = ILogger.forThisClass();
+   private static boolean logMappingError = true;
+
+   private SimpleCollectionUtils() {
+   }
+
+   public static void disableErrorLogging() {
+      logMappingError = false;
+   }
+
+   /** @deprecated */
+   @Nonnull
+   @Deprecated
+   @CheckReturnValue
+   public static String convertMapToString(@Nonnull Map map, @Nonnull Function key, @Nonnull Function value) {
+      StringBuilder builder = new StringBuilder();
+      Iterator var4 = map.entrySet().iterator();
+
+      while(var4.hasNext()) {
+         Entry entry = (Entry)var4.next();
+         if (builder.length() != 0) {
+            builder.append(",");
+         }
+
+         builder.append((String)key.apply(entry.getKey()));
+         builder.append("=");
+         builder.append((String)value.apply(entry.getValue()));
+      }
+
+      return builder.toString();
+   }
+
+   /** @deprecated */
+   @Nonnull
+   @Deprecated
+   @CheckReturnValue
+   public static Map convertStringToMap(@Nullable String string, @Nonnull Function key, @Nonnull Function value) {
+      Map map = new HashMap();
+      if (string == null) {
+         return map;
+      } else {
+         String[] args = string.split(",");
+         String[] var5 = args;
+         int var6 = args.length;
+
+         for(int var7 = 0; var7 < var6; ++var7) {
+            String arg = var5[var7];
+
+            try {
+               String[] elements = arg.split("=");
+               Object keyElement = key.apply(elements[0]);
+               Object valueElement = value.apply(elements[1]);
+               if (keyElement == null || valueElement == null) {
+                  throw new NullPointerException();
+               }
+
+               map.put(keyElement, valueElement);
+            } catch (Exception var12) {
+               if (logMappingError) {
+                  logger.error("Cannot generate key/value: " + var12.getClass().getName() + ": " + var12.getMessage());
+               }
+            }
+         }
+
+         return map;
+      }
+   }
+
+   @Nonnull
+   @CheckReturnValue
+   public static Map convertMap(@Nonnull Map map, @Nonnull Function keyMapper, @Nonnull Function valueMapper) {
+      Map result = new HashMap();
+      map.forEach((key, value) -> {
+         try {
+            result.put(keyMapper.apply(key), valueMapper.apply(value));
+         } catch (Exception var6) {
+            if (logMappingError) {
+               logger.error("Unable to map '{}'='{}'", key, value, var6);
+            }
+         }
+
+      });
+      return result;
+   }
+
+   @Nonnull
+   @CheckReturnValue
+   public static List convert(@Nonnull Collection collection, @Nonnull Function mapper) {
+      List result = new ArrayList(collection.size());
+      collection.forEach((value) -> {
+         try {
+            result.add(mapper.apply(value));
+         } catch (Exception var4) {
+            if (logMappingError) {
+               logger.error("Unable map '{}'", value, var4);
+            }
+         }
+
+      });
+      return result;
+   }
+
+   public static Object getMostFrequentValue(@Nonnull Map map) {
+      Collection values = map.values();
+      List list = new ArrayList(values);
+      Set set = new HashSet(values);
+      Object valueMax = null;
+      int max = 0;
+      Iterator var6 = set.iterator();
+
+      while(var6.hasNext()) {
+         Object value = var6.next();
+         int frequency = Collections.frequency(list, value);
+         if (frequency > max) {
+            max = frequency;
+            valueMax = value;
+         }
+      }
+
+      return valueMax;
+   }
+
+   @SafeVarargs
+   public static Set setOf(@Nonnull Collection... collections) {
+      Set set = new HashSet();
+      Collection[] var2 = collections;
+      int var3 = collections.length;
+
+      for(int var4 = 0; var4 < var3; ++var4) {
+         Collection collection = var2[var4];
+         set.addAll(collection);
+      }
+
+      return set;
+   }
+}

@@ -1,0 +1,151 @@
+'use client'
+
+import { ProactiveHero } from './ProactiveHero'
+import { StatusPipeline } from './StatusPipeline'
+import { TaskFeed } from '@/components/tasks/TaskFeed'
+import { ChatThread } from '@/components/chat/ChatThread'
+import { CommandInput } from '@/components/chat/CommandInput'
+import { useUIStore } from '@/stores/uiStore'
+import { useChatStore } from '@/stores/chatStore'
+import { MemoryPanel } from '@/components/memory/MemoryPanel'
+import { useEffect, useRef } from 'react'
+import { CheckSquare, FolderOpen, Inbox, Loader2 } from 'lucide-react'
+import { Badge } from '@/components/ui/badge'
+import { useDashboardData } from '@/hooks/useDashboardData'
+
+function ProjectsView() {
+  const { projects, isLoading } = useDashboardData()
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
+      </div>
+    )
+  }
+
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center gap-2">
+        <FolderOpen className="w-5 h-5 text-primary" />
+        <h2 className="text-lg font-semibold">Projects</h2>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {projects.map((proj) => (
+          <div key={proj.id} className="border border-border bg-card rounded-xl p-4 hover:border-ring/40 transition-colors cursor-pointer">
+            <div className="flex items-center gap-2.5 mb-2">
+              <span className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: proj.color }} />
+              <h3 className="font-semibold text-sm text-foreground">{proj.title}</h3>
+              <Badge variant="secondary" className="text-[10px] ml-auto capitalize">{proj.status}</Badge>
+            </div>
+            {proj.description && (
+              <p className="text-xs text-muted-foreground">{proj.description}</p>
+            )}
+          </div>
+        ))}
+        {projects.length === 0 && (
+          <p className="text-sm text-muted-foreground col-span-2">No projects yet. Start a conversation to create one.</p>
+        )}
+      </div>
+    </div>
+  )
+}
+
+function InboxView() {
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center gap-2">
+        <Inbox className="w-5 h-5 text-primary" />
+        <h2 className="text-lg font-semibold">Inbox</h2>
+        <Badge className="bg-primary text-primary-foreground text-xs">4</Badge>
+      </div>
+      {[
+        { from: 'Team Slack', subject: 'Q4 messaging doc shared', time: '10 min ago' },
+        { from: 'Calendar', subject: 'Dentist appointment reminder tomorrow', time: '1 hr ago' },
+        { from: 'AI Agent', subject: 'Flight credit of $28 applied', time: '2 hr ago' },
+        { from: 'AI Agent', subject: 'Japan itinerary confirmed — 17 reservations', time: '3 hr ago' },
+      ].map((item, i) => (
+        <div key={i} className="border border-border rounded-xl p-4 hover:bg-muted/40 transition-colors cursor-pointer">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <p className="text-xs text-muted-foreground">{item.from}</p>
+              <p className="text-sm font-medium text-foreground mt-0.5">{item.subject}</p>
+            </div>
+            <span className="text-xs text-muted-foreground shrink-0">{item.time}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function TasksView() {
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center gap-2">
+        <CheckSquare className="w-5 h-5 text-primary" />
+        <h2 className="text-lg font-semibold">Tasks</h2>
+      </div>
+      <TaskFeed />
+    </div>
+  )
+}
+
+export function DashboardView() {
+  const { activeView } = useUIStore()
+  const { messages, isStreaming } = useChatStore()
+  const bottomRef = useRef<HTMLDivElement>(null)
+
+  const hasChat = messages.length > 0 || isStreaming
+
+  useEffect(() => {
+    if (hasChat) {
+      bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
+    }
+  }, [messages.length, isStreaming, hasChat])
+
+  const renderContent = () => {
+    switch (activeView) {
+      case 'memory':
+        return <MemoryPanel />
+      case 'projects':
+        return <ProjectsView />
+      case 'inbox':
+        return <InboxView />
+      case 'tasks':
+        return <TasksView />
+      case 'chat':
+      case 'dashboard':
+      default:
+        return (
+          <>
+            <ProactiveHero />
+            <StatusPipeline />
+            <div className="h-px bg-border my-4" />
+            <TaskFeed />
+            {hasChat && (
+              <>
+                <div className="h-px bg-border my-4" />
+                <ChatThread />
+              </>
+            )}
+            <div ref={bottomRef} />
+          </>
+        )
+    }
+  }
+
+  return (
+    <div className="flex flex-col h-full">
+      {/* Scrollable content */}
+      <div className="flex-1 overflow-y-auto px-5 pt-5 pb-2">
+        {renderContent()}
+      </div>
+
+      {/* Command input pinned to bottom (only for chat-capable views) */}
+      {(activeView === 'dashboard' || activeView === 'chat') && (
+        <CommandInput />
+      )}
+    </div>
+  )
+}

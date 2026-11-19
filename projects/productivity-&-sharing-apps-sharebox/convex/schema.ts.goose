@@ -1,0 +1,29 @@
+﻿// Goose-Port-Spiegel von: projects/productivity-&-sharing-apps-sharebox/convex/schema.ts
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/productivity-&-sharing-apps-sharebox/convex/schema.ts");
+}
+
+// ---- Original-Code (projects/productivity-&-sharing-apps-sharebox/convex/schema.ts), unveraendert, als Inline-Doku ----
+// import { defineSchema, defineTable } from "convex/server";
+// import { v } from "convex/values";
+// import { authTables } from "@convex-dev/auth/server";
+//
+// const applicationTables = {
+//   files: defineTable({
+//     name: v.string(),
+//     storageId: v.id("_storage"),
+//     size: v.number(),
+//     type: v.string(),
+//     ownerId: v.id("users"),
+//     description: v.optional(v.string()),
+//   }).index("by_owner", ["ownerId"]),
+// };
+//
+// export default defineSchema({
+//   ...authTables,
+//   ...applicationTables,
+// });
+//

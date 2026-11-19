@@ -1,0 +1,164 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\implementation\challenge\force\ForceItemChallenge.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE ForceItemChallenge_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\implementation\challenge\force\ForceItemChallenge.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\implementation\challenge\force\ForceItemChallenge.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.challenges.implementation.challenge.force;
+#
+# import java.util.ArrayList;
+# import java.util.Arrays;
+# import java.util.List;
+# import java.util.function.BiConsumer;
+# import javax.annotation.Nonnull;
+# import javax.annotation.Nullable;
+# import net.anweisen.utilities.common.annotations.Since;
+# import net.anweisen.utilities.common.config.Document;
+# import net.codingarea.challenges.plugin.ChallengeAPI;
+# import net.codingarea.challenges.plugin.challenges.type.abstraction.CompletableForceChallenge;
+# import net.codingarea.challenges.plugin.challenges.type.helper.ChallengeHelper;
+# import net.codingarea.challenges.plugin.content.Message;
+# import net.codingarea.challenges.plugin.content.Prefix;
+# import net.codingarea.challenges.plugin.management.challenges.annotations.ExcludeFromRandomChallenges;
+# import net.codingarea.challenges.plugin.management.menu.MenuType;
+# import net.codingarea.challenges.plugin.management.menu.generator.categorised.SettingCategory;
+# import net.codingarea.challenges.plugin.spigot.events.PlayerInventoryClickEvent;
+# import net.codingarea.challenges.plugin.spigot.events.PlayerPickupItemEvent;
+# import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+# import net.codingarea.challenges.plugin.utils.item.ItemUtils;
+# import net.codingarea.challenges.plugin.utils.misc.BlockUtils;
+# import net.codingarea.challenges.plugin.utils.misc.ExperimentalUtils;
+# import net.codingarea.challenges.plugin.utils.misc.NameHelper;
+# import org.bukkit.Bukkit;
+# import org.bukkit.Material;
+# import org.bukkit.boss.BarColor;
+# import org.bukkit.entity.Player;
+# import org.bukkit.event.EventHandler;
+# import org.bukkit.event.EventPriority;
+# import org.bukkit.event.player.PlayerInteractEvent;
+# import org.bukkit.inventory.ItemStack;
+# import org.jetbrains.annotations.NotNull;
+#
+# @Since("2.0")
+# @ExcludeFromRandomChallenges
+# public class ForceItemChallenge extends CompletableForceChallenge {
+#    private Material item;
+#
+#    public ForceItemChallenge() {
+#       super(MenuType.CHALLENGES, 2, 15);
+#       this.setCategory(SettingCategory.FORCE);
+#    }
+#
+#    @Nonnull
+#    public ItemBuilder createDisplayItem() {
+#       return new ItemBuilder(Material.LEATHER_BOOTS, Message.forName("item-force-item-challenge"));
+#    }
+#
+#    @Nullable
+#    protected String[] getSettingsDescription() {
+#       return ChallengeHelper.getTimeRangeSettingsDescription(this, 60, 30);
+#    }
+#
+#    public void playValueChangeTitle() {
+#       ChallengeHelper.playChallengeSecondsRangeValueChangeTitle(this, this.getValue() * 60 - 30, this.getValue() * 60 + 30);
+#    }
+#
+#    @Nonnull
+#    protected BiConsumer setupBossbar() {
+#       return (bossbar, player) -> {
+#          if (this.getState() == 0) {
+#             bossbar.setTitle(Message.forName("bossbar-force-item-waiting").asString());
+#          } else {
+#             bossbar.setColor(BarColor.GREEN);
+#             bossbar.setProgress((double)this.getProgress());
+#             bossbar.setTitle(Message.forName("bossbar-force-item-instruction").asComponent(this.item, ChallengeAPI.formatTime((long)this.getSecondsLeftUntilNextActivation())));
+#          }
+#       };
+#    }
+#
+#    protected void broadcastFailedMessage() {
+#       Message.forName("force-item-fail").broadcast(Prefix.CHALLENGES, this.item);
+#    }
+#
+#    protected void broadcastSuccessMessage(@Nonnull Player player) {
+#       Message.forName("force-item-success").broadcast(Prefix.CHALLENGES, NameHelper.getName(player), this.item);
+#    }
+#
+#    protected void chooseForcing() {
+#       List items = new ArrayList(Arrays.asList(ExperimentalUtils.getMaterials()));
+#       items.removeIf((material) -> {
+#          return !ItemUtils.isObtainableInSurvival(material);
+#       });
+#       items.removeIf((material) -> {
+#          return !material.isItem();
+#       });
+#       items.removeIf(BlockUtils::isTooHardToGet);
+#       this.item = (Material)globalRandom.choose((List)items);
+#    }
+#
+#    protected int getForcingTime() {
+#       return globalRandom.range(300, 480);
+#    }
+#
+#    protected int getSecondsUntilNextActivation() {
+#       return globalRandom.around(this.getValue() * 60, 30);
+#    }
+#
+#    @EventHandler(
+#       priority = EventPriority.MONITOR,
+#       ignoreCancelled = true
+#    )
+#    public void onClick(@Nonnull PlayerInventoryClickEvent event) {
+#       ItemStack item = event.getCurrentItem();
+#       if (item != null) {
+#          if (item.getType() == this.item) {
+#             this.completeForcing(event.getPlayer());
+#          }
+#       }
+#    }
+#
+#    @EventHandler(
+#       priority = EventPriority.MONITOR,
+#       ignoreCancelled = true
+#    )
+#    public void onPickUp(@Nonnull PlayerPickupItemEvent event) {
+#       Material material = event.getItem().getItemStack().getType();
+#       if (material == this.item) {
+#          this.completeForcing(event.getPlayer());
+#       }
+#    }
+#
+#    @EventHandler(
+#       priority = EventPriority.MONITOR,
+#       ignoreCancelled = true
+#    )
+#    public void onInteract(@Nonnull PlayerInteractEvent event) {
+#       Bukkit.getScheduler().runTaskLater(plugin, () -> {
+#          ItemStack item = event.getPlayer().getInventory().getItemInMainHand();
+#          Material material = item.getType();
+#          if (material == this.item) {
+#             this.completeForcing(event.getPlayer());
+#          }
+#       }, 1L);
+#    }
+#
+#    public void loadGameState(@NotNull Document document) {
+#       super.loadGameState(document);
+#       if (document.contains("target")) {
+#          this.item = (Material)document.getEnum("target", Material.class);
+#          this.setState(this.item == null ? 0 : 1);
+#       }
+#
+#    }
+#
+#    public void writeGameState(@NotNull Document document) {
+#       super.writeGameState(document);
+#       document.set("target", this.item);
+#    }
+# }
+#

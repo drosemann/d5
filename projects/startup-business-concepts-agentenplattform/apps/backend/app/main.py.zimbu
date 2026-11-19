@@ -1,0 +1,464 @@
+﻿# Zimbu-Port-Spiegel von: projects\startup-business-concepts-agentenplattform\apps\backend\app\main.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE main_py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\startup-business-concepts-agentenplattform\apps\backend\app\main.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\startup-business-concepts-agentenplattform\apps\backend\app\main.py), unveraendert, als Inline-Doku ----
+# """FastAPI-App: Health, Auth, Agenten, Tasks, Provider, Markt, Safety, Fassade."""
+# from fastapi import FastAPI, Depends, HTTPException, Header
+# from fastapi.middleware.cors import CORSMiddleware
+# from pydantic import BaseModel
+# from sqlalchemy.orm import Session
+# from app.db.base import Base, engine, get_db
+# from app.db import models
+# from app.security.auth import pruefe_passwort, erstelle_token, lese_token, rate_limit
+# from app.agents.registry import AGENTEN
+# from app.services.orchestrator import auftrag_anlegen
+# from app.services.safety import sos_validieren
+# from app.core.config import settings
+# import os
+# import uuid
+#
+# Base.metadata.create_all(bind=engine)
+# app = FastAPI(title="Agentenplattform", docs_url="/docs")
+#
+# @app.on_event("startup")
+# def _start():
+#     try:
+#         from app.tasks.scheduler import starten
+#         starten()
+#     except Exception: pass  # Scheduler optional – App läuft auch ohne
+#     try:
+#         with open("/tmp/worker_heartbeat.txt", "w") as f: f.write("backend ok")
+#     except Exception: pass
+# app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
+#
+# def aktuell(x_auth: str = Header(default="")) -> str:
+#     sub = lese_token(x_auth.replace("Bearer ", "")) if x_auth else None
+#     # Demo-Modus: ohne Token als Besitzer arbeiten (Produktion: 401)
+#     if sub: return sub
+#     if settings.app_env != "production": return "demo-besitzer"
+#     raise HTTPException(401, "Anmeldung erforderlich")
+#
+# @app.get("/health/live")
+# def live(): return {"status": "lebendig"}
+# @app.get("/health/ready")
+# def ready(): return {"status": "bereit", "demo_modus": settings.demo_mode}
+#
+# class Login(BaseModel): email: str; passwort: str
+# @app.post("/api/v1/auth/login")
+# def login(b: Login, db: Session = Depends(get_db)):
+#     if not rate_limit(b.email): raise HTTPException(429, "Zu viele Versuche – bitte warten.")
+#     if settings.demo_mode and b.email == "demo@lokal": return {"token": erstelle_token("demo-besitzer")}
+#     u = db.query(models.User).filter_by(email=b.email).first()
+#     if not u or not pruefe_passwort(b.passwort, u.password_hash): raise HTTPException(401, "Falsche Zugangsdaten")
+#     return {"token": erstelle_token(u.id)}
+#
+# @app.get("/api/v1/agents")
+# def agenten(_: str = Depends(aktuell)):
+#     return [{"id": a.id, "name": a.name, "beschreibung": a.beschreibung, "aktiv": a.enabled} for a in AGENTEN.values()]
+#
+# class TaskNeu(BaseModel): agent_id: str | None = None; titel: str; eingabe: dict = {}
+# @app.post("/api/v1/tasks")
+# def task_anlegen(b: TaskNeu, db: Session = Depends(get_db), user: str = Depends(aktuell)):
+#     r = auftrag_anlegen(b.agent_id, b.titel, b.eingabe)
+#     t = models.Task(agent_id=r["agent_id"], title=b.titel, input=b.eingabe, status="queued", idempotency_key=str(uuid.uuid4()))
+#     db.add(t); db.add(models.Event(type="task.created", source="api", ref_id=t.id)); db.commit()
+#     db.add(models.AuditLog(actor=user, aktion="task.created", detail=t.id)); db.commit()
+#     return {"id": t.id, "agent_id": t.agent_id, "status": t.status, "hinweis": r["hinweis"]}
+# @app.get("/api/v1/tasks")
+# def tasks(db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     return [{"id": t.id, "agent": t.agent_id, "titel": t.title, "status": t.status, "ergebnis": t.result} for t in db.query(models.Task).order_by(models.Task.created_at.desc()).limit(50)]
+# @app.get("/api/v1/events")
+# def events(db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     return [{"id": e.id, "typ": e.type, "zeit": str(e.created_at)} for e in db.query(models.Event).order_by(models.Event.created_at.desc()).limit(50)]
+#
+# class ProviderNeu(BaseModel):
+#     provider_type: str; display_name: str; base_url: str; api_key: str = ""
+#     default_model: str = ""; enabled: bool = True
+# @app.get("/api/v1/providers")
+# def provider_liste(db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     return [{"id": p.id, "name": p.display_name, "typ": p.provider_type, "secret_gesetzt": p.has_secret, "aktiv": p.enabled} for p in db.query(models.ModelProvider).all()]
+# @app.post("/api/v1/providers")
+# def provider_anlegen(b: ProviderNeu, db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     # Schlüssel nie im Klartext speichern/ausgeben – nur Referenz + Flag
+#     p = models.ModelProvider(provider_type=b.provider_type, display_name=b.display_name, base_url=b.base_url,
+#         api_key_ref=("secret:providers/" + b.display_name) if b.api_key else "", has_secret=bool(b.api_key),
+#         default_model=b.default_model, enabled=b.enabled)
+#     db.add(p); db.commit(); return {"id": p.id, "secret_gesetzt": p.has_secret}
+#
+# class Standort(BaseModel): device_id: str; lat: float; lon: float; genauigkeit_m: float = 0
+# @app.post("/api/v1/location")
+# def standort(b: Standort, db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     ok, msg = sos_validieren(b.lat, b.lon)
+#     if not ok: raise HTTPException(400, msg)
+#     db.add(models.LocationSample(device_id=b.device_id, lat=b.lat, lon=b.lon, genauigkeit_m=b.genauigkeit_m)); db.commit()
+#     return {"gespeichert": True}
+# class Sos(BaseModel): device_id: str = ""; idempotency_key: str
+# @app.post("/api/v1/safety/sos")
+# def sos(b: Sos, db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     if db.query(models.SosEvent).filter_by(idempotency_key=b.idempotency_key).first():
+#         return {"status": "bereits_erfasst", "versand": "kein Doppelversand (idempotent)"}
+#     e = models.SosEvent(device_id=b.device_id, status="test" if not settings.sos_delivery_enabled else "ausgeloest", idempotency_key=b.idempotency_key)
+#     db.add(e); db.commit()
+#     if not settings.sos_delivery_enabled:
+#         return {"status": "test", "hinweis": "Testmodus: Nachricht erzeugt, NICHT versendet."}
+#     return {"status": "ausgeloest"}
+#
+# class SuchprofilNeu(BaseModel): agent_id: str = "wohnung"; name: str; kriterien: dict = {}
+# @app.get("/api/v1/search-profiles")
+# def profile(db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     return [{"id": p.id, "agent": p.agent_id, "name": p.name, "kriterien": p.kriterien, "aktiv": p.aktiv}
+#             for p in db.query(models.SearchProfile).all()]
+# @app.post("/api/v1/search-profiles")
+# def profil_anlegen(b: SuchprofilNeu, db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     p = models.SearchProfile(agent_id=b.agent_id, name=b.name, kriterien=b.kriterien)
+#     db.add(p); db.commit(); return {"id": p.id}
+# class ImportBitte(BaseModel): profil_id: str; quelle: str = "demo"; feed_url: str = ""; max_preis: float = 1000000
+# @app.post("/api/v1/listings/import")
+# def listings_import(b: ImportBitte, db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     from app.services.quellen import import_lauf
+#     return import_lauf(b.profil_id, b.max_preis, db, b.quelle, b.feed_url)
+# @app.get("/api/v1/listings")
+# def listings(profil_id: str = "", db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     q = db.query(models.Listing).order_by(models.Listing.ranking.desc())
+#     if profil_id: q = q.filter_by(profil_id=profil_id)
+#     return [{"id": l.id, "titel": l.titel, "preis": l.preis, "url": l.url,
+#              "ranking": l.ranking, "favorit": l.favorit, "abrufzeit": str(l.abrufzeit)}
+#             for l in q.limit(100)]
+# @app.get("/api/v1/plan/tagesplan")
+# def tagesplan(db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     from app.services.planung import tagesplan_bauen
+#     return tagesplan_bauen(db)
+#
+# # --- Freigaben ---
+# @app.get("/api/v1/approvals")
+# def approves(db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     return [{"id": a.id, "task": a.task_id, "zweck": a.zweck, "status": a.status}
+#             for a in db.query(models.Approval).order_by(models.Approval.created_at.desc()).limit(100)]
+# class ApprovalEntscheid(BaseModel): genehmigt: bool
+# @app.post("/api/v1/approvals/{aid}")
+# def approve_entscheiden(aid: str, b: ApprovalEntscheid, db: Session = Depends(get_db), user: str = Depends(aktuell)):
+#     a = db.query(models.Approval).filter_by(id=aid).first()
+#     if a is None: raise HTTPException(404, "Freigabe unbekannt")
+#     if a.status != "offen": raise HTTPException(409, "Bereits entschieden")
+#     a.status = "genehmigt" if b.genehmigt else "abgelehnt"
+#     db.add(models.AuditLog(actor=user, aktion=f"approval.{a.status}", detail=aid)); db.commit()
+#     return {"id": aid, "status": a.status}
+#
+# # --- Benachrichtigungen ---
+# @app.get("/api/v1/notifications")
+# def notifs(db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     return [{"id": n.id, "kanal": n.kanal, "text": n.text, "status": n.status}
+#             for n in db.query(models.Notification).order_by(models.Notification.created_at.desc()).limit(100)]
+# class NotifNeu(BaseModel): text: str; kanal: str = "pwa"
+# @app.post("/api/v1/notifications")
+# def notif_anlegen(b: NotifNeu, db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     from app.core.config import settings as _s
+#     # Externer Versand nur wenn konfiguriert+aktiv, sonst interner Status
+#     status = "pending" if (_s.outbound_mail_enabled or b.kanal == "pwa") else "suppressed"
+#     n = models.Notification(kanal=b.kanal, text=b.text[:1000], status=status)
+#     db.add(n); db.commit(); return {"id": n.id, "status": status}
+#
+# # --- Dateien (Upload, typ- und größengeprüft) ---
+# from fastapi import UploadFile, File
+# @app.post("/api/v1/files")
+# async def datei_hochladen(datei: UploadFile = File(...), db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     from app.services.mail import anhang_geprueft
+#     import os
+#     roh = await datei.read()
+#     ok, grund = anhang_geprueft(datei.filename or "datei.bin", len(roh))
+#     if not ok: raise HTTPException(400, grund)
+#     os.makedirs("uploads", exist_ok=True)
+#     name = "".join(c for c in (datei.filename or "datei.bin") if c.isalnum() or c in "._-")[:80]
+#     pfad = os.path.join("uploads", f"{uuid.uuid4().hex}_{name}")
+#     with open(pfad, "wb") as f: f.write(roh)
+#     try: inhalt = roh[:5000].decode("utf-8", errors="replace")
+#     except Exception: inhalt = "(binär – kein Textauszug)"
+#     d = models.Document(titel=name, quelle="upload", inhalt=inhalt)
+#     db.add(d); db.commit(); return {"id": d.id, "titel": name, "pfad": pfad}
+# @app.get("/api/v1/files")
+# def dateien(db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     return [{"id": d.id, "titel": d.titel, "quelle": d.quelle} for d in
+#             db.query(models.Document).order_by(models.Document.created_at.desc()).limit(100)]
+#
+# # --- Finanzen: CSV-Import + Snapshots ---
+# def _betrag(roh: str) -> float:
+#     """Versteht deutsche (1.234,56) und englische (1234.56) Beträge."""
+#     s = roh.strip().replace(" ", "")
+#     if "," in s: s = s.replace(".", "").replace(",", ".")
+#     return float(s)
+# @app.post("/api/v1/finance/import")
+# async def finance_import(datei: UploadFile = File(...), db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     import csv, io
+#     from datetime import datetime
+#     if not (datei.filename or "").lower().endswith(".csv"):
+#         raise HTTPException(400, "Nur CSV-Dateien (Spalten: datum, vermoegen, notiz).")
+#     roh = await datei.read()
+#     if len(roh) > 2 * 1024 * 1024: raise HTTPException(400, "CSV zu groß (max. 2 MB).")
+#     angelegt = 0
+#     for zeile in csv.DictReader(io.StringIO(roh.decode("utf-8", errors="replace"))):
+#         try:
+#             s = models.FinancialSnapshot(
+#                 datum=datetime.fromisoformat(str(zeile.get("datum", ""))),
+#                 vermoegen=_betrag(str(zeile.get("vermoegen", "0"))),
+#                 notiz=str(zeile.get("notiz", ""))[:200])
+#             db.add(s); angelegt += 1
+#         except (ValueError, KeyError): continue  # fehlerhafte Zeilen überspringen, Rest zählt
+#     db.add(models.Event(type="finance.snapshot_imported", source="api", ref_id="csv",
+#                         payload={"zeilen": angelegt}))
+#     db.commit(); return {"snapshots": angelegt}
+# @app.get("/api/v1/finance/snapshots")
+# def finance_snaps(db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     return [{"id": s.id, "datum": str(s.datum), "vermoegen": s.vermoegen,
+#              "notiz": s.notiz, "demo": s.demo} for s in
+#             db.query(models.FinancialSnapshot).order_by(models.FinancialSnapshot.datum.desc()).limit(100)]
+#
+# # --- Gesundheit: Messwerte + Import ---
+# class MesswertNeu(BaseModel): typ: str; wert: float
+# @app.post("/api/v1/health-data")
+# def messwert(b: MesswertNeu, db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     if b.typ not in ("schritte", "schlaf_min", "puls", "gewicht"):
+#         raise HTTPException(400, "Unbekannter Messtyp")
+#     m = models.HealthMeasurement(typ=b.typ, wert=b.wert)
+#     db.add(m); db.commit(); return {"id": m.id}
+# @app.get("/api/v1/health-data")
+# def messwerte(typ: str = "", db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     q = db.query(models.HealthMeasurement).order_by(models.HealthMeasurement.zeit.desc()).limit(200)
+#     if typ: q = q.filter_by(typ=typ)
+#     return [{"typ": m.typ, "wert": m.wert, "zeit": str(m.zeit)} for m in q]
+#
+# # --- Standort: Verlauf ---
+# @app.get("/api/v1/location")
+# def verlauf(device_id: str = "", db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     q = db.query(models.LocationSample).order_by(models.LocationSample.zeit.desc()).limit(200)
+#     if device_id: q = q.filter_by(device_id=device_id)
+#     return [{"lat": s.lat, "lon": s.lon, "genau": s.genauigkeit_m, "zeit": str(s.zeit)} for s in q]
+#
+# # --- Runs (Protokoll der Agentenläufe) ---
+# @app.get("/api/v1/runs")
+# def runs(task_id: str = "", db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     q = db.query(models.AgentRun).order_by(models.AgentRun.created_at.desc()).limit(100)
+#     if task_id: q = q.filter_by(task_id=task_id)
+#     return [{"id": r.id, "task": r.task_id, "agent": r.agent_id, "status": r.status,
+#              "dauer_ms": r.duration_ms} for r in q]
+#
+# # --- Einstellungen (System, Schlüssel/Wert) ---
+# @app.get("/api/v1/settings")
+# def settings_lesen(db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     return {s.key: s.value for s in db.query(models.SystemSetting).all()}
+# class SettingNeu(BaseModel): key: str; value: dict
+# @app.put("/api/v1/settings/{key}")
+# def setting_setzen(key: str, b: SettingNeu, db: Session = Depends(get_db), user: str = Depends(aktuell)):
+#     s = db.query(models.SystemSetting).filter_by(key=key).first()
+#     if s is None: s = models.SystemSetting(key=key, value=b.value); db.add(s)
+#     else: s.value = b.value
+#     db.add(models.AuditLog(actor=user, aktion="setting.set", detail=key)); db.commit()
+#     return {"key": key}
+#
+# # --- Verkehr, Schule, Tech-News ---
+# class VerkehrBitte(BaseModel): quelle: str = "demo"; feed_url: str = ""
+# @app.post("/api/v1/mobility/check")
+# def mobility_check(b: VerkehrBitte, db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     from app.services.adapter import verkehr_stoerungen
+#     return verkehr_stoerungen(db, b.quelle, b.feed_url)
+# @app.post("/api/v1/school/stundenplan")
+# async def stundenplan(datei: UploadFile = File(...), db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     from app.services.adapter import stundenplan_import
+#     if not (datei.filename or "").lower().endswith(".csv"): raise HTTPException(400, "Nur CSV (Semikolon).")
+#     return stundenplan_import(db, (await datei.read()).decode("utf-8", errors="replace"))
+# class NewsBitte(BaseModel): feeds: list[str] = []
+# @app.post("/api/v1/technews/import")
+# def news_import(b: NewsBitte, db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     from app.services.adapter import technews_import
+#     feeds = list(b.feeds or [])
+#     if not feeds and os.environ.get("TECHNEWS_FEEDS"):
+#         feeds = [f.strip() for f in os.environ["TECHNEWS_FEEDS"].split(",") if f.strip()]
+#     return technews_import(db, feeds)
+#
+# # --- Kalender (Lesen/Schreiben; Agenten nur mit Freigabe-Tool) ---
+# class TerminNeu(BaseModel): titel: str; beginn: str; ende: str; fix: bool = False
+# @app.get("/api/v1/calendar")
+# def kalender(db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     return [{"id": c.id, "titel": c.titel, "beginn": str(c.beginn), "ende": str(c.ende), "fix": c.fix}
+#             for c in db.query(models.CalendarItem).order_by(models.CalendarItem.beginn.desc()).limit(200)]
+# @app.post("/api/v1/calendar")
+# def termin_anlegen(b: TerminNeu, db: Session = Depends(get_db), user: str = Depends(aktuell)):
+#     from datetime import datetime
+#     try: beginn, ende = datetime.fromisoformat(b.beginn), datetime.fromisoformat(b.ende)
+#     except ValueError: raise HTTPException(400, "ISO-Datum erwartet (z. B. 2026-11-02T09:00).")
+#     if ende <= beginn: raise HTTPException(400, "Ende muss nach Beginn liegen.")
+#     c = models.CalendarItem(titel=b.titel[:200], beginn=beginn, ende=ende, fix=b.fix)
+#     db.add(c); db.add(models.AuditLog(actor=user, aktion="calendar.create", detail=b.titel[:200])); db.commit()
+#     return {"id": c.id}
+# @app.delete("/api/v1/calendar/{cid}")
+# def termin_loeschen(cid: str, db: Session = Depends(get_db), user: str = Depends(aktuell)):
+#     c = db.query(models.CalendarItem).filter_by(id=cid).first()
+#     if c is None: raise HTTPException(404, "Termin unbekannt")
+#     db.delete(c); db.add(models.AuditLog(actor=user, aktion="calendar.delete", detail=cid)); db.commit()
+#     return {"geloescht": cid}
+#
+# # --- Coding-Aufträge (Workspace, Freigabe-Pflicht) ---
+# class CodingBitte(BaseModel): beschreibung: str; patch: str = ""; approval_id: str | None = None
+# @app.post("/api/v1/coding/prepare")
+# def coding_prepare(b: CodingBitte, db: Session = Depends(get_db), user: str = Depends(aktuell)):
+#     from app.services.coding import auftrag_vorbereiten
+#     freigegeben = False
+#     if b.approval_id:
+#         a = db.query(models.Approval).filter_by(id=b.approval_id).first()
+#         freigegeben = bool(a and a.status == "genehmigt")
+#     ausgang = auftrag_vorbereiten(b.beschreibung, b.patch, freigegeben)
+#     db.add(models.AuditLog(actor=user, aktion="coding.prepare", detail=str(ausgang.get("status")))); db.commit()
+#     if ausgang.get("status") == "freigabe_noetig":
+#         ap = models.Approval(task_id="", zweck=f"Coding: {b.beschreibung[:200]}")
+#         db.add(ap); db.commit(); ausgang["approval_id"] = ap.id
+#     return ausgang
+#
+# # --- Mail-Abruf + Versandsteuerung ---
+# @app.post("/api/v1/mail/fetch")
+# def mail_fetch(db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     from app.services.mail_eingang import abruf_einmal
+#     return abruf_einmal(db)
+# @app.post("/api/v1/notifications/dispatch")
+# def notif_dispatch(db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     from app.services.versand import ausstehende_versenden
+#     return ausstehende_versenden(db)
+#
+# # --- Eigene API-Schlüssel (nur Hash gespeichert, Klartext einmalig) ---
+# class KeyNeu(BaseModel): name: str
+# @app.get("/api/v1/api-keys")
+# def keys(db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     return [{"id": k.id, "name": k.name, "aktiv": k.aktiv} for k in db.query(models.ApiKey).all()]
+# @app.post("/api/v1/api-keys")
+# def key_anlegen(b: KeyNeu, db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     import hashlib, secrets
+#     klar = "ak_" + secrets.token_urlsafe(32)
+#     k = models.ApiKey(name=b.name, key_hash=hashlib.sha256(klar.encode()).hexdigest())
+#     db.add(k); db.commit()
+#     return {"id": k.id, "api_key": klar, "hinweis": "Einmalig – wird nicht gespeichert."}
+# @app.delete("/api/v1/api-keys/{kid}")
+# def key_widerrufen(kid: str, db: Session = Depends(get_db), user: str = Depends(aktuell)):
+#     k = db.query(models.ApiKey).filter_by(id=kid).first()
+#     if k is None: raise HTTPException(404, "Schlüssel unbekannt")
+#     k.aktiv = False
+#     db.add(models.AuditLog(actor=user, aktion="apikey.revoke", detail=kid)); db.commit()
+#     return {"id": kid, "aktiv": False}
+#
+# # --- Modell-Gateway-Verwaltung ---
+# class ProfilNeu(BaseModel):
+#     agent_id: str; provider_id: str; modell: str = ""
+#     temperatur: float = 0.3; max_tokens: int = 800; timeout_s: int = 60; fallback_modell: str = ""
+# @app.get("/api/v1/model-profiles")
+# def profile_liste(db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     return [{"agent_id": m.agent_id, "provider_id": m.provider_id, "modell": m.modell,
+#              "temperatur": m.temperatur, "max_tokens": m.max_tokens} for m in db.query(models.ModelProfile).all()]
+# @app.put("/api/v1/model-profiles/{agent_id}")
+# def profil_setzen(agent_id: str, b: ProfilNeu, db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     m = db.query(models.ModelProfile).filter_by(agent_id=agent_id).first()
+#     if m is None: m = models.ModelProfile(agent_id=agent_id, provider_id=b.provider_id); db.add(m)
+#     m.provider_id = b.provider_id; m.modell = b.modell; m.temperatur = b.temperatur
+#     m.max_tokens = b.max_tokens; m.timeout_s = b.timeout_s; m.fallback_modell = b.fallback_modell
+#     db.commit(); return {"agent_id": m.agent_id, "modell": m.modell}
+# @app.get("/api/v1/providers/{pid}/models")
+# def provider_modelle(pid: str, db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     import asyncio, os
+#     from app.providers.gateway import OpenAIKompatibelProvider
+#     p = db.query(models.ModelProvider).filter_by(id=pid).first()
+#     if p is None: raise HTTPException(404, "Provider unbekannt")
+#     gw = OpenAIKompatibelProvider(p.base_url, os.environ.get("PROVIDER_API_KEY", ""), p.default_model, 15)
+#     try: modelle = asyncio.run(gw.list_models())
+#     except Exception as e: raise HTTPException(502, f"Modellliste nicht abrufbar: {e}")
+#     return [{"id": m.id} for m in modelle]
+# @app.post("/api/v1/providers/{pid}/test")
+# def provider_test(pid: str, db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     import asyncio, os
+#     from app.providers.gateway import OpenAIKompatibelProvider
+#     p = db.query(models.ModelProvider).filter_by(id=pid).first()
+#     if p is None: raise HTTPException(404, "Provider unbekannt")
+#     gw = OpenAIKompatibelProvider(p.base_url, os.environ.get("PROVIDER_API_KEY", ""), p.default_model, 15)
+#     status = asyncio.run(gw.healthcheck())
+#     db.add(models.Event(type="provider.tested" if status.ok else "agent.failed",
+#                         source="api", ref_id=pid, payload={"detail": status.detail}))
+#     db.commit()
+#     return {"ok": status.ok, "detail": status.detail}
+#
+# # --- Prometheus-Metriken (Textformat) ---
+# @app.get("/api/v1/system/metrics")
+# def metrics_text(db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     from fastapi.responses import PlainTextResponse
+#     zeilen = ["# HELP aufgaben_status Anzahl Tasks je Status", "# TYPE aufgaben_status gauge"]
+#     pro: dict[str, int] = {}
+#     for t in db.query(models.Task).all(): pro[t.status] = pro.get(t.status, 0) + 1
+#     for s, n in pro.items(): zeilen.append(f'aufgaben_status{{status="{s}"}} {n}')
+#     zeilen += ["# HELP agent_runs_gesamt Agentenläufe gesamt", "# TYPE agent_runs_gesamt counter",
+#                f"agent_runs_gesamt {db.query(models.AgentRun).count()}"]
+#     return PlainTextResponse("\n".join(zeilen) + "\n")
+#
+# # --- Systemstatus: Metriken, Worker, Backup ---
+# @app.get("/api/v1/system/status")
+# def system_status(db: Session = Depends(get_db), _: str = Depends(aktuell)):
+#     import os
+#     tasks = db.query(models.Task).all()
+#     pro_status: dict[str, int] = {}
+#     for t in tasks: pro_status[t.status] = pro_status.get(t.status, 0) + 1
+#     provider = [{"id": p.id, "name": p.display_name, "aktiv": p.enabled,
+#                  "secret": p.has_secret} for p in db.query(models.ModelProvider).all()]
+#     hb = ""
+#     try:
+#         with open("/tmp/worker_heartbeat.txt") as f: hb = f.read().strip()
+#     except Exception: pass
+#     letzter_backup = (db.query(models.Event).filter(models.Event.ref_id == "backup")
+#                       .order_by(models.Event.created_at.desc()).first())
+#     return {"tasks_pro_status": pro_status, "provider": provider,
+#             "worker_heartbeat": hb or "kein Heartbeat",
+#             "backup": {"ziel_konfiguriert": bool(os.environ.get("RESTIC_REPOSITORY", "")),
+#                        "letzter_check": str(letzter_backup.created_at) if letzter_backup else "nie"},
+#             "demo_modus": settings.demo_mode}
+#
+# # Optionale OpenAI-Fassade (Standard: aus). Nutzt eigene API-Keys, keine Agentenumgehung.
+# # Dokumentierte Zuordnung: model "agent-<agent_id>" ruft NUR das Modell mit dem
+# # Systemprompt dieses Agenten auf – keine Tools, keine Provider-Details, keine Rechte.
+# def _fassade_schutz(x_api_key: str, db: Session):
+#     import hashlib
+#     if not settings.facade_enabled: raise HTTPException(404, "Fassade deaktiviert")
+#     if settings.facade_api_key and x_api_key == settings.facade_api_key: return
+#     h = hashlib.sha256(x_api_key.encode()).hexdigest()
+#     if not db.query(models.ApiKey).filter_by(key_hash=h, aktiv=True).first():
+#         raise HTTPException(401, "Ungültiger API-Schlüssel")
+# @app.get("/v1/models")
+# def fassaden_modelle(x_api_key: str = Header(default=""), db: Session = Depends(get_db)):
+#     _fassade_schutz(x_api_key, db)
+#     return {"data": [{"id": f"agent-{a}"} for a in AGENTEN]}
+# @app.post("/v1/chat/completions")
+# def fassade_chat(b: dict, x_api_key: str = Header(default=""), db: Session = Depends(get_db)):
+#     import asyncio, os
+#     _fassade_schutz(x_api_key, db)
+#     name = str(b.get("model", ""))
+#     if not name.startswith("agent-") or name[6:] not in AGENTEN:
+#         raise HTTPException(400, "Unbekanntes Modell – nutze GET /v1/models (Format: agent-<id>).")
+#     definition = AGENTEN[name[6:]]
+#     profil = db.query(models.ModelProfile).filter_by(agent_id=definition.id).first()
+#     p = db.query(models.ModelProvider).filter_by(
+#         id=profil.provider_id if profil else "", enabled=True).first() or \
+#         db.query(models.ModelProvider).filter_by(enabled=True).first()
+#     if p is None: raise HTTPException(502, "Kein Modellprovider konfiguriert")
+#     from app.providers.gateway import OpenAIKompatibelProvider, ChatAnfrage, ChatNachricht
+#     gw = OpenAIKompatibelProvider(p.base_url, os.environ.get("PROVIDER_API_KEY", ""),
+#                                   (profil.modell if profil and profil.modell else p.default_model), 60)
+#     msgs = [ChatNachricht(rolle="system", inhalt=definition.systemprompt)]
+#     for m in b.get("messages", [])[:20]:
+#         rolle = str(m.get("role", "user")) if m.get("role") in ("user", "assistant") else "user"
+#         msgs.append(ChatNachricht(rolle=rolle, inhalt=str(m.get("content", ""))[:4000]))
+#     try: ant = asyncio.run(gw.chat(ChatAnfrage(nachrichten=msgs,
+#                     temperatur=float(b.get("temperature", 0.3)))))
+#     except Exception as e: raise HTTPException(502, f"Modellfehler: {e}")
+#     return {"id": f"fassade-{uuid.uuid4().hex[:8]}", "object": "chat.completion",
+#             "model": name, "choices": [{"index": 0, "message": {"role": "assistant", "content": ant.text},
+#             "finish_reason": "stop"}], "usage": {"prompt_tokens": ant.prompt_tokens,
+#             "completion_tokens": ant.completion_tokens}}
+#

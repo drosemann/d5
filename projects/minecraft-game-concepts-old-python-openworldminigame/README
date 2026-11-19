@@ -1,0 +1,13 @@
+Running the Chat System:
+Start the chat server by running chat_server.py.
+2. Start one or more chat clients by running chat_client.py in separate terminal windows.
+Clients can send messages, and all connected clients will receive them in real-time.
+This basic chat system can be further enhanced with features like user authentication, message history, and private messaging. If you need additional features or modifications, feel free to ask!
+
+ToDO:
+
+Sound Effects and Music: Add background music and sound effects to enhance the gaming experience.
+
+Teleportation or Fast Travel: Allow players to quickly move between different locations in the game world.
+
+Environmental Interactions: Create interactive environments where players can manipulate objects, such as opening doors, moving obstacles, or triggering events.

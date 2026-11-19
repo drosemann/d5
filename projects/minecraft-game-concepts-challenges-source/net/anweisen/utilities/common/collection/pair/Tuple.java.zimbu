@@ -1,0 +1,110 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\collection\pair\Tuple.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE Tuple_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\collection\pair\Tuple.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\collection\pair\Tuple.java), unveraendert, als Inline-Doku ----
+# package net.anweisen.utilities.common.collection.pair;
+#
+# import java.util.Objects;
+# import java.util.function.Function;
+# import javax.annotation.CheckReturnValue;
+# import javax.annotation.Nonnull;
+# import javax.annotation.Nullable;
+#
+# public class Tuple implements Pair {
+#    protected Object first;
+#    protected Object second;
+#
+#    public Tuple() {
+#    }
+#
+#    public Tuple(@Nullable Object first, @Nullable Object second) {
+#       this.first = first;
+#       this.second = second;
+#    }
+#
+#    public final int amount() {
+#       return 2;
+#    }
+#
+#    @Nonnull
+#    public final Object[] values() {
+#       return new Object[]{this.first, this.second};
+#    }
+#
+#    public Object getFirst() {
+#       return this.first;
+#    }
+#
+#    public Object getSecond() {
+#       return this.second;
+#    }
+#
+#    public void setFirst(@Nullable Object first) {
+#       this.first = first;
+#    }
+#
+#    public void setSecond(@Nullable Object second) {
+#       this.second = second;
+#    }
+#
+#    @Nonnull
+#    @CheckReturnValue
+#    public Tuple map(@Nonnull Function firstMapper, @Nonnull Function secondMapper) {
+#       return of(firstMapper.apply(this.first), secondMapper.apply(this.second));
+#    }
+#
+#    public boolean noneNull() {
+#       return this.first != null && this.second != null;
+#    }
+#
+#    public boolean allNull() {
+#       return this.first == null && this.second == null;
+#    }
+#
+#    public boolean equals(Object o) {
+#       if (this == o) {
+#          return true;
+#       } else if (o != null && this.getClass() == o.getClass()) {
+#          Tuple tuple = (Tuple)o;
+#          return Objects.equals(this.first, tuple.first) && Objects.equals(this.second, tuple.second);
+#       } else {
+#          return false;
+#       }
+#    }
+#
+#    public int hashCode() {
+#       return Objects.hash(new Object[]{this.first, this.second});
+#    }
+#
+#    public String toString() {
+#       return "Tuple[" + this.first + ", " + this.second + "]";
+#    }
+#
+#    @Nonnull
+#    public static Tuple ofFirst(@Nullable Object frist) {
+#       return new Tuple(frist, (Object)null);
+#    }
+#
+#    @Nonnull
+#    public static Tuple ofSecond(@Nullable Object second) {
+#       return new Tuple((Object)null, second);
+#    }
+#
+#    @Nonnull
+#    public static Tuple of(@Nullable Object first, @Nullable Object second) {
+#       return new Tuple(first, second);
+#    }
+#
+#    @Nonnull
+#    public static Tuple empty() {
+#       return new Tuple();
+#    }
+# }
+#

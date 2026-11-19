@@ -1,0 +1,117 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/utils/bukkit/nms/NMSProvider.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/utils/bukkit/nms/NMSProvider.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/utils/bukkit/nms/NMSProvider.java), unveraendert, als Inline-Doku ----
+// package net.codingarea.challenges.plugin.utils.bukkit.nms;
+//
+// import net.anweisen.utilities.bukkit.utils.misc.MinecraftVersion;
+// import net.codingarea.challenges.plugin.Challenges;
+// import net.codingarea.challenges.plugin.utils.bukkit.nms.implementations.v1_13.BorderPacketFactory_1_13;
+// import net.codingarea.challenges.plugin.utils.bukkit.nms.implementations.v1_13.CraftPlayer_1_13;
+// import net.codingarea.challenges.plugin.utils.bukkit.nms.implementations.v1_13.PacketBorder_1_13;
+// import net.codingarea.challenges.plugin.utils.bukkit.nms.implementations.v1_13.PlayerConnection_1_13;
+// import net.codingarea.challenges.plugin.utils.bukkit.nms.implementations.v1_13.WorldServer_1_13;
+// import net.codingarea.challenges.plugin.utils.bukkit.nms.implementations.v1_17.BorderPacketFactory_1_17;
+// import net.codingarea.challenges.plugin.utils.bukkit.nms.implementations.v1_17.CraftPlayer_1_17;
+// import net.codingarea.challenges.plugin.utils.bukkit.nms.implementations.v1_17.PacketBorder_1_17;
+// import net.codingarea.challenges.plugin.utils.bukkit.nms.implementations.v1_18.PacketBorder_1_18;
+// import net.codingarea.challenges.plugin.utils.bukkit.nms.implementations.v1_18.PlayerConnection_1_18;
+// import net.codingarea.challenges.plugin.utils.bukkit.nms.type.BorderPacketFactory;
+// import net.codingarea.challenges.plugin.utils.bukkit.nms.type.CraftPlayer;
+// import net.codingarea.challenges.plugin.utils.bukkit.nms.type.PacketBorder;
+// import net.codingarea.challenges.plugin.utils.bukkit.nms.type.PlayerConnection;
+// import net.codingarea.challenges.plugin.utils.bukkit.nms.type.WorldServer;
+// import org.bukkit.World;
+// import org.bukkit.entity.Player;
+//
+// public class NMSProvider {
+//    private static final int majorVersion = ReflectionUtil.getMajorVersion();
+//    private static final BorderPacketFactory borderPacketFactory;
+//
+//    public static WorldServer createWorldServer(World world) {
+//       try {
+//          if (versionIsAtLeast(13)) {
+//             return new WorldServer_1_13(world);
+//          }
+//       } catch (ClassNotFoundException var2) {
+//          Challenges.getInstance().getLogger().error("Failed to create WorldServer instance for version {}:", new Object[]{majorVersion, var2});
+//       }
+//
+//       throw new IllegalStateException("Could not find a WorldServer implementation for version " + getFormattedVersion());
+//    }
+//
+//    public static CraftPlayer createCraftPlayer(Player player) {
+//       try {
+//          if (versionIsAtLeast(17)) {
+//             return new CraftPlayer_1_17(player);
+//          }
+//
+//          if (versionIsAtLeast(13)) {
+//             return new CraftPlayer_1_13(player);
+//          }
+//       } catch (ClassNotFoundException var2) {
+//          Challenges.getInstance().getLogger().error("Failed to create CraftPlayer instance for version {}:", new Object[]{majorVersion, var2});
+//       }
+//
+//       throw new IllegalStateException("Could not find a CraftServer implementation for version " + getFormattedVersion());
+//    }
+//
+//    public static PlayerConnection createPlayerConnection(CraftPlayer player) {
+//       try {
+//          if (versionIsAtLeast(18)) {
+//             return new PlayerConnection_1_18(player.getPlayerConnectionObject());
+//          }
+//
+//          if (versionIsAtLeast(13)) {
+//             return new PlayerConnection_1_13(player.getPlayerConnectionObject());
+//          }
+//       } catch (ClassNotFoundException var2) {
+//          Challenges.getInstance().getLogger().error("Failed to create PlayerConnection instance for version {}:", new Object[]{majorVersion, var2});
+//       }
+//
+//       throw new IllegalStateException("Could not find a PlayerConnection implementation for version " + getFormattedVersion());
+//    }
+//
+//    public static PacketBorder createPacketBorder(World world) {
+//       if (versionIsAtLeast(18)) {
+//          return new PacketBorder_1_18(world);
+//       } else if (versionIsAtLeast(17)) {
+//          return new PacketBorder_1_17(world);
+//       } else if (versionIsAtLeast(13)) {
+//          return new PacketBorder_1_13(world);
+//       } else {
+//          throw new IllegalStateException("Could not find a PacketBorder implementation for version " + getFormattedVersion());
+//       }
+//    }
+//
+//    public static BorderPacketFactory getBorderPacketFactory() {
+//       return borderPacketFactory;
+//    }
+//
+//    private static boolean versionIsAtLeast(int majorVersion) {
+//       return NMSProvider.majorVersion >= majorVersion;
+//    }
+//
+//    private static String getFormattedVersion() {
+//       return MinecraftVersion.current().format();
+//    }
+//
+//    static {
+//       if (versionIsAtLeast(17)) {
+//          borderPacketFactory = new BorderPacketFactory_1_17();
+//       } else {
+//          if (!versionIsAtLeast(13)) {
+//             throw new IllegalStateException("Could not find a BorderPacketFactory implementation for version " + getFormattedVersion());
+//          }
+//
+//          borderPacketFactory = new BorderPacketFactory_1_13();
+//       }
+//
+//    }
+// }
+//

@@ -1,0 +1,66 @@
+﻿# Zimbu-Port-Spiegel von: projects\learning-projects-fun_ccna_learning\index.html
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE index_html
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\learning-projects-fun_ccna_learning\index.html\n")
+  RETURN 0
+
+# ---- Original-Code (projects\learning-projects-fun_ccna_learning\index.html), unveraendert, als Inline-Doku ----
+# <!DOCTYPE html>
+# <html lang="de">
+# <head>
+#     <meta charset="UTF-8">
+#     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+#     <title>CCNA v7 Quiz - Lernen & Üben</title>
+#     <link rel="stylesheet" href="styles.css">
+#     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+# </head>
+# <body>
+#     <div class="container">
+#         <header>
+#             <h1>CCNA v7 Quiz</h1>
+#             <p>Testen Sie Ihr Wissen mit diesen CCNA v7 Prüfungsfragen</p>
+#         </header>
+#
+#         <div id="quiz-selection" class="quiz-selection">
+#             <h2>Wählen Sie ein Quiz</h2>
+#             <div id="quiz-list" class="quiz-grid">
+#                 <!-- Quiz options will be dynamically added here -->
+#             </div>
+#         </div>
+#
+#         <div id="quiz-container" class="quiz-container hidden">
+#             <div class="quiz-header">
+#                 <h2 id="quiz-title">Quiz Titel</h2>
+#                 <div id="quiz-progress">Frage 1 von 5</div>
+#             </div>
+#             
+#             <div class="question-container">
+#                 <p id="question-text">Frage wird geladen...</p>
+#                 <div id="options-container" class="options-container">
+#                     <!-- Options will be added here by JavaScript -->
+#                 </div>
+#             </div>
+#
+#             <div class="navigation-buttons">
+#                 <button id="prev-btn" class="nav-btn" disabled>Zurück</button>
+#                 <button id="next-btn" class="nav-btn">Weiter</button>
+#                 <button id="submit-btn" class="nav-btn hidden">Ergebnis anzeigen</button>
+#             </div>
+#         </div>
+#
+#         <div id="result-container" class="result-container hidden">
+#             <h2>Quiz abgeschlossen!</h2>
+#             <div id="score-display"></div>
+#             <button id="restart-btn" class="restart-btn">Neues Quiz starten</button>
+#         </div>
+#     </div>
+#
+#     <script src="quiz-data.js"></script>
+#     <script src="app.js"></script>
+# </body>
+# </html>
+#

@@ -1,0 +1,55 @@
+import random
+
+class AIEnemy:
+    def __init__(self, name, health, attack_power):
+        # Initialize the AI enemy with a name, health points, and attack power
+        self.name = name
+        self.health = health
+        self.attack_power = attack_power
+
+    def is_alive(self):
+        # Check if the enemy is still alive
+        return self.health > 0
+
+    def attack(self, player):
+        # Calculate damage and apply it to the player
+        damage = random.randint(1, self.attack_power)
+        player.health -= damage
+        print(f"{self.name} attacks {player.name} for {damage} damage!")
+
+    def take_damage(self, damage):
+        # Apply damage to the enemy
+        self.health -= damage
+        print(f"{self.name} takes {damage} damage! Remaining health: {self.health}")
+
+# Example usage
+if __name__ == "__main__":
+    class Player:
+        def __init__(self, name, health, attack_power):
+            self.name = name
+            self.health = health
+            self.attack_power = attack_power
+
+        def is_alive(self):
+            return self.health > 0
+
+        def attack(self, enemy):
+            damage = random.randint(1, self.attack_power)
+            enemy.take_damage(damage)
+            print(f"{self.name} attacks {enemy.name} for {damage} damage!")
+
+    # Create a player and an AI enemy
+    player = Player(name="Hero", health=100, attack_power=20)
+    enemy = AIEnemy(name="Goblin", health=50, attack_power=15)
+
+    # Simple combat loop
+    while player.is_alive() and enemy.is_alive():
+        player.attack(enemy)
+        if enemy.is_alive():
+            enemy.attack(player)
+        print(f"{player.name} HP: {player.health}, {enemy.name} HP: {enemy.health}")
+
+    if player.is_alive():
+        print(f"{player.name} has defeated {enemy.name}!")
+    else:
+        print(f"{player.name} has been defeated by {enemy.name}!") 

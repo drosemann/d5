@@ -1,0 +1,36 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-apocalypseunleashed/src/main/java/apocalypse/listeners/DisasterListener.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-apocalypseunleashed/src/main/java/apocalypse/listeners/DisasterListener.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-apocalypseunleashed/src/main/java/apocalypse/listeners/DisasterListener.java), unveraendert, als Inline-Doku ----
+// package apocalypse.listeners;
+//
+// import org.bukkit.event.EventHandler;
+// import org.bukkit.event.Listener;
+// import org.bukkit.event.entity.EntityDamageEvent;
+// import apocalypse.ApocalypsePlugin;
+//
+// public class DisasterListener implements Listener {
+//     private final ApocalypsePlugin plugin;
+//
+//     public DisasterListener(ApocalypsePlugin plugin) {
+//         this.plugin = plugin;
+//     }
+//
+//     @EventHandler
+//     public void onEntityDamage(EntityDamageEvent event) {
+//         // Handle disaster-related damage here
+//         plugin.getLogger().info("Entity damaged: " + event.getEntity().getType() + " for " + event.getDamage() + " damage.");
+//         // Additional logic can be added to modify damage based on active disasters
+//         if (plugin.getDisasterManager().hasActiveDisasters()) {
+//             // Example: Increase damage during disasters
+//             double modifiedDamage = event.getDamage() * 1.5;
+//             event.setDamage(modifiedDamage);
+//             plugin.getLogger().info("Damage increased to: " + modifiedDamage + " due to active disasters.");
+//         }
+//     }
+// }

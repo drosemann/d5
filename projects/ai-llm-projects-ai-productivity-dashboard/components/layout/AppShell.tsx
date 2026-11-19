@@ -1,0 +1,64 @@
+'use client'
+
+import { Sidebar } from './Sidebar'
+import { Header } from './Header'
+import { RightPanel } from './RightPanel'
+import { DashboardView } from '@/components/dashboard/DashboardView'
+import { useUIStore } from '@/stores/uiStore'
+import { cn } from '@/lib/utils'
+import { PanelRight } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import type { User } from '@supabase/supabase-js'
+
+interface AppShellProps {
+  user: User | null
+}
+
+export function AppShell({ user }: AppShellProps) {
+  const { rightPanelVisible, setRightPanelVisible } = useUIStore()
+
+  return (
+    <div className="flex h-screen w-full overflow-hidden bg-background">
+      {/* Left Sidebar */}
+      <Sidebar user={user} />
+
+      {/* Main area */}
+      <div className="flex flex-col flex-1 min-w-0 overflow-hidden">
+        {/* Top header */}
+        <Header />
+
+        {/* Center + Right panel */}
+        <div className="flex flex-1 min-h-0 overflow-hidden">
+          {/* Center feed */}
+          <main className="flex-1 min-w-0 overflow-hidden">
+            <DashboardView />
+          </main>
+
+          {/* Right panel toggle button (when hidden) */}
+          {!rightPanelVisible && (
+            <div className="flex items-start pt-3 pr-2 shrink-0">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-8 w-8 text-muted-foreground"
+                onClick={() => setRightPanelVisible(true)}
+              >
+                <PanelRight className="w-4 h-4" />
+              </Button>
+            </div>
+          )}
+
+          {/* Right panel */}
+          <div
+            className={cn(
+              'transition-all duration-300 overflow-hidden',
+              rightPanelVisible ? 'w-[300px] opacity-100' : 'w-0 opacity-0'
+            )}
+          >
+            {rightPanelVisible && <RightPanel />}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}

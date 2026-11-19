@@ -1,0 +1,12 @@
+﻿# Zimbu-Port-Spiegel von: projects\learning-projects-python-programming\old\helloworld.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE helloworld_py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\learning-projects-python-programming\old\helloworld.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\learning-projects-python-programming\old\helloworld.py), unveraendert, als Inline-Doku ----
+# print("Hello, World!")

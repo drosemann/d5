@@ -1,0 +1,29 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\function\ExceptionallyBiFunction.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE ExceptionallyBiFunction_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\function\ExceptionallyBiFunction.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\function\ExceptionallyBiFunction.java), unveraendert, als Inline-Doku ----
+# package net.anweisen.utilities.common.function;
+#
+# import java.util.function.BiFunction;
+# import net.anweisen.utilities.common.collection.WrappedException;
+#
+# @FunctionalInterface
+# public interface ExceptionallyBiFunction extends BiFunction {
+#    default Object apply(Object t, Object u) {
+#       try {
+#          return this.applyExceptionally(t, u);
+#       } catch (Exception var4) {
+#          throw WrappedException.rethrow(var4);
+#       }
+#    }
+#
+#    Object applyExceptionally(Object var1, Object var2) throws Exception;
+# }
+#

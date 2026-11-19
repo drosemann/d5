@@ -1,0 +1,532 @@
+﻿// Goose-Port-Spiegel von: projects/archive-unsorted-landing-page-revamp/styles.css
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/archive-unsorted-landing-page-revamp/styles.css");
+}
+
+// ---- Original-Code (projects/archive-unsorted-landing-page-revamp/styles.css), unveraendert, als Inline-Doku ----
+// /* 2026 Modern CSS Standards */
+//
+// :root {
+//     /* Color Palette */
+//     --color-primary: #6366f1;
+//     --color-primary-dark: #4f46e5;
+//     --color-primary-light: #818cf8;
+//     --color-secondary: #10b981;
+//     --color-accent: #f59e0b;
+//     
+//     /* Neutrals */
+//     --color-background: #0f172a;
+//     --color-surface: #1a1f35;
+//     --color-surface-light: #2a3142;
+//     --color-border: #3f46e5;
+//     --color-text: #f1f5f9;
+//     --color-text-muted: #cbd5e1;
+//     
+//     /* Spacing */
+//     --spacing-xs: 0.5rem;
+//     --spacing-sm: 1rem;
+//     --spacing-md: 1.5rem;
+//     --spacing-lg: 2rem;
+//     --spacing-xl: 3rem;
+//     --spacing-2xl: 4rem;
+//     
+//     /* Typography */
+//     --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+//     --font-mono: 'Monaco', 'Menlo', monospace;
+//     
+//     --text-xs: 0.75rem;
+//     --text-sm: 0.875rem;
+//     --text-base: 1rem;
+//     --text-lg: 1.125rem;
+//     --text-xl: 1.25rem;
+//     --text-2xl: 1.5rem;
+//     --text-3xl: 1.875rem;
+//     
+//     /* Border Radius */
+//     --radius-sm: 0.375rem;
+//     --radius-md: 0.5rem;
+//     --radius-lg: 0.75rem;
+//     --radius-xl: 1rem;
+//     --radius-2xl: 1.5rem;
+//     
+//     /* Transitions */
+//     --transition-fast: 150ms ease-in-out;
+//     --transition-normal: 300ms ease-in-out;
+//     --transition-slow: 500ms ease-in-out;
+//     
+//     /* Shadows */
+//     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+//     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+//     --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+//     --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+// }
+//
+// /* Reset & Base Styles */
+// * {
+//     margin: 0;
+//     padding: 0;
+//     box-sizing: border-box;
+// }
+//
+// html {
+//     scroll-behavior: smooth;
+//     -webkit-font-smoothing: antialiased;
+//     -moz-osx-font-smoothing: grayscale;
+// }
+//
+// body {
+//     font-family: var(--font-sans);
+//     background-color: var(--color-background);
+//     color: var(--color-text);
+//     line-height: 1.6;
+//     font-size: var(--text-base);
+// }
+//
+// /* Typography */
+// h1, h2, h3, h4, h5, h6 {
+//     font-weight: 600;
+//     line-height: 1.2;
+//     margin-bottom: var(--spacing-md);
+// }
+//
+// h1 { font-size: var(--text-3xl); }
+// h2 { font-size: var(--text-2xl); }
+// h3 { font-size: var(--text-xl); }
+// h4 { font-size: var(--text-lg); }
+//
+// p {
+//     margin-bottom: var(--spacing-sm);
+//     color: var(--color-text-muted);
+// }
+//
+// a {
+//     color: var(--color-primary-light);
+//     text-decoration: none;
+//     transition: color var(--transition-fast);
+// }
+//
+// a:hover {
+//     color: var(--color-primary);
+// }
+//
+// /* Utilities */
+// .container {
+//     max-width: 1200px;
+//     margin: 0 auto;
+//     padding: 0 var(--spacing-lg);
+// }
+//
+// /* Header */
+// .header {
+//     position: sticky;
+//     top: 0;
+//     z-index: 1000;
+//     background: rgba(15, 23, 42, 0.95);
+//     backdrop-filter: blur(10px);
+//     border-bottom: 1px solid var(--color-border);
+//     padding: var(--spacing-md) 0;
+//     box-shadow: var(--shadow-sm);
+// }
+//
+// .header .container {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     gap: var(--spacing-lg);
+// }
+//
+// .logo {
+//     font-size: var(--text-2xl);
+//     font-weight: 700;
+//     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+//     -webkit-background-clip: text;
+//     -webkit-text-fill-color: transparent;
+//     background-clip: text;
+//     white-space: nowrap;
+// }
+//
+// .search-bar {
+//     display: flex;
+//     gap: var(--spacing-sm);
+//     flex: 1;
+//     max-width: 400px;
+// }
+//
+// .search-input {
+//     flex: 1;
+//     padding: var(--spacing-sm) var(--spacing-md);
+//     background-color: var(--color-surface);
+//     border: 1px solid var(--color-border);
+//     border-radius: var(--radius-lg);
+//     color: var(--color-text);
+//     font-size: var(--text-base);
+//     transition: all var(--transition-fast);
+// }
+//
+// .search-input::placeholder {
+//     color: var(--color-text-muted);
+// }
+//
+// .search-input:focus {
+//     outline: none;
+//     border-color: var(--color-primary);
+//     background-color: var(--color-surface-light);
+//     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+// }
+//
+// .search-btn {
+//     padding: var(--spacing-sm) var(--spacing-lg);
+//     background-color: var(--color-primary);
+//     color: white;
+//     border: none;
+//     border-radius: var(--radius-lg);
+//     font-weight: 600;
+//     cursor: pointer;
+//     transition: all var(--transition-fast);
+// }
+//
+// .search-btn:hover {
+//     background-color: var(--color-primary-dark);
+//     transform: translateY(-2px);
+//     box-shadow: var(--shadow-md);
+// }
+//
+// .search-btn:active {
+//     transform: translateY(0);
+// }
+//
+// /* Navigation Tabs */
+// .tabs-navigation {
+//     display: flex;
+//     gap: var(--spacing-sm);
+//     padding: var(--spacing-lg) 0;
+//     border-bottom: 1px solid var(--color-border);
+//     overflow-x: auto;
+//     scroll-behavior: smooth;
+// }
+//
+// .tabs-navigation .container {
+//     display: contents;
+// }
+//
+// .tab {
+//     padding: var(--spacing-sm) var(--spacing-md);
+//     background: none;
+//     border: none;
+//     color: var(--color-text-muted);
+//     font-weight: 500;
+//     cursor: pointer;
+//     position: relative;
+//     transition: color var(--transition-fast);
+//     white-space: nowrap;
+// }
+//
+// .tab:hover {
+//     color: var(--color-text);
+// }
+//
+// .tab.active {
+//     color: var(--color-primary);
+// }
+//
+// .tab.active::after {
+//     content: '';
+//     position: absolute;
+//     bottom: -var(--spacing-lg);
+//     left: 0;
+//     right: 0;
+//     height: 2px;
+//     background: var(--color-primary);
+// }
+//
+// /* Main Content */
+// .main-content {
+//     padding: var(--spacing-2xl) 0;
+// }
+//
+// section {
+//     padding: var(--spacing-2xl) 0;
+// }
+//
+// section h2 {
+//     margin-bottom: var(--spacing-lg);
+//     text-align: left;
+// }
+//
+// /* Featured Section */
+// .featured-section {
+//     background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+//     border-radius: var(--radius-2xl);
+//     padding: var(--spacing-2xl) 0;
+//     margin-bottom: var(--spacing-2xl);
+// }
+//
+// .featured-game-card {
+//     display: grid;
+//     grid-template-columns: 1fr 1fr;
+//     gap: var(--spacing-2xl);
+//     align-items: center;
+//     animation: slideIn 0.6s ease-out;
+// }
+//
+// @media (max-width: 768px) {
+//     .featured-game-card {
+//         grid-template-columns: 1fr;
+//         gap: var(--spacing-lg);
+//     }
+// }
+//
+// .featured-image {
+//     overflow: hidden;
+//     border-radius: var(--radius-2xl);
+//     aspect-ratio: 16 / 9;
+// }
+//
+// .featured-image img {
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//     transition: transform var(--transition-normal);
+//     opacity: 1;
+// }
+//
+// .featured-game-card:hover .featured-image img {
+//     transform: scale(1.05);
+// }
+//
+// .featured-details {
+//     display: flex;
+//     flex-direction: column;
+//     gap: var(--spacing-md);
+// }
+//
+// .featured-description {
+//     font-size: var(--text-lg);
+//     color: var(--color-text-muted);
+//     line-height: 1.8;
+//     opacity: 1;
+//     transition: opacity var(--transition-normal);
+// }
+//
+// /* Games Grid */
+// .games-grid {
+//     display: grid;
+//     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+//     gap: var(--spacing-lg);
+// }
+//
+// @media (max-width: 768px) {
+//     .games-grid {
+//         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+//     }
+// }
+//
+// /* Game Card */
+// .game-card {
+//     display: flex;
+//     flex-direction: column;
+//     background-color: var(--color-surface);
+//     border: 1px solid var(--color-border);
+//     border-radius: var(--radius-xl);
+//     overflow: hidden;
+//     transition: all var(--transition-normal);
+//     animation: fadeIn 0.5s ease-out;
+// }
+//
+// .game-card:hover {
+//     transform: translateY(-8px);
+//     border-color: var(--color-primary);
+//     box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+// }
+//
+// .game-image {
+//     aspect-ratio: 1;
+//     overflow: hidden;
+//     background: linear-gradient(135deg, var(--color-surface-light), var(--color-surface));
+// }
+//
+// .game-image img {
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//     transition: transform var(--transition-normal);
+// }
+//
+// .game-card:hover .game-image img {
+//     transform: scale(1.1);
+// }
+//
+// .game-info {
+//     display: flex;
+//     flex-direction: column;
+//     gap: var(--spacing-sm);
+//     flex: 1;
+//     padding: var(--spacing-md);
+// }
+//
+// .game-info h3 {
+//     margin: 0;
+//     font-size: var(--text-lg);
+// }
+//
+// .game-info p {
+//     flex: 1;
+//     font-size: var(--text-sm);
+//     margin: 0;
+// }
+//
+// /* Play Button */
+// .play-btn {
+//     padding: var(--spacing-sm) var(--spacing-md);
+//     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+//     color: white;
+//     border: none;
+//     border-radius: var(--radius-lg);
+//     font-weight: 600;
+//     cursor: pointer;
+//     transition: all var(--transition-fast);
+//     align-self: flex-start;
+// }
+//
+// .play-btn:hover {
+//     transform: scale(1.05);
+//     box-shadow: var(--shadow-lg);
+// }
+//
+// .play-btn:active {
+//     transform: scale(0.98);
+// }
+//
+// /* Footer */
+// .footer {
+//     background-color: var(--color-surface);
+//     border-top: 1px solid var(--color-border);
+//     padding: var(--spacing-2xl) 0 var(--spacing-lg);
+//     margin-top: var(--spacing-2xl);
+// }
+//
+// .footer-content {
+//     display: grid;
+//     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+//     gap: var(--spacing-2xl);
+//     margin-bottom: var(--spacing-2xl);
+// }
+//
+// .footer-section h4 {
+//     margin-bottom: var(--spacing-md);
+// }
+//
+// .footer-section ul {
+//     list-style: none;
+// }
+//
+// .footer-section li {
+//     margin-bottom: var(--spacing-sm);
+// }
+//
+// .footer-section a {
+//     color: var(--color-text-muted);
+//     transition: color var(--transition-fast);
+// }
+//
+// .footer-section a:hover {
+//     color: var(--color-primary);
+// }
+//
+// .newsletter-form {
+//     display: flex;
+//     gap: var(--spacing-sm);
+// }
+//
+// .newsletter-form input {
+//     flex: 1;
+//     padding: var(--spacing-sm) var(--spacing-md);
+//     background-color: var(--color-background);
+//     border: 1px solid var(--color-border);
+//     border-radius: var(--radius-lg);
+//     color: var(--color-text);
+//     font-size: var(--text-sm);
+// }
+//
+// .newsletter-form input::placeholder {
+//     color: var(--color-text-muted);
+// }
+//
+// .newsletter-form button {
+//     padding: var(--spacing-sm) var(--spacing-md);
+//     background-color: var(--color-secondary);
+//     color: white;
+//     border: none;
+//     border-radius: var(--radius-lg);
+//     font-weight: 600;
+//     cursor: pointer;
+//     transition: all var(--transition-fast);
+// }
+//
+// .newsletter-form button:hover {
+//     background-color: #059669;
+// }
+//
+// .footer-credit {
+//     text-align: center;
+//     color: var(--color-text-muted);
+//     font-size: var(--text-sm);
+// }
+//
+// /* Animations */
+// @keyframes fadeIn {
+//     from {
+//         opacity: 0;
+//         transform: translateY(20px);
+//     }
+//     to {
+//         opacity: 1;
+//         transform: translateY(0);
+//     }
+// }
+//
+// @keyframes slideIn {
+//     from {
+//         opacity: 0;
+//         transform: translateX(-20px);
+//     }
+//     to {
+//         opacity: 1;
+//         transform: translateX(0);
+//     }
+// }
+//
+// .fade-in {
+//     animation: fadeIn 0.6s ease-out forwards;
+// }
+//
+// /* Accessibility */
+// @media (prefers-reduced-motion: reduce) {
+//     * {
+//         animation-duration: 0.01ms !important;
+//         animation-iteration-count: 1 !important;
+//         transition-duration: 0.01ms !important;
+//     }
+// }
+//
+// /* Focus States for Keyboard Navigation */
+// button:focus-visible,
+// input:focus-visible,
+// a:focus-visible {
+//     outline: 2px solid var(--color-primary);
+//     outline-offset: 2px;
+// }
+//
+// /* Print Styles */
+// @media print {
+//     .header,
+//     .tabs-navigation,
+//     .footer,
+//     .play-btn {
+//         display: none;
+//     }
+// }
+//

@@ -1,0 +1,22 @@
+world: world
+items:
+  diamond:
+    material: DIAMOND
+    min_amount: 1
+    max_amount: 3
+    chance: 0.5
+  iron:
+    material: IRON_INGOT
+    min_amount: 2
+    max_amount: 5
+    chance: 0.8
+  gold:
+    material: GOLD_INGOT
+    min_amount: 1
+    max_amount: 3
+    chance: 0.6
+  food:
+    material: COOKED_BEEF
+    min_amount: 3
+    max_amount: 8
+    chance: 0.9

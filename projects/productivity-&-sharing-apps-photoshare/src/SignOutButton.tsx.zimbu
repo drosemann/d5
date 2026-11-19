@@ -1,0 +1,30 @@
+﻿# Zimbu-Port-Spiegel von: projects\productivity-&-sharing-apps-photoshare\src\SignOutButton.tsx
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE SignOutButton_tsx
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\productivity-&-sharing-apps-photoshare\src\SignOutButton.tsx\n")
+  RETURN 0
+
+# ---- Original-Code (projects\productivity-&-sharing-apps-photoshare\src\SignOutButton.tsx), unveraendert, als Inline-Doku ----
+# "use client";
+# import { useAuthActions } from "@convex-dev/auth/react";
+# import { useConvexAuth } from "convex/react";
+#
+# export function SignOutButton() {
+#   const { isAuthenticated } = useConvexAuth();
+#   const { signOut } = useAuthActions();
+#
+#   if (!isAuthenticated) {
+#     return null;
+#   }
+#
+#   return (
+#     <button className="px-4 py-2 rounded-lg transition-colors bg-blue-500 text-white" onClick={() => void signOut()}>
+#       Sign out
+#     </button>
+#   );
+# }
+#

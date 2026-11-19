@@ -1,0 +1,39 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-infra-pilot/services/orchestrator-agent/rbac/__init__.py
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-infra-pilot/services/orchestrator-agent/rbac/__init__.py");
+}
+
+// ---- Original-Code (projects/github-repos-infra-pilot/services/orchestrator-agent/rbac/__init__.py), unveraendert, als Inline-Doku ----
+// """Multi-tenant RBAC — organizations, projects, teams, and fine-grained permissions.
+//
+// Avoids the Proxmox problem of flat user management and the OpenStack
+// problem of overly complex role hierarchies by offering a clean
+// org → project → team model with scoped permissions.
+// """
+//
+// from .engine import AccessDeniedError, RBACEngine
+// from .models import (
+//     ALL_PERMISSIONS,
+//     Membership,
+//     Organization,
+//     Permission,
+//     Project,
+//     Role,
+//     Team,
+// )
+//
+// __all__ = [
+//     "Organization",
+//     "Project",
+//     "Team",
+//     "Role",
+//     "Permission",
+//     "Membership",
+//     "ALL_PERMISSIONS",
+//     "RBACEngine",
+//     "AccessDeniedError",
+// ]
+//

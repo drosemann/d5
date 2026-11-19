@@ -1,0 +1,20 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-guestbook-html-css-javascript\php\badges.php
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE badges_php
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-guestbook-html-css-javascript\php\badges.php\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-guestbook-html-css-javascript\php\badges.php), unveraendert, als Inline-Doku ----
+# <?php
+#
+# // Award badges based on activity
+# $badges = [
+#     'first_post' => 'First Message!',
+#     'frequent_poster' => 'Posted 10 times',
+#     'popular_entry' => 'Got 100 likes',
+#     'early_bird' => 'Posted before 6 AM'
+# ]; 

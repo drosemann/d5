@@ -1,0 +1,21 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-plugins-&-server-systems-bedwars\src\main\java\org\bedwars\bedwarsproject\stats\Leaderboard.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE Leaderboard_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-plugins-&-server-systems-bedwars\src\main\java\org\bedwars\bedwarsproject\stats\Leaderboard.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-plugins-&-server-systems-bedwars\src\main\java\org\bedwars\bedwarsproject\stats\Leaderboard.java), unveraendert, als Inline-Doku ----
+# package org.bedwars.bedwarsproject;
+#
+# public class Leaderboard {
+#
+#     public void updateLeaderboard() {
+#         // Logic to update and display player scores and rankings
+#         System.out.println("Updating leaderboard.");
+#     }
+# }
+#

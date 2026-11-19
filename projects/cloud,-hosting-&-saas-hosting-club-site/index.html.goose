@@ -1,0 +1,860 @@
+﻿// Goose-Port-Spiegel von: projects/cloud,-hosting-&-saas-hosting-club-site/index.html
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/cloud,-hosting-&-saas-hosting-club-site/index.html");
+}
+
+// ---- Original-Code (projects/cloud,-hosting-&-saas-hosting-club-site/index.html), unveraendert, als Inline-Doku ----
+// <!DOCTYPE html>
+// <html lang="en">
+// <head>
+//     <meta charset="UTF-8">
+//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//     <title>Hosting-Club.de - Free Servers With Maximum Power!</title>
+//     <style>
+//         :root {
+//             --primary-bg: #14151a;
+//             --secondary-bg: #1e2028;
+//             --card-bg: #252731;
+//             --text-color: #ffffff;
+//             --text-secondary: #a0a0b0;
+//             --accent-green: #4ade80;
+//             --accent-green-dark: #22c55e;
+//             --border-color: #32333e;
+//         }
+//         
+//         * {
+//             margin: 0;
+//             padding: 0;
+//             box-sizing: border-box;
+//             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+//         }
+//         
+//         body {
+//             background-color: var(--primary-bg);
+//             color: var(--text-color);
+//             line-height: 1.6;
+//             overflow-x: hidden;
+//         }
+//         
+//         header {
+//             background: var(--secondary-bg);
+//             border-bottom: 1px solid var(--border-color);
+//             padding: 0.75rem 0;
+//             position: fixed;
+//             width: 100%;
+//             z-index: 1000;
+//         }
+//         
+//         .container {
+//             width: 90%;
+//             max-width: 1200px;
+//             margin: 0 auto;
+//             padding: 0 20px;
+//         }
+//         
+//         .header-content {
+//             display: flex;
+//             justify-content: space-between;
+//             align-items: center;
+//         }
+//         
+//         .logo {
+//             font-size: 1.5rem;
+//             font-weight: 600;
+//             color: var(--text-color);
+//             display: flex;
+//             align-items: center;
+//             gap: 8px;
+//         }
+//         
+//         .logo-icon {
+//             color: var(--accent-green);
+//             font-size: 1.2rem;
+//         }
+//         
+//         .nav-links {
+//             display: flex;
+//             gap: 2rem;
+//             list-style: none;
+//         }
+//         
+//         .nav-link {
+//             color: var(--text-color);
+//             text-decoration: none;
+//             font-weight: 500;
+//             position: relative;
+//             transition: all 0.3s ease;
+//             font-size: 0.95rem;
+//         }
+//         
+//         .nav-link:hover {
+//             color: var(--accent-green);
+//         }
+//         
+//         .hero {
+//             background: var(--primary-bg);
+//             min-height: 100vh;
+//             display: flex;
+//             align-items: center;
+//             padding-top: 60px;
+//         }
+//         
+//         .hero-content {
+//             position: relative;
+//             z-index: 1;
+//             width: 100%;
+//         }
+//         
+//         .hero-title {
+//             font-size: 2.8rem;
+//             font-weight: 700;
+//             margin-bottom: 1.5rem;
+//             text-transform: uppercase;
+//             line-height: 1.2;
+//         }
+//         
+//         .hero-subtitle {
+//             font-size: 1.15rem;
+//             color: var(--text-secondary);
+//             margin-bottom: 2.5rem;
+//             max-width: 700px;
+//         }
+//         
+//         .cta-button {
+//             display: inline-block;
+//             background: var(--accent-green);
+//             color: var(--primary-bg);
+//             padding: 0.75rem 1.75rem;
+//             border-radius: 6px;
+//             text-decoration: none;
+//             font-weight: 600;
+//             font-size: 1rem;
+//             transition: all 0.3s ease;
+//             margin-right: 1rem;
+//         }
+//         
+//         .cta-button:hover {
+//             background: var(--accent-green-dark);
+//             transform: translateY(-2px);
+//         }
+//         
+//         .cta-button.secondary {
+//             background: transparent;
+//             border: 1px solid var(--accent-green);
+//             color: var(--accent-green);
+//         }
+//         
+//         .cta-button.secondary:hover {
+//             background: rgba(74, 222, 128, 0.1);
+//         }
+//         
+//         .dashboard {
+//             background-color: var(--secondary-bg);
+//             padding: 5rem 0;
+//             border-top: 1px solid var(--border-color);
+//             border-bottom: 1px solid var(--border-color);
+//         }
+//         
+//         .section-title {
+//             text-align: center;
+//             font-size: 2rem;
+//             margin-bottom: 3rem;
+//             color: var(--text-color);
+//             position: relative;
+//             display: inline-block;
+//             padding-bottom: 15px;
+//         }
+//         
+//         .section-title::after {
+//             content: '';
+//             position: absolute;
+//             width: 60%;
+//             height: 3px;
+//             background: var(--accent-green);
+//             bottom: 0;
+//             left: 20%;
+//             border-radius: 2px;
+//         }
+//         
+//         .section-header {
+//             text-align: center;
+//             margin-bottom: 3rem;
+//         }
+//         
+//         .dashboard-grid {
+//             display: grid;
+//             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+//             gap: 1.5rem;
+//         }
+//         
+//         .dashboard-card {
+//             background: var(--card-bg);
+//             border-radius: 8px;
+//             padding: 1.5rem;
+//             display: flex;
+//             flex-direction: column;
+//             align-items: center;
+//             border: 1px solid var(--border-color);
+//         }
+//         
+//         .file-icon {
+//             font-size: 2rem;
+//             color: var(--text-secondary);
+//             margin-bottom: 0.75rem;
+//         }
+//         
+//         .file-name {
+//             font-size: 0.9rem;
+//             color: var(--text-secondary);
+//             text-align: center;
+//         }
+//         
+//         .dashboard-status {
+//             display: grid;
+//             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+//             gap: 1.5rem;
+//             margin-top: 2rem;
+//         }
+//         
+//         .status-card {
+//             background: var(--card-bg);
+//             border-radius: 8px;
+//             padding: 1.25rem;
+//             border: 1px solid var(--border-color);
+//         }
+//         
+//         .status-header {
+//             color: var(--text-secondary);
+//             font-size: 0.85rem;
+//             margin-bottom: 0.5rem;
+//         }
+//         
+//         .status-value {
+//             font-size: 1.25rem;
+//             font-weight: 600;
+//         }
+//         
+//         .status-green {
+//             color: var(--accent-green);
+//         }
+//         
+//         .features {
+//             background-color: var(--primary-bg);
+//             padding: 5rem 0;
+//         }
+//         
+//         .feature-list {
+//             list-style: none;
+//             margin: 0 0 3rem 0;
+//             padding: 0;
+//             max-width: 800px;
+//             margin-left: auto;
+//             margin-right: auto;
+//         }
+//         
+//         .feature-list li {
+//             position: relative;
+//             padding-left: 30px;
+//             margin-bottom: 1rem;
+//             font-size: 1.05rem;
+//             color: var(--text-color);
+//         }
+//         
+//         .feature-list li::before {
+//             content: '•';
+//             position: absolute;
+//             left: 0;
+//             color: var(--accent-green);
+//             font-size: 1.5rem;
+//             line-height: 1;
+//         }
+//         
+//         .color-highlight {
+//             color: var(--accent-green);
+//             font-weight: 600;
+//         }
+//         
+//         .upgrades {
+//             padding: 5rem 0;
+//             background: var(--secondary-bg);
+//             border-top: 1px solid var(--border-color);
+//             border-bottom: 1px solid var(--border-color);
+//         }
+//         
+//         .upgrade-cards {
+//             display: grid;
+//             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+//             gap: 1.5rem;
+//         }
+//         
+//         .upgrade-card {
+//             background: var(--card-bg);
+//             border-radius: 8px;
+//             padding: 1.5rem;
+//             border: 1px solid var(--border-color);
+//         }
+//         
+//         .upgrade-title {
+//             font-size: 1.25rem;
+//             margin-bottom: 1rem;
+//             color: var(--text-color);
+//             display: flex;
+//             align-items: center;
+//             gap: 8px;
+//         }
+//         
+//         .upgrade-icon {
+//             color: var(--accent-green);
+//         }
+//         
+//         .upgrade-features {
+//             margin-bottom: 1.5rem;
+//             padding-left: 0;
+//             list-style: none;
+//         }
+//         
+//         .upgrade-feature {
+//             margin-bottom: 0.5rem;
+//             position: relative;
+//             padding-left: 24px;
+//             color: var(--text-secondary);
+//         }
+//         
+//         .upgrade-feature::before {
+//             content: '✓';
+//             position: absolute;
+//             left: 0;
+//             color: var(--accent-green);
+//         }
+//         
+//         .community {
+//             padding: 5rem 0;
+//             background-color: var(--primary-bg);
+//         }
+//         
+//         .community-content {
+//             display: flex;
+//             flex-wrap: wrap;
+//             align-items: center;
+//             justify-content: space-between;
+//             gap: 2rem;
+//         }
+//         
+//         .community-text {
+//             flex: 1;
+//             min-width: 300px;
+//         }
+//         
+//         .community-text h3 {
+//             font-size: 1.5rem;
+//             margin-bottom: 1rem;
+//             display: flex;
+//             align-items: center;
+//             gap: 10px;
+//         }
+//         
+//         .community-text p {
+//             color: var(--text-secondary);
+//             margin-bottom: 1.5rem;
+//         }
+//         
+//         .community-image {
+//             flex: 1;
+//             min-width: 300px;
+//         }
+//         
+//         .community-image img {
+//             max-width: 100%;
+//             border-radius: 8px;
+//             border: 1px solid var(--border-color);
+//         }
+//         
+//         .discord-button {
+//             display: inline-flex;
+//             align-items: center;
+//             gap: 10px;
+//             background: #5865F2;
+//             color: white;
+//             padding: 0.75rem 1.5rem;
+//             border-radius: 6px;
+//             text-decoration: none;
+//             font-weight: 600;
+//             font-size: 1rem;
+//             transition: all 0.3s ease;
+//         }
+//         
+//         .discord-button:hover {
+//             background: #4752c4;
+//             transform: translateY(-2px);
+//         }
+//         
+//         .discord-icon {
+//             font-size: 1.2rem;
+//         }
+//         
+//         footer {
+//             background-color: var(--secondary-bg);
+//             padding: 2rem 0;
+//             text-align: center;
+//             border-top: 1px solid var(--border-color);
+//         }
+//         
+//         .footer-logo {
+//             font-size: 1.25rem;
+//             font-weight: 600;
+//             margin-bottom: 1rem;
+//             color: var(--text-color);
+//         }
+//         
+//         .footer-links {
+//             display: flex;
+//             justify-content: center;
+//             gap: 2rem;
+//             margin: 1.5rem 0;
+//             flex-wrap: wrap;
+//         }
+//         
+//         .footer-link {
+//             color: var(--text-secondary);
+//             text-decoration: none;
+//             transition: color 0.3s ease;
+//             font-size: 0.9rem;
+//         }
+//         
+//         .footer-link:hover {
+//             color: var(--accent-green);
+//         }
+//         
+//         .copyright {
+//             font-size: 0.85rem;
+//             color: #666680;
+//         }
+//         
+//         .toolbar {
+//             display: flex;
+//             background: var(--card-bg);
+//             padding: 0.75rem;
+//             border-radius: 8px;
+//             gap: 0.5rem;
+//             margin-bottom: 2rem;
+//             border: 1px solid var(--border-color);
+//             overflow-x: auto;
+//         }
+//         
+//         .tool-button {
+//             background: var(--secondary-bg);
+//             border: 1px solid var(--border-color);
+//             color: var(--text-secondary);
+//             border-radius: 6px;
+//             padding: 0.5rem 0.75rem;
+//             font-size: 0.9rem;
+//             display: flex;
+//             align-items: center;
+//             justify-content: center;
+//             min-width: 40px;
+//         }
+//         
+//         .tool-button.active {
+//             background: rgba(74, 222, 128, 0.1);
+//             color: var(--accent-green);
+//             border-color: var(--accent-green);
+//         }
+//         
+//         .stats-container {
+//             display: grid;
+//             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+//             gap: 1.5rem;
+//             margin-top: 2rem;
+//         }
+//         
+//         .mobile-menu-btn {
+//             display: none;
+//             cursor: pointer;
+//             background: none;
+//             border: none;
+//             color: white;
+//             font-size: 1.5rem;
+//         }
+//         
+//         /* Terminal-like section */
+//         .terminal-section {
+//             margin: 3rem 0;
+//         }
+//         
+//         .terminal {
+//             background: var(--card-bg);
+//             border-radius: 8px;
+//             padding: 1.5rem;
+//             border: 1px solid var(--border-color);
+//             color: var(--text-color);
+//             font-family: 'Courier New', monospace;
+//             line-height: 1.5;
+//         }
+//         
+//         .terminal-header {
+//             display: flex;
+//             justify-content: space-between;
+//             margin-bottom: 1rem;
+//             padding-bottom: 0.5rem;
+//             border-bottom: 1px solid var(--border-color);
+//         }
+//         
+//         .terminal-title {
+//             display: flex;
+//             align-items: center;
+//             gap: 8px;
+//             color: var(--text-secondary);
+//             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+//         }
+//         
+//         .command {
+//             margin-bottom: 0.5rem;
+//         }
+//         
+//         .command-prompt {
+//             color: var(--accent-green);
+//             margin-right: 8px;
+//         }
+//         
+//         .command-output {
+//             color: var(--text-secondary);
+//             padding-left: 20px;
+//             margin-bottom: 1rem;
+//         }
+//         
+//         @media (max-width: 900px) {
+//             .hero-title {
+//                 font-size: 2.2rem;
+//             }
+//             
+//             .community-content {
+//                 flex-direction: column;
+//             }
+//             
+//             .mobile-menu-btn {
+//                 display: block;
+//             }
+//             
+//             .nav-links {
+//                 position: fixed;
+//                 top: 70px;
+//                 left: -100%;
+//                 flex-direction: column;
+//                 background-color: var(--secondary-bg);
+//                 width: 100%;
+//                 padding: 1.5rem;
+//                 gap: 1rem;
+//                 transition: all 0.3s ease;
+//                 z-index: 999;
+//                 border-bottom: 1px solid var(--border-color);
+//             }
+//             
+//             .nav-links.active {
+//                 left: 0;
+//             }
+//         }
+//         
+//         @media (max-width: 600px) {
+//             .hero-title {
+//                 font-size: 1.8rem;
+//             }
+//             
+//             .cta-button {
+//                 display: block;
+//                 width: 100%;
+//                 margin: 1rem 0;
+//                 text-align: center;
+//             }
+//             
+//             .section-title {
+//                 font-size: 1.75rem;
+//             }
+//             
+//             .toolbar {
+//                 justify-content: flex-start;
+//             }
+//         }
+//     </style>
+// </head>
+// <body>
+//     <header>
+//         <div class="container">
+//             <div class="header-content">
+//                 <div class="logo">
+//                     <span class="logo-icon">⚡</span>
+//                     HOSTING-CLUB.DE
+//                 </div>
+//                 <button class="mobile-menu-btn">☰</button>
+//                 <nav>
+//                     <ul class="nav-links">
+//                         <li><a href="#features" class="nav-link">Features</a></li>
+//                         <li><a href="#upgrades" class="nav-link">Upgrades</a></li>
+//                         <li><a href="#community" class="nav-link">Community</a></li>
+//                     </ul>
+//                 </nav>
+//             </div>
+//         </div>
+//     </header>
+//
+//     <section class="hero">
+//         <div class="container">
+//             <div class="hero-content">
+//                 <h1 class="hero-title">HOSTING-CLUB.DE <br>FREE SERVERS WITH MAXIMUM POWER!</h1>
+//                 <p class="hero-subtitle">Launch your projects with unlimited potential. High-performance, reliable, and completely free hosting for developers and gamers.</p>
+//                 <div>
+//                     <a href="#features" class="cta-button">Explore Features</a>
+//                     <a href="#community" class="cta-button secondary">Join Discord</a>
+//                 </div>
+//             </div>
+//         </div>
+//     </section>
+//
+//     <section class="dashboard">
+//         <div class="container">
+//             <div class="section-header">
+//                 <h2 class="section-title">Server Dashboard</h2>
+//             </div>
+//             
+//             <div class="toolbar">
+//                 <div class="tool-button active">
+//                     <span>⊞</span>
+//                 </div>
+//                 <div class="tool-button">
+//                     <span>≡</span>
+//                 </div>
+//                 <div class="tool-button">
+//                     <span>📄</span>
+//                 </div>
+//                 <div class="tool-button">
+//                     <span>🗑️</span>
+//                 </div>
+//                 <div class="tool-button">
+//                     <span>📁</span>
+//                 </div>
+//                 <div class="tool-button">
+//                     <span>💾</span>
+//                 </div>
+//                 <div class="tool-button">
+//                     <span>🖼️</span>
+//                 </div>
+//                 <div class="tool-button">
+//                     <span>👥</span>
+//                 </div>
+//                 <div class="tool-button">
+//                     <span>⟳</span>
+//                 </div>
+//                 <div class="tool-button">
+//                     <span>🖥️</span>
+//                 </div>
+//             </div>
+//             
+//             <div class="dashboard-grid">
+//                 <div class="dashboard-card">
+//                     <div class="file-icon">📄</div>
+//                     <div class="file-name">banned-ips.json</div>
+//                 </div>
+//                 <div class="dashboard-card">
+//                     <div class="file-icon">📁</div>
+//                     <div class="file-name">world</div>
+//                 </div>
+//                 <div class="dashboard-card">
+//                     <div class="file-icon">📄</div>
+//                     <div class="file-name">server.jar</div>
+//                 </div>
+//                 <div class="dashboard-card">
+//                     <div class="file-icon">📄</div>
+//                     <div class="file-name">level.dat</div>
+//                 </div>
+//             </div>
+//             
+//             <div class="dashboard-status">
+//                 <div class="status-card">
+//                     <div class="status-header">Memory</div>
+//                     <div class="status-value">Offline</div>
+//                 </div>
+//                 <div class="status-card">
+//                     <div class="status-header">CPU Load</div>
+//                     <div class="status-value">Offline</div>
+//                 </div>
+//                 <div class="status-card">
+//                     <div class="status-header">Uptime</div>
+//                     <div class="status-value status-green">0h 3m 5s</div>
+//                 </div>
+//                 <div class="status-card">
+//                     <div class="status-header">Disk</div>
+//                     <div class="status-value">101.09 MiB / 8 GiB</div>
+//                 </div>
+//             </div>
+//         </div>
+//     </section>
+//
+//     <section class="features" id="features">
+//         <div class="container">
+//             <div class="section-header">
+//                 <h2 class="section-title">Powerful Features</h2>
+//             </div>
+//             
+//             <ul class="feature-list">
+//                 <li><span class="color-highlight">Completely free</span>, no hidden fees or surprise charges</li>
+//                 <li><span class="color-highlight">Node.js & Python servers</span> for bots, websites, and more</li>
+//                 <li><span class="color-highlight">Minecraft servers on demand</span>, your own server anytime</li>
+//                 <li><span class="color-highlight">NOW WITH DOUBLE THE PERFORMANCE</span> – More power for your projects</li>
+//                 <li><span class="color-highlight">High-performance hardware</span> with SSDs, stable ping, and DDoS protection</li>
+//                 <li><span class="color-highlight">Community support</span> to help optimize projects</li>
+//             </ul>
+//             
+//             <div class="terminal-section">
+//                 <div class="terminal">
+//                     <div class="terminal-header">
+//                         <div class="terminal-title">
+//                             <span>⌨️</span> Terminal
+//                         </div>
+//                     </div>
+//                     <div class="command">
+//                         <span class="command-prompt">user@hosting-club:~$</span>node --version
+//                     </div>
+//                     <div class="command-output">v20.11.1</div>
+//                     <div class="command">
+//                         <span class="command-prompt">user@hosting-club:~$</span>python3 --version
+//                     </div>
+//                     <div class="command-output">Python 3.10.12</div>
+//                     <div class="command">
+//                         <span class="command-prompt">user@hosting-club:~$</span>java -version
+//                     </div>
+//                     <div class="command-output">openjdk version "17.0.9" 2023-10-17<br>OpenJDK Runtime Environment (build 17.0.9+9)<br>OpenJDK 64-Bit Server VM (build 17.0.9+9, mixed mode)</div>
+//                     <div class="command">
+//                         <span class="command-prompt">user@hosting-club:~$</span>_</div>
+//                 </div>
+//             </div>
+//         </div>
+//     </section>
+//
+//     <section class="upgrades" id="upgrades">
+//         <div class="container">
+//             <div class="section-header">
+//                 <h2 class="section-title">Upgrade On Request</h2>
+//                 <p>Need even more resources? We've got you covered!</p>
+//             </div>
+//             
+//             <div class="upgrade-cards">
+//                 <div class="upgrade-card">
+//                     <h3 class="upgrade-title">
+//                         <span class="upgrade-icon">🔧</span>
+//                         Extra RAM
+//                     </h3>
+//                     <p>Boost your server's memory for handling larger workloads and more concurrent users.</p>
+//                     <ul class="upgrade-features">
+//                         <li class="upgrade-feature">Additional RAM allocation</li>
+//                         <li class="upgrade-feature">Faster processing</li>
+//                         <li class="upgrade-feature">Support multiple instances</li>
+//                     </ul>
+//                     <a href="#community" class="cta-button">Request Upgrade</a>
+//                 </div>
+//                 
+//                 <div class="upgrade-card">
+//                     <h3 class="upgrade-title">
+//                         <span class="upgrade-icon">💾</span>
+//                         Extra Storage
+//                     </h3>
+//                     <p>Expand your storage capacity for larger applications, media files, and databases.</p>
+//                     <ul class="upgrade-features">
+//                         <li class="upgrade-feature">Additional SSD storage</li>
+//                         <li class="upgrade-feature">Fast read/write speeds</li>
+//                         <li class="upgrade-feature">Regular backups</li>
+//                     </ul>
+//                     <a href="#community" class="cta-button">Request Upgrade</a>
+//                 </div>
+//                 
+//                 <div class="upgrade-card">
+//                     <h3 class="upgrade-title">
+//                         <span class="upgrade-icon">⚙️</span>
+//                         Custom Configuration
+//                     </h3>
+//                     <p>Need a specialized setup? Our team can create a custom configuration for your unique needs.</p>
+//                     <ul class="upgrade-features">
+//                         <li class="upgrade-feature">Tailored server setup</li>
+//                         <li class="upgrade-feature">Special software installations</li>
+//                         <li class="upgrade-feature">Priority support</li>
+//                     </ul>
+//                     <a href="#community" class="cta-button">Request Upgrade</a>
+//                 </div>
+//             </div>
+//         </div>
+//     </section>
+//
+//     <section class="community" id="community">
+//         <div class="container">
+//             <div class="section-header">
+//                 <h2 class="section-title">Join Our Community</h2>
+//             </div>
+//             
+//             <div class="community-content">
+//                 <div class="community-text">
+//                     <h3>
+//                         <span class="color-highlight">👥</span>
+//                         Get Help & Connect With Others
+//                     </h3>
+//                     <p>Join our active Discord community to get instant support, share your projects, and connect with other developers and gamers. Our team and community members are always ready to help optimize your projects and answer any questions.</p>
+//                     <a href="#" class="discord-button">
+//                         <span class="discord-icon">⚡</span>
+//                         Join Our Discord
+//                     </a>
+//                 </div>
+//                 
+//                 <div class="community-image">
+//                     <img src="/api/placeholder/500/400" alt="Hosting Club Community">
+//                 </div>
+//             </div>
+//         </div>
+//     </section>
+//
+//     <footer>
+//         <div class="container">
+//             <div class="footer-logo">HOSTING-CLUB.DE</div>
+//             <div class="footer-links">
+//                 <a href="#" class="footer-link">Home</a>
+//                 <a href="#features" class="footer-link">Features</a>
+//                 <a href="#upgrades" class="footer-link">Upgrades</a>
+//                 <a href="#community" class="footer-link">Community</a>
+//                 <a href="#" class="footer-link">Privacy Policy</a>
+//                 <a href="#" class="footer-link">Terms of Service</a>
+//             </div>
+//             <p class="copyright">© 2025 Hosting-Club.de. All rights reserved.</p>
+//         </div>
+//     </footer>
+//
+//     <script>
+//         document.addEventListener('DOMContentLoaded', function() {
+//             // Mobile menu toggle
+//             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+//             const navLinks = document.querySelector('.nav-links');
+//             
+//             mobileMenuBtn.addEventListener('click', function() {
+//                 navLinks.classList.toggle('active');
+//             });
+//             
+//             // Smooth scrolling for anchor links
+//             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+//                 anchor.addEventListener('click', function(e) {
+//                     e.preventDefault();
+//                     
+//                     if (navLinks.classList.contains('active')) {
+//                         navLinks.classList.remove('active');
+//                     }
+//                     
+//                     const target = document.querySelector(this.getAttribute('href'));
+//                     if (target) {
+//                         window.scrollTo({
+//                             top: target.offsetTop - 80,
+//                             behavior: 'smooth'
+//                         });
+//                     }
+//                 });
+//             });
+//         });
+//     </script>
+// </body>
+// </html>

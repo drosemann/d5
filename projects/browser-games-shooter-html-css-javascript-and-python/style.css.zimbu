@@ -1,0 +1,24 @@
+﻿# Zimbu-Port-Spiegel von: projects\browser-games-shooter-html-css-javascript-and-python\style.css
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE style_css
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\browser-games-shooter-html-css-javascript-and-python\style.css\n")
+  RETURN 0
+
+# ---- Original-Code (projects\browser-games-shooter-html-css-javascript-and-python\style.css), unveraendert, als Inline-Doku ----
+# body {
+#     margin: 0;
+#     display: flex;
+#     justify-content: center;
+#     align-items: center;
+#     height: 100vh;
+#     background-color: #f0f0f0;
+# }
+#
+# canvas {
+#     border: 1px solid #000;
+# }
+#

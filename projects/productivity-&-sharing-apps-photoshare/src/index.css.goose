@@ -1,0 +1,44 @@
+﻿// Goose-Port-Spiegel von: projects/productivity-&-sharing-apps-photoshare/src/index.css
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/productivity-&-sharing-apps-photoshare/src/index.css");
+}
+
+// ---- Original-Code (projects/productivity-&-sharing-apps-photoshare/src/index.css), unveraendert, als Inline-Doku ----
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
+//
+// :root {
+//   --color-light: #ffffff;
+//   --color-dark: #171717;
+// }
+//
+// .accent-text {
+//   @apply text-slate-600;
+// }
+//
+// .button {
+//   @apply bg-gradient-to-r bg-blue-500;
+// }
+//
+// body {
+//   font-family: "Inter Variable", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+//   color: var(--color-dark);
+//   background: var(--color-light);
+// }
+//
+// .input-field {
+//   @apply w-full px-3 py-2 rounded-md bg-transparent border-2 border-slate-200 focus:outline-none focus:border-blue-500 transition-colors;
+// }
+//
+// .auth-button {
+//   @apply w-full py-2 rounded-md text-white font-medium button hover:opacity-90 transition-opacity;
+// }
+//
+// .link-text {
+//   @apply text-blue-500 hover:underline cursor-pointer font-medium;
+// }
+//

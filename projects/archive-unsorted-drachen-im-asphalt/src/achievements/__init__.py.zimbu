@@ -1,0 +1,12 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-drachen-im-asphalt\src\achievements\__init__.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE __init___py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-drachen-im-asphalt\src\achievements\__init__.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-drachen-im-asphalt\src\achievements\__init__.py), unveraendert, als Inline-Doku ----
+# from src.achievements.achievement import Achievement, AchievementManager

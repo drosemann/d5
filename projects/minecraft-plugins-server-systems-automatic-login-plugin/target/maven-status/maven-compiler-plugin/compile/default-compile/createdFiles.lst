@@ -1,0 +1,3 @@
+com\example\sessionlock\SessionLockPlugin$LoginCommandExecutor.class
+com\example\sessionlock\SessionLockPlugin.class
+com\example\sessionlock\SessionLockPlugin$RegisterCommandExecutor.class

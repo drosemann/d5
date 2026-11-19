@@ -1,0 +1,27 @@
+﻿# Zimbu-Port-Spiegel von: projects\personal-&-client-websites-portfolio\components\ui\skeleton.tsx
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE skeleton_tsx
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\personal-&-client-websites-portfolio\components\ui\skeleton.tsx\n")
+  RETURN 0
+
+# ---- Original-Code (projects\personal-&-client-websites-portfolio\components\ui\skeleton.tsx), unveraendert, als Inline-Doku ----
+# import { cn } from '@/lib/utils'
+#
+# function Skeleton({
+#   className,
+#   ...props
+# }: React.HTMLAttributes<HTMLDivElement>) {
+#   return (
+#     <div
+#       className={cn('animate-pulse rounded-md bg-muted', className)}
+#       {...props}
+#     />
+#   )
+# }
+#
+# export { Skeleton }
+#

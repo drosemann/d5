@@ -1,0 +1,3 @@
+# Betrieb: Compose-Overlay für Produktion (Caddy mit Domain, Restart, Volumes).
+# Nutzung: `docker compose -f compose.yaml -f compose.production.yaml up -d`
+# (Domain und E-Mail in .env/Caddyfile setzen; interne Dienste ohne öffentliche Ports.)

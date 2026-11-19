@@ -1,0 +1,19 @@
+﻿# Zimbu-Port-Spiegel von: projects\learning-projects-it-security-learning-platform\tsconfig.json
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE tsconfig_json
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\learning-projects-it-security-learning-platform\tsconfig.json\n")
+  RETURN 0
+
+# ---- Original-Code (projects\learning-projects-it-security-learning-platform\tsconfig.json), unveraendert, als Inline-Doku ----
+# {
+#   "files": [],
+#   "references": [
+#     { "path": "./tsconfig.app.json" },
+#     { "path": "./tsconfig.node.json" }
+#   ]
+# }
+#

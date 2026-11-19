@@ -1,0 +1,71 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/bukkit/utils/item/BannerPattern.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/bukkit/utils/item/BannerPattern.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/bukkit/utils/item/BannerPattern.java), unveraendert, als Inline-Doku ----
+// package net.anweisen.utilities.bukkit.utils.item;
+//
+// import javax.annotation.Nonnull;
+// import org.bukkit.block.banner.PatternType;
+//
+// public enum BannerPattern {
+//    BASE_DEXTER_CANTON(PatternType.SQUARE_BOTTOM_LEFT),
+//    BASE_SINISTER_CANTON(PatternType.SQUARE_BOTTOM_RIGHT),
+//    CHIEF_DEXTER_CANTON(PatternType.SQUARE_TOP_LEFT),
+//    CHIEF_SINISTER_CANTON(PatternType.SQUARE_TOP_RIGHT),
+//    BASE(PatternType.STRIPE_BOTTOM),
+//    CHIEF(PatternType.STRIPE_TOP),
+//    PALE_DEXTER(PatternType.STRIPE_LEFT),
+//    PALE_SINISTER(PatternType.STRIPE_RIGHT),
+//    PALE(PatternType.STRIPE_CENTER),
+//    FESS(PatternType.STRIPE_MIDDLE),
+//    BEND(PatternType.STRIPE_DOWNRIGHT),
+//    BEND_SINISTER(PatternType.STRIPE_DOWNLEFT),
+//    PALY(PatternType.STRIPE_SMALL),
+//    SALTIRE(PatternType.CROSS),
+//    CROSS(PatternType.STRAIGHT_CROSS),
+//    CHEVRON(PatternType.TRIANGLE_BOTTOM),
+//    INVERTED_CHEVRON(PatternType.TRIANGLE_TOP),
+//    BASE_INDENTED(PatternType.TRIANGLES_BOTTOM),
+//    CHIEF_INDENTED(PatternType.TRIANGLES_TOP),
+//    PER_BEND_SINISTER(PatternType.DIAGONAL_LEFT),
+//    PER_BEND_SINISTER_INVERTED(PatternType.DIAGONAL_RIGHT),
+//    PER_BEND_INVERTED(PatternType.DIAGONAL_LEFT_MIRROR),
+//    PER_BEND(PatternType.DIAGONAL_RIGHT_MIRROR),
+//    ROUNDEL(PatternType.CIRCLE_MIDDLE),
+//    LOZENGE(PatternType.RHOMBUS_MIDDLE),
+//    PER_PALE(PatternType.HALF_VERTICAL),
+//    PER_FESS(PatternType.HALF_HORIZONTAL),
+//    PER_PALE_INVERTED(PatternType.HALF_VERTICAL_MIRROR),
+//    PER_FESS_INVERTED(PatternType.HALF_HORIZONTAL_MIRROR),
+//    BORDURE(PatternType.BORDER),
+//    BORDURE_INDENTED(PatternType.CURLY_BORDER),
+//    GRADIENT(PatternType.GRADIENT),
+//    BASE_GRADIENT(PatternType.GRADIENT_UP),
+//    FIELD_MASONED(PatternType.BRICKS),
+//    CREEPER_CHARGE(PatternType.CREEPER),
+//    SKULL_CHARGE(PatternType.SKULL),
+//    FLOWER_CHARGE(PatternType.FLOWER),
+//    MOJANG(PatternType.MOJANG);
+//
+//    private final PatternType patternType;
+//
+//    private BannerPattern(@Nonnull PatternType patternType) {
+//       this.patternType = patternType;
+//    }
+//
+//    @Nonnull
+//    public PatternType getPatternType() {
+//       return this.patternType;
+//    }
+//
+//    @Nonnull
+//    public String getIdentifier() {
+//       return this.patternType.getIdentifier();
+//    }
+// }
+//

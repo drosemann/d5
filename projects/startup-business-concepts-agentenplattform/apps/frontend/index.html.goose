@@ -1,0 +1,15 @@
+﻿// Goose-Port-Spiegel von: projects/startup-business-concepts-agentenplattform/apps/frontend/index.html
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/startup-business-concepts-agentenplattform/apps/frontend/index.html");
+}
+
+// ---- Original-Code (projects/startup-business-concepts-agentenplattform/apps/frontend/index.html), unveraendert, als Inline-Doku ----
+// <!doctype html><html lang="de"><head><meta charset="utf-8"/>
+// <meta name="viewport" content="width=device-width,initial-scale=1"/>
+// <meta name="theme-color" content="#0b0b0f"/>
+// <link rel="manifest" href="/manifest.webmanifest"/>
+// <title>Agentenplattform</title></head><body><div id="root"></div><script type="module" src="/src/main.tsx"></script></body></html>
+//

@@ -1,0 +1,45 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-forum-with-z.ai\src\components\ui\collapsible.tsx
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE collapsible_tsx
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-forum-with-z.ai\src\components\ui\collapsible.tsx\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-forum-with-z.ai\src\components\ui\collapsible.tsx), unveraendert, als Inline-Doku ----
+# "use client"
+#
+# import * as CollapsiblePrimitive from "@radix-ui/react-collapsible"
+#
+# function Collapsible({
+#   ...props
+# }: React.ComponentProps<typeof CollapsiblePrimitive.Root>) {
+#   return <CollapsiblePrimitive.Root data-slot="collapsible" {...props} />
+# }
+#
+# function CollapsibleTrigger({
+#   ...props
+# }: React.ComponentProps<typeof CollapsiblePrimitive.CollapsibleTrigger>) {
+#   return (
+#     <CollapsiblePrimitive.CollapsibleTrigger
+#       data-slot="collapsible-trigger"
+#       {...props}
+#     />
+#   )
+# }
+#
+# function CollapsibleContent({
+#   ...props
+# }: React.ComponentProps<typeof CollapsiblePrimitive.CollapsibleContent>) {
+#   return (
+#     <CollapsiblePrimitive.CollapsibleContent
+#       data-slot="collapsible-content"
+#       {...props}
+#     />
+#   )
+# }
+#
+# export { Collapsible, CollapsibleTrigger, CollapsibleContent }
+#

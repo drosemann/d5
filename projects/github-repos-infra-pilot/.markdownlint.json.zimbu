@@ -1,0 +1,26 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-infra-pilot\.markdownlint.json
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE _markdownlint_json
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-infra-pilot\.markdownlint.json\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-infra-pilot\.markdownlint.json), unveraendert, als Inline-Doku ----
+# {
+#   "default": true,
+#   "MD013": {
+#     "line_length": 120,
+#     "code_blocks": false,
+#     "tables": false,
+#     "headings": true,
+#     "strict": false,
+#     "stern": false
+#   },
+#   "MD024": {
+#     "siblings_only": true
+#   }
+# }
+#

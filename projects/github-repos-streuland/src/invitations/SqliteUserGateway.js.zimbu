@@ -1,0 +1,25 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-streuland\src\invitations\SqliteUserGateway.js
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE SqliteUserGateway_js
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-streuland\src\invitations\SqliteUserGateway.js\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-streuland\src\invitations\SqliteUserGateway.js), unveraendert, als Inline-Doku ----
+# // Minimal placeholder for SQLite-backed user gateway
+# class SqliteUserGateway {
+#   constructor(db) {
+#     this.db = db;
+#   }
+#
+#   async findByInviteCode(code) {
+#     // placeholder
+#     return null;
+#   }
+# }
+#
+# module.exports = SqliteUserGateway;
+#

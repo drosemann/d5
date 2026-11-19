@@ -1,0 +1,20 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-streuland\src\main\java\de\streuland\admin\DiagnosticsIssueType.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE DiagnosticsIssueType_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-streuland\src\main\java\de\streuland\admin\DiagnosticsIssueType.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-streuland\src\main\java\de\streuland\admin\DiagnosticsIssueType.java), unveraendert, als Inline-Doku ----
+# package de.streuland.admin;
+#
+# public enum DiagnosticsIssueType {
+#     INVALID_PLOT_BORDER,
+#     ORPHANED_DATA,
+#     DUPLICATE_ID,
+#     BROKEN_REFERENCE
+# }
+#

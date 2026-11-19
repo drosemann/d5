@@ -1,0 +1,15 @@
+﻿# Zimbu-Port-Spiegel von: projects\ai-&-llm-projects-ai-chat-website-talkativecloud\src\components\ui\use-toast.ts
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE use_toast_ts
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\ai-&-llm-projects-ai-chat-website-talkativecloud\src\components\ui\use-toast.ts\n")
+  RETURN 0
+
+# ---- Original-Code (projects\ai-&-llm-projects-ai-chat-website-talkativecloud\src\components\ui\use-toast.ts), unveraendert, als Inline-Doku ----
+# import { useToast, toast } from "@/hooks/use-toast";
+#
+# export { useToast, toast };
+#

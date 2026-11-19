@@ -1,0 +1,83 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/checks/world/PlaceCheck.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/checks/world/PlaceCheck.java");
+}
+
+// ---- Original-Code (projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/checks/world/PlaceCheck.java), unveraendert, als Inline-Doku ----
+// package me.jinky.checks.world;
+//
+// import java.util.HashMap;
+// import java.util.Map;
+// import java.util.Set;
+// import me.jinky.checks.Check;
+// import me.jinky.checks.CheckResult;
+// import me.jinky.logger.User;
+// import me.jinky.util.VersionUtil;
+// import org.bukkit.Location;
+// import org.bukkit.entity.Player;
+// import org.bukkit.event.Event;
+// import org.bukkit.event.block.BlockPlaceEvent;
+//
+// public class PlaceCheck extends Check {
+//    private static Map PlaceCount = new HashMap();
+//
+//    public String getName() {
+//       return "Place Check";
+//    }
+//
+//    public String getEventCall() {
+//       return "BlockPlaceEvent";
+//    }
+//
+//    public CheckResult performCheck(User u, Event e) {
+//       BlockPlaceEvent event = (BlockPlaceEvent)e;
+//       Player p = u.getPlayer();
+//       int Count = 1;
+//       if (PlaceCount.containsKey(p)) {
+//          try {
+//             if ((Long)((Map)PlaceCount.get(p)).keySet().iterator().next() > System.currentTimeMillis()) {
+//                Count += (Integer)((Map)PlaceCount.get(p)).values().iterator().next();
+//             } else {
+//                ((Map)PlaceCount.get(p)).clear();
+//             }
+//          } catch (Exception var12) {
+//             ((Map)PlaceCount.get(p)).clear();
+//          }
+//       }
+//
+//       if (!PlaceCount.containsKey(p)) {
+//          PlaceCount.put(p, new HashMap());
+//       }
+//
+//       Map R = new HashMap();
+//       if (((Map)PlaceCount.get(p)).size() == 0) {
+//          R.put(System.currentTimeMillis() + 1000L, Count);
+//       } else {
+//          R.put((Long)((Map)PlaceCount.get(p)).keySet().iterator().next(), Count);
+//       }
+//
+//       PlaceCount.put(p, R);
+//       if (Count > 12 && !VersionUtil.hasEfficiency(p)) {
+//          event.setCancelled(true);
+//          return new CheckResult("Fast Place", false, "placed at a rate of 12+bps");
+//       } else {
+//          Location placed = event.getBlockPlaced().getLocation();
+//          Boolean call = false;
+//          Object NullSet = null;
+//
+//          try {
+//             if (placed.distance(p.getTargetBlock((Set)NullSet, 15).getLocation()) > 4.7D) {
+//                call = true;
+//             }
+//          } catch (Exception var11) {
+//             call = false;
+//          }
+//
+//          return call ? new CheckResult("Impossible Place", false, "Placed too far from crosshair") : new CheckResult("Impossible Place", true, "Pass");
+//       }
+//    }
+// }
+//

@@ -1,0 +1,17 @@
+﻿# Zimbu-Port-Spiegel von: projects\startup-business-concepts-agentenplattform\workers\browser\worker.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE worker_py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\startup-business-concepts-agentenplattform\workers\browser\worker.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\startup-business-concepts-agentenplattform\workers\browser\worker.py), unveraendert, als Inline-Doku ----
+# """Isolierter Browser-Worker: nur SSRF-geprüfte URLs, ohne Secrets."""
+# from app.tools.registry import ssrf_geprueft
+# def abrufen(url: str) -> str:
+#     if not ssrf_geprueft(url): raise ValueError("URL blockiert (SSRF-Schutz)")
+#     return f"[Platzhalter] Abruf von {url} erfolgt isoliert und protokolliert."
+#

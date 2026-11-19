@@ -1,0 +1,28 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-stranded-horizons\src\input\InputState.js
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE InputState_js
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-stranded-horizons\src\input\InputState.js\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-stranded-horizons\src\input\InputState.js), unveraendert, als Inline-Doku ----
+# // Normalized per-frame input snapshot. Simulation reads only this object.
+# export function createInputState() {
+#   return {
+#     moveUp: false, moveDown: false, moveLeft: false, moveRight: false,
+#     touchActive: false, touchX: 0, touchY: 0,
+#     aimX: 0, aimY: 0,
+#     shootHeld: false,
+#     actions: [] // edge-triggered: 'dash' | 'reload' | 'switch' | 'pause' | 'shoot'
+#   };
+# }
+#
+# export function consumeActions(input) {
+#   const a = input.actions;
+#   input.actions = [];
+#   return a;
+# }
+#

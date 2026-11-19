@@ -1,0 +1,133 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\implementation\challenge\ZeroHeartsChallenge.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE ZeroHeartsChallenge_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\implementation\challenge\ZeroHeartsChallenge.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\implementation\challenge\ZeroHeartsChallenge.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.challenges.implementation.challenge;
+#
+# import javax.annotation.Nonnull;
+# import net.anweisen.utilities.common.annotations.Since;
+# import net.codingarea.challenges.plugin.challenges.implementation.setting.MaxHealthSetting;
+# import net.codingarea.challenges.plugin.challenges.type.abstraction.AbstractChallenge;
+# import net.codingarea.challenges.plugin.challenges.type.abstraction.SettingModifier;
+# import net.codingarea.challenges.plugin.content.Message;
+# import net.codingarea.challenges.plugin.content.Prefix;
+# import net.codingarea.challenges.plugin.management.menu.MenuType;
+# import net.codingarea.challenges.plugin.management.scheduler.task.ScheduledTask;
+# import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+# import net.codingarea.challenges.plugin.utils.misc.NameHelper;
+# import org.bukkit.Bukkit;
+# import org.bukkit.Material;
+# import org.bukkit.attribute.Attribute;
+# import org.bukkit.attribute.AttributeInstance;
+# import org.bukkit.boss.BarColor;
+# import org.bukkit.entity.Player;
+# import org.bukkit.event.EventHandler;
+# import org.bukkit.event.EventPriority;
+# import org.bukkit.event.entity.EntityPotionEffectEvent;
+# import org.bukkit.event.entity.EntityPotionEffectEvent.Action;
+# import org.bukkit.potion.PotionEffect;
+# import org.bukkit.potion.PotionEffectType;
+#
+# @Since("2.0")
+# public class ZeroHeartsChallenge extends SettingModifier {
+#    public ZeroHeartsChallenge() {
+#       super(MenuType.CHALLENGES, 5, 30, 10);
+#    }
+#
+#    protected void onEnable() {
+#       this.bossbar.setContent((bossbar, player) -> {
+#          int currentTime = this.getCurrentTime();
+#          int maxTime = this.getValue() * 60;
+#          bossbar.setTitle(Message.forName("bossbar-zero-hearts").asString(maxTime - currentTime));
+#          bossbar.setColor(BarColor.GREEN);
+#          bossbar.setProgress((double)(1.0F - (float)currentTime / (float)maxTime));
+#       });
+#       this.bossbar.show();
+#       Bukkit.getOnlinePlayers().forEach((player) -> {
+#          AttributeInstance attribute = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+#          if (attribute != null) {
+#             attribute.setBaseValue(0.0D);
+#          }
+#       });
+#    }
+#
+#    protected void onDisable() {
+#       this.bossbar.hide();
+#       ((MaxHealthSetting)AbstractChallenge.getFirstInstance(MaxHealthSetting.class)).onValueChange();
+#    }
+#
+#    @Nonnull
+#    public ItemBuilder createDisplayItem() {
+#       return new ItemBuilder(Material.ENCHANTED_GOLDEN_APPLE, Message.forName("item-zero-hearts-challenge"));
+#    }
+#
+#    protected void onValueChange() {
+#       this.bossbar.update();
+#    }
+#
+#    @ScheduledTask(
+#       ticks = 20,
+#       async = false
+#    )
+#    public void onSecond() {
+#       broadcast((player) -> {
+#          AttributeInstance attribute = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+#          if (attribute != null) {
+#             attribute.setBaseValue(0.0D);
+#          }
+#       });
+#       int absorptionTime = this.getCurrentTime();
+#       if (absorptionTime >= this.getValue() * 60) {
+#          this.bossbar.hide();
+#          if (absorptionTime == this.getValue() * 60) {
+#             this.removeAbsorptionEffect();
+#          }
+#
+#       } else {
+#          this.getGameStateData().set("absorption-time", absorptionTime + 1);
+#          this.applyAbsorptionEffect();
+#          this.bossbar.update();
+#       }
+#    }
+#
+#    private int getCurrentTime() {
+#       return this.getGameStateData().getInt("absorption-time");
+#    }
+#
+#    private void applyAbsorptionEffect() {
+#       broadcastFiltered((player) -> {
+#          player.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, (this.getValue() - this.getCurrentTime()) * 20 * 60, 1, true, false, false));
+#       });
+#    }
+#
+#    private void removeAbsorptionEffect() {
+#       broadcastFiltered((player) -> {
+#          player.removePotionEffect(PotionEffectType.ABSORPTION);
+#       });
+#    }
+#
+#    @EventHandler(
+#       priority = EventPriority.HIGH
+#    )
+#    public void onEntityPotionEffect(@Nonnull EntityPotionEffectEvent event) {
+#       if (event.getAction() == Action.REMOVED) {
+#          if (event.getEntity() instanceof Player) {
+#             if (this.shouldExecuteEffect()) {
+#                Player player = (Player)event.getEntity();
+#                if (!ignorePlayer(player)) {
+#                   this.kill(player);
+#                   Message.forName("zero-hearts-failed").broadcast(Prefix.CHALLENGES, NameHelper.getName(player));
+#                }
+#             }
+#          }
+#       }
+#    }
+# }
+#

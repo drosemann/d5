@@ -1,0 +1,48 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-rebioot\notebook-renderer-react-sample\.vscode\tasks.json
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE tasks_json
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-rebioot\notebook-renderer-react-sample\.vscode\tasks.json\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-rebioot\notebook-renderer-react-sample\.vscode\tasks.json), unveraendert, als Inline-Doku ----
+# // See https://go.microsoft.com/fwlink/?LinkId=733558
+# // for the documentation about the tasks.json format
+# {
+#   "version": "2.0.0",
+#   "tasks": [
+#     {
+#       "type": "npm",
+#       "script": "dev",
+#       "problemMatcher": ["$tsc-watch", "$ts-checker-webpack-watch"],
+#       "isBackground": true,
+#       "presentation": {
+#         "reveal": "never"
+#       },
+#       "group": {
+#         "kind": "build",
+#         "isDefault": true
+#       }
+#     },
+#     {
+#       "type": "npm",
+#       "script": "watch",
+#       "problemMatcher": ["$tsc-watch", "$ts-checker-webpack-watch"],
+#       "isBackground": true,
+#       "presentation": {
+#         "reveal": "never"
+#       },
+#       "group": "build"
+#     },
+#     {
+#       "type": "npm",
+#       "script": "compile",
+#       "problemMatcher": ["$tsc", "$ts-checker-webpack"],
+#       "group": "build"
+#     }
+#   ]
+# }
+#

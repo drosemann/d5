@@ -1,0 +1,150 @@
+package de.hordeplugin.factory;
+
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.Material;
+import org.bukkit.entity.Item;
+import org.bukkit.entity.EntityType;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+
+import de.hordeplugin.data.LootItem;
+
+/**
+ * LootFactory - Erstellt Custom-Loot-Items mit farbigen Namen und Lore
+ */
+public class LootFactory {
+
+    /**
+     * Erstellt ein Custom-Loot-Item
+     */
+    public static ItemStack createLootItem(LootItem lootDef) {
+        ItemStack item = new ItemStack(Material.NETHER_STAR);
+        ItemMeta meta = item.getItemMeta();
+
+        if (meta != null) {
+            // Display-Name mit Farbe
+            meta.setDisplayName(lootDef.getFormattedName());
+
+            // Multi-line Lore
+            List<String> lore = new ArrayList<>();
+            lore.add(lootDef.getLore());
+            lore.add("§8━━━━━━━━━━━━━");
+            lore.add("§7Seltenheit: " + getSeltenheitsText(lootDef.getDropChance()));
+            lore.add("§8Aus der Horde");
+
+            meta.setLore(lore);
+            item.setItemMeta(meta);
+        }
+
+        return item;
+    }
+
+    /**
+     * Erstellt verschiedene Varianten von Loot-Items basierend auf Seltenheit
+     */
+    public static ItemStack createEpicItem(String name, String color, String lore) {
+        ItemStack item = new ItemStack(Material.NETHER_STAR);
+        ItemMeta meta = item.getItemMeta();
+
+        if (meta != null) {
+            meta.setDisplayName(color + name + "§r");
+            List<String> loreLine = new ArrayList<>();
+            loreLine.add(lore);
+            loreLine.add("§8━━━━━━━━━━━━━");
+            loreLine.add("§5✦ EPIC ✦");
+            loreLine.add("§7Droprate: < 1%");
+            meta.setLore(loreLine);
+            item.setItemMeta(meta);
+        }
+
+        return item;
+    }
+
+    /**
+     * Erstellt ein Legendary Item (super selten)
+     */
+    public static ItemStack createLegendaryItem(String name, String lore) {
+        ItemStack item = new ItemStack(Material.BEACON);
+        ItemMeta meta = item.getItemMeta();
+
+        if (meta != null) {
+            meta.setDisplayName("§6§l◆ " + name + " ◆§r");
+            List<String> loreLine = new ArrayList<>();
+            loreLine.add(lore);
+            loreLine.add("§8━━━━━━━━━━━━━");
+            loreLine.add("§c⚡ LEGENDARY ⚡");
+            loreLine.add("§7Droprate: < 0.1%");
+            loreLine.add("§7⌛ Einmaliger Fund");
+            meta.setLore(loreLine);
+            item.setItemMeta(meta);
+        }
+
+        return item;
+    }
+
+    /**
+     * Erstellt Standard-Horde-Loot
+     */
+    public static ItemStack createCommonHordeLoot() {
+        ItemStack item = new ItemStack(Material.AMETHYST_SHARD);
+        ItemMeta meta = item.getItemMeta();
+
+        if (meta != null) {
+            meta.setDisplayName("§7Horden-Fragment");
+            List<String> lore = new ArrayList<>();
+            lore.add("§8Ein Fragment aus einer Horde");
+            lore.add("§7Droprate: 50%");
+            meta.setLore(lore);
+            item.setItemMeta(meta);
+        }
+
+        return item;
+    }
+
+    /**
+     * Konvertiert Drop-Chance zu Seltenheits-Text
+     */
+    private static String getSeltenheitsText(double chance) {
+        if (chance >= 0.5) {
+            return "§aHäufig (50%+)";
+        } else if (chance >= 0.1) {
+            return "§eSelten (10-50%)";
+        } else if (chance >= 0.01) {
+            return "§5Episch (1-10%)";
+        } else {
+            return "§c§lLegendär (< 1%)";
+        }
+    }
+
+    /**
+     * Factory-Methode für spezialisierte Horden-Items
+     */
+    public static ItemStack createSpecializedHordeItem(String hordeType, String itemType) {
+        switch (hordeType.toLowerCase()) {
+            case "tiefen-horde":
+                if (itemType.equals("heart")) {
+                    return createEpicItem("Herz des Ozeans (Fragment)", "§b", 
+                        "§7Ein mystisches Artefakt aus der Tiefe");
+                }
+                break;
+
+            case "wüsten-plage":
+                if (itemType.equals("cloth")) {
+                    return createEpicItem("Sonnengewebtes Tuch", "§e",
+                        "§7Glüht in der Sonne");
+                }
+                break;
+
+            case "verfluchter-kreuzzug":
+                if (itemType.equals("seal")) {
+                    return createEpicItem("Königliches Siegel", "§6",
+                        "§7Das Siegel eines längst verstorbenen Königs");
+                }
+                break;
+        }
+
+        return createCommonHordeLoot();
+    }
+}

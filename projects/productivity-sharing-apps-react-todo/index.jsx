@@ -1,0 +1,98 @@
+import React, { useState } from 'react';
+
+function App() {
+ 
+  const [todos, setTodos] = useState([
+    { id: 1, title: 'To-Do 1' },
+    { id: 2, title: 'To-Do 2' },
+    { id: 3, title: 'To-Do 3' },    
+  ]);
+
+  const [inputValue, setInputValue] = useState('');
+  const [editingId, setEditingId] = useState(null);
+
+    if (inputValue.trim() !== '') {
+      setTodos([...todos, { id: todos.length + 1, title: inputValue }]);
+      setInputValue('');
+    }
+
+  const addTodo = () => {
+    if (inputValue.trim() !== '') {
+      setTodos([...todos, { id: todos.length + 1, title: inputValue }]);
+      setInputValue('');
+    }
+  };
+
+  const deleteTodo = (id) => {
+    setTodos(todos.filter(todo => todo.id !== id));
+  };
+
+  const editTodo = (id, newTitle) => {
+    setTodos(todos.map(todo => todo.id === id ? { ...todo, title: newTitle } : todo));
+    setEditingId(null);
+  };
+
+  const toggleEdit = (id) => {
+    setEditingId(id);
+  };
+
+  return (
+    <div>
+      <h1>To-Do App</h1>
+      <input 
+        type="text" 
+        value={inputValue} 
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+      <button onClick={addTodo}>Add</button>
+      <ul>
+        {todos.map(todo => (
+          <li key={todo.id}>
+            {editingId === todo.id ? (
+              <input 
+                type="text" 
+                defaultValue={todo.title} 
+                onBlur={(e) => editTodo(todo.id, e.target.value)}
+              />
+            ) : (
+              <span>{todo.title}</span>
+            )}
+            <button onClick={() => toggleEdit(todo.id)}>Edit</button>
+            <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+export default App;
+function deleteTodo(id) {
+  const todoIndex = todos.findIndex((todo) => todo.id === id);
+  if (todoIndex !== -1) {
+    todos.splice(todoIndex, 1);
+    renderTodos();
+  }
+
+export default deleteTodo
+function Gui;
+
+button.addEventListener("click", () => {
+  showGui();
+});   
+
+if (AnimationPlaybackEvent !== undefined) {
+  button.addEventListener("click", () => {
+    showGui();
+  });
+}
+
+deleteTodo if (AnimationPlaybackEvent !== undefined) {
+  button.addEventListener("click", () => {
+    showGui();
+  });
+}
+
+
+}
+
+export defazkt Gui;

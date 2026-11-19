@@ -1,0 +1,28 @@
+﻿# Zimbu-Port-Spiegel von: projects\cloud-hosting-saas-vercel-clone\frontend-nextjs\components.json
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE components_json
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\cloud-hosting-saas-vercel-clone\frontend-nextjs\components.json\n")
+  RETURN 0
+
+# ---- Original-Code (projects\cloud-hosting-saas-vercel-clone\frontend-nextjs\components.json), unveraendert, als Inline-Doku ----
+# {
+#   "$schema": "https://ui.shadcn.com/schema.json",
+#   "style": "default",
+#   "rsc": true,
+#   "tsx": true,
+#   "tailwind": {
+#     "config": "tailwind.config.ts",
+#     "css": "app/globals.css",
+#     "baseColor": "zinc",
+#     "cssVariables": true,
+#     "prefix": ""
+#   },
+#   "aliases": {
+#     "components": "@/components",
+#     "utils": "@/lib/utils"
+#   }
+# }

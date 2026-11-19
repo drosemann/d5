@@ -1,0 +1,124 @@
+package net.codingarea.challenges.plugin.challenges.implementation.challenge.randomizer;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import net.anweisen.utilities.common.annotations.Since;
+import net.codingarea.challenges.plugin.Challenges;
+import net.codingarea.challenges.plugin.challenges.type.IChallenge;
+import net.codingarea.challenges.plugin.challenges.type.abstraction.AbstractChallenge;
+import net.codingarea.challenges.plugin.challenges.type.abstraction.Setting;
+import net.codingarea.challenges.plugin.challenges.type.abstraction.SettingModifier;
+import net.codingarea.challenges.plugin.challenges.type.abstraction.TimedChallenge;
+import net.codingarea.challenges.plugin.challenges.type.helper.ChallengeHelper;
+import net.codingarea.challenges.plugin.content.Message;
+import net.codingarea.challenges.plugin.content.Prefix;
+import net.codingarea.challenges.plugin.management.menu.MenuType;
+import net.codingarea.challenges.plugin.management.menu.generator.categorised.SettingCategory;
+import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+import org.bukkit.Material;
+
+@Since("2.0")
+public class RandomChallengeChallenge extends TimedChallenge {
+   private AbstractChallenge lastUsed;
+
+   public RandomChallengeChallenge() {
+      super(MenuType.CHALLENGES, 3, 60, 6, false);
+      this.setCategory(SettingCategory.RANDOMIZER);
+   }
+
+   @Nonnull
+   public ItemBuilder createDisplayItem() {
+      return new ItemBuilder(Material.REDSTONE, Message.forName("item-random-challenge-challenge"));
+   }
+
+   @Nullable
+   protected String[] getSettingsDescription() {
+      return Message.forName("item-time-seconds-description").asArray(this.getValue() * 10);
+   }
+
+   public void playValueChangeTitle() {
+      ChallengeHelper.playChallengeSecondsValueChangeTitle(this, this.getValue() * 10);
+   }
+
+   protected void onEnable() {
+      this.bossbar.setContent((bossbar, player) -> {
+         if (this.lastUsed == null) {
+            bossbar.setTitle(Message.forName("bossbar-random-challenge-waiting").asString());
+         } else {
+            bossbar.setProgress((double)this.getProgress());
+            bossbar.setTitle(Message.forName("bossbar-random-challenge-current").asString(ChallengeHelper.getColoredChallengeName(this.lastUsed)));
+         }
+      });
+      this.bossbar.show();
+   }
+
+   protected void onDisable() {
+      if (this.lastUsed != null) {
+         this.setEnabled(this.lastUsed, false);
+         this.lastUsed = null;
+      }
+
+      this.bossbar.hide();
+   }
+
+   protected int getSecondsUntilNextActivation() {
+      return this.getValue() * 10;
+   }
+
+   protected void handleCountdown() {
+      this.bossbar.update();
+   }
+
+   protected void onTimeActivation() {
+      this.restartTimer();
+      if (this.lastUsed != null) {
+         this.setEnabled(this.lastUsed, false);
+         this.lastUsed = null;
+      }
+
+      List challenges = new ArrayList(Challenges.getInstance().getChallengeManager().getChallenges());
+      challenges.remove(this);
+      challenges.removeIf((challengex) -> {
+         return challengex.getType() != MenuType.CHALLENGES;
+      });
+      challenges.removeIf((challengex) -> {
+         return !(challengex instanceof AbstractChallenge);
+      });
+      challenges.removeIf(ChallengeHelper::canInstaKillOnEnable);
+      challenges.removeIf(ChallengeHelper::isExcludedFromRandomChallenges);
+      challenges.removeIf(IChallenge::isEnabled);
+      if (!challenges.isEmpty()) {
+         AbstractChallenge challenge = (AbstractChallenge)globalRandom.choose((List)challenges);
+         String name = ChallengeHelper.getColoredChallengeName(challenge);
+         Message.forName("random-challenge-enabled").broadcast(Prefix.CHALLENGES, name);
+         this.setEnabled(challenge, true);
+         this.lastUsed = challenge;
+         this.bossbar.update();
+      }
+   }
+
+   private void setEnabled(@Nonnull IChallenge challenge, boolean enabled) {
+      if (challenge instanceof Setting) {
+         Setting setting = (Setting)challenge;
+         setting.setEnabled(enabled);
+      }
+
+      if (challenge instanceof SettingModifier) {
+         SettingModifier setting = (SettingModifier)challenge;
+         setting.setEnabled(enabled);
+      }
+
+      if (enabled && challenge instanceof TimedChallenge) {
+         TimedChallenge timedChallenge = (TimedChallenge)challenge;
+         if (timedChallenge.isTimerRunning()) {
+            int seconds = globalRandom.range(10, 20);
+            if (seconds < timedChallenge.getSecondsLeftUntilNextActivation()) {
+               timedChallenge.shortCountDownTo(seconds);
+            }
+         }
+      }
+
+   }
+}

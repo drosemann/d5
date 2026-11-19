@@ -1,0 +1,40 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-forum-for-nerds\Blog, CMS & Community Platforms\blog-forum-z.ai\src\lib\socket.ts
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE socket_ts
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-forum-for-nerds\Blog, CMS & Community Platforms\blog-forum-z.ai\src\lib\socket.ts\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-forum-for-nerds\Blog, CMS & Community Platforms\blog-forum-z.ai\src\lib\socket.ts), unveraendert, als Inline-Doku ----
+# import { Server } from 'socket.io';
+#
+# export const setupSocket = (io: Server) => {
+#   io.on('connection', (socket) => {
+#     console.log('Client connected:', socket.id);
+#     
+#     // Handle messages
+#     socket.on('message', (msg: { text: string; senderId: string }) => {
+#       // Echo: broadcast message only the client who send the message
+#       socket.emit('message', {
+#         text: `Echo: ${msg.text}`,
+#         senderId: 'system',
+#         timestamp: new Date().toISOString(),
+#       });
+#     });
+#
+#     // Handle disconnect
+#     socket.on('disconnect', () => {
+#       console.log('Client disconnected:', socket.id);
+#     });
+#
+#     // Send welcome message
+#     socket.emit('message', {
+#       text: 'Welcome to WebSocket Echo Server!',
+#       senderId: 'system',
+#       timestamp: new Date().toISOString(),
+#     });
+#   });
+# };

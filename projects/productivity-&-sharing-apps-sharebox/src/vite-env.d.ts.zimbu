@@ -1,0 +1,13 @@
+﻿# Zimbu-Port-Spiegel von: projects\productivity-&-sharing-apps-sharebox\src\vite-env.d.ts
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE vite_env_d_ts
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\productivity-&-sharing-apps-sharebox\src\vite-env.d.ts\n")
+  RETURN 0
+
+# ---- Original-Code (projects\productivity-&-sharing-apps-sharebox\src\vite-env.d.ts), unveraendert, als Inline-Doku ----
+# /// <reference types="vite/client" />
+#

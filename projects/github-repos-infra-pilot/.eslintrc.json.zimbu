@@ -1,0 +1,35 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-infra-pilot\.eslintrc.json
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE _eslintrc_json
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-infra-pilot\.eslintrc.json\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-infra-pilot\.eslintrc.json), unveraendert, als Inline-Doku ----
+# {
+#   "root": true,
+#   "env": {
+#     "node": true,
+#     "es2021": true,
+#     "commonjs": true
+#   },
+#   "parserOptions": {
+#     "ecmaVersion": 2021,
+#     "sourceType": "module"
+#   },
+#   "extends": [
+#     "eslint:recommended"
+#   ],
+#   "ignorePatterns": [
+#     "node_modules/",
+#     "dist/",
+#     "build/"
+#   ],
+#   "rules": {
+#     // Add project-wide lint rules here as needed. Start with a minimal baseline.
+#   }
+# }
+#

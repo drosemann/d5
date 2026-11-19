@@ -1,0 +1,6 @@
+name: SandstoneRemover
+main: SandstoneRemover\SandstoneRemover
+version: 1.0.0
+api: 5.0.0
+description: Removes sandstone blocks from a specific world every 10 seconds
+author: Daniel

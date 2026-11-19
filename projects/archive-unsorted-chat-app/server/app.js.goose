@@ -1,0 +1,249 @@
+﻿// Goose-Port-Spiegel von: projects/archive-unsorted-chat-app/server/app.js
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/archive-unsorted-chat-app/server/app.js");
+}
+
+// ---- Original-Code (projects/archive-unsorted-chat-app/server/app.js), unveraendert, als Inline-Doku ----
+// 'use strict';
+//
+// require('dotenv').config();
+// const express = require('express');
+// const cors = require('cors');
+// const helmet = require('helmet');
+// const rateLimit = require('express-rate-limit');
+// const http = require('http');
+// const socketIo = require('socket.io');
+// const path = require('path');
+// const winston = require('winston');
+//
+// // Initialize express app
+// const app = express();
+// const server = http.createServer(app);
+// const io = socketIo(server, {
+//     cors: {
+//         origin: process.env.CLIENT_URL || "http://localhost:5173",
+//         methods: ["GET", "POST"],
+//         credentials: true
+//     }
+// });
+//
+// // Set up logging
+// const logger = winston.createLogger({
+//     level: 'info',
+//     format: winston.format.combine(
+//         winston.format.timestamp(),
+//         winston.format.json()
+//     ),
+//     transports: [
+//         new winston.transports.File({ filename: 'error.log', level: 'error' }),
+//         new winston.transports.File({ filename: 'combined.log' })
+//     ]
+// });
+//
+// // Middleware
+// app.use(helmet());
+// app.use(cors({
+//     origin: process.env.CLIENT_URL || "http://localhost:5173",
+//     credentials: true
+// }));
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+//
+// // Rate limiting
+// const limiter = rateLimit({
+//     windowMs: 15 * 60 * 1000, // 15 minutes
+//     max: 100 // limit each IP to 100 requests per windowMs
+// });
+// app.use(limiter);
+//
+// const port = process.env.PORT || 3000;
+//
+// // Routes
+// const authRoutes = require('./routes/auth');
+// const channelRoutes = require('./routes/channels');
+// const messageRoutes = require('./routes/messages');
+// const workspaceRoutes = require('./routes/workspaces');
+// const userRoutes = require('./routes/users');
+// const directMessagesRoutes = require('./routes/directMessages');
+//
+// app.use('/api/auth', authRoutes);
+// app.use('/api/channels', channelRoutes);
+// app.use('/api/messages', messageRoutes);
+// app.use('/api/workspaces', workspaceRoutes);
+// app.use('/api/users', userRoutes);
+// app.use('/api/direct-messages', directMessagesRoutes);
+//
+// // Basic notification endpoint (for demonstration)
+// app.post('/api/notify', (req, res) => {
+//     // In production, integrate with a notification service or use websockets
+//     res.json({ message: 'Notification sent (stub)' });
+// });
+//
+// // Mute Button (stub)
+// app.post('/api/mute', (req, res) => {
+//     // In production, integrate with a media server or use websockets
+//     res.json({ message: 'Mute state changed (stub)' });
+// });
+//
+// // media server (stub)
+// app.post('/api/media', (req, res) => {
+//    // rewrite with actual media server logic
+//     res.json({ message: 'Media state changed (stub)' });
+// });
+//
+// // Room-based calling and presence
+// const roomUsers = {};
+//
+// io.on('connection', (socket) => {
+//     logger.info(`User connected: ${socket.id}`);
+//
+//     // Join a workspace/channel
+//     socket.on('join_room', (roomId) => {
+//         socket.join(roomId);
+//         logger.info(`User ${socket.id} joined room: ${roomId}`);
+//     });
+//
+//     // Leave a workspace/channel
+//     socket.on('leave_room', (roomId) => {
+//         socket.leave(roomId);
+//         logger.info(`User ${socket.id} left room: ${roomId}`);
+//     });
+//
+//     // Join a call room
+//     socket.on('join_call_room', ({ roomId, user }) => {
+//         socket.join(roomId);
+//         if (!roomUsers[roomId]) roomUsers[roomId] = [];
+//         roomUsers[roomId].push({ id: socket.id, user });
+//         io.to(roomId).emit('room_user_list', roomUsers[roomId]);
+//         io.to(roomId).emit('user_joined', { user, socketId: socket.id });
+//     });
+//
+//     // Leave a call room
+//     socket.on('leave_call_room', ({ roomId }) => {
+//         socket.leave(roomId);
+//         if (roomUsers[roomId]) {
+//             roomUsers[roomId] = roomUsers[roomId].filter(u => u.id !== socket.id);
+//             io.to(roomId).emit('room_user_list', roomUsers[roomId]);
+//             io.to(roomId).emit('user_left', { socketId: socket.id });
+//         }
+//     });
+//
+//     // Relay signaling messages only to the room
+//     socket.on('call_signal', ({ roomId, signal, from }) => {
+//         socket.to(roomId).emit('call_signal', { signal, from });
+//     });
+//
+//     // Text chat in call room
+//     socket.on('call_room_message', ({ roomId, message, user }) => {
+//         io.to(roomId).emit('call_room_message', { message, user, timestamp: new Date() });
+//     });
+//
+//     // Mute/unmute and camera on/off
+//     socket.on('media_state', ({ roomId, user, audio, video }) => {
+//         io.to(roomId).emit('media_state', { user, audio, video });
+//     });
+//
+//     // Screen sharing (stub)
+//     socket.on('screen_share', ({ roomId, streamInfo }) => {
+//         io.to(roomId).emit('screen_share', { streamInfo });
+//     });
+//
+//     // Recording (stub)
+//     socket.on('recording_state', ({ roomId, state }) => {
+//         io.to(roomId).emit('recording_state', { state });
+//     });
+//
+//     // File sharing (stub)
+//     socket.on('call_file_share', ({ roomId, fileMeta }) => {
+//         io.to(roomId).emit('call_file_share', { fileMeta });
+//     });
+//
+//     // Lobby/Waiting Room (basic)
+//     socket.on('join_lobby', ({ lobbyId, user }) => {
+//         socket.join(lobbyId);
+//         io.to(lobbyId).emit('lobby_user_joined', { user, socketId: socket.id });
+//     });
+//     socket.on('admit_from_lobby', ({ lobbyId, socketId }) => {
+//         io.to(socketId).emit('admitted_to_call');
+//     });
+//
+//     // Call end/leave notifications
+//     socket.on('call_end', ({ roomId, user }) => {
+//         io.to(roomId).emit('call_ended', { user });
+//     });
+//
+//     // Handle new messages
+//     socket.on('send_message', (data) => {
+//         io.to(data.channelId).emit('receive_message', {
+//             ...data,
+//             timestamp: new Date()
+//         });
+//     });
+//
+//     // Handle typing indicators
+//     socket.on('typing', (data) => {
+//         socket.to(data.channelId).emit('user_typing', {
+//             userId: data.userId,
+//             username: data.username
+//         });
+//     });
+//
+//     // Handle reactions
+//     socket.on('add_reaction', (data) => {
+//         io.to(data.channelId).emit('reaction_added', data);
+//     });
+//
+//     // Handle user status changes
+//     socket.on('status_change', (data) => {
+//         io.emit('user_status_changed', {
+//             userId: data.userId,
+//             status: data.status
+//         });
+//     });
+//
+//     // Handle voice/video calls
+//     socket.on('call_user', (data) => {
+//         io.to(data.targetId).emit('incoming_call', {
+//             signal: data.signal,
+//             from: data.from
+//         });
+//     });
+//
+//     socket.on('answer_call', (data) => {
+//         io.to(data.targetId).emit('call_accepted', data.signal);
+//     });
+//
+//     // On disconnect, clean up user from all rooms
+//     socket.on('disconnect', () => {
+//         for (const roomId in roomUsers) {
+//             const before = roomUsers[roomId].length;
+//             roomUsers[roomId] = roomUsers[roomId].filter(u => u.id !== socket.id);
+//             if (roomUsers[roomId].length !== before) {
+//                 io.to(roomId).emit('room_user_list', roomUsers[roomId]);
+//                 io.to(roomId).emit('user_left', { socketId: socket.id });
+//             }
+//         }
+//         logger.info(`User disconnected: ${socket.id}`);
+//     });
+// });
+//
+// // Error handling middleware
+// app.use((err, req, res, next) => {
+//     logger.error(err.stack);
+//     res.status(500).send('Something broke!');
+// });
+//
+// // Start the server
+// if (require.main === module) {
+//     server.listen(port, () => {
+//         logger.info(`Server running at http://localhost:${port}`);
+//     });
+// }
+//
+// module.exports = { app, server, io };
+//
+//
+//

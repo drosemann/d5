@@ -1,0 +1,56 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-streuland/src/main/java/de/streuland/plot/distribution/CandidatePlotLocation.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-streuland/src/main/java/de/streuland/plot/distribution/CandidatePlotLocation.java");
+}
+
+// ---- Original-Code (projects/github-repos-streuland/src/main/java/de/streuland/plot/distribution/CandidatePlotLocation.java), unveraendert, als Inline-Doku ----
+// package de.streuland.plot.distribution;
+//
+// /**
+//  * Represents a candidate plot location with precomputed metrics for scoring.
+//  */
+// public class CandidatePlotLocation {
+//     private final int x;
+//     private final int z;
+//     private final String biomeKey;
+//     private final double terrainVariance;
+//     private final double infrastructureDistance;
+//     private final double playerDensity;
+//
+//     public CandidatePlotLocation(int x, int z, String biomeKey, double terrainVariance, double infrastructureDistance, double playerDensity) {
+//         this.x = x;
+//         this.z = z;
+//         this.biomeKey = biomeKey;
+//         this.terrainVariance = terrainVariance;
+//         this.infrastructureDistance = infrastructureDistance;
+//         this.playerDensity = playerDensity;
+//     }
+//
+//     public int getX() {
+//         return x;
+//     }
+//
+//     public int getZ() {
+//         return z;
+//     }
+//
+//     public String getBiomeKey() {
+//         return biomeKey;
+//     }
+//
+//     public double getTerrainVariance() {
+//         return terrainVariance;
+//     }
+//
+//     public double getInfrastructureDistance() {
+//         return infrastructureDistance;
+//     }
+//
+//     public double getPlayerDensity() {
+//         return playerDensity;
+//     }
+// }
+//

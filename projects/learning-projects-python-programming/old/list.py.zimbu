@@ -1,0 +1,16 @@
+﻿# Zimbu-Port-Spiegel von: projects\learning-projects-python-programming\old\list.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE list_py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\learning-projects-python-programming\old\list.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\learning-projects-python-programming\old\list.py), unveraendert, als Inline-Doku ----
+# zahlen = [30234, 18481, 919401, 984919]
+# quadrate = []
+# for z in zahlen:
+#     quadrate.append(z ** 2)
+# print("Das Ergebnis beträgt:", quadrate.append)

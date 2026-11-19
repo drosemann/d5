@@ -1,0 +1,37 @@
+﻿# Zimbu-Port-Spiegel von: projects\browser-games-browser-game-open-world-minigame\src\main\java\com\example\realmofwonders\RealmofWonders.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE RealmofWonders_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\browser-games-browser-game-open-world-minigame\src\main\java\com\example\realmofwonders\RealmofWonders.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\browser-games-browser-game-open-world-minigame\src\main\java\com\example\realmofwonders\RealmofWonders.java), unveraendert, als Inline-Doku ----
+# // src/main/java/com/example/realmofwonders/RealmofWonders.java
+# package com.example.realmofwonders;
+#
+# import org.bukkit.plugin.java.JavaPlugin;
+#
+# public class RealmofWonders extends JavaPlugin {
+#
+#     @Override
+#     public void onEnable() {
+#         getLogger().info("Realm of Wonders has been enabled!");
+#         
+#         // Register commands
+#         this.getCommand("achievements").setExecutor(new AchievementCommand());
+#         
+#         // Register events
+#         getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
+#         
+#         // Load configuration
+#         saveDefaultConfig();
+#     }
+#
+#     @Override
+#     public void onDisable() {
+#         getLogger().info("Realm of Wonders has been disabled!");
+#     }
+# }

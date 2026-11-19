@@ -1,0 +1,160 @@
+﻿// Goose-Port-Spiegel von: projects/productivity-&-sharing-apps-photoshare/convex/photos.ts
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/productivity-&-sharing-apps-photoshare/convex/photos.ts");
+}
+
+// ---- Original-Code (projects/productivity-&-sharing-apps-photoshare/convex/photos.ts), unveraendert, als Inline-Doku ----
+// import { v } from "convex/values";
+// import { mutation, query, action } from "./_generated/server";
+// import { getAuthUserId } from "@convex-dev/auth/server";
+//
+// export const generateUploadUrl = mutation({
+//   args: {},
+//   handler: async (ctx) => {
+//     const userId = await getAuthUserId(ctx);
+//     if (!userId) throw new Error("Not authenticated");
+//     return await ctx.storage.generateUploadUrl();
+//   },
+// });
+//
+// export const createPhoto = mutation({
+//   args: {
+//     storageId: v.id("_storage"),
+//     description: v.optional(v.string()),
+//   },
+//   handler: async (ctx, args) => {
+//     const userId = await getAuthUserId(ctx);
+//     if (!userId) throw new Error("Not authenticated");
+//
+//     await ctx.db.insert("photos", {
+//       storageId: args.storageId,
+//       userId,
+//       description: args.description,
+//     });
+//   },
+// });
+//
+// export const deletePhoto = mutation({
+//   args: {
+//     photoId: v.id("photos"),
+//   },
+//   handler: async (ctx, args) => {
+//     const userId = await getAuthUserId(ctx);
+//     if (!userId) throw new Error("Not authenticated");
+//
+//     const photo = await ctx.db.get(args.photoId);
+//     if (!photo) throw new Error("Photo not found");
+//     if (photo.userId !== userId) throw new Error("Not authorized");
+//
+//     await ctx.storage.delete(photo.storageId);
+//     await ctx.db.delete(args.photoId);
+//   },
+// });
+//
+// export const toggleLike = mutation({
+//   args: {
+//     photoId: v.id("photos"),
+//   },
+//   handler: async (ctx, args) => {
+//     const userId = await getAuthUserId(ctx);
+//     if (!userId) throw new Error("Not authenticated");
+//
+//     const existing = await ctx.db
+//       .query("likes")
+//       .withIndex("by_user_and_photo", (q) =>
+//         q.eq("userId", userId).eq("photoId", args.photoId)
+//       )
+//       .unique();
+//
+//     if (existing) {
+//       await ctx.db.delete(existing._id);
+//     } else {
+//       await ctx.db.insert("likes", {
+//         photoId: args.photoId,
+//         userId,
+//       });
+//     }
+//   },
+// });
+//
+// export const listStream = query({
+//   args: {},
+//   handler: async (ctx) => {
+//     const photos = await ctx.db.query("photos").order("desc").collect();
+//
+//     return await Promise.all(
+//       photos.map(async (photo) => {
+//         const [url, user, likes] = await Promise.all([
+//           ctx.storage.getUrl(photo.storageId),
+//           ctx.db.get(photo.userId),
+//           ctx.db
+//             .query("likes")
+//             .withIndex("by_photo", (q) => q.eq("photoId", photo._id))
+//             .collect(),
+//         ]);
+//
+//         return {
+//           ...photo,
+//           url,
+//           username: user?.email ?? "Unknown",
+//           likes: likes.length,
+//         };
+//       })
+//     );
+//   },
+// });
+//
+// export const listMyPhotos = query({
+//   args: {},
+//   handler: async (ctx) => {
+//     const userId = await getAuthUserId(ctx);
+//     if (!userId) return [];
+//
+//     const photos = await ctx.db
+//       .query("photos")
+//       .withIndex("by_user", (q) => q.eq("userId", userId))
+//       .order("desc")
+//       .collect();
+//
+//     return await Promise.all(
+//       photos.map(async (photo) => {
+//         const [url, likes] = await Promise.all([
+//           ctx.storage.getUrl(photo.storageId),
+//           ctx.db
+//             .query("likes")
+//             .withIndex("by_photo", (q) => q.eq("photoId", photo._id))
+//             .collect(),
+//         ]);
+//
+//         return {
+//           ...photo,
+//           url,
+//           likes: likes.length,
+//         };
+//       })
+//     );
+//   },
+// });
+//
+// export const isLiked = query({
+//   args: {
+//     photoId: v.id("photos"),
+//   },
+//   handler: async (ctx, args) => {
+//     const userId = await getAuthUserId(ctx);
+//     if (!userId) return false;
+//
+//     const like = await ctx.db
+//       .query("likes")
+//       .withIndex("by_user_and_photo", (q) =>
+//         q.eq("userId", userId).eq("photoId", args.photoId)
+//       )
+//       .unique();
+//
+//     return !!like;
+//   },
+// });
+//

@@ -1,0 +1,42 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\custom\settings\trigger\impl\GainXPTrigger.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE GainXPTrigger_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\custom\settings\trigger\impl\GainXPTrigger.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\custom\settings\trigger\impl\GainXPTrigger.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.challenges.custom.settings.trigger.impl;
+#
+# import net.codingarea.challenges.plugin.challenges.custom.settings.trigger.ChallengeTrigger;
+# import org.bukkit.Material;
+# import org.bukkit.event.EventHandler;
+# import org.bukkit.event.EventPriority;
+# import org.bukkit.event.player.PlayerExpChangeEvent;
+#
+# public class GainXPTrigger extends ChallengeTrigger {
+#    public GainXPTrigger(String name) {
+#       super(name);
+#    }
+#
+#    public Material getMaterial() {
+#       return Material.EXPERIENCE_BOTTLE;
+#    }
+#
+#    @EventHandler(
+#       priority = EventPriority.HIGH,
+#       ignoreCancelled = true
+#    )
+#    public void onXPGain(PlayerExpChangeEvent event) {
+#       if (event.getAmount() > 0) {
+#          this.createData().entity(event.getPlayer()).cancelAction(() -> {
+#             event.setAmount(0);
+#          }).execute();
+#       }
+#
+#    }
+# }
+#

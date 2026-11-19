@@ -1,0 +1,25 @@
+﻿# Zimbu-Port-Spiegel von: projects\productivity-&-sharing-apps-photoshare\tsconfig.json
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE tsconfig_json
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\productivity-&-sharing-apps-photoshare\tsconfig.json\n")
+  RETURN 0
+
+# ---- Original-Code (projects\productivity-&-sharing-apps-photoshare\tsconfig.json), unveraendert, als Inline-Doku ----
+# {
+#   "files": [],
+#   "references": [
+#     { "path": "./tsconfig.app.json" },
+#     { "path": "./tsconfig.node.json" }
+#   ],
+#   "compilerOptions": {
+#     "baseUrl": ".",
+#     "paths": {
+#       "@/*": ["./src/*"]
+#     }
+#   }
+# }
+#

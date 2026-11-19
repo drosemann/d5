@@ -1,0 +1,20 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-forum-for-nerds-blog,-cms-&-community-platforms-forumino\convex\auth.config.ts
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE auth_config_ts
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-forum-for-nerds-blog,-cms-&-community-platforms-forumino\convex\auth.config.ts\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-forum-for-nerds-blog,-cms-&-community-platforms-forumino\convex\auth.config.ts), unveraendert, als Inline-Doku ----
+# export default {
+#   providers: [
+#     {
+#       domain: process.env.CONVEX_SITE_URL,
+#       applicationID: "convex",
+#     },
+#   ],
+# };
+#

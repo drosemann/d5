@@ -1,0 +1,500 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\type\abstraction\ForceBattleGoal.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE ForceBattleGoal_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\type\abstraction\ForceBattleGoal.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\type\abstraction\ForceBattleGoal.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.challenges.type.abstraction;
+#
+# import java.util.Arrays;
+# import java.util.Collection;
+# import java.util.Collections;
+# import java.util.Comparator;
+# import java.util.HashMap;
+# import java.util.Iterator;
+# import java.util.LinkedList;
+# import java.util.List;
+# import java.util.Map;
+# import java.util.UUID;
+# import java.util.Map.Entry;
+# import java.util.stream.Collectors;
+# import net.anweisen.utilities.bukkit.utils.animation.SoundSample;
+# import net.anweisen.utilities.common.config.Document;
+# import net.anweisen.utilities.common.config.document.GsonDocument;
+# import net.codingarea.challenges.plugin.ChallengeAPI;
+# import net.codingarea.challenges.plugin.challenges.implementation.goal.forcebattle.targets.ForceTarget;
+# import net.codingarea.challenges.plugin.content.Message;
+# import net.codingarea.challenges.plugin.content.Prefix;
+# import net.codingarea.challenges.plugin.management.menu.MenuType;
+# import net.codingarea.challenges.plugin.management.menu.generator.categorised.SettingCategory;
+# import net.codingarea.challenges.plugin.management.scheduler.policy.TimerPolicy;
+# import net.codingarea.challenges.plugin.management.scheduler.task.ScheduledTask;
+# import net.codingarea.challenges.plugin.management.scheduler.task.TimerTask;
+# import net.codingarea.challenges.plugin.management.scheduler.timer.TimerStatus;
+# import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+# import net.codingarea.challenges.plugin.utils.misc.InventoryUtils;
+# import net.codingarea.challenges.plugin.utils.misc.NameHelper;
+# import org.bukkit.Bukkit;
+# import org.bukkit.ChatColor;
+# import org.bukkit.Material;
+# import org.bukkit.OfflinePlayer;
+# import org.bukkit.entity.Player;
+# import org.bukkit.event.EventHandler;
+# import org.bukkit.event.EventPriority;
+# import org.bukkit.event.block.Action;
+# import org.bukkit.event.block.BlockPlaceEvent;
+# import org.bukkit.event.entity.PlayerDeathEvent;
+# import org.bukkit.event.player.PlayerDropItemEvent;
+# import org.bukkit.event.player.PlayerInteractEvent;
+# import org.bukkit.event.player.PlayerJoinEvent;
+# import org.bukkit.event.player.PlayerRespawnEvent;
+# import org.bukkit.inventory.ItemStack;
+# import org.bukkit.inventory.PlayerInventory;
+# import org.jetbrains.annotations.NotNull;
+#
+# public abstract class ForceBattleGoal extends MenuGoal {
+#    protected final Map jokerUsed = new HashMap();
+#    protected final Map foundTargets = new HashMap();
+#    protected final Map currentTarget = new HashMap();
+#    protected ForceTarget[] targetsPossibleToFind;
+#    private ItemStack jokerItem;
+#
+#    public ForceBattleGoal(@NotNull Message title) {
+#       super(MenuType.GOAL, title);
+#       this.setCategory(SettingCategory.FORCE_BATTLE);
+#       this.registerSetting("jokers", new MenuSetting.NumberSubSetting(() -> {
+#          return new ItemBuilder(Material.BARRIER, Message.forName("item-force-battle-goal-jokers"));
+#       }, (value) -> {
+#          return null;
+#       }, (value) -> {
+#          return "§e" + value;
+#       }, 1, 32, 5));
+#       this.registerSetting("showScoreboard", new MenuSetting.BooleanSubSetting(() -> {
+#          return new ItemBuilder(Material.BOOK, Message.forName("item-force-battle-show-scoreboard"));
+#       }, true));
+#       if (this.shouldRegisterDupedTargetsSetting()) {
+#          this.registerSetting("dupedTargets", new MenuSetting.BooleanSubSetting(() -> {
+#             return new ItemBuilder(Material.PAPER, Message.forName("item-force-battle-duped-targets"));
+#          }, true));
+#       }
+#
+#    }
+#
+#    protected void onEnable() {
+#       this.jokerItem = (new ItemBuilder(Material.BARRIER, "§cJoker")).build();
+#       this.targetsPossibleToFind = this.getTargetsPossibleToFind();
+#       broadcastFiltered(this::updateJokersInInventory);
+#       broadcastFiltered(this::setRandomTargetIfCurrentlyNone);
+#       this.setScoreboardContent();
+#       if (this.showScoreboard()) {
+#          this.scoreboard.show();
+#       }
+#
+#    }
+#
+#    protected void onDisable() {
+#       if (this.jokerItem != null) {
+#          broadcastFiltered(this::updateJokersInInventory);
+#          this.jokerItem = null;
+#          this.scoreboard.hide();
+#          this.targetsPossibleToFind = null;
+#       }
+#    }
+#
+#    protected abstract ForceTarget[] getTargetsPossibleToFind();
+#
+#    private void updateJokersInInventory(Player player) {
+#       PlayerInventory inventory = player.getInventory();
+#       boolean enabled = this.isEnabled() && ChallengeAPI.isStarted();
+#       int usableJokers = this.getUsableJokers(player.getUniqueId());
+#       int jokersInInventory = 0;
+#       LinkedList itemStacks = new LinkedList(Arrays.asList(inventory.getContents()));
+#       itemStacks.add(player.getItemOnCursor());
+#       Iterator var7 = itemStacks.iterator();
+#
+#       while(var7.hasNext()) {
+#          ItemStack itemStack = (ItemStack)var7.next();
+#          if (this.jokerItem.isSimilar(itemStack)) {
+#             if (enabled) {
+#                jokersInInventory += itemStack.getAmount();
+#                if (jokersInInventory >= usableJokers) {
+#                   int jokersToSubtract = jokersInInventory - usableJokers;
+#                   jokersInInventory -= jokersToSubtract;
+#                   itemStack.setAmount(itemStack.getAmount() - jokersToSubtract);
+#                }
+#             } else {
+#                inventory.removeItem(new ItemStack[]{itemStack});
+#             }
+#          }
+#       }
+#
+#       if (enabled && jokersInInventory < usableJokers) {
+#          ItemStack clone = this.jokerItem.clone();
+#          clone.setAmount(usableJokers - jokersInInventory);
+#          InventoryUtils.dropOrGiveItem(inventory, player.getLocation(), (ItemStack)clone);
+#       }
+#
+#    }
+#
+#    public void loadGameState(@NotNull Document document) {
+#       this.jokerUsed.clear();
+#       this.currentTarget.clear();
+#       this.foundTargets.clear();
+#       List players = document.getDocumentList("players");
+#       Iterator var3 = players.iterator();
+#
+#       while(var3.hasNext()) {
+#          Document player = (Document)var3.next();
+#          UUID uuid = player.getUUID("uuid");
+#          ForceTarget currentTarget = this.getTargetFromDocument(player, "currentTarget");
+#          if (currentTarget != null) {
+#             this.currentTarget.put(uuid, currentTarget);
+#          }
+#
+#          List foundItems = this.getListFromDocument(player, "foundTargets");
+#          this.foundTargets.put(uuid, foundItems);
+#          int jokerUsed = player.getInt("jokerUsed");
+#          this.jokerUsed.put(uuid, jokerUsed);
+#       }
+#
+#       if (this.isEnabled()) {
+#          if (ChallengeAPI.isStarted()) {
+#             broadcastFiltered(this::setRandomTargetIfCurrentlyNone);
+#          }
+#
+#          this.scoreboard.update();
+#          broadcastFiltered(this::updateJokersInInventory);
+#       }
+#
+#    }
+#
+#    public void writeGameState(@NotNull Document document) {
+#       List playersDocuments = new LinkedList();
+#       Iterator var3 = this.currentTarget.entrySet().iterator();
+#
+#       while(var3.hasNext()) {
+#          Entry entry = (Entry)var3.next();
+#          List foundItems = (List)this.foundTargets.get(entry.getKey());
+#          int jokerUsed = (Integer)this.jokerUsed.getOrDefault(entry.getKey(), 0);
+#          GsonDocument playerDocument = new GsonDocument();
+#          playerDocument.set("uuid", entry.getKey());
+#          this.setTargetInDocument(playerDocument, "currentTarget", (ForceTarget)entry.getValue());
+#          if (foundItems != null) {
+#             this.setFoundListInDocument(playerDocument, "foundTargets", foundItems);
+#          }
+#
+#          playerDocument.set("jokerUsed", jokerUsed);
+#          playersDocuments.add(playerDocument);
+#       }
+#
+#       document.set("players", playersDocuments);
+#    }
+#
+#    public void setTargetInDocument(Document document, String path, ForceTarget target) {
+#       document.set(path, target.getTargetSaveObject());
+#    }
+#
+#    public void setFoundListInDocument(Document document, String path, List targets) {
+#       document.set(path, targets.stream().map(ForceTarget::getTargetSaveObject).collect(Collectors.toList()));
+#    }
+#
+#    public abstract ForceTarget getTargetFromDocument(Document var1, String var2);
+#
+#    public abstract List getListFromDocument(Document var1, String var2);
+#
+#    public void setRandomTargetIfCurrentlyNone(Player player) {
+#       if (!this.currentTarget.containsKey(player.getUniqueId())) {
+#          this.setRandomTarget(player);
+#       }
+#    }
+#
+#    public void setRandomTarget(Player player) {
+#       ForceTarget target = this.getRandomTarget(player);
+#       if (target != null) {
+#          this.currentTarget.put(player.getUniqueId(), target);
+#          this.getNewTargetMessage(target).send(player, Prefix.CHALLENGES, this.getTargetMessageReplacement(target));
+#          SoundSample.PLING.play(player);
+#       } else {
+#          this.currentTarget.remove(player.getUniqueId());
+#          SoundSample.BASS_OFF.play(player);
+#       }
+#
+#       this.scoreboard.update();
+#    }
+#
+#    protected ForceTarget getRandomTarget(Player player) {
+#       LinkedList list = new LinkedList(Arrays.asList(this.targetsPossibleToFind));
+#       if (!this.getSetting("dupedTargets").getAsBoolean()) {
+#          list.removeAll((Collection)this.foundTargets.getOrDefault(player.getUniqueId(), new LinkedList()));
+#       }
+#
+#       return !list.isEmpty() ? (ForceTarget)globalRandom.choose((List)list) : null;
+#    }
+#
+#    protected Message getNewTargetMessage(ForceTarget newTarget) {
+#       return newTarget.getNewTargetMessage();
+#    }
+#
+#    protected Message getTargetCompletedMessage(ForceTarget target) {
+#       return target.getCompletedMessage();
+#    }
+#
+#    public void handleTargetFound(Player player) {
+#       ForceTarget foundTarget = (ForceTarget)this.currentTarget.get(player.getUniqueId());
+#       if (foundTarget != null) {
+#          List list = (List)this.foundTargets.computeIfAbsent(player.getUniqueId(), (uuid) -> {
+#             return new LinkedList();
+#          });
+#          list.add(foundTarget);
+#          this.getTargetCompletedMessage(foundTarget).send(player, Prefix.CHALLENGES, this.getTargetMessageReplacement(foundTarget));
+#       }
+#
+#       this.setRandomTarget(player);
+#    }
+#
+#    public Object getTargetMessageReplacement(ForceTarget target) {
+#       return target.toMessage();
+#    }
+#
+#    public String getTargetName(ForceTarget target) {
+#       return target.getName();
+#    }
+#
+#    public void getWinnersOnEnd(@NotNull List winners) {
+#       Bukkit.getScheduler().runTask(plugin, () -> {
+#          int place = 0;
+#          int placeValue = -1;
+#          List list = (List)this.foundTargets.entrySet().stream().sorted(Comparator.comparingInt((value) -> {
+#             return ((List)value.getValue()).size();
+#          })).collect(Collectors.toList());
+#          Collections.reverse(list);
+#          this.getLeaderboardTitleMessage().broadcast(Prefix.CHALLENGES);
+#          Iterator var4 = list.iterator();
+#
+#          while(var4.hasNext()) {
+#             Entry entry = (Entry)var4.next();
+#             if (((List)entry.getValue()).size() != placeValue) {
+#                ++place;
+#                placeValue = ((List)entry.getValue()).size();
+#             }
+#
+#             UUID uuid = (UUID)entry.getKey();
+#             OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(uuid);
+#             ChatColor color = this.getPlaceColor(place);
+#             Message.forName("force-battle-leaderboard-entry").broadcast(Prefix.CHALLENGES, color, place, NameHelper.getName(offlinePlayer), ((List)entry.getValue()).size());
+#          }
+#
+#       });
+#    }
+#
+#    public void sendResult(@NotNull Player player) {
+#       Bukkit.getScheduler().runTask(plugin, () -> {
+#          int place = 0;
+#          int placeValue = -1;
+#          List list = (List)this.foundTargets.entrySet().stream().sorted(Comparator.comparingInt((value) -> {
+#             return ((List)value.getValue()).size();
+#          })).collect(Collectors.toList());
+#          Collections.reverse(list);
+#          this.getLeaderboardTitleMessage().broadcast(Prefix.CHALLENGES);
+#          Iterator var5 = list.iterator();
+#
+#          while(var5.hasNext()) {
+#             Entry entry = (Entry)var5.next();
+#             if (((List)entry.getValue()).size() != placeValue) {
+#                ++place;
+#                placeValue = ((List)entry.getValue()).size();
+#             }
+#
+#             UUID uuid = (UUID)entry.getKey();
+#             OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(uuid);
+#             ChatColor color = this.getPlaceColor(place);
+#             Message.forName("force-battle-leaderboard-entry").send(player, Prefix.CHALLENGES, color, place, NameHelper.getName(offlinePlayer), ((List)entry.getValue()).size());
+#          }
+#
+#       });
+#    }
+#
+#    protected abstract Message getLeaderboardTitleMessage();
+#
+#    protected ChatColor getPlaceColor(int place) {
+#       switch(place) {
+#       case 1:
+#          return ChatColor.GOLD;
+#       case 2:
+#          return ChatColor.YELLOW;
+#       case 3:
+#          return ChatColor.RED;
+#       default:
+#          return ChatColor.GRAY;
+#       }
+#    }
+#
+#    private int getUsableJokers(UUID uuid) {
+#       return Math.max(0, this.getJokers() - (Integer)this.jokerUsed.getOrDefault(uuid, 0));
+#    }
+#
+#    public void handleJokerUse(Player player) {
+#       if (this.currentTarget.get(player.getUniqueId()) == null) {
+#          this.setRandomTargetIfCurrentlyNone(player);
+#       } else {
+#          int jokerUsed = (Integer)this.jokerUsed.getOrDefault(player.getUniqueId(), 0);
+#          ++jokerUsed;
+#          this.jokerUsed.put(player.getUniqueId(), jokerUsed);
+#          this.handleTargetFound(player);
+#          this.updateJokersInInventory(player);
+#       }
+#    }
+#
+#    protected void setScoreboardContent() {
+#       this.scoreboard.setContent((board, player) -> {
+#          List ingamePlayers = ChallengeAPI.getIngamePlayers();
+#          int emptyLinesAvailable = 15 - ingamePlayers.size();
+#          if (emptyLinesAvailable > 0) {
+#             board.addLine("");
+#             --emptyLinesAvailable;
+#          }
+#
+#          for(int i = 0; i < ingamePlayers.size() && i < 15; ++i) {
+#             Player ingamePlayer = (Player)ingamePlayers.get(i);
+#             ForceTarget target = (ForceTarget)this.currentTarget.get(ingamePlayer.getUniqueId());
+#             String display = target == null ? Message.forName("none").asString() : this.getTargetName(target);
+#             board.addLine(NameHelper.getName(ingamePlayer) + " §8» §e" + display);
+#          }
+#
+#          if (emptyLinesAvailable > 0) {
+#             board.addLine("");
+#          }
+#
+#       });
+#    }
+#
+#    @TimerTask(
+#       status = {TimerStatus.RUNNING},
+#       async = false
+#    )
+#    public void onStart() {
+#       broadcastFiltered(this::setRandomTargetIfCurrentlyNone);
+#       broadcastFiltered(this::updateJokersInInventory);
+#    }
+#
+#    @EventHandler(
+#       priority = EventPriority.HIGH
+#    )
+#    public void onJoin(PlayerJoinEvent event) {
+#       if (this.shouldExecuteEffect()) {
+#          if (!ignorePlayer(event.getPlayer())) {
+#             this.setRandomTargetIfCurrentlyNone(event.getPlayer());
+#             this.updateJokersInInventory(event.getPlayer());
+#          }
+#       }
+#    }
+#
+#    @ScheduledTask(
+#       ticks = 1,
+#       async = false,
+#       timerPolicy = TimerPolicy.ALWAYS
+#    )
+#    public void onTick() {
+#       if (this.isEnabled()) {
+#          if (!this.scoreboard.isShown() && this.showScoreboard()) {
+#             this.scoreboard.show();
+#          } else if (this.scoreboard.isShown() && !this.showScoreboard()) {
+#             this.scoreboard.hide();
+#          }
+#
+#          broadcastFiltered(this::updateJokersInInventory);
+#       }
+#    }
+#
+#    @EventHandler(
+#       priority = EventPriority.HIGH
+#    )
+#    public void onInteract(PlayerInteractEvent event) {
+#       if (this.shouldExecuteEffect()) {
+#          if (!ignorePlayer(event.getPlayer())) {
+#             if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+#                if (this.jokerItem.isSimilar(event.getItem())) {
+#                   this.handleJokerUse(event.getPlayer());
+#                }
+#
+#             }
+#          }
+#       }
+#    }
+#
+#    @EventHandler(
+#       priority = EventPriority.HIGH,
+#       ignoreCancelled = true
+#    )
+#    public void onDropItem(PlayerDropItemEvent event) {
+#       if (this.shouldExecuteEffect()) {
+#          if (!ignorePlayer(event.getPlayer())) {
+#             if (this.jokerItem.isSimilar(event.getItemDrop().getItemStack())) {
+#                event.setCancelled(true);
+#             }
+#
+#          }
+#       }
+#    }
+#
+#    @EventHandler(
+#       priority = EventPriority.HIGH,
+#       ignoreCancelled = true
+#    )
+#    public void onDeath(PlayerDeathEvent event) {
+#       if (this.shouldExecuteEffect()) {
+#          if (!ignorePlayer(event.getEntity())) {
+#             event.getDrops().removeIf((itemStack) -> {
+#                return this.jokerItem.isSimilar(itemStack);
+#             });
+#          }
+#       }
+#    }
+#
+#    @EventHandler(
+#       priority = EventPriority.HIGH,
+#       ignoreCancelled = true
+#    )
+#    public void onRespawn(PlayerRespawnEvent event) {
+#       if (this.shouldExecuteEffect()) {
+#          if (!ignorePlayer(event.getPlayer())) {
+#             Bukkit.getScheduler().runTask(plugin, () -> {
+#                this.updateJokersInInventory(event.getPlayer());
+#             });
+#          }
+#       }
+#    }
+#
+#    @EventHandler(
+#       priority = EventPriority.HIGH,
+#       ignoreCancelled = true
+#    )
+#    public void onPlace(BlockPlaceEvent event) {
+#       if (this.shouldExecuteEffect()) {
+#          if (!ignorePlayer(event.getPlayer())) {
+#             if (this.jokerItem.isSimilar(event.getItemInHand())) {
+#                event.setCancelled(true);
+#             }
+#
+#          }
+#       }
+#    }
+#
+#    private int getJokers() {
+#       return this.getSetting("jokers").getAsInt();
+#    }
+#
+#    private boolean showScoreboard() {
+#       return this.getSetting("showScoreboard").getAsBoolean();
+#    }
+#
+#    protected boolean shouldRegisterDupedTargetsSetting() {
+#       return true;
+#    }
+# }
+#

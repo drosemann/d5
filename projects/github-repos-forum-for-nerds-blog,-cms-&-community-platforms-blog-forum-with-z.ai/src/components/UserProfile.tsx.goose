@@ -1,0 +1,742 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-forum-with-z.ai/src/components/UserProfile.tsx
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-forum-with-z.ai/src/components/UserProfile.tsx");
+}
+
+// ---- Original-Code (projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-forum-with-z.ai/src/components/UserProfile.tsx), unveraendert, als Inline-Doku ----
+// 'use client'
+//
+// import { useState } from 'react'
+// import { motion } from 'framer-motion'
+// import { Button } from '@/components/ui/button'
+// import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+// import { Badge } from '@/components/ui/badge'
+// import { Input } from '@/components/ui/input'
+// import { Textarea } from '@/components/ui/textarea'
+// import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+// import { 
+//   User, 
+//   Mail, 
+//   Calendar, 
+//   MapPin, 
+//   Link, 
+//   Edit, 
+//   Settings, 
+//   Star,
+//   Trophy,
+//   BookOpen,
+//   MessageCircle,
+//   Eye,
+//   Heart,
+//   Share,
+//   Award,
+//   Zap,
+//   Rocket,
+//   Brain,
+//   Shield,
+//   Globe,
+//   Camera,
+//   Save,
+//   X,
+//   Check,
+//   Sparkles,
+//   Crown,
+//   Gem,
+//   Flame
+// } from 'lucide-react'
+//
+// interface UserProfileData {
+//   id: string
+//   username: string
+//   email: string
+//   fullName: string
+//   bio: string
+//   location: string
+//   website: string
+//   joinDate: string
+//   avatar: string
+//   coverImage: string
+//   stats: {
+//     posts: number
+//     comments: number
+//     likes: number
+//     views: number
+//   }
+//   achievements: Array<{
+//     id: string
+//     title: string
+//     description: string
+//     icon: string
+//     color: string
+//     earned: string
+//   }>
+//   recentActivity: Array<{
+//     id: string
+//     type: 'post' | 'comment' | 'like' | 'achievement'
+//     title: string
+//     description: string
+//     time: string
+//   }>
+//   socialLinks: Array<{
+//     platform: string
+//     url: string
+//     icon: string
+//   }>
+// }
+//
+// const userProfileData: UserProfileData = {
+//   id: "1",
+//   username: "dr_sarah_chen",
+//   email: "sarah.chen@z.ai",
+//   fullName: "Dr. Sarah Chen",
+//   bio: "AI Research Scientist | Space Technology Enthusiast | Exploring the intersection of artificial intelligence and cosmic discovery. Passionate about ethical AI development and space exploration.",
+//   location: "San Francisco, CA",
+//   website: "https://sarahchen.ai",
+//   joinDate: "2023-06-15",
+//   avatar: "/placeholder-avatar.jpg",
+//   coverImage: "/placeholder-cover.jpg",
+//   stats: {
+//     posts: 47,
+//     comments: 234,
+//     likes: 1523,
+//     views: 8967
+//   },
+//   achievements: [
+//     {
+//       id: "1",
+//       title: "AI Pioneer",
+//       description: "Published 10+ articles about AI",
+//       icon: "Brain",
+//       color: "from-purple-500 to-pink-500",
+//       earned: "2024-01-10"
+//     },
+//     {
+//       id: "2",
+//       title: "Space Explorer",
+//       description: "Active contributor to space discussions",
+//       icon: "Rocket",
+//       color: "from-blue-500 to-purple-500",
+//       earned: "2024-01-05"
+//     },
+//     {
+//       id: "3",
+//       title: "Community Star",
+//       description: "Received 1000+ likes on posts",
+//       icon: "Star",
+//       color: "from-yellow-500 to-orange-500",
+//       earned: "2023-12-20"
+//     },
+//     {
+//       id: "4",
+//       title: "Ethical Advocate",
+//       description: "Promoted ethical AI discussions",
+//       icon: "Shield",
+//       color: "from-green-500 to-blue-500",
+//       earned: "2023-12-15"
+//     },
+//     {
+//       id: "5",
+//       title: "Trending Creator",
+//       description: "Created 5+ trending discussions",
+//       icon: "Flame",
+//       color: "from-red-500 to-pink-500",
+//       earned: "2023-12-10"
+//     }
+//   ],
+//   recentActivity: [
+//     {
+//       id: "1",
+//       type: "post",
+//       title: "Published Article",
+//       description: "The Future of AI in Space Exploration",
+//       time: "2 hours ago"
+//     },
+//     {
+//       id: "2",
+//       type: "comment",
+//       title: "Commented on",
+//       description: "Quantum Computing and Neural Networks",
+//       time: "5 hours ago"
+//     },
+//     {
+//       id: "3",
+//       type: "like",
+//       title: "Liked",
+//       description: "Ethical AI: Building a Better Tomorrow",
+//       time: "1 day ago"
+//     },
+//     {
+//       id: "4",
+//       type: "achievement",
+//       title: "Earned Achievement",
+//       description: "AI Pioneer",
+//       time: "2 days ago"
+//     },
+//     {
+//       id: "5",
+//       type: "post",
+//       title: "Published Discussion",
+//       description: "What's the most exciting AI breakthrough this year?",
+//       time: "3 days ago"
+//     }
+//   ],
+//   socialLinks: [
+//     {
+//       platform: "Twitter",
+//       url: "https://twitter.com/sarahchen",
+//       icon: "Twitter"
+//     },
+//     {
+//       platform: "LinkedIn",
+//       url: "https://linkedin.com/in/sarahchen",
+//       icon: "LinkedIn"
+//     },
+//     {
+//       platform: "GitHub",
+//       url: "https://github.com/sarahchen",
+//       icon: "GitHub"
+//     }
+//   ]
+// }
+//
+// const UserProfile = () => {
+//   const [user, setUser] = useState<UserProfileData>(userProfileData)
+//   const [isEditing, setIsEditing] = useState(false)
+//   const [editForm, setEditForm] = useState({
+//     fullName: user.fullName,
+//     bio: user.bio,
+//     location: user.location,
+//     website: user.website
+//   })
+//   const [activeTab, setActiveTab] = useState('overview')
+//
+//   const handleSave = () => {
+//     setUser({
+//       ...user,
+//       ...editForm
+//     })
+//     setIsEditing(false)
+//   }
+//
+//   const handleCancel = () => {
+//     setEditForm({
+//       fullName: user.fullName,
+//       bio: user.bio,
+//       location: user.location,
+//       website: user.website
+//     })
+//     setIsEditing(false)
+//   }
+//
+//   const getActivityIcon = (type: string) => {
+//     switch (type) {
+//       case 'post': return BookOpen
+//       case 'comment': return MessageCircle
+//       case 'like': return Heart
+//       case 'achievement': return Trophy
+//       default: return Star
+//     }
+//   }
+//
+//   const getActivityColor = (type: string) => {
+//     switch (type) {
+//       case 'post': return 'text-blue-400'
+//       case 'comment': return 'text-green-400'
+//       case 'like': return 'text-red-400'
+//       case 'achievement': return 'text-yellow-400'
+//       default: return 'text-purple-400'
+//     }
+//   }
+//
+//   const getAchievementIcon = (iconName: string) => {
+//     switch (iconName) {
+//       case 'Brain': return Brain
+//       case 'Rocket': return Rocket
+//       case 'Star': return Star
+//       case 'Shield': return Shield
+//       case 'Flame': return Flame
+//       default: return Trophy
+//     }
+//   }
+//
+//   return (
+//     <div className="space-y-8">
+//       {/* Cover Section */}
+//       <motion.div
+//         initial={{ opacity: 0, y: 30 }}
+//         animate={{ opacity: 1, y: 0 }}
+//         transition={{ duration: 0.8 }}
+//         className="relative"
+//       >
+//         {/* Cover Image */}
+//         <div className="h-48 md:h-64 bg-gradient-to-r from-purple-900/50 via-pink-900/50 to-blue-900/50 rounded-2xl overflow-hidden relative">
+//           <div className="absolute inset-0 bg-black/20"></div>
+//           <div 
+//             className="absolute inset-0 opacity-30" 
+//             style={{
+//               backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+//             }}
+//           ></div>
+//         </div>
+//
+//         {/* Profile Info */}
+//         <div className="absolute -bottom-16 left-8 flex items-end space-x-6">
+//           <motion.div
+//             whileHover={{ scale: 1.05 }}
+//             className="relative"
+//           >
+//             <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-lg opacity-75 animate-pulse"></div>
+//             <Avatar className="w-32 h-32 border-4 border-white/10 relative">
+//               <AvatarImage src={user.avatar} />
+//               <AvatarFallback className="bg-gradient-to-br from-purple-600 to-pink-600 text-white text-2xl">
+//                 {user.fullName.split(' ').map(n => n[0]).join('')}
+//               </AvatarFallback>
+//             </Avatar>
+//             <div className="absolute bottom-0 right-0 w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center border-2 border-white/10">
+//               <Camera className="w-4 h-4 text-white" />
+//             </div>
+//           </motion.div>
+//
+//           <div className="mb-4">
+//             <div className="flex items-center space-x-3 mb-2">
+//               <h1 className="text-3xl font-bold text-white">{user.fullName}</h1>
+//               <Badge className="bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+//                 <Crown className="w-3 h-3 mr-1" />
+//                 Premium
+//               </Badge>
+//             </div>
+//             <p className="text-gray-300 mb-1">@{user.username}</p>
+//             <div className="flex items-center space-x-4 text-sm text-gray-400">
+//               <div className="flex items-center space-x-1">
+//                 <Calendar className="w-4 h-4" />
+//                 <span>Joined {new Date(user.joinDate).toLocaleDateString()}</span>
+//               </div>
+//               <div className="flex items-center space-x-1">
+//                 <MapPin className="w-4 h-4" />
+//                 <span>{user.location}</span>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//
+//         {/* Action Buttons */}
+//         <div className="absolute top-4 right-4 flex space-x-2">
+//           <Button
+//             variant="outline"
+//             size="sm"
+//             className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20"
+//           >
+//             <Share className="w-4 h-4 mr-2" />
+//             Share
+//           </Button>
+//           <Button
+//             variant="outline"
+//             size="sm"
+//             className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20"
+//           >
+//             <Settings className="w-4 h-4 mr-2" />
+//             Settings
+//           </Button>
+//         </div>
+//       </motion.div>
+//
+//       {/* Main Content */}
+//       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+//         {/* Left Sidebar */}
+//         <div className="lg:col-span-1 space-y-6">
+//           {/* Bio Card */}
+//           <motion.div
+//             initial={{ opacity: 0, x: -30 }}
+//             animate={{ opacity: 1, x: 0 }}
+//             transition={{ duration: 0.8, delay: 0.2 }}
+//           >
+//             <Card className="bg-black/30 border border-white/10">
+//               <CardHeader className="pb-4">
+//                 <div className="flex items-center justify-between">
+//                   <CardTitle className="text-white">About</CardTitle>
+//                   <Button
+//                     variant="ghost"
+//                     size="sm"
+//                     onClick={() => setIsEditing(!isEditing)}
+//                     className="text-purple-400 hover:text-purple-300"
+//                   >
+//                     <Edit className="w-4 h-4" />
+//                   </Button>
+//                 </div>
+//               </CardHeader>
+//               <CardContent className="space-y-4">
+//                 {isEditing ? (
+//                   <div className="space-y-4">
+//                     <div>
+//                       <label className="text-sm text-gray-400 mb-2 block">Full Name</label>
+//                       <Input
+//                         value={editForm.fullName}
+//                         onChange={(e) => setEditForm({ ...editForm, fullName: e.target.value })}
+//                         className="bg-black/30 border-white/10 text-white"
+//                       />
+//                     </div>
+//                     <div>
+//                       <label className="text-sm text-gray-400 mb-2 block">Bio</label>
+//                       <Textarea
+//                         value={editForm.bio}
+//                         onChange={(e) => setEditForm({ ...editForm, bio: e.target.value })}
+//                         className="bg-black/30 border-white/10 text-white"
+//                         rows={4}
+//                       />
+//                     </div>
+//                     <div>
+//                       <label className="text-sm text-gray-400 mb-2 block">Location</label>
+//                       <Input
+//                         value={editForm.location}
+//                         onChange={(e) => setEditForm({ ...editForm, location: e.target.value })}
+//                         className="bg-black/30 border-white/10 text-white"
+//                       />
+//                     </div>
+//                     <div>
+//                       <label className="text-sm text-gray-400 mb-2 block">Website</label>
+//                       <Input
+//                         value={editForm.website}
+//                         onChange={(e) => setEditForm({ ...editForm, website: e.target.value })}
+//                         className="bg-black/30 border-white/10 text-white"
+//                       />
+//                     </div>
+//                     <div className="flex space-x-2">
+//                       <Button onClick={handleSave} className="bg-purple-600 hover:bg-purple-700">
+//                         <Save className="w-4 h-4 mr-2" />
+//                         Save
+//                       </Button>
+//                       <Button onClick={handleCancel} variant="outline" className="border-gray-500/50">
+//                         <X className="w-4 h-4 mr-2" />
+//                         Cancel
+//                       </Button>
+//                     </div>
+//                   </div>
+//                 ) : (
+//                   <div className="space-y-4">
+//                     <p className="text-gray-300">{user.bio}</p>
+//                     <div className="space-y-2">
+//                       <div className="flex items-center space-x-2 text-sm text-gray-400">
+//                         <Mail className="w-4 h-4" />
+//                         <span>{user.email}</span>
+//                       </div>
+//                       <div className="flex items-center space-x-2 text-sm text-gray-400">
+//                         <MapPin className="w-4 h-4" />
+//                         <span>{user.location}</span>
+//                       </div>
+//                       <div className="flex items-center space-x-2 text-sm text-gray-400">
+//                         <Link className="w-4 h-4" />
+//                         <a href={user.website} className="text-purple-400 hover:text-purple-300">
+//                           {user.website}
+//                         </a>
+//                       </div>
+//                     </div>
+//                   </div>
+//                 )}
+//               </CardContent>
+//             </Card>
+//           </motion.div>
+//
+//           {/* Stats Card */}
+//           <motion.div
+//             initial={{ opacity: 0, x: -30 }}
+//             animate={{ opacity: 1, x: 0 }}
+//             transition={{ duration: 0.8, delay: 0.3 }}
+//           >
+//             <Card className="bg-black/30 border border-white/10">
+//               <CardHeader className="pb-4">
+//                 <CardTitle className="text-white">Statistics</CardTitle>
+//               </CardHeader>
+//               <CardContent className="space-y-4">
+//                 <div className="grid grid-cols-2 gap-4">
+//                   <div className="text-center p-4 bg-purple-600/20 rounded-lg border border-purple-500/30">
+//                     <div className="text-2xl font-bold text-purple-400">{user.stats.posts}</div>
+//                     <div className="text-sm text-gray-400">Posts</div>
+//                   </div>
+//                   <div className="text-center p-4 bg-blue-600/20 rounded-lg border border-blue-500/30">
+//                     <div className="text-2xl font-bold text-blue-400">{user.stats.comments}</div>
+//                     <div className="text-sm text-gray-400">Comments</div>
+//                   </div>
+//                   <div className="text-center p-4 bg-pink-600/20 rounded-lg border border-pink-500/30">
+//                     <div className="text-2xl font-bold text-pink-400">{user.stats.likes}</div>
+//                     <div className="text-sm text-gray-400">Likes</div>
+//                   </div>
+//                   <div className="text-center p-4 bg-green-600/20 rounded-lg border border-green-500/30">
+//                     <div className="text-2xl font-bold text-green-400">{user.stats.views}</div>
+//                     <div className="text-sm text-gray-400">Views</div>
+//                   </div>
+//                 </div>
+//               </CardContent>
+//             </Card>
+//           </motion.div>
+//
+//           {/* Social Links */}
+//           <motion.div
+//             initial={{ opacity: 0, x: -30 }}
+//             animate={{ opacity: 1, x: 0 }}
+//             transition={{ duration: 0.8, delay: 0.4 }}
+//           >
+//             <Card className="bg-black/30 border border-white/10">
+//               <CardHeader className="pb-4">
+//                 <CardTitle className="text-white">Social Links</CardTitle>
+//               </CardHeader>
+//               <CardContent className="space-y-3">
+//                 {user.socialLinks.map((link, index) => (
+//                   <motion.a
+//                     key={link.platform}
+//                     href={link.url}
+//                     target="_blank"
+//                     rel="noopener noreferrer"
+//                     className="flex items-center space-x-3 p-3 rounded-lg hover:bg-white/10 transition-colors duration-300"
+//                     whileHover={{ scale: 1.02 }}
+//                     initial={{ opacity: 0, x: -20 }}
+//                     animate={{ opacity: 1, x: 0 }}
+//                     transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
+//                   >
+//                     <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center">
+//                       <Globe className="w-5 h-5 text-white" />
+//                     </div>
+//                     <div className="flex-1">
+//                       <div className="text-white font-medium">{link.platform}</div>
+//                       <div className="text-sm text-gray-400 truncate">{link.url}</div>
+//                     </div>
+//                   </motion.a>
+//                 ))}
+//               </CardContent>
+//             </Card>
+//           </motion.div>
+//         </div>
+//
+//         {/* Main Content Area */}
+//         <div className="lg:col-span-2 space-y-6">
+//           {/* Navigation Tabs */}
+//           <motion.div
+//             initial={{ opacity: 0, y: 30 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             transition={{ duration: 0.8, delay: 0.2 }}
+//           >
+//             <div className="flex space-x-1 bg-black/30 p-1 rounded-lg border border-white/10">
+//               {[
+//                 { id: 'overview', label: 'Overview', icon: User },
+//                 { id: 'achievements', label: 'Achievements', icon: Trophy },
+//                 { id: 'activity', label: 'Activity', icon: Clock }
+//               ].map((tab) => {
+//                 const Icon = tab.icon
+//                 return (
+//                   <Button
+//                     key={tab.id}
+//                     variant={activeTab === tab.id ? 'default' : 'ghost'}
+//                     onClick={() => setActiveTab(tab.id)}
+//                     className={`flex-1 ${
+//                       activeTab === tab.id
+//                         ? 'bg-purple-600 text-white'
+//                         : 'text-gray-400 hover:text-white hover:bg-white/10'
+//                     }`}
+//                   >
+//                     <Icon className="w-4 h-4 mr-2" />
+//                     {tab.label}
+//                   </Button>
+//                 )
+//               })}
+//             </div>
+//           </motion.div>
+//
+//           {/* Tab Content */}
+//           {activeTab === 'overview' && (
+//             <motion.div
+//               initial={{ opacity: 0, y: 30 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 0.8, delay: 0.3 }}
+//               className="space-y-6"
+//             >
+//               {/* Recent Posts Preview */}
+//               <Card className="bg-black/30 border border-white/10">
+//                 <CardHeader className="pb-4">
+//                   <CardTitle className="text-white">Recent Posts</CardTitle>
+//                 </CardHeader>
+//                 <CardContent className="space-y-4">
+//                   {[
+//                     {
+//                       title: "The Future of AI in Space Exploration",
+//                       excerpt: "Exploring how artificial intelligence is revolutionizing our approach to space missions...",
+//                       views: 1247,
+//                       likes: 89,
+//                       time: "2 hours ago"
+//                     },
+//                     {
+//                       title: "Ethical AI: Building a Better Tomorrow",
+//                       excerpt: "Discussing the importance of ethical considerations in AI development...",
+//                       views: 2156,
+//                       likes: 156,
+//                       time: "1 day ago"
+//                     }
+//                   ].map((post, index) => (
+//                     <motion.div
+//                       key={post.title}
+//                       initial={{ opacity: 0, x: -30 }}
+//                       animate={{ opacity: 1, x: 0 }}
+//                       transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+//                       className="p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors duration-300 cursor-pointer"
+//                       whileHover={{ scale: 1.02 }}
+//                     >
+//                       <h3 className="text-white font-semibold mb-2 hover:text-purple-400 transition-colors duration-300">
+//                         {post.title}
+//                       </h3>
+//                       <p className="text-gray-300 text-sm mb-3">{post.excerpt}</p>
+//                       <div className="flex items-center justify-between text-sm text-gray-400">
+//                         <div className="flex items-center space-x-4">
+//                           <div className="flex items-center space-x-1">
+//                             <Eye className="w-4 h-4" />
+//                             <span>{post.views}</span>
+//                           </div>
+//                           <div className="flex items-center space-x-1">
+//                             <Heart className="w-4 h-4" />
+//                             <span>{post.likes}</span>
+//                           </div>
+//                         </div>
+//                         <span>{post.time}</span>
+//                       </div>
+//                     </motion.div>
+//                   ))}
+//                 </CardContent>
+//               </Card>
+//
+//               {/* Recent Comments */}
+//               <Card className="bg-black/30 border border-white/10">
+//                 <CardHeader className="pb-4">
+//                   <CardTitle className="text-white">Recent Comments</CardTitle>
+//                 </CardHeader>
+//                 <CardContent className="space-y-4">
+//                   {[
+//                     {
+//                       post: "Quantum Computing and Neural Networks",
+//                       comment: "Great analysis of the intersection between quantum computing and neural networks!",
+//                       time: "5 hours ago"
+//                     },
+//                     {
+//                       post: "What's the most exciting AI breakthrough this year?",
+//                       comment: "I'm particularly excited about the advances in multimodal AI systems.",
+//                       time: "1 day ago"
+//                     }
+//                   ].map((comment, index) => (
+//                     <motion.div
+//                       key={comment.post}
+//                       initial={{ opacity: 0, x: -30 }}
+//                       animate={{ opacity: 1, x: 0 }}
+//                       transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+//                       className="p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors duration-300"
+//                     >
+//                       <div className="text-white font-medium mb-1">{comment.post}</div>
+//                       <p className="text-gray-300 text-sm mb-2">{comment.comment}</p>
+//                       <div className="text-sm text-gray-400">{comment.time}</div>
+//                     </motion.div>
+//                   ))}
+//                 </CardContent>
+//               </Card>
+//             </motion.div>
+//           )}
+//
+//           {activeTab === 'achievements' && (
+//             <motion.div
+//               initial={{ opacity: 0, y: 30 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 0.8, delay: 0.3 }}
+//             >
+//               <Card className="bg-black/30 border border-white/10">
+//                 <CardHeader className="pb-4">
+//                   <CardTitle className="text-white">Achievements</CardTitle>
+//                   <CardDescription className="text-gray-400">
+//                     Milestones and accomplishments on your cosmic journey
+//                   </CardDescription>
+//                 </CardHeader>
+//                 <CardContent>
+//                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+//                     {user.achievements.map((achievement, index) => {
+//                       const Icon = getAchievementIcon(achievement.icon)
+//                       return (
+//                         <motion.div
+//                           key={achievement.id}
+//                           initial={{ opacity: 0, scale: 0.8 }}
+//                           animate={{ opacity: 1, scale: 1 }}
+//                           transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+//                           whileHover={{ 
+//                             scale: 1.05,
+//                             boxShadow: "0 10px 30px rgba(139, 92, 246, 0.3)"
+//                           }}
+//                           className="group"
+//                         >
+//                           <div className="p-6 bg-gradient-to-br from-white/5 to-white/10 rounded-xl border border-white/10 hover:border-purple-500/50 transition-all duration-300">
+//                             <div className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-br ${achievement.color} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+//                               <Icon className="w-8 h-8 text-white" />
+//                             </div>
+//                             <h3 className="text-lg font-bold text-white text-center mb-2">
+//                               {achievement.title}
+//                             </h3>
+//                             <p className="text-gray-300 text-sm text-center mb-3">
+//                               {achievement.description}
+//                             </p>
+//                             <div className="text-center">
+//                               <Badge variant="outline" className="border-purple-500/50 text-purple-400">
+//                                 Earned {new Date(achievement.earned).toLocaleDateString()}
+//                               </Badge>
+//                             </div>
+//                           </div>
+//                         </motion.div>
+//                       )
+//                     })}
+//                   </div>
+//                 </CardContent>
+//               </Card>
+//             </motion.div>
+//           )}
+//
+//           {activeTab === 'activity' && (
+//             <motion.div
+//               initial={{ opacity: 0, y: 30 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 0.8, delay: 0.3 }}
+//             >
+//               <Card className="bg-black/30 border border-white/10">
+//                 <CardHeader className="pb-4">
+//                   <CardTitle className="text-white">Recent Activity</CardTitle>
+//                   <CardDescription className="text-gray-400">
+//                     Your latest contributions and interactions
+//                   </CardDescription>
+//                 </CardHeader>
+//                 <CardContent className="space-y-4">
+//                   {user.recentActivity.map((activity, index) => {
+//                     const Icon = getActivityIcon(activity.type)
+//                     return (
+//                       <motion.div
+//                         key={activity.id}
+//                         initial={{ opacity: 0, x: -30 }}
+//                         animate={{ opacity: 1, x: 0 }}
+//                         transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+//                         className="flex items-start space-x-4 p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors duration-300"
+//                       >
+//                         <div className={`w-10 h-10 rounded-full flex items-center justify-center ${getActivityColor(activity.type)} bg-black/30`}>
+//                           <Icon className="w-5 h-5" />
+//                         </div>
+//                         <div className="flex-1">
+//                           <div className="flex items-center justify-between mb-1">
+//                             <h4 className="text-white font-medium">{activity.title}</h4>
+//                             <span className="text-sm text-gray-400">{activity.time}</span>
+//                           </div>
+//                           <p className="text-gray-300 text-sm">{activity.description}</p>
+//                         </div>
+//                       </motion.div>
+//                     )
+//                   })}
+//                 </CardContent>
+//               </Card>
+//             </motion.div>
+//           )}
+//         </div>
+//       </div>
+//     </div>
+//   )
+// }
+//
+// export default UserProfile

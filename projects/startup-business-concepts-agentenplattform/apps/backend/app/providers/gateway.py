@@ -1,0 +1,110 @@
+"""Zentrales Modell-Gateway: einzige Stelle für LLM-Aufrufe (Ollama-first).
+
+Alle Agenten rufen ausschließlich dieses Gateway auf. Unterstützt:
+- Chat mit Systemprompt, Tool-Definitionen (OpenAI-Format) und JSON-Modus
+- Tool-Calls im Antwort-Format von Ollama/OpenAI-kompatiblen Endpunkten
+- Modellliste (list_models) und Capability-Erkennung pro Provider
+- Mock-Provider für Demo/Tests ohne echte Modelle
+"""
+from __future__ import annotations
+import httpx
+from pydantic import BaseModel
+
+class ChatNachricht(BaseModel):
+    rolle: str  # system|user|assistant|tool
+    inhalt: str
+    tool_call_id: str = ""
+
+class ToolAufruf(BaseModel):
+    id: str; name: str; argumente: dict = {}
+
+class ChatAnfrage(BaseModel):
+    nachrichten: list[ChatNachricht]
+    modell: str = ""
+    temperatur: float = 0.3
+    max_tokens: int = 800
+    timeout: int = 60
+    tools: list[dict] = []  # OpenAI-Function-Format: {"type":"function","function":{...}}
+    json_modus: bool = False
+
+class ChatAntwort(BaseModel):
+    text: str
+    modell: str = ""
+    tool_calls: list[ToolAufruf] = []
+    prompt_tokens: int = 0
+    completion_tokens: int = 0
+
+class ProviderStatus(BaseModel):
+    ok: bool; detail: str = ""
+
+class ModellInfo(BaseModel):
+    id: str; kontext: int | None = None
+
+class ModelProvider:
+    """Protokoll: chat(), healthcheck(), list_models()."""
+    async def chat(self, req: ChatAnfrage) -> ChatAntwort: raise NotImplementedError
+    async def healthcheck(self) -> ProviderStatus: raise NotImplementedError
+    async def list_models(self) -> list[ModellInfo]: raise NotImplementedError
+
+_ProviderProtokoll = ModelProvider
+
+def tool_schema_fuer(tool_id: str, beschreibung: str) -> dict:
+    """Erzeugt ein generisches Function-Schema (offene Argumente, Server validiert)."""
+    return {"type": "function", "function": {"name": tool_id, "description": beschreibung,
+            "parameters": {"type": "object", "properties": {
+                "query": {"type": "string"}, "profil_id": {"type": "string"},
+                "url": {"type": "string"}, "max_preis": {"type": "number"},
+                "quelle": {"type": "string"}, "feed_url": {"type": "string"}}}}}
+
+class OpenAIKompatibelProvider(_ProviderProtokoll):
+    """Spricht Ollama (/v1), OpenAI und kompatible Endpunkte via Chat-Completions."""
+    def __init__(self, base_url: str, api_key: str, modell: str, timeout: int = 60):
+        self.base_url, self.api_key, self.modell, self.timeout = base_url.rstrip("/"), api_key, modell, timeout
+    def _headers(self): return {"Authorization": f"Bearer {self.api_key}"}
+    async def chat(self, req: ChatAnfrage) -> ChatAntwort:
+        body: dict = {"model": req.modell or self.modell,
+                "messages": [{"role": n.rolle, "content": n.inhalt} for n in req.nachrichten],
+                "temperature": req.temperatur, "max_tokens": req.max_tokens}
+        if req.tools: body["tools"] = req.tools
+        if req.json_modus: body["response_format"] = {"type": "json_object"}
+        try:
+            async with httpx.AsyncClient(timeout=req.timeout or self.timeout) as c:
+                r = await c.post(f"{self.base_url}/chat/completions", json=body, headers=self._headers())
+                r.raise_for_status(); d = r.json()
+        except Exception as e:
+            raise RuntimeError(f"Providerfehler ({self.base_url}): {e}") from e
+        msg = d["choices"][0]["message"]
+        calls = [ToolAufruf(id=t.get("id", str(i)), name=t["function"]["name"],
+                            argumente=_json_sicher(t["function"].get("arguments", "{}")))
+                 for i, t in enumerate(msg.get("tool_calls", []) or [])]
+        u = d.get("usage", {})
+        return ChatAntwort(text=msg.get("content") or "", modell=d.get("model", ""),
+                           tool_calls=calls, prompt_tokens=u.get("prompt_tokens", 0),
+                           completion_tokens=u.get("completion_tokens", 0))
+    async def healthcheck(self) -> ProviderStatus:
+        try:
+            async with httpx.AsyncClient(timeout=10) as c:
+                r = await c.get(f"{self.base_url}/models", headers=self._headers())
+                return ProviderStatus(ok=r.status_code < 500, detail=f"HTTP {r.status_code}")
+        except Exception as e: return ProviderStatus(ok=False, detail=str(e))
+    async def list_models(self) -> list[ModellInfo]:
+        try:
+            async with httpx.AsyncClient(timeout=15) as c:
+                r = await c.get(f"{self.base_url}/models", headers=self._headers())
+                r.raise_for_status(); d = r.json()
+            return [ModellInfo(id=m.get("id", "")) for m in d.get("data", []) if m.get("id")]
+        except Exception as e:
+            raise RuntimeError(f"Modellliste nicht verfügbar ({self.base_url}): {e}") from e
+
+def _json_sicher(s: str) -> dict:
+    import json
+    try: return json.loads(s) if isinstance(s, str) else dict(s)
+    except Exception: return {}
+
+class MockProvider(_ProviderProtokoll):
+    """Deterministischer Demo-Provider für Tests/Demo ohne echte Modelle."""
+    async def chat(self, req: ChatAnfrage) -> ChatAntwort:
+        letzte = req.nachrichten[-1].inhalt if req.nachrichten else ""
+        return ChatAntwort(text=f"[Demo-Antwort] Eingabe verstanden ({len(letzte)} Zeichen). Echter Provider ist deaktiviert.", modell="mock")
+    async def healthcheck(self) -> ProviderStatus: return ProviderStatus(ok=True, detail="Mock aktiv")
+    async def list_models(self) -> list[ModellInfo]: return [ModellInfo(id="mock-demo")]

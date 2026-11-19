@@ -1,0 +1,145 @@
+# config.yml
+quests:
+  # Existing quests
+  first_quest:
+    name: "First Adventure"
+    description: "Start your journey!"
+    type: "TUTORIAL"
+    rewards:
+      xp: 100
+      items:
+        - "STONE 10"
+    objectives:
+      - type: "COLLECT"
+        target: "STONE"
+        amount: 10
+    requirements:
+      min-level: 1
+
+  monster_hunter:
+    name: "Monster Slayer"
+    description: "Defeat hostile mobs!"
+    type: "COMBAT"
+    rewards:
+      xp: 250
+      items:
+        - "IRON_SWORD 1"
+    objectives:
+      - type: "KILL"
+        target: "ZOMBIE"
+        amount: 5
+      - type: "KILL"
+        target: "SKELETON"
+        amount: 3
+
+  # New quests
+  fishing_challenge:
+    name: "Angler's Delight"
+    description: "Catch fish and treasure!"
+    type: "EXPLORATION"
+    rewards:
+      xp: 150
+      items:
+        - "FISHING_ROD{Enchantments:[{id:luck_of_the_sea,lvl:2}]} 1"
+    objectives:
+      - type: "COLLECT"
+        target: "COD"
+        amount: 15
+      - type: "COLLECT"
+        target: "SALMON"
+        amount: 10
+      - type: "COLLECT"
+        target: "NAME_TAG"
+        amount: 1
+
+  nether_explorer:
+    name: "Nether Navigator"
+    description: "Brave the depths of the Nether"
+    type: "EXPLORATION"
+    rewards:
+      xp: 300
+      items:
+        - "NETHER_BRICK 64"
+        - "BLAZE_ROD 5"
+    objectives:
+      - type: "LOCATION"
+        target: "NETHER"
+        amount: 1
+      - type: "KILL"
+        target: "BLAZE"
+        amount: 8
+      - type: "COLLECT"
+        target: "NETHER_QUARTZ"
+        amount: 32
+
+  master_crafter:
+    name: "Artisan's Trial"
+    description: "Craft advanced items"
+    type: "CRAFTING"
+    rewards:
+      xp: 200
+      items:
+        - "DIAMOND 3"
+    objectives:
+      - type: "COLLECT"
+        target: "DIAMOND_SWORD"
+        amount: 1
+      - type: "COLLECT"
+        target: "ENCHANTING_TABLE"
+        amount: 1
+      - type: "COLLECT"
+        target: "GOLDEN_APPLE"
+        amount: 3
+
+  wither_slayer:
+    name: "Wither's Bane"
+    description: "Defeat the ultimate challenge"
+    type: "COMBAT"
+    rewards:
+      xp: 500
+      items:
+        - "NETHER_STAR 1"
+    objectives:
+      - type: "KILL"
+        target: "WITHER"
+        amount: 1
+    requirements:
+      min-level: 20
+
+  farmers_delight:
+    name: "Agricultural Expert"
+    description: "Harvest crops and raise animals"
+    type: "FARMING"
+    rewards:
+      xp: 175
+      items:
+        - "DIAMOND_HOE{Enchantments:[{id:efficiency,lvl:3},{id:unbreaking,lvl:2}]} 1"
+    objectives:
+      - type: "COLLECT"
+        target: "WHEAT"
+        amount: 64
+      - type: "COLLECT"
+        target: "CARROT"
+        amount: 32
+      - type: "KILL"
+        target: "COW"
+        amount: 10
+
+  mine_master:
+    name: "Prospector's Dream"
+    description: "Gather rare resources"
+    type: "MINING"
+    rewards:
+      xp: 400
+      items:
+        - "BEACON 1"
+    objectives:
+      - type: "COLLECT"
+        target: "DIAMOND_ORE"
+        amount: 12
+      - type: "COLLECT"
+        target: "IRON_INGOT"
+        amount: 64
+      - type: "COLLECT"
+        target: "GOLD_INGOT"
+        amount: 32

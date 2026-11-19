@@ -1,0 +1,38 @@
+﻿# Zimbu-Port-Spiegel von: projects\learning-projects-python-programming\old\countword.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE countword_py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\learning-projects-python-programming\old\countword.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\learning-projects-python-programming\old\countword.py), unveraendert, als Inline-Doku ----
+# # hier brauchte ich hilfe von ki
+# # Definiere eine Funktion, die den Wortzähler-Prozess ausführt
+# def count_words():
+#     # Diese innere Funktion übernimmt das Zählen der Wörter in einem gegebenen Text.
+#     # Sie teilt den Text in seine einzelnen Wörter auf,
+#     # indem sie bei Leerzeichen (Standardverhalten von split()) trennt.
+#     def count_words_in_text(text):
+#         # text.split() wandelt den Text in eine Liste von Wörtern um.
+#         words = text.split()
+#         # Die Länge der Liste entspricht der Anzahl der Wörter im Text.
+#         return len(words)
+#     
+#     # Ursprünglicher Beispieltext, der einige Wörter enthält.
+#     original_text = "Das ist ein Beispieltext mit mehreren Wörtern. "
+#     # Erzeuge einen längeren Text, indem der Beispieltext mehrfach wiederholt wird.
+#     # Hier wird das Original 10-mal wiederholt, um den Code übersichtlicher zu halten.
+#     text = original_text * 10
+#     
+#     # Wende die Funktion count_words_in_text an, um die Anzahl der Wörter zu ermitteln.
+#     word_count = count_words_in_text(text)
+#     
+#     # Gib das Ergebnis aus. Diese Ausgabe informiert uns darüber,
+#     # wie viele Wörter im zusammengesetzten Text enthalten sind.
+#     print("Die Anzahl der Wörter beträgt:", word_count)
+#
+# # Starte den Wortzählprozess, indem die Funktion count_words aufgerufen wird.
+# count_words()

@@ -1,0 +1,233 @@
+﻿# Zimbu-Port-Spiegel von: projects\ai-llm-projects-ai-productivity-dashboard\components\auth\AuthForm.tsx
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE AuthForm_tsx
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\ai-llm-projects-ai-productivity-dashboard\components\auth\AuthForm.tsx\n")
+  RETURN 0
+
+# ---- Original-Code (projects\ai-llm-projects-ai-productivity-dashboard\components\auth\AuthForm.tsx), unveraendert, als Inline-Doku ----
+# 'use client'
+#
+# import { useActionState } from 'react'
+# import Link from 'next/link'
+# import { Bot, ArrowRight, Eye, EyeOff } from 'lucide-react'
+# import { useState } from 'react'
+# import { signIn, signUp, signInDemo } from '@/app/actions/auth'
+# import { DEMO_EMAIL, DEMO_PASSWORD } from '@/lib/demoAuth'
+# import { Button } from '@/components/ui/button'
+# import { Input } from '@/components/ui/input'
+# import { Label } from '@/components/ui/label'
+# import { cn } from '@/lib/utils'
+#
+# interface AuthFormProps {
+#   mode: 'login' | 'register'
+# }
+#
+# const initialState = { error: undefined as string | undefined }
+#
+# export function AuthForm({ mode }: AuthFormProps) {
+#   const [showPassword, setShowPassword] = useState(false)
+#   const action = mode === 'login' ? signIn : signUp
+#   const [state, formAction, pending] = useActionState(action, initialState)
+#
+#   return (
+#     <div className="min-h-screen flex">
+#       {/* Left — branding panel */}
+#       <div className="hidden lg:flex lg:w-[420px] xl:w-[480px] flex-col justify-between bg-foreground text-background p-10 shrink-0">
+#         <div className="flex items-center gap-2.5">
+#           <div className="w-7 h-7 rounded-lg bg-background/10 flex items-center justify-center">
+#             <Bot className="w-4 h-4 text-background" />
+#           </div>
+#           <span className="font-semibold text-sm tracking-tight">ChiefOS</span>
+#         </div>
+#
+#         <div className="space-y-6">
+#           <blockquote className="text-2xl font-medium leading-snug text-balance">
+#             &ldquo;Your AI chief of staff — proactively handles work so you can focus on what matters.&rdquo;
+#           </blockquote>
+#           <div className="flex items-center gap-3">
+#             <div className="w-9 h-9 rounded-full bg-background/15 flex items-center justify-center text-sm font-semibold">A</div>
+#             <div>
+#               <p className="text-sm font-medium">Aria Patel</p>
+#               <p className="text-xs text-background/60">Head of Product</p>
+#             </div>
+#           </div>
+#         </div>
+#
+#         <p className="text-xs text-background/40">Self-hosted on your infrastructure. Your data stays yours.</p>
+#       </div>
+#
+#       {/* Right — form panel */}
+#       <div className="flex-1 flex flex-col items-center justify-center p-6">
+#         {/* Mobile logo */}
+#         <div className="lg:hidden flex items-center gap-2 mb-10">
+#           <div className="w-7 h-7 rounded-lg bg-foreground flex items-center justify-center">
+#             <Bot className="w-4 h-4 text-background" />
+#           </div>
+#           <span className="font-semibold text-sm tracking-tight">ChiefOS</span>
+#         </div>
+#
+#         <div className="w-full max-w-[380px] space-y-6">
+#           {/* Heading */}
+#           <div className="space-y-1.5">
+#             <h1 className="text-2xl font-semibold tracking-tight">
+#               {mode === 'login' ? 'Welcome back' : 'Create your account'}
+#             </h1>
+#             <p className="text-sm text-muted-foreground">
+#               {mode === 'login'
+#                 ? 'Sign in to your ChiefOS workspace.'
+#                 : 'Set up your AI chief of staff today.'}
+#             </p>
+#           </div>
+#
+#           {/* Error */}
+#           {state?.error && (
+#             <div className="text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded-lg px-3.5 py-2.5">
+#               {state.error}
+#             </div>
+#           )}
+#
+#           {/* Form */}
+#           <form action={formAction} className="space-y-4">
+#             {mode === 'register' && (
+#               <div className="space-y-1.5">
+#                 <Label htmlFor="name">Full name</Label>
+#                 <Input
+#                   id="name"
+#                   name="name"
+#                   type="text"
+#                   placeholder="Aria Patel"
+#                   autoComplete="name"
+#                   required
+#                   className="h-10"
+#                 />
+#               </div>
+#             )}
+#
+#             <div className="space-y-1.5">
+#               <Label htmlFor="email">Email</Label>
+#               <Input
+#                 id="email"
+#                 name="email"
+#                 type="email"
+#                 placeholder="aria@company.com"
+#                 autoComplete="email"
+#                 required
+#                 className="h-10"
+#               />
+#             </div>
+#
+#             <div className="space-y-1.5">
+#               <div className="flex items-center justify-between">
+#                 <Label htmlFor="password">Password</Label>
+#                 {mode === 'login' && (
+#                   <button
+#                     type="button"
+#                     className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+#                   >
+#                     Forgot password?
+#                   </button>
+#                 )}
+#               </div>
+#               <div className="relative">
+#                 <Input
+#                   id="password"
+#                   name="password"
+#                   type={showPassword ? 'text' : 'password'}
+#                   placeholder={mode === 'register' ? 'Min. 8 characters' : '••••••••'}
+#                   autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
+#                   required
+#                   className="h-10 pr-10"
+#                 />
+#                 <button
+#                   type="button"
+#                   className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+#                   onClick={() => setShowPassword((v) => !v)}
+#                   aria-label={showPassword ? 'Hide password' : 'Show password'}
+#                 >
+#                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+#                 </button>
+#               </div>
+#             </div>
+#
+#             <Button
+#               type="submit"
+#               className="w-full h-10 gap-2"
+#               disabled={pending}
+#             >
+#               {pending ? (
+#                 <span className="flex items-center gap-2">
+#                   <span className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+#                   {mode === 'login' ? 'Signing in…' : 'Creating account…'}
+#                 </span>
+#               ) : (
+#                 <>
+#                   {mode === 'login' ? 'Sign in' : 'Create account'}
+#                   <ArrowRight className="w-4 h-4" />
+#                 </>
+#               )}
+#             </Button>
+#           </form>
+#
+#           {/* Demo account shortcut — only shown on the login page */}
+#           {mode === 'login' && (
+#             <div className="rounded-lg border border-border bg-muted/40 px-4 py-3 space-y-2">
+#               <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+#                 Demo access
+#               </p>
+#               <div className="flex items-center justify-between gap-3">
+#                 <div>
+#                   <p className="text-xs text-muted-foreground">
+#                     <span className="font-mono text-foreground">{DEMO_EMAIL}</span>
+#                   </p>
+#                   <p className="text-xs text-muted-foreground">
+#                     password: <span className="font-mono text-foreground">{DEMO_PASSWORD}</span>
+#                   </p>
+#                 </div>
+#                 <form action={signInDemo}>
+#                   <Button
+#                     type="submit"
+#                     variant="outline"
+#                     size="sm"
+#                     className="shrink-0 text-xs h-8"
+#                   >
+#                     Use demo
+#                   </Button>
+#                 </form>
+#               </div>
+#             </div>
+#           )}
+#
+#           {/* Footer link */}
+#           <p className="text-center text-sm text-muted-foreground">
+#             {mode === 'login' ? (
+#               <>
+#                 No account yet?{' '}
+#                 <Link
+#                   href="/register"
+#                   className={cn('font-medium text-foreground hover:underline underline-offset-4')}
+#                 >
+#                   Create one
+#                 </Link>
+#               </>
+#             ) : (
+#               <>
+#                 Already have an account?{' '}
+#                 <Link
+#                   href="/login"
+#                   className="font-medium text-foreground hover:underline underline-offset-4"
+#                 >
+#                   Sign in
+#                 </Link>
+#               </>
+#             )}
+#           </p>
+#         </div>
+#       </div>
+#     </div>
+#   )
+# }
+#

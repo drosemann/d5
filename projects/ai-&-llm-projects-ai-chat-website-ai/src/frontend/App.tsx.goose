@@ -1,0 +1,117 @@
+﻿// Goose-Port-Spiegel von: projects/ai-&-llm-projects-ai-chat-website-ai/src/frontend/App.tsx
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/ai-&-llm-projects-ai-chat-website-ai/src/frontend/App.tsx");
+}
+
+// ---- Original-Code (projects/ai-&-llm-projects-ai-chat-website-ai/src/frontend/App.tsx), unveraendert, als Inline-Doku ----
+// import React, { useState } from 'react';
+// import axios from 'axios';
+//
+// function App() {
+//   const [prediction, setPrediction] = useState<number | null>(null);
+//   const [chatMessage, setChatMessage] = useState('');
+//   const [chatResponse, setChatResponse] = useState('');
+//   const [formData, setFormData] = useState({
+//     size: 0,
+//     rooms: 0,
+//     year: 2024,
+//     distance_to_center: 0
+//   });
+//
+//   const handlePredict = async () => {
+//     try {
+//       const response = await axios.post('http://localhost:8000/predict', formData);
+//       setPrediction(response.data.predicted_price);
+//     } catch (error) {
+//       console.error('Prediction error:', error);
+//     }
+//   };
+//
+//   const handleChat = async () => {
+//     try {
+//       const response = await axios.post('http://localhost:8000/chat', {
+//         message: chatMessage
+//       });
+//       setChatResponse(response.data.response);
+//     } catch (error) {
+//       console.error('Chat error:', error);
+//     }
+//   };
+//
+//   return (
+//     <div className="container mx-auto p-4">
+//       <h1 className="text-2xl font-bold mb-4">House Price Predictor & AI Chat</h1>
+//       
+//       <div className="grid grid-cols-2 gap-4">
+//         <div className="border p-4 rounded">
+//           <h2 className="text-xl mb-4">Price Prediction</h2>
+//           <div className="space-y-4">
+//             <input
+//               type="number"
+//               placeholder="Size (sq ft)"
+//               onChange={e => setFormData({...formData, size: parseFloat(e.target.value)})}
+//               className="w-full p-2 border rounded"
+//             />
+//             <input
+//               type="number"
+//               placeholder="Rooms"
+//               onChange={e => setFormData({...formData, rooms: parseInt(e.target.value)})}
+//               className="w-full p-2 border rounded"
+//             />
+//             <input
+//               type="number"
+//               placeholder="Year built"
+//               onChange={e => setFormData({...formData, year: parseInt(e.target.value)})}
+//               className="w-full p-2 border rounded"
+//             />
+//             <input
+//               type="number"
+//               placeholder="Distance to center"
+//               onChange={e => setFormData({...formData, distance_to_center: parseFloat(e.target.value)})}
+//               className="w-full p-2 border rounded"
+//             />
+//             <button
+//               onClick={handlePredict}
+//               className="w-full bg-blue-500 text-white p-2 rounded"
+//             >
+//               Predict Price
+//             </button>
+//             {prediction && (
+//               <div className="mt-4 p-4 bg-gray-100 rounded">
+//                 Predicted Price: ${prediction.toLocaleString()}
+//               </div>
+//             )}
+//           </div>
+//         </div>
+//
+//         <div className="border p-4 rounded">
+//           <h2 className="text-xl mb-4">AI Chat</h2>
+//           <div className="space-y-4">
+//             <textarea
+//               placeholder="Enter your message..."
+//               value={chatMessage}
+//               onChange={e => setChatMessage(e.target.value)}
+//               className="w-full p-2 border rounded h-32"
+//             />
+//             <button
+//               onClick={handleChat}
+//               className="w-full bg-green-500 text-white p-2 rounded"
+//             >
+//               Send Message
+//             </button>
+//             {chatResponse && (
+//               <div className="mt-4 p-4 bg-gray-100 rounded">
+//                 <p>{chatResponse}</p>
+//               </div>
+//             )}
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+//
+// export default App; 

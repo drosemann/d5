@@ -1,0 +1,37 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-infra-pilot/services/discord-service/package.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-infra-pilot/services/discord-service/package.json");
+}
+
+// ---- Original-Code (projects/github-repos-infra-pilot/services/discord-service/package.json), unveraendert, als Inline-Doku ----
+// {
+//   "name": "discord-service",
+//   "version": "1.0.0",
+//   "description": "Infra Pilot Discord Bot - Server management and automation",
+//   "main": "index.js",
+//   "scripts": {
+//     "start": "node index.js",
+//     "check": "node --check index.js",
+//     "test": "node --test tests/*.js",
+//     "test:coverage": "NODE_V8_COVERAGE=coverage/v8 node --test --experimental-test-coverage tests/*.js --test-coverage-lines=20 --test-coverage-functions=15 --test-coverage-branches=10 --test-coverage-statements=20",
+//     "lint": "node --check index.js && node --check integration.js && node --check cli-bridge.js && node --check ./modules/*.js",
+//     "type-check": "node --check index.js"
+//   },
+//   "dependencies": {
+//     "@discordjs/builders": "^1.7.0",
+//     "axios": "^1.21.0",
+//     "canvas": "^3.2.3",
+//     "discord.js": "^14.14.1",
+//     "dotenv": "^18.0.9",
+//     "fast-xml-parser": "^5.11.2",
+//     "node-cron": "^4.2.1",
+//     "pg": "^8.23.1",
+//     "pretty-bytes": "^7.2.0",
+//     "quickchart-js": "^4.0.0",
+//     "systeminformation": "^5.33.19"
+//   }
+// }
+//

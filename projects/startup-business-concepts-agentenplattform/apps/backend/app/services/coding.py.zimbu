@@ -1,0 +1,59 @@
+﻿# Zimbu-Port-Spiegel von: projects\startup-business-concepts-agentenplattform\apps\backend\app\services\coding.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE coding_py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\startup-business-concepts-agentenplattform\apps\backend\app\services\coding.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\startup-business-concepts-agentenplattform\apps\backend\app\services\coding.py), unveraendert, als Inline-Doku ----
+# """Coding-Worker: isolierter Workspace mit Freigabe-Pflicht.
+#
+# Ablauf: Branch anlegen → Änderung als Patch-Datei ablegen → pytest/ruff
+# (optional, nur wenn vorhanden) → Änderungsbericht. Es wird nie direkt auf
+# main geschrieben; ein Merge braucht menschliche Prüfung. Ohne konfigurierten
+# Workspace (CODING_REPO_PFAD) ehrlich „nicht konfiguriert".
+# """
+# from __future__ import annotations
+# import os, subprocess, uuid
+# from app.core.logging import get_logger
+#
+# log = get_logger("coding")
+#
+# def workspace() -> str:
+#     return os.environ.get("CODING_REPO_PFAD", "")
+#
+# def auftrag_vorbereiten(beschreibung: str, patch_text: str, freigegeben: bool) -> dict:
+#     """Legt Branch + Patch im Workspace ab und prüft Tests – nur mit Freigabe."""
+#     if not freigegeben:
+#         return {"status": "freigabe_noetig",
+#                 "hinweis": "Coding-Eingriffe brauchen eine genehmigte Freigabe."}
+#     repo = workspace()
+#     if not repo or not os.path.isdir(os.path.join(repo, ".git")):
+#         return {"status": "nicht_konfiguriert",
+#                 "hinweis": "CODING_REPO_PFAD muss auf ein Git-Checkout zeigen."}
+#     branch = f"agent/{uuid.uuid4().hex[:8]}"
+#     try:
+#         def git(*args):
+#             return subprocess.run(["git", "-C", repo, *args], capture_output=True,
+#                                   text=True, timeout=60)
+#         r = git("checkout", "-b", branch)
+#         if r.returncode != 0: return {"status": "fehler", "detail": r.stderr[:500]}
+#         pfad = os.path.join(repo, f"agent_patch_{branch.replace('/', '_')}.diff")
+#         with open(pfad, "w", encoding="utf-8") as f: f.write(patch_text[:100000])
+#         pruefung = ""
+#         for cmd in (["python", "-m", "pytest", "-q"], ["ruff", "check", "."]):
+#             try:
+#                 p = subprocess.run(cmd, capture_output=True, text=True, timeout=300, cwd=repo)
+#                 pruefung += f"\n$ {' '.join(cmd)} → Exit {p.returncode}\n{(p.stdout + p.stderr)[-1500:]}"
+#             except FileNotFoundError:
+#                 pruefung += f"\n$ {' '.join(cmd)} → nicht installiert, übersprungen"
+#         db_bericht = {"status": "bereit", "branch": branch, "patch": pfad, "pruefung": pruefung[-2000:],
+#                       "hinweis": "Bitte manuell prüfen und mergen – kein Auto-Merge."}
+#         log.info(f"Coding-Auftrag vorbereitet: {branch}")
+#         return db_bericht
+#     except Exception as e:  # noqa: BLE001 – Fehlerbericht statt Absturz
+#         return {"status": "fehler", "detail": str(e)[:500]}
+#

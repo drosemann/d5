@@ -1,0 +1,132 @@
+package apocalypse.disasters;
+
+import org.bukkit.Location;
+import org.bukkit.World;
+import org.bukkit.Material;
+import org.bukkit.Particle;
+import org.bukkit.block.Block;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.entity.Player;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
+import org.bukkit.util.Vector;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
+
+public class LocustSwarmDisaster extends Disaster {
+    private static final int RADIUS = 20;
+    private BukkitRunnable swarmTask;
+    
+    public LocustSwarmDisaster(World world, Location location) {
+        super(world, location);
+    }
+
+    @Override
+    public void start() {
+        Location center = location.clone();
+        
+        swarmTask = new BukkitRunnable() {
+            double angle = 0;
+            
+            @Override
+            public void run() {
+                angle += 0.2; // Rotate the swarm
+                
+                // Create swarm particles
+                for(int i = 0; i < 100; i++) {
+                    double r = Math.random() * RADIUS;
+                    double swarmAngle = angle + (Math.random() * Math.PI * 2);
+                    double x = center.getX() + (Math.cos(swarmAngle) * r);
+                    double y = center.getY() + 5 + (Math.random() * 5);
+                    double z = center.getZ() + (Math.sin(swarmAngle) * r);
+                    Location particleLoc = new Location(world, x, y, z);
+                    
+                    world.spawnParticle(Particle.SOUL, particleLoc, 0, 0.0, 0.0, 0.0, 1);
+                    if(Math.random() < 0.1) {
+                        world.spawnParticle(Particle.CLOUD, particleLoc, 1, 0.2, 0.2, 0.2, 0);
+                    }
+                }
+                
+                // Damage crops and leaves
+                if(Math.random() < 0.2) { // 20% chance each tick
+                    for(int x = -RADIUS; x <= RADIUS; x++) {
+                        for(int z = -RADIUS; z <= RADIUS; z++) {
+                            if(Math.random() < 0.1 && x*x + z*z <= RADIUS*RADIUS) {
+                                Location blockLoc = center.clone().add(x, 0, z);
+                                blockLoc.setY(world.getHighestBlockYAt(blockLoc));
+                                Block block = blockLoc.getBlock();
+                                
+                                // Destroy crops and vegetation
+                                if(block.getType().name().contains("CROPS") ||
+                                   block.getType().name().contains("LEAVES") ||
+                                   block.getType() == Material.SHORT_GRASS ||
+                                   block.getType().name().contains("FLOWERS")) {
+                                    block.setType(Material.AIR);
+                                    world.spawnParticle(Particle.FALLING_DUST, 
+                                        blockLoc, 10, 0.5, 0.5, 0.5, 0, 
+                                        Material.DIRT.createBlockData());
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                // Affect players in the swarm
+                for(Player player : world.getPlayers()) {
+                    if(player.getLocation().distance(center) <= RADIUS) {
+                        // Damage players
+                        if(Math.random() < 0.2) {
+                            player.damage(1.0);
+                        }
+                        
+                        // Push players around slightly
+                        double pushAngle = angle + Math.PI;
+                        double pushX = Math.cos(pushAngle) * 0.2;
+                        double pushZ = Math.sin(pushAngle) * 0.2;
+                        player.setVelocity(player.getVelocity().add(
+                            new Vector(pushX, 0.0, pushZ)));
+                    }
+                }
+                
+                // Occasionally spawn bats for effect
+                if(Math.random() < 0.1) {
+                    Location batLoc = center.clone().add(
+                        (Math.random() - 0.5) * RADIUS * 2,
+                        5 + Math.random() * 5,
+                        (Math.random() - 0.5) * RADIUS * 2
+                    );
+                    Entity bat = world.spawnEntity(batLoc, EntityType.BAT);
+                    // Remove bat after a short time
+                    new BukkitRunnable() {
+                        @Override
+                        public void run() {
+                            bat.remove();
+                        }
+                    }.runTaskLater(apocalypse.ApocalypsePlugin.getInstance(), 100L);
+                }
+            }
+        };
+        swarmTask.runTaskTimer(apocalypse.ApocalypsePlugin.getInstance(), 0L, 2L);
+    }
+
+    @Override
+    public void stop() {
+        if(swarmTask != null) {
+            swarmTask.cancel();
+        }
+        
+        // Remove any remaining bats
+        Location center = location.clone();
+        for(Entity entity : world.getEntities()) {
+            if(entity.getType() == EntityType.BAT && 
+               entity.getLocation().distance(center) <= RADIUS) {
+                entity.remove();
+            }
+        }
+    }
+
+    @Override
+    public String getName() {
+        return "locustswarm";
+    }
+}

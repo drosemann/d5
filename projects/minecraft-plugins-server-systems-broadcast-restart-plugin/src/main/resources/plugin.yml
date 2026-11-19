@@ -1,0 +1,12 @@
+name: BroadcastRestart
+version: 4.0.0
+main: com.example.broadcastrestart.BroadcastRestartPlugin
+api-version: 1.21.4
+commands:
+  broadcastrestart:
+    description: Start a restart countdown broadcast
+    usage: /broadcastrestart <minutes>
+permissions:
+  broadcastrestart.use:
+    description: Allows use of restart broadcast command
+    default: op

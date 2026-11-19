@@ -1,0 +1,16 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-drachen-im-asphalt\data\dragon.json
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE dragon_json
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-drachen-im-asphalt\data\dragon.json\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-drachen-im-asphalt\data\dragon.json), unveraendert, als Inline-Doku ----
+# {
+#   "stamina": 150,
+#   "defeated": false,
+#   "manifestation": "metaphorisch"
+# }

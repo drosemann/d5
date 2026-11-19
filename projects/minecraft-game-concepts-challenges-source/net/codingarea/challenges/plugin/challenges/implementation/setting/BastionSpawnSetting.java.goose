@@ -1,0 +1,41 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/implementation/setting/BastionSpawnSetting.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/implementation/setting/BastionSpawnSetting.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/implementation/setting/BastionSpawnSetting.java), unveraendert, als Inline-Doku ----
+// package net.codingarea.challenges.plugin.challenges.implementation.setting;
+//
+// import java.util.Arrays;
+// import java.util.Collection;
+// import java.util.stream.Collectors;
+// import javax.annotation.Nonnull;
+// import net.anweisen.utilities.bukkit.utils.misc.MinecraftVersion;
+// import net.anweisen.utilities.common.annotations.Since;
+// import net.codingarea.challenges.plugin.challenges.type.abstraction.NetherPortalSpawnSetting;
+// import net.codingarea.challenges.plugin.content.Message;
+// import net.codingarea.challenges.plugin.management.challenges.annotations.RequireVersion;
+// import net.codingarea.challenges.plugin.management.menu.MenuType;
+// import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+// import net.codingarea.challenges.plugin.utils.misc.ExperimentalUtils;
+// import org.bukkit.Material;
+// import org.bukkit.StructureType;
+//
+// @Since("2.0")
+// @RequireVersion(MinecraftVersion.V1_16)
+// public class BastionSpawnSetting extends NetherPortalSpawnSetting {
+//    public BastionSpawnSetting() {
+//       super(MenuType.SETTINGS, StructureType.BASTION_REMNANT, "unable-to-find-bastion", (Collection)Arrays.stream(ExperimentalUtils.getMaterials()).filter((material) -> {
+//          return material.name().contains("BASALT");
+//       }).collect(Collectors.toList()));
+//    }
+//
+//    @Nonnull
+//    public ItemBuilder createDisplayItem() {
+//       return new ItemBuilder(Material.POLISHED_BLACKSTONE_BRICKS, Message.forName("item-bastion-spawn-setting"));
+//    }
+// }
+//

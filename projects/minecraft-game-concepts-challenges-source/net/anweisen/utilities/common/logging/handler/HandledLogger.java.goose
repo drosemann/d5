@@ -1,0 +1,87 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/common/logging/handler/HandledLogger.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/common/logging/handler/HandledLogger.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/common/logging/handler/HandledLogger.java), unveraendert, als Inline-Doku ----
+// package net.anweisen.utilities.common.logging.handler;
+//
+// import java.time.Instant;
+// import java.util.Arrays;
+// import java.util.Collection;
+// import java.util.Iterator;
+// import java.util.concurrent.CopyOnWriteArrayList;
+// import javax.annotation.Nonnull;
+// import javax.annotation.Nullable;
+// import net.anweisen.utilities.common.logging.ILogger;
+// import net.anweisen.utilities.common.logging.LogLevel;
+//
+// public abstract class HandledLogger implements ILogger {
+//    protected final Collection handlers = new CopyOnWriteArrayList();
+//    protected LogLevel level;
+//
+//    public HandledLogger(@Nonnull LogLevel initialLevel) {
+//       this.level = initialLevel;
+//    }
+//
+//    public void log(@Nonnull LogLevel level, @Nullable String message, @Nonnull Object... args) {
+//       if (level.isShownAtLoggerLevel(this.level)) {
+//          Throwable exception = null;
+//          Object[] var5 = args;
+//          int var6 = args.length;
+//
+//          for(int var7 = 0; var7 < var6; ++var7) {
+//             Object arg = var5[var7];
+//             if (arg instanceof Throwable) {
+//                exception = (Throwable)arg;
+//             }
+//          }
+//
+//          this.log0(new LogEntry(Instant.now(), Thread.currentThread().getName(), ILogger.formatMessage(message, args), level, exception));
+//       }
+//    }
+//
+//    public void log(@Nonnull LogEntry entry) {
+//       if (entry.getLevel().isShownAtLoggerLevel(this.level)) {
+//          this.log0(entry);
+//       }
+//    }
+//
+//    protected abstract void log0(@Nonnull LogEntry var1);
+//
+//    protected void logNow(@Nonnull LogEntry entry) {
+//       Iterator var2 = this.handlers.iterator();
+//
+//       while(var2.hasNext()) {
+//          LogHandler handler = (LogHandler)var2.next();
+//
+//          try {
+//             handler.handle(entry);
+//          } catch (Exception var5) {
+//             var5.printStackTrace();
+//          }
+//       }
+//
+//    }
+//
+//    @Nonnull
+//    public HandledLogger addHandler(@Nonnull LogHandler... handler) {
+//       this.handlers.addAll(Arrays.asList(handler));
+//       return this;
+//    }
+//
+//    @Nonnull
+//    public LogLevel getMinLevel() {
+//       return this.level;
+//    }
+//
+//    @Nonnull
+//    public ILogger setMinLevel(@Nonnull LogLevel level) {
+//       this.level = level;
+//       return this;
+//    }
+// }
+//

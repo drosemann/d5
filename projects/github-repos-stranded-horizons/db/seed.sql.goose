@@ -1,0 +1,17 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-stranded-horizons/db/seed.sql
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-stranded-horizons/db/seed.sql");
+}
+
+// ---- Original-Code (projects/github-repos-stranded-horizons/db/seed.sql), unveraendert, als Inline-Doku ----
+// -- Seed a small dev world: owner ids are placeholders for local testing.
+// insert into bases (owner_id, chunk_x, chunk_y, world_x, world_y, efficiency_cached)
+// values
+//   (null, 50, 50, 100.0, 100.0, 99.29),
+//   (null, 52, 48, 500.0, -300.0, 97.08),
+//   (null, 65, 65, 3100.0, 3100.0, 78.07)
+// on conflict do nothing;
+//

@@ -1,0 +1,38 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-plugins-server-systems-questsystem\src\main\java\com\questsystem\plugin\Objective.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE Objective_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-plugins-server-systems-questsystem\src\main\java\com\questsystem\plugin\Objective.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-plugins-server-systems-questsystem\src\main\java\com\questsystem\plugin\Objective.java), unveraendert, als Inline-Doku ----
+# package com.questsystem.plugin;
+#
+# public class Objective {
+#     private final ObjectiveType type;
+#     private final String target;
+#     private final int requiredAmount;
+#
+#     public enum ObjectiveType { COLLECT, KILL, LOCATION }
+#
+#     public Objective(ObjectiveType type, String target, int requiredAmount) {
+#         this.type = type;
+#         this.target = target;
+#         this.requiredAmount = requiredAmount;
+#     }
+#
+#     public ObjectiveType getType() {
+#         return type;
+#     }
+#
+#     public String getTarget() {
+#         return target;
+#     }
+#
+#     public int getRequiredAmount() {
+#         return requiredAmount;
+#     }
+# }

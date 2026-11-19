@@ -1,0 +1,26 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\logging\handler\HandledSyncLogger.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE HandledSyncLogger_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\logging\handler\HandledSyncLogger.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\logging\handler\HandledSyncLogger.java), unveraendert, als Inline-Doku ----
+# package net.anweisen.utilities.common.logging.handler;
+#
+# import javax.annotation.Nonnull;
+# import net.anweisen.utilities.common.logging.LogLevel;
+#
+# public class HandledSyncLogger extends HandledLogger {
+#    public HandledSyncLogger(@Nonnull LogLevel initialLevel) {
+#       super(initialLevel);
+#    }
+#
+#    protected void log0(@Nonnull LogEntry entry) {
+#       this.logNow(entry);
+#    }
+# }
+#

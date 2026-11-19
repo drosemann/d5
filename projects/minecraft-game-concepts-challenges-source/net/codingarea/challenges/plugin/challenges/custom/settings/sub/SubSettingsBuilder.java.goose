@@ -1,0 +1,147 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/custom/settings/sub/SubSettingsBuilder.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/custom/settings/sub/SubSettingsBuilder.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/custom/settings/sub/SubSettingsBuilder.java), unveraendert, als Inline-Doku ----
+// package net.codingarea.challenges.plugin.challenges.custom.settings.sub;
+//
+// import java.util.Collections;
+// import java.util.LinkedList;
+// import java.util.List;
+// import java.util.Map;
+// import java.util.function.Consumer;
+// import java.util.function.Predicate;
+// import net.anweisen.utilities.common.misc.StringUtils;
+// import net.codingarea.challenges.plugin.challenges.custom.settings.sub.builder.ChooseItemSubSettingsBuilder;
+// import net.codingarea.challenges.plugin.challenges.custom.settings.sub.builder.ChooseMultipleItemSubSettingBuilder;
+// import net.codingarea.challenges.plugin.challenges.custom.settings.sub.builder.EmptySubSettingsBuilder;
+// import net.codingarea.challenges.plugin.challenges.custom.settings.sub.builder.TextInputSubSettingsBuilder;
+// import net.codingarea.challenges.plugin.challenges.custom.settings.sub.builder.ValueSubSettingsBuilder;
+// import net.codingarea.challenges.plugin.content.Message;
+// import net.codingarea.challenges.plugin.content.impl.MessageManager;
+// import net.codingarea.challenges.plugin.management.menu.generator.implementation.custom.IParentCustomGenerator;
+// import org.bukkit.entity.Player;
+//
+// public abstract class SubSettingsBuilder {
+//    private String key;
+//    private SubSettingsBuilder parent;
+//    private SubSettingsBuilder child;
+//
+//    protected SubSettingsBuilder(String key) {
+//       this.key = key;
+//       this.parent = null;
+//    }
+//
+//    protected SubSettingsBuilder(String key, SubSettingsBuilder parent) {
+//       this.key = key;
+//       this.parent = parent;
+//    }
+//
+//    public static ChooseItemSubSettingsBuilder createChooseItem(String key) {
+//       return new ChooseItemSubSettingsBuilder(key);
+//    }
+//
+//    public static ValueSubSettingsBuilder createValueItem() {
+//       return new ValueSubSettingsBuilder();
+//    }
+//
+//    public static ChooseMultipleItemSubSettingBuilder createChooseMultipleItem(String key) {
+//       return new ChooseMultipleItemSubSettingBuilder(key);
+//    }
+//
+//    public static TextInputSubSettingsBuilder createTextInput(String key, Consumer onOpen, Predicate isValid) {
+//       return new TextInputSubSettingsBuilder(key, onOpen, isValid);
+//    }
+//
+//    public static EmptySubSettingsBuilder createEmpty() {
+//       return new EmptySubSettingsBuilder();
+//    }
+//
+//    public abstract boolean open(Player var1, IParentCustomGenerator var2, String var3);
+//
+//    public abstract List getDisplay(Map var1);
+//
+//    public abstract boolean hasSettings();
+//
+//    public SubSettingsBuilder getParent() {
+//       return this.parent;
+//    }
+//
+//    public SubSettingsBuilder setParent(SubSettingsBuilder parent) {
+//       SubSettingsBuilder parentBuilder = this.getParent();
+//       if (parentBuilder != null) {
+//          return parentBuilder.setParent(parent);
+//       } else {
+//          this.parent = parent;
+//          return this;
+//       }
+//    }
+//
+//    public SubSettingsBuilder getChild() {
+//       return this.child;
+//    }
+//
+//    public String getKey() {
+//       return this.key;
+//    }
+//
+//    public SubSettingsBuilder setKey(String key) {
+//       this.key = key;
+//       return this;
+//    }
+//
+//    public String getKeyTranslation() {
+//       String messageName = "custom-subsetting-" + this.key;
+//       return MessageManager.hasMessageInCache(messageName) ? Message.forName(messageName).asString() : StringUtils.getEnumName(this.key);
+//    }
+//
+//    public List getAllChildren() {
+//       LinkedList children = new LinkedList(Collections.singleton(this));
+//
+//       for(SubSettingsBuilder last = this; last != null; last = last.getChild()) {
+//          if (last.getChild() != null) {
+//             children.add(last.getChild());
+//          }
+//       }
+//
+//       return children;
+//    }
+//
+//    public SubSettingsBuilder build() {
+//       return this.parent == null ? this : this.parent.build();
+//    }
+//
+//    public SubSettingsBuilder addChild(SubSettingsBuilder child) {
+//       this.child = child.setParent(this);
+//       return child;
+//    }
+//
+//    public ChooseItemSubSettingsBuilder createChooseItemChild(String key) {
+//       ChooseItemSubSettingsBuilder builder = new ChooseItemSubSettingsBuilder(key, this);
+//       this.child = builder;
+//       return builder;
+//    }
+//
+//    public ValueSubSettingsBuilder createValueChild() {
+//       ValueSubSettingsBuilder builder = new ValueSubSettingsBuilder(this);
+//       this.child = builder;
+//       return builder;
+//    }
+//
+//    public ChooseMultipleItemSubSettingBuilder createChooseMultipleChild(String key) {
+//       ChooseMultipleItemSubSettingBuilder builder = new ChooseMultipleItemSubSettingBuilder(key, this);
+//       this.child = builder;
+//       return builder;
+//    }
+//
+//    public TextInputSubSettingsBuilder createTextInputChild(String key, Consumer onOpen, Predicate isValid) {
+//       TextInputSubSettingsBuilder builder = new TextInputSubSettingsBuilder(key, this, onOpen, isValid);
+//       this.child = builder;
+//       return builder;
+//    }
+// }
+//

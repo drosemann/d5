@@ -1,0 +1,113 @@
+﻿# Zimbu-Port-Spiegel von: projects\ai-&-llm-projects-ai-chat-website-talkativecloud\src\index.css
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE index_css
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\ai-&-llm-projects-ai-chat-website-talkativecloud\src\index.css\n")
+  RETURN 0
+
+# ---- Original-Code (projects\ai-&-llm-projects-ai-chat-website-talkativecloud\src\index.css), unveraendert, als Inline-Doku ----
+#
+# @tailwind base;
+# @tailwind components;
+# @tailwind utilities;
+#
+# @layer base {
+#   :root {
+#     --background: 240 10% 3.9%;
+#     --foreground: 0 0% 98%;
+#     
+#     --card: 240 10% 3.9%;
+#     --card-foreground: 0 0% 98%;
+#     
+#     --popover: 240 10% 3.9%;
+#     --popover-foreground: 0 0% 98%;
+#     
+#     --primary: 260 80% 50%;
+#     --primary-foreground: 0 0% 98%;
+#     
+#     --secondary: 240 3.7% 15.9%;
+#     --secondary-foreground: 0 0% 98%;
+#     
+#     --muted: 240 3.7% 15.9%;
+#     --muted-foreground: 240 5% 64.9%;
+#     
+#     --accent: 240 3.7% 15.9%;
+#     --accent-foreground: 0 0% 98%;
+#     
+#     --destructive: 0 62.8% 30.6%;
+#     --destructive-foreground: 0 0% 98%;
+#     
+#     --border: 240 3.7% 15.9%;
+#     --input: 240 3.7% 15.9%;
+#     --ring: 240 4.9% 83.9%;
+#     
+#     --radius: 0.5rem;
+#   }
+#
+#   .dark {
+#     --background: 240 10% 3.9%;
+#     --foreground: 0 0% 98%;
+#     
+#     --card: 240 10% 3.9%;
+#     --card-foreground: 0 0% 98%;
+#     
+#     --popover: 240 10% 3.9%;
+#     --popover-foreground: 0 0% 98%;
+#     
+#     --primary: 260 80% 50%;
+#     --primary-foreground: 0 0% 98%;
+#     
+#     --secondary: 240 3.7% 15.9%;
+#     --secondary-foreground: 0 0% 98%;
+#     
+#     --muted: 240 3.7% 15.9%;
+#     --muted-foreground: 240 5% 64.9%;
+#     
+#     --accent: 240 3.7% 15.9%;
+#     --accent-foreground: 0 0% 98%;
+#     
+#     --destructive: 0 62.8% 30.6%;
+#     --destructive-foreground: 0 0% 98%;
+#     
+#     --border: 240 3.7% 15.9%;
+#     --input: 240 3.7% 15.9%;
+#     --ring: 240 4.9% 83.9%;
+#   }
+# }
+#
+# @layer base {
+#   * {
+#     @apply border-border;
+#   }
+#
+#   body {
+#     @apply bg-gradient-to-br from-dark-500 to-dark-900 text-foreground min-h-screen;
+#   }
+#   
+#   .chat-card {
+#     @apply bg-dark-300/80 border border-white/5 rounded-xl p-6 backdrop-blur-sm;
+#   }
+#   
+#   .chat-input {
+#     @apply bg-dark-300/80 border border-white/5 backdrop-blur-sm rounded-full px-6 py-4 w-full text-white focus:outline-none;
+#   }
+#   
+#   .typing-indicator::after {
+#     content: '';
+#     @apply animate-blink;
+#   }
+# }
+#
+# @layer utilities {
+#   .glass-morphism {
+#     @apply backdrop-blur-xl bg-white/5 border border-white/10;
+#   }
+#   
+#   .text-gradient {
+#     @apply bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent;
+#   }
+# }
+#

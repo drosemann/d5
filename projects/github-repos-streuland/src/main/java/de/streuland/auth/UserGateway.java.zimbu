@@ -1,0 +1,17 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-streuland\src\main\java\de\streuland\auth\UserGateway.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE UserGateway_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-streuland\src\main\java\de\streuland\auth\UserGateway.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-streuland\src\main\java\de\streuland\auth\UserGateway.java), unveraendert, als Inline-Doku ----
+# package de.streuland.auth;
+#
+# public interface UserGateway {
+#     de.streuland.auth.User createUser(String username, String email, String passwordHash, String passwordSalt, String inviteCodeId, String serverId);
+# }
+#

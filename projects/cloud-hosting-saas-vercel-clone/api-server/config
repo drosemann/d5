@@ -1,0 +1,28 @@
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+# AWS Configuration
+AWS_REGION = os.getenv('AWS_REGION', 'us-east-1')
+AWS_ACCESS_KEY = os.getenv('AWS_ACCESS_KEY')
+AWS_SECRET_KEY = os.getenv('AWS_SECRET_KEY')
+ECS_CLUSTER = os.getenv('ECS_CLUSTER')
+ECS_TASK_ARN = os.getenv('ECS_TASK_ARN')
+
+# Redis Configuration
+REDIS_URL = os.getenv('REDIS_URL', 'redis://localhost:6379')
+
+# Server Configuration
+API_PORT = int(os.getenv('API_PORT', 9000))
+SOCKET_PORT = int(os.getenv('SOCKET_PORT', 9002))
+PROXY_PORT = int(os.getenv('PROXY_PORT', 8000))
+
+# S3 Configuration
+S3_BUCKET = os.getenv('S3_BUCKET', 'vercel-clone-outputs')
+S3_OUTPUT_PATH = '__outputs'
+
+# Build Configuration
+BUILD_TIMEOUT = int(os.getenv('BUILD_TIMEOUT', 300))  # 5 minutes
+MAX_BUILD_CONCURRENT = int(os.getenv('MAX_BUILD_CONCURRENT', 5))

@@ -1,0 +1,29 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-infra-pilot\services\management-panel\src\components\Tooltip.tsx
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE Tooltip_tsx
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-infra-pilot\services\management-panel\src\components\Tooltip.tsx\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-infra-pilot\services\management-panel\src\components\Tooltip.tsx), unveraendert, als Inline-Doku ----
+# import React from 'react';
+#
+# type Props = {
+#   text: string;
+#   children: React.ReactNode;
+# };
+#
+# export const Tooltip: React.FC<Props> = ({ text, children }) => {
+#   return (
+#     <span className="tooltip inline-block">
+#       {children}
+#       <span className="tooltiptext">{text}</span>
+#     </span>
+#   );
+# };
+#
+# export default Tooltip;
+#

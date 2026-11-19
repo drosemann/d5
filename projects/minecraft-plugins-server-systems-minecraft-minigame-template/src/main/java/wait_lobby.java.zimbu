@@ -1,0 +1,30 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-plugins-server-systems-minecraft-minigame-template\src\main\java\wait_lobby.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE wait_lobby_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-plugins-server-systems-minecraft-minigame-template\src\main\java\wait_lobby.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-plugins-server-systems-minecraft-minigame-template\src\main\java\wait_lobby.java), unveraendert, als Inline-Doku ----
+# import org.bukkit.command.Command;
+# import org.bukkit.command.CommandExecutor;
+# import org.bukkit.command.CommandSender;
+# import org.bukkit.entity.Player;
+#
+# public class LobbyCommand implements CommandExecutor {
+#     @Override
+#     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+#         if (sender instanceof Player) {
+#             Player player = (Player) sender;
+#             // Teleportiere Spieler zur Wartelobby
+#             player.teleport(new Location(player.getWorld(), x, y, z)); // Setze x, y, z auf die Koordinaten der Wartelobby
+#             player.sendMessage("Du bist jetzt in der Wartelobby!");
+#             return true;
+#         }
+#         return false;
+#     }
+# }
+#

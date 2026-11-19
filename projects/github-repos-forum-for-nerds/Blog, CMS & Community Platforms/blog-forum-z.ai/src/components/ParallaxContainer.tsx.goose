@@ -1,0 +1,221 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-forum-for-nerds/Blog, CMS & Community Platforms/blog-forum-z.ai/src/components/ParallaxContainer.tsx
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-forum-for-nerds/Blog, CMS & Community Platforms/blog-forum-z.ai/src/components/ParallaxContainer.tsx");
+}
+
+// ---- Original-Code (projects/github-repos-forum-for-nerds/Blog, CMS & Community Platforms/blog-forum-z.ai/src/components/ParallaxContainer.tsx), unveraendert, als Inline-Doku ----
+// 'use client'
+//
+// import { useRef, useEffect, ReactNode } from 'react'
+// import { motion, useScroll, useTransform } from 'framer-motion'
+//
+// interface ParallaxLayerProps {
+//   children: ReactNode
+//   speed?: number
+//   direction?: 'up' | 'down'
+//   className?: string
+// }
+//
+// interface ParallaxContainerProps {
+//   children: ReactNode
+//   className?: string
+// }
+//
+// export const ParallaxLayer: React.FC<ParallaxLayerProps> = ({ 
+//   children, 
+//   speed = 0.5, 
+//   direction = 'up',
+//   className = '' 
+// }) => {
+//   const ref = useRef<HTMLDivElement>(null)
+//   
+//   const { scrollYProgress } = useScroll({
+//     target: ref,
+//     offset: ['start end', 'end start']
+//   })
+//
+//   const y = useTransform(
+//     scrollYProgress,
+//     [0, 1],
+//     direction === 'up' 
+//       ? [`${speed * 100}%`, `-${speed * 100}%`]
+//       : [`-${speed * 100}%`, `${speed * 100}%`]
+//   )
+//
+//   return (
+//     <motion.div
+//       ref={ref}
+//       style={{ y }}
+//       className={`relative will-change-transform ${className}`}
+//     >
+//       {children}
+//     </motion.div>
+//   )
+// }
+//
+// export const ParallaxContainer: React.FC<ParallaxContainerProps> = ({ 
+//   children, 
+//   className = '' 
+// }) => {
+//   return (
+//     <div className={`relative overflow-hidden ${className}`}>
+//       {children}
+//     </div>
+//   )
+// }
+//
+// // Parallax background component for cosmic effects
+// export const ParallaxBackground: React.FC = () => {
+//   return (
+//     <ParallaxContainer className="fixed inset-0 -z-40">
+//       <ParallaxLayer speed={0.3} direction="up" className="absolute inset-0">
+//         <div className="absolute inset-0 bg-gradient-to-b from-purple-900/10 via-transparent to-black/30"></div>
+//       </ParallaxLayer>
+//       
+//       <ParallaxLayer speed={0.5} direction="down" className="absolute inset-0">
+//         <div className="absolute inset-0 opacity-20">
+//           <div className="absolute top-20 left-20 w-64 h-64 bg-purple-500 rounded-full blur-3xl animate-pulse"></div>
+//           <div className="absolute bottom-40 right-40 w-96 h-96 bg-pink-500 rounded-full blur-3xl animate-pulse"></div>
+//           <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-blue-500 rounded-full blur-3xl animate-pulse"></div>
+//         </div>
+//       </ParallaxLayer>
+//       
+//       <ParallaxLayer speed={0.2} direction="up" className="absolute inset-0">
+//         <div 
+//             className="absolute inset-0" 
+//             style={{
+//               backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.08'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+//             }}
+//         ></div>
+//       </ParallaxLayer>
+//     </ParallaxContainer>
+//   )
+// }
+//
+// // Parallax section component for content sections
+// interface ParallaxSectionProps {
+//   children: ReactNode
+//   className?: string
+//   background?: ReactNode
+//   speed?: number
+// }
+//
+// export const ParallaxSection: React.FC<ParallaxSectionProps> = ({ 
+//   children, 
+//   className = '', 
+//   background,
+//   speed = 0.3 
+// }) => {
+//   return (
+//     <section className={`relative py-20 ${className}`}>
+//       {background && (
+//         <div className="absolute inset-0 overflow-hidden">
+//           <ParallaxLayer speed={speed} direction="up" className="absolute inset-0">
+//             {background}
+//           </ParallaxLayer>
+//         </div>
+//       )}
+//       
+//       <div className="relative z-10">
+//         {children}
+//       </div>
+//     </section>
+//   )
+// }
+//
+// // Parallax card component for individual cards
+// interface ParallaxCardProps {
+//   children: ReactNode
+//   className?: string
+//   speed?: number
+//   whileHover?: any
+// }
+//
+// export const ParallaxCard: React.FC<ParallaxCardProps> = ({ 
+//   children, 
+//   className = '', 
+//   speed = 0.1,
+//   whileHover = { scale: 1.05, y: -10 }
+// }) => {
+//   const ref = useRef<HTMLDivElement>(null)
+//   
+//   const { scrollYProgress } = useScroll({
+//     target: ref,
+//     offset: ['start end', 'end start']
+//   })
+//
+//   const y = useTransform(
+//     scrollYProgress,
+//     [0, 1],
+//     [`${speed * 50}%`, `-${speed * 50}%`]
+//   )
+//
+//   return (
+//     <motion.div
+//       ref={ref}
+//       style={{ y }}
+//       whileHover={whileHover}
+//       className={`relative will-change-transform ${className}`}
+//     >
+//       {children}
+//     </motion.div>
+//   )
+// }
+//
+// // Floating elements for additional parallax effect
+// interface FloatingElementProps {
+//   children: ReactNode
+//   className?: string
+//   duration?: number
+//   delay?: number
+//   distance?: number
+// }
+//
+// export const FloatingElement: React.FC<FloatingElementProps> = ({
+//   children,
+//   className = '',
+//   duration = 6,
+//   delay = 0,
+//   distance = 20
+// }) => {
+//   return (
+//     <motion.div
+//       className={className}
+//       animate={{
+//         y: [-distance, distance, -distance],
+//       }}
+//       transition={{
+//         duration,
+//         delay,
+//         repeat: Infinity,
+//         ease: "easeInOut"
+//       }}
+//     >
+//       {children}
+//     </motion.div>
+//   )
+// }
+//
+// // Parallax scroll indicator
+// export const ScrollIndicator: React.FC = () => {
+//   return (
+//     <motion.div
+//       className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50"
+//       animate={{ y: [0, 10, 0] }}
+//       transition={{ duration: 2, repeat: Infinity }}
+//     >
+//       <div className="w-6 h-10 border-2 border-purple-400 rounded-full flex justify-center">
+//         <motion.div
+//           className="w-1 h-3 bg-purple-400 rounded-full mt-2"
+//           animate={{ y: [0, 12, 0] }}
+//           transition={{ duration: 2, repeat: Infinity }}
+//         />
+//       </div>
+//     </motion.div>
+//   )
+// }
+//
+// export default ParallaxContainer

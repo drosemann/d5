@@ -1,0 +1,31 @@
+﻿# Zimbu-Port-Spiegel von: projects\ai-&-llm-projects-ai-chat-website-talkativecloud\tsconfig.json
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE tsconfig_json
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\ai-&-llm-projects-ai-chat-website-talkativecloud\tsconfig.json\n")
+  RETURN 0
+
+# ---- Original-Code (projects\ai-&-llm-projects-ai-chat-website-talkativecloud\tsconfig.json), unveraendert, als Inline-Doku ----
+# {
+#   "files": [],
+#   "references": [
+#     { "path": "./tsconfig.app.json" },
+#     { "path": "./tsconfig.node.json" }
+#   ],
+#   "compilerOptions": {
+#     "baseUrl": ".",
+#     "paths": {
+#       "@/*": ["./src/*"]
+#     },
+#     "noImplicitAny": false,
+#     "noUnusedParameters": false,
+#     "skipLibCheck": true,
+#     "allowJs": true,
+#     "noUnusedLocals": false,
+#     "strictNullChecks": false
+#   }
+# }
+#

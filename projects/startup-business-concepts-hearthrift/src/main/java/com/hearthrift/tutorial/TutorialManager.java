@@ -1,0 +1,60 @@
+package com.hearthrift.tutorial;
+
+import com.hearthrift.Hearthrift;
+import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitTask;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+public class TutorialManager {
+    private final Hearthrift plugin;
+    private final Map<UUID, TutorialSession> activeTutorials;
+    private final Map<UUID, BukkitTask> tutorialTasks;
+
+    public TutorialManager(Hearthrift plugin) {
+        this.plugin = plugin;
+        this.activeTutorials = new HashMap<>();
+        this.tutorialTasks = new HashMap<>();
+    }
+
+    public void startTutorial(Player player) {
+        UUID playerId = player.getUniqueId();
+        if (activeTutorials.containsKey(playerId)) {
+            return;
+        }
+
+        TutorialSession session = new TutorialSession(player);
+        activeTutorials.put(playerId, session);
+        
+        // Schedule the tutorial steps
+        BukkitTask task = plugin.getServer().getScheduler().runTaskTimer(plugin, () -> {
+            if (!player.isOnline() || session.isComplete()) {
+                stopTutorial(player);
+                return;
+            }
+            
+            session.progressTutorial(plugin);
+        }, 40L, 100L); // Start after 2 seconds, run every 5 seconds
+        
+        tutorialTasks.put(playerId, task);
+    }
+
+    public void stopTutorial(Player player) {
+        UUID playerId = player.getUniqueId();
+        BukkitTask task = tutorialTasks.remove(playerId);
+        if (task != null) {
+            task.cancel();
+        }
+        activeTutorials.remove(playerId);
+    }
+
+    public boolean isInTutorial(Player player) {
+        return activeTutorials.containsKey(player.getUniqueId());
+    }
+
+    public TutorialSession getSession(Player player) {
+        return activeTutorials.get(player.getUniqueId());
+    }
+}

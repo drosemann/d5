@@ -1,0 +1,656 @@
+﻿// Goose-Port-Spiegel von: projects/archive-unsorted-goose-desktop-companion/Productivity/goose-reading.ps1
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/archive-unsorted-goose-desktop-companion/Productivity/goose-reading.ps1");
+}
+
+// ---- Original-Code (projects/archive-unsorted-goose-desktop-companion/Productivity/goose-reading.ps1), unveraendert, als Inline-Doku ----
+// # Goose Desktop Companion - Reading/Research Companion
+// # Track articles, highlights, insights, and reading queue
+//
+// $LoggingScriptPath = Join-Path $PSScriptRoot "..\Core\GooseLogging.ps1"
+// if (Test-Path $LoggingScriptPath) {
+//     . $LoggingScriptPath
+// }
+//
+// enum ReadingStatus {
+//     Unread
+//     InProgress
+//     Completed
+//     Archived
+// }
+//
+// class ReadingItem {
+//     [string]$Id
+//     [string]$Url
+//     [string]$Title
+//     [string]$Description
+//     [string]$Source
+//     [ReadingStatus]$Status
+//     [datetime]$AddedAt
+//     [datetime]$ReadAt
+//     [int]$ReadCount
+//     [string[]]$Tags
+//     [string]$Notes
+//
+//     ReadingItem([string]$url, [string]$title = "") {
+//         $this.Id = [guid]::NewGuid().ToString()
+//         $this.Url = $url
+//         $this.Title = $title
+//         if ([string]::IsNullOrEmpty($title)) {
+//             $this.Title = $url
+//         }
+//         $this.Description = ""
+//         $this.Source = ""
+//         $this.Status = [ReadingStatus]::Unread
+//         $this.AddedAt = Get-Date
+//         $this.ReadAt = $null
+//         $this.ReadCount = 0
+//         $this.Tags = @()
+//         $this.Notes = ""
+//     }
+// }
+//
+// class Highlight {
+//     [string]$Id
+//     [string]$ItemId
+//     [string]$Text
+//     [string]$Color
+//     [datetime]$CreatedAt
+//     [string]$Note
+//
+//     Highlight([string]$itemId, [string]$text) {
+//         $this.Id = [guid]::NewGuid().ToString()
+//         $this.ItemId = $itemId
+//         $this.Text = $text
+//         $this.Color = "#FFD700"
+//         $this.CreatedAt = Get-Date
+//         $this.Note = ""
+//     }
+// }
+//
+// class Insight {
+//     [string]$Id
+//     [string]$ItemId
+//     [string]$Content
+//     [datetime]$CreatedAt
+//     [string]$Category
+//     [string]$RelatedProject
+//
+//     Insight([string]$itemId, [string]$content) {
+//         $this.Id = [guid]::NewGuid().ToString()
+//         $this.ItemId = $itemId
+//         $this.Content = $content
+//         $this.CreatedAt = Get-Date
+//         $this.Category = "General"
+//         $this.RelatedProject = ""
+//     }
+// }
+//
+// class GooseReadingCompanion {
+//     [hashtable]$Config
+//     [string]$DataFile
+//     [array]$ReadingQueue
+//     [array]$Highlights
+//     [array]$Insights
+//     [bool]$IsEnabled
+//     [int]$MaxQueueSize
+//
+//     GooseReadingCompanion() {
+//         $this.Config = $this.LoadConfig()
+//         $this.DataFile = "goose_reading.json"
+//         $this.ReadingQueue = @()
+//         $this.Highlights = @()
+//         $this.Insights = @()
+//         $this.LoadData()
+//     }
+//
+//     [hashtable] LoadConfig() {
+//         $this.Config = @{}
+//         $configFile = "config.ini"
+//
+//         if (Test-Path $configFile) {
+//             Get-Content $configFile | ForEach-Object {
+//                 if ($_ -match '^([^=]+)=(.*)$') {
+//                     $key = $matches[1].Trim()
+//                     $value = $matches[2].Trim()
+//
+//                     if ($value -eq 'True' -or $value -eq 'False') {
+//                         $this.Config[$key] = [bool]$value
+//                     } elseif ($value -match '^\d+$') {
+//                         $this.Config[$key] = [int]$value
+//                     } elseif ($value -match '^\d+\.\d+$') {
+//                         $this.Config[$key] = [double]$value
+//                     } else {
+//                         $this.Config[$key] = $value
+//                     }
+//                 }
+//             }
+//         }
+//
+//         if (-not $this.Config.ContainsKey("ReadingCompanionEnabled")) {
+//             $this.Config["ReadingCompanionEnabled"] = $false
+//         }
+//         if (-not $this.Config.ContainsKey("ReadingCompanionBreakReminders")) {
+//             $this.Config["ReadingCompanionBreakReminders"] = $true
+//         }
+//         if (-not $this.Config.ContainsKey("ReadingCompanionBreakMinArticles")) {
+//             $this.Config["ReadingCompanionBreakMinArticles"] = 3
+//         }
+//         if (-not $this.Config.ContainsKey("ReadingCompanionMaxQueue")) {
+//             $this.Config["ReadingCompanionMaxQueue"] = 50
+//         }
+//         if (-not $this.Config.ContainsKey("ReadingCompanionAutoDigest")) {
+//             $this.Config["ReadingCompanionAutoDigest"] = $true
+//         }
+//         if (-not $this.Config.ContainsKey("ReadingCompanionDigestDay")) {
+//             $this.Config["ReadingCompanionDigestDay"] = "Saturday"
+//         }
+//         if (-not $this.Config.ContainsKey("ReadingCompanionHighlightColor")) {
+//             $this.Config["ReadingCompanionHighlightColor"] = "#FFD700"
+//         }
+//         if (-not $this.Config.ContainsKey("ReadingCompanionShowStats")) {
+//             $this.Config["ReadingCompanionShowStats"] = $true
+//         }
+//
+//         $this.IsEnabled = $this.Config["ReadingCompanionEnabled"]
+//         $this.MaxQueueSize = $this.Config["ReadingCompanionMaxQueue"]
+//
+//         return $this.Config
+//     }
+//
+//     [void] LoadData() {
+//         if (Test-Path $this.DataFile) {
+//             try {
+//                 $data = Get-Content $this.DataFile -Raw | ConvertFrom-Json
+//                 $this.ReadingQueue = @()
+//                 $this.Highlights = @()
+//                 $this.Insights = @()
+//
+//                 if ($data.queue) {
+//                     foreach ($itemData in $data.queue) {
+//                         $item = [ReadingItem]::new($itemData.url, $itemData.title)
+//                         $item.Id = $itemData.id
+//                         $item.Description = $itemData.description
+//                         $item.Source = $itemData.source
+//                         $item.Status = [ReadingStatus][int]$itemData.status
+//                         $item.AddedAt = [datetime]$itemData.addedAt
+//                         if ($itemData.readAt) { $item.ReadAt = [datetime]$itemData.readAt }
+//                         $item.ReadCount = $itemData.readCount
+//                         $item.Tags = @($itemData.tags)
+//                         $item.Notes = $itemData.notes
+//                         $this.ReadingQueue += $item
+//                     }
+//                 }
+//
+//                 if ($data.highlights) {
+//                     foreach ($hData in $data.highlights) {
+//                         $h = [Highlight]::new($hData.itemId, $hData.text)
+//                         $h.Id = $hData.id
+//                         $h.Color = $hData.color
+//                         $h.CreatedAt = [datetime]$hData.createdAt
+//                         $h.Note = $hData.note
+//                         $this.Highlights += $h
+//                     }
+//                 }
+//
+//                 if ($data.insights) {
+//                     foreach ($iData in $data.insights) {
+//                         $i = [Insight]::new($iData.itemId, $iData.content)
+//                         $i.Id = $iData.id
+//                         $i.CreatedAt = [datetime]$iData.createdAt
+//                         $i.Category = $iData.category
+//                         $i.RelatedProject = $iData.relatedProject
+//                         $this.Insights += $i
+//                     }
+//                 }
+//             } catch {
+//                 Write-LogError -Message "Failed to load reading data: $_" -Source "ReadingCompanion"
+//             }
+//         }
+//     }
+//
+//     [void] SaveData() {
+//         $queueData = @()
+//         foreach ($item in $this.ReadingQueue) {
+//             $queueData += @{
+//                 id = $item.Id
+//                 url = $item.Url
+//                 title = $item.Title
+//                 description = $item.Description
+//                 source = $item.Source
+//                 status = [int]$item.Status
+//                 addedAt = $item.AddedAt.ToString("o")
+//                 readAt = if ($item.ReadAt) { $item.ReadAt.ToString("o") } else { $null }
+//                 readCount = $item.ReadCount
+//                 tags = $item.Tags
+//                 notes = $item.Notes
+//             }
+//         }
+//
+//         $highlightData = @()
+//         foreach ($h in $this.Highlights) {
+//             $highlightData += @{
+//                 id = $h.Id
+//                 itemId = $h.ItemId
+//                 text = $h.Text
+//                 color = $h.Color
+//                 createdAt = $h.CreatedAt.ToString("o")
+//                 note = $h.Note
+//             }
+//         }
+//
+//         $insightData = @()
+//         foreach ($i in $this.Insights) {
+//             $insightData += @{
+//                 id = $i.Id
+//                 itemId = $i.ItemId
+//                 content = $i.Content
+//                 createdAt = $i.CreatedAt.ToString("o")
+//                 category = $i.Category
+//                 relatedProject = $i.RelatedProject
+//             }
+//         }
+//
+//         $data = @{
+//             queue = $queueData
+//             highlights = $highlightData
+//             insights = $insightData
+//             lastSaved = (Get-Date).ToString("o")
+//         }
+//
+//         $data | ConvertTo-Json -Depth 10 | Set-Content $this.DataFile
+//         Write-LogInfo -Message "Saved reading data" -Source "ReadingCompanion"
+//     }
+//
+//     [hashtable] AddToQueue([string]$url, [string]$title = "", [string[]]$tags = @(), [string]$source = "") {
+//         if ([string]::IsNullOrWhiteSpace($url)) {
+//             return @{ success = $false; message = "URL cannot be empty" }
+//         }
+//
+//         $existing = $this.ReadingQueue | Where-Object { $_.Url -eq $url } | Select-Object -First 1
+//         if ($existing) {
+//             return @{
+//                 success = $false
+//                 message = "Already in queue"
+//                 itemId = $existing.Id
+//             }
+//         }
+//
+//         $item = [ReadingItem]::new($url, $title)
+//         $item.Tags = $tags
+//         $item.Source = $source
+//
+//         $this.ReadingQueue = @($item) + $this.ReadingQueue
+//
+//         if ($this.ReadingQueue.Count -gt $this.MaxQueueSize) {
+//             $this.ReadingQueue = $this.ReadingQueue | Select-Object -First $this.MaxQueueSize
+//         }
+//
+//         $this.SaveData()
+//
+//         Write-LogInfo -Message "Added to reading queue: $url" -Source "ReadingCompanion"
+//
+//         return @{
+//             success = $true
+//             message = "Added to reading queue"
+//             itemId = $item.Id
+//             title = $item.Title
+//         }
+//     }
+//
+//     [hashtable] RemoveFromQueue([string]$itemId) {
+//         $index = -1
+//         for ($i = 0; $i -lt $this.ReadingQueue.Count; $i++) {
+//             if ($this.ReadingQueue[$i].Id -eq $itemId) {
+//                 $index = $i
+//                 break
+//             }
+//         }
+//
+//         if ($index -ge 0) {
+//             $removed = $this.ReadingQueue[$index]
+//             $this.ReadingQueue = @($this.ReadingQueue[0..($index-1)] + $this.ReadingQueue[($index+1)..($this.ReadingQueue.Count-1)])
+//             $this.SaveData()
+//             return @{
+//                 success = $true
+//                 message = "Removed from queue"
+//                 title = $removed.Title
+//             }
+//         }
+//
+//         return @{ success = $false; message = "Item not found" }
+//     }
+//
+//     [hashtable] MarkAsRead([string]$itemId) {
+//         foreach ($item in $this.ReadingQueue) {
+//             if ($item.Id -eq $itemId) {
+//                 $item.Status = [ReadingStatus]::Completed
+//                 $item.ReadAt = Get-Date
+//                 $item.ReadCount++
+//                 $this.SaveData()
+//                 return @{
+//                     success = $true
+//                     message = "Marked as read"
+//                     title = $item.Title
+//                 }
+//             }
+//         }
+//         return @{ success = $false; message = "Item not found" }
+//     }
+//
+//     [hashtable] MarkAsInProgress([string]$itemId) {
+//         foreach ($item in $this.ReadingQueue) {
+//             if ($item.Id -eq $itemId) {
+//                 $item.Status = [ReadingStatus]::InProgress
+//                 $this.SaveData()
+//                 return @{ success = $true; message = "Marked as in progress" }
+//             }
+//         }
+//         return @{ success = $false; message = "Item not found" }
+//     }
+//
+//     [hashtable] UpdateStatus([string]$itemId, [ReadingStatus]$status) {
+//         foreach ($item in $this.ReadingQueue) {
+//             if ($item.Id -eq $itemId) {
+//                 $item.Status = $status
+//                 if ($status -eq [ReadingStatus]::Completed) {
+//                     $item.ReadAt = Get-Date
+//                     $item.ReadCount++
+//                 }
+//                 $this.SaveData()
+//                 return @{ success = $true; status = $status.ToString() }
+//             }
+//         }
+//         return @{ success = $false; message = "Item not found" }
+//     }
+//
+//     [hashtable] HighlightText([string]$itemId, [string]$text, [string]$color = "") {
+//         $item = $this.ReadingQueue | Where-Object { $_.Id -eq $itemId } | Select-Object -First 1
+//         if (-not $item) {
+//             return @{ success = $false; message = "Item not found" }
+//         }
+//
+//         $highlight = [Highlight]::new($itemId, $text)
+//         if (-not [string]::IsNullOrEmpty($color)) {
+//             $highlight.Color = $color
+//         } else {
+//             $highlight.Color = $this.Config["ReadingCompanionHighlightColor"]
+//         }
+//
+//         $this.Highlights += $highlight
+//         $this.SaveData()
+//
+//         Write-LogInfo -Message "Added highlight to: $($item.Title)" -Source "ReadingCompanion"
+//
+//         return @{
+//             success = $true
+//             highlightId = $highlight.Id
+//             text = $text
+//         }
+//     }
+//
+//     [hashtable] AddInsight([string]$itemId, [string]$content, [string]$category = "General", [string]$relatedProject = "") {
+//         $item = $this.ReadingQueue | Where-Object { $_.Id -eq $itemId } | Select-Object -First 1
+//         if (-not $item) {
+//             return @{ success = $false; message = "Item not found" }
+//         }
+//
+//         $insight = [Insight]::new($itemId, $content)
+//         $insight.Category = $category
+//         $insight.RelatedProject = $relatedProject
+//
+//         $this.Insights += $insight
+//         $this.SaveData()
+//
+//         Write-LogInfo -Message "Added insight to: $($item.Title)" -Source "ReadingCompanion"
+//
+//         return @{
+//             success = $true
+//             insightId = $insight.Id
+//             content = $content
+//         }
+//     }
+//
+//     [array] GetQueue([ReadingStatus]$status = $null, [string]$tag = "") {
+//         $queue = $this.ReadingQueue
+//
+//         if ($null -ne $status) {
+//             $queue = $queue | Where-Object { $_.Status -eq $status }
+//         }
+//
+//         if (-not [string]::IsNullOrEmpty($tag)) {
+//             $queue = $queue | Where-Object { $_.Tags -contains $tag }
+//         }
+//
+//         return $queue
+//     }
+//
+//     [array] GetUnreadQueue() {
+//         return @($this.ReadingQueue | Where-Object { $_.Status -eq [ReadingStatus]::Unread -or $_.Status -eq [ReadingStatus]::InProgress })
+//     }
+//
+//     [array] GetHighlights([string]$itemId = "") {
+//         if ([string]::IsNullOrEmpty($itemId)) {
+//             return $this.Highlights
+//         }
+//         return @($this.Highlights | Where-Object { $_.ItemId -eq $itemId })
+//     }
+//
+//     [array] GetInsights([string]$itemId = "", [string]$category = "") {
+//         $insights = $this.Insights
+//
+//         if (-not [string]::IsNullOrEmpty($itemId)) {
+//             $insights = $insights | Where-Object { $_.ItemId -eq $itemId }
+//         }
+//
+//         if (-not [string]::IsNullOrEmpty($category)) {
+//             $insights = $insights | Where-Object { $_.Category -eq $category }
+//         }
+//
+//         return $insights
+//     }
+//
+//     [hashtable] GetBreakPrompt() {
+//         $unread = $this.GetUnreadQueue()
+//
+//         if ($unread.Count -lt $this.Config["ReadingCompanionBreakMinArticles"]) {
+//             return @{
+//                 shouldRemind = $false
+//                 message = ""
+//             }
+//         }
+//
+//         $randomItems = $unread | Get-Random -Count [Math]::Min(3, $unread.Count)
+//
+//         return @{
+//             shouldRemind = $true
+//             message = "You have $($unread.Count) articles waiting! Here's a few to check out:"
+//             items = $randomItems | ForEach-Object {
+//                 @{
+//                     id = $_.Id
+//                     title = $_.Title
+//                     url = $_.Url
+//                 }
+//             }
+//         }
+//     }
+//
+//     [hashtable] GetWeeklyDigest() {
+//         $weekStart = (Get-Date).AddDays(-7)
+//         $weekItems = $this.ReadingQueue | Where-Object { $_.AddedAt -gt $weekStart }
+//         $weekHighlights = $this.Highlights | Where-Object { $_.CreatedAt -gt $weekStart }
+//         $weekInsights = $this.Insights | Where-Object { $_.CreatedAt -gt $weekStart }
+//
+//         $byStatus = @{}
+//         foreach ($status in [ReadingStatus].GetEnumValues()) {
+//             $count = ($weekItems | Where-Object { $_.Status -eq $status }).Count
+//             if ($count -gt 0) {
+//                 $byStatus[$status.ToString()] = $count
+//             }
+//         }
+//
+//         $tags = @{}
+//         foreach ($item in $weekItems) {
+//             foreach ($tag in $item.Tags) {
+//                 if (-not $tags.ContainsKey($tag)) { $tags[$tag] = 0 }
+//                 $tags[$tag]++
+//             }
+//         }
+//
+//         return @{
+//             weekStart = $weekStart.ToString("yyyy-MM-dd")
+//             weekEnd = (Get-Date).ToString("yyyy-MM-dd")
+//             articlesAdded = $weekItems.Count
+//             articlesCompleted = $byStatus["Completed"]
+//             highlights = $weekHighlights.Count
+//             insights = $weekInsights.Count
+//             byStatus = $byStatus
+//             topTags = $tags
+//             recentItems = $weekItems | Sort-Object AddedAt -Descending | Select-Object -First 5
+//         }
+//     }
+//
+//     [array] GetAllTags() {
+//         $tags = @{}
+//         foreach ($item in $this.ReadingQueue) {
+//             foreach ($tag in $item.Tags) {
+//                 if (-not $tags.ContainsKey($tag)) { $tags[$tag] = 0 }
+//                 $tags[$tag]++
+//             }
+//         }
+//         return ($tags.GetEnumerator() | Sort-Object Value -Descending | Select-Object -First 20).Name
+//     }
+//
+//     [hashtable] GetStats() {
+//         $unread = @($this.ReadingQueue | Where-Object { $_.Status -eq [ReadingStatus]::Unread }).Count
+//         $inProgress = @($this.ReadingQueue | Where-Object { $_.Status -eq [ReadingStatus]::InProgress }).Count
+//         $completed = @($this.ReadingQueue | Where-Object { $_.Status -eq [ReadingStatus]::Completed }).Count
+//
+//         return @{
+//             totalItems = $this.ReadingQueue.Count
+//             unread = $unread
+//             inProgress = $inProgress
+//             completed = $completed
+//             highlights = $this.Highlights.Count
+//             insights = $this.Insights.Count
+//             tags = $this.GetAllTags()
+//         }
+//     }
+// }
+//
+// $gooseReadingCompanion = [GooseReadingCompanion]::new()
+//
+// function Get-ReadingCompanion {
+//     return $gooseReadingCompanion
+// }
+//
+// function Add-ToReadingQueue {
+//     param(
+//         [Parameter(Mandatory=$true)]
+//         [string]$Url,
+//         [string]$Title = "",
+//         [string[]]$Tags = @(),
+//         [string]$Source = ""
+//     )
+//     return $gooseReadingCompanion.AddToQueue($Url, $Title, $Tags, $Source)
+// }
+//
+// function Remove-FromReadingQueue {
+//     param(
+//         [Parameter(Mandatory=$true)]
+//         [string]$ItemId
+//     )
+//     return $gooseReadingCompanion.RemoveFromQueue($ItemId)
+// }
+//
+// function Set-ReadingItemStatus {
+//     param(
+//         [Parameter(Mandatory=$true)]
+//         [string]$ItemId,
+//         [ValidateSet("Unread", "InProgress", "Completed", "Archived")]
+//         [string]$Status
+//     )
+//     return $gooseReadingCompanion.UpdateStatus($ItemId, [ReadingStatus]$Status)
+// }
+//
+// function Mark-ArticleAsRead {
+//     param(
+//         [Parameter(Mandatory=$true)]
+//         [string]$ItemId
+//     )
+//     return $gooseReadingCompanion.MarkAsRead($ItemId)
+// }
+//
+// function Add-Highlight {
+//     param(
+//         [Parameter(Mandatory=$true)]
+//         [string]$ItemId,
+//         [Parameter(Mandatory=$true)]
+//         [string]$Text,
+//         [string]$Color = ""
+//     )
+//     return $gooseReadingCompanion.HighlightText($ItemId, $Text, $Color)
+// }
+//
+// function Add-ReadingInsight {
+//     param(
+//         [Parameter(Mandatory=$true)]
+//         [string]$ItemId,
+//         [Parameter(Mandatory=$true)]
+//         [string]$Content,
+//         [string]$Category = "General",
+//         [string]$RelatedProject = ""
+//     )
+//     return $gooseReadingCompanion.AddInsight($ItemId, $Content, $Category, $RelatedProject)
+// }
+//
+// function Get-ReadingQueue {
+//     param(
+//         [string]$Status = "",
+//         [string]$Tag = ""
+//     )
+//     if (-not [string]::IsNullOrEmpty($Status)) {
+//         return $gooseReadingCompanion.GetQueue([ReadingStatus]$Status, $Tag)
+//     }
+//     return $gooseReadingCompanion.GetQueue($null, $Tag)
+// }
+//
+// function Get-UnreadArticles {
+//     return $gooseReadingCompanion.GetUnreadQueue()
+// }
+//
+// function Get-ReadingHighlights {
+//     param([string]$ItemId = "")
+//     return $gooseReadingCompanion.GetHighlights($ItemId)
+// }
+//
+// function Get-ReadingInsights {
+//     param(
+//         [string]$ItemId = "",
+//         [string]$Category = ""
+//     )
+//     return $gooseReadingCompanion.GetInsights($ItemId, $Category)
+// }
+//
+// function Get-ReadingBreakPrompt {
+//     return $gooseReadingCompanion.GetBreakPrompt()
+// }
+//
+// function Get-WeeklyReadingDigest {
+//     return $gooseReadingCompanion.GetWeeklyDigest()
+// }
+//
+// function Get-ReadingTags {
+//     return $gooseReadingCompanion.GetAllTags()
+// }
+//
+// function Get-ReadingStats {
+//     return $gooseReadingCompanion.GetStats()
+// }
+//
+// Write-LogInfo -Message "Goose Reading Companion Initialized" -Source "ReadingCompanion"
+// Write-Host "Goose Reading Companion Loaded - Enabled: $($gooseReadingCompanion.IsEnabled)"
+//

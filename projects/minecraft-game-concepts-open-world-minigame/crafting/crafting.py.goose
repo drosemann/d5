@@ -1,0 +1,89 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-open-world-minigame/crafting/crafting.py
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-open-world-minigame/crafting/crafting.py");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-open-world-minigame/crafting/crafting.py), unveraendert, als Inline-Doku ----
+// class CraftingRecipe:
+//     def __init__(self, name, ingredients, result):
+//         # Initialize the crafting recipe with a name, required ingredients, and the result
+//         self.name = name
+//         self.ingredients = ingredients  # Dictionary of ingredient names and their required quantities
+//         self.result = result  # The item produced by crafting
+//
+// class CraftingSystem:
+//     def __init__(self):
+//         # Initialize the crafting system with an empty list of recipes
+//         self.recipes = []
+//
+//     def add_recipe(self, recipe):
+//         # Add a new crafting recipe to the system
+//         self.recipes.append(recipe)
+//
+//     def craft(self, inventory, recipe_name):
+//         # Attempt to craft an item based on the provided recipe name
+//         for recipe in self.recipes:
+//             if recipe.name == recipe_name:
+//                 # Check if the player has the required ingredients
+//                 if self.can_craft(inventory, recipe):
+//                     # Deduct the ingredients from the inventory
+//                     for ingredient, quantity in recipe.ingredients.items():
+//                         inventory.remove_item(ingredient, quantity)
+//                     # Add the crafted item to the inventory
+//                     inventory.add_item(recipe.result)
+//                     print(f"Crafted {recipe.result}!")
+//                     return True
+//                 else:
+//                     print("Not enough ingredients to craft this item.")
+//                     return False
+//         print("Recipe not found.")
+//         return False
+//
+//     def can_craft(self, inventory, recipe):
+//         # Check if the inventory has enough ingredients for the recipe
+//         for ingredient, quantity in recipe.ingredients.items():
+//             if inventory.get_items().get(ingredient, 0) < quantity:
+//                 return False
+//         return True
+//
+// # Example usage
+// if __name__ == "__main__":
+//     class Inventory:
+//         def __init__(self):
+//             self.items = {}
+//
+//         def add_item(self, item, quantity=1):
+//             if item in self.items:
+//                 self.items[item] += quantity
+//             else:
+//                 self.items[item] = quantity
+//
+//         def remove_item(self, item, quantity=1):
+//             if item in self.items:
+//                 if self.items[item] > quantity:
+//                     self.items[item] -= quantity
+//                 elif self.items[item] == quantity:
+//                     del self.items[item]
+//
+//         def get_items(self):
+//             return self.items
+//
+//     # Create an inventory and add some items
+//     inventory = Inventory()
+//     inventory.add_item("Wood", 5)
+//     inventory.add_item("Stone", 3)
+//
+//     # Create a crafting system and add recipes
+//     crafting_system = CraftingSystem()
+//     crafting_system.add_recipe(CraftingRecipe("Wooden Sword", {"Wood": 2, "Stone": 1}, "Wooden Sword"))
+//     crafting_system.add_recipe(CraftingRecipe("Stone Axe", {"Wood": 3, "Stone": 2}, "Stone Axe"))
+//
+//     # Attempt to craft items
+//     crafting_system.craft(inventory, "Wooden Sword")
+//     crafting_system.craft(inventory, "Stone Axe")
+//
+//     # Check inventory after crafting
+//     print("Current Inventory:", inventory.get_items()) 

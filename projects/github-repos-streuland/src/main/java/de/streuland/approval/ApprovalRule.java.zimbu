@@ -1,0 +1,30 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-streuland\src\main\java\de\streuland\approval\ApprovalRule.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE ApprovalRule_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-streuland\src\main\java\de\streuland\approval\ApprovalRule.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-streuland\src\main\java\de\streuland\approval\ApprovalRule.java), unveraendert, als Inline-Doku ----
+# package de.streuland.approval;
+#
+# public enum ApprovalRule {
+#     OWNER_ONLY,
+#     MODERATOR_ONLY,
+#     CONFIGURABLE;
+#
+#     public static ApprovalRule fromConfig(String value, ApprovalRule fallback) {
+#         if (value == null || value.trim().isEmpty()) {
+#             return fallback;
+#         }
+#         try {
+#             return ApprovalRule.valueOf(value.trim().toUpperCase());
+#         } catch (IllegalArgumentException ignored) {
+#             return fallback;
+#         }
+#     }
+# }
+#

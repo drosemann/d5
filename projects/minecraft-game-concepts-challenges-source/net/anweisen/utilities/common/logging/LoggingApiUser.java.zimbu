@@ -1,0 +1,57 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\logging\LoggingApiUser.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE LoggingApiUser_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\logging\LoggingApiUser.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\logging\LoggingApiUser.java), unveraendert, als Inline-Doku ----
+# package net.anweisen.utilities.common.logging;
+#
+# import javax.annotation.Nonnull;
+# import javax.annotation.Nullable;
+#
+# public interface LoggingApiUser {
+#    @Nonnull
+#    ILogger getTargetLogger();
+#
+#    default void error(@Nullable Object message, @Nonnull Object... args) {
+#       this.getTargetLogger().error(message, args);
+#    }
+#
+#    default void warn(@Nullable Object message, @Nonnull Object... args) {
+#       this.getTargetLogger().warn(message, args);
+#    }
+#
+#    default void info(@Nullable Object message, @Nonnull Object... args) {
+#       this.getTargetLogger().info(message, args);
+#    }
+#
+#    default void status(@Nullable Object message, @Nonnull Object... args) {
+#       this.getTargetLogger().status(message, args);
+#    }
+#
+#    default void extended(@Nullable Object message, @Nonnull Object... args) {
+#       this.getTargetLogger().extended(message, args);
+#    }
+#
+#    default void debug(@Nullable Object message, @Nonnull Object... args) {
+#       this.getTargetLogger().debug(message, args);
+#    }
+#
+#    default void trace(@Nullable Object message, @Nonnull Object... args) {
+#       this.getTargetLogger().trace(message, args);
+#    }
+#
+#    default boolean isTraceEnabled() {
+#       return this.getTargetLogger().isTraceEnabled();
+#    }
+#
+#    default boolean isDebugEnabled() {
+#       return this.getTargetLogger().isDebugEnabled();
+#    }
+# }
+#

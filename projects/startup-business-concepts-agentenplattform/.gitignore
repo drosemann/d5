@@ -1,0 +1,9 @@
+.env
+__pycache__/
+node_modules/
+dist/
+*.pyc
+uploads/
+backups/
+postgres-data/
+redis-data/

@@ -1,0 +1,33 @@
+﻿// Goose-Port-Spiegel von: projects/startup-business-concepts-video-platform/templates/video.html
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/startup-business-concepts-video-platform/templates/video.html");
+}
+
+// ---- Original-Code (projects/startup-business-concepts-video-platform/templates/video.html), unveraendert, als Inline-Doku ----
+// {% extends "base.html" %}
+//
+// {% block title %}{{ video.title }}{% endblock %}
+//
+// {% block content %}
+// <div class="row mt-4">
+//     <div class="col-md-8 offset-md-2">
+//         <div class="card">
+//             <video class="card-img-top" controls>
+//                 <source src="{{ url_for('static', filename='uploads/' + video.filename) }}" type="video/mp4">
+//                 Your browser does not support the video tag.
+//             </video>
+//             <div class="card-body">
+//                 <h2 class="card-title">{{ video.title }}</h2>
+//                 <p class="card-text">{{ video.description }}</p>
+//                 <div class="mt-3">
+//                     <small class="text-muted">Uploaded by: {{ video.author.username }}</small>
+//                 </div>
+//             </div>
+//         </div>
+//     </div>
+// </div>
+// {% endblock %}
+//

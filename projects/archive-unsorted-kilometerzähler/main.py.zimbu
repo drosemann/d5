@@ -1,0 +1,18 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-kilometerzähler\main.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE main_py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-kilometerzähler\main.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-kilometerzähler\main.py), unveraendert, als Inline-Doku ----
+# km_stand_vorher = float(input("Geben Sie den Kilometerstand beim vorherigen Tanken ein: "))
+# km_stand_jetzt = float(input("Geben Sie den Kilometerstand beim jetzigen Tanken ein: "))
+#
+# tankmenge_liter = float(input("Geben Sie die getankte Menge in Litern ein: "))  
+# verbrauch = (tankmenge_liter / (km_stand_jetzt - km_stand_vorher)) * 100
+#
+# print(f"Der durchschnittliche Verbrauch beträgt {verbrauch:.2f} Liter pro 100 Kilometer.")

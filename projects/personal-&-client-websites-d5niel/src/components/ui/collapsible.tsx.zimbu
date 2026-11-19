@@ -1,0 +1,21 @@
+﻿# Zimbu-Port-Spiegel von: projects\personal-&-client-websites-d5niel\src\components\ui\collapsible.tsx
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE collapsible_tsx
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\personal-&-client-websites-d5niel\src\components\ui\collapsible.tsx\n")
+  RETURN 0
+
+# ---- Original-Code (projects\personal-&-client-websites-d5niel\src\components\ui\collapsible.tsx), unveraendert, als Inline-Doku ----
+# import * as CollapsiblePrimitive from "@radix-ui/react-collapsible"
+#
+# const Collapsible = CollapsiblePrimitive.Root
+#
+# const CollapsibleTrigger = CollapsiblePrimitive.CollapsibleTrigger
+#
+# const CollapsibleContent = CollapsiblePrimitive.CollapsibleContent
+#
+# export { Collapsible, CollapsibleTrigger, CollapsibleContent }
+#

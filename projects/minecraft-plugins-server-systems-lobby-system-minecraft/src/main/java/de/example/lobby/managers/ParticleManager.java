@@ -1,0 +1,32 @@
+package de.example.lobby.managers;
+
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Particle;
+import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitTask;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+public class ParticleManager {
+    private final LobbyPlugin plugin;
+    private final Map<UUID, BukkitTask> activeEffects = new HashMap<>();
+    
+    public void addPlayerEffect(Player player, Particle particle) {
+        BukkitTask task = Bukkit.getScheduler().runTaskTimer(plugin, () -> {
+            Location loc = player.getLocation();
+            player.getWorld().spawnParticle(particle, loc, 10, 0.5, 0.5, 0.5, 0);
+        }, 0L, 5L);
+        
+        activeEffects.put(player.getUniqueId(), task);
+    }
+    
+    public void removePlayerEffect(Player player) {
+        BukkitTask task = activeEffects.remove(player.getUniqueId());
+        if (task != null) {
+            task.cancel();
+        }
+    }
+} 

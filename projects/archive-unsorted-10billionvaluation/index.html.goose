@@ -1,0 +1,40 @@
+﻿// Goose-Port-Spiegel von: projects/archive-unsorted-10billionvaluation/index.html
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/archive-unsorted-10billionvaluation/index.html");
+}
+
+// ---- Original-Code (projects/archive-unsorted-10billionvaluation/index.html), unveraendert, als Inline-Doku ----
+// <!DOCTYPE html>
+// <html lang="en">
+// <head>
+//     <meta charset="UTF-8">
+//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//     <title>OS Picker for Developers</title>
+//     <link rel="stylesheet" href="styles.css">
+// </head>
+// <body>
+//     <div class="container">
+//         <h1>Find Your Perfect Developer OS</h1>
+//         
+//         <div id="quiz-container">
+//             <div class="question" id="current-question">
+//                 <h2>Question 1</h2>
+//                 <p id="question-text"></p>
+//                 <div id="options-container"></div>
+//             </div>
+//             
+//             <button id="next-btn">Next</button>
+//         </div>
+//
+//         <div id="result-container" style="display: none;">
+//             <h2>Your Recommended OS</h2>
+//             <div id="recommendation"></div>
+//             <div id="explanation"></div>
+//         </div>
+//     </div>
+//     <script src="script.js"></script>
+// </body>
+// </html> 

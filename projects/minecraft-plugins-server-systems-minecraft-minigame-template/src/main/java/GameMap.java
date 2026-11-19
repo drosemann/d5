@@ -1,0 +1,39 @@
+package com.example.minigame;
+
+import org.bukkit.Location;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class GameMap {
+    private final String name;
+    private final List<Location> spawnPoints;
+    private boolean isFinished;
+
+    public GameMap(String name) {
+        this.name = name;
+        this.spawnPoints = new ArrayList<>();
+        this.isFinished = false;
+    }
+
+    public void addSpawnPoint(Location location) {
+        spawnPoints.add(location);
+    }
+
+    public Location getSpawnPoint() {
+        // Return the first spawn point or a default location if none exist
+        return spawnPoints.isEmpty() ? null : spawnPoints.get(0);
+    }
+
+    public void setFinished(boolean finished) {
+        isFinished = finished;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isFinished() {
+        return isFinished;
+    }
+} 

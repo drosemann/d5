@@ -1,0 +1,62 @@
+﻿// Goose-Port-Spiegel von: projects/productivity-&-sharing-apps-link-shortener/src/URLShortener.php
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/productivity-&-sharing-apps-link-shortener/src/URLShortener.php");
+}
+
+// ---- Original-Code (projects/productivity-&-sharing-apps-link-shortener/src/URLShortener.php), unveraendert, als Inline-Doku ----
+// <?php
+// namespace Shortify;
+//
+// class URLShortener {
+//     private $pdo;
+//
+//     public function __construct(\PDO $pdo) {
+//         $this->pdo = $pdo;
+//     }
+//
+//     public function shorten(string $url): string {
+//         // Generate a unique short code
+//         $code = $this->generateUniqueCode();
+//         
+//         $stmt = $this->pdo->prepare('INSERT INTO urls (original_url, short_code) VALUES (?, ?)');
+//         $stmt->execute([$url, $code]);
+//         
+//         return $code;
+//     }
+//
+//     public function getOriginalUrl(string $code): ?string {
+//         $stmt = $this->pdo->prepare('SELECT original_url FROM urls WHERE short_code = ?');
+//         $stmt->execute([$code]);
+//         
+//         if ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+//             // Increment visit counter
+//             $this->incrementVisits($code);
+//             return $row['original_url'];
+//         }
+//         
+//         return null;
+//     }
+//
+//     private function generateUniqueCode(int $length = 6): string {
+//         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+//         do {
+//             $code = '';
+//             for ($i = 0; $i < $length; $i++) {
+//                 $code .= $characters[rand(0, strlen($characters) - 1)];
+//             }
+//             
+//             $stmt = $this->pdo->prepare('SELECT id FROM urls WHERE short_code = ?');
+//             $stmt->execute([$code]);
+//         } while ($stmt->fetch());
+//         
+//         return $code;
+//     }
+//
+//     private function incrementVisits(string $code): void {
+//         $stmt = $this->pdo->prepare('UPDATE urls SET visits = visits + 1 WHERE short_code = ?');
+//         $stmt->execute([$code]);
+//     }
+// }

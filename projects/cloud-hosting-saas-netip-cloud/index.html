@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrashHosting - Digital Magazine</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #000; color: #fff; }
+        .gradient-text { background: linear-gradient(135deg, #fff 0%, #a1a1aa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .kinetic-title { font-size: clamp(2.5rem, 8vw, 6rem); font-weight: 900; line-height: 0.9; letter-spacing: -0.02em; }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <section class="min-h-screen flex items-center justify-center">
+        <div class="text-center px-4">
+            <h1 class="kinetic-title gradient-text mb-6">CRASHHOSTING</h1>
+            <p class="text-xl text-gray-300 mb-8">Das digitale Magazin für Tech-Enthusiasten</p>
+            <div id="articlesContainer">
+                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-white mx-auto"></div>
+                <p class="mt-2 text-gray-400">Lade Artikel...</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        async function loadArticles() {
+            try {
+                const response = await fetch('/api/articles');
+                const data = await response.json();
+                if (data.success) renderArticles(data.data);
+                else document.getElementById('articlesContainer').innerHTML = '<p class="text-red-400">Fehler beim Laden</p>';
+            } catch (error) {
+                document.getElementById('articlesContainer').innerHTML = '<p class="text-red-400">Netzwerkfehler</p>';
+            }
+        }
+
+        function renderArticles(articles) {
+            const container = document.getElementById('articlesContainer');
+            let html = '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">';
+
+            articles.forEach(article => {
+                html += `
+                    <div class="bg-gray-900 rounded-lg p-6 hover:bg-gray-800 transition-colors">
+                        <h3 class="text-xl font-bold mb-2">${article.title}</h3>
+                        <p class="text-gray-400 mb-4">${article.excerpt}</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">${article.author} • ${article.readTime}</span>
+                            <button onclick="readArticle('${article.slug}')" class="text-white hover:text-gray-300">
+                                <i data-feather="arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += '</div>';
+            container.innerHTML = html;
+            feather.replace();
+        }
+
+        function readArticle(slug) {
+            alert(`Artikel "${slug}" würde hier geöffnet werden`);
+        }
+
+        document.addEventListener('DOMContentLoaded', loadArticles);
+    </script>
+</body>
+</html>

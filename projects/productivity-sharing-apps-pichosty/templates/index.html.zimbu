@@ -1,0 +1,48 @@
+﻿# Zimbu-Port-Spiegel von: projects\productivity-sharing-apps-pichosty\templates\index.html
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE index_html
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\productivity-sharing-apps-pichosty\templates\index.html\n")
+  RETURN 0
+
+# ---- Original-Code (projects\productivity-sharing-apps-pichosty\templates\index.html), unveraendert, als Inline-Doku ----
+# {% extends "base.html" %}
+#
+# {% block content %}
+# <div class="text-center">
+#     <h1 class="mb-4">Willkommen bei PicHosty</h1>
+#     <p class="lead">Einfaches Hosting und Teilen von Bildern</p>
+#     
+#     {% if not current_user.is_authenticated %}
+#     <div class="row mt-5">
+#         <div class="col-md-6 offset-md-3">
+#             <div class="card">
+#                 <div class="card-body">
+#                     <h5 class="card-title">Jetzt kostenlos starten</h5>
+#                     <p>Registrieren Sie sich, um Ihre Bilder zu hosten und zu teilen.</p>
+#                     <a href="/register" class="btn btn-primary">Registrieren</a>
+#                     <a href="/login" class="btn btn-outline-secondary ms-2">Anmelden</a>
+#                 </div>
+#             </div>
+#         </div>
+#     </div>
+#     {% else %}
+#     <div class="row mt-5">
+#         <div class="col-md-6 offset-md-3">
+#             <div class="card">
+#                 <div class="card-body">
+#                     <h5 class="card-title">Willkommen zurück, {{ current_user.username }}!</h5>
+#                     <p>Möchten Sie ein Bild hochladen?</p>
+#                     <a href="/upload" class="btn btn-primary">Bild Hochladen</a>
+#                     <a href="/gallery" class="btn btn-outline-secondary ms-2">Meine Galerie</a>
+#                 </div>
+#             </div>
+#         </div>
+#     </div>
+#     {% endif %}
+# </div>
+# {% endblock %}
+#

@@ -1,0 +1,69 @@
+package com.questsystem.plugin;
+
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
+import org.bukkit.entity.Player;
+import java.util.List;
+
+public class QuestCommand implements CommandExecutor, TabCompleter {
+    private final QuestSystemPlugin plugin;
+
+    public QuestCommand(QuestSystemPlugin plugin) {
+        this.plugin = plugin;
+    }
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!(sender instanceof Player)) {
+            sender.sendMessage("Only players can use this command!");
+            return true;
+        }
+
+        Player player = (Player) sender;
+        if (args.length == 0) {
+            // Show help menu
+            player.sendMessage("§6Quest System Commands:");
+            player.sendMessage("§7/quest start <questId> - Start a quest");
+            player.sendMessage("§7/quest list - List your active quests");
+            player.sendMessage("§7/quest complete <questId> - Complete a quest");
+            return true;
+        }
+
+        switch (args[0].toLowerCase()) {
+            case "start":
+                if (args.length < 2) {
+                    player.sendMessage("§cPlease specify a quest ID.");
+                    return false;
+                }
+                plugin.getQuestManager().startQuest(player, args[1]);
+                player.sendMessage("§aQuest started: " + args[1]);
+                break;
+            case "list":
+                List<ActiveQuest> activeQuests = plugin.getQuestManager().getActiveQuests(player);
+                if (activeQuests.isEmpty()) {
+                    player.sendMessage("§7Active Quests: None");
+                } else {
+                    player.sendMessage("§7Active Quests:");
+                    for (ActiveQuest quest : activeQuests) {
+                        player.sendMessage("§a- " + quest.getQuest().getName()); // Assuming ActiveQuest has a method to get the Quest
+                    }
+                }
+                break;
+            case "complete":
+                // Handle quest completion
+                break;
+            default:
+                player.sendMessage("§cUnknown command. Use /quest for help.");
+                break;
+        }
+        return true;
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+        // Implement tab completion logic here
+        return null; // Return a list of suggestions or null
+    }
+}

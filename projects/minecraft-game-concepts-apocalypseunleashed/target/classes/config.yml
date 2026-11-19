@@ -1,0 +1,84 @@
+# Apocalypse Unleashed Configuration
+# Unleash catastrophic disasters and chaos upon your world
+
+# General Settings
+plugin:
+  enabled: true
+  debug: false
+  
+# Disaster Settings
+disasters:
+  enabled: true
+  natural_spawning: true
+  max_active_disasters: 3
+  
+  # Individual disaster settings
+  meteor:
+    enabled: true
+    damage: 20
+    crater_size: 5
+    natural_chance: 0.001
+    
+  earthquake:
+    enabled: true
+    duration: 100
+    shake_intensity: 2
+    natural_chance: 0.0005
+    
+  sinkhole:
+    enabled: true
+    radius: 15
+    depth: 20
+    
+  volcano:
+    enabled: true
+    height: 25
+    lava_ball_count: 10
+    
+  wildfire:
+    enabled: true
+    spread_radius: 20
+    duration: 300
+    
+  blackhole:
+    enabled: true
+    max_radius: 10
+    expansion_rate: 1
+    
+  timephoon:
+    enabled: true
+    duration: 200
+    min_multiplier: 0.5
+    max_multiplier: 10.0
+    
+  toxic_gas:
+    enabled: true
+    radius: 15
+    duration: 1200
+    damage_per_tick: 1
+
+# Apocalyptic Items
+items:
+  bred:
+    damage: 9999
+    saturation: 20
+    
+  apple_of_wisdom:
+    death_chance: 0.5
+    
+# NPCs
+npcs:
+  enabled: true
+  spawn_naturally: false
+  
+  technoblade:
+    health: 400
+    invincible_health: 20
+    boss_music: true
+    
+# Messages
+messages:
+  prefix: "&8[&4Apocalypse &cUnleashed&8] "
+  no_permission: "&cYou lack the power to unleash this chaos!"
+  disaster_spawned: "&4Apocalypse &e{type} &4unleashed at your location!"
+  item_given: "&cYou obtained &e{item}&c from the apocalypse!"

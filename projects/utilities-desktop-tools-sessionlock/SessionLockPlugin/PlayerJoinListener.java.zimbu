@@ -1,0 +1,12 @@
+﻿# Zimbu-Port-Spiegel von: projects\utilities-desktop-tools-sessionlock\SessionLockPlugin\PlayerJoinListener.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE PlayerJoinListener_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\utilities-desktop-tools-sessionlock\SessionLockPlugin\PlayerJoinListener.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\utilities-desktop-tools-sessionlock\SessionLockPlugin\PlayerJoinListener.java), unveraendert, als Inline-Doku ----
+

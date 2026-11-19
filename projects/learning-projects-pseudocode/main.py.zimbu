@@ -1,0 +1,25 @@
+﻿# Zimbu-Port-Spiegel von: projects\learning-projects-pseudocode\main.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE main_py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\learning-projects-pseudocode\main.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\learning-projects-pseudocode\main.py), unveraendert, als Inline-Doku ----
+# def berechne_aktien(betriebszugehoerigkeit, tarifstatus, beschaeftigungsstatus):
+#     if beschaeftigungsstatus == "gekündigt" or tarifstatus == "außertariflich":
+#         return 0
+#     elif betriebszugehoerigkeit > 10:
+#         return 50
+#     elif betriebszugehoerigkeit > 2:
+#         return 20
+#     else:
+#         return 0
+# betriebszugehoerigkeit = int(input("Geben Sie die Betriebszugehörigkeit in Jahren ein: "))
+# tarifstatus = input("Geben Sie den Tarifstatus ein (tariflich/außertariflich): ").strip().lower()
+# beschaeftigungsstatus = input("Geben Sie den Beschäftigungsstatus ein (aktiv/gekündigt): ").strip().lower()
+# aktien = berechne_aktien(betriebszugehoerigkeit, tarifstatus, beschaeftigungsstatus)
+# print(f"Der Mitarbeiter kann {aktien} Aktien erwerben.")

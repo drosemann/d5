@@ -1,0 +1,45 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-plugins-&-server-systems-bedwars\src\main\java\org\bedwars\bedwarsproject\stats\PlayerStats.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE PlayerStats_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-plugins-&-server-systems-bedwars\src\main\java\org\bedwars\bedwarsproject\stats\PlayerStats.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-plugins-&-server-systems-bedwars\src\main\java\org\bedwars\bedwarsproject\stats\PlayerStats.java), unveraendert, als Inline-Doku ----
+# package org.bedwars.bedwarsproject;
+#
+# import java.util.HashMap;
+# import java.util.Map;
+#
+# public class PlayerStats {
+#     private final Map<String, Integer> wins = new HashMap<>();
+#     private final Map<String, Integer> losses = new HashMap<>();
+#     private final Map<String, Integer> kills = new HashMap<>();
+#
+#     public void addWin(String playerName) {
+#         wins.put(playerName, wins.getOrDefault(playerName, 0) + 1);
+#     }
+#
+#     public void addLoss(String playerName) {
+#         losses.put(playerName, losses.getOrDefault(playerName, 0) + 1);
+#     }
+#
+#     public void addKill(String playerName) {
+#         kills.put(playerName, kills.getOrDefault(playerName, 0) + 1);
+#     }
+#
+#     public int getWins(String playerName) {
+#         return wins.getOrDefault(playerName, 0);
+#     }
+#
+#     public int getLosses(String playerName) {
+#         return losses.getOrDefault(playerName, 0);
+#     }
+#
+#     public int getKills(String playerName) {
+#         return kills.getOrDefault(playerName, 0);
+#     }
+# } 

@@ -1,0 +1,104 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-plugins-server-systems-minecraft-anticheat\jinky\checks\movement\SmartSpeedCheck.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE SmartSpeedCheck_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-plugins-server-systems-minecraft-anticheat\jinky\checks\movement\SmartSpeedCheck.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-plugins-server-systems-minecraft-anticheat\jinky\checks\movement\SmartSpeedCheck.java), unveraendert, als Inline-Doku ----
+# package me.jinky.checks.movement;
+#
+# import me.jinky.BAC;
+# import me.jinky.checks.Check;
+# import me.jinky.checks.CheckResult;
+# import me.jinky.logger.User;
+# import me.jinky.util.JVelocity;
+# import me.jinky.util.UtilBlock;
+# import me.jinky.util.VersionUtil;
+# import org.bukkit.GameMode;
+# import org.bukkit.Material;
+# import org.bukkit.block.BlockFace;
+# import org.bukkit.entity.Player;
+# import org.bukkit.event.Event;
+# import org.bukkit.event.player.PlayerMoveEvent;
+# import org.bukkit.potion.PotionEffectType;
+#
+# public class SmartSpeedCheck extends Check {
+#    public String getName() {
+#       return "SmartSpeedCheck";
+#    }
+#
+#    public String getEventCall() {
+#       return "PlayerMoveEvent";
+#    }
+#
+#    public CheckResult performCheck(User u, Event e) {
+#       PlayerMoveEvent event = (PlayerMoveEvent)e;
+#       Player p = u.getPlayer();
+#       JVelocity jv = new JVelocity(event.getFrom(), event.getTo());
+#       Double x = jv.xoffset();
+#       Double y = jv.yoffset();
+#       Double z = jv.zoffset();
+#       Double mxz = 0.672D;
+#       Double my = 0.76D;
+#       Double lxz = -0.672D;
+#       if (!p.isInsideVehicle() && !p.isFlying() && p.getGameMode() != GameMode.CREATIVE && p.getGameMode() != GameMode.SPECTATOR && !BAC.getBAC().getUser(p).isBouncing()) {
+#          if (p.hasPotionEffect(PotionEffectType.JUMP)) {
+#             my = my + 0.1D * (double)VersionUtil.getPotAmplifier(p, PotionEffectType.JUMP);
+#          }
+#
+#          if (p.hasPotionEffect(PotionEffectType.SPEED)) {
+#             int sa = VersionUtil.getPotAmplifier(p, PotionEffectType.SPEED);
+#             mxz = mxz + 0.6D * (double)sa;
+#             lxz = lxz + -0.6D * (double)sa;
+#          }
+#
+#          if (p.getLocation().getBlock().getType().toString().contains("STAIRS") || p.getLocation().getBlock().getRelative(BlockFace.DOWN).getType().toString().contains("STAIRS")) {
+#             my = my + 0.75D;
+#          }
+#
+#          if (p.getLocation().getBlock().getRelative(BlockFace.DOWN).getType().toString().contains("ICE") || p.getLocation().getBlock().getRelative(0, -2, 0).getType().toString().contains("ICE")) {
+#             mxz = mxz + 0.375D;
+#             lxz = lxz - 0.375D;
+#             my = my + 0.25D;
+#          }
+#
+#          if (BAC.getBAC().EXEMPTHANDLER.isExempt(p)) {
+#             return new CheckResult("SmartSpeed", true, "pass");
+#          } else {
+#             Boolean speed = false;
+#             if (x < 0.0D && Math.abs(x) > Math.abs(lxz)) {
+#                speed = true;
+#             }
+#
+#             if (z < 0.0D && Math.abs(z) > Math.abs(lxz)) {
+#                speed = true;
+#             }
+#
+#             if (x > mxz) {
+#                speed = true;
+#             }
+#
+#             if (y > my) {
+#                return event.getTo().add(0.0D, -0.173D, 0.0D).getBlock().getType() != Material.AIR ? new CheckResult("Step", false, "y increased too fast up a block (" + y + "), max possible: " + my) : new CheckResult("Flight", false, "y increased too fast (" + y + "), max possible: " + my);
+#             } else {
+#                if (z > mxz) {
+#                   speed = true;
+#                }
+#
+#                if (speed) {
+#                   return UtilBlock.getSurroundingIgnoreAir(p.getLocation().getBlock(), true).size() == 0 ? new CheckResult("Flight", false, "impossible move, no fall") : new CheckResult("Speed", false, "movement speed to high");
+#                } else {
+#                   return new CheckResult("Speed/Flight", true, "pass");
+#                }
+#             }
+#          }
+#       } else {
+#          return new CheckResult("SmartSpeed", true, "pass");
+#       }
+#    }
+# }
+#

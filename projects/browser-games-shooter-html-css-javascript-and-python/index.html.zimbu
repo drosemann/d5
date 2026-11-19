@@ -1,0 +1,25 @@
+﻿# Zimbu-Port-Spiegel von: projects\browser-games-shooter-html-css-javascript-and-python\index.html
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE index_html
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\browser-games-shooter-html-css-javascript-and-python\index.html\n")
+  RETURN 0
+
+# ---- Original-Code (projects\browser-games-shooter-html-css-javascript-and-python\index.html), unveraendert, als Inline-Doku ----
+# <!DOCTYPE html>
+# <html lang="de">
+# <head>
+#     <meta charset="UTF-8">
+#     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+#     <title>Action Shooter</title>
+#     <link rel="stylesheet" href="styles.css">
+# </head>
+# <body>
+#     <canvas id="gameCanvas"></canvas>
+#     <script src="game.js"></script>
+# </body>
+# </html>
+#

@@ -1,0 +1,143 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/checks/movement/SpeedCheck.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/checks/movement/SpeedCheck.java");
+}
+
+// ---- Original-Code (projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/checks/movement/SpeedCheck.java), unveraendert, als Inline-Doku ----
+// package me.jinky.checks.movement;
+//
+// import java.util.HashMap;
+// import java.util.Iterator;
+// import java.util.Map;
+// import java.util.Map.Entry;
+// import me.jinky.checks.Check;
+// import me.jinky.checks.CheckResult;
+// import me.jinky.logger.PlayerLogger;
+// import me.jinky.logger.User;
+// import me.jinky.util.UtilBlock;
+// import me.jinky.util.UtilMath;
+// import me.jinky.util.UtilTime;
+// import me.jinky.util.VersionUtil;
+// import org.bukkit.Material;
+// import org.bukkit.block.BlockFace;
+// import org.bukkit.enchantments.Enchantment;
+// import org.bukkit.entity.Player;
+// import org.bukkit.event.Event;
+// import org.bukkit.event.player.PlayerMoveEvent;
+// import org.bukkit.potion.PotionEffect;
+// import org.bukkit.potion.PotionEffectType;
+//
+// public class SpeedCheck extends Check {
+//    private HashMap SpeedTicks = new HashMap();
+//
+//    public String getName() {
+//       return "BasicSpeedCheck";
+//    }
+//
+//    public String getEventCall() {
+//       return "PlayerMoveEvent";
+//    }
+//
+//    public CheckResult performCheck(User u, Event ex) {
+//       PlayerMoveEvent event = (PlayerMoveEvent)ex;
+//       Integer Count = 0;
+//       Player p = u.getPlayer();
+//       double Offset = 0.0D;
+//       double Limit = 0.35D;
+//       if (this.SpeedTicks.containsKey(p)) {
+//          if (event.getFrom().getY() > event.getTo().getY()) {
+//             Offset = UtilMath.offset2d(event.getFrom(), event.getTo());
+//          } else {
+//             Offset = UtilMath.offset(event.getFrom(), event.getTo());
+//          }
+//
+//          if (u.isBouncing() || u.isFalling() || u.getPlayer().isInsideVehicle()) {
+//             return new CheckResult("Speed", true, "pass");
+//          }
+//
+//          if (UtilBlock.onBlock(p)) {
+//             Limit = 0.56D;
+//          }
+//
+//          if (UtilBlock.onStairs(p)) {
+//             Limit = 0.77D;
+//          }
+//
+//          if (Limit < 0.77D && UtilBlock.getBlockAbove(p).getType() != Material.AIR) {
+//             Limit = 0.77D;
+//          }
+//
+//          if (PlayerLogger.getLogger().getLastElytraFly(p) != -1L && PlayerLogger.getLogger().getLastElytraFly(p) < 150L) {
+//             return new CheckResult("Speed", true, "pass");
+//          }
+//
+//          if (p.getLocation().getBlock().getRelative(BlockFace.DOWN).getType().toString().contains("ICE") || p.getLocation().getBlock().getRelative(0, -2, 0).getType().toString().contains("ICE")) {
+//             Limit += 2.0D;
+//          }
+//
+//          if (VersionUtil.isSwimming(p)) {
+//             Limit += 0.15D;
+//          }
+//
+//          if (p.getInventory().getBoots() != null && p.getInventory().getBoots().containsEnchantment(Enchantment.DEPTH_STRIDER)) {
+//             Limit += 0.08D * (double)(p.getInventory().getBoots().getEnchantmentLevel(Enchantment.DEPTH_STRIDER) + 1);
+//          }
+//
+//          Iterator var11 = p.getActivePotionEffects().iterator();
+//
+//          while(var11.hasNext()) {
+//             PotionEffect e = (PotionEffect)var11.next();
+//             if (e.getType().equals(PotionEffectType.SPEED)) {
+//                if (UtilBlock.onStairs(p)) {
+//                   Limit += 0.14D * (double)(e.getAmplifier() + 1);
+//                } else if (p.isOnGround()) {
+//                   Limit += 0.08D * (double)(e.getAmplifier() + 1);
+//                } else {
+//                   Limit += 0.04D * (double)(e.getAmplifier() + 1);
+//                }
+//             } else if (e.getType().equals(PotionEffectType.JUMP)) {
+//                Limit += 0.18D * (double)(e.getAmplifier() + 1);
+//             }
+//          }
+//
+//          if (Offset > Limit && !UtilTime.elapsed((Long)((Entry)((Map)this.SpeedTicks.get(p)).entrySet().iterator().next()).getValue(), 200L)) {
+//             Count = (Integer)((Entry)((Map)this.SpeedTicks.get(p)).entrySet().iterator().next()).getKey() + 1;
+//          } else {
+//             Count = 0;
+//          }
+//       }
+//
+//       Boolean call = false;
+//       HashMap R;
+//       if (Count > 3) {
+//          R = new HashMap();
+//          R.put(4, System.currentTimeMillis());
+//          this.SpeedTicks.put(p, R);
+//          if (!UtilBlock.onBlock(p)) {
+//             call = true;
+//          }
+//
+//          if (call) {
+//             if (!UtilBlock.onBlock(p)) {
+//                return new CheckResult("Flight", false, "moved at a rate of " + Offset + ", max possible " + Limit + ", in air");
+//             }
+//
+//             return new CheckResult("Speed", false, "moved at a rate of " + Offset + ", max possible " + Limit);
+//          }
+//       } else {
+//          if (Count > 0) {
+//             Count = Count - 1;
+//          }
+//
+//          R = new HashMap();
+//          R.put(Count, System.currentTimeMillis());
+//          this.SpeedTicks.put(p, R);
+//       }
+//
+//       return new CheckResult("Speed", true, "pass");
+//    }
+// }
+//

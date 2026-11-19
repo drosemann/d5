@@ -1,0 +1,23 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-webscrapemaster\data_cleaning.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE data_cleaning_py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-webscrapemaster\data_cleaning.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-webscrapemaster\data_cleaning.py), unveraendert, als Inline-Doku ----
+# # data_cleaning.py
+# # This module includes options to clean and transform data before exporting.
+#
+# def clean_data(data):
+#     # Implement data cleaning logic
+#     pass
+#
+#
+# def transform_data(data):
+#     # Implement data transformation logic
+#     pass
+#

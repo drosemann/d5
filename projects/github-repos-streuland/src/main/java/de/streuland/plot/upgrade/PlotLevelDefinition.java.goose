@@ -1,0 +1,48 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-streuland/src/main/java/de/streuland/plot/upgrade/PlotLevelDefinition.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-streuland/src/main/java/de/streuland/plot/upgrade/PlotLevelDefinition.java");
+}
+
+// ---- Original-Code (projects/github-repos-streuland/src/main/java/de/streuland/plot/upgrade/PlotLevelDefinition.java), unveraendert, als Inline-Doku ----
+// package de.streuland.plot.upgrade;
+//
+// import java.util.Collections;
+// import java.util.HashSet;
+// import java.util.Set;
+//
+// /**
+//  * Defines a single plot level and its unlocked capabilities.
+//  */
+// public class PlotLevelDefinition {
+//     private final int level;
+//     private final int plotSize;
+//     private final int featureSlots;
+//     private final Set<String> specialMechanics;
+//
+//     public PlotLevelDefinition(int level, int plotSize, int featureSlots, Set<String> specialMechanics) {
+//         this.level = level;
+//         this.plotSize = plotSize;
+//         this.featureSlots = featureSlots;
+//         this.specialMechanics = specialMechanics == null ? new HashSet<>() : new HashSet<>(specialMechanics);
+//     }
+//
+//     public int getLevel() {
+//         return level;
+//     }
+//
+//     public int getPlotSize() {
+//         return plotSize;
+//     }
+//
+//     public int getFeatureSlots() {
+//         return featureSlots;
+//     }
+//
+//     public Set<String> getSpecialMechanics() {
+//         return Collections.unmodifiableSet(specialMechanics);
+//     }
+// }
+//

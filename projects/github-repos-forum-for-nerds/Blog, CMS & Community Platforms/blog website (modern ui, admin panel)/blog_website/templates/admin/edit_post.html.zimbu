@@ -1,0 +1,32 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-forum-for-nerds\Blog, CMS & Community Platforms\blog website (modern ui, admin panel)\blog_website\templates\admin\edit_post.html
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE edit_post_html
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-forum-for-nerds\Blog, CMS & Community Platforms\blog website (modern ui, admin panel)\blog_website\templates\admin\edit_post.html\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-forum-for-nerds\Blog, CMS & Community Platforms\blog website (modern ui, admin panel)\blog_website\templates\admin\edit_post.html), unveraendert, als Inline-Doku ----
+# {% extends "base.html" %}
+#
+# {% block content %}
+# <div class="row justify-content-center">
+#     <div class="col-md-8">
+#         <h1 class="mb-4">Edit Blog Post</h1>
+#         <form method="POST">
+#             <div class="mb-3">
+#                 <label for="title" class="form-label">Title</label>
+#                 <input type="text" class="form-control" id="title" name="title" value="{{ post.title }}" required>
+#             </div>
+#             <div class="mb-3">
+#                 <label for="content" class="form-label">Content</label>
+#                 <textarea class="form-control" id="content" name="content" rows="10" required>{{ post.content }}</textarea>
+#             </div>
+#             <button type="submit" class="btn btn-primary">Update Post</button>
+#         </form>
+#     </div>
+# </div>
+# {% endblock %}
+#

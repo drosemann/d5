@@ -1,0 +1,21 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-plugins-server-systems-minigametemplate-java\src\main\java\activation_message.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE activation_message_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-plugins-server-systems-minigametemplate-java\src\main\java\activation_message.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-plugins-server-systems-minigametemplate-java\src\main\java\activation_message.java), unveraendert, als Inline-Doku ----
+# @Override
+# public void onEnable() {
+#     getLogger().info("Minigame Plugin aktiviert!");
+#     
+#     // Weitere Initialisierungen
+#
+#     // Registriere den Event-Listener
+#     getServer().getPluginManager().registerEvents(this, this);
+#     
+# }

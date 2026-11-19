@@ -1,0 +1,20 @@
+﻿// Goose-Port-Spiegel von: projects/startup-business-concepts-agentenplattform/apps/backend/app/services/markt.py
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/startup-business-concepts-agentenplattform/apps/backend/app/services/markt.py");
+}
+
+// ---- Original-Code (projects/startup-business-concepts-agentenplattform/apps/backend/app/services/markt.py), unveraendert, als Inline-Doku ----
+// """Deduplizierung + Ranking für Markt-Agenten (Wohnung/Auto/Deals)."""
+// import re
+// def normiere_url(u: str) -> str:
+//     return re.sub(r"[?#].*$", "", (u or "").strip().lower().rstrip("/"))
+// def ist_duplikat(url1: str, url2: str) -> bool: return normiere_url(url1) == normiere_url(url2)
+// def ranking(preis: float | None, max_preis: float, favorit_bonus: float = 0.0) -> float:
+//     """0..1: günstiger relativ zum Limit = besser. Fehlender Preis = 0.3."""
+//     if preis is None or max_preis <= 0: return 0.3
+//     score = max(0.0, min(1.0, 1.0 - preis / (2 * max_preis)))
+//     return round(min(1.0, score + favorit_bonus), 3)
+//

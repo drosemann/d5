@@ -1,0 +1,318 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\config\document\MapDocument.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE MapDocument_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\config\document\MapDocument.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\config\document\MapDocument.java), unveraendert, als Inline-Doku ----
+# package net.anweisen.utilities.common.config.document;
+#
+# import com.google.common.base.Preconditions;
+# import com.google.gson.JsonArray;
+# import java.awt.Color;
+# import java.io.IOException;
+# import java.io.Writer;
+# import java.time.OffsetDateTime;
+# import java.util.ArrayList;
+# import java.util.Collection;
+# import java.util.Collections;
+# import java.util.Date;
+# import java.util.HashMap;
+# import java.util.Iterator;
+# import java.util.LinkedHashMap;
+# import java.util.List;
+# import java.util.Map;
+# import java.util.UUID;
+# import java.util.function.BiConsumer;
+# import java.util.stream.Collectors;
+# import java.util.stream.StreamSupport;
+# import javax.annotation.Nonnull;
+# import javax.annotation.Nullable;
+# import net.anweisen.utilities.common.config.Document;
+# import net.anweisen.utilities.common.config.PropertyHelper;
+# import net.anweisen.utilities.common.misc.GsonUtils;
+#
+# public class MapDocument extends AbstractDocument {
+#    private final Map values;
+#
+#    public MapDocument(@Nonnull Map values) {
+#       Preconditions.checkNotNull(values, "Map cannot be null");
+#       this.values = values;
+#    }
+#
+#    public MapDocument(@Nonnull Map values, @Nonnull Document root, @Nullable Document parent) {
+#       super(root, parent);
+#       this.values = values;
+#    }
+#
+#    public MapDocument() {
+#       this(new LinkedHashMap());
+#    }
+#
+#    public boolean isReadonly() {
+#       return false;
+#    }
+#
+#    @Nonnull
+#    public Document getDocument0(@Nonnull String path, @Nonnull Document root, @Nullable Document parent) {
+#       Object value = this.values.computeIfAbsent(path, (key) -> {
+#          return new HashMap();
+#       });
+#       if (value instanceof Map) {
+#          return new MapDocument((Map)value, root, parent);
+#       } else if (value instanceof Document) {
+#          return (Document)value;
+#       } else if (value instanceof String) {
+#          return new GsonDocument((String)value, root, parent);
+#       } else {
+#          throw new IllegalStateException("Expected java.util.Map, found " + this.values.getClass().getName());
+#       }
+#    }
+#
+#    @Nonnull
+#    public List getDocumentList(@Nonnull String path) {
+#       List documents = new ArrayList();
+#       Object value = this.values.get(path);
+#       if (value instanceof List) {
+#          List list = (List)value;
+#          Iterator var5 = list.iterator();
+#
+#          while(var5.hasNext()) {
+#             Object object = var5.next();
+#             if (object instanceof Map) {
+#                documents.add(new MapDocument((Map)object, this.root, this.parent));
+#             }
+#
+#             if (object instanceof Document) {
+#                documents.add((Document)object);
+#             }
+#
+#             if (object instanceof String) {
+#                documents.add(new GsonDocument((String)object, this.root, this));
+#             }
+#          }
+#       }
+#
+#       return documents;
+#    }
+#
+#    public void set0(@Nonnull String path, @Nullable Object value) {
+#       this.values.put(path, value);
+#    }
+#
+#    public void clear0() {
+#       this.values.clear();
+#    }
+#
+#    public void remove0(@Nonnull String path) {
+#       this.values.remove(path);
+#    }
+#
+#    public void write(@Nonnull Writer writer) throws IOException {
+#       (new GsonDocument(this.values)).write(writer);
+#    }
+#
+#    @Nonnull
+#    public String toJson() {
+#       return (new GsonDocument(this.values)).toJson();
+#    }
+#
+#    @Nonnull
+#    public String toPrettyJson() {
+#       return (new GsonDocument(this.values)).toPrettyJson();
+#    }
+#
+#    @Nullable
+#    public Object getObject(@Nonnull String path) {
+#       return this.values.get(path);
+#    }
+#
+#    public Object getInstance(@Nonnull String path, @Nonnull Class classOfT) {
+#       return classOfT.cast(this.getObject(path));
+#    }
+#
+#    public Object toInstanceOf(@Nonnull Class classOfT) {
+#       return this.copyJson().toInstanceOf(classOfT);
+#    }
+#
+#    @Nullable
+#    public String getString(@Nonnull String path) {
+#       Object value = this.values.get(path);
+#       return value == null ? null : value.toString();
+#    }
+#
+#    public long getLong(@Nonnull String path, long def) {
+#       try {
+#          return Long.parseLong(this.getString(path));
+#       } catch (Exception var5) {
+#          return def;
+#       }
+#    }
+#
+#    public int getInt(@Nonnull String path, int def) {
+#       try {
+#          return Integer.parseInt(this.getString(path));
+#       } catch (Exception var4) {
+#          return def;
+#       }
+#    }
+#
+#    public short getShort(@Nonnull String path, short def) {
+#       try {
+#          return Short.parseShort(this.getString(path));
+#       } catch (Exception var4) {
+#          return def;
+#       }
+#    }
+#
+#    public byte getByte(@Nonnull String path, byte def) {
+#       try {
+#          return Byte.parseByte(this.getString(path));
+#       } catch (Exception var4) {
+#          return def;
+#       }
+#    }
+#
+#    public float getFloat(@Nonnull String path, float def) {
+#       try {
+#          return Float.parseFloat(this.getString(path));
+#       } catch (Exception var4) {
+#          return def;
+#       }
+#    }
+#
+#    public double getDouble(@Nonnull String path, double def) {
+#       try {
+#          return Double.parseDouble(this.getString(path));
+#       } catch (Exception var5) {
+#          return def;
+#       }
+#    }
+#
+#    public boolean getBoolean(@Nonnull String path, boolean def) {
+#       try {
+#          if (!this.contains(path)) {
+#             return def;
+#          } else {
+#             String var3 = this.getString(path).toLowerCase();
+#             byte var4 = -1;
+#             switch(var3.hashCode()) {
+#             case 49:
+#                if (var3.equals("1")) {
+#                   var4 = 1;
+#                }
+#                break;
+#             case 3569038:
+#                if (var3.equals("true")) {
+#                   var4 = 0;
+#                }
+#             }
+#
+#             switch(var4) {
+#             case 0:
+#             case 1:
+#                return true;
+#             default:
+#                return false;
+#             }
+#          }
+#       } catch (Exception var5) {
+#          return def;
+#       }
+#    }
+#
+#    @Nonnull
+#    public List getStringList(@Nonnull String path) {
+#       Object object = this.getObject(path);
+#       if (object == null) {
+#          return Collections.emptyList();
+#       } else if (object instanceof Iterable) {
+#          return (List)StreamSupport.stream(((Iterable)object).spliterator(), false).map(String::valueOf).collect(Collectors.toList());
+#       } else if (object instanceof String) {
+#          return GsonUtils.convertJsonArrayToStringList((JsonArray)GsonDocument.GSON.fromJson((String)object, JsonArray.class));
+#       } else {
+#          throw new IllegalStateException("Cannot convert " + object.getClass() + " to a list");
+#       }
+#    }
+#
+#    @Nullable
+#    public UUID getUUID(@Nonnull String path) {
+#       try {
+#          Object object = this.getObject(path);
+#          return object instanceof UUID ? (UUID)object : UUID.fromString(String.valueOf(object));
+#       } catch (Exception var3) {
+#          return null;
+#       }
+#    }
+#
+#    @Nullable
+#    public Date getDate(@Nonnull String path) {
+#       Object object = this.getObject(path);
+#       if (object instanceof String) {
+#          return PropertyHelper.parseDate((String)object);
+#       } else {
+#          return object instanceof Date ? (Date)object : null;
+#       }
+#    }
+#
+#    @Nullable
+#    public OffsetDateTime getDateTime(@Nonnull String path) {
+#       Object object = this.getObject(path);
+#       if (object instanceof CharSequence) {
+#          return OffsetDateTime.parse((CharSequence)object);
+#       } else {
+#          return object instanceof OffsetDateTime ? (OffsetDateTime)object : null;
+#       }
+#    }
+#
+#    @Nullable
+#    public Color getColor(@Nonnull String path) {
+#       Object object = this.getObject(path);
+#       if (object instanceof Color) {
+#          return (Color)object;
+#       } else {
+#          return object instanceof String ? Color.decode((String)object) : null;
+#       }
+#    }
+#
+#    public boolean isList(@Nonnull String path) {
+#       Object value = this.values.get(path);
+#       return value instanceof Iterable || value != null && value.getClass().isArray();
+#    }
+#
+#    public boolean isObject(@Nonnull String path) {
+#       return !this.isDocument(path) && !this.isList(path);
+#    }
+#
+#    public boolean isDocument(@Nonnull String path) {
+#       Object value = this.values.get(path);
+#       return value instanceof Map || value instanceof Document;
+#    }
+#
+#    public boolean contains(@Nonnull String path) {
+#       return this.values.containsKey(path);
+#    }
+#
+#    public int size() {
+#       return this.values.size();
+#    }
+#
+#    @Nonnull
+#    public Map values() {
+#       return Collections.unmodifiableMap(this.values);
+#    }
+#
+#    @Nonnull
+#    public Collection keys() {
+#       return this.values.keySet();
+#    }
+#
+#    public void forEach(@Nonnull BiConsumer action) {
+#       this.values.forEach(action);
+#    }
+# }
+#

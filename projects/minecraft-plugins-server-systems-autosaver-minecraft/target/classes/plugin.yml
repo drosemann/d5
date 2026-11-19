@@ -1,0 +1,12 @@
+name: AutoSaver
+version: 1.0
+main: com.autosaver.plugin.AutoSaverPlugin
+api-version: 1.21.4
+commands:
+  autosaver:
+    description: Reload AutoSaver configuration
+    usage: /autosaver reload
+permissions:
+  autosaver.reload:
+    description: Allows reloading the AutoSaver config
+    default: op

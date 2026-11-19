@@ -1,0 +1,3 @@
+# Each entry maps a Minecraft UUID (as a string) to a Discord user ID.
+# For example:
+# "f81d4fae-7dec-11d0-a765-00a0c91e6bf6": "987654321098765432"

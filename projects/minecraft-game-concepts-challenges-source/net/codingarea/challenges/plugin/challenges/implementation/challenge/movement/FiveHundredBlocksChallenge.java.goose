@@ -1,0 +1,219 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/implementation/challenge/movement/FiveHundredBlocksChallenge.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/implementation/challenge/movement/FiveHundredBlocksChallenge.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/implementation/challenge/movement/FiveHundredBlocksChallenge.java), unveraendert, als Inline-Doku ----
+// package net.codingarea.challenges.plugin.challenges.implementation.challenge.movement;
+//
+// import java.util.HashMap;
+// import java.util.Iterator;
+// import java.util.LinkedList;
+// import java.util.Map;
+// import java.util.UUID;
+// import javax.annotation.Nonnull;
+// import net.anweisen.utilities.common.annotations.Since;
+// import net.anweisen.utilities.common.config.Document;
+// import net.codingarea.challenges.plugin.Challenges;
+// import net.codingarea.challenges.plugin.challenges.type.abstraction.SettingModifier;
+// import net.codingarea.challenges.plugin.challenges.type.helper.ChallengeHelper;
+// import net.codingarea.challenges.plugin.content.Message;
+// import net.codingarea.challenges.plugin.management.menu.MenuType;
+// import net.codingarea.challenges.plugin.management.menu.generator.categorised.SettingCategory;
+// import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+// import net.codingarea.challenges.plugin.utils.misc.BlockUtils;
+// import net.codingarea.challenges.plugin.utils.misc.InventoryUtils;
+// import net.codingarea.challenges.plugin.utils.misc.MinecraftNameWrapper;
+// import org.bukkit.Bukkit;
+// import org.bukkit.Material;
+// import org.bukkit.block.Block;
+// import org.bukkit.entity.Player;
+// import org.bukkit.event.EventHandler;
+// import org.bukkit.event.EventPriority;
+// import org.bukkit.event.Listener;
+// import org.bukkit.event.block.BlockBreakEvent;
+// import org.bukkit.event.block.BlockExplodeEvent;
+// import org.bukkit.event.entity.EntityDeathEvent;
+// import org.bukkit.event.entity.EntityExplodeEvent;
+// import org.bukkit.event.player.PlayerMoveEvent;
+// import org.bukkit.event.world.LootGenerateEvent;
+// import org.jetbrains.annotations.NotNull;
+// import org.jetbrains.annotations.Nullable;
+//
+// @Since("2.1.0")
+// public class FiveHundredBlocksChallenge extends SettingModifier {
+//    private final Map blocksWalked = new HashMap();
+//
+//    public FiveHundredBlocksChallenge() {
+//       super(MenuType.CHALLENGES, 1, 5, 5);
+//       this.setCategory(SettingCategory.MOVEMENT);
+//
+//       try {
+//          Listener listener = new Listener() {
+//             @EventHandler(
+//                priority = EventPriority.HIGH,
+//                ignoreCancelled = true
+//             )
+//             public void onLootGenerate(LootGenerateEvent event) {
+//                if (FiveHundredBlocksChallenge.this.shouldExecuteEffect()) {
+//                   event.setLoot(new LinkedList());
+//                }
+//             }
+//          };
+//          Challenges.getInstance().registerListener(new Listener[]{listener});
+//       } catch (NoClassDefFoundError var2) {
+//          Challenges.getInstance().getLogger().warning("Loot Generation couldn't be blocked in FiveHundredBlocks Challenge: Please Use 1.15 or higher");
+//       }
+//
+//    }
+//
+//    protected void onEnable() {
+//       this.bossbar.setContent((bar, player) -> {
+//          int walked = (Integer)this.blocksWalked.getOrDefault(player.getUniqueId(), 0);
+//          bar.setTitle(Message.forName("bossbar-five-hundred-blocks").asString(walked, this.getBlocksToWalk()));
+//       });
+//       this.bossbar.show();
+//    }
+//
+//    protected void onDisable() {
+//       this.bossbar.hide();
+//    }
+//
+//    @NotNull
+//    public ItemBuilder createDisplayItem() {
+//       return new ItemBuilder(MinecraftNameWrapper.SIGN, Message.forName("item-five-hundred-blocks-challenges"));
+//    }
+//
+//    public void playValueChangeTitle() {
+//       ChallengeHelper.playChangeChallengeValueTitle(this, (Object)Message.forName("subtitle-blocks").asString(this.getBlocksToWalk()));
+//    }
+//
+//    @Nullable
+//    protected String[] getSettingsDescription() {
+//       return Message.forName("item-blocks-description").asArray(this.getBlocksToWalk());
+//    }
+//
+//    private int getBlocksToWalk() {
+//       return this.getValue() * 100;
+//    }
+//
+//    @EventHandler(
+//       priority = EventPriority.MONITOR,
+//       ignoreCancelled = true
+//    )
+//    public void onMove(PlayerMoveEvent event) {
+//       if (this.shouldExecuteEffect()) {
+//          Player player = event.getPlayer();
+//          if (!ignorePlayer(player)) {
+//             if (!BlockUtils.isSameBlockLocationIgnoreHeight(event.getFrom(), event.getTo())) {
+//                if (this.updateOrReset(player)) {
+//                   InventoryUtils.giveItem(player.getInventory(), player.getLocation(), InventoryUtils.getRandomItem(false, false));
+//                }
+//
+//             }
+//          }
+//       }
+//    }
+//
+//    @EventHandler(
+//       priority = EventPriority.LOW,
+//       ignoreCancelled = true
+//    )
+//    public void onBlockBreak(BlockBreakEvent event) {
+//       if (this.shouldExecuteEffect()) {
+//          if (!ignorePlayer(event.getPlayer())) {
+//             event.setDropItems(false);
+//             event.setExpToDrop(0);
+//          }
+//       }
+//    }
+//
+//    @EventHandler(
+//       priority = EventPriority.HIGH,
+//       ignoreCancelled = true
+//    )
+//    public void onEntityDeath(EntityDeathEvent event) {
+//       if (this.shouldExecuteEffect()) {
+//          event.getDrops().clear();
+//          event.setDroppedExp(0);
+//       }
+//    }
+//
+//    @EventHandler(
+//       priority = EventPriority.HIGH,
+//       ignoreCancelled = true
+//    )
+//    public void onEntityExplosion(EntityExplodeEvent event) {
+//       if (this.shouldExecuteEffect()) {
+//          Iterator var2 = event.blockList().iterator();
+//
+//          while(var2.hasNext()) {
+//             Block block = (Block)var2.next();
+//             block.setType(Material.AIR);
+//          }
+//
+//       }
+//    }
+//
+//    @EventHandler(
+//       priority = EventPriority.HIGH,
+//       ignoreCancelled = true
+//    )
+//    public void onBlockExplosion(BlockExplodeEvent event) {
+//       if (this.shouldExecuteEffect()) {
+//          Iterator var2 = event.blockList().iterator();
+//
+//          while(var2.hasNext()) {
+//             Block block = (Block)var2.next();
+//             block.setType(Material.AIR);
+//          }
+//
+//       }
+//    }
+//
+//    private boolean updateOrReset(@Nonnull Player player) {
+//       UUID uuid = player.getUniqueId();
+//       int blocksWalked = (Integer)this.blocksWalked.getOrDefault(uuid, 0);
+//       ++blocksWalked;
+//       boolean reached = false;
+//       if (blocksWalked >= this.getBlocksToWalk()) {
+//          blocksWalked = 0;
+//          reached = true;
+//       }
+//
+//       this.blocksWalked.put(uuid, blocksWalked);
+//       Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+//          this.bossbar.update(player);
+//       });
+//       return reached;
+//    }
+//
+//    public void loadGameState(@NotNull Document document) {
+//       this.blocksWalked.clear();
+//       Iterator var2 = document.keys().iterator();
+//
+//       while(var2.hasNext()) {
+//          String key = (String)var2.next();
+//
+//          try {
+//             UUID uuid = UUID.fromString(key);
+//             int blocks = document.getInt(key);
+//             this.blocksWalked.put(uuid, blocks);
+//          } catch (IllegalArgumentException var6) {
+//             plugin.getLogger().severe("Error while loading 500 Blocks Challenge, key '" + key + "' is not a valid uuid");
+//             Challenges.getInstance().getLogger().error("", new Object[]{var6});
+//          }
+//       }
+//
+//    }
+//
+//    public void writeGameState(@NotNull Document document) {
+//       this.blocksWalked.forEach((uuid, integer) -> {
+//          document.set(uuid.toString(), integer);
+//       });
+//    }
+// }
+//

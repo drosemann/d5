@@ -1,0 +1,105 @@
+package net.codingarea.challenges.plugin.management.menu.generator;
+
+import java.util.Map;
+import javax.annotation.Nonnull;
+import lombok.Generated;
+import net.anweisen.utilities.bukkit.utils.animation.SoundSample;
+import net.anweisen.utilities.bukkit.utils.menu.MenuClickInfo;
+import net.anweisen.utilities.bukkit.utils.menu.MenuPosition;
+import net.codingarea.challenges.plugin.challenges.custom.settings.sub.ValueSetting;
+import net.codingarea.challenges.plugin.content.Message;
+import net.codingarea.challenges.plugin.management.menu.InventoryTitleManager;
+import net.codingarea.challenges.plugin.management.menu.MenuType;
+import net.codingarea.challenges.plugin.management.menu.position.GeneratorMenuPosition;
+import net.codingarea.challenges.plugin.utils.item.DefaultItem;
+import net.codingarea.challenges.plugin.utils.misc.InventoryUtils;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
+
+public abstract class ValueMenuGenerator extends MultiPageMenuGenerator {
+   public static final int FINISH_SLOT = 31;
+   private final Map settings;
+
+   public ValueMenuGenerator(Map settings) {
+      this.settings = settings;
+   }
+
+   public MenuPosition getMenuPosition(int page) {
+      return new GeneratorMenuPosition(this, page) {
+         public void handleClick(@Nonnull MenuClickInfo info) {
+            if (info.getSlot() == 31) {
+               ValueMenuGenerator.this.onSaveItemClick(info.getPlayer());
+               SoundSample.PLOP.play(info.getPlayer());
+            } else if (!InventoryUtils.handleNavigationClicking(this.generator, ValueMenuGenerator.this.getNavigationSlots(this.page), this.page, info, () -> {
+               ValueMenuGenerator.this.onBackToMenuItemClick(info.getPlayer());
+            })) {
+               int slot = info.getSlot();
+               int index = ValueMenuGenerator.this.getItemsPerPage() * this.page + slot - 10;
+               if (slot > 18) {
+                  index -= 9;
+               }
+
+               if (index < ValueMenuGenerator.this.settings.size() && index >= 0) {
+                  ValueSetting[] array = (ValueSetting[])ValueMenuGenerator.this.settings.keySet().toArray(new ValueSetting[0]);
+                  ValueSetting key = array[index];
+                  String oldValue = (String)ValueMenuGenerator.this.settings.get(key);
+                  int itemIndex = slot >= 18 ? 1 : 0;
+                  String newValue = key.onClick(info, oldValue, itemIndex);
+                  ValueMenuGenerator.this.settings.put(key, newValue);
+                  SoundSample.CLICK.play(info.getPlayer());
+                  ValueMenuGenerator.this.generatePage(info.getInventory(), this.page);
+                  ValueMenuGenerator.this.open(info.getPlayer(), this.page);
+               } else {
+                  SoundSample.CLICK.play(info.getPlayer());
+               }
+            }
+         }
+      };
+   }
+
+   public int getSize() {
+      return 36;
+   }
+
+   public int getPagesCount() {
+      return this.settings.size() / this.getItemsPerPage() + 1;
+   }
+
+   public int getItemsPerPage() {
+      return 4;
+   }
+
+   public void generatePage(@Nonnull Inventory inventory, int page) {
+      int startIndex = this.getItemsPerPage() * page;
+
+      for(int i = startIndex; i < startIndex + this.getItemsPerPage() && i < this.settings.size(); ++i) {
+         int slot = i - this.getItemsPerPage() * page + 10;
+         ValueSetting key = ((ValueSetting[])this.settings.keySet().toArray(new ValueSetting[0]))[i];
+         String value = (String)this.settings.get(key);
+         inventory.setItem(slot, key.getDisplayItem(value).build());
+         inventory.setItem(slot + 9, key.getSettingsItem(value).build());
+      }
+
+      inventory.setItem(31, DefaultItem.create(Material.LIME_DYE, Message.forName("custom-sub-finish")).build());
+   }
+
+   public int[] getNavigationSlots(int page) {
+      return new int[]{27, 35};
+   }
+
+   protected String getTitle(int page) {
+      return InventoryTitleManager.getTitle(MenuType.CUSTOM, this.getSubTitles(page));
+   }
+
+   public abstract String[] getSubTitles(int var1);
+
+   public abstract void onSaveItemClick(Player var1);
+
+   public abstract void onBackToMenuItemClick(Player var1);
+
+   @Generated
+   public Map getSettings() {
+      return this.settings;
+   }
+}

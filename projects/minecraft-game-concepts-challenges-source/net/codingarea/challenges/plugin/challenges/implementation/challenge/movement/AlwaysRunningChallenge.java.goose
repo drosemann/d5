@@ -1,0 +1,69 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/implementation/challenge/movement/AlwaysRunningChallenge.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/implementation/challenge/movement/AlwaysRunningChallenge.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/challenges/implementation/challenge/movement/AlwaysRunningChallenge.java), unveraendert, als Inline-Doku ----
+// package net.codingarea.challenges.plugin.challenges.implementation.challenge.movement;
+//
+// import javax.annotation.Nonnull;
+// import net.anweisen.utilities.bukkit.utils.misc.BukkitReflectionUtils;
+// import net.anweisen.utilities.common.annotations.Since;
+// import net.codingarea.challenges.plugin.challenges.type.abstraction.Setting;
+// import net.codingarea.challenges.plugin.content.Message;
+// import net.codingarea.challenges.plugin.management.menu.MenuType;
+// import net.codingarea.challenges.plugin.management.menu.generator.categorised.SettingCategory;
+// import net.codingarea.challenges.plugin.management.scheduler.task.ScheduledTask;
+// import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+// import org.bukkit.Location;
+// import org.bukkit.Material;
+// import org.bukkit.util.Vector;
+//
+// @Since("2.0")
+// public class AlwaysRunningChallenge extends Setting {
+//    public AlwaysRunningChallenge() {
+//       super(MenuType.CHALLENGES);
+//       this.setCategory(SettingCategory.MOVEMENT);
+//    }
+//
+//    @Nonnull
+//    public ItemBuilder createDisplayItem() {
+//       return new ItemBuilder(Material.CARROT_ON_A_STICK, Message.forName("item-always-running-challenge"));
+//    }
+//
+//    @ScheduledTask(
+//       ticks = 1
+//    )
+//    public void setVelocity() {
+//       broadcastFiltered((player) -> {
+//          if (!player.isSprinting()) {
+//             Location location = player.getLocation();
+//             Vector velocity = new Vector();
+//             double rotX = (double)location.getYaw();
+//             double xz = Math.cos(Math.toRadians(0.0D));
+//             velocity.setX(-xz * Math.sin(Math.toRadians(rotX)));
+//             velocity.setZ(xz * Math.cos(Math.toRadians(rotX)));
+//             velocity.multiply(0.5D);
+//             if (player.isSneaking()) {
+//                velocity.multiply(0.5D);
+//             } else if (BukkitReflectionUtils.isInWater(player)) {
+//                velocity.multiply(0.5D);
+//             } else if (!player.isOnGround()) {
+//                velocity.multiply(0.85D);
+//             }
+//
+//             Vector oldVelocity = player.getVelocity();
+//             if (oldVelocity.getY() > 0.0D) {
+//                oldVelocity.multiply(0.9D);
+//             }
+//
+//             velocity.setY(oldVelocity.getY());
+//             player.setVelocity(velocity);
+//          }
+//       });
+//    }
+// }
+//

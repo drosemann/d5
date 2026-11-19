@@ -1,0 +1,64 @@
+package net.codingarea.challenges.plugin.management.stats;
+
+import java.util.Objects;
+import java.util.function.Function;
+import javax.annotation.Nonnull;
+import net.anweisen.utilities.common.collection.NumberFormatter;
+
+public enum Statistic {
+   DRAGON_KILLED(Statistic.Display.INTEGER),
+   DEATHS(Statistic.Display.INTEGER),
+   DAMAGE_TAKEN(Statistic.Display.HEARTS),
+   ENTITY_KILLS(Statistic.Display.INTEGER),
+   DAMAGE_DEALT(Statistic.Display.HEARTS),
+   BLOCKS_MINED(Statistic.Display.INTEGER),
+   BLOCKS_PLACED(Statistic.Display.INTEGER),
+   BLOCKS_TRAVELED(Statistic.Display.INTEGER),
+   CHALLENGES_PLAYED(Statistic.Display.INTEGER),
+   JUMPS(Statistic.Display.INTEGER);
+
+   private final Statistic.Display display;
+
+   private Statistic(@Nonnull Statistic.Display display) {
+      this.display = display;
+   }
+
+   @Nonnull
+   public String formatChat(double value) {
+      return this.display.formatChat(value);
+   }
+
+   // $FF: synthetic method
+   private static Statistic[] $values() {
+      return new Statistic[]{DRAGON_KILLED, DEATHS, DAMAGE_TAKEN, ENTITY_KILLS, DAMAGE_DEALT, BLOCKS_MINED, BLOCKS_PLACED, BLOCKS_TRAVELED, CHALLENGES_PLAYED, JUMPS};
+   }
+
+   public static enum Display {
+      HEARTS((value) -> {
+         return NumberFormatter.BIG_NUMBER.format(value / 2.0D) + " §c❤";
+      }),
+      INTEGER;
+
+      private final Function chatFormat;
+
+      private Display(@Nonnull Function chatFormat) {
+         this.chatFormat = chatFormat;
+      }
+
+      @Nonnull
+      public String formatChat(double value) {
+         return (String)this.chatFormat.apply(value);
+      }
+
+      // $FF: synthetic method
+      private static Statistic.Display[] $values() {
+         return new Statistic.Display[]{HEARTS, INTEGER};
+      }
+
+      static {
+         NumberFormatter var10004 = NumberFormatter.BIG_NUMBER;
+         Objects.requireNonNull(var10004);
+         INTEGER = new Statistic.Display("INTEGER", 1, var10004::format);
+      }
+   }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "vercel-clone",
+  "version": "1.0.0",
+  "description": "A Vercel-like deployment platform",
+  "scripts": {
+    "start": "concurrently \"cd api-server && python app.py\" \"cd frontend-nextjs && npm run dev\" \"cd s3-reverse-proxy && npm start\"",
+    "dev": "concurrently \"cd api-server && set FLASK_DEBUG=true && python app.py\" \"cd frontend-nextjs && npm run dev\" \"cd s3-reverse-proxy && npm run dev\"",
+    "install-all": "concurrently \"cd api-server && pip install -r requirements.txt\" \"cd frontend-nextjs && npm install\" \"cd s3-reverse-proxy && npm install\" \"cd build-server && npm install\"",
+    "build": "cd frontend-nextjs && npm run build",
+    "test": "echo \"No test specified\""
+  },
+  "workspaces": [
+    "api-server",
+    "build-server",
+    "frontend-nextjs",
+    "s3-reverse-proxy"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.0.0"
+  }
+}

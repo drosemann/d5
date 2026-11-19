@@ -1,0 +1,157 @@
+﻿// Goose-Port-Spiegel von: projects/browser-games-browser-game/index.html
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/browser-games-browser-game/index.html");
+}
+
+// ---- Original-Code (projects/browser-games-browser-game/index.html), unveraendert, als Inline-Doku ----
+// <!DOCTYPE html>
+// <html lang="en">
+// <head>
+//     <meta charset="UTF-8">
+//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//     <title>Game Platform</title>
+//     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+//     <style>
+//         :root {
+//             --primary-color: #6c5ce7;
+//             --secondary-color: #a29bfe;
+//             --accent-color: #fd79a8;
+//             --dark-bg: #1a1a2e;
+//             --card-bg: #ffffff;
+//             --text-light: #ffffff;
+//             --text-dark: #2d3436;
+//             --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+//             --transition: all 0.3s ease;
+//         }
+//
+//         * {
+//             margin: 0;
+//             padding: 0;
+//             box-sizing: border-box;
+//         }
+//
+//         body {
+//             font-family: 'Poppins', sans-serif;
+//             background-color: var(--dark-bg);
+//             color: var(--text-light);
+//             line-height: 1.6;
+//             min-height: 100vh;
+//         }
+//
+//         .container {
+//             width: 90%;
+//             max-width: 1200px;
+//             margin: 0 auto;
+//             padding: 20px;
+//         }
+//
+//         header {
+//             text-align: center;
+//             padding: 40px 0;
+//             background-color: rgba(26, 26, 46, 0.8);
+//             backdrop-filter: blur(10px);
+//         }
+//
+//         header h1 {
+//             font-size: 3rem;
+//             margin-bottom: 20px;
+//             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+//             -webkit-background-clip: text;
+//             background-clip: text;
+//             color: transparent;
+//         }
+//
+//         .game-grid {
+//             display: grid;
+//             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+//             gap: 30px;
+//             padding: 40px 0;
+//         }
+//
+//         .game-card {
+//             background-color: var(--card-bg);
+//             border-radius: 15px;
+//             overflow: hidden;
+//             box-shadow: var(--shadow);
+//             transition: var(--transition);
+//             color: var(--text-dark);
+//         }
+//
+//         .game-card:hover {
+//             transform: translateY(-10px);
+//             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+//         }
+//
+//         .game-img {
+//             width: 100%;
+//             height: 200px;
+//             object-fit: cover;
+//         }
+//
+//         .game-content {
+//             padding: 20px;
+//         }
+//
+//         .game-content h2 {
+//             color: var(--text-dark);
+//             margin-bottom: 10px;
+//         }
+//
+//         .game-content p {
+//             color: #666;
+//             margin-bottom: 20px;
+//         }
+//
+//         .play-btn {
+//             display: inline-block;
+//             padding: 10px 30px;
+//             background-color: var(--primary-color);
+//             color: var(--text-light);
+//             text-decoration: none;
+//             border-radius: 25px;
+//             transition: var(--transition);
+//         }
+//
+//         .play-btn:hover {
+//             background-color: var(--secondary-color);
+//             transform: scale(1.05);
+//         }
+//
+//         footer {
+//             text-align: center;
+//             padding: 20px;
+//             background-color: rgba(26, 26, 46, 0.8);
+//             margin-top: auto;
+//         }
+//     </style>
+// </head>
+// <body>
+//     <header>
+//         <div class="container">
+//             <h1>Game Platform</h1>
+//             <p>Choose your game and start playing!</p>
+//         </div>
+//     </header>
+//
+//     <main class="container">
+//         <div class="game-grid">
+//             <div class="game-card">
+//                 <img src="enemy/game-background.png" alt="Unified Game" class="game-img">
+//                 <div class="game-content">
+//                     <h2>Unified Game</h2>
+//                     <p>A fast-paced action game combining elements from multiple genres. Survive waves of enemies, collect powerups, and upgrade your abilities!</p>
+//                     <a href="game.html" class="play-btn">Play Now</a>
+//                 </div>
+//             </div>
+//             <!-- Add more game cards here as you create more games -->
+//         </div>
+//     </main>
+//
+//     <footer>
+//         <p>&copy; 2025 Game Platform. All rights reserved.</p>
+//     </footer>
+// </body>
+// </html>

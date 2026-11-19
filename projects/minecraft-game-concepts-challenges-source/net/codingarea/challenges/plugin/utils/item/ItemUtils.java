@@ -1,0 +1,391 @@
+package net.codingarea.challenges.plugin.utils.item;
+
+import javax.annotation.Nonnull;
+import net.anweisen.utilities.bukkit.utils.misc.BukkitReflectionUtils;
+import net.anweisen.utilities.bukkit.utils.misc.MinecraftVersion;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.Damageable;
+import org.bukkit.inventory.meta.ItemMeta;
+
+public class ItemUtils {
+   @Nonnull
+   public static Material convertFoodToCookedFood(@Nonnull Material material) {
+      try {
+         return Material.valueOf("COOKED_" + material.name());
+      } catch (Exception var2) {
+         return material;
+      }
+   }
+
+   public static boolean isObtainableInSurvival(@Nonnull Material material) {
+      String name = material.name();
+      if (BukkitReflectionUtils.isAir(material)) {
+         return false;
+      } else if (name.endsWith("_SPAWN_EGG")) {
+         return false;
+      } else if (name.startsWith("INFESTED_")) {
+         return false;
+      } else if (name.startsWith("LEGACY_")) {
+         return false;
+      } else {
+         byte var3 = -1;
+         switch(name.hashCode()) {
+         case -2106796063:
+            if (name.equals("JIGSAW")) {
+               var3 = 4;
+            }
+            break;
+         case -1740468769:
+            if (name.equals("LARGE_FERN")) {
+               var3 = 17;
+            }
+            break;
+         case -1730602029:
+            if (name.equals("PATH_BLOCK")) {
+               var3 = 20;
+            }
+            break;
+         case -1639474528:
+            if (name.equals("END_GATEWAY")) {
+               var3 = 14;
+            }
+            break;
+         case -1581116873:
+            if (name.equals("FROGSPAWN")) {
+               var3 = 33;
+            }
+            break;
+         case -1568118687:
+            if (name.equals("REPEATING_COMMAND_BLOCK")) {
+               var3 = 1;
+            }
+            break;
+         case -1555688322:
+            if (name.equals("PLAYER_HEAD")) {
+               var3 = 24;
+            }
+            break;
+         case -1452755778:
+            if (name.equals("END_PORTAL_FRAME")) {
+               var3 = 11;
+            }
+            break;
+         case -1293575864:
+            if (name.equals("SPAWNER")) {
+               var3 = 26;
+            }
+            break;
+         case -1198495927:
+            if (name.equals("POWDER_SNOW")) {
+               var3 = 29;
+            }
+            break;
+         case -1182414285:
+            if (name.equals("NETHER_PORTAL")) {
+               var3 = 13;
+            }
+            break;
+         case -1147477375:
+            if (name.equals("STRUCTURE_BLOCK")) {
+               var3 = 5;
+            }
+            break;
+         case -890719120:
+            if (name.equals("END_PORTAL")) {
+               var3 = 12;
+            }
+            break;
+         case -702995641:
+            if (name.equals("PETRIFIED_OAK_SLAB")) {
+               var3 = 22;
+            }
+            break;
+         case -452058880:
+            if (name.equals("STRUCTURE_VOID")) {
+               var3 = 6;
+            }
+            break;
+         case -401387329:
+            if (name.equals("REINFORCED_DEEPSLATE")) {
+               var3 = 32;
+            }
+            break;
+         case -19438716:
+            if (name.equals("TALL_GRASS")) {
+               var3 = 18;
+            }
+            break;
+         case 2329312:
+            if (name.equals("LAVA")) {
+               var3 = 15;
+            }
+            break;
+         case 72432886:
+            if (name.equals("LIGHT")) {
+               var3 = 30;
+            }
+            break;
+         case 82365687:
+            if (name.equals("WATER")) {
+               var3 = 16;
+            }
+            break;
+         case 208862762:
+            if (name.equals("KNOWLEDGE_BOOK")) {
+               var3 = 9;
+            }
+            break;
+         case 235097689:
+            if (name.equals("COMMAND_BLOCK")) {
+               var3 = 2;
+            }
+            break;
+         case 259417714:
+            if (name.equals("CHORUS_PLANT")) {
+               var3 = 21;
+            }
+            break;
+         case 384839575:
+            if (name.equals("BARRIER")) {
+               var3 = 7;
+            }
+            break;
+         case 486432582:
+            if (name.equals("BEDROCK")) {
+               var3 = 8;
+            }
+            break;
+         case 601934632:
+            if (name.equals("AMETHYST_CLUSTER")) {
+               var3 = 27;
+            }
+            break;
+         case 713314619:
+            if (name.equals("CHAIN_COMMAND_BLOCK")) {
+               var3 = 0;
+            }
+            break;
+         case 908666137:
+            if (name.equals("COMMAND_BLOCK_MINECART")) {
+               var3 = 3;
+            }
+            break;
+         case 1144086031:
+            if (name.equals("GLOBE_BANNER_PATTERN")) {
+               var3 = 25;
+            }
+            break;
+         case 1496991257:
+            if (name.equals("TALL_SEAGRASS")) {
+               var3 = 19;
+            }
+            break;
+         case 1716866849:
+            if (name.equals("FARMLAND")) {
+               var3 = 23;
+            }
+            break;
+         case 1856190308:
+            if (name.equals("DEBUG_STICK")) {
+               var3 = 10;
+            }
+            break;
+         case 1882412797:
+            if (name.equals("BUDDING_AMETHYST")) {
+               var3 = 28;
+            }
+            break;
+         case 1970414722:
+            if (name.equals("BUNDLE")) {
+               var3 = 31;
+            }
+         }
+
+         switch(var3) {
+         case 0:
+         case 1:
+         case 2:
+         case 3:
+         case 4:
+         case 5:
+         case 6:
+         case 7:
+         case 8:
+         case 9:
+         case 10:
+         case 11:
+         case 12:
+         case 13:
+         case 14:
+         case 15:
+         case 16:
+         case 17:
+         case 18:
+         case 19:
+         case 20:
+         case 21:
+         case 22:
+         case 23:
+         case 24:
+         case 25:
+         case 26:
+         case 27:
+         case 28:
+         case 29:
+         case 30:
+         case 31:
+         case 32:
+         case 33:
+            return false;
+         default:
+            return !MinecraftVersion.current().isOlderThan(MinecraftVersion.V1_19) || !name.equals("SCULK_SENSOR");
+         }
+      }
+   }
+
+   public static boolean blockIsAvailableInSurvival(@Nonnull Material material) {
+      if (!material.isBlock()) {
+         return false;
+      } else {
+         String name = material.name();
+         if (BukkitReflectionUtils.isAir(material)) {
+            return false;
+         } else if (name.startsWith("LEGACY_")) {
+            return false;
+         } else {
+            byte var3 = -1;
+            switch(name.hashCode()) {
+            case -2106796063:
+               if (name.equals("JIGSAW")) {
+                  var3 = 4;
+               }
+               break;
+            case -1639474528:
+               if (name.equals("END_GATEWAY")) {
+                  var3 = 12;
+               }
+               break;
+            case -1568118687:
+               if (name.equals("REPEATING_COMMAND_BLOCK")) {
+                  var3 = 1;
+               }
+               break;
+            case -1555688322:
+               if (name.equals("PLAYER_HEAD")) {
+                  var3 = 14;
+               }
+               break;
+            case -1182414285:
+               if (name.equals("NETHER_PORTAL")) {
+                  var3 = 11;
+               }
+               break;
+            case -1147477375:
+               if (name.equals("STRUCTURE_BLOCK")) {
+                  var3 = 5;
+               }
+               break;
+            case -890719120:
+               if (name.equals("END_PORTAL")) {
+                  var3 = 10;
+               }
+               break;
+            case -702995641:
+               if (name.equals("PETRIFIED_OAK_SLAB")) {
+                  var3 = 13;
+               }
+               break;
+            case -452058880:
+               if (name.equals("STRUCTURE_VOID")) {
+                  var3 = 6;
+               }
+               break;
+            case 72432886:
+               if (name.equals("LIGHT")) {
+                  var3 = 16;
+               }
+               break;
+            case 208862762:
+               if (name.equals("KNOWLEDGE_BOOK")) {
+                  var3 = 8;
+               }
+               break;
+            case 235097689:
+               if (name.equals("COMMAND_BLOCK")) {
+                  var3 = 2;
+               }
+               break;
+            case 384839575:
+               if (name.equals("BARRIER")) {
+                  var3 = 7;
+               }
+               break;
+            case 713314619:
+               if (name.equals("CHAIN_COMMAND_BLOCK")) {
+                  var3 = 0;
+               }
+               break;
+            case 908666137:
+               if (name.equals("COMMAND_BLOCK_MINECART")) {
+                  var3 = 3;
+               }
+               break;
+            case 1144086031:
+               if (name.equals("GLOBE_BANNER_PATTERN")) {
+                  var3 = 15;
+               }
+               break;
+            case 1856190308:
+               if (name.equals("DEBUG_STICK")) {
+                  var3 = 9;
+               }
+               break;
+            case 1970414722:
+               if (name.equals("BUNDLE")) {
+                  var3 = 17;
+               }
+            }
+
+            switch(var3) {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+            case 11:
+            case 12:
+            case 13:
+            case 14:
+            case 15:
+            case 16:
+            case 17:
+               return false;
+            default:
+               return true;
+            }
+         }
+      }
+   }
+
+   public static void damageItem(@Nonnull ItemStack item) {
+      damageItem(item, 1);
+   }
+
+   public static void damageItem(@Nonnull ItemStack item, int amount) {
+      ItemMeta meta = item.getItemMeta();
+      if (meta != null) {
+         if (meta instanceof Damageable) {
+            Damageable damageable = (Damageable)meta;
+            damageable.setDamage(damageable.getDamage() + amount);
+            item.setItemMeta(meta);
+         }
+      }
+   }
+}

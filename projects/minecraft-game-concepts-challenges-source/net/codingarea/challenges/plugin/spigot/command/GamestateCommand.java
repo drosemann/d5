@@ -1,0 +1,59 @@
+package net.codingarea.challenges.plugin.spigot.command;
+
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import net.anweisen.utilities.common.config.FileDocument;
+import net.codingarea.challenges.plugin.Challenges;
+import net.codingarea.challenges.plugin.content.Message;
+import net.codingarea.challenges.plugin.content.Prefix;
+import net.codingarea.challenges.plugin.utils.bukkit.command.Completer;
+import net.codingarea.challenges.plugin.utils.bukkit.command.SenderCommand;
+import net.codingarea.challenges.plugin.utils.misc.Utils;
+import org.bukkit.command.CommandSender;
+
+public class GamestateCommand implements SenderCommand, Completer {
+   public void onCommand(@Nonnull CommandSender sender, @Nonnull String[] args) throws Exception {
+      if (args.length != 1) {
+         Message.forName("syntax").send(sender, Prefix.CHALLENGES, "gamestate <reset/reload>");
+      } else {
+         FileDocument gamestate = Challenges.getInstance().getConfigManager().getGamestateConfig();
+         String var4 = args[0].toLowerCase();
+         byte var5 = -1;
+         switch(var4.hashCode()) {
+         case -934641255:
+            if (var4.equals("reload")) {
+               var5 = 1;
+            }
+            break;
+         case 108404047:
+            if (var4.equals("reset")) {
+               var5 = 0;
+            }
+         }
+
+         switch(var5) {
+         case 0:
+            gamestate.clear();
+            Challenges.getInstance().getChallengeManager().resetGamestate();
+            Challenges.getInstance().getScoreboardManager().updateAll();
+            Message.forName("command-gamestate-reset").send(sender, Prefix.CHALLENGES);
+            break;
+         case 1:
+            Challenges.getInstance().getChallengeManager().loadGamestate(gamestate.readonly());
+            Challenges.getInstance().getScoreboardManager().updateAll();
+            Message.forName("command-gamestate-reload").send(sender, Prefix.CHALLENGES);
+            break;
+         default:
+            Message.forName("syntax").send(sender, Prefix.CHALLENGES, "gamestate <reset/reload>");
+         }
+
+      }
+   }
+
+   @Nullable
+   public List onTabComplete(@Nonnull CommandSender sender, @Nonnull String[] args) {
+      return args.length == 1 ? Utils.filterRecommendations(args[0], "reset", "reload") : Collections.emptyList();
+   }
+}

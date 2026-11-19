@@ -1,0 +1,23 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\management\scheduler\timer\TimerStatus.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE TimerStatus_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\management\scheduler\timer\TimerStatus.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\management\scheduler\timer\TimerStatus.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.management.scheduler.timer;
+#
+# public enum TimerStatus {
+#    RUNNING,
+#    PAUSED;
+#
+#    // $FF: synthetic method
+#    private static TimerStatus[] $values() {
+#       return new TimerStatus[]{RUNNING, PAUSED};
+#    }
+# }
+#

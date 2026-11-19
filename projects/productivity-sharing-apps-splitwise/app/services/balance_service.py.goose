@@ -1,0 +1,135 @@
+﻿// Goose-Port-Spiegel von: projects/productivity-sharing-apps-splitwise/app/services/balance_service.py
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/productivity-sharing-apps-splitwise/app/services/balance_service.py");
+}
+
+// ---- Original-Code (projects/productivity-sharing-apps-splitwise/app/services/balance_service.py), unveraendert, als Inline-Doku ----
+// from app import db
+// from app.models.expense import Expense, ExpenseSplit
+// from app.models.user import User
+// from sqlalchemy import func
+//
+// class BalanceService:
+//     @staticmethod
+//     def calculate_user_balance(user_id, group_id=None):
+//         """
+//         Calculate the total balance for a user in a specific group or across all groups
+//         
+//         Args:
+//             user_id (int): ID of the user
+//             group_id (int, optional): ID of the group. If None, calculates across all groups
+//         
+//         Returns:
+//             dict: Balance information
+//         """
+//         # Subquery to get total expenses paid by the user
+//         paid_expenses_query = db.session.query(
+//             func.coalesce(func.sum(Expense.amount), 0)
+//         ).filter(
+//             Expense.user_id == user_id
+//         )
+//         
+//         # Add group filter if specified
+//         if group_id:
+//             paid_expenses_query = paid_expenses_query.filter(Expense.group_id == group_id)
+//         
+//         paid_expenses = paid_expenses_query.scalar()
+//         
+//         # Subquery to get total splits for the user
+//         splits_query = db.session.query(
+//             func.coalesce(func.sum(ExpenseSplit.amount), 0)
+//         ).join(Expense).filter(
+//             ExpenseSplit.user_id == user_id
+//         )
+//         
+//         # Add group filter if specified
+//         if group_id:
+//             splits_query = splits_query.filter(Expense.group_id == group_id)
+//         
+//         total_splits = splits_query.scalar()
+//         
+//         # Calculate balance
+//         balance = paid_expenses - total_splits
+//         
+//         return {
+//             'user_id': user_id,
+//             'group_id': group_id,
+//             'total_paid': paid_expenses,
+//             'total_owed': total_splits,
+//             'net_balance': balance
+//         }
+//     
+//     @staticmethod
+//     def calculate_group_balances(group_id):
+//         """
+//         Calculate balances for all users in a specific group
+//         
+//         Args:
+//             group_id (int): ID of the group
+//         
+//         Returns:
+//             list: List of balance dictionaries for each user in the group
+//         """
+//         # Get all users in the group
+//         from app.models.group import GroupMembership
+//         user_ids = [
+//             membership.user_id 
+//             for membership in GroupMembership.query.filter_by(group_id=group_id).all()
+//         ]
+//         
+//         # Calculate balance for each user
+//         group_balances = [
+//             BalanceService.calculate_user_balance(user_id, group_id)
+//             for user_id in user_ids
+//         ]
+//         
+//         return group_balances
+//     
+//     @staticmethod
+//     def settle_up(from_user_id, to_user_id, amount, group_id=None):
+//         """
+//         Create a settlement transaction between two users
+//         
+//         Args:
+//             from_user_id (int): User paying
+//             to_user_id (int): User receiving payment
+//             amount (float): Amount to settle
+//             group_id (int, optional): Group to settle in
+//         
+//         Returns:
+//             dict: Settlement transaction details
+//         """
+//         try:
+//             # Create a settlement expense
+//             settlement = Expense(
+//                 description=f"Settlement between users",
+//                 amount=amount,
+//                 user_id=from_user_id,
+//                 group_id=group_id
+//             )
+//             db.session.add(settlement)
+//             db.session.flush()
+//             
+//             # Create corresponding split
+//             settlement_split = ExpenseSplit(
+//                 expense_id=settlement.id,
+//                 user_id=to_user_id,
+//                 amount=-amount  # Negative to indicate receiving payment
+//             )
+//             db.session.add(settlement_split)
+//             
+//             db.session.commit()
+//             
+//             return {
+//                 'from_user_id': from_user_id,
+//                 'to_user_id': to_user_id,
+//                 'amount': amount,
+//                 'group_id': group_id
+//             }
+//         except Exception as e:
+//             db.session.rollback()
+//             raise
+//

@@ -1,0 +1,29 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-infra-pilot\services\management-panel\seeds\customers.sample.json
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE customers_sample_json
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-infra-pilot\services\management-panel\seeds\customers.sample.json\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-infra-pilot\services\management-panel\seeds\customers.sample.json), unveraendert, als Inline-Doku ----
+# [
+#   {
+#     "owner_user_id": "00000000-0000-0000-0000-000000000001",
+#     "name": "Acme Corporation",
+#     "email": "contact@acme.example"
+#   },
+#   {
+#     "owner_user_id": "00000000-0000-0000-0000-000000000001",
+#     "name": "Beta LLC",
+#     "email": "hello@beta.example"
+#   },
+#   {
+#     "owner_user_id": "00000000-0000-0000-0000-000000000002",
+#     "name": "Gamma Industries",
+#     "email": "info@gamma.example"
+#   }
+# ]
+#

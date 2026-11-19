@@ -1,0 +1,295 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\management\scheduler\timer\ChallengeTimer.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE ChallengeTimer_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\management\scheduler\timer\ChallengeTimer.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\management\scheduler\timer\ChallengeTimer.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.management.scheduler.timer;
+#
+# import java.util.Iterator;
+# import javax.annotation.Nonnull;
+# import lombok.Generated;
+# import net.anweisen.utilities.bukkit.utils.animation.SoundSample;
+# import net.anweisen.utilities.common.config.Document;
+# import net.anweisen.utilities.common.config.FileDocument;
+# import net.codingarea.challenges.plugin.ChallengeAPI;
+# import net.codingarea.challenges.plugin.Challenges;
+# import net.codingarea.challenges.plugin.challenges.type.IGoal;
+# import net.codingarea.challenges.plugin.challenges.type.abstraction.AbstractChallenge;
+# import net.codingarea.challenges.plugin.content.Message;
+# import net.codingarea.challenges.plugin.content.Prefix;
+# import net.codingarea.challenges.plugin.content.loader.LanguageLoader;
+# import net.codingarea.challenges.plugin.management.menu.MenuType;
+# import net.codingarea.challenges.plugin.management.menu.generator.implementation.TimerMenuGenerator;
+# import net.codingarea.challenges.plugin.management.scheduler.policy.PlayerCountPolicy;
+# import net.codingarea.challenges.plugin.management.scheduler.policy.TimerPolicy;
+# import net.codingarea.challenges.plugin.management.scheduler.task.ScheduledTask;
+# import net.codingarea.challenges.plugin.management.server.ChallengeEndCause;
+# import net.codingarea.challenges.plugin.utils.misc.FontUtils;
+# import net.md_5.bungee.api.ChatMessageType;
+# import net.md_5.bungee.api.chat.TextComponent;
+# import org.bukkit.Bukkit;
+# import org.bukkit.Effect;
+# import org.bukkit.GameMode;
+# import org.bukkit.GameRule;
+# import org.bukkit.Location;
+# import org.bukkit.World;
+# import org.bukkit.entity.Player;
+#
+# public final class ChallengeTimer {
+#    private final TimerFormat format;
+#    private final String stoppedMessage;
+#    private final String upMessage;
+#    private final String downMessage;
+#    private final boolean specificStartSounds;
+#    private final boolean defaultStartSound;
+#    private long time = 0L;
+#    private boolean countingUp = true;
+#    private boolean paused = true;
+#    private boolean hidden = false;
+#    private boolean sentEmpty;
+#
+#    public ChallengeTimer() {
+#       Document pluginConfig = Challenges.getInstance().getConfigDocument();
+#       this.specificStartSounds = pluginConfig.getBoolean("enable-specific-start-sounds");
+#       this.defaultStartSound = pluginConfig.getBoolean("enable-default-start-sounds");
+#       Document timerConfig = pluginConfig.getDocument("timer");
+#       this.stoppedMessage = timerConfig.getString("stopped-message", "");
+#       this.upMessage = timerConfig.getString("count-up-message", "");
+#       this.downMessage = timerConfig.getString("count-down-message", "");
+#       Document formatConfig = timerConfig.getDocument("format");
+#       this.format = new TimerFormat(formatConfig);
+#       Challenges.getInstance().getScheduler().register((Object)this);
+#    }
+#
+#    public void enable() {
+#       this.updateTimeRule();
+#    }
+#
+#    private void updateTimeRule() {
+#       Iterator var1 = ChallengeAPI.getGameWorlds().iterator();
+#
+#       while(var1.hasNext()) {
+#          World world = (World)var1.next();
+#          world.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, !this.paused);
+#       }
+#
+#    }
+#
+#    @ScheduledTask(
+#       ticks = 20,
+#       async = false,
+#       timerPolicy = TimerPolicy.ALWAYS,
+#       playerPolicy = PlayerCountPolicy.ALWAYS
+#    )
+#    public void onTimerSecond() {
+#       if (!this.paused) {
+#          if (this.countingUp) {
+#             ++this.time;
+#          } else {
+#             --this.time;
+#          }
+#
+#          if (this.time <= 0L) {
+#             this.time = 0L;
+#             this.countingUp = true;
+#             this.handleHitZero();
+#          }
+#       }
+#
+#       this.updateActionbar();
+#    }
+#
+#    @ScheduledTask(
+#       ticks = 20,
+#       timerPolicy = TimerPolicy.PAUSED
+#    )
+#    public void playPausedParticles() {
+#       Iterator var1 = Bukkit.getOnlinePlayers().iterator();
+#
+#       while(var1.hasNext()) {
+#          Player player = (Player)var1.next();
+#          if (!AbstractChallenge.ignorePlayer(player)) {
+#             Location location = player.getLocation();
+#             if (location.getWorld() != null) {
+#                location.getWorld().playEffect(location, Effect.ENDER_SIGNAL, 1);
+#             }
+#          }
+#       }
+#
+#    }
+#
+#    private void handleHitZero() {
+#       ChallengeAPI.endChallenge(ChallengeEndCause.TIMER_HIT_ZERO);
+#    }
+#
+#    public void resume() {
+#       if (this.paused) {
+#          this.paused = false;
+#          this.updateActionbar();
+#          this.updateTimeRule();
+#          Message.forName("timer-was-started").broadcast(Prefix.TIMER);
+#          Challenges.getInstance().getScheduler().fireTimerStatusChange();
+#          Challenges.getInstance().getTitleManager().sendTimerStatusTitle(Message.forName("title-timer-started"));
+#          Challenges.getInstance().getServerManager().setNotFresh();
+#          Iterator var1 = Bukkit.getOnlinePlayers().iterator();
+#
+#          while(var1.hasNext()) {
+#             Player player = (Player)var1.next();
+#             if (player.getGameMode() != GameMode.CREATIVE) {
+#                player.setGameMode(GameMode.SURVIVAL);
+#             }
+#          }
+#
+#          IGoal currentGoal = Challenges.getInstance().getChallengeManager().getCurrentGoal();
+#          if (currentGoal != null && this.specificStartSounds) {
+#             currentGoal.getStartSound().broadcast();
+#          } else if (this.defaultStartSound) {
+#             SoundSample.DRAGON_BREATH.broadcast();
+#          }
+#
+#       }
+#    }
+#
+#    public void pause(boolean playInGameEffects) {
+#       if (!this.paused) {
+#          this.paused = true;
+#          this.updateActionbar();
+#          this.updateTimeRule();
+#          Challenges.getInstance().getScheduler().fireTimerStatusChange();
+#          if (playInGameEffects) {
+#             Challenges.getInstance().getTitleManager().sendTimerStatusTitle(Message.forName("title-timer-paused"));
+#             Message.forName("timer-was-paused").broadcast(Prefix.TIMER);
+#             SoundSample.BASS_OFF.broadcast();
+#          }
+#
+#       }
+#    }
+#
+#    public void reset() {
+#       if (!this.countingUp) {
+#          this.pause(true);
+#       }
+#
+#       this.time = 0L;
+#       this.countingUp = true;
+#       this.updateActionbar();
+#    }
+#
+#    public void updateActionbar() {
+#       if (!this.sentEmpty || !this.hidden) {
+#          if (this.hidden) {
+#             this.sentEmpty = true;
+#          }
+#
+#          if (!this.hidden) {
+#             Iterator var1 = Bukkit.getOnlinePlayers().iterator();
+#
+#             while(var1.hasNext()) {
+#                Player player = (Player)var1.next();
+#                player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(this.getActionbar()));
+#             }
+#          }
+#
+#       }
+#    }
+#
+#    @Nonnull
+#    private String getActionbar() {
+#       String message = this.paused && (this.countingUp || this.time <= 0L) ? this.stoppedMessage : (this.countingUp ? this.upMessage : this.downMessage);
+#       String time = this.getFormattedTime();
+#       message = message.replace("{time}", time);
+#       return this.isSmallCaps() ? FontUtils.toSmallCaps(message) : message;
+#    }
+#
+#    private boolean isSmallCaps() {
+#       LanguageLoader languageLoader = (LanguageLoader)Challenges.getInstance().getLoaderRegistry().getFirstLoaderByClass(LanguageLoader.class);
+#       return languageLoader == null ? false : languageLoader.isSmallCapsFont();
+#    }
+#
+#    public synchronized void loadSession() {
+#       FileDocument config = Challenges.getInstance().getConfigManager().getSessionConfig();
+#       this.time = (long)config.getInt("timer.seconds");
+#       this.countingUp = config.getBoolean("timer.countingUp", true);
+#       this.hidden = config.getBoolean("timer.hidden", false);
+#    }
+#
+#    public synchronized void saveSession(boolean async) {
+#       FileDocument config = Challenges.getInstance().getConfigManager().getSessionConfig();
+#       config.set("timer.seconds", this.time);
+#       config.set("timer.countingUp", this.countingUp);
+#       config.set("timer.hidden", this.hidden);
+#       config.save(async);
+#    }
+#
+#    public void addSeconds(int amount) {
+#       this.time += (long)amount;
+#       if (this.time < 0L) {
+#          this.time = 0L;
+#       }
+#
+#       this.updateActionbar();
+#    }
+#
+#    public void setSeconds(long seconds) {
+#       this.time = seconds;
+#       this.updateActionbar();
+#    }
+#
+#    public void setHidden(boolean hide) {
+#       this.sentEmpty = false;
+#       this.hidden = hide;
+#       this.updateActionbar();
+#    }
+#
+#    @Nonnull
+#    public String getFormattedTime() {
+#       return this.format.format(this.time);
+#    }
+#
+#    @Nonnull
+#    public TimerStatus getStatus() {
+#       return this.paused ? TimerStatus.PAUSED : TimerStatus.RUNNING;
+#    }
+#
+#    public boolean isStarted() {
+#       return !this.paused;
+#    }
+#
+#    public void setCountingUp(boolean countingUp) {
+#       if (this.countingUp != countingUp) {
+#          this.countingUp = countingUp;
+#          this.updateActionbar();
+#          TimerMenuGenerator menuGenerator = (TimerMenuGenerator)MenuType.TIMER.getMenuGenerator();
+#          menuGenerator.updateFirstPage();
+#          Message.forName("timer-mode-set-" + (countingUp ? "up" : "down")).broadcast(Prefix.TIMER);
+#          SoundSample.BASS_ON.broadcast();
+#       }
+#    }
+#
+#    @Generated
+#    public TimerFormat getFormat() {
+#       return this.format;
+#    }
+#
+#    @Generated
+#    public long getTime() {
+#       return this.time;
+#    }
+#
+#    @Generated
+#    public boolean isCountingUp() {
+#       return this.countingUp;
+#    }
+#
+#    @Generated
+#    public boolean isPaused() {
+#       return this.paused;
+#    }
+# }
+#

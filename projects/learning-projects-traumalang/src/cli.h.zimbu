@@ -1,0 +1,18 @@
+﻿# Zimbu-Port-Spiegel von: projects\learning-projects-traumalang\src\cli.h
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE cli_h
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\learning-projects-traumalang\src\cli.h\n")
+  RETURN 0
+
+# ---- Original-Code (projects\learning-projects-traumalang\src\cli.h), unveraendert, als Inline-Doku ----
+# #pragma once
+# #ifndef TL_CLI_H
+# #define TL_CLI_H
+# int tl_cli_main(int argc, char **argv);
+# #define TL_VERSION "2.2.0"
+# #endif
+#

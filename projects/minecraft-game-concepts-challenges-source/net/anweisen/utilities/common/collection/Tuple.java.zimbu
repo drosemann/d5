@@ -1,0 +1,26 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\collection\Tuple.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE Tuple_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\collection\Tuple.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\collection\Tuple.java), unveraendert, als Inline-Doku ----
+# package net.anweisen.utilities.common.collection;
+#
+# import javax.annotation.Nullable;
+#
+# /** @deprecated */
+# @Deprecated
+# public class Tuple extends net.anweisen.utilities.common.collection.pair.Tuple {
+#    public Tuple() {
+#    }
+#
+#    public Tuple(@Nullable Object first, @Nullable Object second) {
+#       super(first, second);
+#    }
+# }
+#

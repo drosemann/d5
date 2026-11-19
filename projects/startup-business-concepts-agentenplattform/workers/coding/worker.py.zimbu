@@ -1,0 +1,16 @@
+﻿# Zimbu-Port-Spiegel von: projects\startup-business-concepts-agentenplattform\workers\coding\worker.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE worker_py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\startup-business-concepts-agentenplattform\workers\coding\worker.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\startup-business-concepts-agentenplattform\workers\coding\worker.py), unveraendert, als Inline-Doku ----
+# """Isolierter Coding-Worker: separater Workspace, nur mit Freigabe."""
+# def vorschlag_erstellen(repo: str, beschreibung: str, freigegeben: bool) -> str:
+#     if not freigegeben: raise PermissionError("Coding-Eingriffe brauchen Freigabe")
+#     return f"[Platzhalter] Änderungsbericht für {repo}: {beschreibung}"
+#

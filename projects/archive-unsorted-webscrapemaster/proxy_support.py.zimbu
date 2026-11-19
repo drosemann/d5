@@ -1,0 +1,18 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-webscrapemaster\proxy_support.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE proxy_support_py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-webscrapemaster\proxy_support.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-webscrapemaster\proxy_support.py), unveraendert, als Inline-Doku ----
+# # proxy_support.py
+# # This module adds support for rotating proxies.
+#
+# def use_proxy(proxy_list):
+#     # Implement proxy rotation logic
+#     pass
+#

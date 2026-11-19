@@ -1,0 +1,555 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-goose-desktop-companion\Productivity\goose-accomplishments.ps1
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE goose_accomplishments_ps1
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-goose-desktop-companion\Productivity\goose-accomplishments.ps1\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-goose-desktop-companion\Productivity\goose-accomplishments.ps1), unveraendert, als Inline-Doku ----
+# # Goose Desktop Companion - Daily Accomplishment Log
+# # Lightweight standup tracker for logging daily accomplishments
+#
+# $LoggingScriptPath = Join-Path $PSScriptRoot "..\Core\GooseLogging.ps1"
+# if (Test-Path $LoggingScriptPath) {
+#     . $LoggingScriptPath
+# }
+#
+# enum AccomplishmentType {
+#     Shipped
+#     Learned
+#     Blocked
+#     Collaborated
+#     Improved
+#     Attended
+#     Other
+# }
+#
+# class Accomplishment {
+#     [string]$Id
+#     [string]$Content
+#     [AccomplishmentType]$Type
+#     [datetime]$CreatedAt
+#     [bool]$IsHighlighted
+#     [string]$Tags
+#     [string]$RelatedTask
+#
+#     Accomplishment([string]$content, [AccomplishmentType]$type) {
+#         $this.Id = [guid]::NewGuid().ToString()
+#         $this.Content = $content
+#         $this.Type = $type
+#         $this.CreatedAt = Get-Date
+#         $this.IsHighlighted = $false
+#         $this.Tags = ""
+#         $this.RelatedTask = ""
+#     }
+# }
+#
+# class DailyLog {
+#     [string]$Date
+#     [array]$Accomplishments
+#     [int]$TotalCount
+#
+#     DailyLog([string]$date) {
+#         $this.Date = $date
+#         $this.Accomplishments = @()
+#         $this.TotalCount = 0
+#     }
+# }
+#
+# class GooseAccomplishments {
+#     [hashtable]$Config
+#     [string]$DataFile
+#     [hashtable]$Logs
+#     [bool]$IsEnabled
+#     [datetime]$LastReminder
+#
+#     GooseAccomplishments() {
+#         $this.Config = $this.LoadConfig()
+#         $this.DataFile = "goose_accomplishments.json"
+#         $this.Logs = @{}
+#         $this.LastReminder = Get-Date
+#         $this.LoadData()
+#     }
+#
+#     [hashtable] LoadConfig() {
+#         $this.Config = @{}
+#         $configFile = "config.ini"
+#
+#         if (Test-Path $configFile) {
+#             Get-Content $configFile | ForEach-Object {
+#                 if ($_ -match '^([^=]+)=(.*)$') {
+#                     $key = $matches[1].Trim()
+#                     $value = $matches[2].Trim()
+#
+#                     if ($value -eq 'True' -or $value -eq 'False') {
+#                         $this.Config[$key] = [bool]$value
+#                     } elseif ($value -match '^\d+$') {
+#                         $this.Config[$key] = [int]$value
+#                     } elseif ($value -match '^\d+\.\d+$') {
+#                         $this.Config[$key] = [double]$value
+#                     } else {
+#                         $this.Config[$key] = $value
+#                     }
+#                 }
+#             }
+#         }
+#
+#         if (-not $this.Config.ContainsKey("AccomplishmentsEnabled")) {
+#             $this.Config["AccomplishmentsEnabled"] = $false
+#         }
+#         if (-not $this.Config.ContainsKey("AccomplishmentsReminderTime")) {
+#             $this.Config["AccomplishmentsReminderTime"] = "17:00"
+#         }
+#         if (-not $this.Config.ContainsKey("AccomplishmentsReminderDays")) {
+#             $this.Config["AccomplishmentsReminderDays"] = "Mon-Fri"
+#         }
+#         if (-not $this.Config.ContainsKey("AccomplishmentsAutoSummary")) {
+#             $this.Config["AccomplishmentsAutoSummary"] = $true
+#         }
+#         if (-not $this.Config.ContainsKey("AccomplishmentsSummaryDay")) {
+#             $this.Config["AccomplishmentsSummaryDay"] = "Sunday"
+#         }
+#         if (-not $this.Config.ContainsKey("AccomplishmentsStreakGoalDays")) {
+#             $this.Config["AccomplishmentsStreakGoalDays"] = 5
+#         }
+#         if (-not $this.Config.ContainsKey("AccomplishmentsShowWeeklyStats")) {
+#             $this.Config["AccomplishmentsShowWeeklyStats"] = $true
+#         }
+#
+#         $this.IsEnabled = $this.Config["AccomplishmentsEnabled"]
+#
+#         return $this.Config
+#     }
+#
+#     [void] LoadData() {
+#         if (Test-Path $this.DataFile) {
+#             try {
+#                 $data = Get-Content $this.DataFile -Raw | ConvertFrom-Json
+#                 $this.Logs = @{}
+#
+#                 if ($data.logs) {
+#                     $data.logs.PSObject.Properties | ForEach-Object {
+#                         $dateLog = [DailyLog]::new($_.Name)
+#                         $dateLog.Accomplishments = @()
+#
+#                         foreach ($accData in $_.Value) {
+#                             $acc = [Accomplishment]::new($accData.content, [AccomplishmentType][int]$accData.type)
+#                             $acc.Id = $accData.id
+#                             $acc.CreatedAt = [datetime]$accData.createdAt
+#                             $acc.IsHighlighted = $accData.isHighlighted
+#                             $acc.Tags = $accData.tags
+#                             $acc.RelatedTask = $accData.relatedTask
+#                             $dateLog.Accomplishments += $acc
+#                         }
+#
+#                         $dateLog.TotalCount = $dateLog.Accomplishments.Count
+#                         $this.Logs[$_.Name] = $dateLog
+#                     }
+#                 }
+#
+#                 if ($data.lastReminder) {
+#                     $this.LastReminder = [datetime]$data.lastReminder
+#                 }
+#             } catch {
+#                 Write-LogError -Message "Failed to load accomplishments data: $_" -Source "Accomplishments"
+#             }
+#         }
+#     }
+#
+#     [void] SaveData() {
+#         $logsData = @{}
+#
+#         foreach ($date in $this.Logs.Keys) {
+#             $log = $this.Logs[$date]
+#             $accData = @()
+#
+#             foreach ($acc in $log.Accomplishments) {
+#                 $accData += @{
+#                     id = $acc.Id
+#                     content = $acc.Content
+#                     type = [int]$acc.Type
+#                     createdAt = $acc.CreatedAt.ToString("o")
+#                     isHighlighted = $acc.IsHighlighted
+#                     tags = $acc.Tags
+#                     relatedTask = $acc.RelatedTask
+#                 }
+#             }
+#
+#             $logsData[$date] = $accData
+#         }
+#
+#         $data = @{
+#             logs = $logsData
+#             lastReminder = $this.LastReminder.ToString("o")
+#         }
+#
+#         $data | ConvertTo-Json -Depth 10 | Set-Content $this.DataFile
+#         Write-LogInfo -Message "Saved accomplishments data" -Source "Accomplishments"
+#     }
+#
+#     [string] GetTodayKey() {
+#         return (Get-Date).ToString("yyyy-MM-dd")
+#     }
+#
+#     [DailyLog] GetTodayLog() {
+#         $key = $this.GetTodayKey()
+#
+#         if (-not $this.Logs.ContainsKey($key)) {
+#             $this.Logs[$key] = [DailyLog]::new($key)
+#         }
+#
+#         return $this.Logs[$key]
+#     }
+#
+#     [hashtable] LogAccomplishment(
+#         [string]$content,
+#         [AccomplishmentType]$type = [AccomplishmentType]::Other,
+#         [string]$tags = "",
+#         [string]$relatedTask = ""
+#     ) {
+#         if ([string]::IsNullOrWhiteSpace($content)) {
+#             return @{ success = $false; message = "Content cannot be empty" }
+#         }
+#
+#         $today = $this.GetTodayLog()
+#         $acc = [Accomplishment]::new($content, $type)
+#         $acc.Tags = $tags
+#         $acc.RelatedTask = $relatedTask
+#
+#         $today.Accomplishments += $acc
+#         $today.TotalCount = $today.Accomplishments.Count
+#
+#         $this.SaveData()
+#
+#         Write-LogInfo -Message "Logged accomplishment: $content" -Source "Accomplishments"
+#
+#         return @{
+#             success = $true
+#             message = "Accomplishment logged!"
+#             id = $acc.Id
+#             todayCount = $today.TotalCount
+#         }
+#     }
+#
+#     [hashtable] GetWeekLog() {
+#         $weekLogs = @()
+#         $startDate = (Get-Date).AddDays(-6)
+#
+#         for ($i = 0; $i -le 6; $i++) {
+#             $date = $startDate.AddDays($i)
+#             $key = $date.ToString("yyyy-MM-dd")
+#
+#             if ($this.Logs.ContainsKey($key)) {
+#                 $weekLogs += $this.Logs[$key]
+#             } else {
+#                 $weekLogs += [DailyLog]::new($key)
+#             }
+#         }
+#
+#         return $weekLogs
+#     }
+#
+#     [hashtable] GetWeeklySummary() {
+#         $weekLogs = $this.GetWeekLog()
+#
+#         $total = 0
+#         $byType = @{}
+#         $highlights = @()
+#
+#         foreach ($log in $weekLogs) {
+#             $total += $log.TotalCount
+#
+#             foreach ($acc in $log.Accomplishments) {
+#                 $typeName = $acc.Type.ToString()
+#                 if (-not $byType.ContainsKey($typeName)) {
+#                     $byType[$typeName] = 0
+#                 }
+#                 $byType[$typeName]++
+#
+#                 if ($acc.IsHighlighted) {
+#                     $highlights += $acc
+#                 }
+#             }
+#         }
+#
+#         return @{
+#             weekStart = $weekLogs[0].Date
+#             weekEnd = $weekLogs[-1].Date
+#             totalAccomplishments = $total
+#             dailyAverage = [math]::Round($total / 7, 1)
+#             byType = $byType
+#             highlights = $highlights
+#             daysLogged = ($weekLogs | Where-Object { $_.TotalCount -gt 0 }).Count
+#         }
+#     }
+#
+#     [int] GetCurrentStreak() {
+#         $streak = 0
+#         $checkDate = Get-Date
+#
+#         while ($true) {
+#             $key = $checkDate.ToString("yyyy-MM-dd")
+#
+#             if ($this.Logs.ContainsKey($key) -and $this.Logs[$key].TotalCount -gt 0) {
+#                 $streak++
+#                 $checkDate = $checkDate.AddDays(-1)
+#             } else {
+#                 $dayOfWeek = $checkDate.DayOfWeek
+#                 if ($dayOfWeek -eq "Sunday" -or $dayOfWeek -eq "Saturday") {
+#                     $checkDate = $checkDate.AddDays(-1)
+#                     continue
+#                 }
+#                 break
+#             }
+#         }
+#
+#         return $streak
+#     }
+#
+#     [int] GetLongestStreak() {
+#         $longest = 0
+#         $current = 0
+#         $sortedDates = $this.Logs.Keys | Sort-Object
+#
+#         foreach ($dateStr in $sortedDates) {
+#             if ($this.Logs[$dateStr].TotalCount -gt 0) {
+#                 $current++
+#                 if ($current -gt $longest) {
+#                     $longest = $current
+#                 }
+#             } else {
+#                 $current = 0
+#             }
+#         }
+#
+#         return $longest
+#     }
+#
+#     [hashtable] GetInsights() {
+#         $weekSummary = $this.GetWeeklySummary()
+#         $currentStreak = $this.GetCurrentStreak()
+#         $longestStreak = $this.GetLongestStreak()
+#
+#         $insights = @()
+#
+#         if ($weekSummary.daysLogged -ge 5) {
+#             $insights += "Great week! You logged accomplishments $($weekSummary.daysLogged) days."
+#         }
+#
+#         if ($weekSummary.byType["Shipped"]) {
+#             $insights += "You shipped $($weekSummary.byType["Shipped"]) things this week!"
+#         }
+#
+#         if ($weekSummary.byType["Learned"]) {
+#             $insights += "Learning mode: $($weekSummary.byType["Learned"]) new things learned."
+#         }
+#
+#         if ($currentStreak -ge $this.Config["AccomplishmentsStreakGoalDays"]) {
+#             $insights += "Streak milestone! $currentStreak days in a row - keep it up!"
+#         }
+#
+#         if ($weekSummary.daysLogged -lt 3) {
+#             $insights += "Only $($weekSummary.daysLogged) days logged this week. Aim for more consistency!"
+#         }
+#
+#         return @{
+#             weeklySummary = $weekSummary
+#             currentStreak = $currentStreak
+#             longestStreak = $longestStreak
+#             streakGoal = $this.Config["AccomplishmentsStreakGoalDays"]
+#             insights = $insights
+#             progressToGoal = [math]::Min(100, ($currentStreak / $this.Config["AccomplishmentsStreakGoalDays"]) * 100)
+#         }
+#     }
+#
+#     [bool] ShouldRemind() {
+#         $reminderTime = $this.Config["AccomplishmentsReminderTime"]
+#         $reminderDays = $this.Config["AccomplishmentsReminderDays"]
+#
+#         $daysMap = @{
+#             "Mon" = "Monday"
+#             "Tue" = "Tuesday"
+#             "Wed" = "Wednesday"
+#             "Thu" = "Thursday"
+#             "Fri" = "Friday"
+#             "Sat" = "Saturday"
+#             "Sun" = "Sunday"
+#         }
+#
+#         $allowedDays = @()
+#         if ($reminderDays -match "Mon-Fri") {
+#             $allowedDays = @("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
+#         } else {
+#             $reminderDays -split "," | ForEach-Object {
+#                 $day = $_.Trim()
+#                 if ($daysMap.ContainsKey($day)) {
+#                     $allowedDays += $daysMap[$day]
+#                 } else {
+#                     $allowedDays += $day
+#                 }
+#             }
+#         }
+#
+#         $today = (Get-Date).DayOfWeek.ToString()
+#         if ($today -notin $allowedDays) {
+#             return $false
+#         }
+#
+#         $now = Get-Date
+#         $targetHour = [int]($reminderTime -split ":")[0]
+#         $targetMinute = [int]($reminderTime -split ":")[1]
+#         $targetTime = Get-Date -Hour $targetHour -Minute $targetMinute -Second 0
+#
+#         if ($now -lt $targetTime -and ($now - $this.LastReminder).TotalHours -gt 12) {
+#             return $true
+#         }
+#
+#         return $false
+#     }
+#
+#     [hashtable] GetReminderMessage() {
+#         $today = $this.GetTodayLog()
+#
+#         if ($today.TotalCount -eq 0) {
+#             return @{
+#                 shouldRemind = $true
+#                 message = "Hey! Don't forget to log your accomplishments today. What did you ship, learn, or improve?"
+#                 template = $true
+#             }
+#         }
+#
+#         return @{
+#             shouldRemind = $false
+#             message = ""
+#         }
+#     }
+#
+#     [hashtable] HighlightAccomplishment([string]$id) {
+#         $today = $this.GetTodayLog()
+#
+#         foreach ($acc in $today.Accomplishments) {
+#             if ($acc.Id -eq $id) {
+#                 $acc.IsHighlighted = $true
+#                 $this.SaveData()
+#                 return @{
+#                     success = $true
+#                     message = "Highlighted: $($acc.Content)"
+#                 }
+#             }
+#         }
+#
+#         return @{ success = $false; message = "Accomplishment not found" }
+#     }
+#
+#     [hashtable] DeleteAccomplishment([string]$id) {
+#         $today = $this.GetTodayLog()
+#
+#         $index = -1
+#         for ($i = 0; $i -lt $today.Accomplishments.Count; $i++) {
+#             if ($today.Accomplishments[$i].Id -eq $id) {
+#                 $index = $i
+#                 break
+#             }
+#         }
+#
+#         if ($index -ge 0) {
+#             $today.Accomplishments = @($today.Accomplishments[0..($index-1)] + $today.Accomplishments[($index+1)..($today.Accomplishments.Count-1)])
+#             $today.TotalCount = $today.Accomplishments.Count
+#             $this.SaveData()
+#             return @{ success = $true; message = "Deleted" }
+#         }
+#
+#         return @{ success = $false; message = "Not found" }
+#     }
+#
+#     [array] GetTemplates() {
+#         return @(
+#             @{ type = "Shipped"; prompt = "What did you ship today?" },
+#             @{ type = "Learned"; prompt = "What did you learn today?" },
+#             @{ type = "Improved"; prompt = "What did you improve?" },
+#             @{ type = "Collaborated"; prompt = "Who did you collaborate with?" },
+#             @{ type = "Blocked"; prompt = "Any blockers?" },
+#             @{ type = "Attended"; prompt = "Meetings or events?" }
+#         )
+#     }
+#
+#     [hashtable] GetStats() {
+#         $total = 0
+#         foreach ($log in $this.Logs.Values) {
+#             $total += $log.TotalCount
+#         }
+#
+#         return @{
+#             totalLogged = $total
+#             todayCount = $this.GetTodayLog().TotalCount
+#             currentStreak = $this.GetCurrentStreak()
+#             longestStreak = $this.GetLongestStreak()
+#             streakGoal = $this.Config["AccomplishmentsStreakGoalDays"]
+#             daysWithLogs = $this.Logs.Count
+#         }
+#     }
+# }
+#
+# $gooseAccomplishments = [GooseAccomplishments]::new()
+#
+# function Get-Accomplishments {
+#     return $gooseAccomplishments
+# }
+#
+# function Add-Accomplishment {
+#     param(
+#         [Parameter(Mandatory=$true)]
+#         [string]$Content,
+#         [ValidateSet("Shipped", "Learned", "Blocked", "Collaborated", "Improved", "Attended", "Other")]
+#         [string]$Type = "Other",
+#         [string]$Tags = "",
+#         [string]$RelatedTask = ""
+#     )
+#     return $gooseAccomplishments.LogAccomplishment($Content, [AccomplishmentType]$Type, $Tags, $RelatedTask)
+# }
+#
+# function Get-TodayAccomplishments {
+#     return $gooseAccomplishments.GetTodayLog()
+# }
+#
+# function Get-WeeklyAccomplishments {
+#     return $gooseAccomplishments.GetWeekLog()
+# }
+#
+# function Get-AccomplishmentSummary {
+#     return $gooseAccomplishments.GetWeeklySummary()
+# }
+#
+# function Get-AccomplishmentInsights {
+#     return $gooseAccomplishments.GetInsights()
+# }
+#
+# function Get-AccomplishmentStreak {
+#     return @{
+#         current = $gooseAccomplishments.GetCurrentStreak()
+#         longest = $gooseAccomplishments.GetLongestStreak()
+#     }
+# }
+#
+# function Get-AccomplishmentTemplates {
+#     return $gooseAccomplishments.GetTemplates()
+# }
+#
+# function Show-AccomplishmentReminder {
+#     $reminder = $gooseAccomplishments.GetReminderMessage()
+#     if ($reminder.shouldRemind) {
+#         Write-Host "Goose says: $($reminder.message)"
+#     }
+#     return $reminder
+# }
+#
+# function Get-AccomplishmentStats {
+#     return $gooseAccomplishments.GetStats()
+# }
+#
+# Write-LogInfo -Message "Goose Accomplishments Initialized" -Source "Accomplishments"
+# Write-Host "Goose Accomplishments Loaded - Enabled: $($gooseAccomplishments.IsEnabled)"
+#

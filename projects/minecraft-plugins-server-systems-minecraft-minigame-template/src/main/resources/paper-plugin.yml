@@ -1,0 +1,4 @@
+name: minigametemplate
+version: '${project.version}'
+main: org.example.sessionlock.minigametemplate.Minigametemplate
+api-version: '1.21'

@@ -1,0 +1,114 @@
+package net.codingarea.challenges.plugin.challenges.implementation.challenge.world;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nonnull;
+import net.anweisen.utilities.bukkit.utils.misc.BukkitReflectionUtils;
+import net.anweisen.utilities.common.annotations.Since;
+import net.codingarea.challenges.plugin.challenges.type.abstraction.Setting;
+import net.codingarea.challenges.plugin.challenges.type.helper.ChallengeHelper;
+import net.codingarea.challenges.plugin.content.Message;
+import net.codingarea.challenges.plugin.management.menu.MenuType;
+import net.codingarea.challenges.plugin.management.menu.generator.categorised.SettingCategory;
+import net.codingarea.challenges.plugin.utils.item.ItemBuilder;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.boss.BarColor;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerToggleSneakEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.util.Vector;
+
+@Since("2.0")
+public class IceFloorChallenge extends Setting {
+   private final List ignoredPlayers = new ArrayList();
+
+   public IceFloorChallenge() {
+      super(MenuType.CHALLENGES);
+      this.setCategory(SettingCategory.WORLD);
+   }
+
+   @Nonnull
+   public ItemBuilder createDisplayItem() {
+      return new ItemBuilder(Material.PACKED_ICE, Message.forName("item-ice-floor-challenge"));
+   }
+
+   protected void onEnable() {
+      this.bossbar.setContent((bossbar, player) -> {
+         bossbar.setTitle(Message.forName("bossbar-ice-floor").asString(this.ignoreIce(player) ? Message.forName("disabled") : Message.forName("enabled")));
+         bossbar.setColor(this.ignoreIce(player) ? BarColor.RED : BarColor.GREEN);
+      });
+      this.bossbar.show();
+   }
+
+   protected void onDisable() {
+      this.bossbar.hide();
+   }
+
+   @EventHandler(
+      priority = EventPriority.HIGH,
+      ignoreCancelled = true
+   )
+   public void onPlayerMove(@Nonnull PlayerMoveEvent event) {
+      Player player = event.getPlayer();
+      if (this.shouldExecuteEffect()) {
+         if (!ignorePlayer(player)) {
+            if (!this.ignoredPlayers.contains(player)) {
+               this.createIceFloorForPlayer(player);
+            }
+         }
+      }
+   }
+
+   private void createIceFloorForPlayer(@Nonnull Player player) {
+      Block middleBlock = player.getLocation().clone().subtract(0.0D, 1.0D, 0.0D).getBlock();
+      this.createIceFloor(middleBlock);
+   }
+
+   private void createIceFloor(@Nonnull Block middleBlock) {
+      for(int x = -1; x <= 1; ++x) {
+         for(int z = -1; z <= 1; ++z) {
+            Location iceLocation = middleBlock.getLocation().add((double)x, 0.0D, (double)z);
+            Block iceBlock = iceLocation.getBlock();
+            if (!iceBlock.getType().isSolid()) {
+               if (!BukkitReflectionUtils.isAir(iceBlock.getType())) {
+                  ChallengeHelper.breakBlock(iceBlock, new ItemStack(Material.AIR));
+               }
+
+               iceBlock.setType(Material.PACKED_ICE);
+            }
+         }
+      }
+
+   }
+
+   @EventHandler(
+      priority = EventPriority.MONITOR,
+      ignoreCancelled = true
+   )
+   public void onSneak(@Nonnull PlayerToggleSneakEvent event) {
+      if (this.shouldExecuteEffect()) {
+         if (event.isSneaking()) {
+            if (!ignorePlayer(event.getPlayer())) {
+               if (this.ignoredPlayers.contains(event.getPlayer())) {
+                  this.ignoredPlayers.remove(event.getPlayer());
+                  event.getPlayer().setVelocity(new Vector(0, 0, 0));
+                  this.createIceFloorForPlayer(event.getPlayer());
+               } else {
+                  this.ignoredPlayers.add(event.getPlayer());
+               }
+
+               this.bossbar.update(event.getPlayer());
+            }
+         }
+      }
+   }
+
+   private boolean ignoreIce(@Nonnull Player player) {
+      return this.ignoredPlayers.contains(player);
+   }
+}

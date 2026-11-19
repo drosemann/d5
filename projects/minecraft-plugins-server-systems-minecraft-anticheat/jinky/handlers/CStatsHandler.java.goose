@@ -1,0 +1,215 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/handlers/CStatsHandler.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/handlers/CStatsHandler.java");
+}
+
+// ---- Original-Code (projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/handlers/CStatsHandler.java), unveraendert, als Inline-Doku ----
+// package me.jinky.handlers;
+//
+// import java.io.File;
+// import java.io.IOException;
+// import java.io.PrintWriter;
+// import java.net.URL;
+// import java.util.HashMap;
+// import java.util.Iterator;
+// import java.util.Map;
+// import java.util.Scanner;
+// import java.util.UUID;
+// import java.util.Map.Entry;
+// import me.jinky.BAC;
+// import me.jinky.Lag;
+// import me.jinky.Settings;
+// import me.jinky.util.MiniPlugin;
+// import org.bukkit.Bukkit;
+//
+// public class CStatsHandler extends MiniPlugin {
+//    public static String ID = null;
+//    public static int OC = 0;
+//    public static Map MS = new HashMap();
+//    public static Map CC = new HashMap();
+//    public static Map UC = new HashMap();
+//
+//    public CStatsHandler(final BAC plugin) {
+//       super("Stats Updater", plugin);
+//       this.setupCStats();
+//       Bukkit.getScheduler().scheduleAsyncRepeatingTask(plugin, new Runnable() {
+//          public void run() {
+//             if (Settings.ENABLED) {
+//                if (CStatsHandler.ID != null) {
+//                   String ts = "N/A";
+//                   Integer tsc = 0;
+//                   Iterator var4 = CStatsHandler.MS.entrySet().iterator();
+//
+//                   while(var4.hasNext()) {
+//                      Entry cs = (Entry)var4.next();
+//                      if ((Integer)cs.getValue() > tsc) {
+//                         ts = (String)cs.getKey();
+//                         tsc = (Integer)cs.getValue();
+//                      }
+//                   }
+//
+//                   Double TPS = Lag.getNiceTPS();
+//                   String SV = Bukkit.getServer().getVersion();
+//                   String CV = BAC.getBAC().getDescription().getVersion().replaceAll("\\[", "").replaceAll("\\]", "");
+//                   Integer PC = Bukkit.getOnlinePlayers().size();
+//                   String detectorcalls = "N/A";
+//
+//                   Entry cf;
+//                   for(Iterator var10 = CStatsHandler.CC.entrySet().iterator(); var10.hasNext(); detectorcalls = (String)cf.getKey() + "[" + cf.getValue() + "], " + detectorcalls) {
+//                      cf = (Entry)var10.next();
+//                   }
+//
+//                   if (detectorcalls.length() > 0) {
+//                      detectorcalls = detectorcalls.substring(0, detectorcalls.length() - 2);
+//                   }
+//
+//                   if (CStatsHandler.CC.size() == 0) {
+//                      detectorcalls = "N/A";
+//                   }
+//
+//                   String webreq = "http://cenix.cf/StatUpdate.php?A=" + plugin.getCSADDRESS() + "&ID=" + CStatsHandler.ID + "&TPS=" + TPS + "&SV=" + SV + "&CV=" + CV + "&OC=" + CStatsHandler.OC + "&PC=" + PC + "&MS=" + ts + "&TC=" + detectorcalls;
+//
+//                   Scanner s;
+//                   URL url;
+//                   try {
+//                      url = new URL(webreq.replaceAll(" ", "%20"));
+//                      s = new Scanner(url.openStream());
+//                      s.next();
+//                      s.close();
+//                   } catch (IOException var14) {
+//                   }
+//
+//                   if (Settings.UPDATECHECK) {
+//                      try {
+//                         url = new URL("http://cenix.cf/CUpdate.php");
+//                         s = new Scanner(url.openStream());
+//                         String lv = s.next();
+//                         if (!lv.equalsIgnoreCase(CV)) {
+//                            BAC.getBAC().broadcast(null, Settings.UPDATE_AVAILABLE);
+//                         }
+//
+//                         s.close();
+//                      } catch (IOException var13) {
+//                      }
+//                   }
+//
+//                   CStatsHandler.CC.clear();
+//                   CStatsHandler.UC.clear();
+//                   CStatsHandler.OC = 0;
+//                   CStatsHandler.MS = new HashMap();
+//                }
+//             }
+//          }
+//       }, 36000L, 36000L);
+//    }
+//
+//    public static String Punish(UUID uuid) {
+//       Map pdata = (Map)UC.get(uuid);
+//       Integer susc = 0;
+//
+//       Integer v;
+//       for(Iterator var4 = pdata.values().iterator(); var4.hasNext(); susc = susc + v) {
+//          v = (Integer)var4.next();
+//       }
+//
+//       String uo = "";
+//       Boolean punishsusc = false;
+//       Iterator var6 = pdata.entrySet().iterator();
+//
+//       while(var6.hasNext()) {
+//          Entry oc = (Entry)var6.next();
+//          uo = uo + (String)oc.getKey() + "[" + oc.getValue() + "], ";
+//          if (BAC.getBAC().getConfig().contains((String)oc.getKey() + "-punish-count")) {
+//             Integer cc = (Integer)oc.getValue();
+//             Integer limit = BAC.getBAC().getConfig().getInt((String)oc.getKey() + "-punish-count");
+//             if (limit <= cc) {
+//                punishsusc = true;
+//             }
+//          }
+//       }
+//
+//       if (punishsusc && Settings.PUNISH) {
+//          uo = uo.substring(0, uo.length() - 2);
+//          String uid = uuid.toString();
+//          String un = "N/A";
+//          if (Bukkit.getOfflinePlayer(uuid) != null) {
+//             un = Bukkit.getOfflinePlayer(uuid).getName();
+//          } else if (Bukkit.getPlayer(uuid) != null) {
+//             un = Bukkit.getPlayer(uuid).getName();
+//          }
+//
+//          String webreq = "http://cenix.cf/OCUpdate.php?A=" + BAC.getBAC().getCSADDRESS() + "&ID=" + ID + "&UN=" + un + "&UUID=" + uid + "&OD=" + uo.replaceAll(" ", "%20");
+//
+//          try {
+//             URL url = new URL(webreq.replaceAll(" ", "%20"));
+//             Scanner s = new Scanner(url.openStream());
+//             String ret = s.nextLine();
+//             s.close();
+//             UC.remove(uuid);
+//             return ret;
+//          } catch (IOException var11) {
+//             UC.remove(uuid);
+//             var11.printStackTrace();
+//             return "Error SCR";
+//          }
+//       } else {
+//          UC.remove(uuid);
+//          return "Error NPA";
+//       }
+//    }
+//
+//    private void setupCStats() {
+//       Bukkit.getScheduler().runTaskAsynchronously(this.getPlugin(), () -> {
+//          File oldstats = new File(this.getPlugin().getDataFolder() + "/statistics.key");
+//          if (oldstats.exists()) {
+//             oldstats.delete();
+//          }
+//
+//          String ip = Bukkit.getServer().getIp();
+//          if (ip == null || ip.length() == 0) {
+//             ip = "127.0.0.1";
+//          }
+//
+//          String id = "0";
+//          String webreq = "http://cenix.cf/IPFetch.php?A=" + this.getPlugin().getCSADDRESS() + "&i=1";
+//          this.getPlugin().console("§aInitializing Cenix Stats...");
+//
+//          try {
+//             URL url = new URL(webreq);
+//             Scanner s = new Scanner(url.openStream());
+//             id = s.next();
+//             if (id.startsWith("Err.")) {
+//                this.getPlugin().console("§cFailed to initialize BACStats. The information provided was incorrect.");
+//                this.getPlugin().console("§eThis could be caused by using the plugin locally, or due to an incorrect server.properties configuration.");
+//                this.getPlugin().console("§6BACStats will not be used.");
+//             } else {
+//                this.getPlugin().console("§aBACStats loaded!");
+//                ID = id;
+//             }
+//
+//             s.close();
+//          } catch (Exception var8) {
+//             this.getPlugin().console("§cFailed to initialize BACStats. This might be blocked by your hosting provider.");
+//          }
+//
+//          File f = new File(this.getPlugin().getDataFolder() + "/statistics.key");
+//
+//          try {
+//             if (!f.exists()) {
+//                f.createNewFile();
+//             }
+//
+//             PrintWriter writer = new PrintWriter(f, "UTF-8");
+//             writer.println(id);
+//             writer.close();
+//          } catch (IOException var7) {
+//             this.getPlugin().console("§cCouldn't save key, BACStats will be disabled!");
+//          }
+//
+//       });
+//    }
+// }
+//

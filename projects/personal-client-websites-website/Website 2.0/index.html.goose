@@ -1,0 +1,97 @@
+﻿// Goose-Port-Spiegel von: projects/personal-client-websites-website/Website 2.0/index.html
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/personal-client-websites-website/Website 2.0/index.html");
+}
+
+// ---- Original-Code (projects/personal-client-websites-website/Website 2.0/index.html), unveraendert, als Inline-Doku ----
+// <!DOCTYPE html>
+// <html lang="en">
+//
+// <head>
+//
+//     <meta charset="UTF-8">
+//     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//     <title>ShadowUnity</title>
+//     <link rel="preconnect" href="https://fonts.googleapis.com">
+//     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+//     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+//     <style>
+//         body {
+//             font-family: 'Roboto Mono', monospace;
+//             background-color: #f0f0f0;
+//             margin: 0;
+//             padding: 0;
+//             box-sizing: border-box;
+//         }
+//
+//         header {
+//             text-align: center;
+//             padding: 20px;
+//             background-color: #333;
+//             color: #fff;
+//         }
+//
+//         .headline {
+//             color: #333;
+//             text-align: center;
+//             margin-top: 20px;
+//         }
+//
+//         .content {
+//             max-width: 800px;
+//             margin: 20px auto;
+//             padding: 20px;
+//             background-color: #fff;
+//             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+//         }
+//
+//         .image-container {
+//             text-align: center;
+//             background-color: #fff;
+//             padding: 16px;
+//         }
+//
+//         .header-image {
+//             max-width: 100%;
+//             height: auto;
+//         }
+//     </style>
+//
+// </head>
+//
+// <body>
+//
+//     <header>
+//         <h1 class="headline">
+//             <a href="https://shadowunity.de" style="text-decoration: none; color: #fff;">ShadowUnity</a>
+//         </h1>
+//     </header>
+//
+//     <div class="content">
+//
+//         <h2 class="headline">Willkommen auf ShadowUnity.de</h2>
+//         <p>Dies ist die offizielle Website des ShadowUnity.de Minecraft Servers!</p>
+//
+//         <h3>Unser Discord-Server</h3>
+//         <p>Besucht unseren Discord-Server: <a href="https://discord.gg/hMPy4B6WKW">https://discord.gg/hMPy4B6WKW</a></p>
+//
+//         <h3>Unser Minecraft Server</h3>
+//         <p>Besucht unseren Minecraft Server: <a href="https://shadowunity.de">ShadowUnity.de</a></p>
+//
+//         <h3>Programmierer gesucht!</h3>
+//         <p>Wenn ihr programmieren könnt, meldet euch bei uns im Discord!</p>
+//
+//     </div>
+//
+//     <div class="image-container">
+//         <img class="header-image" src="header.jpg" alt="Header Image">
+//     </div>
+//
+// </body>
+//
+// </html>
+//

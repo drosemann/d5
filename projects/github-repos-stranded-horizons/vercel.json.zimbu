@@ -1,0 +1,43 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-stranded-horizons\vercel.json
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE vercel_json
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-stranded-horizons\vercel.json\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-stranded-horizons\vercel.json), unveraendert, als Inline-Doku ----
+# {
+#   "headers": [
+#     {
+#       "source": "/assets/(.*)",
+#       "headers": [
+#         {
+#           "key": "Cache-Control",
+#           "value": "public, max-age=31536000, immutable"
+#         }
+#       ]
+#     },
+#     {
+#       "source": "/src/(.*)",
+#       "headers": [
+#         {
+#           "key": "Cache-Control",
+#           "value": "public, max-age=3600, stale-while-revalidate=86400"
+#         }
+#       ]
+#     },
+#     {
+#       "source": "/(.*)",
+#       "headers": [
+#         {
+#           "key": "Cache-Control",
+#           "value": "public, max-age=0, must-revalidate"
+#         }
+#       ]
+#     }
+#   ]
+# }
+#

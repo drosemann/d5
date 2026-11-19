@@ -1,0 +1,38 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-infra-pilot/services/discord-service/modules/db.js
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-infra-pilot/services/discord-service/modules/db.js");
+}
+
+// ---- Original-Code (projects/github-repos-infra-pilot/services/discord-service/modules/db.js), unveraendert, als Inline-Doku ----
+// const { Pool } = require('pg');
+//
+// let _dbPool = null;
+//
+// // Keep database access boring; the data has enough plot twists already.
+// // Keep database access boring; the data has enough plot twists already.
+// function getDbPool() {
+//   if (!_dbPool) {
+//     _dbPool = new Pool({
+//       host: process.env.DB_HOST || 'localhost',
+//       port: parseInt(process.env.DB_PORT, 10) || 5432,
+//       user: process.env.DB_USER || 'infra_pilot',
+//       password: process.env.DB_PASSWORD || '',
+//       database: process.env.DB_NAME || 'infra_pilot',
+//       max: 5,
+//       connectionTimeoutMillis: 10000,
+//     });
+//     _dbPool.on('error', (err) => {
+//       console.error('[DB] idle client error:', err.message);
+//     });
+//   }
+//   return _dbPool;
+// }
+//
+// async function query(text, params) {
+//   return getDbPool().query(text, params);
+// }
+//
+// module.exports = { getDbPool, query };

@@ -1,0 +1,25 @@
+﻿# Zimbu-Port-Spiegel von: projects\productivity-&-sharing-apps-photoshare\vite.config.ts
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE vite_config_ts
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\productivity-&-sharing-apps-photoshare\vite.config.ts\n")
+  RETURN 0
+
+# ---- Original-Code (projects\productivity-&-sharing-apps-photoshare\vite.config.ts), unveraendert, als Inline-Doku ----
+# import { defineConfig } from "vite";
+# import react from "@vitejs/plugin-react";
+# import path from "path";
+#
+# // https://vite.dev/config/
+# export default defineConfig({
+#   plugins: [react()],
+#   resolve: {
+#     alias: {
+#       "@": path.resolve(__dirname, "./src"),
+#     },
+#   },
+# });
+#

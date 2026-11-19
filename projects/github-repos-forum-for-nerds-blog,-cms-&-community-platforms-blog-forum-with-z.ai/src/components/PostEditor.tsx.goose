@@ -1,0 +1,750 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-forum-with-z.ai/src/components/PostEditor.tsx
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-forum-with-z.ai/src/components/PostEditor.tsx");
+}
+
+// ---- Original-Code (projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-forum-with-z.ai/src/components/PostEditor.tsx), unveraendert, als Inline-Doku ----
+// 'use client'
+//
+// import { useState, useEffect, useRef } from 'react'
+// import { motion, AnimatePresence } from 'framer-motion'
+// import { Button } from '@/components/ui/button'
+// import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+// import { Badge } from '@/components/ui/badge'
+// import { Input } from '@/components/ui/input'
+// import { Textarea } from '@/components/ui/textarea'
+// import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+// import { 
+//   X,
+//   Save,
+//   Eye,
+//   FileText,
+//   Image,
+//   Video,
+//   Link,
+//   Code,
+//   Quote,
+//   List,
+//   Bold,
+//   Italic,
+//   Underline,
+//   Heading1,
+//   Heading2,
+//   Heading3,
+//   AlignLeft,
+//   AlignCenter,
+//   AlignRight,
+//   Undo,
+//   Redo,
+//   Sparkles,
+//   Rocket,
+//   Star,
+//   Zap,
+//   Globe,
+//   Hash,
+//   Calendar,
+//   Clock,
+//   User,
+//   Send,
+//   FileImage,
+//   Maximize,
+//   Minimize,
+//   Palette,
+//   MagicWand,
+//   Layers,
+//   Grid3X3,
+//   Brain
+// } from 'lucide-react'
+//
+// interface PostData {
+//   title: string
+//   content: string
+//   excerpt: string
+//   tags: string[]
+//   category: string
+//   featured: boolean
+//   publishDate: string | null
+//   status: 'draft' | 'published' | 'scheduled'
+// }
+//
+// const categories = [
+//   { id: 'ai', name: 'Artificial Intelligence', icon: Brain, color: 'from-purple-500 to-pink-500' },
+//   { id: 'space', name: 'Space Technology', icon: Rocket, color: 'from-blue-500 to-purple-500' },
+//   { id: 'quantum', name: 'Quantum Computing', icon: Zap, color: 'from-green-500 to-blue-500' },
+//   { id: 'web', name: 'Web Development', icon: Globe, color: 'from-orange-500 to-red-500' },
+//   { id: 'ethics', name: 'Ethics & Society', icon: Star, color: 'from-pink-500 to-rose-500' },
+//   { id: 'healthcare', name: 'Healthcare', icon: User, color: 'from-teal-500 to-green-500' }
+// ]
+//
+// const suggestedTags = [
+//   'AI', 'Machine Learning', 'Neural Networks', 'Space', 'Quantum', 'Computing',
+//   'Technology', 'Innovation', 'Research', 'Future', 'Science', 'Development',
+//   'Ethics', 'Society', 'Healthcare', 'Web', 'Programming', 'Data Science'
+// ]
+//
+// const PostEditor = () => {
+//   const [post, setPost] = useState<PostData>({
+//     title: '',
+//     content: '',
+//     excerpt: '',
+//     tags: [],
+//     category: 'ai',
+//     featured: false,
+//     publishDate: null,
+//     status: 'draft'
+//   })
+//   
+//   const [isPreviewMode, setIsPreviewMode] = useState(false)
+//   const [isFullscreen, setIsFullscreen] = useState(false)
+//   const [showToolbar, setShowToolbar] = useState(true)
+//   const [autoSave, setAutoSave] = useState(true)
+//   const [lastSaved, setLastSaved] = useState<Date | null>(null)
+//   const [wordCount, setWordCount] = useState(0)
+//   const [readingTime, setReadingTime] = useState(0)
+//   const [newTag, setNewTag] = useState('')
+//   const editorRef = useRef<HTMLTextAreaElement>(null)
+//
+//   // Auto-save functionality
+//   useEffect(() => {
+//     if (!autoSave) return
+//     
+//     const saveTimer = setTimeout(() => {
+//       if (post.title || post.content) {
+//         // Simulate auto-save
+//         setLastSaved(new Date())
+//         console.log('Auto-saving post...', post)
+//       }
+//     }, 3000)
+//
+//     return () => clearTimeout(saveTimer)
+//   }, [post, autoSave])
+//
+//   // Word count and reading time calculation
+//   useEffect(() => {
+//     const words = post.content.split(/\s+/).filter(word => word.length > 0).length
+//     setWordCount(words)
+//     setReadingTime(Math.ceil(words / 200)) // Average reading speed: 200 words per minute
+//   }, [post.content])
+//
+//   const handleContentChange = (value: string) => {
+//     setPost(prev => ({ ...prev, content: value }))
+//   }
+//
+//   const handleTitleChange = (value: string) => {
+//     setPost(prev => ({ ...prev, title: value }))
+//   }
+//
+//   const handleExcerptChange = (value: string) => {
+//     setPost(prev => ({ ...prev, excerpt: value }))
+//   }
+//
+//   const handleCategoryChange = (categoryId: string) => {
+//     setPost(prev => ({ ...prev, category: categoryId }))
+//   }
+//
+//   const handleTagAdd = (tag: string) => {
+//     if (tag && !post.tags.includes(tag)) {
+//       setPost(prev => ({
+//         ...prev,
+//         tags: [...prev.tags, tag]
+//       }))
+//     }
+//     setNewTag('')
+//   }
+//
+//   const handleTagRemove = (tagToRemove: string) => {
+//     setPost(prev => ({
+//       ...prev,
+//       tags: prev.tags.filter(tag => tag !== tagToRemove)
+//     }))
+//   }
+//
+//   const handlePublish = () => {
+//     setPost(prev => ({
+//       ...prev,
+//       status: 'published',
+//       publishDate: new Date().toISOString()
+//     }))
+//     console.log('Publishing post:', post)
+//   }
+//
+//   const handleSaveDraft = () => {
+//     setPost(prev => ({
+//       ...prev,
+//       status: 'draft'
+//     }))
+//     setLastSaved(new Date())
+//     console.log('Saving draft:', post)
+//   }
+//
+//   const handleSchedule = () => {
+//     // In a real app, this would open a date picker
+//     const scheduledDate = new Date()
+//     scheduledDate.setDate(scheduledDate.getDate() + 1) // Schedule for tomorrow
+//     
+//     setPost(prev => ({
+//       ...prev,
+//       status: 'scheduled',
+//       publishDate: scheduledDate.toISOString()
+//     }))
+//     console.log('Scheduling post for:', scheduledDate)
+//   }
+//
+//   const insertFormatting = (format: string) => {
+//     const textarea = editorRef.current
+//     if (!textarea) return
+//
+//     const start = textarea.selectionStart
+//     const end = textarea.selectionEnd
+//     const selectedText = post.content.substring(start, end)
+//     let formattedText = ''
+//
+//     switch (format) {
+//       case 'bold':
+//         formattedText = `**${selectedText || 'bold text'}**`
+//         break
+//       case 'italic':
+//         formattedText = `*${selectedText || 'italic text'}*`
+//         break
+//       case 'heading':
+//         formattedText = `\n## ${selectedText || 'Heading'}\n`
+//         break
+//       case 'quote':
+//         formattedText = `\n> ${selectedText || 'Quote'}\n`
+//         break
+//       case 'code':
+//         formattedText = `\`\`\`${selectedText || 'code'}\`\`\``
+//         break
+//       case 'link':
+//         formattedText = `[${selectedText || 'link text'}](url)`
+//         break
+//       default:
+//         formattedText = selectedText
+//     }
+//
+//     const newContent = 
+//       post.content.substring(0, start) + 
+//       formattedText + 
+//       post.content.substring(end)
+//
+//     setPost(prev => ({ ...prev, content: newContent }))
+//     
+//     // Focus back on textarea and set cursor position
+//     setTimeout(() => {
+//       textarea.focus()
+//       textarea.setSelectionRange(start + formattedText.length, start + formattedText.length)
+//     }, 0)
+//   }
+//
+//   const formatPreviewContent = (content: string) => {
+//     // Simple markdown-like formatting for preview
+//     return content
+//       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+//       .replace(/\*(.*?)\*/g, '<em>$1</em>')
+//       .replace(/^## (.*$)/gm, '<h2 class="text-2xl font-bold text-white mb-4 mt-6">$1</h2>')
+//       .replace(/^### (.*$)/gm, '<h3 class="text-xl font-bold text-white mb-3 mt-4">$1</h3>')
+//       .replace(/^> (.*$)/gm, '<blockquote class="border-l-4 border-purple-500 pl-4 py-2 mb-4 bg-purple-500/10 rounded-r-lg">$1</blockquote>')
+//       .replace(/```(.*?)```/gs, '<pre class="bg-black/50 border border-purple-500/30 rounded-lg p-4 mb-4 overflow-x-auto"><code>$1</code></pre>')
+//       .replace(/\n/g, '<br>')
+//   }
+//
+//   const selectedCategory = categories.find(cat => cat.id === post.category)
+//
+//   return (
+//     <AnimatePresence>
+//       <motion.div
+//         initial={{ opacity: 0 }}
+//         animate={{ opacity: 1 }}
+//         exit={{ opacity: 0 }}
+//         className={`fixed inset-0 z-50 bg-black ${isFullscreen ? '' : 'bg-black/95 backdrop-blur-md'}`}
+//       >
+//         {/* Cosmic Background Overlay */}
+//         <div className="absolute inset-0 overflow-hidden">
+//           <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black/50 to-black"></div>
+//           <div 
+//             className="absolute inset-0 opacity-20" 
+//             style={{
+//               backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='stars' x='0' y='0' width='100' height='100' patternUnits='userSpaceOnUse'%3E%3Ccircle cx='20' cy='20' r='1' fill='white' opacity='0.3'/%3E%3Ccircle cx='80' cy='40' r='0.5' fill='white' opacity='0.5'/%3E%3Ccircle cx='50' cy='80' r='1.5' fill='white' opacity='0.2'/%3E%3Ccircle cx='10' cy='90' r='0.8' fill='white' opacity='0.4'/%3E%3Ccircle cx='90' cy='10' r='1.2' fill='white' opacity='0.3'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23stars)'/%3E%3C/svg%3E")`
+//             }}
+//           ></div>
+//         </div>
+//
+//         {/* Editor Container */}
+//         <div className="relative h-full flex flex-col">
+//           {/* Header */}
+//           <motion.div
+//             initial={{ y: -100 }}
+//             animate={{ y: 0 }}
+//             transition={{ duration: 0.5 }}
+//             className="flex items-center justify-between p-4 border-b border-white/10 bg-black/50 backdrop-blur-md"
+//           >
+//             <div className="flex items-center space-x-4">
+//               <div className="flex items-center space-x-2">
+//                 <div className="w-8 h-8 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg flex items-center justify-center">
+//                   <FileText className="w-5 h-5 text-white" />
+//                 </div>
+//                 <h1 className="text-xl font-bold text-white">
+//                   {isPreviewMode ? 'Preview' : 'Post Editor'}
+//                 </h1>
+//               </div>
+//               
+//               <div className="flex items-center space-x-2">
+//                 <Badge 
+//                   variant="outline" 
+//                   className={`${
+//                     post.status === 'published' ? 'bg-green-600/20 text-green-400 border-green-500/50' :
+//                     post.status === 'scheduled' ? 'bg-blue-600/20 text-blue-400 border-blue-500/50' :
+//                     'bg-gray-600/20 text-gray-400 border-gray-500/50'
+//                   }`}
+//                 >
+//                   {post.status === 'published' ? 'Published' :
+//                    post.status === 'scheduled' ? 'Scheduled' : 'Draft'}
+//                 </Badge>
+//                 
+//                 {lastSaved && (
+//                   <div className="text-sm text-gray-400 flex items-center space-x-1">
+//                     <Clock className="w-4 h-4" />
+//                     <span>Saved {lastSaved.toLocaleTimeString()}</span>
+//                   </div>
+//                 )}
+//               </div>
+//             </div>
+//
+//             <div className="flex items-center space-x-2">
+//               <div className="flex items-center space-x-2 text-sm text-gray-400">
+//                 <span>{wordCount} words</span>
+//                 <span>•</span>
+//                 <span>{readingTime} min read</span>
+//               </div>
+//               
+//               <Button
+//                 variant="ghost"
+//                 size="sm"
+//                 onClick={() => setIsFullscreen(!isFullscreen)}
+//                 className="text-gray-400 hover:text-white"
+//               >
+//                 {isFullscreen ? <Minimize className="w-4 h-4" /> : <Maximize className="w-4 h-4" />}
+//               </Button>
+//               
+//               <Button
+//                 variant="ghost"
+//                 size="sm"
+//                 onClick={() => {
+//                   // Close editor - in a real app, this would handle closing logic
+//                   console.log('Closing editor')
+//                 }}
+//                 className="text-gray-400 hover:text-white"
+//               >
+//                 <X className="w-5 h-5" />
+//               </Button>
+//             </div>
+//           </motion.div>
+//
+//           {/* Main Content */}
+//           <div className="flex-1 flex overflow-hidden">
+//             {/* Editor Sidebar */}
+//             <motion.div
+//               initial={{ x: -300 }}
+//               animate={{ x: 0 }}
+//               transition={{ duration: 0.5, delay: 0.1 }}
+//               className="w-80 border-r border-white/10 bg-black/30 p-6 overflow-y-auto"
+//             >
+//               <div className="space-y-6">
+//                 {/* Title Input */}
+//                 <div>
+//                   <label className="text-sm text-gray-400 mb-2 block">Title</label>
+//                   <Input
+//                     value={post.title}
+//                     onChange={(e) => handleTitleChange(e.target.value)}
+//                     placeholder="Enter your post title..."
+//                     className="bg-black/30 border-white/10 text-white placeholder-gray-500 focus:border-purple-500/50"
+//                   />
+//                 </div>
+//
+//                 {/* Excerpt Input */}
+//                 <div>
+//                   <label className="text-sm text-gray-400 mb-2 block">Excerpt</label>
+//                   <Textarea
+//                     value={post.excerpt}
+//                     onChange={(e) => handleExcerptChange(e.target.value)}
+//                     placeholder="Brief description of your post..."
+//                     className="bg-black/30 border-white/10 text-white placeholder-gray-500 focus:border-purple-500/50"
+//                     rows={3}
+//                   />
+//                 </div>
+//
+//                 {/* Category Selection */}
+//                 <div>
+//                   <label className="text-sm text-gray-400 mb-2 block">Category</label>
+//                   <div className="grid grid-cols-2 gap-2">
+//                     {categories.map((category) => {
+//                       const Icon = category.icon
+//                       return (
+//                         <Button
+//                           key={category.id}
+//                           variant={post.category === category.id ? 'default' : 'outline'}
+//                           onClick={() => handleCategoryChange(category.id)}
+//                           className={`h-auto p-3 flex flex-col items-center space-y-1 ${
+//                             post.category === category.id
+//                               ? 'bg-purple-600 text-white'
+//                               : 'border-white/10 text-gray-400 hover:text-white hover:bg-white/10'
+//                           }`}
+//                         >
+//                           <Icon className="w-5 h-5" />
+//                           <span className="text-xs">{category.name}</span>
+//                         </Button>
+//                       )
+//                     })}
+//                   </div>
+//                 </div>
+//
+//                 {/* Tags */}
+//                 <div>
+//                   <label className="text-sm text-gray-400 mb-2 block">Tags</label>
+//                   <div className="space-y-3">
+//                     <div className="flex flex-wrap gap-2">
+//                       {post.tags.map((tag) => (
+//                         <Badge
+//                           key={tag}
+//                           variant="outline"
+//                           className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20 flex items-center space-x-1"
+//                         >
+//                           <span>{tag}</span>
+//                           <X
+//                             className="w-3 h-3 cursor-pointer"
+//                             onClick={() => handleTagRemove(tag)}
+//                           />
+//                         </Badge>
+//                       ))}
+//                     </div>
+//                     
+//                     <div className="flex space-x-2">
+//                       <Input
+//                         value={newTag}
+//                         onChange={(e) => setNewTag(e.target.value)}
+//                         placeholder="Add tag..."
+//                         className="flex-1 bg-black/30 border-white/10 text-white placeholder-gray-500 focus:border-purple-500/50"
+//                         onKeyPress={(e) => {
+//                           if (e.key === 'Enter') {
+//                             handleTagAdd(newTag)
+//                           }
+//                         }}
+//                       />
+//                       <Button
+//                         onClick={() => handleTagAdd(newTag)}
+//                         className="bg-purple-600 hover:bg-purple-700"
+//                       >
+//                         <Hash className="w-4 h-4" />
+//                       </Button>
+//                     </div>
+//                     
+//                     <div className="flex flex-wrap gap-1">
+//                       {suggestedTags
+//                         .filter(tag => !post.tags.includes(tag))
+//                         .slice(0, 6)
+//                         .map((tag) => (
+//                           <Button
+//                             key={tag}
+//                             variant="ghost"
+//                             size="sm"
+//                             onClick={() => handleTagAdd(tag)}
+//                             className="text-xs text-gray-400 hover:text-purple-400 hover:bg-purple-500/20"
+//                           >
+//                             {tag}
+//                           </Button>
+//                         ))}
+//                     </div>
+//                   </div>
+//                 </div>
+//
+//                 {/* Options */}
+//                 <div>
+//                   <label className="text-sm text-gray-400 mb-2 block">Options</label>
+//                   <div className="space-y-3">
+//                     <div className="flex items-center justify-between">
+//                       <span className="text-sm text-white">Featured Post</span>
+//                       <Button
+//                         variant={post.featured ? 'default' : 'outline'}
+//                         size="sm"
+//                         onClick={() => setPost(prev => ({ ...prev, featured: !prev.featured }))}
+//                         className={post.featured ? 'bg-purple-600' : 'border-white/10 text-gray-400'}
+//                       >
+//                         <Star className="w-4 h-4" />
+//                       </Button>
+//                     </div>
+//                     
+//                     <div className="flex items-center justify-between">
+//                       <span className="text-sm text-white">Auto-save</span>
+//                       <Button
+//                         variant={autoSave ? 'default' : 'outline'}
+//                         size="sm"
+//                         onClick={() => setAutoSave(!autoSave)}
+//                         className={autoSave ? 'bg-purple-600' : 'border-white/10 text-gray-400'}
+//                       >
+//                         <Save className="w-4 h-4" />
+//                       </Button>
+//                     </div>
+//                   </div>
+//                 </div>
+//
+//                 {/* Action Buttons */}
+//                 <div className="space-y-2 pt-4">
+//                   <Button
+//                     onClick={handlePublish}
+//                     className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
+//                   >
+//                     <Send className="w-4 h-4 mr-2" />
+//                     Publish Now
+//                   </Button>
+//                   
+//                   <Button
+//                     onClick={handleSchedule}
+//                     variant="outline"
+//                     className="w-full border-blue-500/50 text-blue-400 hover:bg-blue-500/20"
+//                   >
+//                     <Calendar className="w-4 h-4 mr-2" />
+//                     Schedule
+//                   </Button>
+//                   
+//                   <Button
+//                     onClick={handleSaveDraft}
+//                     variant="outline"
+//                     className="w-full border-gray-500/50 text-gray-400 hover:bg-gray-500/20"
+//                   >
+//                     <Save className="w-4 h-4 mr-2" />
+//                     Save Draft
+//                   </Button>
+//                 </div>
+//               </div>
+//             </motion.div>
+//
+//             {/* Editor Area */}
+//             <div className="flex-1 flex flex-col">
+//               {/* Toolbar */}
+//               {showToolbar && !isPreviewMode && (
+//                 <motion.div
+//                   initial={{ y: -50, opacity: 0 }}
+//                   animate={{ y: 0, opacity: 1 }}
+//                   transition={{ duration: 0.5, delay: 0.2 }}
+//                   className="border-b border-white/10 bg-black/30 p-4"
+//                 >
+//                   <div className="flex items-center space-x-2 flex-wrap">
+//                     <Button
+//                       variant="ghost"
+//                       size="sm"
+//                       onClick={() => insertFormatting('bold')}
+//                       className="text-gray-400 hover:text-white"
+//                     >
+//                       <Bold className="w-4 h-4" />
+//                     </Button>
+//                     <Button
+//                       variant="ghost"
+//                       size="sm"
+//                       onClick={() => insertFormatting('italic')}
+//                       className="text-gray-400 hover:text-white"
+//                     >
+//                       <Italic className="w-4 h-4" />
+//                     </Button>
+//                     <Button
+//                       variant="ghost"
+//                       size="sm"
+//                       onClick={() => insertFormatting('heading')}
+//                       className="text-gray-400 hover:text-white"
+//                     >
+//                       <Heading1 className="w-4 h-4" />
+//                     </Button>
+//                     <Button
+//                       variant="ghost"
+//                       size="sm"
+//                       onClick={() => insertFormatting('quote')}
+//                       className="text-gray-400 hover:text-white"
+//                     >
+//                       <Quote className="w-4 h-4" />
+//                     </Button>
+//                     <Button
+//                       variant="ghost"
+//                       size="sm"
+//                       onClick={() => insertFormatting('code')}
+//                       className="text-gray-400 hover:text-white"
+//                     >
+//                       <Code className="w-4 h-4" />
+//                     </Button>
+//                     <Button
+//                       variant="ghost"
+//                       size="sm"
+//                       onClick={() => insertFormatting('link')}
+//                       className="text-gray-400 hover:text-white"
+//                     >
+//                       <Link className="w-4 h-4" />
+//                     </Button>
+//                     
+//                     <div className="w-px h-6 bg-white/10 mx-2"></div>
+//                     
+//                     <Button
+//                       variant="ghost"
+//                       size="sm"
+//                       className="text-gray-400 hover:text-white"
+//                     >
+//                       <Image className="w-4 h-4" alt="" />
+//                     </Button>
+//                     <Button
+//                       variant="ghost"
+//                       size="sm"
+//                       className="text-gray-400 hover:text-white"
+//                     >
+//                       <Video className="w-4 h-4" />
+//                     </Button>
+//                     
+//                     <div className="w-px h-6 bg-white/10 mx-2"></div>
+//                     
+//                     <Button
+//                       variant="ghost"
+//                       size="sm"
+//                       onClick={() => setIsPreviewMode(!isPreviewMode)}
+//                       className="text-gray-400 hover:text-white"
+//                     >
+//                       <Eye className="w-4 h-4" />
+//                     </Button>
+//                   </div>
+//                 </motion.div>
+//               )}
+//
+//               {/* Content Area */}
+//               <div className="flex-1 overflow-hidden">
+//                 {isPreviewMode ? (
+//                   <motion.div
+//                     initial={{ opacity: 0 }}
+//                     animate={{ opacity: 1 }}
+//                     transition={{ duration: 0.3 }}
+//                     className="h-full overflow-y-auto p-8"
+//                   >
+//                     <div className="max-w-4xl mx-auto">
+//                       {/* Preview Header */}
+//                       <div className="mb-8">
+//                         <div className="flex items-center space-x-3 mb-4">
+//                           {selectedCategory && (
+//                             <Badge className={`bg-gradient-to-r ${selectedCategory.color} text-white`}>
+//                               {selectedCategory.name}
+//                             </Badge>
+//                           )}
+//                           {post.featured && (
+//                             <Badge className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white">
+//                               <Star className="w-3 h-3 mr-1" />
+//                               Featured
+//                             </Badge>
+//                           )}
+//                         </div>
+//                         
+//                         <h1 className="text-4xl font-bold text-white mb-4">
+//                           {post.title || 'Untitled Post'}
+//                         </h1>
+//                         
+//                         {post.excerpt && (
+//                           <p className="text-xl text-gray-300 mb-6">
+//                             {post.excerpt}
+//                           </p>
+//                         )}
+//                         
+//                         <div className="flex items-center space-x-6 text-sm text-gray-400">
+//                           <div className="flex items-center space-x-2">
+//                             <Calendar className="w-4 h-4" />
+//                             <span>{post.publishDate ? new Date(post.publishDate).toLocaleDateString() : 'Not published'}</span>
+//                           </div>
+//                           <div className="flex items-center space-x-2">
+//                             <Clock className="w-4 h-4" />
+//                             <span>{readingTime} min read</span>
+//                           </div>
+//                           <div className="flex items-center space-x-2">
+//                             <FileText className="w-4 h-4" />
+//                             <span>{wordCount} words</span>
+//                           </div>
+//                         </div>
+//                         
+//                         {post.tags.length > 0 && (
+//                           <div className="flex flex-wrap gap-2 mt-4">
+//                             {post.tags.map((tag) => (
+//                               <Badge 
+//                                 key={tag} 
+//                                 variant="outline" 
+//                                 className="border-purple-500/50 text-purple-400 hover:bg-purple-500/20"
+//                               >
+//                                 {tag}
+//                               </Badge>
+//                             ))}
+//                           </div>
+//                         )}
+//                       </div>
+//                       
+//                       {/* Preview Content */}
+//                       <div className="prose prose-invert max-w-none">
+//                         <div 
+//                           className="text-gray-300 leading-relaxed"
+//                           dangerouslySetInnerHTML={{ 
+//                             __html: formatPreviewContent(post.content || 'Start writing your post...')
+//                           }}
+//                         />
+//                       </div>
+//                     </div>
+//                   </motion.div>
+//                 ) : (
+//                   <motion.div
+//                     initial={{ opacity: 0 }}
+//                     animate={{ opacity: 1 }}
+//                     transition={{ duration: 0.3 }}
+//                     className="h-full"
+//                   >
+//                     <Textarea
+//                       ref={editorRef}
+//                       value={post.content}
+//                       onChange={(e) => handleContentChange(e.target.value)}
+//                       placeholder="Start writing your cosmic thoughts..."
+//                       className="w-full h-full resize-none border-none bg-transparent text-white placeholder-gray-500 focus:outline-none p-8 text-lg leading-relaxed"
+//                       style={{ minHeight: '100%' }}
+//                     />
+//                   </motion.div>
+//                 )}
+//               </div>
+//
+//               {/* Status Bar */}
+//               <div className="border-t border-white/10 bg-black/30 p-4">
+//                 <div className="flex items-center justify-between text-sm text-gray-400">
+//                   <div className="flex items-center space-x-4">
+//                     <span>Markdown supported</span>
+//                     <span>•</span>
+//                     <span>Ctrl+S to save</span>
+//                     <span>•</span>
+//                     <span>Ctrl+P to publish</span>
+//                   </div>
+//                   
+//                   <div className="flex items-center space-x-2">
+//                     <Button
+//                       variant="ghost"
+//                       size="sm"
+//                       onClick={() => setShowToolbar(!showToolbar)}
+//                       className="text-gray-400 hover:text-white"
+//                     >
+//                       <Palette className="w-4 h-4" />
+//                     </Button>
+//                     <Button
+//                       variant="ghost"
+//                       size="sm"
+//                       onClick={() => setIsPreviewMode(!isPreviewMode)}
+//                       className="text-gray-400 hover:text-white"
+//                     >
+//                       {isPreviewMode ? <FileText className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+//                     </Button>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </motion.div>
+//     </AnimatePresence>
+//   )
+// }
+//
+// export default PostEditor

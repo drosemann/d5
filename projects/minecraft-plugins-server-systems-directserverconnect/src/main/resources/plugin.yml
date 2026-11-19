@@ -1,0 +1,27 @@
+name: DirectServerConnect
+version: '1.0-SNAPSHOT'
+main: com.example.directserverconnect.DirectServerConnect
+api-version: '1.21.4'
+authors: Daniel
+description: A plugin to connect players to specific servers
+commands:
+  connect:
+    description: Connect to a specific server
+    usage: /connect <ip[:port]>
+  connectreload:
+    description: Reload the plugin configuration
+    usage: /connectreload
+    permission: directconnect.admin
+  addallowedip:
+    description: Add an IP to the allowed list
+    usage: /addallowedip <ip[:port]>
+    permission: directconnect.admin
+  listallowedips:
+    description: List all allowed IPs
+    usage: /listallowedips
+    permission: directconnect.admin
+
+permissions:
+  directconnect.admin:
+    description: Allows access to administrative commands
+    default: op 

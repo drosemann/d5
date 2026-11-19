@@ -1,0 +1,25 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-streuland\src\main\java\de\streuland\approval\PlotApprovalActionType.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE PlotApprovalActionType_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-streuland\src\main\java\de\streuland\approval\PlotApprovalActionType.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-streuland\src\main\java\de\streuland\approval\PlotApprovalActionType.java), unveraendert, als Inline-Doku ----
+# package de.streuland.approval;
+#
+# public enum PlotApprovalActionType {
+#     CREATE,
+#     DELETE,
+#     UNCLAIM,
+#     RESIZE,
+#     TRANSFER;
+#
+#     public String configKey() {
+#         return name().toLowerCase();
+#     }
+# }
+#

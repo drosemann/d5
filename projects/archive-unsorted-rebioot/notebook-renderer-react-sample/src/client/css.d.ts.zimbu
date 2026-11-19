@@ -1,0 +1,16 @@
+﻿# Zimbu-Port-Spiegel von: projects\archive-unsorted-rebioot\notebook-renderer-react-sample\src\client\css.d.ts
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE css_d_ts
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\archive-unsorted-rebioot\notebook-renderer-react-sample\src\client\css.d.ts\n")
+  RETURN 0
+
+# ---- Original-Code (projects\archive-unsorted-rebioot\notebook-renderer-react-sample\src\client\css.d.ts), unveraendert, als Inline-Doku ----
+# declare module '*.css' {
+# 	const classes: Record<string, string>;
+# 	export = classes;
+# }
+#

@@ -1,0 +1,256 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-stranded-horizons\game.html
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE game_html
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-stranded-horizons\game.html\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-stranded-horizons\game.html), unveraendert, als Inline-Doku ----
+# <!DOCTYPE html>
+# <html lang="en">
+# <head>
+#     <meta charset="UTF-8">
+#     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+#     <title>Stranded Horizons - Play</title>
+#     <style>
+#         * { margin: 0; padding: 0; box-sizing: border-box; }
+#         body { font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #090b16; color: #f8f9fa; overflow: hidden; }
+#         .game-container { position: relative; width: 100vw; height: 100vh; }
+#         #gameCanvas { width: 100%; height: 100%; display: block; }
+#
+#         .hud {
+#             position: absolute;
+#             top: 16px;
+#             left: 16px;
+#             background: rgba(8, 10, 20, 0.66);
+#             border: 1px solid rgba(255, 255, 255, 0.15);
+#             border-radius: 12px;
+#             padding: 12px;
+#             font-size: 14px;
+#             min-width: 250px;
+#             backdrop-filter: blur(4px);
+#         }
+#
+#         .hud .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px; }
+#         .hud .status { margin-top: 8px; color: #74c0fc; font-weight: 500; }
+#
+#         .panel {
+#             position: absolute;
+#             background: rgba(8, 10, 20, 0.82);
+#             border: 1px solid rgba(255, 255, 255, 0.18);
+#             border-radius: 12px;
+#             padding: 14px;
+#             backdrop-filter: blur(6px);
+#         }
+#
+#         #shop { top: 16px; right: 16px; width: 320px; max-height: calc(100vh - 32px); overflow-y: auto; }
+#         #shop h2 { font-size: 18px; margin-bottom: 6px; }
+#         #shop p { font-size: 12px; opacity: .8; margin-bottom: 10px; }
+#
+#         .shop-btn, .meta-btn, .menu-btn {
+#             width: 100%;
+#             margin-bottom: 6px;
+#             text-align: left;
+#             border: 1px solid rgba(255, 255, 255, 0.15);
+#             color: #f8f9fa;
+#             background: rgba(108, 92, 231, 0.25);
+#             border-radius: 8px;
+#             padding: 8px 10px;
+#             cursor: pointer;
+#             transition: 0.2s ease;
+#         }
+#
+#         .shop-btn:hover, .meta-btn:hover, .menu-btn:hover { background: rgba(162, 155, 254, 0.36); }
+#         .shop-btn:disabled, .meta-btn:disabled { opacity: .55; cursor: not-allowed; }
+#
+#         #metaProgress { left: 16px; bottom: 16px; width: 360px; }
+#         #metaProgress h3 { margin-bottom: 8px; }
+#         #metaProgress p { margin-bottom: 8px; font-size: 13px; }
+#
+#         .overlay {
+#             display: none;
+#             position: absolute;
+#             top: 50%;
+#             left: 50%;
+#             transform: translate(-50%, -50%);
+#             min-width: 360px;
+#             max-width: 600px;
+#             text-align: center;
+#             z-index: 20;
+#         }
+#
+#         .overlay h1 { margin-bottom: 10px; }
+#         .overlay p { margin-bottom: 6px; }
+#
+#         #startScreen { display: flex; flex-direction: column; }
+#
+#         .controls-help {
+#             margin: 14px 0;
+#             font-size: 14px;
+#             opacity: .85;
+#             text-align: left;
+#             background: rgba(255,255,255,.05);
+#             border-radius: 8px;
+#             padding: 10px;
+#         }
+#
+#         .controls-help li { margin-left: 18px; }
+#
+#         #waveComplete { color: #63e6be; font-size: 26px; }
+#
+#         .touch-controls {
+#             display: none;
+#             position: absolute;
+#             inset: 0;
+#             z-index: 14;
+#             pointer-events: none;
+#         }
+#
+#         .touch-controls.active { display: block; }
+#         .touch-controls button, .touch-controls .stick-zone { pointer-events: auto; }
+#
+#         .stick-zone {
+#             position: absolute;
+#             left: 14px;
+#             bottom: 14px;
+#             width: 130px;
+#             height: 130px;
+#             border-radius: 50%;
+#             border: 1px solid rgba(255,255,255,.2);
+#             background: rgba(8, 10, 20, 0.4);
+#             backdrop-filter: blur(4px);
+#             touch-action: none;
+#         }
+#
+#         .stick-knob {
+#             position: absolute;
+#             left: 50%;
+#             top: 50%;
+#             width: 54px;
+#             height: 54px;
+#             border-radius: 50%;
+#             transform: translate(-50%, -50%);
+#             background: rgba(162, 155, 254, 0.45);
+#             border: 1px solid rgba(255,255,255,.28);
+#         }
+#
+#         .touch-actions {
+#             position: absolute;
+#             right: 12px;
+#             bottom: 12px;
+#             display: grid;
+#             grid-template-columns: repeat(2, minmax(64px, 1fr));
+#             gap: 8px;
+#             width: min(170px, 42vw);
+#         }
+#
+#         .touch-btn {
+#             border-radius: 12px;
+#             border: 1px solid rgba(255,255,255,.18);
+#             color: #fff;
+#             font-weight: 700;
+#             background: rgba(108, 92, 231, 0.28);
+#             padding: 12px 8px;
+#         }
+#
+#         @media (max-width: 900px) {
+#             .hud { min-width: 0; width: calc(100vw - 32px); font-size: 13px; }
+#             #shop, #metaProgress {
+#                 width: calc(100vw - 32px);
+#                 max-width: 100vw;
+#                 left: 16px;
+#                 right: 16px;
+#             }
+#             #shop { top: 128px; max-height: 36vh; }
+#             #metaProgress { bottom: 16px; max-height: 28vh; overflow-y: auto; }
+#             .overlay { min-width: min(360px, calc(100vw - 24px)); max-width: calc(100vw - 24px); }
+#         }
+#     </style>
+# </head>
+# <body>
+#     <div class="game-container">
+#         <canvas id="gameCanvas"></canvas>
+#
+#         <div class="hud">
+#             <div class="grid">
+#                 <div id="health">HP: 0</div>
+#                 <div id="stamina">Stamina: 0</div>
+#                 <div id="coins">Coins: 0</div>
+#                 <div id="score">Score: 0</div>
+#                 <div id="wave">Wave: 1</div>
+#                 <div id="waveRemaining">Remaining: 0</div>
+#                 <div id="weapon">Weapon: Pistol</div>
+#                 <div id="ammo">Ammo: 0</div>
+#             </div>
+#             <div class="status" id="waveStatus">Press Start Run.</div>
+#             <div class="status">Buffs: <span id="activeBuffs">none</span></div>
+#             <div class="status" id="bestRun">Best Run: none</div>
+#         </div>
+#
+#         <aside id="shop" class="panel">
+#             <h2>Run Shop</h2>
+#             <p>Zwischen den Wellen kaufen. Tooltips stehen auf den Buttons.</p>
+#             <div id="shopRows"></div>
+#         </aside>
+#
+#         <aside id="metaProgress" class="panel">
+#             <h3>Meta Progression</h3>
+#             <p>Meta Credits: <strong id="metaCredits">0</strong></p>
+#             <div id="metaRows"></div>
+#         </aside>
+#
+#         <div id="startScreen" class="overlay panel">
+#             <h1>Stranded Horizons</h1>
+#             <p>Rogue-lite Survival Shooter</p>
+#             <ul class="controls-help">
+#                 <li>WASD / Arrow Keys = Move</li>
+#                 <li>Mouse Click oder Space = Shoot</li>
+#                 <li>Shift = Dash (kostet Stamina)</li>
+#                 <li>Q = Weapon Switch, R = Reload</li>
+#                 <li>ESC = Pause-Menü</li>
+#             </ul>
+#             <button class="menu-btn" id="startButton">Start Run</button>
+#         </div>
+#
+#         <div id="pauseMenu" class="overlay panel">
+#             <h1>Pausiert</h1>
+#             <button class="menu-btn" id="pauseResume">Resume</button>
+#             <button class="menu-btn" id="pauseRestart">Restart</button>
+#             <button class="menu-btn" id="pauseMenuBtn">Menu</button>
+#         </div>
+#
+#         <div id="deathScreen" class="overlay panel">
+#             <h1>Game Over</h1>
+#             <p>Score: <span id="finalScore">0</span></p>
+#             <p>Wave: <span id="finalWave">0</span></p>
+#             <p>Kills: <span id="finalKills">0</span></p>
+#             <p>Meta Credits earned: <span id="finalMeta">0</span></p>
+#             <button class="menu-btn" id="restartButton">Play Again</button>
+#             <button class="menu-btn" id="menuButton">Back to Menu</button>
+#         </div>
+#
+#         <div id="waveComplete" class="overlay panel">
+#             Wave Complete!
+#             <br>Bonus: <span id="waveBonus">0</span> coins
+#             <br>Next wave starts soon...
+#         </div>
+#
+#         <div id="touchControls" class="touch-controls" aria-hidden="true">
+#             <div id="stickZone" class="stick-zone">
+#                 <div id="stickKnob" class="stick-knob"></div>
+#             </div>
+#             <div class="touch-actions">
+#                 <button id="touchShoot" class="touch-btn">Shoot</button>
+#                 <button id="touchDash" class="touch-btn">Dash</button>
+#                 <button id="touchReload" class="touch-btn">Reload</button>
+#                 <button id="touchSwitch" class="touch-btn">Swap</button>
+#             </div>
+#         </div>
+#     </div>
+#     <script type="module" src="src/main.js"></script>
+# </body>
+# </html>
+#

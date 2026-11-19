@@ -1,0 +1,19 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\database\exceptions\DatabaseAlreadyConnectedException.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE DatabaseAlreadyConnectedException_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\database\exceptions\DatabaseAlreadyConnectedException.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\database\exceptions\DatabaseAlreadyConnectedException.java), unveraendert, als Inline-Doku ----
+# package net.anweisen.utilities.database.exceptions;
+#
+# public class DatabaseAlreadyConnectedException extends DatabaseException {
+#    public DatabaseAlreadyConnectedException() {
+#       super("Database already connected");
+#    }
+# }
+#

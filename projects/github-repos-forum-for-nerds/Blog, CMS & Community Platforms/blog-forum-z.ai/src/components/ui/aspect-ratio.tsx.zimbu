@@ -1,0 +1,23 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-forum-for-nerds\Blog, CMS & Community Platforms\blog-forum-z.ai\src\components\ui\aspect-ratio.tsx
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE aspect_ratio_tsx
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-forum-for-nerds\Blog, CMS & Community Platforms\blog-forum-z.ai\src\components\ui\aspect-ratio.tsx\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-forum-for-nerds\Blog, CMS & Community Platforms\blog-forum-z.ai\src\components\ui\aspect-ratio.tsx), unveraendert, als Inline-Doku ----
+# "use client"
+#
+# import * as AspectRatioPrimitive from "@radix-ui/react-aspect-ratio"
+#
+# function AspectRatio({
+#   ...props
+# }: React.ComponentProps<typeof AspectRatioPrimitive.Root>) {
+#   return <AspectRatioPrimitive.Root data-slot="aspect-ratio" {...props} />
+# }
+#
+# export { AspectRatio }
+#

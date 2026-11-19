@@ -1,0 +1,63 @@
+﻿// Goose-Port-Spiegel von: projects/utilities-&-desktop-tools-clearcall/client/index.html
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/utilities-&-desktop-tools-clearcall/client/index.html");
+}
+
+// ---- Original-Code (projects/utilities-&-desktop-tools-clearcall/client/index.html), unveraendert, als Inline-Doku ----
+// <!DOCTYPE html>
+// <html lang="en">
+// <head>
+//     <meta charset="UTF-8">
+//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//     <title>ClearCall VoIP Service</title>
+// </head>
+// <body>
+//     <h1>Welcome to ClearCall</h1>
+//     <p>Secure and high-quality voice and video calls.</p>
+//     <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+//     <script>
+//         const socket = io();
+//         const localVideo = document.createElement('video');
+//         const remoteVideo = document.createElement('video');
+//         document.body.appendChild(localVideo);
+//         document.body.appendChild(remoteVideo);
+//
+//         const peerConnection = new RTCPeerConnection();
+//
+//         navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+//             .then(stream => {
+//                 localVideo.srcObject = stream;
+//                 stream.getTracks().forEach(track => peerConnection.addTrack(track, stream));
+//             });
+//
+//         peerConnection.ontrack = event => {
+//             remoteVideo.srcObject = event.streams[0];
+//         };
+//
+//         socket.on('offer', async (offer) => {
+//             await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
+//             const answer = await peerConnection.createAnswer();
+//             await peerConnection.setLocalDescription(answer);
+//             socket.emit('answer', answer);
+//         });
+//
+//         socket.on('answer', async (answer) => {
+//             await peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
+//         });
+//
+//         socket.on('candidate', candidate => {
+//             peerConnection.addIceCandidate(new RTCIceCandidate(candidate));
+//         });
+//
+//         peerConnection.onicecandidate = event => {
+//             if (event.candidate) {
+//                 socket.emit('candidate', event.candidate);
+//             }
+//         };
+//     </script>
+// </body>
+// </html>
+//

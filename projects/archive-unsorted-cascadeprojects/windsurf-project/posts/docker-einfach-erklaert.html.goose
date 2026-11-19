@@ -1,0 +1,429 @@
+﻿// Goose-Port-Spiegel von: projects/archive-unsorted-cascadeprojects/windsurf-project/posts/docker-einfach-erklaert.html
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/archive-unsorted-cascadeprojects/windsurf-project/posts/docker-einfach-erklaert.html");
+}
+
+// ---- Original-Code (projects/archive-unsorted-cascadeprojects/windsurf-project/posts/docker-einfach-erklaert.html), unveraendert, als Inline-Doku ----
+// <!DOCTYPE html>
+// <html lang="de">
+// <head>
+//     <meta charset="UTF-8">
+//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//     <title>Docker einfach erklärt - Mein Blog</title>
+//     <meta name="description" content="Docker erklärt - Was ist Containerisierung und warum revolutioniert Docker die Software-Entwicklung? Einfache Erklärung mit Beispielen">
+//     <meta name="keywords" content="Docker erklärt, Containerisierung, Docker vs VM, DevOps, Software-Deployment">
+//     <meta name="author" content="Mein Blog">
+//     <link rel="canonical" href="/posts/docker-einfach-erklaert.html">
+//
+//     <meta property="og:type" content="article">
+//     <meta property="og:title" content="Docker einfach erklärt">
+//     <meta property="og:description" content="Docker und Containerisierung verstehen">
+//     <meta property="og:url" content="/posts/docker-einfach-erklaert.html">
+//
+//     <meta property="twitter:card" content="summary_large_image">
+//     <meta property="twitter:title" content="Docker einfach erklärt">
+//     <meta property="twitter:description" content="Containerisierung mit Docker verstehen">
+//
+//     <link rel="stylesheet" href="../css/style.css">
+//     <style>
+//         .blog-post {
+//             max-width: 800px;
+//             margin: 2rem auto;
+//             padding: 2rem;
+//             background: white;
+//             border-radius: 8px;
+//             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+//         }
+//
+//         .post-header {
+//             text-align: center;
+//             margin-bottom: 2rem;
+//         }
+//
+//         .post-date {
+//             color: #7f8c8d;
+//             margin: 1rem 0;
+//         }
+//
+//         .post-content {
+//             line-height: 1.8;
+//         }
+//
+//         .post-content p {
+//             margin-bottom: 1.5rem;
+//         }
+//
+//         .post-content h2 {
+//             margin-top: 2rem;
+//             margin-bottom: 1rem;
+//             color: #2c3e50;
+//         }
+//
+//         .post-content h3 {
+//             margin-top: 1.5rem;
+//             margin-bottom: 0.8rem;
+//             color: #34495e;
+//         }
+//
+//         .post-content ul, .post-content ol {
+//             margin-bottom: 1.5rem;
+//             padding-left: 2rem;
+//         }
+//
+//         .post-content li {
+//             margin-bottom: 0.5rem;
+//         }
+//
+//         .post-content code {
+//             background: #f8f9fa;
+//             padding: 0.2rem 0.4rem;
+//             border-radius: 3px;
+//             font-family: 'Courier New', monospace;
+//         }
+//
+//         .post-content pre {
+//             background: #f8f9fa;
+//             padding: 1rem;
+//             border-radius: 5px;
+//             overflow-x: auto;
+//             margin: 1rem 0;
+//         }
+//
+//         .back-link {
+//             display: inline-block;
+//             margin-top: 2rem;
+//             color: #3498db;
+//             text-decoration: none;
+//             font-weight: 500;
+//         }
+//
+//         .back-link:hover {
+//             text-decoration: underline;
+//         }
+//
+//         .article-meta {
+//             background: #f8f9fa;
+//             padding: 1rem;
+//             border-radius: 5px;
+//             margin-bottom: 2rem;
+//         }
+//
+//         .tags {
+//             margin-top: 0.5rem;
+//         }
+//
+//         .tag {
+//             display: inline-block;
+//             background: #3498db;
+//             color: white;
+//             padding: 0.2rem 0.6rem;
+//             border-radius: 3px;
+//             font-size: 0.8rem;
+//             margin-right: 0.5rem;
+//             margin-bottom: 0.3rem;
+//         }
+//
+//         .docker-logo {
+//             color: #2496ed;
+//             font-weight: bold;
+//             font-size: 1.2em;
+//         }
+//
+//         .pros-cons {
+//             display: grid;
+//             grid-template-columns: 1fr 1fr;
+//             gap: 2rem;
+//             margin: 2rem 0;
+//         }
+//
+//         .pros, .cons {
+//             padding: 1rem;
+//             border-radius: 5px;
+//         }
+//
+//         .pros {
+//             background: #d4edda;
+//             border-left: 4px solid #28a745;
+//         }
+//
+//         .cons {
+//             background: #f8d7da;
+//             border-left: 4px solid #dc3545;
+//         }
+//
+//         .comparison-table {
+//             width: 100%;
+//             border-collapse: collapse;
+//             margin: 2rem 0;
+//         }
+//
+//         .comparison-table th,
+//         .comparison-table td {
+//             padding: 0.75rem;
+//             text-align: left;
+//             border-bottom: 1px solid #dee2e6;
+//         }
+//
+//         .comparison-table th {
+//             background-color: #f8f9fa;
+//             font-weight: 600;
+//         }
+//     </style>
+// </head>
+// <body>
+//     <header>
+//         <div class="container">
+//             <h1>Mein Blog</h1>
+//         </div>
+//     </header>
+//
+//     <main class="container">
+//         <article class="blog-post">
+//             <header class="post-header">
+//                 <h1><span class="docker-logo">🐳</span> Docker einfach erklärt</h1>
+//                 <div class="post-date">11. Oktober 2025</div>
+//             </header>
+//
+//             <div class="article-meta">
+//                 <strong>Kategorie:</strong> DevOps & Containerisierung<br>
+//                 <strong>Schwierigkeitsgrad:</strong> Einsteiger bis Fortgeschritten<br>
+//                 <strong>Lesezeit:</strong> 12 Minuten
+//                 <div class="tags">
+//                     <span class="tag">Docker</span>
+//                     <span class="tag">Container</span>
+//                     <span class="tag">DevOps</span>
+//                     <span class="tag">Virtualisierung</span>
+//                 </div>
+//             </div>
+//
+//             <div class="post-content">
+//                 <p><strong>Docker</strong> ist eine der wichtigsten Technologien der letzten Jahre und hat die Software-Entwicklung revolutioniert. In diesem Artikel erkläre ich dir, was Docker ist, warum es so nützlich ist und wie du es praktisch einsetzen kannst.</p>
+//
+//                 <h2>Was ist Docker?</h2>
+//                 <p>Docker ist eine Plattform zur Containerisierung von Anwendungen. Stell dir Container wie standardisierte Schiffscontainer vor - egal was drin ist, sie haben alle die gleiche Form und passen überall hin.</p>
+//
+//                 <h3>Das Problem vor Docker:</h3>
+//                 <ul>
+//                     <li>"Es funktioniert auf meinem Rechner!" - Entwicklerproblem</li>
+//                     <li>Unterschiedliche Entwicklungsumgebungen</li>
+//                     <li>Komplexe Deployment-Prozesse</li>
+//                     <li>Abhängigkeiten-Konflikte</li>
+//                 </ul>
+//
+//                 <h2>Wie funktioniert Containerisierung?</h2>
+//
+//                 <h3>Container vs Virtuelle Maschinen:</h3>
+//                 <table class="comparison-table">
+//                     <thead>
+//                         <tr>
+//                             <th>Aspekt</th>
+//                             <th>Container (Docker)</th>
+//                             <th>Virtuelle Maschine (VM)</th>
+//                         </tr>
+//                     </thead>
+//                     <tbody>
+//                         <tr>
+//                             <td>Startzeit</td>
+//                             <td>Sekunden</td>
+//                             <td>Minuten</td>
+//                         </tr>
+//                         <tr>
+//                             <td>Ressourcenverbrauch</td>
+//                             <td>Sehr gering</td>
+//                             <td>Hoch</td>
+//                         </tr>
+//                         <tr>
+//                             <td>Größe</td>
+//                             <td>MB</td>
+//                             <td>GB</td>
+//                         </tr>
+//                         <tr>
+//                             <td>Isolation</td>
+//                             <td>Prozess-Level</td>
+//                             <td>Hardware-Level</td>
+//                         </tr>
+//                     </tbody>
+//                 </table>
+//
+//                 <h2>Docker-Grundbegriffe</h2>
+//
+//                 <h3>Docker Image:</h3>
+//                 <p>Eine Momentaufnahme deiner Anwendung mit allen Abhängigkeiten. Wie ein Rezept oder eine Blaupause.</p>
+//
+//                 <h3>Docker Container:</h3>
+//                 <p>Eine laufende Instanz eines Images. Wie ein fertiges Gericht aus dem Rezept.</p>
+//
+//                 <h3>Dockerfile:</h3>
+//                 <p>Eine Anweisungsdatei, die beschreibt, wie ein Image erstellt wird.</p>
+//
+//                 <h3>Docker Hub:</h3>
+//                 <p>Eine Registry mit vorgefertigten Images (wie ein App Store für Container).</p>
+//
+//                 <h2>Erstes Docker-Beispiel</h2>
+//
+//                 <h3>1. Dockerfile erstellen:</h3>
+//                 <pre><code># Dockerfile
+// FROM node:14-alpine
+//
+// WORKDIR /app
+// COPY package*.json ./
+// RUN npm install
+//
+// COPY . .
+// EXPOSE 3000
+//
+// CMD ["npm", "start"]</code></pre>
+//
+//                 <h3>2. Image bauen:</h3>
+//                 <pre><code>docker build -t meine-app .</code></pre>
+//
+//                 <h3>3. Container starten:</h3>
+//                 <pre><code>docker run -p 3000:3000 meine-app</code></pre>
+//
+//                 <h2>Docker Compose für komplexe Anwendungen</h2>
+//
+//                 <h3>docker-compose.yml Beispiel:</h3>
+//                 <pre><code>version: '3.8'
+// services:
+//   web:
+//     build: .
+//     ports:
+//       - "3000:3000"
+//   database:
+//     image: postgres:13
+//     environment:
+//       POSTGRES_PASSWORD: secret
+//     volumes:
+//       - db-data:/var/lib/postgresql/data
+//
+// volumes:
+//   db-data:</code></pre>
+//
+//                 <h2>Vorteile von Docker</h2>
+//
+//                 <div class="pros-cons">
+//                     <div class="pros">
+//                         <h3>✅ Vorteile</h3>
+//                         <ul>
+//                             <li>Konsistente Umgebungen</li>
+//                             <li>Schnelle Deployment</li>
+//                             <li>Einfache Skalierung</li>
+//                             <li>Ressourceneffizient</li>
+//                             <li>Microservices-freundlich</li>
+//                             <li>DevOps-Optimierung</li>
+//                         </ul>
+//                     </div>
+//
+//                     <div class="cons">
+//                         <h3>❌ Nachteile</h3>
+//                         <ul>
+//                             <li>Lernkurve für Anfänger</li>
+//                             <li>Debugging komplexer</li>
+//                             <li>Persistent Data Handling</li>
+//                             <li>Sicherheitsaspekte</li>
+//                             <li>Performance-Overhead</li>
+//                         </ul>
+//                     </div>
+//                 </div>
+//
+//                 <h2>Docker in der Praxis</h2>
+//
+//                 <h3>Entwicklungs-Workflow:</h3>
+//                 <ol>
+//                     <li><strong>Lokal entwickeln:</strong> Container für isolierte Entwicklung</li>
+//                     <li><strong>Testen:</strong> Gleiche Umgebung wie in Produktion</li>
+//                     <li><strong>Deployment:</strong> Einfaches Ausrollen auf Servern</li>
+//                     <li><strong>Skalierung:</strong> Mehr Container bei Bedarf</li>
+//                 </ol>
+//
+//                 <h3>Beliebte Docker-Anwendungsfälle:</h3>
+//                 <ul>
+//                     <li><strong>Web-Anwendungen:</strong> Node.js, Python, PHP in Containern</li>
+//                     <li><strong>Microservices:</strong> Jeder Service in einem eigenen Container</li>
+//                     <li><strong>CI/CD-Pipelines:</strong> Konsistente Build-Umgebungen</li>
+//                     <li><strong>Entwicklungsumgebungen:</strong> Gleiche Tools für alle Entwickler</li>
+//                 </ul>
+//
+//                 <h2>Docker-Sicherheit</h2>
+//
+//                 <h3>Best Practices:</h3>
+//                 <ul>
+//                     <li><strong>Minimal Images:</strong> Nur nötige Dependencies</li>
+//                     <li><strong>Multi-Stage Builds:</strong> Kleine Produktions-Images</li>
+//                     <li><strong>Secrets Management:</strong> Keine Passwörter in Images</li>
+//                     <li><strong>Regular Updates:</strong> Basis-Images aktuell halten</li>
+//                     <li><strong>Resource Limits:</strong> CPU und RAM beschränken</li>
+//                 </ul>
+//
+//                 <h3>Sicherheits-Kommandos:</h3>
+//                 <pre><code># Container nicht als root ausführen
+// docker run --user 1000 meine-app
+//
+// # Resource Limits setzen
+// docker run --memory=512m --cpus=0.5 meine-app
+//
+// # Secrets übergeben (nicht in Image)
+// docker run -e DB_PASSWORD_FILE=/run/secrets/password meine-app</code></pre>
+//
+//                 <h2>Docker vs Podman</h2>
+//
+//                 <p>Podman ist eine Docker-Alternative ohne Daemon:</p>
+//                 <ul>
+//                     <li><strong>Docker:</strong> Client-Server-Architektur mit Daemon</li>
+//                     <li><strong>Podman:</strong> Daemonless, rootless möglich</li>
+//                     <li><strong>Kompatibilität:</strong> Docker Compose läuft auch mit Podman</li>
+//                 </ul>
+//
+//                 <h2>Fazit</h2>
+//                 <p>Docker hat die Software-Entwicklung nachhaltig verändert. Containerisierung löst viele Probleme der traditionellen Software-Bereitstellung und ermöglicht moderne DevOps-Praktiken.</p>
+//
+//                 <p><strong>Zusammenfassung:</strong> Docker macht Anwendungen portabel, skalierbar und einfach zu verwalten. Die Lernkurve lohnt sich definitiv!</p>
+//
+//                 <h2>Nächste Schritte</h2>
+//                 <ol>
+//                     <li><strong>Docker installieren:</strong> Auf <a href="https://docker.com">docker.com</a></li>
+//                     <li><strong>Docker Hub erkunden:</strong> Bereite Images finden</li>
+//                     <li><strong>Erstes Projekt containerisieren:</strong> Kleine Anwendung testen</li>
+//                     <li><strong>Docker Compose lernen:</strong> Komplexe Anwendungen orchestrieren</li>
+//                 </ol>
+//
+//                 <h2>Weiterführende Artikel</h2>
+//                 <ul>
+//                     <li><a href="docker-compose-alles-was-du-wissen-musst.html">Docker Compose: Alles was du wissen musst</a></li>
+//                     <li><a href="wie-man-einen-docker-container-sicher-macht.html">Wie man einen Docker Container sicher macht</a></li>
+//                     <li><a href="kubernetes-fuer-einsteiger.html">Kubernetes für Einsteiger</a></li>
+//                 </ul>
+//             </div>
+//
+//             <a href="../index.html" class="back-link">← Zurück zur Übersicht</a>
+//         </article>
+//     </main>
+//
+//     <footer>
+//         <div class="container">
+//             <p>&copy; 2025 Mein Blog. Alle Rechte vorbehalten.</p>
+//         </div>
+//     </footer>
+//
+//     <script type="application/ld+json">
+//     {
+//         "@context": "https://schema.org",
+//         "@type": "Article",
+//         "headline": "Docker einfach erklärt",
+//         "author": {
+//             "@type": "Person",
+//             "name": "Mein Blog"
+//         },
+//         "datePublished": "2025-10-11T18:00:00.000Z",
+//         "publisher": {
+//             "@type": "Organization",
+//             "name": "Mein Blog"
+//         }
+//     }
+//     </script>
+// </body>
+// </html>
+//

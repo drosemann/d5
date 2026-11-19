@@ -1,0 +1,344 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-infra-pilot/services/management-panel/src/components/GitDeployManager.tsx
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-infra-pilot/services/management-panel/src/components/GitDeployManager.tsx");
+}
+
+// ---- Original-Code (projects/github-repos-infra-pilot/services/management-panel/src/components/GitDeployManager.tsx), unveraendert, als Inline-Doku ----
+// import { useEffect, useState } from 'react';
+// import { apiClient } from '../lib/api';
+// import { GitDeployment, DockerApp } from '../lib/types';
+// import { toast } from 'sonner';
+//
+// export const GitDeployManager = () => {
+//   const [deployments, setDeployments] = useState<GitDeployment[]>([]);
+//   const [apps, setApps] = useState<DockerApp[]>([]);
+//   const [loading, setLoading] = useState(true);
+//   const [showForm, setShowForm] = useState(false);
+//   const [selectedDep, setSelectedDep] = useState<GitDeployment | null>(null);
+//   const [form, setForm] = useState({
+//     name: '',
+//     repoUrl: '',
+//     branch: 'main',
+//     containerId: '',
+//     targetDir: '/app',
+//     installCommand: '',
+//     restartCommand: '',
+//   });
+//
+//   useEffect(() => {
+//     Promise.all([loadDeployments(), loadApps()]).finally(() => setLoading(false));
+//   }, []);
+//
+//   const loadDeployments = async () => {
+//     try {
+//       setDeployments(await apiClient.getDeployments());
+//     } catch {
+//       setDeployments([]);
+//     }
+//   };
+//
+//   const loadApps = async () => {
+//     try {
+//       setApps(await apiClient.listApps());
+//     } catch {
+//       setApps([]);
+//     }
+//   };
+//
+//   const resetForm = () => {
+//     setForm({ name: '', repoUrl: '', branch: 'main', containerId: '', targetDir: '/app', installCommand: '', restartCommand: '' });
+//     setShowForm(false);
+//   };
+//
+//   const isValidRepoUrl = (url: string) => {
+//     const trimmed = url.trim();
+//     return (
+//       trimmed.startsWith('https://') ||
+//       trimmed.startsWith('http://') ||
+//       trimmed.startsWith('git@')
+//     ) && trimmed.includes('.') && trimmed.length >= 10;
+//   };
+//
+//   const getWebhookUrl = () => {
+//     return import.meta.env.VITE_PUBLIC_WEBHOOK_URL?.trim() || '';
+//   };
+//
+//   const copyWebhookUrl = async () => {
+//     const webhookUrl = getWebhookUrl();
+//     if (!webhookUrl) return;
+//     try {
+//       await navigator.clipboard.writeText(webhookUrl);
+//       toast.success('Webhook URL copied');
+//     } catch {
+//       toast.error('Copy failed â€” select the URL manually');
+//     }
+//   };
+//
+//   const handleCreate = async () => {
+//     const name = form.name.trim();
+//     const repoUrl = form.repoUrl.trim();
+//     if (!name || !repoUrl) {
+//       toast.error('Name and repository URL are required');
+//       return;
+//     }
+//     if (!isValidRepoUrl(repoUrl)) {
+//       toast.error('Repository URL must start with https://, http://, or git@');
+//       return;
+//     }
+//     try {
+//       await apiClient.createDeployment({ ...form, name, repoUrl });
+//       toast.success('Git deployment created');
+//       resetForm();
+//       loadDeployments();
+//     } catch {
+//       toast.error('Failed to create deployment');
+//     }
+//   };
+//
+//   const handleDelete = async (id: string) => {
+//     if (!window.confirm('Are you sure you want to delete this deployment?')) return;
+//     try {
+//       await apiClient.deleteDeployment(id);
+//       toast.success('Deployment deleted');
+//       if (selectedDep?.id === id) setSelectedDep(null);
+//       loadDeployments();
+//     } catch {
+//       toast.error('Failed to delete deployment');
+//     }
+//   };
+//
+//   const handleToggle = async (id: string) => {
+//     try {
+//       await apiClient.toggleDeployment(id);
+//       loadDeployments();
+//     } catch {
+//       toast.error('Failed to toggle deployment');
+//     }
+//   };
+//
+//   const viewDetails = async (dep: GitDeployment) => {
+//     try {
+//       const result = await apiClient.getDeploymentHistory(dep.id);
+//       setSelectedDep({ ...dep, history: result.history || [] });
+//     } catch {
+//       setSelectedDep(dep);
+//     }
+//   };
+//
+//   const getStatusDot = (status?: string) => {
+//     switch (status) {
+//       case 'success': return 'bg-emerald-400';
+//       case 'failed': return 'bg-red-400';
+//       case 'timeout': return 'bg-amber-400';
+//       default: return 'bg-white/30';
+//     }
+//   };
+//
+//   if (loading) {
+//     return <div className="py-4 text-white/45">Loading git deployments…</div>;
+//   }
+//
+//   return (
+//     <div className="space-y-4">
+//       <div className="flex items-center justify-between">
+//         <h4 className="font-semibold text-white">Git Deployments</h4>
+//         <button
+//           onClick={() => { resetForm(); setShowForm(!showForm); }}
+//           className="primary-button"
+//         >
+//           {showForm ? 'Cancel' : 'New Deployment'}
+//         </button>
+//       </div>
+//
+//       {showForm && (
+//         <div className="card space-y-3 p-4">
+//           <input
+//             type="text"
+//             placeholder="Deployment name"
+//             value={form.name}
+//             onChange={(e) => setForm({ ...form, name: e.target.value })}
+//             className="input-field w-full text-sm"
+//           />
+//           <input
+//             type="text"
+//             placeholder="Git repository URL (e.g. https://github.com/user/repo.git)"
+//             value={form.repoUrl}
+//             onChange={(e) => setForm({ ...form, repoUrl: e.target.value })}
+//             className="input-field w-full text-sm"
+//           />
+//           <input
+//             type="text"
+//             placeholder="Branch (default: main)"
+//             value={form.branch}
+//             onChange={(e) => setForm({ ...form, branch: e.target.value })}
+//             className="input-field w-full text-sm"
+//           />
+//           <select
+//             value={form.containerId}
+//             onChange={(e) => setForm({ ...form, containerId: e.target.value })}
+//             className="input-field w-full text-sm"
+//           >
+//             <option value="">Select container / app</option>
+//             {apps.filter(a => a.container_id).map((app) => (
+//               <option key={app.id} value={app.container_id}>{app.name} ({app.container_id?.slice(0, 12)})</option>
+//             ))}
+//           </select>
+//           <input
+//             type="text"
+//             placeholder="Target directory in container (default: /app)"
+//             value={form.targetDir}
+//             onChange={(e) => setForm({ ...form, targetDir: e.target.value })}
+//             className="input-field w-full text-sm"
+//           />
+//           <input
+//             type="text"
+//             placeholder="Install command (e.g. npm install, optional)"
+//             value={form.installCommand}
+//             onChange={(e) => setForm({ ...form, installCommand: e.target.value })}
+//             className="input-field w-full text-sm"
+//           />
+//           <input
+//             type="text"
+//             placeholder="Restart command (e.g. pm2 restart app, optional)"
+//             value={form.restartCommand}
+//             onChange={(e) => setForm({ ...form, restartCommand: e.target.value })}
+//             className="input-field w-full text-sm"
+//           />
+//           <button
+//             onClick={handleCreate}
+//             className="primary-button w-full"
+//           >
+//             Create Deployment
+//           </button>
+//         </div>
+//       )}
+//
+//       <div className="space-y-2">
+//         {deployments.length === 0 ? (
+//           <p className="text-white/40 text-sm">No git deployments configured</p>
+//         ) : (
+//           deployments.map((dep) => {
+//             const last = dep.history?.[dep.history.length - 1];
+//             return (
+//               <div
+//                 key={dep.id}
+//                 className="flex items-center justify-between p-3 bg-white/[0.04] rounded-lg border border-white/10 cursor-pointer hover:border-slate-500 transition-colors"
+//                 onClick={() => viewDetails(dep)}
+//               >
+//                 <div className="flex-1 min-w-0">
+//                   <div className="flex items-center gap-2">
+//                     <button
+//                       onClick={(e) => { e.stopPropagation(); handleToggle(dep.id); }}
+//                       aria-label={dep.enabled ? `Disable ${dep.name}` : `Enable ${dep.name}`}
+//                       title={dep.enabled ? 'Disable auto-deploy' : 'Enable auto-deploy'}
+//                       className={`text-sm px-2 py-0.5 rounded-full cursor-pointer transition-colors ${
+//                         dep.enabled ? 'bg-green-500/20 text-green-400 hover:bg-green-500/30' : 'bg-white/10 text-white/45 hover:bg-white/10'
+//                       }`}
+//                     >
+//                       {dep.enabled ? 'ON' : 'OFF'}
+//                     </button>
+//                     <span className="text-sm font-semibold text-white truncate">{dep.name}</span>
+//                     <span className="text-xs text-white/45 font-mono">{dep.repo}/{dep.branch}</span>
+//                     {last && (
+//                       <span className="text-xs"><span className={`h-2 w-2 rounded-full ${getStatusDot(dep.status)}`} /></span>
+//                     )}
+//                   </div>
+//                   {dep.targetDir && (
+//                     <p className="text-xs text-white/40 mt-1 font-mono">{dep.targetDir}</p>
+//                   )}
+//                 </div>
+//                 <div className="flex items-center gap-2 ml-3" onClick={(e) => e.stopPropagation()}>
+//                   <button
+//                     onClick={() => handleDelete(dep.id)}
+//                     aria-label={`Delete ${dep.name}`}
+//                     className="px-2 py-1 text-xs bg-red-600/20 text-red-400 hover:bg-red-600/40 rounded transition-colors"
+//                   >
+//                     Delete
+//                   </button>
+//                 </div>
+//               </div>
+//             );
+//           })
+//         )}
+//       </div>
+//
+//       {selectedDep && (
+//         <div className="card space-y-3 p-4">
+//           <div className="flex items-center justify-between">
+//             <h5 className="font-semibold text-white">{selectedDep.name} â€” Details</h5>
+//             <button
+//               onClick={() => setSelectedDep(null)}
+//               className="text-xs text-white/45 hover:text-white transition-colors"
+//             >
+//               Close
+//             </button>
+//           </div>
+//           <div className="space-y-2 text-sm">
+//             <div className="flex justify-between items-center gap-2">
+//               <span className="text-white/45">Webhook URL:</span>
+//               <span className="flex items-center gap-2 min-w-0">
+//                 <span className="text-green-400 font-mono text-xs break-all text-right">{getWebhookUrl() || 'Webhook URL not configured'}</span>
+//                 <button
+//                   onClick={copyWebhookUrl}
+//                   disabled={!getWebhookUrl()}
+//                   aria-label="Copy webhook URL"
+//                   className="shrink-0 px-2 py-0.5 text-xs bg-white/10 hover:bg-white/20 text-slate-200 rounded transition-colors"
+//                 >
+//                   Copy
+//                 </button>
+//               </span>
+//             </div>
+//             <div className="flex justify-between">
+//               <span className="text-white/45">Auth:</span>
+//               <span className="text-amber-400 font-mono text-xs">HMAC-SHA256 of X-Timestamp + body (GITOPS_WEBHOOK_TOKEN)</span>
+//             </div>
+//             <p className="text-xs text-white/40">GitHub webhooks cannot send these headers directly â€” route pushes through a proxy that signs each request (see wiki/08-Security.md).</p>
+//             <div className="flex justify-between">
+//               <span className="text-white/45">Repository:</span>
+//               <span className="text-white font-mono text-xs">{selectedDep.repoUrl}</span>
+//             </div>
+//             <div className="flex justify-between">
+//               <span className="text-white/45">Branch:</span>
+//               <span className="text-white">{selectedDep.branch}</span>
+//             </div>
+//             <div className="flex justify-between">
+//               <span className="text-white/45">Target:</span>
+//               <span className="text-white font-mono text-xs">{selectedDep.containerId ? `${selectedDep.containerId}:${selectedDep.targetDir}` : selectedDep.targetDir}</span>
+//             </div>
+//           </div>
+//
+//           <div className="border-t border-white/10 pt-3">
+//             <h6 className="text-sm font-semibold text-white mb-2">Deployment History</h6>
+//             {selectedDep.history && selectedDep.history.length > 0 ? (
+//               <div className="space-y-1 max-h-40 overflow-y-auto">
+//                 {selectedDep.history.slice().reverse().map((h: any, i: number) => (
+//                   <div key={i} className="flex items-center gap-2 text-xs">
+//                     <span><span className={`h-2 w-2 rounded-full ${getStatusDot(h.status)}`} /></span>
+//                     <span className="text-white/60">{h.timestamp?.slice(0, 19)?.replace('T', ' ')}</span>
+//                     <span className={`font-medium ${
+//                       h.status === 'success' ? 'text-green-400' : h.status === 'failed' ? 'text-red-400' : 'text-yellow-400'
+//                     }`}>
+//                       {h.status}
+//                     </span>
+//                     {h.commits !== undefined && (
+//                       <span className="text-white/40">({h.commits} commits)</span>
+//                     )}
+//                     {h.error && <span className="text-red-400 truncate">{h.error}</span>}
+//                   </div>
+//                 ))}
+//               </div>
+//             ) : (
+//               <p className="text-xs text-white/40">No deployments yet</p>
+//             )}
+//           </div>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+//
+// export default GitDeployManager;
+//

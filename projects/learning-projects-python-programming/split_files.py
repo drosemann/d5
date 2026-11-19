@@ -1,0 +1,53 @@
+import json
+
+try:
+    print("Laden von chat.json...")
+    with open('chat.json', 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    print(f"✓ chat.json geladen ({type(data).__name__})")
+    
+    if isinstance(data, list):
+        print(f"  Anzahl der Einträge: {len(data)}")
+        half = len(data) // 2
+        
+        # Teil 1 speichern
+        print(f"Speichere teil1.json ({half} Einträge)...")
+        with open('teil1.json', 'w', encoding='utf-8') as f1:
+            json.dump(data[:half], f1, indent=4, ensure_ascii=False)
+        print("✓ teil1.json gespeichert")
+        
+        # Teil 2 speichern
+        print(f"Speichere teil2.json ({len(data) - half} Einträge)...")
+        with open('teil2.json', 'w', encoding='utf-8') as f2:
+            json.dump(data[half:], f2, indent=4, ensure_ascii=False)
+        print("✓ teil2.json gespeichert")
+        
+    elif isinstance(data, dict):
+        print(f"  Anzahl der Keys: {len(data)}")
+        keys = list(data.keys())
+        half = len(keys) // 2
+        
+        # Teil 1 speichern
+        print(f"Speichere teil1.json ({half} Keys)...")
+        teil1 = {k: data[k] for k in keys[:half]}
+        with open('teil1.json', 'w', encoding='utf-8') as f1:
+            json.dump(teil1, f1, indent=4, ensure_ascii=False)
+        print("✓ teil1.json gespeichert")
+        
+        # Teil 2 speichern
+        print(f"Speichere teil2.json ({len(keys) - half} Keys)...")
+        teil2 = {k: data[k] for k in keys[half:]}
+        with open('teil2.json', 'w', encoding='utf-8') as f2:
+            json.dump(teil2, f2, indent=4, ensure_ascii=False)
+        print("✓ teil2.json gespeichert")
+    else:
+        print(f"✗ Fehler: Unsupported type {type(data).__name__}")
+        
+    print("✓ Fertig!")
+        
+except FileNotFoundError:
+    print("✗ Fehler: chat.json nicht gefunden!")
+except json.JSONDecodeError as e:
+    print(f"✗ Fehler beim Einlesen von chat.json: {e}")
+except Exception as e:
+    print(f"✗ Unerwarteter Fehler: {e}")

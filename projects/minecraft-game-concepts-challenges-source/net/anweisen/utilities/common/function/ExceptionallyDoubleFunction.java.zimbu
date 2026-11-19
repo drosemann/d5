@@ -1,0 +1,29 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\function\ExceptionallyDoubleFunction.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE ExceptionallyDoubleFunction_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\function\ExceptionallyDoubleFunction.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\function\ExceptionallyDoubleFunction.java), unveraendert, als Inline-Doku ----
+# package net.anweisen.utilities.common.function;
+#
+# import java.util.function.DoubleFunction;
+# import net.anweisen.utilities.common.collection.WrappedException;
+#
+# @FunctionalInterface
+# public interface ExceptionallyDoubleFunction extends DoubleFunction {
+#    default Object apply(double value) {
+#       try {
+#          return this.applyExceptionally(value);
+#       } catch (Exception var4) {
+#          throw WrappedException.rethrow(var4);
+#       }
+#    }
+#
+#    Object applyExceptionally(double var1) throws Exception;
+# }
+#

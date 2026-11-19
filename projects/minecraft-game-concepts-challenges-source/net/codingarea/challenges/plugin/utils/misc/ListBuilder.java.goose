@@ -1,0 +1,89 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/utils/misc/ListBuilder.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/utils/misc/ListBuilder.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/codingarea/challenges/plugin/utils/misc/ListBuilder.java), unveraendert, als Inline-Doku ----
+// package net.codingarea.challenges.plugin.utils.misc;
+//
+// import java.util.ArrayList;
+// import java.util.Arrays;
+// import java.util.Collection;
+// import java.util.Iterator;
+// import java.util.List;
+// import java.util.function.Consumer;
+// import java.util.function.Predicate;
+//
+// public final class ListBuilder {
+//    private final List list = new ArrayList();
+//
+//    @SafeVarargs
+//    public ListBuilder(Object... t) {
+//       this.list.addAll(Arrays.asList(t));
+//    }
+//
+//    public ListBuilder fill(Consumer consumer) {
+//       consumer.accept(this);
+//       return this;
+//    }
+//
+//    @SafeVarargs
+//    public final ListBuilder addAll(Object... t) {
+//       return this.addAll((Collection)Arrays.asList(t));
+//    }
+//
+//    public final ListBuilder addAll(Collection collection) {
+//       this.list.addAll(collection);
+//       return this;
+//    }
+//
+//    @SafeVarargs
+//    public final ListBuilder addAllIfNotContains(Object... t) {
+//       return this.addAllIfNotContains((Collection)Arrays.asList(t));
+//    }
+//
+//    public final ListBuilder addAllIfNotContains(Collection collection) {
+//       Iterator var2 = collection.iterator();
+//
+//       while(var2.hasNext()) {
+//          Object t = var2.next();
+//          if (!this.list.contains(t)) {
+//             this.list.add(t);
+//          }
+//       }
+//
+//       return this;
+//    }
+//
+//    public ListBuilder add(Object t) {
+//       this.list.add(t);
+//       return this;
+//    }
+//
+//    public ListBuilder addIfNotContains(Object t) {
+//       return this.list.contains(t) ? this : this.add(t);
+//    }
+//
+//    public ListBuilder remove(Object t) {
+//       this.list.remove(t);
+//       return this;
+//    }
+//
+//    public ListBuilder forEach(Consumer action) {
+//       this.list.forEach(action);
+//       return this;
+//    }
+//
+//    public ListBuilder removeIf(Predicate action) {
+//       this.list.removeIf(action);
+//       return this;
+//    }
+//
+//    public List build() {
+//       return this.list;
+//    }
+// }
+//

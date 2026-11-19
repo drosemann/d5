@@ -1,0 +1,22 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-stranded-horizons\server\src\db.js
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE db_js
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-stranded-horizons\server\src\db.js\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-stranded-horizons\server\src\db.js), unveraendert, als Inline-Doku ----
+# import pg from 'pg';
+#
+# const pool = new pg.Pool({
+#   connectionString: process.env.DATABASE_URL,
+#   max: 10,
+# });
+#
+# export const db = {
+#   query: (text, params) => pool.query(text, params),
+# };
+#

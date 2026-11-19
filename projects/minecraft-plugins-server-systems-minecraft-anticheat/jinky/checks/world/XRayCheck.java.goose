@@ -1,0 +1,198 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/checks/world/XRayCheck.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/checks/world/XRayCheck.java");
+}
+
+// ---- Original-Code (projects/minecraft-plugins-server-systems-minecraft-anticheat/jinky/checks/world/XRayCheck.java), unveraendert, als Inline-Doku ----
+// package me.jinky.checks.world;
+//
+// import java.util.ArrayList;
+// import java.util.HashMap;
+// import java.util.Iterator;
+// import java.util.Map;
+// import me.jinky.checks.Check;
+// import me.jinky.checks.CheckResult;
+// import me.jinky.logger.User;
+// import me.jinky.util.UtilBlock;
+// import org.bukkit.Material;
+// import org.bukkit.block.Block;
+// import org.bukkit.block.BlockFace;
+// import org.bukkit.entity.Player;
+// import org.bukkit.event.Event;
+// import org.bukkit.event.block.BlockBreakEvent;
+// import org.bukkit.event.player.PlayerMoveEvent;
+//
+// public class XRayCheck extends Check {
+//    public static Map ghostblocks = new HashMap();
+//    public static Map ghostblocks_closecount = new HashMap();
+//    public static Map lastcheck = new HashMap();
+//    public static Map ghostblocks_lastcheckloc = new HashMap();
+//
+//    public String getName() {
+//       return "XRay";
+//    }
+//
+//    public String getEventCall() {
+//       return "PlayerMoveEvent";
+//    }
+//
+//    public String getSecondaryEventCall() {
+//       return "BlockBreakEvent";
+//    }
+//
+//    public CheckResult performCheck(User u, Event ev) {
+//       Player p = u.getPlayer();
+//       Block target;
+//       if (ev.getEventName().equalsIgnoreCase("PlayerMoveEvent")) {
+//          if (!lastcheck.containsKey(p)) {
+//             lastcheck.put(p, 1L);
+//          }
+//
+//          PlayerMoveEvent e = (PlayerMoveEvent)ev;
+//          Long math = System.currentTimeMillis() - (Long)lastcheck.get(p);
+//          if (e.getTo().getWorld() != e.getFrom().getWorld()) {
+//             if (ghostblocks.containsKey(p)) {
+//                Iterator var15 = ((HashMap)ghostblocks.get(p)).keySet().iterator();
+//
+//                while(var15.hasNext()) {
+//                   target = (Block)var15.next();
+//                   target.setType(Material.STONE);
+//                }
+//
+//                ghostblocks.remove(p);
+//             }
+//
+//             if (ghostblocks_closecount.containsKey(p)) {
+//                ghostblocks_closecount.remove(p);
+//             }
+//
+//             if (ghostblocks_lastcheckloc.containsKey(p)) {
+//                ghostblocks_lastcheckloc.remove(p);
+//             }
+//
+//             lastcheck.put(p, System.currentTimeMillis());
+//             return new CheckResult("XRay", true, "WorldChange");
+//          } else {
+//             if (math > 1750L && ghostblocks_closecount.containsKey(p) && e.getFrom().distance(e.getTo()) > 0.1D) {
+//                Iterator i = ((HashMap)ghostblocks_closecount.get(p)).keySet().iterator();
+//                ArrayList remove = new ArrayList();
+//
+//                Block b;
+//                while(i.hasNext()) {
+//                   b = (Block)i.next();
+//                   if (b != null && b.getType() != null && !b.getType().toString().contains("ORE")) {
+//                      remove.add(b);
+//                      return new CheckResult("XRay", true, "pass");
+//                   }
+//
+//                   Integer count = (Integer)((HashMap)ghostblocks_closecount.get(p)).get(b);
+//                   if (b.getLocation().getWorld() != e.getTo().getWorld()) {
+//                      return new CheckResult("XRay", true, "WorldChange");
+//                   }
+//
+//                   if (e.getTo().distance(b.getLocation()) < (Double)((HashMap)ghostblocks_lastcheckloc.get(p)).get(b)) {
+//                      count = count + 1;
+//                      ((HashMap)ghostblocks_closecount.get(p)).put(b, count);
+//                   } else {
+//                      count = count - 1;
+//                      if (count < 0) {
+//                         remove.add(b);
+//                         b.setType(Material.STONE);
+//                      } else {
+//                         ((HashMap)ghostblocks_closecount.get(p)).put(b, count);
+//                      }
+//                   }
+//                }
+//
+//                if (remove.size() > 0) {
+//                   Iterator var17 = remove.iterator();
+//
+//                   while(var17.hasNext()) {
+//                      b = (Block)var17.next();
+//                      ((HashMap)ghostblocks_closecount.get(p)).remove(b);
+//                      ((HashMap)ghostblocks.get(p)).remove(b);
+//                      ((HashMap)ghostblocks_lastcheckloc.get(p)).remove(b);
+//                   }
+//                }
+//
+//                lastcheck.put(p, System.currentTimeMillis());
+//             }
+//
+//             return new CheckResult("XRay", true, "pass");
+//          }
+//       } else {
+//          if (!ghostblocks.containsKey(p)) {
+//             ghostblocks.put(p, new HashMap());
+//          }
+//
+//          if (!ghostblocks_closecount.containsKey(p)) {
+//             ghostblocks_closecount.put(p, new HashMap());
+//          }
+//
+//          if (p.isSneaking()) {
+//             ((HashMap)ghostblocks.get(p)).put(p.getLocation().getBlock().getRelative(BlockFace.DOWN), System.currentTimeMillis());
+//          }
+//
+//          BlockBreakEvent e = (BlockBreakEvent)ev;
+//          if (!e.getBlock().getType().toString().contains("ORE")) {
+//             return new CheckResult("XRay", true, "pass");
+//          } else {
+//             if (((HashMap)ghostblocks.get(p)).containsKey(e.getBlock())) {
+//                Integer count = (Integer)((HashMap)ghostblocks_closecount.get(p)).get(e.getBlock());
+//                ((HashMap)ghostblocks.get(p)).remove(e.getBlock());
+//                ((HashMap)ghostblocks_closecount.get(p)).remove(e.getBlock());
+//                if (count > 4) {
+//                   return new CheckResult("XRay", false, "broke ghostblocks 5+ blocks ret");
+//                }
+//             } else {
+//                BlockFace opposite = getopposite(p);
+//                target = e.getBlock();
+//                Integer g = 0;
+//
+//                for(int i = 0; i < 9; ++i) {
+//                   target = target.getRelative(opposite);
+//                   if (i > 4 && UtilBlock.xraysafe(target, target.getType()).size() == 0) {
+//                      g = g + 1;
+//                      if (g == 2 && target.getLocation().getWorld().equals(p.getLocation().getWorld())) {
+//                         target.setType(e.getBlock().getType());
+//                         ((HashMap)ghostblocks.get(p)).put(target, System.currentTimeMillis());
+//                         ((HashMap)ghostblocks_closecount.get(p)).put(target, 4);
+//                         if (!ghostblocks_lastcheckloc.containsKey(p)) {
+//                            ghostblocks_lastcheckloc.put(p, new HashMap());
+//                         }
+//
+//                         ((HashMap)ghostblocks_lastcheckloc.get(p)).put(target, p.getLocation().distance(target.getLocation()));
+//                         break;
+//                      }
+//                   }
+//                }
+//             }
+//
+//             return new CheckResult("XRay", true, "pass");
+//          }
+//       }
+//    }
+//
+//    public static BlockFace getopposite(Player player) {
+//       float yaw = player.getLocation().getYaw();
+//       if (yaw < 0.0F) {
+//          yaw += 360.0F;
+//       }
+//
+//       if (!(yaw >= 315.0F) && !(yaw < 45.0F)) {
+//          if (yaw < 135.0F) {
+//             return BlockFace.EAST;
+//          } else if (yaw < 225.0F) {
+//             return BlockFace.SOUTH;
+//          } else {
+//             return yaw < 315.0F ? BlockFace.WEST : BlockFace.NORTH;
+//          }
+//       } else {
+//          return BlockFace.NORTH;
+//       }
+//    }
+// }
+//

@@ -1,0 +1,24 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\utils\bukkit\nms\type\PlayerConnection.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE PlayerConnection_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\utils\bukkit\nms\type\PlayerConnection.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\utils\bukkit\nms\type\PlayerConnection.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.utils.bukkit.nms.type;
+#
+# public abstract class PlayerConnection extends AbstractNMSClass {
+#    protected final Object connection;
+#
+#    public PlayerConnection(Class nmsClass, Object connection) {
+#       super(nmsClass);
+#       this.connection = connection;
+#    }
+#
+#    public abstract void sendPacket(Object var1);
+# }
+#

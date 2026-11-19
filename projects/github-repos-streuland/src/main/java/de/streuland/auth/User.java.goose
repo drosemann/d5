@@ -1,0 +1,37 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-streuland/src/main/java/de/streuland/auth/User.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-streuland/src/main/java/de/streuland/auth/User.java");
+}
+
+// ---- Original-Code (projects/github-repos-streuland/src/main/java/de/streuland/auth/User.java), unveraendert, als Inline-Doku ----
+// package de.streuland.auth;
+//
+// import java.time.Instant;
+//
+// public class User {
+//     public String id;
+//     public String username;
+//     public String email;
+//     public String serverId;
+//     public String createdAt;
+//     public String inviteCodeId;
+//     public String salt;
+//
+//     public User() {}
+//
+//     public static User create(String id, String username, String email, String serverId, String inviteCodeId) {
+//         User u = new User();
+//         u.id = id;
+//         u.username = username;
+//         u.email = email;
+//         u.serverId = serverId;
+//         u.inviteCodeId = inviteCodeId;
+//         u.createdAt = Instant.now().toString();
+//         u.salt = null;
+//         return u;
+//     }
+// }
+//

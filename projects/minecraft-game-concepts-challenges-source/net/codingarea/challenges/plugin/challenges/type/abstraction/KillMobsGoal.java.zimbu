@@ -1,0 +1,110 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\type\abstraction\KillMobsGoal.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE KillMobsGoal_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\type\abstraction\KillMobsGoal.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\codingarea\challenges\plugin\challenges\type\abstraction\KillMobsGoal.java), unveraendert, als Inline-Doku ----
+# package net.codingarea.challenges.plugin.challenges.type.abstraction;
+#
+# import java.util.LinkedList;
+# import java.util.List;
+# import javax.annotation.Nonnull;
+# import net.anweisen.utilities.common.config.Document;
+# import net.codingarea.challenges.plugin.ChallengeAPI;
+# import net.codingarea.challenges.plugin.content.Message;
+# import net.codingarea.challenges.plugin.content.Prefix;
+# import net.codingarea.challenges.plugin.management.server.ChallengeEndCause;
+# import org.bukkit.boss.BarColor;
+# import org.bukkit.entity.EntityType;
+# import org.bukkit.event.EventHandler;
+# import org.bukkit.event.EventPriority;
+# import org.bukkit.event.entity.EntityDeathEvent;
+# import org.jetbrains.annotations.NotNull;
+#
+# public abstract class KillMobsGoal extends SettingGoal {
+#    protected static List entitiesKilled;
+#    protected final List entitiesToKill;
+#
+#    public KillMobsGoal(List entitiesKilled) {
+#       this.entitiesToKill = entitiesKilled;
+#       this.resetEntitiesToKill();
+#    }
+#
+#    public abstract Message getBossbarMessage();
+#
+#    private void resetEntitiesToKill() {
+#       entitiesKilled = new LinkedList();
+#    }
+#
+#    public void getWinnersOnEnd(@NotNull List winners) {
+#    }
+#
+#    protected void onEnable() {
+#       this.bossbar.setContent((bar, player) -> {
+#          float i = 1.0F - (float)this.getEntitiesLeftToKill().size() / (float)this.entitiesToKill.size();
+#          bar.setProgress((double)i);
+#          bar.setColor(BarColor.GREEN);
+#          bar.setTitle(this.getBossbarMessage().asString(this.getEntitiesKilled().size(), this.entitiesToKill.size()));
+#       });
+#       this.bossbar.show();
+#    }
+#
+#    protected void onDisable() {
+#       this.bossbar.hide();
+#    }
+#
+#    @EventHandler(
+#       priority = EventPriority.MONITOR,
+#       ignoreCancelled = true
+#    )
+#    public void onDeath(@Nonnull EntityDeathEvent event) {
+#       if (this.shouldExecuteEffect()) {
+#          if (event.getEntityType() == EntityType.WITHER || event.getEntityType() == EntityType.ENDER_DRAGON || event.getEntityType() == EntityType.ELDER_GUARDIAN || event.getEntity().getKiller() != null) {
+#             if (!entitiesKilled.contains(event.getEntityType())) {
+#                entitiesKilled.add(event.getEntityType());
+#                if (this.entitiesToKill.contains(event.getEntityType())) {
+#                   Message.forName("mob-kill").broadcast(Prefix.CHALLENGES, event.getEntityType(), this.getEntitiesKilled().size(), this.entitiesToKill.size());
+#                   this.bossbar.update();
+#                   if (!this.getEntitiesLeftToKill().isEmpty()) {
+#                      return;
+#                   }
+#
+#                   this.resetEntitiesToKill();
+#                   ChallengeAPI.endChallenge(ChallengeEndCause.GOAL_REACHED);
+#                }
+#
+#             }
+#          }
+#       }
+#    }
+#
+#    public void writeGameState(@Nonnull Document document) {
+#       super.writeGameState(document);
+#       document.set("entities", entitiesKilled);
+#    }
+#
+#    public void loadGameState(@Nonnull Document document) {
+#       super.loadGameState(document);
+#       entitiesKilled = document.getEnumList("entities", EntityType.class);
+#    }
+#
+#    public List getEntitiesKilled() {
+#       LinkedList entityTypes = new LinkedList(entitiesKilled);
+#       entityTypes.removeIf((type) -> {
+#          return !this.entitiesToKill.contains(type);
+#       });
+#       return entityTypes;
+#    }
+#
+#    public List getEntitiesLeftToKill() {
+#       LinkedList entityTypes = new LinkedList(this.entitiesToKill);
+#       entityTypes.removeAll(entitiesKilled);
+#       return entityTypes;
+#    }
+# }
+#

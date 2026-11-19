@@ -1,0 +1,4 @@
+name: SessionLock
+version: '${project.version}'
+main: org.example.sessionlock.sessionlock.SessionLock
+api-version: '1.20'

@@ -1,0 +1,309 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/common/logging/ILogger.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/common/logging/ILogger.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/common/logging/ILogger.java), unveraendert, als Inline-Doku ----
+// package net.anweisen.utilities.common.logging;
+//
+// import com.google.common.base.Preconditions;
+// import java.io.PrintStream;
+// import java.nio.charset.StandardCharsets;
+// import java.util.ServiceLoader;
+// import java.util.logging.Logger;
+// import javax.annotation.CheckReturnValue;
+// import javax.annotation.Nonnull;
+// import javax.annotation.Nullable;
+// import net.anweisen.utilities.common.collection.WrappedException;
+// import net.anweisen.utilities.common.logging.internal.FallbackLogger;
+// import net.anweisen.utilities.common.logging.internal.JavaLoggerWrapper;
+// import net.anweisen.utilities.common.logging.internal.SimpleLogger;
+// import net.anweisen.utilities.common.logging.internal.Slf4jLoggerWrapper;
+// import net.anweisen.utilities.common.logging.internal.factory.ConstantLoggerFactory;
+// import net.anweisen.utilities.common.logging.internal.factory.DefaultLoggerFactory;
+// import net.anweisen.utilities.common.logging.internal.factory.Slf4jLoggerFactory;
+// import net.anweisen.utilities.common.logging.lib.JavaILogger;
+// import net.anweisen.utilities.common.logging.lib.Slf4jILogger;
+// import net.anweisen.utilities.common.misc.ReflectionUtils;
+// import org.slf4j.LoggerFactory;
+//
+// public interface ILogger {
+//    static boolean isSlf4jImplAvailable() {
+//       return ILogger.Holder.getData().slf4j;
+//    }
+//
+//    static boolean isSlf4jApiAvailable() {
+//       return ILogger.Holder.getData().slf4jApi;
+//    }
+//
+//    @Nonnull
+//    @CheckReturnValue
+//    static ILogger forName(@Nullable String name) {
+//       return getFactory().forName(name);
+//    }
+//
+//    @Nonnull
+//    @CheckReturnValue
+//    static ILogger forClass(@Nullable Class clazz) {
+//       return forName(clazz == null ? null : clazz.getSimpleName());
+//    }
+//
+//    @Nonnull
+//    @CheckReturnValue
+//    static ILogger forClassOf(@Nonnull Object object) {
+//       return forClass(object.getClass());
+//    }
+//
+//    @Nonnull
+//    @CheckReturnValue
+//    static ILogger forThisClass() {
+//       return forClass(ReflectionUtils.getCaller());
+//    }
+//
+//    @Nonnull
+//    @CheckReturnValue
+//    static JavaILogger forJavaLogger(@Nonnull Logger logger) {
+//       return new JavaLoggerWrapper(logger);
+//    }
+//
+//    @Nonnull
+//    @CheckReturnValue
+//    static ILogger forSlf4jLogger(@Nonnull org.slf4j.Logger logger) {
+//       return (ILogger)(logger instanceof ILogger ? (ILogger)logger : new Slf4jLoggerWrapper(logger));
+//    }
+//
+//    static void setFactory(@Nonnull ILoggerFactory factory) {
+//       Preconditions.checkNotNull(factory);
+//       ILogger.Holder.factory = factory;
+//    }
+//
+//    static void setConstantFactory(@Nonnull ILogger logger) {
+//       setFactory(new ConstantLoggerFactory(logger));
+//    }
+//
+//    @Nonnull
+//    static ILoggerFactory getFactory() {
+//       return ILogger.Holder.getFactory();
+//    }
+//
+//    void log(@Nonnull LogLevel var1, @Nullable String var2, @Nonnull Object... var3);
+//
+//    default void log(@Nonnull LogLevel level, @Nullable Object message, @Nonnull Object... args) {
+//       this.log(level, String.valueOf(message), args);
+//    }
+//
+//    default void error(@Nullable String message, @Nonnull Object... args) {
+//       this.log(LogLevel.ERROR, message, args);
+//    }
+//
+//    default void error(@Nullable Object message, @Nonnull Object... args) {
+//       this.log(LogLevel.ERROR, message, args);
+//    }
+//
+//    default void warn(@Nullable String message, @Nonnull Object... args) {
+//       this.log(LogLevel.WARN, message, args);
+//    }
+//
+//    default void warn(@Nullable Object message, @Nonnull Object... args) {
+//       this.log(LogLevel.WARN, message, args);
+//    }
+//
+//    default void info(@Nullable String message, @Nonnull Object... args) {
+//       this.log(LogLevel.INFO, message, args);
+//    }
+//
+//    default void info(@Nullable Object message, @Nonnull Object... args) {
+//       this.log(LogLevel.INFO, message, args);
+//    }
+//
+//    default void status(@Nullable String message, @Nonnull Object... args) {
+//       this.log(LogLevel.STATUS, message, args);
+//    }
+//
+//    default void status(@Nullable Object message, @Nonnull Object... args) {
+//       this.log(LogLevel.STATUS, message, args);
+//    }
+//
+//    default void extended(@Nullable String message, @Nonnull Object... args) {
+//       this.log(LogLevel.EXTENDED, message, args);
+//    }
+//
+//    default void extended(@Nullable Object message, @Nonnull Object... args) {
+//       this.log(LogLevel.EXTENDED, message, args);
+//    }
+//
+//    default void debug(@Nullable String message, @Nonnull Object... args) {
+//       this.log(LogLevel.DEBUG, message, args);
+//    }
+//
+//    default void debug(@Nullable Object message, @Nonnull Object... args) {
+//       this.log(LogLevel.DEBUG, message, args);
+//    }
+//
+//    default void trace(@Nullable String message, @Nonnull Object... args) {
+//       this.log(LogLevel.TRACE, message, args);
+//    }
+//
+//    default void trace(@Nullable Object message, @Nonnull Object... args) {
+//       this.log(LogLevel.TRACE, message, args);
+//    }
+//
+//    default boolean isLevelEnabled(@Nonnull LogLevel level) {
+//       return level.isShownAtLoggerLevel(this.getMinLevel());
+//    }
+//
+//    default boolean isTraceEnabled() {
+//       return this.isLevelEnabled(LogLevel.TRACE);
+//    }
+//
+//    default boolean isDebugEnabled() {
+//       return this.isLevelEnabled(LogLevel.DEBUG);
+//    }
+//
+//    default boolean isExtendedEnabled() {
+//       return this.isLevelEnabled(LogLevel.EXTENDED);
+//    }
+//
+//    default boolean isInfoEnabled() {
+//       return this.isLevelEnabled(LogLevel.INFO);
+//    }
+//
+//    default boolean isWarnEnabled() {
+//       return this.isLevelEnabled(LogLevel.WARN);
+//    }
+//
+//    default boolean isErrorEnabled() {
+//       return this.isLevelEnabled(LogLevel.ERROR);
+//    }
+//
+//    @Nonnull
+//    LogLevel getMinLevel();
+//
+//    @Nonnull
+//    ILogger setMinLevel(@Nonnull LogLevel var1);
+//
+//    @Nonnull
+//    @CheckReturnValue
+//    default Slf4jILogger slf4j() {
+//       if (this instanceof Slf4jILogger) {
+//          return (Slf4jILogger)this;
+//       } else {
+//          throw new IllegalStateException(this.getClass().getName() + " cannot be converted to Slf4jILogger");
+//       }
+//    }
+//
+//    @Nonnull
+//    @CheckReturnValue
+//    default JavaILogger java() {
+//       if (this instanceof JavaILogger) {
+//          return (JavaILogger)this;
+//       } else {
+//          throw new IllegalStateException(this.getClass().getName() + " cannot be converted to JavaILogger");
+//       }
+//    }
+//
+//    @Nonnull
+//    @CheckReturnValue
+//    default PrintStream asPrintStream(@Nonnull LogLevel level) {
+//       try {
+//          return new PrintStream(new LogOutputStream(this, level), true, StandardCharsets.UTF_8.name());
+//       } catch (Exception var3) {
+//          throw new WrappedException(var3);
+//       }
+//    }
+//
+//    @Nonnull
+//    @CheckReturnValue
+//    static String formatMessage(@Nullable Object messageObject, @Nonnull Object... args) {
+//       StringBuilder message = new StringBuilder(String.valueOf(messageObject));
+//       Object[] var3 = args;
+//       int var4 = args.length;
+//
+//       for(int var5 = 0; var5 < var4; ++var5) {
+//          Object arg = var3[var5];
+//          if (!(arg instanceof Throwable)) {
+//             int index = message.indexOf("{}");
+//             if (index == -1) {
+//                break;
+//             }
+//
+//             message.replace(index, index + 2, String.valueOf(arg));
+//          }
+//       }
+//
+//       return message.toString();
+//    }
+//
+//    public static final class Holder {
+//       private static ILoggerFactory factory;
+//       private static ILogger.Holder.Data data;
+//
+//       @Nonnull
+//       private static ILogger.Holder.Data getData() {
+//          if (data == null) {
+//             createData();
+//          }
+//
+//          return data;
+//       }
+//
+//       private static synchronized void createData() {
+//          boolean slf4j = false;
+//          boolean slf4jApi = true;
+//
+//          try {
+//             Class.forName("org.slf4j.impl.StaticLoggerBinder");
+//             slf4j = true;
+//          } catch (ClassNotFoundException var7) {
+//             try {
+//                Class serviceProviderInterface = Class.forName("org.slf4j.spi.SLF4JServiceProvider");
+//                slf4j = ServiceLoader.load(serviceProviderInterface).iterator().hasNext();
+//             } catch (ClassNotFoundException var6) {
+//                try {
+//                   LoggerFactory.getLogger(ILogger.class);
+//                } catch (NoClassDefFoundError var5) {
+//                   slf4jApi = false;
+//                }
+//             }
+//          }
+//
+//          data = new ILogger.Holder.Data();
+//          data.slf4j = slf4j;
+//          data.slf4jApi = slf4jApi;
+//       }
+//
+//       @Nonnull
+//       public static ILoggerFactory getFactory() {
+//          if (factory == null) {
+//             factory = getFallbackFactory();
+//          }
+//
+//          return factory;
+//       }
+//
+//       @Nonnull
+//       private static ILoggerFactory getFallbackFactory() {
+//          return (ILoggerFactory)(ILogger.isSlf4jImplAvailable() ? new Slf4jLoggerFactory() : (ILogger.isSlf4jApiAvailable() ? new DefaultLoggerFactory(SimpleLogger::new) : new DefaultLoggerFactory(FallbackLogger::new)));
+//       }
+//
+//       private Holder() {
+//       }
+//
+//       private static class Data {
+//          private boolean slf4j;
+//          private boolean slf4jApi;
+//
+//          private Data() {
+//          }
+//
+//          // $FF: synthetic method
+//          Data(Object x0) {
+//             this();
+//          }
+//       }
+//    }
+// }
+//

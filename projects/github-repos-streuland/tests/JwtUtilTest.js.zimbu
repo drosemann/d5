@@ -1,0 +1,18 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-streuland\tests\JwtUtilTest.js
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE JwtUtilTest_js
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-streuland\tests\JwtUtilTest.js\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-streuland\tests\JwtUtilTest.js), unveraendert, als Inline-Doku ----
+# // Placeholder JWT util test scaffold
+# describe('JwtUtilTest', () => {
+#   test('placeholder', () => {
+#     expect(true).toBe(true);
+#   });
+# });
+#

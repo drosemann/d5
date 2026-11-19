@@ -1,0 +1,9 @@
+name: QuestSystem
+version: 1.0
+main: com.questsystem.plugin.QuestSystemPlugin
+api-version: 1.21.4
+description: A plugin to manage quests in the game.
+commands:
+  quest:
+    description: Manage quests
+    usage: /<command> <subcommand>

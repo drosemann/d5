@@ -1,0 +1,58 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-streuland/src/main/java/de/streuland/plot/template/PlotTemplate.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-streuland/src/main/java/de/streuland/plot/template/PlotTemplate.java");
+}
+
+// ---- Original-Code (projects/github-repos-streuland/src/main/java/de/streuland/plot/template/PlotTemplate.java), unveraendert, als Inline-Doku ----
+// package de.streuland.plot.template;
+//
+// import org.bukkit.Material;
+//
+// public class PlotTemplate {
+//     private final String id;
+//     private final String name;
+//     private final String description;
+//     private final Material icon;
+//     private final String schematicName;
+//     private final int cost;
+//
+//     public PlotTemplate(String id, String name, String description, Material icon, String schematicName, int cost) {
+//         this.id = id;
+//         this.name = name;
+//         this.description = description;
+//         this.icon = icon;
+//         this.schematicName = schematicName;
+//         this.cost = cost;
+//     }
+//
+//     public String getId() {
+//         return id;
+//     }
+//
+//     public String getName() {
+//         return name;
+//     }
+//
+//     public String getDescription() {
+//         return description;
+//     }
+//
+//     public Material getIcon() {
+//         return icon;
+//     }
+//
+//     public String getSchematicName() {
+//         return schematicName;
+//     }
+//
+//     public int getCost() {
+//         return cost;
+//     }
+//
+//     public boolean hasCost() {
+//         return cost > 0;
+//     }
+// }

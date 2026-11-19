@@ -1,0 +1,204 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/database/internal/sql/abstraction/query/SQLQuery.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/database/internal/sql/abstraction/query/SQLQuery.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-challenges-source/net/anweisen/utilities/database/internal/sql/abstraction/query/SQLQuery.java), unveraendert, als Inline-Doku ----
+// package net.anweisen.utilities.database.internal.sql.abstraction.query;
+//
+// import java.sql.PreparedStatement;
+// import java.sql.ResultSet;
+// import java.sql.ResultSetMetaData;
+// import java.sql.SQLException;
+// import java.util.ArrayList;
+// import java.util.Arrays;
+// import java.util.HashMap;
+// import java.util.Iterator;
+// import java.util.LinkedList;
+// import java.util.List;
+// import java.util.Map;
+// import java.util.Objects;
+// import java.util.Map.Entry;
+// import javax.annotation.Nonnull;
+// import javax.annotation.Nullable;
+// import net.anweisen.utilities.common.config.Document;
+// import net.anweisen.utilities.database.Order;
+// import net.anweisen.utilities.database.action.DatabaseQuery;
+// import net.anweisen.utilities.database.action.ExecutedQuery;
+// import net.anweisen.utilities.database.exceptions.DatabaseException;
+// import net.anweisen.utilities.database.internal.abstraction.DefaultExecutedQuery;
+// import net.anweisen.utilities.database.internal.sql.abstraction.AbstractSQLDatabase;
+// import net.anweisen.utilities.database.internal.sql.abstraction.where.ObjectWhere;
+// import net.anweisen.utilities.database.internal.sql.abstraction.where.SQLWhere;
+// import net.anweisen.utilities.database.internal.sql.abstraction.where.StringIgnoreCaseWhere;
+//
+// public class SQLQuery implements DatabaseQuery {
+//    protected final AbstractSQLDatabase database;
+//    protected final String table;
+//    protected final Map where;
+//    protected String[] selection = new String[]{"*"};
+//    protected String orderBy;
+//    protected Order order;
+//
+//    public SQLQuery(@Nonnull AbstractSQLDatabase database, @Nonnull String table) {
+//       this.database = database;
+//       this.table = table;
+//       this.where = new HashMap();
+//    }
+//
+//    public SQLQuery(@Nonnull AbstractSQLDatabase database, @Nonnull String table, @Nonnull Map where) {
+//       this.database = database;
+//       this.table = table;
+//       this.where = where;
+//    }
+//
+//    @Nonnull
+//    public DatabaseQuery where(@Nonnull String column, @Nullable Object object) {
+//       this.where.put(column, new ObjectWhere(column, object, "="));
+//       return this;
+//    }
+//
+//    @Nonnull
+//    public DatabaseQuery where(@Nonnull String column, @Nullable Number value) {
+//       return this.where(column, (Object)value);
+//    }
+//
+//    @Nonnull
+//    public DatabaseQuery where(@Nonnull String column, @Nullable String value) {
+//       return this.where(column, (Object)value);
+//    }
+//
+//    @Nonnull
+//    public DatabaseQuery where(@Nonnull String column, @Nullable String value, boolean ignoreCase) {
+//       if (!ignoreCase) {
+//          return this.where(column, value);
+//       } else if (value == null) {
+//          throw new NullPointerException("Cannot use where ignore case with null value");
+//       } else {
+//          this.where.put(column, new StringIgnoreCaseWhere(column, value));
+//          return this;
+//       }
+//    }
+//
+//    @Nonnull
+//    public DatabaseQuery whereNot(@Nonnull String column, @Nullable Object object) {
+//       this.where.put(column, new ObjectWhere(column, object, "!="));
+//       return this;
+//    }
+//
+//    @Nonnull
+//    public DatabaseQuery orderBy(@Nonnull String column, @Nonnull Order order) {
+//       this.orderBy = column;
+//       this.order = order;
+//       return this;
+//    }
+//
+//    @Nonnull
+//    public DatabaseQuery select(@Nonnull String... selection) {
+//       if (selection.length == 0) {
+//          throw new IllegalArgumentException("Cannot select noting");
+//       } else {
+//          this.selection = selection;
+//          return this;
+//       }
+//    }
+//
+//    @Nonnull
+//    protected PreparedStatement prepare() throws SQLException, DatabaseException {
+//       StringBuilder command = new StringBuilder();
+//       List args = new LinkedList();
+//       command.append("SELECT ");
+//
+//       int index;
+//       for(index = 0; index < this.selection.length; ++index) {
+//          if (index > 0) {
+//             command.append(", ");
+//          }
+//
+//          command.append(this.selection[index]);
+//       }
+//
+//       command.append(" FROM ");
+//       command.append(this.table);
+//       if (!this.where.isEmpty()) {
+//          command.append(" WHERE ");
+//          index = 0;
+//
+//          for(Iterator var4 = this.where.entrySet().iterator(); var4.hasNext(); ++index) {
+//             Entry entry = (Entry)var4.next();
+//             SQLWhere where = (SQLWhere)entry.getValue();
+//             if (index > 0) {
+//                command.append(" AND ");
+//             }
+//
+//             command.append(where.getAsSQLString());
+//             args.addAll(Arrays.asList(where.getArgs()));
+//          }
+//       }
+//
+//       if (this.orderBy != null) {
+//          command.append(" ORDER BY ");
+//          command.append(this.orderBy);
+//          if (this.order != null) {
+//             command.append(" " + (this.order == Order.HIGHEST ? "DESC" : "ASC"));
+//          }
+//
+//          command.append(" ");
+//       }
+//
+//       return this.database.prepare(command.toString(), args.toArray());
+//    }
+//
+//    @Nonnull
+//    public ExecutedQuery execute() throws DatabaseException {
+//       try {
+//          PreparedStatement statement = this.prepare();
+//          ResultSet result = statement.executeQuery();
+//          return this.createExecutedQuery(result);
+//       } catch (Exception var3) {
+//          throw new DatabaseException(var3);
+//       }
+//    }
+//
+//    @Nonnull
+//    private ExecutedQuery createExecutedQuery(@Nonnull ResultSet result) throws SQLException {
+//       List results = new ArrayList();
+//       ResultSetMetaData data = result.getMetaData();
+//
+//       while(result.next()) {
+//          Map map = new HashMap();
+//
+//          for(int i = 1; i <= data.getColumnCount(); ++i) {
+//             Object value = result.getObject(i);
+//             map.put(data.getColumnLabel(i), value);
+//          }
+//
+//          Document row = new SQLResult(map);
+//          results.add(row);
+//       }
+//
+//       result.close();
+//       return new DefaultExecutedQuery(results);
+//    }
+//
+//    public boolean equals(Object o) {
+//       if (this == o) {
+//          return true;
+//       } else if (o != null && this.getClass() == o.getClass()) {
+//          SQLQuery sqlQuery = (SQLQuery)o;
+//          return this.database.equals(sqlQuery.database) && this.table.equals(sqlQuery.table) && this.where.equals(sqlQuery.where) && Arrays.equals(this.selection, sqlQuery.selection) && Objects.equals(this.orderBy, sqlQuery.orderBy) && this.order == sqlQuery.order;
+//       } else {
+//          return false;
+//       }
+//    }
+//
+//    public int hashCode() {
+//       int result = Objects.hash(new Object[]{this.database, this.table, this.where, this.orderBy, this.order});
+//       result = 31 * result + Arrays.hashCode(this.selection);
+//       return result;
+//    }
+// }
+//

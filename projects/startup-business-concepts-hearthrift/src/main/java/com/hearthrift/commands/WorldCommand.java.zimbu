@@ -1,0 +1,221 @@
+﻿# Zimbu-Port-Spiegel von: projects\startup-business-concepts-hearthrift\src\main\java\com\hearthrift\commands\WorldCommand.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE WorldCommand_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\startup-business-concepts-hearthrift\src\main\java\com\hearthrift\commands\WorldCommand.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\startup-business-concepts-hearthrift\src\main\java\com\hearthrift\commands\WorldCommand.java), unveraendert, als Inline-Doku ----
+# package com.hearthrift.commands;
+#
+# import com.hearthrift.Hearthrift;
+# import org.bukkit.Bukkit;
+# import org.bukkit.World;
+# import org.bukkit.command.Command;
+# import org.bukkit.command.CommandSender;
+# import org.bukkit.entity.Player;
+#
+# import java.util.ArrayList;
+# import java.util.List;
+# import java.util.stream.Collectors;
+#
+# public class WorldCommand extends BaseCommand {
+#     
+#     public WorldCommand(Hearthrift plugin) {
+#         super(plugin);
+#     }
+#
+#     @Override
+#     protected boolean execute(Player player, Command command, String label, String[] args) {
+#         if (args.length < 1) {
+#             sendUsage(player, "/world <home|rift|invite|kick|trust|untrust> [player]");
+#             return true;
+#         }
+#
+#         switch (args[0].toLowerCase()) {
+#             case "home":
+#                 return teleportToHome(player);
+#             case "rift":
+#                 return teleportToRift(player);
+#             case "invite":
+#                 return handleInvite(player, args);
+#             case "kick":
+#                 return handleKick(player, args);
+#             case "trust":
+#                 return handleTrust(player, args);
+#             case "untrust":
+#                 return handleUntrust(player, args);
+#             default:
+#                 sendUsage(player, "/world <home|rift|invite|kick|trust|untrust> [player]");
+#                 return true;
+#         }
+#     }
+#
+#     private boolean teleportToHome(Player player) {
+#         String worldName = plugin.getWorldManager().getPlayerWorldName(player);
+#         if (worldName == null) {
+#             // Create new world if it doesn't exist
+#             sendInfo(player, "Creating your personal world...");
+#             plugin.getWorldManager().createPlayerWorld(player).thenAccept(world -> {
+#                 if (world != null) {
+#                     // Use runTask to run teleport on main thread since it's a bukkit operation
+#                     plugin.getServer().getScheduler().runTask(plugin, () -> {
+#                         player.teleport(world.getSpawnLocation());
+#                         sendSuccess(player, "Welcome to your new home!");
+#                     });
+#                 } else {
+#                     sendError(player, "Failed to create your world!");
+#                 }
+#             });
+#             return true;
+#         }
+#
+#         World world = Bukkit.getWorld(worldName);
+#         if (world == null) {
+#             sendError(player, "Your world couldn't be loaded!");
+#             return true;
+#         }
+#
+#         player.teleport(world.getSpawnLocation());
+#         sendSuccess(player, "Welcome home!");
+#         return true;
+#     }
+#
+#     private boolean teleportToRift(Player player) {
+#         World rift = Bukkit.getWorld("RIFT");
+#         if (rift == null) {
+#             sendError(player, "The Rift is currently unavailable!");
+#             return true;
+#         }
+#
+#         player.teleport(rift.getSpawnLocation());
+#         sendSuccess(player, "Welcome to the Rift! Be careful out here...");
+#         return true;
+#     }
+#
+#     private boolean handleInvite(Player player, String[] args) {
+#         if (args.length < 2) {
+#             sendUsage(player, "/world invite <player>");
+#             return true;
+#         }
+#
+#         Player target = Bukkit.getPlayer(args[1]);
+#         if (target == null) {
+#             sendError(player, "Player not found!");
+#             return true;
+#         }
+#
+#         plugin.getWorldManager().grantAccess(player, target);
+#         sendSuccess(player, "Invited " + target.getName() + " to your world!");
+#         target.sendMessage("§a" + player.getName() + " has invited you to their world!");
+#         return true;
+#     }
+#
+#     private boolean handleKick(Player player, String[] args) {
+#         if (args.length < 2) {
+#             sendUsage(player, "/world kick <player>");
+#             return true;
+#         }
+#
+#         Player target = Bukkit.getPlayer(args[1]);
+#         if (target == null) {
+#             sendError(player, "Player not found!");
+#             return true;
+#         }
+#
+#         String worldName = plugin.getWorldManager().getPlayerWorldName(player);
+#         if (worldName == null) {
+#             sendError(player, "You don't have a personal world!");
+#             return true;
+#         }
+#
+#         if (target.getWorld().getName().equals(worldName)) {
+#             World entry = Bukkit.getWorld("ENTRY");
+#             if (entry != null) {
+#                 target.teleport(entry.getSpawnLocation());
+#             }
+#         }
+#
+#         plugin.getWorldManager().revokeAccess(player, target);
+#         sendSuccess(player, "Kicked " + target.getName() + " from your world!");
+#         target.sendMessage("§c" + player.getName() + " has kicked you from their world!");
+#         return true;
+#     }
+#
+#     private boolean handleTrust(Player player, String[] args) {
+#         if (args.length < 2) {
+#             sendUsage(player, "/world trust <player>");
+#             return true;
+#         }
+#
+#         Player target = Bukkit.getPlayer(args[1]);
+#         if (target == null) {
+#             sendError(player, "Player not found!");
+#             return true;
+#         }
+#
+#         String worldName = plugin.getWorldManager().getPlayerWorldName(player);
+#         if (worldName == null) {
+#             sendError(player, "You don't have a personal world!");
+#             return true;
+#         }
+#
+#         plugin.getWorldManager().getWorldPermissions(worldName).addModerator(target.getUniqueId());
+#         sendSuccess(player, "Granted moderator permissions to " + target.getName() + "!");
+#         target.sendMessage("§a" + player.getName() + " has made you a moderator of their world!");
+#         return true;
+#     }
+#
+#     private boolean handleUntrust(Player player, String[] args) {
+#         if (args.length < 2) {
+#             sendUsage(player, "/world untrust <player>");
+#             return true;
+#         }
+#
+#         Player target = Bukkit.getPlayer(args[1]);
+#         if (target == null) {
+#             sendError(player, "Player not found!");
+#             return true;
+#         }
+#
+#         String worldName = plugin.getWorldManager().getPlayerWorldName(player);
+#         if (worldName == null) {
+#             sendError(player, "You don't have a personal world!");
+#             return true;
+#         }
+#
+#         plugin.getWorldManager().getWorldPermissions(worldName).removeModerator(target.getUniqueId());
+#         sendSuccess(player, "Removed moderator permissions from " + target.getName() + "!");
+#         target.sendMessage("§c" + player.getName() + " has removed your moderator permissions!");
+#         return true;
+#     }
+#
+#     @Override
+#     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+#         List<String> completions = new ArrayList<>();
+#         
+#         if (args.length == 1) {
+#             completions.add("home");
+#             completions.add("rift");
+#             completions.add("invite");
+#             completions.add("kick");
+#             completions.add("trust");
+#             completions.add("untrust");
+#             return completions.stream()
+#                     .filter(s -> s.startsWith(args[0].toLowerCase()))
+#                     .collect(Collectors.toList());
+#         }
+#         
+#         if (args.length == 2 && (args[0].equalsIgnoreCase("invite") || 
+#                                 args[0].equalsIgnoreCase("kick") || 
+#                                 args[0].equalsIgnoreCase("trust") || 
+#                                 args[0].equalsIgnoreCase("untrust"))) {
+#             return null; // Return null to show online players
+#         }
+#         
+#         return completions;
+#     }
+# }

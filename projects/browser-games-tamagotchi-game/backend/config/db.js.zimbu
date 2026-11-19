@@ -1,0 +1,12 @@
+﻿# Zimbu-Port-Spiegel von: projects\browser-games-tamagotchi-game\backend\config\db.js
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE db_js
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\browser-games-tamagotchi-game\backend\config\db.js\n")
+  RETURN 0
+
+# ---- Original-Code (projects\browser-games-tamagotchi-game\backend\config\db.js), unveraendert, als Inline-Doku ----
+

@@ -1,0 +1,894 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\misc\FileUtils.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE FileUtils_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\misc\FileUtils.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-game-concepts-challenges-source\net\anweisen\utilities\common\misc\FileUtils.java), unveraendert, als Inline-Doku ----
+# package net.anweisen.utilities.common.misc;
+#
+# import com.google.common.base.Preconditions;
+# import com.google.common.collect.ImmutableMap;
+# import java.io.BufferedReader;
+# import java.io.BufferedWriter;
+# import java.io.ByteArrayInputStream;
+# import java.io.ByteArrayOutputStream;
+# import java.io.File;
+# import java.io.IOException;
+# import java.io.InputStream;
+# import java.io.OutputStream;
+# import java.net.URI;
+# import java.nio.charset.StandardCharsets;
+# import java.nio.file.DirectoryStream;
+# import java.nio.file.FileSystem;
+# import java.nio.file.FileSystems;
+# import java.nio.file.FileVisitResult;
+# import java.nio.file.Files;
+# import java.nio.file.LinkOption;
+# import java.nio.file.Path;
+# import java.nio.file.SimpleFileVisitor;
+# import java.nio.file.StandardOpenOption;
+# import java.nio.file.DirectoryStream.Filter;
+# import java.nio.file.attribute.BasicFileAttributes;
+# import java.util.Iterator;
+# import java.util.Map;
+# import java.util.UUID;
+# import java.util.function.BiConsumer;
+# import java.util.function.Consumer;
+# import java.util.function.Predicate;
+# import java.util.stream.Stream;
+# import java.util.zip.ZipEntry;
+# import java.util.zip.ZipInputStream;
+# import java.util.zip.ZipOutputStream;
+# import javax.annotation.CheckReturnValue;
+# import javax.annotation.Nonnull;
+# import javax.annotation.Nullable;
+# import net.anweisen.utilities.common.collection.WrappedException;
+# import net.anweisen.utilities.common.function.ExceptionallyConsumer;
+#
+# public final class FileUtils {
+#    public static final InputStream EMPTY_STREAM = new ByteArrayInputStream(new byte[0]);
+#    private static final Map ZIP_FILE_SYSTEM_PROPERTIES = ImmutableMap.of("create", "false", "encoding", "UTF-8");
+#    private static Path tempDirectory;
+#
+#    private FileUtils() {
+#    }
+#
+#    @Nullable
+#    public static Path getTempDirectory() {
+#       return tempDirectory;
+#    }
+#
+#    public static void setTempDirectory(@Nullable Path tempDirectory) {
+#       FileUtils.tempDirectory = tempDirectory;
+#    }
+#
+#    @Nonnull
+#    public static BufferedWriter newBufferedWriter(@Nonnull File file) throws IOException {
+#       return newBufferedWriter(file.toPath());
+#    }
+#
+#    @Nonnull
+#    public static BufferedReader newBufferedReader(@Nonnull File file) throws IOException {
+#       return newBufferedReader(file.toPath());
+#    }
+#
+#    @Nonnull
+#    public static BufferedWriter newBufferedWriter(@Nonnull Path file) throws IOException {
+#       return Files.newBufferedWriter(file, StandardCharsets.UTF_8);
+#    }
+#
+#    @Nonnull
+#    public static BufferedReader newBufferedReader(@Nonnull Path file) throws IOException {
+#       return Files.newBufferedReader(file, StandardCharsets.UTF_8);
+#    }
+#
+#    @Nonnull
+#    public static String getFileExtension(@Nonnull File file) {
+#       return getFileExtension(file.getName());
+#    }
+#
+#    @Nonnull
+#    public static String getFileExtension(@Nonnull Path file) {
+#       return getFileExtension(file.toString());
+#    }
+#
+#    @Nonnull
+#    public static String getFileExtension(@Nonnull String filename) {
+#       return StringUtils.getAfterLastIndex(filename, ".").toLowerCase();
+#    }
+#
+#    @Nonnull
+#    public static String getFileName(@Nonnull File file) {
+#       return getFileName(file.getName());
+#    }
+#
+#    @Nonnull
+#    public static String getFileName(@Nonnull Path file) {
+#       return getFileName(file.toString());
+#    }
+#
+#    @Nonnull
+#    public static String getFileName(@Nonnull String filename) {
+#       filename = stripFolders(filename);
+#       int index = filename.lastIndexOf(46);
+#       return index == -1 ? filename : filename.substring(0, index);
+#    }
+#
+#    @Nonnull
+#    @CheckReturnValue
+#    public static String getRealFileName(@Nonnull File file) {
+#       return getRealFileName(file.getName());
+#    }
+#
+#    @Nonnull
+#    @CheckReturnValue
+#    public static String getRealFileName(@Nonnull Path file) {
+#       return getRealFileName(file.toString());
+#    }
+#
+#    @Nonnull
+#    @CheckReturnValue
+#    public static String getRealFileName(@Nonnull String filename) {
+#       return stripFolders(filename);
+#    }
+#
+#    @Nonnull
+#    @CheckReturnValue
+#    private static String stripFolders(@Nonnull String filename) {
+#       int index = filename.lastIndexOf(File.pathSeparator);
+#       return index == -1 ? filename : filename.substring(index + 1);
+#    }
+#
+#    public static void createFilesIfNecessary(@Nonnull File file) throws IOException {
+#       if (!file.exists()) {
+#          if (file.isDirectory()) {
+#             file.mkdirs();
+#          } else if (file.getParentFile() != null) {
+#             file.getParentFile().mkdirs();
+#          }
+#
+#          file.createNewFile();
+#       }
+#    }
+#
+#    public static void deleteWorldFolder(@Nonnull File path) {
+#       if (path.exists()) {
+#          File[] files = path.listFiles();
+#          if (files == null) {
+#             return;
+#          }
+#
+#          File[] var2 = files;
+#          int var3 = files.length;
+#
+#          for(int var4 = 0; var4 < var3; ++var4) {
+#             File currentFile = var2[var4];
+#             if (currentFile.isDirectory()) {
+#                deleteWorldFolder(currentFile);
+#             } else if (!currentFile.getName().equals("session.lock")) {
+#                currentFile.delete();
+#             }
+#          }
+#       }
+#
+#    }
+#
+#    public static byte[] toByteArray(@Nullable InputStream inputStream) {
+#       return toByteArray(inputStream, new byte[8192]);
+#    }
+#
+#    public static byte[] toByteArray(@Nullable InputStream inputStream, byte[] buffer) {
+#       if (inputStream == null) {
+#          return null;
+#       } else {
+#          try {
+#             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+#             Throwable var3 = null;
+#
+#             byte[] var4;
+#             try {
+#                copy((InputStream)inputStream, (OutputStream)byteArrayOutputStream, buffer);
+#                var4 = byteArrayOutputStream.toByteArray();
+#             } catch (Throwable var14) {
+#                var3 = var14;
+#                throw var14;
+#             } finally {
+#                if (byteArrayOutputStream != null) {
+#                   if (var3 != null) {
+#                      try {
+#                         byteArrayOutputStream.close();
+#                      } catch (Throwable var13) {
+#                         var3.addSuppressed(var13);
+#                      }
+#                   } else {
+#                      byteArrayOutputStream.close();
+#                   }
+#                }
+#
+#             }
+#
+#             return var4;
+#          } catch (IOException var16) {
+#             var16.printStackTrace();
+#             return null;
+#          }
+#       }
+#    }
+#
+#    public static void openZipFileSystem(@Nonnull Path path, @Nonnull ExceptionallyConsumer consumer) {
+#       try {
+#          FileSystem fileSystem = FileSystems.newFileSystem(URI.create("jar:" + path.toUri()), ZIP_FILE_SYSTEM_PROPERTIES);
+#          Throwable var3 = null;
+#
+#          try {
+#             consumer.accept(fileSystem);
+#          } catch (Throwable var13) {
+#             var3 = var13;
+#             throw var13;
+#          } finally {
+#             if (fileSystem != null) {
+#                if (var3 != null) {
+#                   try {
+#                      fileSystem.close();
+#                   } catch (Throwable var12) {
+#                      var3.addSuppressed(var12);
+#                   }
+#                } else {
+#                   fileSystem.close();
+#                }
+#             }
+#
+#          }
+#       } catch (Throwable var15) {
+#          var15.printStackTrace();
+#       }
+#
+#    }
+#
+#    public static void copy(InputStream inputStream, OutputStream outputStream) throws IOException {
+#       copy(inputStream, outputStream, new byte[8192]);
+#    }
+#
+#    public static void copy(InputStream inputStream, OutputStream outputStream, byte[] buffer) throws IOException {
+#       copy(inputStream, outputStream, buffer, (Consumer)null);
+#    }
+#
+#    public static void copy(InputStream inputStream, OutputStream outputStream, byte[] buffer, Consumer lengthInputListener) throws IOException {
+#       int len;
+#       while((len = inputStream.read(buffer, 0, buffer.length)) != -1) {
+#          if (lengthInputListener != null) {
+#             lengthInputListener.accept(len);
+#          }
+#
+#          outputStream.write(buffer, 0, len);
+#          outputStream.flush();
+#       }
+#
+#    }
+#
+#    public static void copy(Path from, Path to) throws IOException {
+#       copy(from, to, new byte[8192]);
+#    }
+#
+#    public static void copy(Path from, Path to, byte[] buffer) throws IOException {
+#       if (from != null && to != null && Files.exists(from, new LinkOption[0])) {
+#          if (Files.notExists(to, new LinkOption[0])) {
+#             createDirectory(to.getParent());
+#          }
+#
+#          InputStream stream = Files.newInputStream(from);
+#          Throwable var4 = null;
+#
+#          try {
+#             OutputStream target = Files.newOutputStream(to);
+#             Throwable var6 = null;
+#
+#             try {
+#                copy(stream, target, buffer);
+#             } catch (Throwable var29) {
+#                var6 = var29;
+#                throw var29;
+#             } finally {
+#                if (target != null) {
+#                   if (var6 != null) {
+#                      try {
+#                         target.close();
+#                      } catch (Throwable var28) {
+#                         var6.addSuppressed(var28);
+#                      }
+#                   } else {
+#                      target.close();
+#                   }
+#                }
+#
+#             }
+#          } catch (Throwable var31) {
+#             var4 = var31;
+#             throw var31;
+#          } finally {
+#             if (stream != null) {
+#                if (var4 != null) {
+#                   try {
+#                      stream.close();
+#                   } catch (Throwable var27) {
+#                      var4.addSuppressed(var27);
+#                   }
+#                } else {
+#                   stream.close();
+#                }
+#             }
+#
+#          }
+#
+#       }
+#    }
+#
+#    public static void copyFilesToDirectory(Path from, Path to) {
+#       walkFileTree(from, (root, current) -> {
+#          if (!Files.isDirectory(current, new LinkOption[0])) {
+#             try {
+#                copy(current, to.resolve(from.relativize(current)));
+#             } catch (IOException var5) {
+#                var5.printStackTrace();
+#             }
+#          }
+#
+#       });
+#    }
+#
+#    public static void copyFilesToDirectory(Path from, Path to, Filter filter) {
+#       if (filter == null) {
+#          copyFilesToDirectory(from, to);
+#       } else {
+#          walkFileTree(from, (root, current) -> {
+#             if (!Files.isDirectory(current, new LinkOption[0])) {
+#                try {
+#                   copy(current, to.resolve(from.relativize(current)));
+#                } catch (IOException var5) {
+#                   var5.printStackTrace();
+#                }
+#             }
+#
+#          }, true, filter);
+#       }
+#
+#    }
+#
+#    public static void delete(Path file) {
+#       if (file != null && !Files.notExists(file, new LinkOption[0])) {
+#          if (Files.isDirectory(file, new LinkOption[0])) {
+#             walkFileTree(file, (root, current) -> {
+#                deleteFile(current);
+#             });
+#          }
+#
+#          deleteFile(file);
+#       }
+#    }
+#
+#    public static long size(@Nonnull Path path) {
+#       try {
+#          return Files.size(path);
+#       } catch (IOException var2) {
+#          throw new WrappedException(var2);
+#       }
+#    }
+#
+#    /** @deprecated */
+#    @Deprecated
+#    public static byte[] convert(Path... directories) {
+#       if (directories == null) {
+#          return emptyZipByteArray();
+#       } else {
+#          try {
+#             ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+#             Throwable var2 = null;
+#
+#             byte[] var37;
+#             try {
+#                ZipOutputStream zipOutputStream = new ZipOutputStream(byteBuffer, StandardCharsets.UTF_8);
+#                Throwable var4 = null;
+#
+#                try {
+#                   Path[] var5 = directories;
+#                   int var6 = directories.length;
+#
+#                   for(int var7 = 0; var7 < var6; ++var7) {
+#                      Path directory = var5[var7];
+#                      zipDir(zipOutputStream, directory, (Predicate)null);
+#                   }
+#                } catch (Throwable var32) {
+#                   var4 = var32;
+#                   throw var32;
+#                } finally {
+#                   if (zipOutputStream != null) {
+#                      if (var4 != null) {
+#                         try {
+#                            zipOutputStream.close();
+#                         } catch (Throwable var31) {
+#                            var4.addSuppressed(var31);
+#                         }
+#                      } else {
+#                         zipOutputStream.close();
+#                      }
+#                   }
+#
+#                }
+#
+#                var37 = byteBuffer.toByteArray();
+#             } catch (Throwable var34) {
+#                var2 = var34;
+#                throw var34;
+#             } finally {
+#                if (byteBuffer != null) {
+#                   if (var2 != null) {
+#                      try {
+#                         byteBuffer.close();
+#                      } catch (Throwable var30) {
+#                         var2.addSuppressed(var30);
+#                      }
+#                   } else {
+#                      byteBuffer.close();
+#                   }
+#                }
+#
+#             }
+#
+#             return var37;
+#          } catch (IOException var36) {
+#             var36.printStackTrace();
+#             return emptyZipByteArray();
+#          }
+#       }
+#    }
+#
+#    @Nonnull
+#    public static Path createTempFile() {
+#       if (tempDirectory != null) {
+#          return createTempFile(UUID.randomUUID());
+#       } else {
+#          try {
+#             File file = File.createTempFile(UUID.randomUUID().toString(), (String)null);
+#             file.deleteOnExit();
+#             return file.toPath();
+#          } catch (IOException var1) {
+#             throw new WrappedException(var1);
+#          }
+#       }
+#    }
+#
+#    @Nonnull
+#    public static Path createTempFile(@Nonnull UUID uuid) {
+#       Preconditions.checkNotNull(tempDirectory, "The temp directory cannot be null");
+#       Path file = tempDirectory.resolve(uuid.toString());
+#       createFile(file);
+#       return file;
+#    }
+#
+#    public static void setAttribute(@Nonnull Path path, @Nonnull String attribute, @Nullable Object value, @Nonnull LinkOption... options) {
+#       try {
+#          Files.setAttribute(path, attribute, value, options);
+#       } catch (IOException var5) {
+#          var5.printStackTrace();
+#       }
+#
+#    }
+#
+#    public static void setHiddenAttribute(@Nonnull Path path, boolean hidden) {
+#       setAttribute(path, "dos:hidden", hidden, LinkOption.NOFOLLOW_LINKS);
+#    }
+#
+#    @Nonnull
+#    public static InputStream zipToStream(@Nonnull Path directory) throws IOException {
+#       return zipToStream(directory, (Predicate)null);
+#    }
+#
+#    @Nonnull
+#    public static InputStream zipToStream(@Nonnull Path directory, @Nullable Predicate fileFilter) throws IOException {
+#       Path target = createTempFile();
+#       zipToFile(directory, target, (path) -> {
+#          return !target.equals(path) && (fileFilter == null || fileFilter.test(path));
+#       });
+#       return Files.newInputStream(target, StandardOpenOption.DELETE_ON_CLOSE, LinkOption.NOFOLLOW_LINKS);
+#    }
+#
+#    @Nullable
+#    public static Path zipToFile(Path directory, Path target) {
+#       return zipToFile(directory, target, (Predicate)null);
+#    }
+#
+#    @Nullable
+#    public static Path zipToFile(Path directory, Path target, Predicate fileFilter) {
+#       if (directory != null && Files.exists(directory, new LinkOption[0])) {
+#          delete(target);
+#
+#          try {
+#             OutputStream outputStream = Files.newOutputStream(target, StandardOpenOption.CREATE);
+#             Throwable var4 = null;
+#
+#             Path var5;
+#             try {
+#                zipStream(directory, outputStream, fileFilter);
+#                var5 = target;
+#             } catch (Throwable var15) {
+#                var4 = var15;
+#                throw var15;
+#             } finally {
+#                if (outputStream != null) {
+#                   if (var4 != null) {
+#                      try {
+#                         outputStream.close();
+#                      } catch (Throwable var14) {
+#                         var4.addSuppressed(var14);
+#                      }
+#                   } else {
+#                      outputStream.close();
+#                   }
+#                }
+#
+#             }
+#
+#             return var5;
+#          } catch (IOException var17) {
+#             var17.printStackTrace();
+#             return null;
+#          }
+#       } else {
+#          return null;
+#       }
+#    }
+#
+#    private static void zipStream(Path source, OutputStream buffer, Predicate fileFilter) throws IOException {
+#       ZipOutputStream zipOutputStream = new ZipOutputStream(buffer, StandardCharsets.UTF_8);
+#       Throwable var4 = null;
+#
+#       try {
+#          if (Files.exists(source, new LinkOption[0])) {
+#             zipDir(zipOutputStream, source, fileFilter);
+#          }
+#       } catch (Throwable var13) {
+#          var4 = var13;
+#          throw var13;
+#       } finally {
+#          if (zipOutputStream != null) {
+#             if (var4 != null) {
+#                try {
+#                   zipOutputStream.close();
+#                } catch (Throwable var12) {
+#                   var4.addSuppressed(var12);
+#                }
+#             } else {
+#                zipOutputStream.close();
+#             }
+#          }
+#
+#       }
+#
+#    }
+#
+#    private static void zipDir(final ZipOutputStream zipOutputStream, final Path directory, final Predicate fileFilter) throws IOException {
+#       Files.walkFileTree(directory, new SimpleFileVisitor() {
+#          public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+#             if (fileFilter != null && !fileFilter.test(file)) {
+#                return FileVisitResult.CONTINUE;
+#             } else {
+#                try {
+#                   zipOutputStream.putNextEntry(new ZipEntry(directory.relativize(file).toString().replace("\\", "/")));
+#                   Files.copy(file, zipOutputStream);
+#                   zipOutputStream.closeEntry();
+#                } catch (IOException var4) {
+#                   zipOutputStream.closeEntry();
+#                   throw var4;
+#                }
+#
+#                return FileVisitResult.CONTINUE;
+#             }
+#          }
+#       });
+#    }
+#
+#    public static Path extract(Path zipPath, Path targetDirectory) throws IOException {
+#       if (zipPath != null && targetDirectory != null && Files.exists(zipPath, new LinkOption[0])) {
+#          InputStream input = Files.newInputStream(zipPath);
+#          Throwable var3 = null;
+#
+#          Path var4;
+#          try {
+#             var4 = extract(input, targetDirectory);
+#          } catch (Throwable var13) {
+#             var3 = var13;
+#             throw var13;
+#          } finally {
+#             if (input != null) {
+#                if (var3 != null) {
+#                   try {
+#                      input.close();
+#                   } catch (Throwable var12) {
+#                      var3.addSuppressed(var12);
+#                   }
+#                } else {
+#                   input.close();
+#                }
+#             }
+#
+#          }
+#
+#          return var4;
+#       } else {
+#          return targetDirectory;
+#       }
+#    }
+#
+#    public static Path extract(InputStream input, Path targetDirectory) throws IOException {
+#       if (input != null && targetDirectory != null) {
+#          extract0(new ZipInputStream(input, StandardCharsets.UTF_8), targetDirectory);
+#          return targetDirectory;
+#       } else {
+#          return targetDirectory;
+#       }
+#    }
+#
+#    public static Path extract(byte[] zipData, Path targetDirectory) throws IOException {
+#       if (zipData != null && zipData.length != 0 && targetDirectory != null) {
+#          ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(zipData);
+#          Throwable var3 = null;
+#
+#          try {
+#             extract0(new ZipInputStream(byteArrayInputStream, StandardCharsets.UTF_8), targetDirectory);
+#          } catch (Throwable var12) {
+#             var3 = var12;
+#             throw var12;
+#          } finally {
+#             if (byteArrayInputStream != null) {
+#                if (var3 != null) {
+#                   try {
+#                      byteArrayInputStream.close();
+#                   } catch (Throwable var11) {
+#                      var3.addSuppressed(var11);
+#                   }
+#                } else {
+#                   byteArrayInputStream.close();
+#                }
+#             }
+#
+#          }
+#
+#          return targetDirectory;
+#       } else {
+#          return targetDirectory;
+#       }
+#    }
+#
+#    public static void extract0(ZipInputStream zipInputStream, Path targetDirectory) throws IOException {
+#       ZipEntry zipEntry;
+#       while((zipEntry = zipInputStream.getNextEntry()) != null) {
+#          extractEntry(zipInputStream, zipEntry, targetDirectory);
+#          zipInputStream.closeEntry();
+#       }
+#
+#    }
+#
+#    public static byte[] emptyZipByteArray() {
+#       byte[] bytes = null;
+#
+#       try {
+#          ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+#          Throwable var2 = null;
+#
+#          try {
+#             ZipOutputStream zipOutputStream = new ZipOutputStream(byteArrayOutputStream, StandardCharsets.UTF_8);
+#             zipOutputStream.close();
+#             bytes = byteArrayOutputStream.toByteArray();
+#          } catch (Throwable var12) {
+#             var2 = var12;
+#             throw var12;
+#          } finally {
+#             if (byteArrayOutputStream != null) {
+#                if (var2 != null) {
+#                   try {
+#                      byteArrayOutputStream.close();
+#                   } catch (Throwable var11) {
+#                      var2.addSuppressed(var11);
+#                   }
+#                } else {
+#                   byteArrayOutputStream.close();
+#                }
+#             }
+#
+#          }
+#       } catch (IOException var14) {
+#          var14.printStackTrace();
+#       }
+#
+#       return bytes;
+#    }
+#
+#    private static void extractEntry(ZipInputStream zipInputStream, ZipEntry zipEntry, Path targetDirectory) throws IOException {
+#       Path file = targetDirectory.resolve(zipEntry.getName());
+#       ensureChild(targetDirectory, file);
+#       if (zipEntry.isDirectory()) {
+#          if (!Files.exists(file, new LinkOption[0])) {
+#             Files.createDirectories(file);
+#          }
+#       } else {
+#          Path parent = file.getParent();
+#          if (!Files.exists(parent, new LinkOption[0])) {
+#             Files.createDirectories(parent);
+#          }
+#
+#          if (Files.exists(file, new LinkOption[0])) {
+#             Files.delete(file);
+#          }
+#
+#          Files.createFile(file);
+#          OutputStream outputStream = Files.newOutputStream(file);
+#          Throwable var6 = null;
+#
+#          try {
+#             copy((InputStream)zipInputStream, (OutputStream)outputStream);
+#          } catch (Throwable var15) {
+#             var6 = var15;
+#             throw var15;
+#          } finally {
+#             if (outputStream != null) {
+#                if (var6 != null) {
+#                   try {
+#                      outputStream.close();
+#                   } catch (Throwable var14) {
+#                      var6.addSuppressed(var14);
+#                   }
+#                } else {
+#                   outputStream.close();
+#                }
+#             }
+#
+#          }
+#       }
+#
+#    }
+#
+#    public static void walkFileTree(Path rootDirectoryPath, BiConsumer consumer) {
+#       walkFileTree(rootDirectoryPath, consumer, true);
+#    }
+#
+#    public static void walkFileTree(Path rootDirectoryPath, BiConsumer consumer, boolean visitDirectories) {
+#       walkFileTree(rootDirectoryPath, consumer, visitDirectories, "*");
+#    }
+#
+#    public static void walkFileTree(Path rootDirectoryPath, BiConsumer consumer, boolean visitDirectories, String glob) {
+#       if (!Files.notExists(rootDirectoryPath, new LinkOption[0])) {
+#          try {
+#             DirectoryStream stream = Files.newDirectoryStream(rootDirectoryPath, glob);
+#             Throwable var5 = null;
+#
+#             try {
+#                Path path;
+#                try {
+#                   for(Iterator var6 = stream.iterator(); var6.hasNext(); consumer.accept(rootDirectoryPath, path)) {
+#                      path = (Path)var6.next();
+#                      if (Files.isDirectory(path, new LinkOption[0]) && visitDirectories) {
+#                         walkFileTree(path, consumer, true, glob);
+#                      }
+#                   }
+#                } catch (Throwable var16) {
+#                   var5 = var16;
+#                   throw var16;
+#                }
+#             } finally {
+#                if (stream != null) {
+#                   if (var5 != null) {
+#                      try {
+#                         stream.close();
+#                      } catch (Throwable var15) {
+#                         var5.addSuppressed(var15);
+#                      }
+#                   } else {
+#                      stream.close();
+#                   }
+#                }
+#
+#             }
+#          } catch (IOException var18) {
+#             var18.printStackTrace();
+#          }
+#
+#       }
+#    }
+#
+#    public static void walkFileTree(Path rootDirectoryPath, BiConsumer consumer, boolean visitDirectories, Filter filter) {
+#       if (!Files.notExists(rootDirectoryPath, new LinkOption[0])) {
+#          try {
+#             DirectoryStream stream = Files.newDirectoryStream(rootDirectoryPath, filter);
+#             Throwable var5 = null;
+#
+#             try {
+#                Path path;
+#                try {
+#                   for(Iterator var6 = stream.iterator(); var6.hasNext(); consumer.accept(rootDirectoryPath, path)) {
+#                      path = (Path)var6.next();
+#                      if (Files.isDirectory(path, new LinkOption[0]) && visitDirectories) {
+#                         walkFileTree(path, consumer, true, filter);
+#                      }
+#                   }
+#                } catch (Throwable var16) {
+#                   var5 = var16;
+#                   throw var16;
+#                }
+#             } finally {
+#                if (stream != null) {
+#                   if (var5 != null) {
+#                      try {
+#                         stream.close();
+#                      } catch (Throwable var15) {
+#                         var5.addSuppressed(var15);
+#                      }
+#                   } else {
+#                      stream.close();
+#                   }
+#                }
+#
+#             }
+#          } catch (IOException var18) {
+#             var18.printStackTrace();
+#          }
+#
+#       }
+#    }
+#
+#    public static void createDirectory(@Nullable Path directoryPath) {
+#       if (directoryPath != null && Files.notExists(directoryPath, new LinkOption[0])) {
+#          try {
+#             Files.createDirectories(directoryPath);
+#          } catch (IOException var2) {
+#             var2.printStackTrace();
+#          }
+#       }
+#
+#    }
+#
+#    public static void createFile(@Nullable Path filePath) {
+#       if (filePath != null && Files.notExists(filePath, new LinkOption[0])) {
+#          try {
+#             if (filePath.getParent() != null) {
+#                Files.createDirectories(filePath.getParent());
+#             }
+#
+#             Files.createFile(filePath);
+#          } catch (IOException var2) {
+#          }
+#       }
+#
+#    }
+#
+#    public static void deleteFile(Path file) {
+#       try {
+#          Files.deleteIfExists(file);
+#       } catch (IOException var2) {
+#          var2.printStackTrace();
+#       }
+#
+#    }
+#
+#    private static void ensureChild(Path root, Path child) {
+#       Path rootNormal = root.normalize().toAbsolutePath();
+#       Path childNormal = child.normalize().toAbsolutePath();
+#       if (childNormal.getNameCount() <= rootNormal.getNameCount() || !childNormal.startsWith(rootNormal)) {
+#          throw new IllegalStateException("Child " + childNormal + " is not in root path " + rootNormal);
+#       }
+#    }
+#
+#    @Nonnull
+#    public static Stream list(@Nonnull Path directory) {
+#       try {
+#          return Files.list(directory);
+#       } catch (IOException var2) {
+#          throw new WrappedException(var2);
+#       }
+#    }
+# }
+#

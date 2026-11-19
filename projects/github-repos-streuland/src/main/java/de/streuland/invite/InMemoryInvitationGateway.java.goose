@@ -1,0 +1,67 @@
+﻿// Goose-Port-Spiegel von: projects/github-repos-streuland/src/main/java/de/streuland/invite/InMemoryInvitationGateway.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/github-repos-streuland/src/main/java/de/streuland/invite/InMemoryInvitationGateway.java");
+}
+
+// ---- Original-Code (projects/github-repos-streuland/src/main/java/de/streuland/invite/InMemoryInvitationGateway.java), unveraendert, als Inline-Doku ----
+// package de.streuland.invite;
+//
+// import java.time.Instant;
+// import java.util.ArrayList;
+// import java.util.List;
+// import java.util.Objects;
+//
+// public class InMemoryInvitationGateway implements InvitationGateway {
+//     @Override
+//     public InvitationCode create(InvitationCode code) {
+//         if (code == null) return null;
+//         if (code.createdAt == null) code.createdAt = Instant.now().toString();
+//         // Normalize: ensure an ID exists and code is unique via store
+//         if (code.id == null) code.id = java.util.UUID.randomUUID().toString();
+//         return InMemoryInvitationStore.create(code);
+//     }
+//
+//     @Override
+//     public List<InvitationCode> listAll() {
+//         return InMemoryInvitationStore.listAll();
+//     }
+//
+//     @Override
+//     public InvitationCode getById(String id) {
+//         return InMemoryInvitationStore.findById(id);
+//     }
+//
+//     @Override
+//     public InvitationCode getByCode(String code) {
+//         return InMemoryInvitationStore.findByCode(code);
+//     }
+//
+//     @Override
+//     public InvitationCode revoke(String id) {
+//         return InMemoryInvitationStore.revoke(id);
+//     }
+//
+//     @Override
+//     public InvitationCode update(String id, String expiresAt, Integer maxUses, List<String> allowedRoles, Boolean isRevoked) {
+//         return InMemoryInvitationStore.update(id, expiresAt, maxUses, allowedRoles, isRevoked);
+//     }
+//
+//     @Override
+//     public void incrementUses(String id) {
+//         InMemoryInvitationStore.incrementUsesById(id);
+//     }
+//
+//     @Override
+//     public boolean consumeIfValid(String code, Instant now) {
+//         InvitationCode invite = InMemoryInvitationStore.findByCode(code);
+//         if (invite == null || invite.isRevoked) return false;
+//         if (invite.expiresAt != null && now.isAfter(Instant.parse(invite.expiresAt))) return false;
+//         if (invite.maxUses != null && invite.uses >= invite.maxUses) return false;
+//         invite.uses = invite.uses + 1;
+//         return true;
+//     }
+// }
+//

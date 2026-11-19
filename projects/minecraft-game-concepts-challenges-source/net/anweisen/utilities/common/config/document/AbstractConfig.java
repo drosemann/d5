@@ -1,0 +1,267 @@
+package net.anweisen.utilities.common.config.document;
+
+import java.awt.Color;
+import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import net.anweisen.utilities.common.config.Config;
+import net.anweisen.utilities.common.logging.ILogger;
+import net.anweisen.utilities.common.misc.ReflectionUtils;
+import net.anweisen.utilities.common.version.Version;
+
+public abstract class AbstractConfig implements Config {
+   protected static final ILogger logger = ILogger.forThisClass();
+
+   @Nonnull
+   protected Object getDef(@Nonnull Object def, @Nonnull Supplier getter) {
+      Object value = getter.get();
+      return value == null ? def : value;
+   }
+
+   @Nonnull
+   public Object getObject(@Nonnull String path, @Nonnull Object def) {
+      Object value = this.getObject(path);
+      return value == null ? def : value;
+   }
+
+   @Nonnull
+   public String getString(@Nonnull String path, @Nonnull String def) {
+      return (String)this.getDef(def, () -> {
+         return this.getString(path);
+      });
+   }
+
+   public char getChar(@Nonnull String path) {
+      return this.getChar(path, '\u0000');
+   }
+
+   public char getChar(@Nonnull String path, char def) {
+      try {
+         return this.getString(path).charAt(0);
+      } catch (IndexOutOfBoundsException | NullPointerException var4) {
+         return def;
+      }
+   }
+
+   public double getDouble(@Nonnull String path) {
+      return this.getDouble(path, 0.0D);
+   }
+
+   public float getFloat(@Nonnull String path) {
+      return this.getFloat(path, 0.0F);
+   }
+
+   public long getLong(@Nonnull String path) {
+      return this.getLong(path, 0L);
+   }
+
+   public int getInt(@Nonnull String path) {
+      return this.getInt(path, 0);
+   }
+
+   public short getShort(@Nonnull String path) {
+      return this.getShort(path, (short)0);
+   }
+
+   public byte getByte(@Nonnull String path) {
+      return this.getByte(path, (byte)0);
+   }
+
+   public boolean getBoolean(@Nonnull String path) {
+      return this.getBoolean(path, false);
+   }
+
+   @Nonnull
+   public UUID getUUID(@Nonnull String path, @Nonnull UUID def) {
+      return (UUID)this.getDef(def, () -> {
+         return this.getUUID(path);
+      });
+   }
+
+   @Nonnull
+   public OffsetDateTime getDateTime(@Nonnull String path, @Nonnull OffsetDateTime def) {
+      return (OffsetDateTime)this.getDef(def, () -> {
+         return this.getDateTime(path);
+      });
+   }
+
+   @Nonnull
+   public Date getDate(@Nonnull String path, @Nonnull Date def) {
+      return (Date)this.getDef(def, () -> {
+         return this.getDate(path);
+      });
+   }
+
+   @Nonnull
+   public Color getColor(@Nonnull String path, @Nonnull Color def) {
+      return (Color)this.getDef(def, () -> {
+         return this.getColor(path);
+      });
+   }
+
+   @Nullable
+   public Enum getEnum(@Nonnull String path, @Nonnull Class classOfEnum) {
+      return ReflectionUtils.getEnumOrNull(this.getString(path), classOfEnum);
+   }
+
+   @Nonnull
+   public Enum getEnum(@Nonnull String path, @Nonnull Enum def) {
+      Enum value = this.getEnum(path, def.getDeclaringClass());
+      return value == null ? def : value;
+   }
+
+   @Nullable
+   public Class getClass(@Nonnull String path) {
+      try {
+         return Class.forName(this.getString(path));
+      } catch (Exception var3) {
+         return null;
+      }
+   }
+
+   @Nonnull
+   public Class getClass(@Nonnull String path, @Nonnull Class def) {
+      return (Class)this.getDef(def, () -> {
+         return this.getClass(path);
+      });
+   }
+
+   @Nullable
+   public Version getVersion(@Nonnull String path) {
+      return Version.parse(this.getString(path), (Version)null);
+   }
+
+   @Nonnull
+   public Version getVersion(@Nonnull String path, @Nonnull Version def) {
+      return (Version)this.getDef(def, () -> {
+         return this.getVersion(path);
+      });
+   }
+
+   @Nullable
+   public byte[] getBinary(@Nonnull String path) {
+      String string = this.getString(path);
+      return string == null ? null : Base64.getDecoder().decode(string);
+   }
+
+   @Nonnull
+   public String[] getStringArray(@Nonnull String path) {
+      return (String[])this.getStringList(path).toArray(new String[0]);
+   }
+
+   @Nonnull
+   public List getEnumList(@Nonnull String path, @Nonnull Class classOfEnum) {
+      return this.mapList(path, (name) -> {
+         return ReflectionUtils.getEnumOrNull(name, classOfEnum);
+      });
+   }
+
+   @Nonnull
+   public List getCharacterList(@Nonnull String path) {
+      return this.mapList(path, (string) -> {
+         return string != null && string.length() != 0 ? string.charAt(0) : '\u0000';
+      });
+   }
+
+   @Nonnull
+   public List getUUIDList(@Nonnull String path) {
+      return this.mapList(path, UUID::fromString);
+   }
+
+   @Nonnull
+   public List getByteList(@Nonnull String path) {
+      return this.mapList(path, Byte::parseByte);
+   }
+
+   @Nonnull
+   public List getShortList(@Nonnull String path) {
+      return this.mapList(path, Short::parseShort);
+   }
+
+   @Nonnull
+   public List getIntegerList(@Nonnull String path) {
+      return this.mapList(path, Integer::parseInt);
+   }
+
+   @Nonnull
+   public List getLongList(@Nonnull String path) {
+      return this.mapList(path, Long::parseLong);
+   }
+
+   @Nonnull
+   public List getFloatList(@Nonnull String path) {
+      return this.mapList(path, Float::parseFloat);
+   }
+
+   @Nonnull
+   public List getDoubleList(@Nonnull String path) {
+      return this.mapList(path, Double::parseDouble);
+   }
+
+   @Nonnull
+   public List mapList(@Nonnull String path, @Nonnull Function mapper) {
+      List list = this.getStringList(path);
+      List result = new ArrayList(list.size());
+      Iterator var5 = list.iterator();
+
+      while(var5.hasNext()) {
+         String string = (String)var5.next();
+
+         try {
+            result.add(mapper.apply(string));
+         } catch (Exception var8) {
+            logger.error("Unable to map values for '{}'", string, var8);
+         }
+      }
+
+      return result;
+   }
+
+   public boolean isEmpty() {
+      return this.size() == 0;
+   }
+
+   @Nonnull
+   public Map valuesAsStrings() {
+      Map map = new HashMap();
+      this.values().forEach((key, value) -> {
+         String var10000 = (String)map.put(key, String.valueOf(value));
+      });
+      return map;
+   }
+
+   @Nonnull
+   public Map mapValues(@Nonnull Function keyMapper, @Nonnull Function valueMapper) {
+      return this.map(this.valuesAsStrings(), keyMapper, valueMapper);
+   }
+
+   @Nonnull
+   public Set entrySet() {
+      return this.values().entrySet();
+   }
+
+   @Nonnull
+   public Map map(@Nonnull Map values, @Nonnull Function keyMapper, @Nonnull Function valueMapper) {
+      Map result = new HashMap();
+      values.forEach((key, value) -> {
+         try {
+            result.put(keyMapper.apply(key), valueMapper.apply(value));
+         } catch (Exception var6) {
+            logger.error("Unable to map values for '{}'='{}'", key, value, var6);
+         }
+
+      });
+      return result;
+   }
+}

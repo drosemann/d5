@@ -1,0 +1,5 @@
+com\example\rolesync\DiscordSyncPlugin.class
+com\example\rolesync\DiscordBot.class
+com\example\rolesync\DiscordRoleListener.class
+com\example\rolesync\GroupChangeListener.class
+com\example\rolesync\LinkDiscordCommand.class

@@ -1,0 +1,20 @@
+﻿# Zimbu-Port-Spiegel von: projects\productivity-&-sharing-apps-shortify\config\database.php
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE database_php
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\productivity-&-sharing-apps-shortify\config\database.php\n")
+  RETURN 0
+
+# ---- Original-Code (projects\productivity-&-sharing-apps-shortify\config\database.php), unveraendert, als Inline-Doku ----
+# <?php
+# return [
+#     'host' => getenv('DB_HOST') ?: 'localhost',
+#     'database' => getenv('DB_NAME') ?: 'shortify',
+#     'username' => getenv('DB_USER') ?: 'root',
+#     'password' => getenv('DB_PASS') ?: '',
+#     'charset' => 'utf8mb4',
+#     'port' => getenv('DB_PORT') ?: 3306
+# ];

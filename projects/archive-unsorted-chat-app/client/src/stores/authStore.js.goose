@@ -1,0 +1,51 @@
+﻿// Goose-Port-Spiegel von: projects/archive-unsorted-chat-app/client/src/stores/authStore.js
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/archive-unsorted-chat-app/client/src/stores/authStore.js");
+}
+
+// ---- Original-Code (projects/archive-unsorted-chat-app/client/src/stores/authStore.js), unveraendert, als Inline-Doku ----
+// import { create } from 'zustand';
+// import axios from 'axios';
+//
+// const useAuthStore = create((set) => ({
+//   user: null,
+//   token: localStorage.getItem('token'),
+//   isAuthenticated: false,
+//   
+//   login: async (email, password) => {
+//     try {
+//       const response = await axios.post('/api/auth/login', { email, password });
+//       const { token, user } = response.data;
+//       
+//       localStorage.setItem('token', token);
+//       set({ user, token, isAuthenticated: true });
+//       return true;
+//     } catch (error) {
+//       console.error('Login failed:', error);
+//       return false;
+//     }
+//   },
+//   
+//   register: async (username, email, password) => {
+//     try {
+//       await axios.post('/api/auth/register', { username, email, password });
+//       return true;
+//     } catch (error) {
+//       console.error('Registration failed:', error);
+//       return false;
+//     }
+//   },
+//   
+//   logout: () => {
+//     localStorage.removeItem('token');
+//     set({ user: null, token: null, isAuthenticated: false });
+//   },
+//   
+//   updateUser: (userData) => {
+//     set({ user: { ...useAuthStore.getState().user, ...userData } });
+//   },
+// }));
+//

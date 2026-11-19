@@ -1,0 +1,6 @@
+name: Voicechat
+version: '${project.version}'
+main: me.org.Voicechat
+api-version: 1.19
+authors: [ DaaanielTV ]
+description: Voicechat

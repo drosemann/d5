@@ -1,0 +1,160 @@
+'use server'
+
+import { createClient } from '@supabase/supabase-js'
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
+import {
+  DEMO_EMAIL,
+  DEMO_PASSWORD,
+  DEMO_SESSION_COOKIE,
+  isSupabaseUnconfigured,
+} from '@/lib/demoAuth'
+
+function getAdminClient() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    { auth: { autoRefreshToken: false, persistSession: false } }
+  )
+}
+
+async function setAuthCookies(access_token: string, refresh_token: string) {
+  const cookieStore = await cookies()
+  const maxAge = 60 * 60 * 24 * 7 // 7 days
+  cookieStore.set('sb-access-token', access_token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    maxAge,
+    path: '/',
+  })
+  cookieStore.set('sb-refresh-token', refresh_token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    maxAge,
+    path: '/',
+  })
+}
+
+async function clearAuthCookies() {
+  const cookieStore = await cookies()
+  cookieStore.delete('sb-access-token')
+  cookieStore.delete('sb-refresh-token')
+}
+
+export async function signInDemo() {
+  const cookieStore = await cookies()
+  cookieStore.set(DEMO_SESSION_COOKIE, '1', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    maxAge: 60 * 60 * 24 * 7,
+    path: '/',
+  })
+  redirect('/')
+}
+
+export async function signIn(_: unknown, formData: FormData) {
+  const email = formData.get('email') as string
+  const password = formData.get('password') as string
+
+  if (!email || !password) {
+    return { error: 'Email and password are required.' }
+  }
+
+  // Demo user — works without a database
+  if (
+    email.trim().toLowerCase() === DEMO_EMAIL &&
+    password === DEMO_PASSWORD
+  ) {
+    const cookieStore = await cookies()
+    cookieStore.set(DEMO_SESSION_COOKIE, '1', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24 * 7,
+      path: '/',
+    })
+    redirect('/')
+  }
+
+  // Bail out gracefully if Supabase isn't configured yet
+  if (isSupabaseUnconfigured()) {
+    return {
+      error:
+        'Supabase is not configured. Use the demo account (demo@chiefos.app / demo) or fill in your .env.local values.',
+    }
+  }
+
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    { auth: { autoRefreshToken: false, persistSession: false } }
+  )
+
+  const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+
+  if (error) return { error: error.message }
+
+  await setAuthCookies(data.session.access_token, data.session.refresh_token)
+  redirect('/')
+}
+
+export async function signUp(_: unknown, formData: FormData) {
+  const email = formData.get('email') as string
+  const password = formData.get('password') as string
+  const name = formData.get('name') as string
+
+  if (!email || !password || !name) {
+    return { error: 'All fields are required.' }
+  }
+
+  if (password.length < 8) {
+    return { error: 'Password must be at least 8 characters.' }
+  }
+
+  if (isSupabaseUnconfigured()) {
+    return {
+      error:
+        'Supabase is not configured. Fill in your .env.local values to enable real accounts, or use the demo account on the sign-in page.',
+    }
+  }
+
+  const admin = getAdminClient()
+
+  const { data, error } = await admin.auth.admin.createUser({
+    email,
+    password,
+    user_metadata: { full_name: name },
+    email_confirm: true,
+  })
+
+  if (error) return { error: error.message }
+
+  // Sign them in immediately after registration
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    { auth: { autoRefreshToken: false, persistSession: false } }
+  )
+
+  const { data: sessionData, error: signInError } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  })
+
+  if (signInError || !sessionData.session) {
+    return { error: 'Account created. Please sign in.' }
+  }
+
+  await setAuthCookies(sessionData.session.access_token, sessionData.session.refresh_token)
+  redirect('/')
+}
+
+export async function signOut() {
+  const cookieStore = await cookies()
+  cookieStore.delete(DEMO_SESSION_COOKIE)
+  await clearAuthCookies()
+  redirect('/login')
+}

@@ -1,0 +1,27 @@
+﻿# Zimbu-Port-Spiegel von: projects\productivity-&-sharing-apps-notenest\config\database.js
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE database_js
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\productivity-&-sharing-apps-notenest\config\database.js\n")
+  RETURN 0
+
+# ---- Original-Code (projects\productivity-&-sharing-apps-notenest\config\database.js), unveraendert, als Inline-Doku ----
+# const mariadb = require('mariadb');
+# require('dotenv').config();
+#
+# const pool = mariadb.createPool({
+#     host: process.env.DB_HOST,
+#     user: process.env.DB_USER,
+#     password: process.env.DB_PASSWORD,
+#     database: process.env.DB_NAME,
+#     connectionLimit: 5
+# });
+#
+# module.exports = {
+#     getConnection() {
+#         return pool.getConnection();
+#     }
+# };

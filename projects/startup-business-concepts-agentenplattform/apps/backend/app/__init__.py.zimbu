@@ -1,0 +1,12 @@
+﻿# Zimbu-Port-Spiegel von: projects\startup-business-concepts-agentenplattform\apps\backend\app\__init__.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE __init___py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\startup-business-concepts-agentenplattform\apps\backend\app\__init__.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\startup-business-concepts-agentenplattform\apps\backend\app\__init__.py), unveraendert, als Inline-Doku ----
+

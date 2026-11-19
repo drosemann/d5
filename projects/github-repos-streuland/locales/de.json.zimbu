@@ -1,0 +1,13 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-streuland\locales\de.json
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE de_json
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-streuland\locales\de.json\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-streuland\locales\de.json), unveraendert, als Inline-Doku ----
+# { "Invite": { "Title": "Einladungen", "Description": "Verwalte Invite-Codes" } }
+#

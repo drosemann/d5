@@ -1,0 +1,29 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-stranded-horizons\server\package.json
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE package_json
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-stranded-horizons\server\package.json\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-stranded-horizons\server\package.json), unveraendert, als Inline-Doku ----
+# {
+#   "name": "stranded-horizons-server",
+#   "version": "0.1.0",
+#   "type": "module",
+#   "license": "MIT",
+#   "scripts": {
+#     "start": "node src/index.js",
+#     "smoke": "node test/smoke.js"
+#   },
+#   "dependencies": {
+#     "express": "^4.19.2",
+#     "socket.io": "^4.7.5",
+#     "pg": "^8.12.0",
+#     "redis": "^4.6.13",
+#     "jsonwebtoken": "^9.0.2"
+#   }
+# }
+#

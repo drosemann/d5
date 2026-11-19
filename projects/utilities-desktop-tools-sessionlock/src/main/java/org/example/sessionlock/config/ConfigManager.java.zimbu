@@ -1,0 +1,26 @@
+﻿# Zimbu-Port-Spiegel von: projects\utilities-desktop-tools-sessionlock\src\main\java\org\example\sessionlock\config\ConfigManager.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE ConfigManager_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\utilities-desktop-tools-sessionlock\src\main\java\org\example\sessionlock\config\ConfigManager.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\utilities-desktop-tools-sessionlock\src\main\java\org\example\sessionlock\config\ConfigManager.java), unveraendert, als Inline-Doku ----
+# public class ConfigManager {
+#     private final FileConfiguration config;
+#
+#     public ConfigManager(FileConfiguration config) {
+#         this.config = config;
+#     }
+#
+#     public String getLoginSuccessMessage() {
+#         return config.getString("messages.login-success", "Login successful!");
+#     }
+#
+#     public String getLoginFailureMessage() {
+#         return config.getString("messages.login-failure", "Login failed!");
+#     }
+# } 

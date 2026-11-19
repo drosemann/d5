@@ -1,0 +1,103 @@
+package net.codingarea.challenges.plugin.management.scheduler;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import javax.annotation.Nonnull;
+import lombok.Generated;
+
+public final class ScheduledFunction {
+   private final Method method;
+   private final Object holder;
+   private final PoliciesContainer policies;
+
+   ScheduledFunction(@Nonnull Object holder, @Nonnull Method method, @Nonnull PoliciesContainer policies) {
+      this.method = method;
+      this.holder = holder;
+      this.policies = policies;
+   }
+
+   public void invoke() throws InvocationTargetException, IllegalAccessException {
+      if (this.shouldInvoke()) {
+         this.invokeAnyway();
+      }
+
+   }
+
+   public void invokeAnyway() throws InvocationTargetException, IllegalAccessException {
+      this.method.setAccessible(true);
+      this.method.invoke(this.holder);
+   }
+
+   private boolean shouldInvoke() {
+      return this.policies.allPoliciesAreTrue(this.holder);
+   }
+
+   @Nonnull
+   public Object getHolder() {
+      return this.holder;
+   }
+
+   public String toString() {
+      return this.holder.getClass().getName() + "." + this.method.getName() + "()";
+   }
+
+   @Generated
+   public boolean equals(Object o) {
+      if (o == this) {
+         return true;
+      } else if (!(o instanceof ScheduledFunction)) {
+         return false;
+      } else {
+         ScheduledFunction other;
+         label44: {
+            other = (ScheduledFunction)o;
+            Object this$method = this.method;
+            Object other$method = other.method;
+            if (this$method == null) {
+               if (other$method == null) {
+                  break label44;
+               }
+            } else if (this$method.equals(other$method)) {
+               break label44;
+            }
+
+            return false;
+         }
+
+         Object this$holder = this.getHolder();
+         Object other$holder = other.getHolder();
+         if (this$holder == null) {
+            if (other$holder != null) {
+               return false;
+            }
+         } else if (!this$holder.equals(other$holder)) {
+            return false;
+         }
+
+         Object this$policies = this.policies;
+         Object other$policies = other.policies;
+         if (this$policies == null) {
+            if (other$policies != null) {
+               return false;
+            }
+         } else if (!this$policies.equals(other$policies)) {
+            return false;
+         }
+
+         return true;
+      }
+   }
+
+   @Generated
+   public int hashCode() {
+      int PRIME = true;
+      int result = 1;
+      Object $method = this.method;
+      int result = result * 59 + ($method == null ? 43 : $method.hashCode());
+      Object $holder = this.getHolder();
+      result = result * 59 + ($holder == null ? 43 : $holder.hashCode());
+      Object $policies = this.policies;
+      result = result * 59 + ($policies == null ? 43 : $policies.hashCode());
+      return result;
+   }
+}

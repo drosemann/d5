@@ -1,0 +1,37 @@
+﻿# Zimbu-Port-Spiegel von: projects\cloud-hosting-saas-vercel-clone\frontend-nextjs\components\ui\input.tsx
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE input_tsx
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\cloud-hosting-saas-vercel-clone\frontend-nextjs\components\ui\input.tsx\n")
+  RETURN 0
+
+# ---- Original-Code (projects\cloud-hosting-saas-vercel-clone\frontend-nextjs\components\ui\input.tsx), unveraendert, als Inline-Doku ----
+# import * as React from "react"
+#
+# import { cn } from "@/lib/utils"
+#
+# export interface InputProps
+#   extends React.InputHTMLAttributes<HTMLInputElement> {}
+#
+# const Input = React.forwardRef<HTMLInputElement, InputProps>(
+#   ({ className, type, ...props }, ref) => {
+#     return (
+#       <input
+#         type={type}
+#         className={cn(
+#           "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+#           className
+#         )}
+#         ref={ref}
+#         {...props}
+#       />
+#     )
+#   }
+# )
+# Input.displayName = "Input"
+#
+# export { Input }
+#

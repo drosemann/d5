@@ -1,0 +1,23 @@
+﻿# Zimbu-Port-Spiegel von: projects\github-repos-streuland\src\main\java\de\streuland\plot\Permission.java
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE Permission_java
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\github-repos-streuland\src\main\java\de\streuland\plot\Permission.java\n")
+  RETURN 0
+
+# ---- Original-Code (projects\github-repos-streuland\src\main\java\de\streuland\plot\Permission.java), unveraendert, als Inline-Doku ----
+# package de.streuland.plot;
+#
+# public enum Permission {
+#     BUILD,
+#     BREAK,
+#     INTERACT,
+#     CONTAINER_ACCESS,
+#     TELEPORT,
+#     TRANSFER,
+#     ROLE_MANAGE
+# }
+#

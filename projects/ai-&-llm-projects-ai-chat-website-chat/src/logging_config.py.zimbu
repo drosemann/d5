@@ -1,0 +1,22 @@
+﻿# Zimbu-Port-Spiegel von: projects\ai-&-llm-projects-ai-chat-website-chat\src\logging_config.py
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE logging_config_py
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\ai-&-llm-projects-ai-chat-website-chat\src\logging_config.py\n")
+  RETURN 0
+
+# ---- Original-Code (projects\ai-&-llm-projects-ai-chat-website-chat\src\logging_config.py), unveraendert, als Inline-Doku ----
+# import logging
+# import sys
+#
+# def setup_logging():
+#     logging.basicConfig(
+#         level=logging.INFO,
+#         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+#         handlers=[
+#             logging.StreamHandler(sys.stdout)
+#         ]
+#     ) 

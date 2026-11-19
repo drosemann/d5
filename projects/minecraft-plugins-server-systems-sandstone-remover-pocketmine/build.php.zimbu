@@ -1,0 +1,16 @@
+﻿# Zimbu-Port-Spiegel von: projects\minecraft-plugins-server-systems-sandstone-remover-pocketmine\build.php
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE build_php
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: projects\minecraft-plugins-server-systems-sandstone-remover-pocketmine\build.php\n")
+  RETURN 0
+
+# ---- Original-Code (projects\minecraft-plugins-server-systems-sandstone-remover-pocketmine\build.php), unveraendert, als Inline-Doku ----
+# <?php
+#
+# $phar = new Phar('SandstoneRemover.phar');
+# $phar->buildFromDirectory(__DIR__);
+# $phar->setStub($phar->createDefaultStub('src/SandstoneRemover/SandstoneRemover.php'));

@@ -1,0 +1,81 @@
+# Minigame Plugin
+
+## Overview
+
+The Minigame Plugin is a Minecraft plugin designed to enhance gameplay by providing various features such as team management, power-ups, map management, and spectator mode. This plugin allows players to engage in exciting minigames with friends and adds a competitive edge to the Minecraft experience.
+
+## Features
+
+- **Team Management**: Create and manage teams, allowing players to join and communicate within their teams.
+- **Power-Ups**: Collect and activate power-ups that provide temporary boosts and advantages during gameplay.
+- **Map Management**: Create, delete, and manage custom maps with spawn points and hubs.
+- **Spectator Mode**: Allow players to spectate games after they die, providing a way to watch their friends play.
+- **Leaderboard**: Track player scores and display the top players at the end of the game.
+- **Custom Commands**: Use various commands to manage the game and interact with the plugin.
+
+## Installation
+
+1. **Download the Plugin**: Obtain the latest version of the Minigame Plugin JAR file.
+
+2. **Place the Plugin in Your Server**:
+   - Navigate to your Minecraft server directory.
+   - Open the `plugins` folder.
+   - Place the downloaded JAR file into the `plugins` folder.
+
+3. **Start Your Server**: Launch your Minecraft server. The plugin will be loaded automatically.
+
+4. **Configuration**: (Optional)
+   - After the first run, a configuration file will be generated in the `plugins/MinigamePlugin` directory. You can customize settings as needed.
+
+## Commands
+
+### Map Management Commands
+
+- `/map create NAME`: Creates a new map with the specified name.
+- `/map setspawnpoint`: Sets the spawn point at the player's current location for the specified map.
+- `/map sethub`: Sets the hub location at the player's current location.
+- `/map finish NAME`: Marks the specified map as finished.
+- `/map list`: Lists all available maps.
+- `/map delete NAME`: Deletes the specified map.
+- `/map join NAME`: Joins the specified map and teleports the player to its spawn point.
+
+### Game Commands
+
+- `/set`: Set various game-related locations (e.g., team spawn, chest, monster spawn).
+- `/lobby`: Teleport to the lobby area.
+- `/startgame`: Start the game.
+- `/endgame`: End the current game.
+
+### Team Commands
+
+- `/createteam NAME`: Create a new team with the specified name.
+- `/jointeam NAME`: Join an existing team.
+- `/teaminfo`: Display information about teams.
+
+### Power-Up Commands
+
+- Power-ups are activated automatically during gameplay based on game events.
+
+## Usage
+
+1. **Creating a Map**: Use the `/map create <name>` command to create a new map. After creation, set spawn points using `/map setspawnpoint`.
+
+2. **Setting Up Teams**: Players can create teams using `/createteam <name>` and join teams with `/jointeam <name>`.
+
+3. **Starting a Game**: Once the map and teams are set up, use `/startgame` to begin the game.
+
+4. **Spectating**: Players who die can enter spectator mode automatically, allowing them to watch the ongoing game.
+
+5. **Viewing Leaderboards**: At the end of the game, player scores will be displayed, and the leaderboard can be accessed.
+
+## Contributing
+
+Contributions are welcome! If you have suggestions or improvements, feel free to submit a pull request or open an issue.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
+## Contact
+
+For any questions or support, please contact the plugin developer at [your-email@example.com].

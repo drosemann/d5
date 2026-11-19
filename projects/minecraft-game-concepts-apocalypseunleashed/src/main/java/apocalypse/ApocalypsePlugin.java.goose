@@ -1,0 +1,83 @@
+﻿// Goose-Port-Spiegel von: projects/minecraft-game-concepts-apocalypseunleashed/src/main/java/apocalypse/ApocalypsePlugin.java
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: projects/minecraft-game-concepts-apocalypseunleashed/src/main/java/apocalypse/ApocalypsePlugin.java");
+}
+
+// ---- Original-Code (projects/minecraft-game-concepts-apocalypseunleashed/src/main/java/apocalypse/ApocalypsePlugin.java), unveraendert, als Inline-Doku ----
+// package apocalypse;
+//
+// import org.bukkit.plugin.java.JavaPlugin;
+// import apocalypse.commands.ApocalypseCommand;
+// import apocalypse.commands.DisasterCommand;
+// import apocalypse.commands.GiveItemCommand;
+// import apocalypse.commands.HelpCommand;
+// import apocalypse.disasters.DisasterManager;
+// import apocalypse.items.ItemManager;
+// import apocalypse.listeners.DisasterListener;
+// import apocalypse.listeners.ItemListener;
+// import apocalypse.utils.ConfigManager;
+// import apocalypse.tasks.RandomDisasterTask;
+//
+// public class ApocalypsePlugin extends JavaPlugin {
+//     private static ApocalypsePlugin instance;
+//     private ConfigManager configManager;
+//     private DisasterManager disasterManager;
+//     private ItemManager itemManager;
+//
+//     @Override
+//     public void onEnable() {
+//         instance = this;
+//
+//         // Initialize managers
+//         this.configManager = new ConfigManager(this);
+//         this.disasterManager = new DisasterManager(this);
+//         this.itemManager = new ItemManager(this);
+//         
+//         // Register commands
+//         getCommand("apocalypse").setExecutor(new ApocalypseCommand());
+//         getCommand("disaster").setExecutor(new DisasterCommand(disasterManager));
+//         getCommand("apocitem").setExecutor(new GiveItemCommand(itemManager));
+//         getCommand("apochelp").setExecutor(new HelpCommand(disasterManager));
+//
+//         // Register listeners
+//         getServer().getPluginManager().registerEvents(new DisasterListener(this), this);
+//         getServer().getPluginManager().registerEvents(new ItemListener(this), this);
+//
+//         // Start random disaster task
+//         new RandomDisasterTask(this).runTaskTimer(this, 1200L, 1200L); // Run every minute
+//         
+//         // Register custom items
+//         itemManager.registerItems();
+//
+//         getLogger().info("ApocalypseUnleashed v" + getDescription().getVersion() + " has awakened!");
+//         getLogger().info("Catastrophic disasters are now ready to unleash chaos upon the world...");
+//     }
+//
+//     @Override
+//     public void onDisable() {
+//         if (disasterManager != null) {
+//             disasterManager.stopAllDisasters();
+//         }
+//         getLogger().info("The apocalypse has been contained... for now.");
+//     }
+//
+//     public static ApocalypsePlugin getInstance() {
+//         return instance;
+//     }
+//
+//     public ConfigManager getConfigManager() {
+//         return configManager;
+//     }
+//
+//     public DisasterManager getDisasterManager() {
+//         return disasterManager;
+//     }
+//
+//     public ItemManager getItemManager() {
+//         return itemManager;
+//     }
+// }
+//
