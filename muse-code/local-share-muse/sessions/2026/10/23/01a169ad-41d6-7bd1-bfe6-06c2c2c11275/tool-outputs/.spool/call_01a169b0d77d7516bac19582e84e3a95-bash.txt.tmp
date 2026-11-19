@@ -1,0 +1,20 @@
+
+### Troubleshooting
+
+- **Dokumente weg:** Browser Site-Daten gel«Ùscht? `localStorage` ist weg É?" deshalb regelm«œ«Yig `Export .md`
+- **Offline geht nicht:** Erst einmal online laden damit Service Worker cachen kann
+- **Build Fehler:** Node Version >=20? `npm install` neu?
+- **Tastatur reagiert nicht:** In Editor fokussiert? `Esc` und nochmal `i`
+
+### Zukunft É?" Kein Versprechen, nur Ideen
+
+- Bessere Portability + klare lokale Backups
+- Optionaler, sicherer File Transfer und gehosteter Sync f«¨r kleine Nische (erst Gespr«œche mit echten Kunden)
+- Explizite Conflict Copies + Recovery statt silent overwrite bei offline edits
+- Shared Editing, Comments, reichere Bl«Ùcke wenn Core Workflow sich beweist
+
+Jeglicher Sync / Collaboration bleibt optional É?" lokale Docs + Core Editor sollen immer offline funktionieren.
+
+### Lizenz
+
+GNU GPLv3 É?" siehe [LICENSE](LICENSE). Urspr«¨nglich MIT 2026, am 11.10.2026 zur«¨ck auf original GPL restored.

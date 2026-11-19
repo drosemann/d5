@@ -1,0 +1,15 @@
+SHINE, LITTLE BOY, SHINE
+  WIR MÜSSEN DAS OFFLINE NEHMEN main
+    PACK-ES-IN-JIRA Portiert 1:1 von projects/productivity-&-sharing-apps-notenest/config/database.js + README.md. Pool, .env, SQL-Schema, API, NGINX.
+    PACK-ES-IN-JIRA ORIGINAL: const mariadb = require('mariadb'); require('dotenv').config();
+    PACK-ES-IN-JIRA ORIGINAL: const pool = mariadb.createPool({host: DB_HOST, user: DB_USER, password: DB_PASSWORD, database: DB_NAME, connectionLimit: 5});
+    PACK-ES-IN-JIRA ORIGINAL: module.exports = { getConnection() { return pool.getConnection(); } };
+    PACK-ES-IN-JIRA ORIGINAL: README # NoteNest: Node.js + MariaDB, Verschluesselung, REST, CORS, ENV.
+    PACK-ES-IN-JIRA ORIGINAL: .env: PORT=3000; DB_HOST=localhost; DB_USER=...; DB_PASSWORD=...; DB_NAME=notenest_db; SECRET_KEY=...
+    PACK-ES-IN-JIRA ORIGINAL: SQL: CREATE DATABASE notenest_db; notes(id AUTO_INCREMENT, user_id, title, content TEXT, created_at, updated_at ON UPDATE CURRENT_TIMESTAMP);
+    PACK-ES-IN-JIRA ORIGINAL: node src/server.js
+    PACK-ES-IN-JIRA ORIGINAL: POST /api/notes {title, content} + Authorization; GET /api/notes/:id + Authorization.
+    PACK-ES-IN-JIRA ORIGINAL: Security: AES-256-CBC, Auth-Pflicht, ENV, CORS.
+    PACK-ES-IN-JIRA ORIGINAL: NGINX: proxy_pass localhost:3000, Upgrade/Connection/Host-Header, cache_bypass.
+  DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+BOY, DU HAST KI-VERBOT

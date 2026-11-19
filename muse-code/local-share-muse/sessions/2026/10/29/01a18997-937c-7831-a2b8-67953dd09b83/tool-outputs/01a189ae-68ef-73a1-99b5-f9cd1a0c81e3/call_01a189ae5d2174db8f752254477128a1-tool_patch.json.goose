@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189ae-68ef-73a1-99b5-f9cd1a0c81e3/call_01a189ae5d2174db8f752254477128a1-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189ae-68ef-73a1-99b5-f9cd1a0c81e3/call_01a189ae5d2174db8f752254477128a1-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189ae-68ef-73a1-99b5-f9cd1a0c81e3/call_01a189ae5d2174db8f752254477128a1-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\TRAUMALANG-GAPS.md","hunks":[{"oldStart":329,"oldLines":6,"newStart":329,"newLines":8,"lines":[" "," - `tests/scripts/test_backup_scripts.tl` (neu) Warnungen: Zeile 7 (`import shutil/subprocess/pathlib`); Zeile 11 (`import pytest`); Zeile 21 (`run` mit `*args`/`**kwargs`, `subprocess.run` mit Timeout); Zeilen 32/119 (Testklassen mit `tmp_path`-Fixture); Zeilen 66/69/171/181 (Tool-Stubs via `symlink_to`/`write_text`/`chmod`, F-String-Bodies); Zeilen 153/212/258/276 (`pytest.fixture`, `pytest.mark.parametrize`); Zeilen 80/100/116/135/149 (Asserts auf Returncode/stdout/stderr/Dateiexistenz)"," ","+- `scripts/update_readme_coverage.tl` (neu) Warnungen: Zeile 4 (`BASH_SOURCE`-Pfadaufloesung mit `dirname --`); Zeile 30 (`while` ueber `$#`); Zeile 38 (`python3`-Aufruf des Badge-Updaters); Zeilen 45/50 (Git-Guards via `git status --porcelain`, `wc -l`-Zaehler); Zeilen 56/59/60 (CI-Bot-`git config`, `git add/commit/push`)","+"," ## 5. Sonstiges für den nächsten Agenten"," "," - `--roast`-Modus des Rewriters wurde nie verwendet; sarkastische Marker"]}]}]}

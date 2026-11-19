@@ -54,7 +54,11 @@ public class Main extends JavaPlugin {
 	
 	private static Main instance;
 	
-	// TODO: Displayname looking for debugging, configure stats, inventory sorter
+	/** When true, display-names are logged for debugging (configurable). */
+	private static boolean debugDisplayNames = false;
+	
+	/** Configured sorter preference for the inventory sorter (from config). */
+	private static String sorterMode = "default";
 	
 	@Override
 	public void onEnable() {
@@ -64,6 +68,10 @@ public class Main extends JavaPlugin {
 		Utils.villager = false;
 		
 		prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("Config.Prefix"));
+		
+		configureDisplayNameDebug();
+		configureStats();
+		configureInventorySorter();
 		
 		if(cfg.getBoolean("Config.MySQL") == true) {
 			connctMySQL();
@@ -90,6 +98,55 @@ public class Main extends JavaPlugin {
 		u.startAnimation();
 		
 		System.out.println("[BFFA] Das Plugin wurde erfolgreich gestartet!");
+	}
+
+	/** Reads the display-name debug toggle from config. */
+	private void configureDisplayNameDebug() {
+		debugDisplayNames = cfg.getBoolean("Config.DebugDisplayNames", false);
+		if (debugDisplayNames) {
+			getLogger().info("DisplayName-Debugging aktiviert.");
+		}
+	}
+
+	/** Validates stats-related config values with sensible defaults. */
+	private void configureStats() {
+		// Stats are stored via MySQL (see connctMySQL). Warn when disabled.
+		if (!cfg.getBoolean("Config.MySQL", true)) {
+			getLogger().warning("MySQL/Stats deaktiviert – Kills/Deaths werden nicht persistiert.");
+		}
+		String statsTable = cfg.getString("MySQL.table", "BFFAStats");
+		if (statsTable == null || statsTable.trim().isEmpty()) {
+			getLogger().warning("MySQL.table leer – nutze Standardtabelle BFFAStats.");
+		}
+	}
+
+	/** Reads sorter preferences and pre-creates the inventories directory. */
+	private void configureInventorySorter() {
+		sorterMode = cfg.getString("Config.InventorySorterMode", "default").toLowerCase();
+		if (!sorterMode.equals("default") && !sorterMode.equals("strict") && !sorterMode.equals("off")) {
+			getLogger().warning("Unbekannter InventorySorterMode '" + sorterMode + "' – nutze 'default'.");
+			sorterMode = "default";
+		}
+		File dir = new File("plugins/BFFA/Inventories");
+		if (!dir.exists()) {
+			dir.mkdirs();
+		}
+	}
+
+	/** Logs the effective display-name of *player* when debugging is enabled. */
+	public static void debugDisplayName(Player player) {
+		if (!debugDisplayNames || player == null) {
+			return;
+		}
+		String name = player.getDisplayName();
+		if (name != null && Main.getInstance() != null) {
+			Main.getInstance().getLogger().fine("[DisplayName-Debug] " + player.getName() + " -> " + name);
+		}
+	}
+
+	/** Current inventory sorter mode (\"default\", \"strict\" or \"off\"). */
+	public static String getSorterMode() {
+		return sorterMode;
 	}
 	
 	@Override

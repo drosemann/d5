@@ -1,0 +1,131 @@
+type Row = Record<string, any>;
+type Db = Record<string, Row[]>;
+
+function makeResponse(data: any, error: any = null) {
+  return Promise.resolve({ data, error });
+}
+
+class QueryBuilder {
+  private filters: Array<[string, any]> = [];
+  private pendingInsert: Row | Row[] | null = null;
+  private pendingUpdate: Row | null = null;
+  private isDelete = false;
+
+  private db: Db;
+  private table: string;
+
+  constructor(db: Db, table: string) {
+    this.db = db;
+    this.table = table;
+  }
+
+  select(_columns = '*') {
+    return this;
+  }
+
+  insert(row: Row | Row[]) {
+    this.pendingInsert = row;
+    return this;
+  }
+
+  update(row: Row) {
+    this.pendingUpdate = row;
+    return this;
+  }
+
+  delete() {
+    this.isDelete = true;
+    return this;
+  }
+
+  eq(column: string, value: any) {
+    this.filters.push([column, value]);
+    return this;
+  }
+
+  order(_column: string, _options?: any) {
+    return this;
+  }
+
+  limit(_count: number) {
+    return this;
+  }
+
+  range(_start: number, _end: number) {
+    return this.execute();
+  }
+
+  single() {
+    if (this.pendingInsert) {
+      const rows = Array.isArray(this.pendingInsert) ? this.pendingInsert : [this.pendingInsert];
+      const inserted = rows.map((row) => this.insertRow(row));
+      return makeResponse(inserted[0] ?? null);
+    }
+
+    if (this.pendingUpdate) {
+      const row = this.rows().find((candidate) => this.matches(candidate));
+      if (!row) return makeResponse(null, { code: 'PGRST116' });
+      Object.assign(row, this.pendingUpdate);
+      return makeResponse(row);
+    }
+
+    const row = this.rows().find((candidate) => this.matches(candidate));
+    return row ? makeResponse(row) : makeResponse(null, { code: 'PGRST116' });
+  }
+
+  then(resolve: (value: any) => void, reject?: (reason?: any) => void) {
+    return this.execute().then(resolve, reject);
+  }
+
+  private execute() {
+===
+import assert from 'node:assert/strict';
+import http from 'node:http';
+
+async function request(server: http.Server, method: string, path: string, body?: any, token?: string) {
+  const address = server.address();
+  assert(address && typeof address === 'object');
+  const response = await fetch(`http://127.0.0.1:${address.port}${path}`, {
+    method,
+    headers: {
+      ...(body ? { 'content-type': 'application/json' } : {}),
+      ...(token ? { authorization: `Bearer ${token}` } : {}),
+    },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  const text = await response.text();
+  let bodyParsed: any = null;
+  if (text) {
+    try {
+      bodyParsed = JSON.parse(text);
+    } catch {
+      bodyParsed = text;
+    }
+  }
+  return { status: response.status, body: bodyParsed };
+}
+
+async function requestWithHeaders(server: http.Server, method: string, path: string, body?: any, token?: string) {
+  const address = server.address();
+  assert(address && typeof address === 'object');
+  const response = await fetch(`http://127.0.0.1:${address.port}${path}`, {
+    method,
+    headers: {
+      ...(body ? { 'content-type': 'application/json' } : {}),
+      ...(token ? { authorization: `Bearer ${token}` } : {}),
+    },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  const text = await response.text();
+  const headers: Record<string, string> = {};
+  response.headers.forEach((value, key) => { headers[key] = value; });
+  let bodyParsed: any = null;
+  if (text) {
+    try {
+      bodyParsed = JSON.parse(text);
+    } catch {
+      bodyParsed = text;
+    }
+  }
+  return { status: response.status, body: bodyParsed, headers };
+}

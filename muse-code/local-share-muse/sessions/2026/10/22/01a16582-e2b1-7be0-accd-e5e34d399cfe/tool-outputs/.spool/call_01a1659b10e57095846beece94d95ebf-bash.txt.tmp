@@ -1,0 +1,89 @@
+
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:20:import 
+compute.docker_provider  # noqa: F401  (self-registers the built-in provider)
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:31:# The federation 
+API token holder acts as platform administrator for the
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:225:def 
+_require_actor_permission(
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:231:    
+``FEDERATION_API_TOKEN`` bearer (see ``verify_federation_token``), so the
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:232:    federation 
+token holder is platform admin by design. ``actor_user_id`` is
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:236:    federation 
+token and expect per-user isolation.
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:251:            
+status=401,
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:272:    Trust 
+model: see ``_require_actor_permission`` - the federation token
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:279:    # 
+Principal-bound authorization
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:280:    err = 
+_require_actor_permission(request, org_id, Permission.ORG_DELETE)
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:300:    Trust 
+model: see ``_require_actor_permission`` - the federation token
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:318:            
+{"error": "actor_user_id required for role deletion"}, status=401
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:358:    Trust 
+model: see ``_require_actor_permission`` - the federation token
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:380:            
+{"error": "actor_user_id required for revocation"}, status=401
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:416:    are 
+supplied the caller (already authenticated via the federation token
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:418:    Without 
+them the federation token holder acts as platform admin; this
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:422:    Trust 
+model: ``FEDERATION_API_TOKEN`` is a shared platform-admin
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:425:    
+authenticated. Anyone holding the federation token can deploy as any user
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:481:        # 
+Platform-admin path now requires explicit flag on the federation API.
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:578:        
+_count_auth_failure("webhook_401")
+---DISCORD---
+    build:
+      context: ./services/discord-service
+      dockerfile: Dockerfile
+      target: production
+    container_name: infra-pilot-discord
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /app/tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    # WARNING: direct Docker socket mount = host root equivalent.
+    # The :ro suffix only restricts filesystem writes to the socket path;
+    # it does NOT filter Docker Engine API requests ƒ?" any holder can mutate the daemon.
+    # In production use an allowlisted socket proxy (e.g. tecnativa/docker-socket-proxy)
+    # and set DOCKER_HOST to the proxy (e.g. tcp://socket-proxy:2375). This mount
+    # is for trusted dev/lab only. Enable only via --profile discord.
+    environment:
+      DISCORD_TOKEN: ${DISCORD_TOKEN:-}
+      PTERODACTYL_API_URL: ${PTERODACTYL_API_URL:-http://localhost:8080/api}
+      PTERODACTYL_API_KEY: ${PTERODACTYL_API_KEY:-local-dev-key}
+      SERVER_CREATION_CHANNEL_ID: ${SERVER_CREATION_CHANNEL_ID:-}
+      LOCATION_ID: ${LOCATION_ID:-1}
+      API_BASE_URL: http://management-panel:3001
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: ${POSTGRES_USER:-infra_pilot}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_NAME: ${POSTGRES_DB:-infra_pilot}
+      WHITELIST_IDS: ${WHITELIST_IDS:-}
+      HEALTH_CHECK_INTERVAL_SECONDS: ${HEALTH_CHECK_INTERVAL_SECONDS:-60}
+      DEFAULT_SSH_IMAGE: ${DEFAULT_SSH_IMAGE:-ubuntu:22.04}
+      PUBLIC_IP: ${PUBLIC_IP:-127.0.0.1}
+      SERVER_LIMIT: ${SERVER_LIMIT:-5}
+      CUTTLY_API_KEY: ${CUTTLY_API_KEY:-}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-}
+      BACKUP_RETENTION: '${BACKUP_RETENTION:-{"daily": 7, "weekly": 4, "monthly": 6}}'
+      HOST_IP: ${HOST_IP:-127.0.0.1}
+      NODE_ENV: ${NODE_ENV:-development}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "${DISCORD_WEBHOOK_PORT:-3002}:3000"
+
+

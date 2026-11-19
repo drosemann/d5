@@ -1,0 +1,42 @@
+
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\game-v2.html:21:    <p>Static page: works on Vercel as-is. 
+Set <code>window.SH_SOCKET_URL</code> before loading, paste your Supabase JWT, then connect.</p>
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\game-v2.html:33:<script 
+src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\game-v2.html:41:let socket = null;
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\game-v2.html:43:  socket = io(window.SH_SOCKET_URL || '', { 
+auth: { token: document.getElementById('token').value } });
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\game-v2.html:44:  socket.on('connect', () => { 
+document.getElementById('status').textContent = 'Connected.'; socket.emit('chunk:get', show); });
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\game-v2.html:45:  socket.on('connect_error', () => { 
+document.getElementById('status').textContent = 'Auth/connection failed.'; });
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\game-v2.html:50:  socket.emit('place', { grid_x: x, grid_y: 
+y, type }, (r) => {
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\game-v2.html:56:  socket.emit('booster:activate', (r) => {
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\admin\index.html:6:<link rel="stylesheet" 
+href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\admin\index.html:12:<script 
+src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+===TESTS===
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { sanitizeMeta, sanitizeBestRun } from '../src/persistence/MetaStore.js';
+import { createInitialState, resetRun, getWaveKillTarget, syncWeaponState, currentWeapon } from '../src/core/GameState.js';
+import { mulberry32 } from '../src/core/rng.js';
+import { createEventBus } from '../src/core/EventBus.js';
+import { updateWave, beginWave } from '../src/simulation/WaveSystem.js';
+import { tryShoot } from '../src/simulation/WeaponSystem.js';
+import { levelCost } from '../src/data/upgrades.js';
+
+const meta = { credits: 0, survivor: 0, prospector: 0, arsenal: 0, veteran: 0 };
+
+function makeState(seed = 1) {
+  const s = createInitialState({ width: 800, height: 600 }, { ...meta });
+  resetRun(s, s.meta, s.world, 0, false);
+  s.phase = 'playing';
+  const rng = mulberry32(seed);
+  const bus = createEventBus();
+  return { s, ctx: { rng, bus, persistMeta: () => {}, onGameOver: () => { s.phase = 'gameover'; } } };
+}
+
+

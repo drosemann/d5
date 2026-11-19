@@ -1,0 +1,73 @@
+Get-ChildItem : Es wurde kein Parameter gefunden, der dem Parameternamen "la" entspricht.
+In Zeile:1 Zeichen:4
++ ls -la; echo ===; Get-ChildItem -Recurse -File | Select-Object -First ...
++    ~~~
+    + CategoryInfo          : InvalidArgument: (:) [Get-ChildItem], ParameterBindingException
+    + FullyQualifiedErrorId : NamedParameterNotFound,Microsoft.PowerShell.Commands.GetChildItemCommand
+ 
+===
+
+FullName                                                                                             
+--------                                                                                             
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\.env.example                              
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\.gitignore                                
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\CODE_OF_CONDUCT.md                        
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\CONTRIBUTING.md                           
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\docker-compose.yml                        
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\game-v2.html                              
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\game.html                                 
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\game.js                                   
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\index.html                                
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\LICENSE                                   
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\package.json                              
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\README.md                                 
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\rules.md                                  
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\SECURITY_REVIEW.md                        
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\vercel.json                               
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\admin\index.html                          
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\api\socket.js                             
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\arrow.png                          
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\background-day.png                 
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\background-night.png               
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\background-storm.png               
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\city-planner.png                   
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\door.png                           
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\effect-dash-trail.png              
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\effect-explosion.png               
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\effect-hit-spark.png               
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\elephant.png                       
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\enemy-basic.png                    
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\enemy-exploder.png                 
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\enemy-fast.png                     
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\enemy-ranged.png                   
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\enemy-tank.png                     
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\game-background.png                
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\logo.png                           
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\mystic-forest-background.png       
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\nature-background.png              
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\pickup-coins.png                   
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\pickup-health.png                  
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\pickup-powerup-damage.png          
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\pickup-powerup-shield.png          
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\pickup-powerup-speed.png           
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\player-avatar.png                  
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\projectile-enemy.png               
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\projectile-player.png              
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\space-background.png               
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\the-trader.png                     
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\tricaluctus(underwater-monster).png
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\ui-coin.png                        
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\ui-heart.png                       
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\ui-stamina.png                     
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\ui-upgrade-damage.png              
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\ui-upgrade-health.png              
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\ui-upgrade-speed.png               
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\ui-wave.png                        
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\assets\wall.png                           
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\db\schema.sql                             
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\db\seed.sql                               
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\devlog\DEVLOG.md                          
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\devlog\image-1.png                        
+\\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\devlog\image-2.png                        
+
+

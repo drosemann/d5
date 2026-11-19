@@ -1,0 +1,1 @@
+{"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\Agentenplattform\\infra\\caddy\\Caddyfile","hunks":[{"oldStart":1,"oldLines":0,"newStart":1,"newLines":5,"lines":["+{$default}:80 {","+  reverse_proxy /api/* backend:8000","+  reverse_proxy /health/* backend:8000","+  reverse_proxy /* frontend:80","+}"]}]}]}

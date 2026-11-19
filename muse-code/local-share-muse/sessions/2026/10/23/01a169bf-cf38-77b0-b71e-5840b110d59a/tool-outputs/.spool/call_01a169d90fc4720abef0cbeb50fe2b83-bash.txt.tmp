@@ -1,0 +1,21 @@
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'bootstrap.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/WORKSPACE.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'server.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'workspace.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'memory.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'models.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'settings.js', LF will be replaced by CRLF the next time Git touches it
+M  README.md
+M  bootstrap.js
+M  docs/WORKSPACE.md
+A  memory.js
+A  models.js
+M  server.js
+A  settings.js
+M  workspace.js
+[main c554fa7] Phase 6: memory, models and settings
+ 8 files changed, 358 insertions(+), 8 deletions(-)
+ create mode 100644 memory.js
+ create mode 100644 models.js
+ create mode 100644 settings.js

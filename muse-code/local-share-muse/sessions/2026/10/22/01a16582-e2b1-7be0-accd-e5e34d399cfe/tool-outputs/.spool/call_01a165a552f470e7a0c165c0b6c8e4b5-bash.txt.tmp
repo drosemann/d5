@@ -1,0 +1,39 @@
+
+> \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\types.ts:10:export interface 
+DockerApp {
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\types.ts:11:  id: string;
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\types.ts:12:  user_id: string;
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\types.ts:13:  name: string;
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\types.ts:14:  image: string;
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\types.ts:15:  status: 
+'running' | 'stopped' | 'restarting' | 'error';
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\types.ts:16:  container_id?: 
+string;
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\types.ts:17:  ports?: Array<{ 
+hostPort: number; containerPort: number; protocol: string }>;
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\types.ts:18:  
+environment_vars?: Record<string, string>;
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\types.ts:19:  volumes?: 
+Array<{ hostPath: string; containerPath: string }>;
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\types.ts:20:  
+restart_policy?: string;
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\types.ts:21:  memory_limit?: 
+string;
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\types.ts:22:  cpu_shares?: 
+number;
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\types.ts:23:  description?: 
+string;
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\types.ts:24:  labels?: 
+Record<string, string>;
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\types.ts:25:  javaVersion?: 
+string;
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\types.ts:26:  created_at: 
+string;
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\types.ts:27:  updated_at: 
+string;
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\types.ts:28:  started_at?: 
+string;
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\types.ts:29:}
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\types.ts:30:
+
+

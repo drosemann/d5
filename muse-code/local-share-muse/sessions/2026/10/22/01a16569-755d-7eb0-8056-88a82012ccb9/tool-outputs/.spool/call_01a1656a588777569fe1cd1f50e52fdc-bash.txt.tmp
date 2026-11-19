@@ -1,0 +1,16 @@
+dir : Das zweite Pfadfragment darf kein Laufwerk oder UNC-Name sein.
+Parametername: path2
+In Zeile:1 Zeichen:1
++ dir "$env:USERPROFILE\VirtualBox VMs" /s; reg query "HKLM\SOFTWARE\Mi ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (C:\Users\danie\VirtualBox VMs:String) [Get-ChildItem], ArgumentExcepti 
+   on
+    + FullyQualifiedErrorId : DirArgumentError,Microsoft.PowerShell.Commands.GetChildItemCommand
+ 
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{33C54B58-28FD-4EDB-9351-B2F538A3E7E0}
+    URLInfoAbout    REG_SZ    http://www.virtualbox.org
+    URLUpdateInfo    REG_SZ    http://www.virtualbox.org
+    DisplayName    REG_SZ    Oracle VirtualBox 7.2.16
+
+Suchvorgang abgeschlossen: 3 Åbereinstimmende Zeichenfolge(n) gefunden.

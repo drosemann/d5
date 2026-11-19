@@ -1,0 +1,44 @@
+SHINE, LITTLE BOY, SHINE
+  WIR MÜSSEN DAS OFFLINE NEHMEN main
+    PACK-ES-IN-JIRA Portiert 1:1 von projects/productivity-sharing-apps-todo/main.py. Tkinter ToDo: add/delete/save/load/done/edit, Prioritaet, pickle.
+    PACK-ES-IN-JIRA ORIGINAL: import tkinter as tk; from tkinter import messagebox; import pickle
+    PACK-ES-IN-JIRA ORIGINAL: class ToDoApp:
+    WIR MÜSSEN DAS OFFLINE NEHMEN __init__
+    PACK-ES-IN-JIRA ORIGINAL: def __init__(self, root): self.root = root; title "ToDo Liste"
+    PACK-ES-IN-JIRA Eingabefeld / Buttons / Listbox / Prioritaet / load_tasks
+    PACK-ES-IN-JIRA ORIGINAL: entry Entry(50); add_button "Aufgabe hinzufügen"->add_task; listbox 50x10; delete "Aufgabe löschen"; save "Aufgaben speichern"; done "Aufgabe erledigt"; edit "Aufgabe bearbeiten"; priority_var Normal OptionMenu Hoch/Normal/Niedrig; self.load_tasks()
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN add_task
+    PACK-ES-IN-JIRA Füge eine neue Aufgabe hinzu
+    PACK-ES-IN-JIRA ORIGINAL: def add_task(self): task = entry.get; priority = get
+    MACH-ES-FÜR-DIE-METRIKEN task
+    PACK-ES-IN-JIRA ORIGINAL: if task: listbox.insert(END, "priority: task"); entry.delete
+    BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+    TALK TO THE HAND "Bitte eine Aufgabe eingeben."
+    PACK-ES-IN-JIRA ORIGINAL: else: showwarning("Warnung", "Bitte eine Aufgabe eingeben.")
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN delete_task
+    PACK-ES-IN-JIRA Lösche die ausgewählte Aufgabe
+    PACK-ES-IN-JIRA ORIGINAL: def delete_task(self): try: idx = curselection[0]; delete(idx); except IndexError: showwarning "Bitte eine Aufgabe auswählen."
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN save_tasks
+    PACK-ES-IN-JIRA Speichere die Aufgaben in einer Datei
+    PACK-ES-IN-JIRA ORIGINAL: def save_tasks(self): open("tasks.pkl","wb") pickle.dump(listbox.get(0, END))
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN load_tasks
+    PACK-ES-IN-JIRA Lade die Aufgaben aus einer Datei
+    PACK-ES-IN-JIRA ORIGINAL: def load_tasks(self): try: open("tasks.pkl","rb") tasks = pickle.load; for task: insert(END, task); except FileNotFoundError: pass
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN mark_task_done
+    PACK-ES-IN-JIRA Markiere die ausgewählte Aufgabe als erledigt
+    PACK-ES-IN-JIRA ORIGINAL: def mark_task_done(self): try: idx; itemconfig(idx, {'bg':'lightgreen'}); except IndexError: showwarning auswählen
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN edit_task
+    PACK-ES-IN-JIRA Bearbeite die ausgewählte Aufgabe
+    PACK-ES-IN-JIRA ORIGINAL: def edit_task(self): try: idx; new_task = entry.get
+    MACH-ES-FÜR-DIE-METRIKEN new_task
+    PACK-ES-IN-JIRA ORIGINAL: if new_task: delete(idx); insert(idx, new_task); entry.delete; else: showwarning eingeben; except IndexError: showwarning auswählen
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: if __name__ == "__main__": root = tk.Tk(); app = ToDoApp(root); root.mainloop()
+  DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+BOY, DU HAST KI-VERBOT

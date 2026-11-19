@@ -1,0 +1,86 @@
+Fehler beim Ausfhren des Programms "python.exe": Das System kann auf die Datei nicht zugreifenIn Zeile:1 Zeichen:1
++ python --version 2>&1; python -m py_compile tools/mc-import/import.py ...
++ ~~~~~~~~~~~~~~~~~~~~~.
+In Zeile:1 Zeichen:1
++ python --version 2>&1; python -m py_compile tools/mc-import/import.py ...
++ ~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (:) [], ApplicationFailedException
+    + FullyQualifiedErrorId : NativeCommandFailed
+ 
+Fehler beim Ausfhren des Programms "python.exe": Das System kann auf die Datei nicht zugreifenIn Zeile:1 Zeichen:24
++ ... -version 2>&1; python -m py_compile tools/mc-import/import.py; echo " ...
++                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.
+In Zeile:1 Zeichen:24
++ ... -version 2>&1; python -m py_compile tools/mc-import/import.py; echo " ...
++                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (:) [], ApplicationFailedException
+    + FullyQualifiedErrorId : NativeCommandFailed
+ 
+py_compile exit=False
+
+
+    Verzeichnis: \\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\shared
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a---l        22.10.2026     22:38           2186 economy.js                                                           
+-a---l        22.10.2026     22:38            850 world.js                                                             
+
+
+    Verzeichnis: \\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\server\src
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a---l        22.10.2026     22:39           4059 actions.js                                                           
+-a---l        22.10.2026     22:39           1576 chunks.js                                                            
+-a---l        22.10.2026     22:38            187 db.js                                                                
+-a---l        22.10.2026     22:39           4151 index.js                                                             
+-a---l        22.10.2026     22:39           2618 tick.js                                                              
+
+
+    Verzeichnis: \\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\db
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a---l        22.10.2026     22:40           3076 schema.sql                                                           
+-a---l        22.10.2026     22:38            307 seed.sql                                                             
+
+
+    Verzeichnis: \\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\docs\v2
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a---l        22.10.2026     22:40           1223 DECISIONS.md                                                         
+-a---l        22.10.2026     22:40            949 PROTOCOL.md                                                          
+-a---l        22.10.2026     22:40           1080 SELFHOST.md                                                          
+
+
+    Verzeichnis: \\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\admin
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a---l        22.10.2026     22:40           1358 index.html                                                           
+
+
+    Verzeichnis: \\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\tools\mc-import
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a---l        22.10.2026     22:40           2170 import.py                                                            
+-a---l        22.10.2026     22:40            272 mc_to_sh.json                                                        
+
+
+    Verzeichnis: \\?\C:\Users\danie\OneDrive\github-repos\stranded-horizons\api
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a---l        22.10.2026     22:39            671 socket.js                                                            
+
+

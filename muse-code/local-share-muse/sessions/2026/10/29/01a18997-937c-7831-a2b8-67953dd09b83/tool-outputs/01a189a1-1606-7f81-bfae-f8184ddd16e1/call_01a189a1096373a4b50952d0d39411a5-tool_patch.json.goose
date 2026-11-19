@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189a1-1606-7f81-bfae-f8184ddd16e1/call_01a189a1096373a4b50952d0d39411a5-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189a1-1606-7f81-bfae-f8184ddd16e1/call_01a189a1096373a4b50952d0d39411a5-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189a1-1606-7f81-bfae-f8184ddd16e1/call_01a189a1096373a4b50952d0d39411a5-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\TRAUMALANG-GAPS.md","hunks":[{"oldStart":293,"oldLines":6,"newStart":293,"newLines":8,"lines":[" "," - `scripts/db-restore.tl` (neu) Warnungen: Zeile 4 (`BASH_SOURCE`-Pfadaufloesung); Zeile 49 (`while` ueber `$#` mit `shift`/`case`); Zeile 82 (`command -v gpg`); Zeile 86 (`mktemp` mit `trap`-Cleanup); Zeile 89 (`gpg --decrypt`); Zeile 92 (PGDMP-Header-Check via `head -c`); Zeilen 97/99 (Dry-run mit `pg_restore --list`); Zeile 110 (`command -v docker`); Zeilen 121/129/133/145 (Confirm-`read -p`, `docker compose exec/cp/stop/start`, `docker run` mit Volumes)"," ","+- `scripts/install-deps.tl` (neu) Warnungen: Zeile 4 (`BASH_SOURCE`-Pfadaufloesung); Zeile 32 (`while` ueber `$#` mit `shift`/`case`); Zeilen 43/72/73 (`command -v` npm/pip/pip3, `PIP`-Zuweisung via `command -v`); Zeilen 47/55/63/78/84/89 (`npm ci`/`npm install` mit `||`-Fallback, `$PIP install -r`)","+"," ## 5. Sonstiges für den nächsten Agenten"," "," - `--roast`-Modus des Rewriters wurde nie verwendet; sarkastische Marker"]}]}]}

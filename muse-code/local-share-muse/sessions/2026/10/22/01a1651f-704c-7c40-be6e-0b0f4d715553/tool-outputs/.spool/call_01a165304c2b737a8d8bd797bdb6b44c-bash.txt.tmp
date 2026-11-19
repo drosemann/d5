@@ -1,0 +1,39 @@
+muse : "\\?\C:\Users\danie"
+In Zeile:1 Zeichen:1
++ muse skills --help 2>&1 | Select-Object -First 80; echo ---; muse --h ...
++ ~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ("\\?\C:\Users\danie":String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+CMD.EXE wurde mit dem oben angegebenen Pfad als aktuellem Verzeichnis gestartet.
+UNC-Pfade werden nicht unterstÅtzt.
+Stattdessen wird das Windows-Verzeichnis als aktuelles Verzeichnis gesetzt.
+usage: muse skills list [--source all|user|project|built-in|plugin] [--enabled-only] [--workspace <path>] [--trust-workspace] [--json]
+
+usage: muse skills inspect <skill-id-or-path> [--source all|user|project|built-in|plugin] [--workspace <path>] [--trust-workspace] [--json]
+
+usage: muse skills enable <skill-id-or-path> --scope user|project|built-in|plugin [--workspace <path>] [--trust-workspace] [--json]
+
+usage: muse skills user-only <skill-id-or-path> --scope user|project|built-in|plugin [--workspace <path>] [--trust-workspace] [--json]
+
+usage: muse skills disable <skill-id-or-path> --scope user|project|built-in|plugin [--workspace <path>] [--trust-workspace] [--json]
+
+usage: muse skills validate <path> [--json]
+
+usage: muse skills install <path> [--scope user] [--name NAME] [--force] [--json]
+
+usage: muse skills import --from claude|codex [--scope user] [--dry-run] [--force] [--json]
+
+usage: muse skills update <skill-id> [--json]
+
+usage: muse skills uninstall <skill-id> [--keep-files] [--json]
+---
+
+    model-profile    Show what a model resolves to per knob and effort tier
+>   skills           List, inspect, enable, or disable skills
+    voice            Transcribe an audio clip into text
+    plugins          Validate and manage plugin bundles
+        --trust-workspace
+>           Trust this workspace for this run (load its skills and rules); does
+            not save trust
+        --disable-approval

@@ -1,0 +1,14 @@
+
+muse — interactive terminal coding agent
+  model-profile    Show what a model resolves to per knob and effort tier
+  init             Scaffold agent config in this workspace
+      --agents <JSON>
+          Supply one ephemeral agent-definition overlay
+      --reasoning-effort <EFFORT>
+          Meta reasoning effort: none|minimal|low|medium|high|xhigh|max|ultra
+          (default: high; alias: --effort)
+      --parallel-tool-calls
+          Enable Meta API parallel tool calls
+      --no-parallel-tool-calls
+          Disable Meta API parallel tool calls
+      --subagent-worktree-isolation

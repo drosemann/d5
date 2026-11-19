@@ -1,0 +1,413 @@
+﻿// Goose-Port-Spiegel von: d5lang-port/docs/INTEGRATION.d5
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: d5lang-port/docs/INTEGRATION.d5");
+}
+
+// ---- Original-Code (d5lang-port/docs/INTEGRATION.d5), unveraendert, als Inline-Doku ----
+// SHINE, LITTLE BOY, SHINE
+//   WIR MÜSSEN DAS OFFLINE NEHMEN main
+//     PACK-ES-IN-JIRA Portiert 1:1 von docs/INTEGRATION.md. Jede Originalzeile ist erhalten, nichts geschnitten.
+//     PACK-ES-IN-JIRA ORIGINAL-BOM: Datei beginnt mit UTF-8-BOM.
+//     PACK-ES-IN-JIRA ORIGINAL: # d5 - Integration status
+//     PACK-ES-IN-JIRA ORIGINAL: Rebranded from ShadowCore to **d5**. `app/` is now a single-page app with hash routing (`#/`, `#/catalog`, `#/project/<slug>`, `#/tools`, `#/tool/<id>`). Serve the repo root (not just `app/`) so relative links to `projects/` resolve.
+//     PACK-ES-IN-JIRA ORIGINAL: ## Runtime layout (what actually runs now)
+//     PACK-ES-IN-JIRA ORIGINAL: 149 projects are catalogued (`app/catalog.json` + `app/catalog.js`): 76 merged git repos plus 73 non-git folders copied from `!Coding-Enviroment` into `projects/`. Nothing was deleted; originals stay in `projects/`.
+//     PACK-ES-IN-JIRA ORIGINAL: - **30 static web projects run inside d5**, embedded via iframe with a standalone fallback link (see `RUNNABLE` in `app/app.js`, value = entry file). Every entry was verified by reading the file: no build stubs, no server templates. React/Vite/Next sources (talkativecloud, d5niel, portfolio, PhotoShare, …) are NOT embedded — their `index.html` files are unbuilt stubs that render blank.
+//     PACK-ES-IN-JIRA ORIGINAL: - **21 projects are ported to working in-browser tools** served under `#/tools` (18 tool pages; link-shortener, speedtest and todo each cover two slugs): Calculator (25 ops), BMI Rechner, Klasse Bruch, Tokyo Metro Pricing, Kilometerzähler, Wetter Daten Analyse (`app/tools.js`); Snake, Tic-Tac-Toe (human X vs random bot + tally), Ping Pong with points shop (`app/games.js`); Guestbook (BBCode + validation, localStorage instead of PHP/MySQL), Login Demo (local auth instead of the PHP stub), Link Shortener (base62 + visit counter), Splitwise (equal splits, balances, settle-up), Speedtest (live ping + download; upload reported honestly when the static host rejects POST), Sortier-Planer (same extension map, exports `.ps1`/`.sh` move scripts since the browser cannot move user files), ToDo, NoteNest (AES-GCM notes, password-derived key), Edge-Payload-Decoder (`app/apps.js`, `app/apps2.js`).
+//     PACK-ES-IN-JIRA ORIGINAL: - Faithful-port notes: Calculator ops 22/23 were dead code in the original (listed but never dispatched) and are implemented in the port; BMI thresholds are copied verbatim including the 24.9–25 gap that falls through to Adipositas; Bruch reduce uses gcd instead of the original trial-division loop. Dropped placeholder limbs are documented per-tool in code comments.
+//     PACK-ES-IN-JIRA ORIGINAL: - **98 projects are source-only with an in-app source view** (README preview + file browser + a per-project reason, see `SOURCE_WHY` in `app/app.js`): all Java/Minecraft plugins and game concepts, Flutter/Dart, C/TraumaLang, server-backed Flask/Django/Next apps, Discord bots, PHP backends without a static frontend, desktop/OS-level tools (pyautogui, keyboard automation, PowerShell scripts), shell setup scripts, empty or corrupted sources (llama coder, katzen_python), and data dumps. Each page states plainly why it cannot run in the browser.
+//     PACK-ES-IN-JIRA ORIGINAL: ## Previous rules (kept for per-project history below)
+//     PACK-ES-IN-JIRA ORIGINAL: ShadowCore is one repository and one launcher/catalog app. Not every merged project can run inside that app yet. This file says, per project, what it is and what is planned. Nothing here claims a project is integrated when it is not.
+//     PACK-ES-IN-JIRA ORIGINAL: ## Rules
+//     PACK-ES-IN-JIRA ORIGINAL: - Web/JS projects: candidates to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: - Java / Minecraft plugins: standalone for now. Planned: rewrite them to work in the browser game.
+//     PACK-ES-IN-JIRA ORIGINAL: - Python apps: standalone for now. Planned: port them to work in the app.
+//     PACK-ES-IN-JIRA ORIGINAL: - Websites: planned to integrate into the app instead of staying separate sites.
+//     PACK-ES-IN-JIRA ORIGINAL: - Everything else: standalone module in `projects/`, runnable on its own terms if at all.
+//     PACK-ES-IN-JIRA ORIGINAL: - History note: project histories were merged with `git subtree` (original commits preserved, combined via merge commits on one `main`). Four repos had no readable history (`ai assistant (flask)`, `chat`, `chat app`, `ClearCall`) and were imported as file snapshots only.
+//     PACK-ES-IN-JIRA ORIGINAL: ## ai assistant html, css, javascript, python (flask) for openai api
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: AI & LLM Projects
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Python, Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/ai-&-llm-projects-ai-assistant-html,-css,-javascript,-python-(flask)-for-openai-api`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## chat
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: AI & LLM Projects\ai chat website
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Python, Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/ai-&-llm-projects-ai-chat-website-chat`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## super-fast-ai-chat
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: AI & LLM Projects\ai chat website
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/ai-&-llm-projects-ai-chat-website-super-fast-ai-chat`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## talkativecloud
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: AI & LLM Projects\ai chat website
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/ai-&-llm-projects-ai-chat-website-talkativecloud`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## gpt-5-mini-game
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: AI & LLM Projects
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/ai-&-llm-projects-gpt-5-mini-game`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## web-scraping-chatbot
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: AI & LLM Projects
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Python, Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/ai-&-llm-projects-web-scraping-chatbot`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## bodymassindex
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Archive - Unsorted
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Python
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/archive-unsorted-bodymassindex`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## calculator
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Archive - Unsorted
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Python
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/archive-unsorted-calculator`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## chat app
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Archive - Unsorted
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/archive-unsorted-chat-app`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## die_klasse_bruch
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Archive - Unsorted
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Python
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/archive-unsorted-die_klasse_bruch`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## drachen-im-asphalt
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Archive - Unsorted
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Python
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/archive-unsorted-drachen-im-asphalt`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## goose-desktop-companion
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Archive - Unsorted
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Python
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/archive-unsorted-goose-desktop-companion`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## Kilometerzähler
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Archive - Unsorted
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Python
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/archive-unsorted-kilometerzähler`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## Kilometerz-hler
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Archive - Unsorted
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Python
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/archive-unsorted-kilometerz-hler`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## modernize-website-design
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Archive - Unsorted
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/archive-unsorted-modernize-website-design`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## Rebioot
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Archive - Unsorted
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/archive-unsorted-rebioot`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## tokyo-metro-pricing
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Archive - Unsorted
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Python
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/archive-unsorted-tokyo-metro-pricing`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## wetter-daten-analyse
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Archive - Unsorted
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Python
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/archive-unsorted-wetter-daten-analyse`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## browser game
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Browser Games
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Java, Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/browser-games-browser-game`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.
+//     PACK-ES-IN-JIRA ORIGINAL: ## online-game-backend
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Browser Games\browser game
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Other
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/browser-games-browser-game-online-game-backend`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone module: kept as-is, integration not yet planned in detail.
+//     PACK-ES-IN-JIRA ORIGINAL: ## tamagotchi-game
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Browser Games
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/browser-games-tamagotchi-game`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## aktienwerk
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Cloud, Hosting & SaaS
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Python
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/cloud,-hosting-&-saas-aktienwerk`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## hosting-club-discord-bot
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Cloud, Hosting & SaaS
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/cloud,-hosting-&-saas-hosting-club-discord-bot`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## hosting-club-redesign
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Cloud, Hosting & SaaS
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/cloud,-hosting-&-saas-hosting-club-redesign`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## hosting-club-site
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Cloud, Hosting & SaaS
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/cloud,-hosting-&-saas-hosting-club-site`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## hosting-club-redesign
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Cloud, Hosting & SaaS\hosting-software
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/cloud,-hosting-&-saas-hosting-software-hosting-club-redesign`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## hosting-club-site
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Cloud, Hosting & SaaS\hosting-software
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/cloud,-hosting-&-saas-hosting-software-hosting-club-site`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## minisaas
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Cloud, Hosting & SaaS
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/cloud,-hosting-&-saas-minisaas`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## secure-vps-setup
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Cloud, Hosting & SaaS
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Other
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/cloud,-hosting-&-saas-secure-vps-setup`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone module: kept as-is, integration not yet planned in detail.
+//     PACK-ES-IN-JIRA ORIGINAL: ## uptime-site
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Cloud, Hosting & SaaS
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/cloud,-hosting-&-saas-uptime-site`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## ai-chat-webui
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: github-repos
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/github-repos-ai-chat-webui`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## cooperating-screen
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: github-repos
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/github-repos-cooperating-screen`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## drosemann
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: github-repos
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Other
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/github-repos-drosemann`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone module: kept as-is, integration not yet planned in detail.
+//     PACK-ES-IN-JIRA ORIGINAL: ## ed-docs
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: github-repos
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/github-repos-ed-docs`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## forgecms
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: github-repos
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Python, Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/github-repos-forgecms`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## forum-for-nerds
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: github-repos
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Python, Web/JS, PHP
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/github-repos-forum-for-nerds`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## blog
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: github-repos\forum-for-nerds\Blog, CMS & Community Platforms
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## BlogForge
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: github-repos\forum-for-nerds\Blog, CMS & Community Platforms
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Python, Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blogforge`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## blog-forum-with-z.ai
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: github-repos\forum-for-nerds\Blog, CMS & Community Platforms
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-forum-with-z.ai`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## blog-website-frontend---backend
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: github-repos\forum-for-nerds\Blog, CMS & Community Platforms
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS, PHP
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-blog-website-frontend-backend`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## Forumino
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: github-repos\forum-for-nerds\Blog, CMS & Community Platforms
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/github-repos-forum-for-nerds-blog,-cms-&-community-platforms-forumino`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## infra-pilot
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: github-repos
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Python, Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/github-repos-infra-pilot`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## stranded-horizons
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: github-repos
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Python, Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/github-repos-stranded-horizons`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## streuland
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: github-repos
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Java, Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/github-repos-streuland`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.
+//     PACK-ES-IN-JIRA ORIGINAL: ## fun_ccna_learning
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Learning Projects
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/learning-projects-fun_ccna_learning`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## it-security-learning-platform
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Learning Projects
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/learning-projects-it-security-learning-platform`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## katzen_python
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Learning Projects
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Python
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/learning-projects-katzen_python`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## pseudocode
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Learning Projects
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Java, Python
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/learning-projects-pseudocode`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.
+//     PACK-ES-IN-JIRA ORIGINAL: ## python
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Learning Projects
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Python
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/learning-projects-python`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## python-code
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Learning Projects
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Python
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/learning-projects-python-code`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## TraumaLang
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Learning Projects
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Python
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/learning-projects-traumalang`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## arena-auto-reset
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Minecraft Plugins & Server Systems
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Java
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/minecraft-plugins-&-server-systems-arena-auto-reset`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.
+//     PACK-ES-IN-JIRA ORIGINAL: ## bedwars
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Minecraft Plugins & Server Systems
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Java
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/minecraft-plugins-&-server-systems-bedwars`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.
+//     PACK-ES-IN-JIRA ORIGINAL: ## buildffa-revamp
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Minecraft Plugins & Server Systems
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Java
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/minecraft-plugins-&-server-systems-buildffa-revamp`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.
+//     PACK-ES-IN-JIRA ORIGINAL: ## clan-wars
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Minecraft Plugins & Server Systems
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Java
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/minecraft-plugins-&-server-systems-clan-wars`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.
+//     PACK-ES-IN-JIRA ORIGINAL: ## locate-structure-minecraft
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Minecraft Plugins & Server Systems
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Java
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/minecraft-plugins-&-server-systems-locate-structure-minecraft`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.
+//     PACK-ES-IN-JIRA ORIGINAL: ## tnt-remover
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Minecraft Plugins & Server Systems
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Java
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/minecraft-plugins-&-server-systems-tnt-remover`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.
+//     PACK-ES-IN-JIRA ORIGINAL: ## d5niel
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Personal & Client Websites
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/personal-&-client-websites-d5niel`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## jonathan-site
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Personal & Client Websites
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/personal-&-client-websites-jonathan-site`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## portfolio
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Personal & Client Websites
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/personal-&-client-websites-portfolio`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## link shortener
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Productivity & Sharing Apps
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: PHP
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/productivity-&-sharing-apps-link-shortener`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone module: kept as-is, integration not yet planned in detail.
+//     PACK-ES-IN-JIRA ORIGINAL: ## NoteNest
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Productivity & Sharing Apps
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/productivity-&-sharing-apps-notenest`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## PhotoShare
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Productivity & Sharing Apps
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/productivity-&-sharing-apps-photoshare`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## ShareBox
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Productivity & Sharing Apps
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/productivity-&-sharing-apps-sharebox`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## Shortify
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Productivity & Sharing Apps
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: PHP
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/productivity-&-sharing-apps-shortify`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone module: kept as-is, integration not yet planned in detail.
+//     PACK-ES-IN-JIRA ORIGINAL: ## OLD-party-planner
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Startup & Business Concepts
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/startup-&-business-concepts-old-party-planner`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## online-game-backend
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Startup & Business Concepts
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Other
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/startup-&-business-concepts-online-game-backend`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone module: kept as-is, integration not yet planned in detail.
+//     PACK-ES-IN-JIRA ORIGINAL: ## online-game-frontend
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Startup & Business Concepts
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/startup-&-business-concepts-online-game-frontend`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## Party Planner
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Startup & Business Concepts
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/startup-&-business-concepts-party-planner`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## party-planner
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Startup & Business Concepts\Party Planner
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/startup-&-business-concepts-party-planner-party-planner`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## scalable-ArnoldC-ecommerce
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Startup & Business Concepts
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/startup-&-business-concepts-scalable-arnoldc-ecommerce`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## audio_visualizer
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Utilities & Desktop Tools
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/utilities-&-desktop-tools-audio_visualizer`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## ClearCall
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Utilities & Desktop Tools
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/utilities-&-desktop-tools-clearcall`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## data-optimization
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Utilities & Desktop Tools
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Other
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/utilities-&-desktop-tools-data-optimization`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone module: kept as-is, integration not yet planned in detail.
+//     PACK-ES-IN-JIRA ORIGINAL: ## ui-optimization
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Utilities & Desktop Tools
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Web/JS
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/utilities-&-desktop-tools-ui-optimization`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Web project: candidate to integrate into the ShadowCore web app.
+//     PACK-ES-IN-JIRA ORIGINAL: ## youtube-downloader
+//     PACK-ES-IN-JIRA ORIGINAL: - Category: Utilities & Desktop Tools
+//     PACK-ES-IN-JIRA ORIGINAL: - Stack: Python
+//     PACK-ES-IN-JIRA ORIGINAL: - Folder: `projects/utilities-&-desktop-tools-youtube-downloader`
+//     PACK-ES-IN-JIRA ORIGINAL: - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
+//   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+// BOY, DU HAST KI-VERBOT
+//

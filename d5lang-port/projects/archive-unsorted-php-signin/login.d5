@@ -1,0 +1,101 @@
+SHINE, LITTLE BOY, SHINE
+  WIR MÜSSEN DAS OFFLINE NEHMEN main
+    PACK-ES-IN-JIRA Portiert 1:1 von projects/archive-unsorted-php-signin/login.php. Login, Registrierung, Verify, Recovery, Logout, Formulare.
+    PACK-ES-IN-JIRA ORIGINAL: <?php
+    PACK-ES-IN-JIRA ORIGINAL: session_start();
+    PACK-ES-IN-JIRA Simulated database for demonstration (replace with actual database logic)
+    PACK-ES-IN-JIRA ORIGINAL: $users = []; $verification_tokens = []; $reset_tokens = [];
+    PACK-ES-IN-JIRA Function to send verification email (dummy function)
+    WIR MÜSSEN DAS OFFLINE NEHMEN sendVerificationEmail
+    TALK TO THE HAND "Verification email sent"
+    PACK-ES-IN-JIRA ORIGINAL: function sendVerificationEmail($email, $token) { echo "Verification email sent to $email with token: $token\n"; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Function to send password reset email (dummy function)
+    WIR MÜSSEN DAS OFFLINE NEHMEN sendPasswordResetEmail
+    TALK TO THE HAND "Password reset email sent"
+    PACK-ES-IN-JIRA ORIGINAL: function sendPasswordResetEmail($email, $token) { echo "Password reset email sent to $email with token: $token\n"; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Handle login
+    MACH-ES-FÜR-DIE-METRIKEN POST und Benutzername und Passwort gesetzt
+    PACK-ES-IN-JIRA ORIGINAL: if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['Benutzername']) && isset($_POST['Passwort'])) {
+    PACK-ES-IN-JIRA ORIGINAL: $username = htmlspecialchars(trim($_POST['Benutzername'])); $password = htmlspecialchars(trim($_POST['Passwort']));
+    PACK-ES-IN-JIRA Validate user credentials
+    MACH-ES-FÜR-DIE-METRIKEN array_key_exists und password_verify
+    PACK-ES-IN-JIRA ORIGINAL: if (array_key_exists($username, $users) && password_verify($password, $users[$username]['password'])) {
+    MACH-ES-FÜR-DIE-METRIKEN verified
+    PACK-ES-IN-JIRA ORIGINAL: if ($users[$username]['verified']) { $_SESSION['username'] = $username; $message = "Willkommen, $username!"; }
+    BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+    PACK-ES-IN-JIRA ORIGINAL: else { $message = "Bitte bestätigen Sie Ihre E-Mail-Adresse."; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+    PACK-ES-IN-JIRA ORIGINAL: } else { $message = "Ungültiger Benutzername oder Passwort."; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Handle registration
+    MACH-ES-FÜR-DIE-METRIKEN new_username und new_password und email gesetzt
+    PACK-ES-IN-JIRA ORIGINAL: if (isset($_POST['new_username']) && isset($_POST['new_password']) && isset($_POST['email'])) {
+    PACK-ES-IN-JIRA ORIGINAL: $new_username = ...; $new_password = ...; $email = ...;
+    PACK-ES-IN-JIRA Basic validation
+    MACH-ES-FÜR-DIE-METRIKEN Felder nicht leer und E-Mail gültig
+    PACK-ES-IN-JIRA ORIGINAL: if (!empty($new_username) && !empty($new_password) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    PACK-ES-IN-JIRA Hash the password
+    PACK-ES-IN-JIRA ORIGINAL: $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+    PACK-ES-IN-JIRA Generate a verification token
+    PACK-ES-IN-JIRA ORIGINAL: $token = bin2hex(random_bytes(16)); $verification_tokens[$new_username] = $token;
+    PACK-ES-IN-JIRA Save the new user to the simulated database
+    PACK-ES-IN-JIRA ORIGINAL: $users[$new_username] = ['password' => $hashed_password, 'email' => $email, 'verified' => false];
+    PACK-ES-IN-JIRA Send verification email
+    PACK-ES-IN-JIRA ORIGINAL: sendVerificationEmail($email, $token);
+    PACK-ES-IN-JIRA ORIGINAL: $message = "Registrierung erfolgreich! Bitte überprüfen Sie Ihre E-Mail, um Ihr Konto zu aktivieren.";
+    BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+    PACK-ES-IN-JIRA ORIGINAL: } else { $message = "Bitte füllen Sie alle Felder korrekt aus."; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Handle email verification
+    MACH-ES-FÜR-DIE-METRIKEN verify und token gesetzt
+    PACK-ES-IN-JIRA ORIGINAL: if (isset($_GET['verify']) && isset($_GET['token'])) {
+    PACK-ES-IN-JIRA ORIGINAL: $username = ...; $token = ...;
+    MACH-ES-FÜR-DIE-METRIKEN Token passt
+    PACK-ES-IN-JIRA ORIGINAL: if (isset($verification_tokens[$username]) && $verification_tokens[$username] === $token) { $users[$username]['verified'] = true; unset($verification_tokens[$username]); $message = "E-Mail erfolgreich bestätigt! Sie können sich jetzt anmelden."; }
+    BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+    PACK-ES-IN-JIRA ORIGINAL: else { $message = "Ungültiger Bestätigungstoken."; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Handle password recovery
+    MACH-ES-FÜR-DIE-METRIKEN recover_username gesetzt
+    PACK-ES-IN-JIRA ORIGINAL: if (isset($_POST['recover_username'])) {
+    PACK-ES-IN-JIRA ORIGINAL: $recover_username = ...;
+    MACH-ES-FÜR-DIE-METRIKEN Benutzer existiert
+    PACK-ES-IN-JIRA ORIGINAL: if (array_key_exists($recover_username, $users)) {
+    PACK-ES-IN-JIRA Generate a password reset token
+    PACK-ES-IN-JIRA ORIGINAL: $reset_token = bin2hex(random_bytes(16)); $reset_tokens[$recover_username] = $reset_token;
+    PACK-ES-IN-JIRA Send password reset email
+    PACK-ES-IN-JIRA ORIGINAL: sendPasswordResetEmail($users[$recover_username]['email'], $reset_token); $message = "Ein Link zum Zurücksetzen des Passworts wurde an Ihre E-Mail gesendet.";
+    BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+    PACK-ES-IN-JIRA ORIGINAL: } else { $message = "Benutzername nicht gefunden."; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Handle logout
+    MACH-ES-FÜR-DIE-METRIKEN logout gesetzt
+    PACK-ES-IN-JIRA ORIGINAL: if (isset($_GET['logout'])) { session_destroy(); header("Location: login.php"); exit(); }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: ?>
+    PACK-ES-IN-JIRA ORIGINAL: <!DOCTYPE html> <html lang="de"> <head> <title>Login</title> <style> body { font-family: Arial, sans-serif; } .form-container {...} .error { color: red; } .success { color: green; } </style> </head> <body>
+    PACK-ES-IN-JIRA ORIGINAL: <h2>Langzeitgeschehen - Login</h2>
+    MACH-ES-FÜR-DIE-METRIKEN isset($message)
+    PACK-ES-IN-JIRA ORIGINAL: <?php if (isset($message)): ?> <p class="<?php ... success/error ... ?>"> <?php echo $message; ?> </p> <?php endif; ?>
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    MACH-ES-FÜR-DIE-METRIKEN !isset($_SESSION['username'])
+    PACK-ES-IN-JIRA ORIGINAL: <?php if (!isset($_SESSION['username'])): ?>
+    PACK-ES-IN-JIRA ORIGINAL: <div class="form-container"> <h3>Login</h3> <form ...> Benutzername, Passwort, Anmelden </form>
+    PACK-ES-IN-JIRA ORIGINAL: <h3>Neu hier? <a href="#register">Registrieren</a></h3> <h3><a href="#recover">Passwort vergessen?</a></h3>
+    PACK-ES-IN-JIRA ORIGINAL: <div id="register" style="display:none;"> <h2>Registrieren</h2> <form ...> new_username, new_password, email, Registrieren </form> </div>
+    PACK-ES-IN-JIRA ORIGINAL: <div id="recover" style="display:none;"> <h2>Passwort Wiederherstellen</h2> <form ...> recover_username, Passwort zurücksetzen </form> </div> </div>
+    BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+    PACK-ES-IN-JIRA ORIGINAL: <?php else: ?> <h3>Willkommen, <?php echo $_SESSION['username']; ?>! <a href="?logout=true">Abmelden</a></h3> <?php endif; ?>
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Toggle visibility of registration and recovery forms
+    PACK-ES-IN-JIRA ORIGINAL: <script> register/recover Toggle-Listener </script>
+    PACK-ES-IN-JIRA ORIGINAL: </body> </html>
+  DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+BOY, DU HAST KI-VERBOT

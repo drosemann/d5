@@ -1,0 +1,1 @@
+{"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\ai-chat-webui\\package.json","hunks":[{"oldStart":15,"oldLines":7,"newStart":15,"newLines":7,"lines":["     \"webui\",","     \"express\"","   ],","-  \"license\": \"GPL-3.0-only\",","+  \"license\": \"MIT\",","   \"dependencies\": {","     \"dotenv\": \"^16.0.3\",","     \"express\": \"^4.18.2\""]}]}]}

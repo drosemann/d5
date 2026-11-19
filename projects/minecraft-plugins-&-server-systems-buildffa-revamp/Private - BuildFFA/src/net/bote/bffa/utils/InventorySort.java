@@ -24,7 +24,10 @@ public class InventorySort {
 			try {
 				new File("plugins/BFFA/Inventories/" + uuid + ".yml").createNewFile();
 			} catch (IOException e) {
-				// TODO: handle exception
+				Bukkit.getConsoleSender().sendMessage("Â§c[BFFA] Inventar-Datei fÃ¼r " + uuid + " konnte nicht erstellt werden: " + e.getMessage());
+				if (Bukkit.getPluginManager().getPlugin("BFFA") != null)
+					Bukkit.getPluginManager().getPlugin("BFFA").getLogger().warning("Inventar-Speichern fehlgeschlagen (" + uuid + "): " + e.getMessage());
+				e.printStackTrace();
 			}
 		}
 		
@@ -38,13 +41,13 @@ public class InventorySort {
 				
 				ItemMeta im = is.getItemMeta();
 				if(im.getDisplayName() != null) {
-					im.setDisplayName(im.getDisplayName().replace("§", "&"));
+					im.setDisplayName(im.getDisplayName().replace("Â§", "&"));
 				}
 				
 				List<String> lore = new ArrayList<String>();
 				if(im.getLore() != null) {
 					for(String s : im.getLore()) {
-						lore.add((s.replace("§", "&")));
+						lore.add((s.replace("Â§", "&")));
 					}
 					im.setLore(lore);
 				}
@@ -61,7 +64,9 @@ public class InventorySort {
 		try {
 			cfg.save(new File("plugins/BFFA/Inventories/" + uuid + ".yml"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			Bukkit.getConsoleSender().sendMessage("Â§c[BFFA] Fehler beim Speichern des Inventars fÃ¼r " + uuid + ": " + e.getMessage());
+			if (Bukkit.getPluginManager().getPlugin("BFFA") != null)
+				Bukkit.getPluginManager().getPlugin("BFFA").getLogger().warning("Inventar-Speichern fehlgeschlagen (" + uuid + "): " + e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -70,10 +75,10 @@ public class InventorySort {
 		File f = new File("plugins/BFFA/Inventories/" + uuid + ".yml");
 		
 		if(!(hasBank(uuid))) {
-			InventorySort.saveBank(uuid, Bukkit.createInventory(null, 27, "§eInventar"));
+			InventorySort.saveBank(uuid, Bukkit.createInventory(null, 27, "Â§eInventar"));
 		}
 		
-		Inventory inv = Bukkit.createInventory(null, 27, "§eInventar");
+		Inventory inv = Bukkit.createInventory(null, 27, "Â§eInventar");
 		
 		YamlConfiguration cfg = YamlConfiguration.loadConfiguration(f);
 		
@@ -107,20 +112,20 @@ public class InventorySort {
 		for(int i = 0; i < inv.getSize(); i++) {
 			
 			if(inv.getItem(i) != null) {
-				if(inv.getItem(i).getItemMeta().getDisplayName().equalsIgnoreCase("&6« Schwert »")) {
-					inv.getItem(i).getItemMeta().setDisplayName("§6« Schwert »");
+				if(inv.getItem(i).getItemMeta().getDisplayName().equalsIgnoreCase("&6Â§ Schwert Â§")) {
+					inv.getItem(i).getItemMeta().setDisplayName("Â§6Â§ Schwert Â§");
 				}
-				if(inv.getItem(i).getItemMeta().getDisplayName().equalsIgnoreCase("&3« Bogen »")) {
-					inv.getItem(i).getItemMeta().setDisplayName("§3« Bogen »");
+				if(inv.getItem(i).getItemMeta().getDisplayName().equalsIgnoreCase("&3Â§ Bogen Â§")) {
+					inv.getItem(i).getItemMeta().setDisplayName("Â§3Â§ Bogen Â§");
 				}
-				if(inv.getItem(i).getItemMeta().getDisplayName().equalsIgnoreCase("&c« KnockBack Stick »")) {
-					inv.getItem(i).getItemMeta().setDisplayName("§c« KnockBack Stick »");
+				if(inv.getItem(i).getItemMeta().getDisplayName().equalsIgnoreCase("&cÂ§ KnockBack Stick Â§")) {
+					inv.getItem(i).getItemMeta().setDisplayName("Â§cÂ§ KnockBack Stick Â§");
 				}
-				if(inv.getItem(i).getItemMeta().getDisplayName().equalsIgnoreCase("&e« Blöcke »")) {
-					inv.getItem(i).getItemMeta().setDisplayName("§e« Blöcke »");
+				if(inv.getItem(i).getItemMeta().getDisplayName().equalsIgnoreCase("&eÂ§ BlÃ¶cke Â§")) {
+					inv.getItem(i).getItemMeta().setDisplayName("Â§eÂ§ BlÃ¶cke Â§");
 				}
-				if(inv.getItem(i).getItemMeta().getDisplayName().equalsIgnoreCase("&5« Enderperle »")) {
-					inv.getItem(i).getItemMeta().setDisplayName("§5« Enderperle »");
+				if(inv.getItem(i).getItemMeta().getDisplayName().equalsIgnoreCase("&5Â§ Enderperle Â§")) {
+					inv.getItem(i).getItemMeta().setDisplayName("Â§5Â§ Enderperle Â§");
 				}
 			}
 			

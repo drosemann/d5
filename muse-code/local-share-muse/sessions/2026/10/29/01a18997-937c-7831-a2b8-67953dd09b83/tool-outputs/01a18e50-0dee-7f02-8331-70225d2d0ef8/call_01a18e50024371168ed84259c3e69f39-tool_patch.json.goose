@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a18e50-0dee-7f02-8331-70225d2d0ef8/call_01a18e50024371168ed84259c3e69f39-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a18e50-0dee-7f02-8331-70225d2d0ef8/call_01a18e50024371168ed84259c3e69f39-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a18e50-0dee-7f02-8331-70225d2d0ef8/call_01a18e50024371168ed84259c3e69f39-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\docs\\TRAUMALANG.md","hunks":[{"oldStart":106,"oldLines":6,"newStart":106,"newLines":8,"lines":[" | `tests/cli/test_gitops_commands.py` (141 Zeilen) | `tests/cli/test_gitops_commands.tl` | vollständig gelesen |"," | `tests/cli/test_config_profiles.py` (218 Zeilen) | `tests/cli/test_config_profiles.tl` | vollständig gelesen |"," | `tests/cli/test_output.py` (196 Zeilen) | `tests/cli/test_output.tl` | vollständig gelesen |","+| `tests/cli/test_main.py` (212 Zeilen) | `tests/cli/test_main.tl` | vollständig gelesen |","+| `tests/cli/test_doctor_tui.py` (484 Zeilen) | `tests/cli/test_doctor_tui.tl` | vollständig gelesen |"," | `services/orchestrator-agent/compute/__init__.py` (14 Zeilen) | `services/orchestrator-agent/compute/__init__.tl` | vollständig gelesen |"," | `services/orchestrator-agent/manifest/__init__.py` (19 Zeilen) | `services/orchestrator-agent/manifest/__init__.tl` | vollständig gelesen |"," | `services/orchestrator-agent/rbac/__init__.py` (29 Zeilen) | `services/orchestrator-agent/rbac/__init__.tl` | vollständig gelesen |"]}]}]}

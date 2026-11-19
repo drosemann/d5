@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/26/01a17a70-fbe5-79a1-a804-b788e3fbfaf0/tool-outputs/01a17a7b-c12c-7fd1-81ce-055aa816fd33/call_01a17a7bb54374a49f8e40a508631614-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/26/01a17a70-fbe5-79a1-a804-b788e3fbfaf0/tool-outputs/01a17a7b-c12c-7fd1-81ce-055aa816fd33/call_01a17a7bb54374a49f8e40a508631614-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/26/01a17a70-fbe5-79a1-a804-b788e3fbfaf0/tool-outputs/01a17a7b-c12c-7fd1-81ce-055aa816fd33/call_01a17a7bb54374a49f8e40a508631614-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\cli\\ipilot\\client.py","hunks":[{"oldStart":152,"oldLines":6,"newStart":152,"newLines":16,"lines":["     # Authentication","     # ------------------------------------------------------------------"," ","+    def list_flags(self) -> Any:","+        return self._get(f\"{API_PREFIX}/feature-flags\")","+    def evaluate_flags(self) -> Any:","+        return self._get(f\"{API_PREFIX}/feature-flags/evaluate\")","+    def create_flag(self, key: str, description: str = \"\") -> Any:","+        return self._post(f\"{API_PREFIX}/feature-flags\", {\"key\": key, \"description\": description})","+    def set_flag_rule(self, key: str, environment: str, enabled: bool, rollout: int = 0) -> Any:","+        return self._request(\"PATCH\", f\"{API_PREFIX}/feature-flags/{key}\", {\"rule\": {\"environment\": environment, \"enabled\": enabled, \"rollout_percentage\": rollout}})","+    def kill_flag(self, key: str) -> Any:","+        return self._post(f\"{API_PREFIX}/feature-flags/{key}/kill\")","     def login(self, api_key: str) -> Any:","         \"\"\"Authenticate with an API key."," "]}]}]}

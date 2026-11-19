@@ -1,0 +1,390 @@
+﻿# Zimbu-Port-Spiegel von: app\apps2.js
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE apps2_js
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: app\apps2.js\n")
+  RETURN 0
+
+# ---- Original-Code (app\apps2.js), unveraendert, als Inline-Doku ----
+# // Second batch of in-browser ports: Splitwise, Speedtest, Sortier-Planer,
+# // ToDo, encrypted notes (NoteNest), edge-payload decoder (data-optimization).
+# window.d5Apps2 = (function () {
+#   var store = {
+#     get: function (k, d) {
+#       try { var v = localStorage.getItem('d5:' + k); return v == null ? d : JSON.parse(v); }
+#       catch (e) { return d; }
+#     },
+#     set: function (k, v) { try { localStorage.setItem('d5:' + k, JSON.stringify(v)); } catch (e) {} }
+#   };
+#   function el(tag, text, attrs) {
+#     var e = document.createElement(tag);
+#     if (text != null) e.textContent = text;
+#     if (attrs) for (var k in attrs) e.setAttribute(k, attrs[k]);
+#     return e;
+#   }
+#   function esc(s) {
+#     return String(s).replace(/[&<>"']/g, function (c) {
+#       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+#     });
+#   }
+#   function field(label, input) {
+#     var l = el('label'); l.appendChild(document.createTextNode(label + ' ')); l.appendChild(input);
+#     return l;
+#   }
+#   function input(id, type, value, placeholder) {
+#     return el('input', null, { id: id, type: type || 'text', value: value == null ? '' : value, placeholder: placeholder || '' });
+#   }
+#
+#   // ---------- Splitwise (Flask: users, groups, expenses, balance service) ----------
+#   function viewSplitwise(root) {
+#     var db = store.get('splitwise', { users: [], groups: [], expenses: [], payments: [] });
+#     function save() { store.set('splitwise', db); }
+#     var form = el('div', null, { 'class': 'tool-form' });
+#     var uname = input('sp-user', 'text', '', 'Name');
+#     var addUser = el('button', 'Person hinzufügen', { type: 'button' });
+#     var gname = input('sp-group', 'text', '', 'Gruppenname');
+#     var addGroup = el('button', 'Gruppe anlegen (alle Personen)', { type: 'button' });
+#     var desc = input('sp-desc', 'text', '', 'Beschreibung');
+#     var amount = input('sp-amount', 'number', '', 'Betrag');
+#     var payer = el('select'), pFrom = el('select'), pTo = el('select');
+#     var addExp = el('button', 'Ausgabe hinzufügen (gleichmäßig geteilt)', { type: 'button' });
+#     var pAmt = input('sp-pamt', 'number', '', 'Betrag');
+#     var settle = el('button', 'Ausgleichszahlung', { type: 'button' });
+#     var out = el('div');
+#     form.appendChild(field('Neue Person', uname)); form.appendChild(addUser);
+#     form.appendChild(field('Neue Gruppe', gname)); form.appendChild(addGroup);
+#     form.appendChild(field('Beschreibung', desc)); form.appendChild(field('Betrag', amount));
+#     form.appendChild(field('Bezahlt von', payer)); form.appendChild(addExp);
+#     form.appendChild(field('Zahlt', pFrom)); form.appendChild(field('Empfängt', pTo));
+#     form.appendChild(field('Betrag', pAmt)); form.appendChild(settle);
+#     root.appendChild(form); root.appendChild(out);
+#     function persons() {
+#       var opts = db.users.map(function (u) { return '<option>' + esc(u) + '</option>'; }).join('');
+#       payer.innerHTML = opts; pFrom.innerHTML = opts; pTo.innerHTML = opts;
+#     }
+#     function balance(u) {
+#       var paid = 0, owed = 0;
+#       db.expenses.forEach(function (x) {
+#         if (x.members.indexOf(u) === -1) return;
+#         if (x.payer === u) paid += x.amount;
+#         owed += x.amount / x.members.length;
+#       });
+#       var got = 0, gave = 0;
+#       db.payments.forEach(function (p) {
+#         if (p.from === u) gave += p.amount;
+#         if (p.to === u) got += p.amount;
+#       });
+#       return paid - owed - gave + got;
+#     }
+#     function render() {
+#       persons();
+#       var rows = db.users.map(function (u) {
+#         return '<tr><td>' + esc(u) + '</td><td>' + balance(u).toFixed(2) + '</td></tr>';
+#       }).join('');
+#       var ex = db.expenses.map(function (x) {
+#         return '<tr><td>' + esc(x.desc) + '</td><td>' + x.amount.toFixed(2) + '</td><td>' +
+#           esc(x.payer) + '</td><td>' + esc(x.members.join(', ')) + '</td></tr>';
+#       }).join('');
+#       var pm = db.payments.map(function (p) {
+#         return '<tr><td>' + esc(p.from) + ' → ' + esc(p.to) + '</td><td>' + p.amount.toFixed(2) + '</td></tr>';
+#       }).join('');
+#       out.innerHTML = '<h2>Personen &amp; Gruppen</h2><p class="meta">Personen: ' + esc(db.users.join(', ') || '—') +
+#         ' · Gruppen: ' + esc(db.groups.map(function (g) { return g.name; }).join(', ') || '—') + '</p>' +
+#         '<h2>Salden (gezahlt minus Anteil)</h2>' +
+#         '<table class="data"><tr><th>Person</th><th>Saldo</th></tr>' + (rows || '<tr><td>—</td><td>—</td></tr>') + '</table>' +
+#         '<h2>Ausgaben</h2><table class="data"><tr><th>Was</th><th>Betrag</th><th>Von</th><th>Geteilt mit</th></tr>' +
+#         (ex || '<tr><td>—</td><td>—</td><td>—</td><td>—</td></tr>') + '</table>' +
+#         '<h2>Ausgleichszahlungen</h2><table class="data"><tr><th>Von → An</th><th>Betrag</th></tr>' +
+#         (pm || '<tr><td>—</td><td>—</td></tr>') + '</table>';
+#     }
+#     addUser.addEventListener('click', function () {
+#       var n = uname.value.trim();
+#       if (!n || db.users.indexOf(n) !== -1) return;
+#       db.users.push(n); uname.value = ''; save(); render();
+#     });
+#     addGroup.addEventListener('click', function () {
+#       var n = gname.value.trim();
+#       if (!n) return;
+#       db.groups.push({ name: n, members: db.users.slice() });
+#       gname.value = ''; save(); render();
+#     });
+#     addExp.addEventListener('click', function () {
+#       var a = parseFloat(amount.value);
+#       if (!desc.value.trim() || !(a > 0) || !payer.value) return;
+#       db.expenses.push({ desc: desc.value.trim(), amount: a, payer: payer.value, members: db.users.slice(), date: Date.now() });
+#       desc.value = ''; amount.value = ''; save(); render();
+#     });
+#     settle.addEventListener('click', function () {
+#       var a = parseFloat(pAmt.value);
+#       if (!pFrom.value || !pTo.value || pFrom.value === pTo.value || !(a > 0)) return;
+#       db.payments.push({ from: pFrom.value, to: pTo.value, amount: a, date: Date.now() });
+#       pAmt.value = ''; save(); render();
+#     });
+#     render();
+#   }
+#
+#   // ---------- Speedtest (Flask speedtest-cli backend -> real browser measurement) ----------
+#   // Ping + download are measured live (fetch timing against same-origin
+#   // assets); upload POSTs to a static host fail, so it is attempted and
+#   // reported honestly instead of faked.
+#   function viewSpeedtest(root) {
+#     var wrap = el('div', null, { 'class': 'tool-form' });
+#     var go = el('button', 'Messung starten', { type: 'button' });
+#     var out = el('div', null, { 'class': 'output' });
+#     out.textContent = 'Misst Ping und Download gegen diesen Server. Upload nur falls der Server POST annimmt.';
+#     wrap.appendChild(go); wrap.appendChild(out);
+#     root.appendChild(wrap);
+#     function bust(u) { return u + (u.indexOf('?') === -1 ? '?' : '&') + 't=' + Date.now() + Math.random(); }
+#     go.addEventListener('click', function () {
+#       out.textContent = 'Messe …';
+#       var lines = [];
+#       var pings = [];
+#       function ping(i) {
+#         if (i >= 3) return download();
+#         var t0 = performance.now();
+#         fetch(bust('../app/catalog.json'), { cache: 'no-store' }).then(function (r) { return r.text(); }).then(function () {
+#           pings.push(performance.now() - t0);
+#           ping(i + 1);
+#         }).catch(function () { lines.push('Ping-Messung fehlgeschlagen.'); out.textContent = lines.join('\n'); });
+#       }
+#       function download() {
+#         var total = 0, t0 = performance.now(), rounds = 5, done = 0;
+#         for (var i = 0; i < rounds; i++) {
+#           fetch(bust('../app/catalog.js'), { cache: 'no-store' }).then(function (r) { return r.arrayBuffer(); }).then(function (b) {
+#             total += b.byteLength;
+#             if (++done === rounds) {
+#               var s = (performance.now() - t0) / 1000;
+#               var mbps = total * 8 / s / 1e6;
+#               var pmin = Math.min.apply(null, pings);
+#               lines.push('Ping (min/3): ' + pmin.toFixed(0) + ' ms');
+#               lines.push('Download (' + (total / 1024).toFixed(0) + ' KB in ' + s.toFixed(2) + ' s): ' + mbps.toFixed(2) + ' Mbps');
+#               upload();
+#             }
+#           }).catch(function () { lines.push('Download-Messung fehlgeschlagen.'); out.textContent = lines.join('\n'); });
+#         }
+#       }
+#       function upload() {
+#         var payload = new Uint8Array(200 * 1024);
+#         for (var i = 0; i < payload.length; i++) payload[i] = i % 251;
+#         var t0 = performance.now();
+#         fetch(bust('../app/index.html'), { method: 'POST', body: payload }).then(function () {
+#           var s = (performance.now() - t0) / 1000;
+#           lines.push('Upload (200 KB in ' + s.toFixed(2) + ' s): ' + (200 * 8 / s / 1024).toFixed(2) + ' Mbps');
+#           out.textContent = lines.join('\n');
+#         }).catch(function () {
+#           lines.push('Upload: vom Server abgewiesen (statisches Hosting nimmt kein POST an) — nicht messbar.');
+#           out.textContent = lines.join('\n');
+#         });
+#       }
+#       ping(0);
+#     });
+#   }
+#   // ---------- Sortier-Planer (sorting-script/sort.py) ----------
+#   // Same extension map; the browser cannot move the user's files, so the tool
+#   // groups picked files by target folder (with collision-safe renaming like
+#   // the original's _1 suffix) and exports the move plan as .ps1/.sh scripts.
+#   var SORTMAP = {
+#     '.jpg': 'Bilder', '.jpeg': 'Bilder', '.png': 'Bilder', '.gif': 'Bilder', '.webp': 'Bilder',
+#     '.mp4': 'Videos', '.mkv': 'Videos', '.mov': 'Videos', '.avi': 'Videos',
+#     '.mp3': 'Musik', '.wav': 'Musik', '.flac': 'Musik',
+#     '.zip': 'Archive', '.rar': 'Archive', '.7z': 'Archive',
+#     '.pdf': 'PDFs', '.docx': 'Dokumente', '.xlsx': 'Dokumente', '.pptx': 'Dokumente', '.txt': 'Textdateien',
+#     '.py': 'Code', '.js': 'Code', '.html': 'Code', '.css': 'Code',
+#     '.exe': 'Programme', '.msi': 'Programme'
+#   };
+#   function viewSorting(root) {
+#     var wrap = el('div', null, { 'class': 'tool-form' });
+#     var pick = input('so-pick', 'file', '', '');
+#     pick.setAttribute('multiple', 'multiple');
+#     var out = el('div');
+#     wrap.appendChild(field('Dateien wählen (bleiben wo sie sind)', pick));
+#     wrap.appendChild(out);
+#     root.appendChild(wrap);
+#     pick.addEventListener('change', function () {
+#       var groups = {}, seen = {};
+#       Array.prototype.forEach.call(pick.files, function (f) {
+#         var m = f.name.match(/(\.[^.]+)$/);
+#         var ext = m ? m[1].toLowerCase() : '';
+#         var folder = SORTMAP[ext] || 'Unbekannt';
+#         var name = f.name, i = 1;
+#         var base = name.replace(/(\.[^.]+)$/, ''), suf = m ? m[1] : '';
+#         while (seen[folder + '/' + name]) { name = base + '_' + (i++) + suf; }
+#         seen[folder + '/' + name] = 1;
+#         (groups[folder] = groups[folder] || []).push(name);
+#       });
+#       var names = Object.keys(groups).sort();
+#       out.innerHTML = names.length ? names.map(function (g) {
+#         return '<h2>' + esc(g) + ' (' + groups[g].length + ')</h2><p class="meta">' +
+#           groups[g].map(esc).join('<br>') + '</p>';
+#       }).join('') : '<p class="meta">Keine Dateien gewählt.</p>';
+#       if (names.length) {
+#         var ps = '# Erzeugt von d5 Sortier-Planer (Quelle: sorting-script/sort.py)\n$basis = "E:\\Sortiert"\n';
+#         var sh = '# Erzeugt von d5 Sortier-Planer (Quelle: sorting-script/sort.py)\nbasis="$HOME/Sortiert"\n';
+#         names.forEach(function (g) {
+#           ps += 'New-Item -ItemType Directory -Force -Path "$basis\\' + g + '" | Out-Null\n';
+#           sh += 'mkdir -p "$basis/' + g + '"\n';
+#           groups[g].forEach(function (n) {
+#             ps += 'Move-Item -LiteralPath "$basis\\' + n + '" -Destination "$basis\\' + g + '\\' + n + '" -ErrorAction SilentlyContinue\n';
+#             sh += 'mv "$basis/' + n + '" "$basis/' + g + '/" 2>/dev/null\n';
+#           });
+#         });
+#         function dl(name, text) {
+#           var b = el('button', name + ' herunterladen', { type: 'button' });
+#           b.addEventListener('click', function () {
+#             var a = document.createElement('a');
+#             a.href = URL.createObjectURL(new Blob([text], { type: 'text/plain' }));
+#             a.download = name; a.click();
+#             setTimeout(function () { URL.revokeObjectURL(a.href); }, 5000);
+#           });
+#           out.appendChild(b); out.appendChild(document.createTextNode(' '));
+#         }
+#         dl('sortieren.ps1', ps); dl('sortieren.sh', sh);
+#       }
+#     });
+#   }
+#
+#   // ---------- ToDo (react-todo + ToDo Django: add/edit/delete) ----------
+#   function viewTodo(root) {
+#     var items = store.get('todo', []);
+#     var wrap = el('div', null, { 'class': 'tool-form' });
+#     var inp = input('td-in', 'text', '', 'Neue Aufgabe');
+#     var add = el('button', 'Add', { type: 'button' });
+#     var list = el('div');
+#     wrap.appendChild(field('Aufgabe', inp)); wrap.appendChild(add); wrap.appendChild(list);
+#     root.appendChild(wrap);
+#     function render() {
+#       list.innerHTML = items.map(function (t, i) {
+#         return '<article class="card"><p>' + (t.done ? '<s>' + esc(t.title) + '</s>' : esc(t.title)) + '</p>' +
+#           '<p class="meta"><button type="button" data-a="t" data-i="' + i + '">' + (t.done ? 'Reopen' : 'Fertig') + '</button> ' +
+#           '<button type="button" data-a="e" data-i="' + i + '">Edit</button> ' +
+#           '<button type="button" data-a="d" data-i="' + i + '">Delete</button></p></article>';
+#       }).join('') || '<p class="meta">Keine Aufgaben. Lege oben eine an.</p>';
+#       list.querySelectorAll('button').forEach(function (b) {
+#         b.addEventListener('click', function () {
+#           var i = +b.getAttribute('data-i'), a = b.getAttribute('data-a');
+#           if (a === 'd') items.splice(i, 1);
+#           else if (a === 't') items[i].done = !items[i].done;
+#           else {
+#             var v = prompt('Aufgabe bearbeiten:', items[i].title);
+#             if (v != null && v.trim()) items[i].title = v.trim();
+#           }
+#           store.set('todo', items); render();
+#         });
+#       });
+#     }
+#     function addIt() {
+#       if (!inp.value.trim()) return;
+#       items.push({ title: inp.value.trim(), done: false });
+#       inp.value = ''; store.set('todo', items); render();
+#     }
+#     add.addEventListener('click', addIt);
+#     inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') addIt(); });
+#     render();
+#   }
+#
+#   // ---------- Notizen, verschlüsselt (NoteNest: AES at rest, key from password) ----------
+#   function viewNotes(root) {
+#     var wrap = el('div', null, { 'class': 'tool-form' });
+#     var pw = input('no-pw', 'password', '', 'Passwort (Schlüssel)');
+#     var title = input('no-title', 'text', '', 'Titel');
+#     var body = el('textarea', null, { id: 'no-body', placeholder: 'Inhalt' });
+#     var saveBtn = el('button', 'Verschlüsselt speichern', { type: 'button' });
+#     var out = el('div');
+#     wrap.appendChild(field('Passwort', pw)); wrap.appendChild(field('Titel', title));
+#     wrap.appendChild(field('Inhalt', body)); wrap.appendChild(saveBtn); wrap.appendChild(out);
+#     root.appendChild(wrap);
+#     function keyFrom(p) {
+#       var enc = new TextEncoder();
+#       return crypto.subtle.importKey('raw', enc.encode(p), 'PBKDF2', false, ['deriveKey']).then(function (base) {
+#         return crypto.subtle.deriveKey({ name: 'PBKDF2', salt: enc.encode('d5-notenest'), iterations: 50000, hash: 'SHA-256' },
+#           base, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']);
+#       });
+#     }
+#     function b64(buf) {
+#       var s = '', b = new Uint8Array(buf);
+#       for (var i = 0; i < b.length; i++) s += String.fromCharCode(b[i]);
+#       return btoa(s);
+#     }
+#     function unb64(s) {
+#       var bin = atob(s), b = new Uint8Array(bin.length);
+#       for (var i = 0; i < bin.length; i++) b[i] = bin.charCodeAt(i);
+#       return b;
+#     }
+#     function render(items, k) {
+#       out.innerHTML = '<h2>' + items.length + ' Notizen</h2>' + items.map(function (n, i) {
+#         return '<article class="card"><h3>' + esc(n.title) + '</h3>' +
+#           '<p class="meta"><button type="button" data-v="' + i + '">Entschlüsseln</button> ' +
+#           '<button type="button" data-d="' + i + '">Löschen</button></p>' +
+#           '<p class="meta" data-body="' + i + '">🔒 verschlüsselt</p></article>';
+#       }).join('');
+#       out.querySelectorAll('[data-v]').forEach(function (b) {
+#         b.addEventListener('click', function () {
+#           var n = items[+b.getAttribute('data-v')];
+#           crypto.subtle.decrypt({ name: 'AES-GCM', iv: unb64(n.iv) }, k, unb64(n.data)).then(function (pt) {
+#             out.querySelector('[data-body="' + b.getAttribute('data-v') + '"]').textContent =
+#               new TextDecoder().decode(pt);
+#           }).catch(function () { alert('Falsches Passwort oder beschädigte Notiz.'); });
+#         });
+#       });
+#       out.querySelectorAll('[data-d]').forEach(function (b) {
+#         b.addEventListener('click', function () {
+#           items.splice(+b.getAttribute('data-d'), 1);
+#           store.set('notes', items); render(items, k);
+#         });
+#       });
+#     }
+#     var cache = null, cacheKey = null;
+#     saveBtn.addEventListener('click', function () {
+#       if (!pw.value || !title.value.trim()) { out.textContent = 'Passwort und Titel eingeben.'; return; }
+#       var items = store.get('notes', []);
+#       keyFrom(pw.value).then(function (k) {
+#         cacheKey = k;
+#         var iv = crypto.getRandomValues(new Uint8Array(12));
+#         return crypto.subtle.encrypt({ name: 'AES-GCM', iv: iv }, k,
+#           new TextEncoder().encode(body.value)).then(function (ct) {
+#           items.unshift({ title: title.value.trim(), iv: b64(iv), data: b64(ct) });
+#           store.set('notes', items);
+#           title.value = ''; body.value = '';
+#           cache = items; render(items, k);
+#         });
+#       });
+#     });
+#     pw.addEventListener('change', function () {
+#       if (!pw.value) return;
+#       keyFrom(pw.value).then(function (k) { cacheKey = k; render(store.get('notes', []), k); });
+#     });
+#     render(store.get('notes', []), null);
+#   }
+#
+#   // ---------- Edge-Payload-Decoder (data-optimization: JSON schema docs) ----------
+#   function viewDataopt(root) {
+#     var wrap = el('div', null, { 'class': 'tool-form' });
+#     var area = el('textarea', null, { id: 'do-in', placeholder: '{"i":"…","a":"…","x":{"a":…,"b":…,"c":…},"d":"YYMMDDHHMMSS","p":…,"f":[0/1,0/1,0/1]}' });
+#     var go = el('button', 'Dekodieren', { type: 'button' });
+#     var out = el('div', null, { 'class': 'output' });
+#     wrap.appendChild(field('Kompakt-Payload', area)); wrap.appendChild(go); wrap.appendChild(out);
+#     root.appendChild(wrap);
+#     go.addEventListener('click', function () {
+#       var o;
+#       try { o = JSON.parse(area.value); } catch (e) { out.textContent = 'Kein gültiges JSON.'; return; }
+#       var d = String(o.d || '');
+#       var ts = d.length === 12
+#         ? '20' + d.slice(0, 2) + '-' + d.slice(2, 4) + '-' + d.slice(4, 6) + ' ' + d.slice(6, 8) + ':' + d.slice(8, 10) + ':' + d.slice(10, 12)
+#         : String(o.d);
+#       out.textContent = 'Gerät: ' + o.i + '\nStandort: ' + o.a + '\nBehälter Farbe/Braun/Weiß: ' +
+#         (o.x && o.x.a) + '/' + (o.x && o.x.b) + '/' + (o.x && o.x.c) +
+#         '\nZeit: ' + ts + '\nBatterie: ' + o.p + ' %\nVoll: Farbe=' + (o.f && o.f[0]) +
+#         ' Braun=' + (o.f && o.f[1]) + ' Weiß=' + (o.f && o.f[2]);
+#     });
+#   }
+#
+#   return {
+#     viewSplitwise: viewSplitwise, viewSpeedtest: viewSpeedtest,
+#     viewSorting: viewSorting, viewTodo: viewTodo,
+#     viewNotes: viewNotes, viewDataopt: viewDataopt
+#   };
+# })();
+#

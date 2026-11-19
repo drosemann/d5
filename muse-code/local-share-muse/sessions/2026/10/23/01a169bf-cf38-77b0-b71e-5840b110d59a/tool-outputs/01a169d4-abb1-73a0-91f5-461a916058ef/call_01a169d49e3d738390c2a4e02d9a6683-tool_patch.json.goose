@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/23/01a169bf-cf38-77b0-b71e-5840b110d59a/tool-outputs/01a169d4-abb1-73a0-91f5-461a916058ef/call_01a169d49e3d738390c2a4e02d9a6683-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/23/01a169bf-cf38-77b0-b71e-5840b110d59a/tool-outputs/01a169d4-abb1-73a0-91f5-461a916058ef/call_01a169d49e3d738390c2a4e02d9a6683-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/23/01a169bf-cf38-77b0-b71e-5840b110d59a/tool-outputs/01a169d4-abb1-73a0-91f5-461a916058ef/call_01a169d49e3d738390c2a4e02d9a6683-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\ai-chat-webui\\workspace.js","hunks":[{"oldStart":23,"oldLines":10,"newStart":23,"newLines":28,"lines":[" "," const VIEW_NAMES = ['home', 'chat', 'projects', 'tasks', 'memory', 'models', 'settings'];"," ","-export function setSignedIn(signedIn) {","+export async function setSignedIn(signedIn) {","   const shell = document.getElementById('shell');","   if (shell) shell.hidden = !signedIn;","-  if (signedIn) render();","+  if (!signedIn) {","+    lastUserId = null;","+    return;","+  }","+  try {","+    const supabase = await getSupabaseClient();","+    const { data } = await supabase.auth.getUser();","+    const userId = data.user?.id || null;","+    if (lastUserId && userId && userId !== lastUserId && window.ChatView?.reset) {","+      window.ChatView.reset();","+      if (window.location.hash.startsWith('#/chat/')) {","+        window.location.hash = '#/chat';","+      }","+    }","+    lastUserId = userId;","+  } catch (error) {","+    console.error('Session check failed:', error);","+  }","+  render();"," }"," "," function buildShell() {"]}]}]}

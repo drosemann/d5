@@ -1,0 +1,18 @@
+warning: in the working copy of '.env.example', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/WORKSPACE.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'server.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'auth.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'supabaseClient.js', LF will be replaced by CRLF the next time Git touches it
+M  .env.example
+M  README.md
+M  app.js
+A  auth.js
+M  docs/WORKSPACE.md
+M  server.js
+A  supabaseClient.js
+[main 884c245] Phase 2: user accounts and authenticated API access
+ 7 files changed, 426 insertions(+), 26 deletions(-)
+ create mode 100644 auth.js
+ create mode 100644 supabaseClient.js

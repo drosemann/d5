@@ -1,0 +1,91 @@
+﻿// Goose-Port-Spiegel von: d5lang-port/projects/browser-games-tic-tac-toe/Tic-Tac-Toe.d5
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: d5lang-port/projects/browser-games-tic-tac-toe/Tic-Tac-Toe.d5");
+}
+
+// ---- Original-Code (d5lang-port/projects/browser-games-tic-tac-toe/Tic-Tac-Toe.d5), unveraendert, als Inline-Doku ----
+// SHINE, LITTLE BOY, SHINE
+//   WIR MÜSSEN DAS OFFLINE NEHMEN main
+//     PACK-ES-IN-JIRA Portiert 1:1 von projects/browser-games-tic-tac-toe/Tic-Tac-Toe.py. Mensch X vs Zufallsbot O, deutsche UI, Punktestand.
+//     PACK-ES-IN-JIRA ORIGINAL: import random
+//     WIR MÜSSEN DAS OFFLINE NEHMEN tictactoe
+//     PACK-ES-IN-JIRA ORIGINAL: def tictactoe():
+//     PACK-ES-IN-JIRA ORIGINAL: board = [" " for _ in range(9)]; spieler = "X"; spielende = False
+//     PACK-ES-IN-JIRA ORIGINAL: spieler_x_punkte = 0; spieler_o_punkte = 0; unentschieden_punkte = 0
+//     WIR MÜSSEN DAS OFFLINE NEHMEN zeige_brett
+//     PACK-ES-IN-JIRA ORIGINAL: def zeige_brett():
+//     TALK TO THE HAND "---------"
+//     PACK-ES-IN-JIRA ORIGINAL: print("---------")
+//     BLEIB-BIS-ZUM-SPRINT-ENDE i in range(3)
+//     PACK-ES-IN-JIRA ORIGINAL: for i in range(3): print(f"| {board[i*3]} | {board[i*3+1]} | {board[i*3+2]} |"); print("---------")
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     WIR MÜSSEN DAS OFFLINE NEHMEN gültiger_zug
+//     PACK-ES-IN-JIRA ORIGINAL: def gültiger_zug(position):
+//     MACH-ES-FÜR-DIE-METRIKEN position >= 0 and position <= 8 and board[position] == " "
+//     PACK-ES-IN-JIRA ORIGINAL: if position >= 0 and position <= 8 and board[position] == " ": return True
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     PACK-ES-IN-JIRA ORIGINAL: return False
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     WIR MÜSSEN DAS OFFLINE NEHMEN gewonnen
+//     PACK-ES-IN-JIRA ORIGINAL: def gewonnen():
+//     PACK-ES-IN-JIRA ORIGINAL: gewinnmöglichkeiten = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
+//     BLEIB-BIS-ZUM-SPRINT-ENDE möglichkeit in gewinnmöglichkeiten
+//     MACH-ES-FÜR-DIE-METRIKEN board[m0] == board[m1] == board[m2] != " "
+//     PACK-ES-IN-JIRA ORIGINAL: for möglichkeit in gewinnmöglichkeiten: if board[möglichkeit[0]] == board[möglichkeit[1]] == board[möglichkeit[2]] != " ": return True
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     PACK-ES-IN-JIRA ORIGINAL: return False
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     WIR MÜSSEN DAS OFFLINE NEHMEN unentschieden
+//     PACK-ES-IN-JIRA ORIGINAL: def unentschieden(): return " " not in board
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     WIR MÜSSEN DAS OFFLINE NEHMEN zug_spiel
+//     PACK-ES-IN-JIRA ORIGINAL: def zug_spiel(spieler): position = int(input(f"Spieler {spieler}, wähle eine Position (0-8): "))
+//     MACH-ES-FÜR-DIE-METRIKEN gültiger_zug(position)
+//     PACK-ES-IN-JIRA ORIGINAL: if gültiger_zug(position): board[position] = spieler; zeige_brett()
+//     MACH-ES-FÜR-DIE-METRIKEN gewonnen()
+//     TALK TO THE HAND "hat gewonnen!"
+//     PACK-ES-IN-JIRA ORIGINAL: if gewonnen(): print(f"Spieler {spieler} hat gewonnen!"); return True
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     MACH-ES-FÜR-DIE-METRIKEN unentschieden()
+//     TALK TO THE HAND "Unentschieden!"
+//     PACK-ES-IN-JIRA ORIGINAL: if unentschieden(): print("Unentschieden!"); return True
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     PACK-ES-IN-JIRA ORIGINAL: return False
+//     BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+//     TALK TO THE HAND "Ungültiger Zug!"
+//     PACK-ES-IN-JIRA ORIGINAL: else: print("Ungültiger Zug!"); return zug_spiel(spieler)
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     WIR MÜSSEN DAS OFFLINE NEHMEN ai_zug
+//     PACK-ES-IN-JIRA ORIGINAL: def ai_zug(): freie_positionen = [i for i, feld in enumerate(board) if feld == " "]; return random.choice(freie_positionen)
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     PACK-ES-IN-JIRA ORIGINAL: zeige_brett()
+//     BLEIB-BIS-ZUM-SPRINT-ENDE not spielende
+//     PACK-ES-IN-JIRA ORIGINAL: while not spielende:
+//     MACH-ES-FÜR-DIE-METRIKEN spieler == "X"
+//     PACK-ES-IN-JIRA ORIGINAL: if spieler == "X": spielende = zug_spiel(spieler)
+//     MACH-ES-FÜR-DIE-METRIKEN spielende
+//     PACK-ES-IN-JIRA ORIGINAL: if spielende: spieler_x_punkte += 1
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+//     TALK TO THE HAND "KI macht einen Zug..."
+//     PACK-ES-IN-JIRA ORIGINAL: else: print("KI macht einen Zug..."); position = ai_zug(); board[position] = spieler; zeige_brett()
+//     MACH-ES-FÜR-DIE-METRIKEN gewonnen()
+//     TALK TO THE HAND "hat gewonnen!"
+//     PACK-ES-IN-JIRA ORIGINAL: if gewonnen(): print(f"Spieler {spieler} hat gewonnen!"); spieler_o_punkte += 1; spielende = True
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     PACK-ES-IN-JIRA ORIGINAL: elif unentschieden(): print("Unentschieden!"); unentschieden_punkte += 1; spielende = True
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     PACK-ES-IN-JIRA ORIGINAL: spieler = "O" if spieler == "X" else "X"
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     TALK TO THE HAND "Endstand"
+//     PACK-ES-IN-JIRA ORIGINAL: print(f"Endstand: X - {spieler_x_punkte}, O - {spieler_o_punkte}, Unentschieden - {unentschieden_punkte}")
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     PACK-ES-IN-JIRA ORIGINAL: tictactoe()
+//     tictactoe
+//   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+// BOY, DU HAST KI-VERBOT
+//

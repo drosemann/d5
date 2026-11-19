@@ -1,0 +1,159 @@
+﻿// Goose-Port-Spiegel von: d5lang-port/app/tools.d5
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: d5lang-port/app/tools.d5");
+}
+
+// ---- Original-Code (d5lang-port/app/tools.d5), unveraendert, als Inline-Doku ----
+// SHINE, LITTLE BOY, SHINE
+//   WIR MÜSSEN DAS OFFLINE NEHMEN main
+//     PACK-ES-IN-JIRA Portiert 1:1 von app/tools.js. Jede Originalzeile ist erhalten, nichts geschnitten.
+//     PACK-ES-IN-JIRA In-browser ports of the small Python CLI tools. Logic mirrors the original
+//     PACK-ES-IN-JIRA scripts in projects/; where an original had a bug (dead code paths, wrong
+//     PACK-ES-IN-JIRA category boundary), the original behaviour is kept and noted per tool.
+//     PACK-ES-IN-JIRA ORIGINAL: window.d5Tools = (function () {
+//     WIR MÜSSEN DAS OFFLINE NEHMEN r2
+//     PACK-ES-IN-JIRA ORIGINAL: function r2(x) { return Math.round(x * 100) / 100; }
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     PACK-ES-IN-JIRA --- Calculator (projects/archive-unsorted-calculator/main.py) ---
+//     PACK-ES-IN-JIRA ORIGINAL: var CALC_OPS = [
+//     PACK-ES-IN-JIRA ORIGINAL: ['1', 'Addition', 2], ['2', 'Subtraction', 2], ['3', 'Multiplication', 2],
+//     PACK-ES-IN-JIRA ORIGINAL: ['4', 'Division', 2], ['5', 'Power', 2], ['6', 'Square Root', 1],
+//     PACK-ES-IN-JIRA ORIGINAL: ['7', 'Factorial', 1], ['8', 'Sine (degrees)', 1], ['9', 'Cosine (degrees)', 1],
+//     PACK-ES-IN-JIRA ORIGINAL: ['10', 'Tangent (degrees)', 1], ['11', 'Log10', 1], ['12', 'Natural Log', 1],
+//     PACK-ES-IN-JIRA ORIGINAL: ['13', 'Absolute Value', 1], ['14', 'Floor', 1], ['15', 'Ceiling', 1],
+//     PACK-ES-IN-JIRA ORIGINAL: ['16', 'Modulo', 2], ['17', 'Percentage', 1], ['18', 'Square', 1],
+//     PACK-ES-IN-JIRA ORIGINAL: ['19', 'Cube', 1], ['20', 'Inverse', 1], ['21', 'Exponential', 1],
+//     PACK-ES-IN-JIRA ORIGINAL: ['22', 'Degrees to Radians', 1], ['23', 'Radians to Degrees', 1],
+//     PACK-ES-IN-JIRA ORIGINAL: ['24', 'Hypotenuse', 2], ['25', 'Fibonacci', 1]
+//     PACK-ES-IN-JIRA ORIGINAL: ];
+//     WIR MÜSSEN DAS OFFLINE NEHMEN factorial
+//     PACK-ES-IN-JIRA ORIGINAL: function factorial(a) {
+//     PACK-ES-IN-JIRA ORIGINAL: a = Math.trunc(a);
+//     MACH-ES-FÜR-DIE-METRIKEN a < 0
+//     PACK-ES-IN-JIRA ORIGINAL: if (a < 0) return 'Error: Cannot calculate factorial of negative number';
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     MACH-ES-FÜR-DIE-METRIKEN a === 0
+//     PACK-ES-IN-JIRA ORIGINAL: if (a === 0) return 1;
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     PACK-ES-IN-JIRA ORIGINAL: var r = 1; for (var i = 2; i <= a; i++) r *= i; return r;
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     WIR MÜSSEN DAS OFFLINE NEHMEN fibonacci
+//     PACK-ES-IN-JIRA ORIGINAL: function fibonacci(n) {
+//     PACK-ES-IN-JIRA ORIGINAL: n = Math.trunc(n);
+//     MACH-ES-FÜR-DIE-METRIKEN n <= 0
+//     PACK-ES-IN-JIRA ORIGINAL: if (n <= 0) return 'Error: Input must be positive';
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     MACH-ES-FÜR-DIE-METRIKEN n === 1 || n === 2
+//     PACK-ES-IN-JIRA ORIGINAL: if (n === 1 || n === 2) return 1;
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     PACK-ES-IN-JIRA ORIGINAL: var a = 1, b = 1;
+//     PACK-ES-IN-JIRA ORIGINAL: for (var i = 3; i <= n; i++) { var t = a + b; a = b; b = t; }
+//     PACK-ES-IN-JIRA ORIGINAL: return b;
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     WIR MÜSSEN DAS OFFLINE NEHMEN calc
+//     PACK-ES-IN-JIRA ORIGINAL: function calc(op, a, b) {
+//     PACK-ES-IN-JIRA ORIGINAL: switch (op) {
+//     PACK-ES-IN-JIRA ORIGINAL: case '1': return a + b; case '2': return a - b; case '3': return a * b;
+//     PACK-ES-IN-JIRA ORIGINAL: case '4': return b === 0 ? 'Error: Division by zero' : a / b;
+//     PACK-ES-IN-JIRA ORIGINAL: case '5': return Math.pow(a, b);
+//     PACK-ES-IN-JIRA ORIGINAL: case '6': return a < 0 ? 'Error: Cannot calculate square root of negative number' : Math.sqrt(a);
+//     PACK-ES-IN-JIRA ORIGINAL: case '7': return factorial(a);
+//     PACK-ES-IN-JIRA ORIGINAL: case '8': return Math.sin(a * Math.PI / 180);
+//     PACK-ES-IN-JIRA ORIGINAL: case '9': return Math.cos(a * Math.PI / 180);
+//     PACK-ES-IN-JIRA ORIGINAL: case '10': return Math.tan(a * Math.PI / 180);
+//     PACK-ES-IN-JIRA ORIGINAL: case '11': return a <= 0 ? 'Error: Cannot calculate log of non-positive number' : Math.log10(a);
+//     PACK-ES-IN-JIRA ORIGINAL: case '12': return a <= 0 ? 'Error: Cannot calculate log of non-positive number' : Math.log(a);
+//     PACK-ES-IN-JIRA ORIGINAL: case '13': return Math.abs(a);
+//     PACK-ES-IN-JIRA ORIGINAL: case '14': return Math.floor(a); case '15': return Math.ceil(a);
+//     PACK-ES-IN-JIRA ORIGINAL: case '16': return b === 0 ? 'Error: Division by zero' : a % b;
+//     PACK-ES-IN-JIRA ORIGINAL: case '17': return a / 100; case '18': return a * a; case '19': return a * a * a;
+//     PACK-ES-IN-JIRA ORIGINAL: case '20': return a === 0 ? 'Error: Division by zero' : 1 / a;
+//     PACK-ES-IN-JIRA ORIGINAL: case '21': return Math.exp(a);
+//     PACK-ES-IN-JIRA 22/23: original put these in the one-number list but never dispatched
+//     PACK-ES-IN-JIRA them (dead paths); the port implements them as intended.
+//     PACK-ES-IN-JIRA ORIGINAL: case '22': return a * Math.PI / 180; case '23': return a * 180 / Math.PI;
+//     PACK-ES-IN-JIRA ORIGINAL: case '24': return Math.hypot(a, b);
+//     PACK-ES-IN-JIRA ORIGINAL: case '25': return fibonacci(a);
+//     PACK-ES-IN-JIRA ORIGINAL: default: return 'Invalid choice. Please choose a number between 1 and 25.';
+//     PACK-ES-IN-JIRA ORIGINAL: }
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     PACK-ES-IN-JIRA --- BMI (projects/archive-unsorted-bodymassindex/main.py) ---
+//     PACK-ES-IN-JIRA Thresholds copied verbatim, including the 24.9-25.0 gap that falls
+//     PACK-ES-IN-JIRA through to Adipositas in the original.
+//     WIR MÜSSEN DAS OFFLINE NEHMEN bmi
+//     PACK-ES-IN-JIRA ORIGINAL: function bmi(weight, height) {
+//     MACH-ES-FÜR-DIE-METRIKEN !(weight > 0) || !(height > 0)
+//     PACK-ES-IN-JIRA ORIGINAL: if (!(weight > 0) || !(height > 0)) return 'Gewicht und Grösse müssen positive Werte sein.';
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     PACK-ES-IN-JIRA ORIGINAL: var v = weight / (height * height);
+//     PACK-ES-IN-JIRA ORIGINAL: var cat = v < 18.5 ? 'Untergewicht'
+//     PACK-ES-IN-JIRA ORIGINAL: : (v >= 18.5 && v < 24.9) ? 'Normalgewicht'
+//     PACK-ES-IN-JIRA ORIGINAL: : (v >= 25 && v < 29.9) ? 'Übergewicht' : 'Adipositas';
+//     PACK-ES-IN-JIRA ORIGINAL: return 'Ihr BMI beträgt: ' + v.toFixed(2) + '\nSie haben: ' + cat;
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     PACK-ES-IN-JIRA --- Fractions (projects/archive-unsorted-die_klasse_bruch/main.py) ---
+//     WIR MÜSSEN DAS OFFLINE NEHMEN gcd
+//     PACK-ES-IN-JIRA ORIGINAL: function gcd(a, b) { a = Math.abs(a); b = Math.abs(b); while (b) { var t = a % b; a = b; b = t; } return a || 1; }
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     PACK-ES-IN-JIRA ORIGINAL: var bruch = {
+//     PACK-ES-IN-JIRA ORIGINAL: z: 0, n: 1,
+//     PACK-ES-IN-JIRA ORIGINAL: set: function (z, n) { this.z = z; this.n = (n === 0 ? 1 : n); },
+//     PACK-ES-IN-JIRA ORIGINAL: expand: function (f) { this.z *= f; this.n *= f; },
+//     PACK-ES-IN-JIRA ORIGINAL: reduce: function () { var g = gcd(this.z, this.n); this.z = this.z / g; this.n = this.n / g; },
+//     PACK-ES-IN-JIRA ORIGINAL: text: function () { return this.z + ' / ' + this.n; }
+//     PACK-ES-IN-JIRA ORIGINAL: };
+//     PACK-ES-IN-JIRA --- Tokyo Metro pricing (projects/archive-unsorted-tokyo-metro-pricing) ---
+//     WIR MÜSSEN DAS OFFLINE NEHMEN tokyo
+//     PACK-ES-IN-JIRA ORIGINAL: function tokyo(km) {
+//     MACH-ES-FÜR-DIE-METRIKEN !(km > 0)
+//     PACK-ES-IN-JIRA ORIGINAL: if (!(km > 0)) return 'Bitte eine positive Strecke eingeben.';
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     PACK-ES-IN-JIRA ORIGINAL: var adult = km <= 6 ? 170 : km <= 11 ? 200 : km <= 19 ? 250 : km <= 27 ? 290 : 320;
+//     PACK-ES-IN-JIRA ORIGINAL: var child = Math.ceil((adult / 2) / 10) * 10;
+//     PACK-ES-IN-JIRA ORIGINAL: return 'Der Fahrpreis für ' + km + ' km beträgt:\nErwachsene: ' + adult + ' Yen\nKinder: ' + child + ' Yen';
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     PACK-ES-IN-JIRA --- Kilometerzaehler (projects/archive-unsorted-kilometerz-hler/main.py) ---
+//     WIR MÜSSEN DAS OFFLINE NEHMEN verbrauch
+//     PACK-ES-IN-JIRA ORIGINAL: function verbrauch(previous, now, litres) {
+//     PACK-ES-IN-JIRA ORIGINAL: var dist = now - previous;
+//     MACH-ES-FÜR-DIE-METRIKEN !(dist > 0)
+//     PACK-ES-IN-JIRA ORIGINAL: if (!(dist > 0)) return 'Der Kilometerstand muss steigen (jetzt > vorher).';
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     PACK-ES-IN-JIRA ORIGINAL: return 'Der durchschnittliche Verbrauch beträgt ' + r2(litres / dist * 100).toFixed(2) + ' Liter pro 100 Kilometer.';
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     PACK-ES-IN-JIRA --- Wetter Daten Analyse (old-code.py parser section) ---
+//     PACK-ES-IN-JIRA Original script is a scratchpad; only the record parser + sort below
+//     PACK-ES-IN-JIRA are portable. The text-diff helper from the file is not ported.
+//     PACK-ES-IN-JIRA ORIGINAL: var PAT = /^\s*(\d+)\s*\|\s*([^|]+)\s*\|\s*([\d-]+)\s*\|\s*([\d.]+)\s*$/;
+//     WIR MÜSSEN DAS OFFLINE NEHMEN parseWetter
+//     PACK-ES-IN-JIRA ORIGINAL: function parseWetter(text) {
+//     PACK-ES-IN-JIRA ORIGINAL: var out = [], errors = [];
+//     PACK-ES-IN-JIRA ORIGINAL: text.split(/\r?\n/).forEach(function (line, i) {
+//     MACH-ES-FÜR-DIE-METRIKEN !line.trim()
+//     PACK-ES-IN-JIRA ORIGINAL: if (!line.trim()) return;
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     PACK-ES-IN-JIRA ORIGINAL: var m = PAT.exec(line);
+//     MACH-ES-FÜR-DIE-METRIKEN !m
+//     PACK-ES-IN-JIRA ORIGINAL: if (!m) { errors.push('Zeile ' + (i + 1) + ' ungültig: ' + line); return; }
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     PACK-ES-IN-JIRA ORIGINAL: out.push({ id: parseInt(m[1], 10), name: m[2].trim(), date: m[3], value: parseFloat(m[4]) });
+//     PACK-ES-IN-JIRA ORIGINAL: });
+//     PACK-ES-IN-JIRA ORIGINAL: out.sort(function (a, b) {
+//     PACK-ES-IN-JIRA ORIGINAL: if (a.id !== b.id) return a.id - b.id;
+//     PACK-ES-IN-JIRA ORIGINAL: if (a.date !== b.date) return a.date < b.date ? 1 : -1; // date descending
+//     PACK-ES-IN-JIRA ORIGINAL: return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+//     PACK-ES-IN-JIRA ORIGINAL: });
+//     PACK-ES-IN-JIRA ORIGINAL: return { records: out, errors: errors };
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     PACK-ES-IN-JIRA ORIGINAL: var WETTER_SAMPLE = '42 | Müller | 2025-11-01 | 123.45\n7  | Schmidt| 2024-06-20 |  98.00\n42 | Mueller| 2025-11-02 | 123.50';
+//     PACK-ES-IN-JIRA ORIGINAL: return {
+//     PACK-ES-IN-JIRA ORIGINAL: CALC_OPS: CALC_OPS, calc: calc, bmi: bmi, bruch: bruch,
+//     PACK-ES-IN-JIRA ORIGINAL: tokyo: tokyo, verbrauch: verbrauch, parseWetter: parseWetter, WETTER_SAMPLE: WETTER_SAMPLE
+//     PACK-ES-IN-JIRA ORIGINAL: };
+//     PACK-ES-IN-JIRA ORIGINAL: })();
+//   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+// BOY, DU HAST KI-VERBOT
+//

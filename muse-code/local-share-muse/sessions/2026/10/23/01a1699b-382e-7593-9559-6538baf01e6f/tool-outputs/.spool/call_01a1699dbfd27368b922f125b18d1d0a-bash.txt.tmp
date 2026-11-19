@@ -1,0 +1,68 @@
+docs files=3
+  docs\v2\DECISIONS.md (1223)
+  docs\v2\PROTOCOL.md (949)
+  docs\v2\SELFHOST.md (1080)
+devlog files=6
+  devlog\DEVLOG.md (126)
+  devlog\image-1.png (2260927)
+  devlog\image-2.png (1035571)
+  devlog\image-3.png (3284033)
+  devlog\image-4.png (3274795)
+  devlog\image.png (723438)
+server files=6
+  server\package.json (352)
+  server\src\actions.js (4059)
+  server\src\chunks.js (1576)
+  server\src\db.js (187)
+  server\src\index.js (4954)
+  server\src\tick.js (2618)
+shared files=2
+  shared\economy.js (2186)
+  shared\world.js (850)
+tools files=2
+  tools\mc-import\import.py (2146)
+  tools\mc-import\mc_to_sh.json (272)
+assets files=38
+  assets\arrow.png (19242)
+  assets\background-day.png (819908)
+  assets\background-night.png (679280)
+  assets\background-storm.png (525933)
+  assets\city-planner.png (1906650)
+  assets\door.png (792615)
+  assets\effect-dash-trail.png (295015)
+  assets\effect-explosion.png (342213)
+  assets\effect-hit-spark.png (206977)
+  assets\elephant.png (36793)
+  assets\enemy-basic.png (166947)
+  assets\enemy-exploder.png (421686)
+  assets\enemy-fast.png (257665)
+  assets\enemy-ranged.png (233226)
+  assets\enemy-tank.png (466748)
+  assets\game-background.png (2431042)
+  assets\logo.png (1160154)
+  assets\mystic-forest-background.png (381684)
+  assets\nature-background.png (2076562)
+  assets\pickup-coins.png (429784)
+  assets\pickup-health.png (213916)
+  assets\pickup-powerup-damage.png (310292)
+  assets\pickup-powerup-shield.png (425334)
+  assets\pickup-powerup-speed.png (186291)
+  assets\player-avatar.png (1290456)
+api files=1
+  api\socket.js (671)
+admin files=1
+  admin\index.html (1358)
+db files=2
+  db\schema.sql (3076)
+  db\seed.sql (307)
+infra files=1
+  infra\nginx.conf (613)
+--- game.js lines ---
+1205
+--- html script refs ---
+game.html:11: #gameCanvas { width: 100%; height: 100%; display: block; }
+game.html:164: <canvas id="gameCanvas"></canvas>
+game.html:242: <script src="game.js" defer></script>
+game-v2.html:33: <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+game-v2.html:34: <script>
+game-v2.html:60: </script>

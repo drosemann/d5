@@ -1,0 +1,48 @@
+SHINE, LITTLE BOY, SHINE
+  WIR MÜSSEN DAS OFFLINE NEHMEN main
+    PACK-ES-IN-JIRA Portiert 1:1 von projects/archive-unsorted-guestbook-html-css-javascript/php/save_entry.php. Rate-Limit, Insert, Attachments, scheduled, time-capsule, tags, expire.
+    PACK-ES-IN-JIRA ORIGINAL: <?php
+    PACK-ES-IN-JIRA ORIGINAL: header('Content-Type: application/json');
+    PACK-ES-IN-JIRA ORIGINAL: require_once 'config.php';
+    PACK-ES-IN-JIRA Add at the start of the file
+    PACK-ES-IN-JIRA ORIGINAL: session_start();
+    PACK-ES-IN-JIRA Basic rate limiting
+    MACH-ES-FÜR-DIE-METRIKEN isset($_SESSION['last_post_time'])
+    PACK-ES-IN-JIRA ORIGINAL: if (isset($_SESSION['last_post_time'])) {
+    PACK-ES-IN-JIRA ORIGINAL: $timeSinceLastPost = time() - $_SESSION['last_post_time'];
+    MACH-ES-FÜR-DIE-METRIKEN $timeSinceLastPost < 60
+    TALK TO THE HAND "Please wait before posting again"
+    PACK-ES-IN-JIRA ORIGINAL: if ($timeSinceLastPost < 60) { echo json_encode(['success' => false, 'error' => 'Please wait before posting again']); exit; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: $_SESSION['last_post_time'] = time();
+    MACH-ES-FÜR-DIE-METRIKEN $_SERVER['REQUEST_METHOD'] === 'POST'
+    PACK-ES-IN-JIRA ORIGINAL: if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    PACK-ES-IN-JIRA ORIGINAL: $data = json_decode(file_get_contents('php://input'), true);
+    PACK-ES-IN-JIRA ORIGINAL: $stmt = $pdo->prepare("INSERT INTO entries (name, email, message) VALUES (?, ?, ?)");
+    PACK-ES-IN-JIRA ORIGINAL: try { $stmt->execute([$data['name'], $data['email'], $data['message']]); echo json_encode(['success' => true, 'id' => $pdo->lastInsertId()]); }
+    PACK-ES-IN-JIRA ORIGINAL: catch(PDOException $e) { echo json_encode(['success' => false, 'error' => $e->getMessage()]); }
+    PACK-ES-IN-JIRA Add file handling
+    MACH-ES-FÜR-DIE-METRIKEN isset($_FILES['attachment'])
+    PACK-ES-IN-JIRA ORIGINAL: if (isset($_FILES['attachment'])) { $uploadDir = 'uploads/'; $uploadFile = $uploadDir . basename($_FILES['attachment']['name']); move_uploaded_file($_FILES['attachment']['tmp_name'], $uploadFile); }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Add scheduled posting
+    MACH-ES-FÜR-DIE-METRIKEN isset($data['schedule_time'])
+    PACK-ES-IN-JIRA ORIGINAL: if (isset($data['schedule_time'])) { $stmt = $pdo->prepare("INSERT INTO scheduled_entries (message, publish_at) VALUES (?, ?)"); $stmt->execute([$data['message'], $data['schedule_time']]); }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Messages that become visible after a certain date
+    MACH-ES-FÜR-DIE-METRIKEN isset($data['reveal_date'])
+    PACK-ES-IN-JIRA ORIGINAL: if (isset($data['reveal_date'])) { $stmt = $pdo->prepare("INSERT INTO time_capsule_entries (message, reveal_date) VALUES (?, ?)"); $stmt->execute([$data['message'], $data['reveal_date']]); }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Add category support
+    MACH-ES-FÜR-DIE-METRIKEN isset($data['tags'])
+    PACK-ES-IN-JIRA ORIGINAL: if (isset($data['tags'])) { $stmt = $pdo->prepare("INSERT INTO entry_tags (entry_id, tag) VALUES (?, ?)"); foreach ($data['tags'] as $tag) { $stmt->execute([$entry_id, $tag]); } }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Add auto-expiring messages
+    MACH-ES-FÜR-DIE-METRIKEN isset($data['expire_after'])
+    PACK-ES-IN-JIRA ORIGINAL: if (isset($data['expire_after'])) { $expire_date = date('Y-m-d H:i:s', strtotime("+{$data['expire_after']} hours")); $stmt = $pdo->prepare("INSERT INTO entries (message, expire_at) VALUES (?, ?)"); $stmt->execute([$data['message'], $expire_date]); }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: ?>
+  DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+BOY, DU HAST KI-VERBOT

@@ -1,0 +1,9 @@
+18: def _flags_enabled() -> bool:
+19: if os.getenv("FEATURE_FLAGS_ENABLED", "false").lower() != "true":
+20: return os.getenv("LIVING_FLEET_ENABLED", "false").lower() == "true"
+22: from .feature_flags import is_enabled
+23: return is_enabled("living_fleet", default=False)
+27: ENABLED = os.getenv("LIVING_FLEET_ENABLED", "false").lower() == "true"
+305: if not ENABLED:
+320: if not ENABLED:
+333: if not ENABLED:

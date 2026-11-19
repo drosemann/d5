@@ -1,0 +1,5 @@
+57: FEATURE_FLAG_READ = "feature-flag:read"
+95: Permission.FEATURE_FLAG_READ,
+110: Permission.FEATURE_FLAG_READ,
+117: Permission.FEATURE_FLAG_READ,
+127: Permission.FEATURE_FLAG_READ,

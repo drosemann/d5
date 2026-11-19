@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18954-4565-7c03-b59d-96f6f90305fd/tool-outputs/01a18958-c809-78d3-9c7f-f2e9dda05cd6/call_01a18958b8e171c8934a54f7c44a8332-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18954-4565-7c03-b59d-96f6f90305fd/tool-outputs/01a18958-c809-78d3-9c7f-f2e9dda05cd6/call_01a18958b8e171c8934a54f7c44a8332-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18954-4565-7c03-b59d-96f6f90305fd/tool-outputs/01a18958-c809-78d3-9c7f-f2e9dda05cd6/call_01a18958b8e171c8934a54f7c44a8332-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\TraumaLang\\tests\\parser_tests.c","hunks":[{"oldStart":32,"oldLines":6,"newStart":32,"newLines":12,"lines":["     p = parse_src(\"IT'S SHOWTIME\\nWE NEED TO TAKE THIS OFFLINE f\\nTALK TO THE HAND \\\"x\\\"\\nTHIS COULD HAVE BEEN AN EMAIL\\nYOU HAVE BEEN TERMINATED\\n\");","     assert(p); tl_node_free(p);"," ","+    p = parse_src(\"IT'S SHOWTIME\\nWE NEED TO TAKE THIS OFFLINE add WITH x AND y\\nGIVE IT BACK x\\nTHIS COULD HAVE BEEN AN EMAIL\\nYOU HAVE BEEN TERMINATED\\n\");","+    assert(p && p->body->node->param_count == 2); tl_node_free(p);","+","+    p = parse_src(\"IT'S SHOWTIME\\nWE NEED TO TAKE THIS OFFLINE main\\nDO SPRINT PLANNING i FROM 1 TO 3\\nTALK TO THE HAND i\\nYOU HAVE BEEN TERMINATED\\nTHIS COULD HAVE BEEN AN EMAIL\\nYOU HAVE BEEN TERMINATED\\n\");","+    assert(p); tl_node_free(p);","+","     /* Fehlerfaelle: fehlendes TERMINATED, falscher Blockabschluss */","     p = parse_src(\"IT'S SHOWTIME\\nTALK TO THE HAND \\\"x\\\"\\n\");","     assert(!p);"]}]}]}

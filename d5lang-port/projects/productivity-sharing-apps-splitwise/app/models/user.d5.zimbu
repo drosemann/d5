@@ -1,0 +1,32 @@
+﻿# Zimbu-Port-Spiegel von: d5lang-port\projects\productivity-sharing-apps-splitwise\app\models\user.d5
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE user_d5
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: d5lang-port\projects\productivity-sharing-apps-splitwise\app\models\user.d5\n")
+  RETURN 0
+
+# ---- Original-Code (d5lang-port\projects\productivity-sharing-apps-splitwise\app\models\user.d5), unveraendert, als Inline-Doku ----
+# SHINE, LITTLE BOY, SHINE
+#   WIR MÜSSEN DAS OFFLINE NEHMEN main
+#     PACK-ES-IN-JIRA Portiert 1:1 von projects/productivity-sharing-apps-splitwise/app/models/user.py. User, bcrypt, to_dict.
+#     PACK-ES-IN-JIRA ORIGINAL: from app import db, bcrypt
+#     PACK-ES-IN-JIRA ORIGINAL: from sqlalchemy.orm import relationship
+#     PACK-ES-IN-JIRA ORIGINAL: from sqlalchemy import Column, Integer, String, Float
+#     PACK-ES-IN-JIRA ORIGINAL: class User(db.Model): __tablename__ = 'users'
+#     PACK-ES-IN-JIRA ORIGINAL: id = Column(Integer, primary_key=True); username = Column(String(50), unique=True, nullable=False); email = Column(String(120), unique=True, nullable=False); password_hash = Column(String(255), nullable=False)
+#     PACK-ES-IN-JIRA ORIGINAL: expenses = relationship('Expense', back_populates='user'); group_memberships = relationship('GroupMembership', back_populates='user')
+#     WIR MÜSSEN DAS OFFLINE NEHMEN set_password
+#     PACK-ES-IN-JIRA ORIGINAL: def set_password(self, password): self.password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN check_password
+#     PACK-ES-IN-JIRA ORIGINAL: def check_password(self, password): return bcrypt.check_password_hash(self.password_hash, password)
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN to_dict
+#     PACK-ES-IN-JIRA ORIGINAL: def to_dict(self): return {'id': self.id, 'username': self.username, 'email': self.email}
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+# BOY, DU HAST KI-VERBOT
+#

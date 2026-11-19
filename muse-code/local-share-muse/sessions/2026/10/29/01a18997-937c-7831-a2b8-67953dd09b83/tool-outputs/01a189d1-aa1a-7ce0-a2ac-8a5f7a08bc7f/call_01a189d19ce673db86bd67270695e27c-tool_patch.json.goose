@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189d1-aa1a-7ce0-a2ac-8a5f7a08bc7f/call_01a189d19ce673db86bd67270695e27c-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189d1-aa1a-7ce0-a2ac-8a5f7a08bc7f/call_01a189d19ce673db86bd67270695e27c-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189d1-aa1a-7ce0-a2ac-8a5f7a08bc7f/call_01a189d19ce673db86bd67270695e27c-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\TRAUMALANG-GAPS.md","hunks":[{"oldStart":144,"oldLines":6,"newStart":144,"newLines":8,"lines":[" "," - Backend-Batch 12 (2 Dateien, jetzt voll gelesen, nur Huellen + `TALK TO THE HAND`): `config` (325 Zeilen: Platzhalter-Defaults nie als Literale, Secret-Validierung fail-fast, alle Gruppen), `rate_limiter` (482 Zeilen: TokenBucket/SlidingWindow asserts, Limiter-Checks, 429-Middleware, Regel-Registry mit Default-Regeln). Nicht abbildbar: `dataclass`, `assert`, `async`, `re`, LRU-`OrderedDict`."," ","+- Backend-Batch 13 (3 Dateien, alle voll gelesen, nur Huellen + `TALK TO THE HAND`): `client` (725 Zeilen: alle Endpoint-Gruppen Auth/Server/SSH/Inventory/Secrets/Webhooks/Keys/Plugins/Templates/Doctor/Rollback/Fleet), `main` (213 Zeilen: Login/Logout/Assets/Benchmark/Diagnose/Docs/REPL), `core/cli` (77 Zeilen: App-Registrierung, Client-Factory). Nicht abbildbar: `requests`-Session, `typer`-Apps, `CliRunner`-Aliase.","+"," ## 2. Noch gar nicht übersetzte Quelldateien"," "," ### 2a. `cli/ipilot/commands/`-Submodule (nur noch `infrastructure/backup.py` offen, Rest erledigt)"]}]}]}

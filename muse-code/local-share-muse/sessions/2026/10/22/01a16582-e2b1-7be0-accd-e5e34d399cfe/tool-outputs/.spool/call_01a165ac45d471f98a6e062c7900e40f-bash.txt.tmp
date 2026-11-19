@@ -1,0 +1,15 @@
+warning: in the working copy of 'cli/README.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/LIVING-FLEET-PLAN.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/discord-service/README.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/management-panel/README.md', LF will be replaced by CRLF the next time Git touches it
+[feature/living-fleet-wiring c902856] Fleet: README doc units and plan restoration
+ 5 files changed, 48 insertions(+), 1 deletion(-)
+c902856 Fleet: README doc units and plan restoration
+deed8b4 Fleet: Why-detail explanation view on AppCard
+8979c75 Fleet: SQLite store with one-way legacy JSON import
+da00dd1 Fleet: engine unit tests, store-level rename validation, env keys
+5b29095 Fleet: deterministic care hints on pet status
+a140473 Fleet: panel proxy, creature mount on AppCard, dashboard wiring
+b21f45c Fleet: signal collector with birth hooks and restart windowing
+2881126 Review: complete fleet mood table, drop truncation artifact
+23f43ce Review: fleet birth/mood/rename hardening, pet a11y role

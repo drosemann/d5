@@ -1,0 +1,61 @@
+6: container_name: infra-pilot-postgres
+11: ports:
+39: container_name: infra-pilot-redis
+41: ports:
+67: management-panel:
+69: context: ./services/management-panel
+77: container_name: infra-pilot-management-panel
+89: ports:
+91: - "${MANAGEMENT_BACKEND_PORT:-3001}:3001"
+116: app.kubernetes.io/component: management-panel
+124: container_name: infra-pilot-orchestrator
+135: ports:
+169: container_name: infra-pilot-discord
+190: API_BASE_URL: http://management-panel:3001
+209: ports:
+242: container_name: infra-pilot-prometheus
+246: ports:
+272: container_name: infra-pilot-grafana
+277: ports:
+314: container_name: infra-pilot-postgres-exporter
+===
+monitoring:
+  serviceMonitor:
+    enabled: true
+    interval: 30s
+    scrapeTimeout: 10s
+
+configMaps:
+  create: true
+  data:
+    LOG_LEVEL: INFO
+    MAX_CONNECTIONS: "100"
+    CACHE_TTL: "300"
+
+secrets:
+  create: true
+  # WARNING: In production, use external-secrets or a vault provider instead of plain values
+  # Secret is created as infra-pilot-secrets (stable name via secretName helper) consumed by postgresql/redis/deployment.
+  data:
+    DB_PASSWORD: ""  # REQUIRED in production
+    POSTGRES_PASSWORD: ""  # REQUIRED in production; PostgreSQL administrator credential
+    REDIS_PASSWORD: ""  # REQUIRED in production
+    API_KEY: ""  # REQUIRED in production - generate via: openssl rand -hex 32
+
+networkPolicies:
+  enabled: true
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: ingress-nginx
+      ports:
+        - port: 8500
+        - port: 3001
+  egress:
+    enabled: true
+
+serviceMesh:
+  enabled: false
+  sidecar: true
+  mtls: true

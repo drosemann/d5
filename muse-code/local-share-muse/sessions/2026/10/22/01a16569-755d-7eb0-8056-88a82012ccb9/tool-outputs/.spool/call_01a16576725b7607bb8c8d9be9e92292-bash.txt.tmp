@@ -1,0 +1,19 @@
+
+[SC] QueryServiceConfig ERFOLG
+
+SERVICE_NAME: msiserver
+        TYPE               : 10  WIN32_OWN_PROCESS 
+        START_TYPE         : 3   DEMAND_START
+        ERROR_CONTROL      : 1   NORMAL
+        BINARY_PATH_NAME   : C:\WINDOWS\system32\msiexec.exe /V
+        LOAD_ORDER_GROUP   : 
+        TAG                : 0
+        DISPLAY_NAME       : Windows Installer
+        DEPENDENCIES       : rpcss
+        SERVICE_START_NAME : LocalSystem
+desktop-eqstmgs\muse-sbx-r1
+Name       Status StartType
+----       ------ ---------
+msiserver Stopped    Manual
+
+

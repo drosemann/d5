@@ -1,0 +1,463 @@
+ai-chat-webui
+aktienwerk
+cooperating-screen
+drosemann
+ed-docs
+forgecms
+forum-for-nerds
+infra-pilot
+stranded-horizons
+streuland
+TraumaLang
+===
+
+## ai-chat-webui
+AI Chat WebUI É?" Lokal & Privat
+
+> Privacy-fokussiertes Chat-Interface f«¨r Ollama mit Workspace: Projekte,
+> Tasks, Memory und mehrere Chats É?" mit Benutzerkonten auf selbst-gehostetem
+> Supabase. Kein Framework, pure JS.
+
+Ursprung am 14.03.2025 É?" first commit `bc38708` mit nur 3 Dateien, hie«Y noch `super-fast-ai-chat`. Nur `README.md`, `index.html`, `index.js`.
+
+### Entstehung
+
+Fr«¨her war mein Mindset: "Lieber meinen $5 VPS auf 100% CPU ballen als ein paar Cent an einen Inference Provider zu zahlen". Heute sehe ich es anders: Ich w«¨rde das meiste in der Cloud machen und nur f«¨r wirklich private Dinge lokale 4B Modelle nutzen É?" statt teuren VPS dauerhaft zu qu«œlen.
+
+Genau daf«¨r ist dieses Projekt: Kein Framework, pure JS, lokal chatten É?" inzwischen als Workspace mit Konten, damit Chats, Projekte und Tasks ger«œte«¨bergreifend erhalten bleiben.
+
+## Features
+
+- –Ys" **Ultra-schnell** É?" lokale Antworten ohne Cloud Latenz
+- –Y"' **Privacy First** É?" Backend und Auth laufen auf deiner Infrastruktur
+- –Y'Ø **Lokale Modelle** É?" via Ollama, Modell frei w«œhlbar
+- –Y-'ã˜? **Workspace** É?" Home-Dashboard, Projekte, Tasks, Memory, mehrere Chats
+- –Y'œ **Benutzerkonten** É?" Registrierung, Login, Passwort-Reset via selbst-gehostetem Supabase Auth
+- –YZ˘ **Modernes UI** É?" clean, responsive, mit Streaming-f«œhiger Architektur
+- –Y"ı **Einfach konfigurierbar** É?" via `.env`, kein Build n«Ùtig
+
+## Schnellstart
+
+### 1) Voraussetzungen
+- [Ollama](https://ollama.ai) installieren
+- Modell pullen:
+```bash
+ollama pull qwen2.5:0.5b
+# oder f«¨r private Tasks heute eher:
+ollama pull gemma3:4b
+```
+- [Docker + Docker Compose](https://docs.docker.com/compose/install/) f«¨r das Supabase-Backend
+- Einen SMTP-Zugang f«¨r Best«œtigungs- und Reset-Mails (oder `GOTRUE_MAILER_AUTOCONFIRM=true` nur f«¨r lokale Entwicklung)
+
+### 2) Backend starten
+```bash
+cp supabase/.env.example supabase/.env
+
+## aktienwerk
+# aktienwerk
+
+> Automatisiert SEC-Meldungen, Kurse und verst«œndliche Erkl«œrungen f«¨r 100 gro«Ye US-Unternehmen. Nur Python Standardbibliothek + SQLite, serverseitig gerendert.
+
+Kein Bloomberg Terminal Clone, keine Anlageberatung, kein Node.js Dependency Hell. Einfach SEC EDGAR + Kurse + optional KI-Erkl«œrung auf Deutsch.
+
+### Entstehung
+
+Urspr«¨nglich bin ich auf die Idee wegen Bloomberg Terminal gekommen É?" alles «¨berall an einem Ort. Dann schnell realisiert: Macht keinen Sinn, weil nur Bloomberg wirklich alle Daten hat. Idee abgewandelt: Fokus auf das was «Ùffentlich geht É?" SEC EDGAR + Kurse + Transkripte É?" und daraus was verst«œndliches bauen ohne 20 Python Pakete.
+
+Deshalb auch nur stdlib + SQLite, bewusst simpel.
+
+### Was ist das? / Was ist das nicht?
+
+**Ist:** Automatischer Worker der SEC + Yahoo Finance Chart + optional FMP Transkripte + optional Ollama f«¨r Erkl«œrungen zieht, in `data/aktienwerk.sqlite3` speichert und als schnelle SSR Seiten + JSON API + Sitemap + Schema.org ausliefert.
+
+**Ist nicht:** Keine Echtzeit-B«Ùrse, keine garantierten Kurse (Yahoo kann verz«Ùgert sein), keine Anlageberatung. Automatische Erkl«œrungen k«Ùnnen Fehler enthalten É?" Originalmeldung ist ma«Ygeblich.
+
+### Features / Zweck
+
+- **Nur stdlib + SQLite** É?" kein pip install Wahnsinn, l«œuft «¨berall mit Python 3.11+
+- **SEC EDGAR** É?" Firmenzuordnung, Ticker-Resolve, neue Prim«œrmeldungen mit Form, Datum, Originallink
+- **Yahoo Finance Chart** É?" t«œgliche Schlusskurse, >3% Move = Event
+- **FMP (optional)** É?" Earnings Call Transkripte wenn `FMP_API_KEY` gesetzt
+- **Ollama (optional)** É?" lokal deutsche Erkl«œrungen, Prompt fordert einfache Sprache, trennt Fakten/Vermutung, keine Empfehlung. Ohne Ollama: regelbasierte vorsichtige Zusammenfassung + Log
+- **SSR + SEO** É?" `/` «obersicht mit Suche, `/aktie/AAPL` indexierbar mit FAQ-/Corporation Schema, `/api/stocks`, `/api/events`, `/sitemap.xml`, `/robots.txt`, `/health`
+- **Resilient** É?" einzelner Quellen-Ausfall wird im Worker-Log geloggt, Rest l«œuft weiter
+
+### Installation
+
+**Voraussetzungen:**
+- Python 3.11+
+- Keine extra Pakete
+
+```powershell
+Copy-Item .env.example .env
+python -m app init
+python -m app serve
+```
+
+
+## cooperating-screen
+Cooperating Screen
+
+> Open-Source Cross-Device Screen Sharing É?" Flutter App + WebRTC + Node.js Signaling Server. Docker-ready.
+
+Entstanden am 15.01. É?" first commit `411edc7` mit nur 3 Dateien: `LICENSE` (damals noch MIT 2026 Daniel), `Readme.md` und `detailed_plan.md`. +6.074 Zeilen.
+
+### Entstehung
+
+Die Idee kam vor etlichen Jahren im Sommerurlaub auf der Insel Nordee mit meiner Schwester. Sie wollte Marketing Head werden und ich Dev/Infra/Implementierer/Sklave/etc pp... Damals haben wir alle noch GPT 3.5 mit unlimited usage genutzt É?" crazy, heutzutage hat OpenAI ein Limit von 512 MB Speicher f«¨r Bilder/Dateien xD.
+
+Ich hatte einen Chat dazu, finde ihn nicht mehr É?" habe auch eine lokale Kopie die ich nicht finde XD. Aber ein "Gemini Gem" hat all meine ChatGPT Chats die ich nicht exportieren kann É?" DANKE GOOGLE É?" deswegen konnte ich Gemini fragen.
+
+Als OpenAI Codex gut genug und free wurde (zu geizig f«¨r $20 XD) habe ich die Idee einfach mal in Codex eingegeben und geschaut was rauskommt. Dann ein Repo draus gemacht. Kurzzeitig hie«Y es mal "LinkScreen É?" Cross-Device Sharing" als ich alle Repos umbenennen wollte XD É?" habe es aber schnell zur«¨ck umbenannt weil LinkScreen nach AI-generated Name klingt.
+
+**Was es wirklich ist:** Kein stumpfes Teams/Zoom Screen-Sharing, sondern echtes Co-Working: Multi-User Control, App-Level Sharing statt ganzer Desktop, Shared Workspace. Technisch: Flutter f«¨r App, WebRTC f«¨r fast latenzfreies P2P, Node.js Signaling.
+
+### Was drin ist
+
+- Flutter App f«¨r Device Setup, Pairing, WebRTC Session Management
+- Node.js Signaling Server f«¨r WebSocket Peer Signaling (Docker-ready f«¨r VPS)
+- Leichter Web Client im Browser f«¨r Rooms
+- Supabase-kompatible Backend Punkte
+
+### Features
+
+- Device Registrierung & Pairing Flow
+- WebRTC Offer/Answer + ICE Candidate Relay
+- Health & Stats Endpoints f«¨r Signaling
+- Docker Deployment
+- Supabase Integration
+
+### Installation
+
+**Voraussetzungen:**
+- Flutter SDK 3.0+
+- Node.js 18+
+- npm
+- Docker (optional)
+
+```bash
+
+## drosemann
+Hey, I'm Daniel, a dev by passion from near Frankfurt am Main, a hosting nerd and AI tinkerer, and currently in my second year of training as an IT specialist for system integration.
+I live for technology, IT infrastructure and artificial intelligence, and learning by doing is my thing because I'd rather build servers than slide decks.
+That AI tinkering includes ai-chat-webui, a privacy-focused chat UI for local Ollama models: https://github.com/drosemann/ai-chat-webui
+I've been active in the Minecraft and hosting community for years, and since 22 April 2018 I've been running my Minecraft server ShadowUnity.
+For my own projects I use my private stack, while at work I use the stack required there.
+My full stack work covers HTML, CSS, JavaScript, Java, PHP, Python and React and TUI development.
+My infrastructure work covers Docker, Linux, NGINX, Apache, Proxmox, Velocity and KVM with libvirt.
+I have a lot of experience with the Pterodactyl and Coolify panels, but for my own services I now prefer pure Docker because it means less overhead and more control.
+I have a lot of productive experience with MariaDB and I've tested Supabase extensively, both in the cloud and self hosted.
+I use Cloudflare for DNS, HetrixTools for monitoring, Trello and Notion for project management for ShadowUnity, and Vercel for automatic deployments.
+My browser survival game stranded-horizons is the one project still on Vercel auto-deploys: https://github.com/drosemann/stranded-horizons
+On the client side I use Windows, with a nod to the games industry, and I plan to switch to Linux as soon as anticheat support gets better.
+My focus is on cybersecurity, AI, cloud and virtualization, and automation with Python.
+For that Python side I built aktienwerk, which turns SEC filings and stock prices for 100 US companies into plain explanations with only the standard library and SQLite: https://github.com/drosemann/aktienwerk
+My hosting path went from Aternos to Ploudos to Minehub, which later closed.
+After that it went through DeinServerHost, Strato, Host-Unlimited, LuxVPS and Mine-Hoster.
+I cancelled ST-Hosting after one month because their LXC setup didn't meet my expectations, and HT-Hosting went insolvent, which taught me to migrate under time pressure.
+I used Index Hosting until mid March and cancelled it because their AMD EPYC range was discontinued.
+In between I tested Vercel and Kinsta, which had the best developer experience with edge and CDN, but self hosting is cheaper in the long run.
+At times I ran three or four servers in parallel as development, failover and main systems.
+Before my training I did three helpdesk internships, two school internships and one voluntary one, all unpaid and all just because I enjoyed the work.
+I produced over 2,000 YouTube videos and streamed live for hundreds of hours, which taught me community building, live technology, video production, consistency and dealing with feedback.
+ShadowUnity runs at play.shadowunity.de and hasn't had a reset since 2022.
+Its plot system is streuland, my Paper plugin for protected vanilla-style plots instead of a standard grid: https://github.com/drosemann/streuland
+Its name history is GrieferPrinz from the Pocket Edition days, inspired by GrieferKing and GrieferGames, then MelonenGames as my first Java server with only CityBuild, then DiamantSucht because that was my in game name, then DanielArmy during a personal brand phase, then MineRush, inspired by MineSucht by Abge and FloTastisch, and finally ShadowUnity, from ShadowFox plus community, which has been stable ever since.
+From 24 January 2025 to 26 April 2025 I ran the DMH Network together with Matti and Henry.
+Under my old alias MineHub I published SpigotMC plugins at https://www.spigotmc.org/resources/authors/minehub.1035036/
+Since 10 September 2023 I've been part of Emergency Response: Crestwood County, a Roblox roleplay project.
+I also built a Raspberry Pi AI plant monitoring project with sensors and AI, and I spend time on hardware hacking and AI security.
+I also built cooperating-screen for cross-device screen sharing with Flutter, WebRTC and a Node.js signaling service: https://github.com/drosemann/cooperating-screen
+After over 2,000 gaming videos I made 15 videos in the Theo Browne style, archived at https://github.com/drosemann/drosemann/tree/main/theo-browne-era-video-style
+All of my domains are with netcup: d5niel.de for my portfolio, which will run on ForgeCMS (https://github.com/drosemann/forgecms) in the future, shadowunity.de for my Minecraft server, and hosting-club.de, a former hosting forum.
+For writing itself I use ed-docs, an offline-first Markdown workspace with ed/vi habits like i, a, Esc and :w: https://github.com/drosemann/ed-docs
+Over the years every hosting era also produced a forum or blog attempt, ten in total, and I finally merged all of them into one codebase: forum-for-nerds (https://github.com/drosemann/forum-for-nerds), a self-hosted Next.js forum plus blog running on pure Docker with SQLite for dev and MariaDB in prod. Ten dead forums walked in, one nerd forum walked out.
+For storage I ended up with OneDrive 365 Basic with 100 GB for 2 euros a month, after years of being convinced I'd never give Microsoft a cent, until the Windows and Samsung integration won me over.
+Speed doesn't matter much to me, and if OneDrive ever offers a 500 GB cold archive tier on very slow old hard drives for one or two euros a month, I'd be the first customer, and I'd probably store all my photos there too since 100 GB is easily enough for me.
+I never actually needed it, since I never used more than two or three GB, but now I just upload 30 GB so I can say I use it.
+The stupid thing is I always said "no SaaS subscriptions", then October 2026 came and I ended up with two: OneDrive 100 GB and Muse Code for 4,29 É'™/mo. Back in April 2026 I predicted É?" and tagged Meta É?" that they should ship a $5/month tier with a lot of tokens: https://x.com/d5_iel/status/2113593415564771351 É?" and they actually did. Honest take though: I would have subscribed to whichever lab shipped a ~$5 tier first.
+Muse Code itself is surprisingly good: it's terminal-only and the UX is a bit bad, but it has really useful features and the syntax highlighting is genuinely nice, and the Everyday tier is enough for a ton of work. I did have to add some strict personal memory settings to not burn a ton of tokens: single session only É?" never use subagents, observers or multiple sessions, verify everything myself in the main thread; save tokens, be concise, avoid parallel exploration; stop after 1É?"2 failed attempts on the same task and escalate with what was tried, the exact blocking error and what's needed instead of retrying variants, treating repeated tool failures, permission denials or unchanged output as a hard stop; and default to writing code/files only É?" never run, test, verify, execute, install or set up environments (no Python/Node/NPM installs, no builds, no test runs, no servers) unless I give explicit approval first.
+Long term I don't want just any job, I want to build my own thing and found an IT company for hosting, infrastructure and IT consulting, based on infra-pilot (https://github.com/drosemann/infra-pilot).
+
+## ed-docs
+# ed-docs
+
+> Offline-first writing workspace f«¨r Leute die Dokumente simpel und Commands explizit m«Ùgen. Markdown im Browser, ein paar ed/vi Habits: `i`, `a`, `Esc`, `:w` und das gelegentliche `?`.
+
+Kein Google Docs, kein Microsoft 365, kein Notion Clone. Kein Account, kein Server, kein Cloud Sync, keine Collaboration. Dein Text liegt nur in diesem Browser É?" `:w` schreibt nach `localStorage`, Export als `.md` ist das Backup.
+
+**Ziel:** Mal ~80% Feature Parity mit Word Online / Google Docs wenn genug Token Budget da ist É?" aber mit lustigen ed/vi Quirks.
+
+### Entstehung
+
+Startet eigentlich 2013 mit `Add Upstream ED` von gregnietsky. Dann lag es Jahre.
+
+Mai 2026 komplett modernisiert via Codex É?" PR #1 `tidy-up-repository-for-open-source-use`, ausversehen zweite LICENSE dazu, PR #2 `redesign-editor-with-modern-tui-using-react` mit modernem React TUI Scaffold, PR #3 `remove-everything-except-react-tui` É?" alles alte ed Zeug raus, nur React TUI behalten.
+
+Am 11.10.2026 dann Rebrand: `Synapse` É≈' `ed-docs` als offline-first ed-docs + `Restore original GNU GPL license`. So wie es jetzt ist.
+
+### Was ist das?
+
+Single-User MVP. Fokussierter Editor, keine Ablenkung. Du arbeitest lokal, der Service Worker cached App Shell + Assets nach dem ersten Load É?" danach brauchst du kein Internet mehr zum Lesen/Schreiben.
+
+Browser Storage ist lokal zum Browser Profil + Device. Wer Site-Daten l«Ùscht, l«Ùscht Dokumente É?" deshalb Exports als portables Backup.
+
+### Features / Zweck
+
+- **Offline-First** É?" Service Worker cached nach erstem Load, danach voll offline nutzbar
+- **ed/vi Vibes** É?" `i` insert am Cursor, `a` append am Zeilenende, `o` neue Zeile drunter, `Esc` zur«¨ck in Normal Mode
+- **Navigation** É?" Pfeiltasten oder `h,j,k,l`, `x` l«Ùscht Zeichen
+- **Commands** É?" `:` + Enter, wie man es kennt
+- **Kein Backend** É?" alles in `web/`, Vite, Node 20+
+- **Markdown nativ** É?" New, Open by Title, Export/Import .md
+
+### Installation
+
+**Voraussetzungen:**
+- Node.js 20+
+- npm
+
+```bash
+git clone <dein-fork>
+cd ed-docs
+
+## forgecms
+ ForgeCMS
+
+> Flask Blog & CMS mit MariaDB É?" Auth, Draft/Scheduled/Published Workflow, Markdown und Media Uploads. Gebaut weil ich schon immer bloggen wollte, aber nie Zeit und kein Impressum hatte.
+
+**Stack:** Python 3.8+, Flask, SQLAlchemy, MariaDB 10.5+, Bootstrap 5, Docker
+
+Ich wollte immer einen eigenen Blog statt WordPress É?" leicht, selbst gehostet, ohne Overhead. Am Ende ist es nie live gegangen, weil Zeit gefehlt hat und in Deutschland ohne Impressum direkt Abmahn-Risiko hast. Deshalb liegt es jetzt als Open-Source hier.
+
+### Was kann ForgeCMS?
+- User Registrierung & Login
+- Admin Content Verwaltung
+- Post Workflow: `draft`, `scheduled`, `published`, `archived`
+- Vorschau f«¨r unver«Ùffentlichte Posts
+- SEO-freundliche Slugs, Bootstrap Responsive UI
+- Bild Uploads f«¨r Posts
+
+### Repo Aufbau
+- `app/` É?" Flask App (Blueprints, Models, App Factory)
+- `templates/` É?" Jinja2 Templates
+- `static/` É?" CSS & Uploads
+- `migrations/` É?" DB Migrationen inkl. `migrations/manual/` SQL
+- `wsgi.py` É?" WSGI Entrypoint
+- `Dockerfile` / `docker-compose.yml` É?" Single Server Deployment
+- `docker-compose.enterprise.yml` É?" Multi-Instance mit NGINX Loadbalancer
+- `docker/` É?" Container Helper & NGINX Config
+
+## Schnellstart mit Docker (empfohlen)
+
+### Voraussetzungen
+- Docker Engine 24+
+- Docker Compose v2+
+
+### 1) Environment
+```bash
+cp .env.example .env
+```
+Mindestens setzen:
+- `SECRET_KEY`
+- `DB_PASSWORD`
+- `DB_ROOT_PASSWORD`
+
+## forum-for-nerds
+# forum-for-nerds
+
+> Forum #N É?" after `hosting-club.de` and nine blog attempts, everything finally
+> lives in one repo. A nerd forum with a blog attached. Or a blog with a forum
+> attached. Depends who you ask. (Okay, maybe a few excuses remain.)
+
+**Stack:** Next.js 15 ∂˙ TypeScript ∂˙ Prisma ∂˙ SQLite (dev) / MariaDB (prod) ∂˙ Docker
+
+---
+
+## Table of contents
+
+- [Why does this exist?](#why-does-this-exist)
+- [What is this? / What is this not?](#what-is-this--what-is-this-not)
+- [Features](#features)
+- [Quickstart](#quickstart)
+- [Project structure](#project-structure)
+- [Data model](#data-model)
+- [The 10 predecessors](#the-10-predecessors)
+- [Sibling projects (not merged)](#sibling-projects-not-merged)
+- [Roadmap for the implementing agent](#roadmap-for-the-implementing-agent)
+- [FAQ](#faq)
+- [License](#license)
+
+---
+
+## Why does this exist?
+
+The author has been running game servers and hosting projects since 2018:
+the ShadowUnity Minecraft server (`play.shadowunity.de`, no reset since 2022),
+a stint running the DMH Network with friends, and É?" relevant here É?"
+`hosting-club.de`, a former hosting forum.
+
+The road to this repo went through Aternos, Ploudos, Minehub (closed),
+DeinServerHost, Strato, Host-Unlimited, LuxVPS, Mine-Hoster, a one-month
+ST-Hosting episode (their LXC setup didn't cut it), an HT-Hosting insolvency
+that forced a migration under time pressure, and Index Hosting until their
+AM EPYC range got discontinued. Along the way, Vercel and Kinsta were tested
+(best developer experience, but self-hosting wins on price in the long run).
+At times three or four servers ran in parallel as dev, failover, and main
+
+## infra-pilot
+# Infra Pilot
+
+[![CI](https://github.com/drosemann/infra-pilot/actions/workflows/ci.yml/badge.svg)](https://github.com/drosemann/infra-pilot/actions/workflows/ci.yml)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org)
+[![Node 22+](https://img.shields.io/badge/node-22%2B-green)](https://nodejs.org)
+[![Docker](https://img.shields.io/badge/docker-compose-blue)](./docker-compose.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
+
+> Docker-native infrastructure control plane: a React/Express
+> management panel, a Python orchestrator agent with GitOps
+> reconciliation, a Typer-based `ipilot` CLI, and optional
+> Discord and monitoring profiles.
+
+Infra Pilot manages your own VPS and container fleet É?" deployments,
+monitoring, backups, and remediation É?" without a heavyweight PaaS.
+It is an internal operations tool, not a public hosting platform.
+
+---
+
+## Table of contents
+
+- [What you get](#what-you-get)
+- [Screenshots](#screenshots)
+- [Architecture](#architecture)
+- [Quickstart](#quickstart)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [API reference](#api-reference)
+- [Deployment](#deployment)
+- [Observability](#observability)
+- [Backup and restore](#backup-and-restore)
+- [Security](#security)
+- [Testing and quality gates](#testing-and-quality-gates)
+- [Project structure](#project-structure)
+- [Documentation map](#documentation-map)
+- [Contributing](#contributing)
+- [Support](#support)
+- [Roadmap](#roadmap)
+- [License](#license)
+
+
+## stranded-horizons
+# Stranded Horizons
+
+> Leichtgewichtiges Browser Survival Game É?" Vanilla HTML, CSS, JavaScript. Ohne Backend, ohne Build-Step.
+
+Entstanden am 08.04.2025 É?" first commit `3a668c7` mit 18 Dateien. Im ersten Draft hie«Y die Idee noch viel gr«Ù«Yer É?" `PROJECT-IDEA` mit Character Creation, Builder/Scout/Medic/Engineer, Stamina & Co. Am Ende wurde es ein fokussiertes Wave-Survival.
+
+### Entstehung
+
+Ich wollte schon immer ein (Browser) Spiel bauen, vor allem RPG. Hatte nie die Zeit, jetzt noch weniger um kreativ zu sein. Das ist das einzige Projekt wo ich Auto-Deploys zu Vercel habe É?" Free Tier wird um Weltjahre nicht ausgelastet. Nur Hater die nie was probieren sagen da was, um nie etwas proven zu m«¨ssen xD.
+
+Urspr«¨nglich als Multiplayer Survival auf einer Insel geplant, jetzt als Singleplayer Wave-Shooter umgesetzt É?" ideal um Vanilla JS Game-Loop zu lernen.
+
+### Was ist das?
+
+Du steuerst einen Survivor, wehrst Wellen ab, sammelst Coins und kaufst Upgrades. HTML5 Canvas, Echtzeit Game-Loop.
+
+**Features:**
+- Pure Front-End É?" kein Framework, kein Build
+- Canvas Rendering + Game-Loop
+- WASD / Pfeiltasten + Maus Aim/Shoot
+- Wave Spawning
+- Shop f«¨r Speed & Damage Upgrades
+- Highscore in `localStorage`
+
+### Installation
+
+**Option 1: Git**
+```bash
+git clone <repo-url>
+cd stranded-horizons
+```
+
+**Option 2:** ZIP downloaden und entpacken.
+
+### Nutzung
+
+`index.html` im Browser «Ùffnen, **Play Now** klicken.
+
+F«¨r Dev besser mit static Server:
+```bash
+
+## streuland
+# Streuland Plot Plugin
+
+> Open-Source Paper Plugin f«¨r ein Vanilla-nahes Grundst«¨ckssystem É?" kein h«œssliches Grid, sondern nat«¨rliche Plots in einer normalen Minecraft Welt.
+
+Entstanden am 01.02.2025 É?" first commit `bfbadcb` mit 28 Dateien (siehe Screenshot). Der Ursprung: Ich mochte "CB Nature" auf GrieferGames, aber der Citybuild war irgendwann tot und wurde nur noch f«¨r AFK-Farmen genutzt. Ich wusste, man kann die normale Vanilla World-Gen nutzen und damit viel bessere, nat«¨rlichere Plots bauen als das Standard-Grid.
+
+### Was ist Streuland?
+
+Streuland ist ein Paper 1.16.5 Plugin, das ein zuf«œlliges Plot-System innerhalb von normalen Vanilla-Welten erzeugt. Plots werden zuf«œllig verteilt (nicht Grid-basiert), automatisch «¨ber Pfade verbunden und sind vollst«œndig f«¨r den Besitzer gesch«¨tzt.
+
+Das volle Java-Projekt mit Maven, gebaut f«¨r Paper `1.16.5`.
+
+## Features / Zweck
+
+- **Plot Verwaltung** É?" erstellen, besitzen, trust/untrust, l«Ùschen
+- **Schutzmodell** É?" `PATH`, `PLOT_UNCLAIMED`, `PLOT_CLAIMED`
+- **Automatische Weggenerierung** É?" kein Grid, Wege verbinden Plots nat«¨rlich
+- **District & Nachbarschaften** É?" Progression statt einfach nur Claims
+- **Plot Upgrades, Markt & Freigaben** É?" Wirtschaft + Approval Workflows
+- **Speicherung** É?" YAML + SQLite
+- **SQLite-Schema** É?" `invite.sqlite` wird beim Serverstart versioniert und bei Bedarf automatisch migriert
+- **Optionales Dashboard** É?" REST/WebSocket Assets
+- **Clan System** É?" Quota, Diplomatie, Chunk Wars & Belohnungen
+- **Marktst«œnde** É?" `/markt`
+- **Bewegungseinschr«œnkung** É?" Wegpass zum Erkunden fremder Wege
+- **Eigene Plot-Rollen**
+
+## Installation
+
+### Voraussetzungen
+- Java 17+
+- Maven 3.8+
+- Paper Server kompatibel mit `1.16.5`
+
+### Aus Source bauen
+```bash
+mvn clean package
+```
+Die Jar liegt danach in `target/`.
+
+
+## TraumaLang
+# TraumaLang v2.2 É?" The Unbenchmarkable IT Satire Language
+
+Satirische Programmiersprache in C (Linux-Ziel, GCC). `.tl` -> C.
+
+## Schnellstart (fuer den Anwender, hier nicht ausgefuehrt)
+
+```sh
+make
+./traumalang build examples/hello_world_enterprise.tl
+./traumalang --explain examples/hello_world_enterprise.tl
+./traumalang rewrite --from python -i examples/hello.py -o /tmp/hello.tl
+```
+
+Alle Build-/Run-/Test-Schritte sind **nicht ausgefuehrt, nicht verifiziert**;
+sie sind als Anweisungen fuer den Anwender gedacht.
+
+## Struktur
+
+- `src/`: Compiler (lexer, parser, ast, codegen, runtime, cli, rewrite, explain, main).
+- `examples/`: Pflichtbeispiele + `hello.py`.
+- `tests/`: C-Modultests + `cli_tests.sh` (Ablage, manuell auszufuehren).
+- `docs/`: LANGUAGE.md, GRAMMAR.md, KEYWORDS.md, REWRITER.md.
+
+## Hinweise
+
+- Kein Rust/Go/Python/JS im Compiler; keine Pflichtabhaengigkeiten (nur libc + GCC).
+- Absichtlich endlose Konstrukte sind dokumentiert (LANGUAGE.md).
+- Satire-Allokationen sind begrenzt (4 KiB Leak einmalig, 64 KiB Datadog temporaer).
+- `build` generiert `.tl.gen.c` und zeigt den GCC-Befehl; der Anwender fuehrt ihn selbst aus.

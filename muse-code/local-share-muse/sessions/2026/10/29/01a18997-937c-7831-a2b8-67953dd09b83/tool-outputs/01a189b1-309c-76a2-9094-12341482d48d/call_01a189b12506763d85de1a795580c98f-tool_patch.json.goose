@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189b1-309c-76a2-9094-12341482d48d/call_01a189b12506763d85de1a795580c98f-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189b1-309c-76a2-9094-12341482d48d/call_01a189b12506763d85de1a795580c98f-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189b1-309c-76a2-9094-12341482d48d/call_01a189b12506763d85de1a795580c98f-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\TRAUMALANG-GAPS.md","hunks":[{"oldStart":337,"oldLines":6,"newStart":337,"newLines":8,"lines":[" "," - `scripts/coverage_badge_updater.tl` (neu) Warnungen: Zeile 4 (`import re/sys/pathlib`, `from coverage_lib import`); Zeilen 11/21/60 (`def` mit Typannotationen, `-> int/bool/None`); Zeilen 13/26/31/51 (Datei-Existenz, `read_text`/`write_text` mit `try/except`); Zeilen 36/42 (kompilierte Regex mit Gruppen, `subn`-Rueckgabe); Zeilen 62/74 (`Path(__file__)`-Wurzel, `sys.exit(0)`)"," ","+- `scripts/coverage_lib.tl` (neu) Warnungen: Zeile 8 (`from __future__ import annotations`); Zeile 10 (`import xml.etree.ElementTree`); Zeile 12 (`from typing import Optional`); Zeile 15 (`def` mit `Path`-/`Optional[float]`-Annotation); Zeilen 21/24/27/31 (Existenz-Check, `ET.parse` mit `try/except`, Attribut-`get`, `float`-Cast mit `try/except`)","+"," ## 5. Sonstiges für den nächsten Agenten"," "," - `--roast`-Modus des Rewriters wurde nie verwendet; sarkastische Marker"]}]}]}

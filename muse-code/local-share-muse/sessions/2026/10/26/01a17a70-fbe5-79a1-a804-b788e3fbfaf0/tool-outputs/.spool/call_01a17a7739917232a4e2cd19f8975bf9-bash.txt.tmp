@@ -1,0 +1,264 @@
+/**
+ * @file API client for the management panel backend.
+ * Provides typed methods for all REST endpoints.
+ */
+
+import axios from 'axios';
+import type { AxiosInstance } from 'axios';
+import type { DockerApp, SetupStatus, UserProfile, AppConfig, Customer, ServerPreset, ServerMetric, AccessLog, ConfigVersion, MaintenanceWindow, BackupJob, BackupStatusEntry, BackupArtifactsResponse, AlertConfig, AlertHistoryEntry, HealthCheck, ScheduledTask, GitDeployment, Database, BillingInfo, Transaction, BillingRates, CostEstimate, Modpack, ModpackInstallation, ServerCloneRequest, ServerRoleAssignment, ServerSnapshot, AutopilotRecommendation, ServerWorkspace, ServerBillingLedger } from './types.ts';
+import type { CreatureView } from '../components/FleetPet';
+
+const API_URL = (import.meta as any).env?.VITE_API_URL || 'http://localhost:3001';
+
+export type { APIClient };
+
+/**
+ * API client that wraps axios and provides typed methods for all endpoints.
+ * Manages JWT token lifecycle and request configuration.
+ */
+class APIClient {
+  private api: AxiosInstance;
+  private token: string | null = null;
+
+  constructor() {
+    this.api = axios.create({
+      baseURL: API_URL,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    // Pick up a persisted session synchronously so the first requests fired
+    // by deep-linked routes already carry auth. Without this, pages mounted
+    // before the setup-status roundtrip fetch without a token (401) and
+    // bounce back to /dashboard. Guarded for non-browser runtimes (tests).
+    try {
+      const stored =
+        typeof localStorage !== 'undefined' ? localStorage.getItem('sb_access_token') : null;
+      if (stored) this.setToken(stored);
+    } catch {
+      // storage unavailable (private mode, tests) ƒ?" remain unauthenticated
+    }
+  }
+
+  setToken(token: string) {
+    this.token = token;
+    this.api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  }
+
+  clearToken() {
+    this.token = null;
+    delete this.api.defaults.headers.common['Authorization'];
+  }
+
+  // Setup endpoints
+  async getSetupStatus(): Promise<SetupStatus> {
+    const res = await this.api.get('/api/setup/status');
+    return res.data;
+  }
+
+  async initSetup(email: string, password: string, displayName: string, mode: 'personal' | 'business') {
+    const res = await this.api.post('/api/setup/init', {
+===
+import { Component, useEffect, useState, useCallback, useMemo } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router';
+import { IntlProvider } from 'react-intl';
+import { Toaster } from 'sonner';
+import { apiClient } from './lib/api';
+import { apiClientEffect, useEffectful } from './lib/effect';
+import { getAccessToken } from './lib/auth';
+import { ConfigContext, SetupMode } from './lib/types';
+import { Setup } from './pages/Setup';
+import { Dashboard } from './pages/Dashboard';
+import Customers from './pages/Customers';
+import { AppForm } from './pages/AppForm';
+import { AppDetail } from './pages/AppDetail';
+import { Monitoring } from './pages/Monitoring';
+import { AccessLogs } from './pages/AccessLogs';
+import { Backups } from './pages/Backups';
+import { Deployments } from './pages/Deployments';
+import { Reports } from './pages/Reports';
+import { SettingsPage } from './pages/Settings';
+import { AuditLog } from './pages/AuditLog';
+import { KnowledgeBase } from './pages/KnowledgeBase';
+import { ActivityFeed } from './components/ActivityFeed';
+import { MainLayout } from './components/MainLayout';
+import { OnboardingWizard } from './components/OnboardingWizard';
+import { GlobalSearch } from './components/GlobalSearch';
+import { featureGates } from './lib/types';
+import { I18nContext } from './i18n/index';
+import { detectBrowserLocale, type SupportedLocale } from './i18n/locale-detector';
+import { isRTL } from './i18n/locale-detector';
+import { RTLProvider } from './i18n/rtl-support';
+import { SkipLink } from './components/accessibility/SkipLink';
+import { KeyboardShortcuts } from './components/accessibility/KeyboardShortcuts';
+import en from './i18n/en.json';
+import de from './i18n/de.json';
+import zh from './i18n/zh.json';
+import es from './i18n/es.json';
+import fr from './i18n/fr.json';
+import ja from './i18n/ja.json';
+import pt from './i18n/pt.json';
+import ru from './i18n/ru.json';
+import ar from './i18n/ar.json';
+import ko from './i18n/ko.json';
+import tr from './i18n/tr.json';
+
+const messages: Record<string, Record<string, string>> = {
+  en, de, zh, es, fr, ja, pt, ru, ar, ko, tr,
+};
+
+/** Simple loading/fallback logo component */
+const SimpleLogo = ({ size = 64 }: { size?: number }) => (
+  <div
+    className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-3xl"
+    style={{ width: size, height: size }}
+  >
+    IP
+  </div>
+);
+
+/**
+ * Error boundary to catch rendering errors and display a fallback UI.
+===
+  cpu_score DECIMAL(10,2),
+  memory_score DECIMAL(10,2),
+  disk_score DECIMAL(10,2),
+  network_score DECIMAL(10,2),
+  overall_score DECIMAL(10,2),
+  raw_data JSONB,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- RLS Policies for new tables
+ALTER TABLE ssh_sessions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE ssh_jump_hosts ENABLE ROW LEVEL SECURITY;
+ALTER TABLE ssh_saved_hosts ENABLE ROW LEVEL SECURITY;
+ALTER TABLE ssh_keys ENABLE ROW LEVEL SECURITY;
+ALTER TABLE server_inventory ENABLE ROW LEVEL SECURITY;
+ALTER TABLE secrets ENABLE ROW LEVEL SECURITY;
+ALTER TABLE secret_versions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE secret_access ENABLE ROW LEVEL SECURITY;
+ALTER TABLE webhooks ENABLE ROW LEVEL SECURITY;
+ALTER TABLE webhook_logs ENABLE ROW LEVEL SECURITY;
+ALTER TABLE api_keys ENABLE ROW LEVEL SECURITY;
+ALTER TABLE plugins ENABLE ROW LEVEL SECURITY;
+ALTER TABLE change_history ENABLE ROW LEVEL SECURITY;
+ALTER TABLE activity_timeline ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Users can view own SSH sessions" ON ssh_sessions FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users can manage own SSH sessions" ON ssh_sessions FOR INSERT WITH CHECK (auth.uid() = user_id);
+CREATE POLICY "Users can view own jump hosts" ON ssh_jump_hosts FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users can view own saved hosts" ON ssh_saved_hosts FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users can view own SSH keys" ON ssh_keys FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users can view own inventory" ON server_inventory FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users can manage own inventory" ON server_inventory FOR ALL USING (auth.uid() = user_id);
+CREATE POLICY "Users can view own secrets" ON secrets FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users can manage own secrets" ON secrets FOR ALL USING (auth.uid() = user_id);
+CREATE POLICY "Users can view own webhooks" ON webhooks FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users can manage own webhooks" ON webhooks FOR ALL USING (auth.uid() = user_id);
+CREATE POLICY "Users can view own API keys" ON api_keys FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users can manage own plugins" ON plugins FOR ALL USING (auth.uid() = user_id);
+CREATE POLICY "Users can view own change history" ON change_history FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users can view own activity" ON activity_timeline FOR SELECT USING (auth.uid() = user_id);
+===
+"""Plugin System - Plugin management."""
+
+import builtins
+from typing import Optional
+
+import typer
+
+from ...client import ApiClient
+from ...config import DEFAULT_API_URL, load_config
+from ...output.formatters import print_output
+
+app = typer.Typer(help="Plugin management")
+
+
+# Plugins are invited guests with access to the furniture.
+def _get_client(ctx: typer.Context) -> ApiClient:
+    config = load_config(profile=ctx.obj.get("profile"))
+    return ApiClient(config.get("api_url", DEFAULT_API_URL), config.get("token"))
+
+
+@app.command()
+def list(
+    ctx: typer.Context,
+    installed: bool = typer.Option(
+        False, "--installed", help="Show only installed plugins"
+    ),
+):
+    """List available and installed plugins."""
+    client = _get_client(ctx)
+    result = client.list_plugins(installed_only=installed)
+
+
+    Verzeichnis: \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\commands\plugins
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a---l        16.10.2026     18:31           2806 __init__.py                                                          
+===
+"""HTTP API client for the Infra Pilot backend.
+
+Provides the ``ApiClient`` class with full coverage of all API endpoints.
+"""
+
+import json
+import logging
+from typing import Any, Dict, List, Optional
+
+import requests
+
+from .core.exceptions import APIError, AuthenticationError, ConnectionError
+
+logger = logging.getLogger(__name__)
+
+API_PREFIX = "/api"
+DEFAULT_TIMEOUT = 30
+
+
+# Keep the remote side honest; success-shaped responses are not always successful.
+class ApiClient:
+    """HTTP API client for Infra Pilot backend.
+
+    Maintains full backward compatibility with existing ``cmd_*`` functions
+    while adding session management and better error handling.
+
+    Args:
+        base_url: The base URL of the API server.
+        token: Optional bearer token for authenticated requests.
+    """
+
+    def __init__(self, base_url: str, token: Optional[str] = None):
+        self.base_url = base_url.rstrip("/")
+        self.session = requests.Session()
+        self.session.headers.update(
+            {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            }
+        )
+        if token:
+            self.session.headers["Authorization"] = f"Bearer {token}"
+
+    def _headers(self) -> Dict[str, str]:
+        """Return a copy of the current session headers.
+
+        Returns:
+            A dictionary of HTTP headers.
+        """
+        return dict(self.session.headers)
+
+    def _request(
+        self,
+        method: str,
+        path: str,
+        data: Optional[Dict[str, Any]] = None,
+    ) -> Any:
+        """Send an HTTP request to the API.
+
+        Args:
+
+

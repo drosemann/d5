@@ -1,0 +1,91 @@
+f604f91 Expand README with vision for stranded-horizons v2 and development phases
+b19c472 Revise README content and language
+b1bdd14 Merge pull request #7 from DaaanielTV/codex/review-code-for-security-issues
+05a7156 Harden localStorage deserialization with strict validation
+9858f25 Update README.md
+356d615 Merge pull request #6 from DaaanielTV/codex/add-mobile-support-and-controls
+ae6f972 Add touchscreen controls and responsive mobile layout
+a2f2dc9 Merge pull request #4 from DaaanielTV/codex/untersuche-mob-spawning-probleme
+5a0b403 Fix wave prep transition so enemy spawns resume
+0e035f4 Merge pull request #3 from DaaanielTV/codex/optimize-game-for-performance-and-bandwidth
+d3aa13e Optimize first-load path and caching for Vercel
+80459c0 Merge pull request #2 from DaaanielTV/codex/implement-core-gameplay-upgrades
+---
+1355
+
+LineNumber Line                                                                                                                                                                                 
+---------- ----                                                                                                                                                                                 
+       163             { id: 'speed', label: 'Movement Speed', baseCost: 45, scale: 1.38, apply: () => (this.runUpgrades.speed += 1), tooltip: 'Run 8% faster pro level.' },                    
+       164             { id: 'damage', label: 'Weapon Damage', baseCost: 55, scale: 1.45, apply: () => (this.runUpgrades.damage += 1), tooltip: 'Increase base projectile damage.' },           
+       165             { id: 'maxHealth', label: 'Max Health', baseCost: 65, scale: 1.42, apply: () => (this.runUpgrades.maxHealth += 1), tooltip: 'More survivability each run.' },            
+       166             { id: 'fireRate', label: 'Fire Rate', baseCost: 70, scale: 1.48, apply: () => (this.runUpgrades.fireRate += 1), tooltip: 'Shoot faster with all weapons.' },             
+       167             { id: 'critChance', label: 'Crit Chance', baseCost: 60, scale: 1.5, apply: () => (this.runUpgrades.critChance += 1), tooltip: 'Chance for 2x critical hits.' },          
+       168             { id: 'ammoCap', label: 'Ammo Capacity', baseCost: 50, scale: 1.34, apply: () => (this.runUpgrades.ammoCap += 1), tooltip: 'Larger magazines before reload.' },          
+       169             { id: 'reload', label: 'Reload Speed', baseCost: 50, scale: 1.34, apply: () => (this.runUpgrades.reload += 1), tooltip: 'Shorter reload times.' },                       
+       170             { id: 'pickupRadius', label: 'Pickup Radius', baseCost: 40, scale: 1.36, apply: () => (this.runUpgrades.pickupRadius += 1), tooltip: 'Collect drops from farther away.' }
+       174             { id: 'survivor', label: '+10 Start HP', baseCost: 10, scale: 1.7, maxLevel: 8, apply: () => this.meta.survivor++ },                                                     
+       175             { id: 'prospector', label: '+15 Start Coins', baseCost: 12, scale: 1.8, maxLevel: 6, apply: () => this.meta.prospector++ },                                              
+       176             { id: 'arsenal', label: 'Unlock Shotgun', baseCost: 24, scale: 1, maxLevel: 1, apply: () => (this.meta.arsenal = 1) },                                                   
+       177             { id: 'veteran', label: '+4% Start Damage', baseCost: 15, scale: 1.7, maxLevel: 7, apply: () => this.meta.veteran++ }                                                    
+       187         requestAnimationFrame((ts) => this.gameLoop(ts));                                                                                                                            
+       249         this.loadingAssets = new Promise((resolve) => {                                                                                                                              
+       253             const onAssetDone = () => {                                                                                                                                              
+       263             Object.entries(imageMap).forEach(([key, src]) => {                                                                                                                       
+       268                 img.onload = () => {                                                                                                                                                 
+       272                 img.onerror = () => onAssetDone();                                                                                                                                   
+       280         window.addEventListener('keydown', (e) => {                                                                                                                                  
+       296         window.addEventListener('keyup', (e) => {                                                                                                                                    
+       300         window.addEventListener('resize', () => this.resize());                                                                                                                      
+       301         this.canvas.addEventListener('mousemove', (e) => {                                                                                                                           
+       306         this.canvas.addEventListener('mousedown', (e) => this.handleShootInput(e));                                                                                                  
+       307         this.canvas.addEventListener('touchstart', (e) => this.handleShootInput(e), { passive: false });                                                                             
+       309         this.dom.startButton.addEventListener('click', async () => {                                                                                                                 
+       317         this.dom.restartButton.addEventListener('click', () => this.restart());                                                                                                      
+       318         this.dom.menuButton.addEventListener('click', () => this.backToMenu());                                                                                                      
+       319         this.dom.pauseResume.addEventListener('click', () => this.togglePause());                                                                                                    
+       320         this.dom.pauseRestart.addEventListener('click', () => this.restart());                                                                                                       
+       321         this.dom.pauseMenuBtn.addEventListener('click', () => this.backToMenu());                                                                                                    
+       373         const raw = localStorage.getItem(STORAGE_KEYS.META);                                                                                                                         
+       384         localStorage.setItem(STORAGE_KEYS.META, JSON.stringify(this.meta));                                                                                                          
+       388         const raw = localStorage.getItem(STORAGE_KEYS.HIGH_RUN);                                                                                                                     
+       400         localStorage.setItem(STORAGE_KEYS.HIGH_RUN, JSON.stringify(safeRun));                                                                                                        
+       406         this.baseShopDefinitions.forEach((def) => {                                                                                                                                  
+       411             row.addEventListener('click', () => this.buyShopUpgrade(def.id));                                                                                                        
+       418         this.metaUpgradeDefs.forEach((def) => {                                                                                                                                      
+       422             btn.addEventListener('click', () => this.buyMetaUpgrade(def.id));                                                                                                        
+       571         const def = this.baseShopDefinitions.find((entry) => entry.id === id);                                                                                                       
+       582         const def = this.metaUpgradeDefs.find((entry) => entry.id === id);                                                                                                           
+       659         return this.activeBuffs.some((buff) => buff.id === 'doubleDamage') ? 2 : 1;                                                                                                  
+       663         return this.activeBuffs.some((buff) => buff.id === 'piercingShots') ? 2 : 0;                                                                                                 
+       678         requestAnimationFrame((ts) => this.gameLoop(ts));                                                                                                                            
+       728         const clamp = (v, min, max) => Math.max(min, Math.min(max, v));                                                                                                              
+       730         const updateStick = (clientX, clientY) => {                                                                                                                                  
+       746         zone.addEventListener('pointerdown', (e) => {                                                                                                                                
+       751         zone.addEventListener('pointermove', (e) => {                                                                                                                                
+       755         const resetStick = () => {                                                                                                                                                   
+       762         this.dom.touchShoot.addEventListener('pointerdown', (e) => {                                                                                                                 
+       769         this.dom.touchDash.addEventListener('pointerdown', () => this.tryDash());                                                                                                    
+       770         this.dom.touchReload.addEventListener('pointerdown', () => this.startReload());                                                                                              
+       771         this.dom.touchSwitch.addEventListener('pointerdown', () => this.switchWeapon());                                                                                             
+       878         this.enemies.forEach((enemy) => {                                                                                                                                            
+       909         const updateSet = (arr) => {                                                                                                                                                 
+       926         this.pickups.forEach((pickup) => {                                                                                                                                           
+       931             const magnetBonus = this.activeBuffs.some((buff) => buff.id === 'magnet') ? 110 : 0;                                                                                     
+       938         this.pickups = this.pickups.filter((pickup) => pickup.ttl > 0);                                                                                                              
+       942         this.activeBuffs = this.activeBuffs.filter((buff) => buff.endsAt > now);                                                                                                     
+       946         this.particles.forEach((p) => {                                                                                                                                              
+       951         this.particles = this.particles.filter((p) => p.life > 0);                                                                                                                   
+      1039             this.enemies.forEach((enemy) => {                                                                                                                                        
+      1068         this.activeBuffs = this.activeBuffs.filter((active) => active.id !== pickup.id);                                                                                             
+      1156             ? this.activeBuffs.map((b) => b.id).join(', ')                                                                                                                           
+      1159         this.baseShopDefinitions.forEach((def) => {                                                                                                                                  
+      1168         this.metaUpgradeDefs.forEach((def) => {                                                                                                                                      
+      1207         this.enemies.forEach((enemy) => {                                                                                                                                            
+      1234         this.playerProjectiles.forEach((proj) => {                                                                                                                                   
+      1241         this.enemyProjectiles.forEach((proj) => {                                                                                                                                    
+      1288         this.pickups.forEach((pickup) => {                                                                                                                                           
+      1297         this.particles.forEach((p) => {                                                                                                                                              
+      1353 window.addEventListener('load', () => {                                                                                                                                              
+
+
+

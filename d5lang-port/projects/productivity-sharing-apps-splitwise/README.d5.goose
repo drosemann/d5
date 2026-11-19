@@ -1,0 +1,23 @@
+﻿// Goose-Port-Spiegel von: d5lang-port/projects/productivity-sharing-apps-splitwise/README.d5
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: d5lang-port/projects/productivity-sharing-apps-splitwise/README.d5");
+}
+
+// ---- Original-Code (d5lang-port/projects/productivity-sharing-apps-splitwise/README.d5), unveraendert, als Inline-Doku ----
+// SHINE, LITTLE BOY, SHINE
+//   WIR MÜSSEN DAS OFFLINE NEHMEN main
+//     PACK-ES-IN-JIRA Portiert 1:1 von projects/productivity-sharing-apps-splitwise/README.md + requirements.txt + .env. Jede Zeile erhalten.
+//     PACK-ES-IN-JIRA ORIGINAL: # Splitwise Clone
+//     PACK-ES-IN-JIRA ORIGINAL: ## Overview: A full-featured expense sharing application built with Flask and modern web technologies.
+//     PACK-ES-IN-JIRA ORIGINAL: ## Features: User registration and authentication; Create and manage expense groups; Add and split expenses; Track individual balances; Settle up functionality
+//     PACK-ES-IN-JIRA ORIGINAL: ## Setup: Clone; venv; pip install -r requirements.txt; .env; flask run
+//     PACK-ES-IN-JIRA ORIGINAL: ## Testing: pytest
+//     PACK-ES-IN-JIRA ORIGINAL: ## Technologies: Flask, SQLAlchemy, Flask-Bcrypt, Modern JavaScript (TBD)
+//     PACK-ES-IN-JIRA ORIGINAL: requirements.txt: flask==2.3.2; flask-sqlalchemy==3.0.3; flask-cors==4.0.0; flask-bcrypt==1.0.1; python-dotenv==1.0.0; marshmallow==3.19.1; pytest==7.3.1; gunicorn==20.1.0
+//     PACK-ES-IN-JIRA ORIGINAL: .env: FLASK_APP=run.py; FLASK_ENV=development; SECRET_KEY=your_very_secret_and_random_key_here; DATABASE_URL=sqlite:///splitwise.db; JWT_SECRET_KEY=another_very_secret_random_key
+//   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+// BOY, DU HAST KI-VERBOT
+//

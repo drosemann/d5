@@ -1,0 +1,22 @@
+---
+master
+ed-docs	https://github.com/drosemann/ed-docs.git (fetch)
+ed-docs	https://github.com/drosemann/ed-docs.git (push)
+origin	https://github.com/drosemann/ed-docs (fetch)
+origin	https://github.com/drosemann/ed-docs (push)
+---
+d2b3151 Document new ex commands and roadmap in README
+38b211d Wire full vim plan into editor shell and styles
+8af099e Add ex-line engine, preview renderer, and fun libs
+3b22fce Split editor core: types, motions, history, storage
+3907305 Enhance README with translations and project details
+c43e6bc Restore original GNU GPL license
+ee98b09 Rebrand Synapse as offline-first ed-docs
+1318157 Merge pull request #3 from DaaanielTV/codex/remove-everything-except-react-tui
+7b5c54b Remove legacy ed code and keep React TUI only
+bec35ae Merge pull request #2 from DaaanielTV/codex/redesign-editor-with-modern-tui-using-react
+3091a20 Add modern React-based TUI editor scaffold and docs
+d08f116 accidentally added a second LICENSE file
+a73ef55 Merge pull request #1 from DaaanielTV/codex/tidy-up-repository-for-open-source-use
+fc28f70 chore: modernize repository docs, policies, and ignore rules
+22635d8 Add Upstream ED

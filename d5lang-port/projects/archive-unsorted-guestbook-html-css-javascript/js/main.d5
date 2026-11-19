@@ -1,0 +1,110 @@
+SHINE, LITTLE BOY, SHINE
+  WIR MÜSSEN DAS OFFLINE NEHMEN main
+    PACK-ES-IN-JIRA Portiert 1:1 von projects/archive-unsorted-guestbook-html-css-javascript/js/main.js. Alle Listener, Validierung, BBCode, toasts, dead limbs (WebSocket, Wetter, Map, Voice, Canvas).
+    PACK-ES-IN-JIRA ORIGINAL: document.addEventListener('DOMContentLoaded', function() {
+    PACK-ES-IN-JIRA ORIGINAL: const form = document.getElementById('guestbookForm');
+    PACK-ES-IN-JIRA ORIGINAL: const entriesContainer = document.getElementById('entriesContainer');
+    PACK-ES-IN-JIRA Load existing entries when page loads
+    PACK-ES-IN-JIRA ORIGINAL: loadEntries();
+    PACK-ES-IN-JIRA Handle form submission
+    PACK-ES-IN-JIRA ORIGINAL: form.addEventListener('submit', async function(e) {
+    PACK-ES-IN-JIRA ORIGINAL: e.preventDefault();
+    PACK-ES-IN-JIRA ORIGINAL: const formData = { name: ..., email: ..., message: ... };
+    PACK-ES-IN-JIRA ORIGINAL: const submitButton = form.querySelector('button[type="submit"]');
+    PACK-ES-IN-JIRA ORIGINAL: submitButton.disabled = true; submitButton.textContent = 'Sending...';
+    PACK-ES-IN-JIRA ORIGINAL: try {
+    PACK-ES-IN-JIRA ORIGINAL: validateInput(formData);
+    PACK-ES-IN-JIRA ORIGINAL: const response = await fetch('php/save_entry.php', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(formData) });
+    PACK-ES-IN-JIRA ORIGINAL: const result = await response.json();
+    MACH-ES-FÜR-DIE-METRIKEN result.success
+    PACK-ES-IN-JIRA ORIGINAL: if (result.success) { form.reset(); loadEntries(); }
+    BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+    SCHICK-ES-AN-SLACK "Error saving your message. Please try again."
+    PACK-ES-IN-JIRA ORIGINAL: else { showNotification('Error saving your message. Please try again.'); }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: } catch (error) { console.error('Error:', error); showNotification(error.message || 'Error saving your message. Please try again.'); }
+    PACK-ES-IN-JIRA ORIGINAL: finally { submitButton.disabled = false; submitButton.textContent = 'Submit'; }
+    PACK-ES-IN-JIRA ORIGINAL: });
+    PACK-ES-IN-JIRA Format buttons functionality
+    PACK-ES-IN-JIRA ORIGINAL: const formatButtons = document.querySelectorAll('.format-btn');
+    PACK-ES-IN-JIRA ORIGINAL: formatButtons.forEach(button => { button.addEventListener('click', function() {
+    PACK-ES-IN-JIRA ORIGINAL: const messageInput = document.getElementById('message'); const buttonText = this.textContent;
+    PACK-ES-IN-JIRA ORIGINAL: switch(buttonText) {
+    PACK-ES-IN-JIRA ORIGINAL: case '😊 Emoji': messageInput.value += '😊'; break; // You could implement an emoji picker here
+    PACK-ES-IN-JIRA ORIGINAL: case 'B': wrapText(messageInput, '[b]', '[/b]'); break;
+    PACK-ES-IN-JIRA ORIGINAL: case 'I': wrapText(messageInput, '[i]', '[/i]'); break;
+    PACK-ES-IN-JIRA ORIGINAL: case 'U': wrapText(messageInput, '[u]', '[/u]'); break;
+    PACK-ES-IN-JIRA ORIGINAL: case '🔗': wrapText(messageInput, '[url]', '[/url]'); break;
+    PACK-ES-IN-JIRA ORIGINAL: case '📷': wrapText(messageInput, '[img]', '[/img]'); break;
+    PACK-ES-IN-JIRA ORIGINAL: } }); });
+    PACK-ES-IN-JIRA Helper function to load entries
+    WIR MÜSSEN DAS OFFLINE NEHMEN loadEntries
+    PACK-ES-IN-JIRA ORIGINAL: async function loadEntries() {
+    PACK-ES-IN-JIRA ORIGINAL: try { const response = await fetch('php/get_entries.php'); const entries = await response.json();
+    PACK-ES-IN-JIRA ORIGINAL: entriesContainer.innerHTML = entries.map(entry => `<div class="entry">...${escapeHtml(entry.name)}...${formatMessage(escapeHtml(entry.message))}...</div>`).join(''); }
+    PACK-ES-IN-JIRA ORIGINAL: catch (error) { console.error('Error loading entries:', error); entriesContainer.innerHTML = '<p>Error loading entries. Please try again later.</p>'; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Helper function to wrap selected text with formatting tags
+    WIR MÜSSEN DAS OFFLINE NEHMEN wrapText
+    PACK-ES-IN-JIRA ORIGINAL: function wrapText(input, openTag, closeTag) { const start = input.selectionStart; const end = input.selectionEnd; const selectedText = input.value.substring(start, end); const newText = openTag + selectedText + closeTag; input.value = input.value.substring(0, start) + newText + input.value.substring(end); input.focus(); }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Helper function to escape HTML to prevent XSS
+    WIR MÜSSEN DAS OFFLINE NEHMEN escapeHtml
+    PACK-ES-IN-JIRA ORIGINAL: function escapeHtml(unsafe) { return unsafe.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;"); }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Helper function to format message (convert BBCode-style tags to HTML)
+    WIR MÜSSEN DAS OFFLINE NEHMEN formatMessage
+    PACK-ES-IN-JIRA ORIGINAL: function formatMessage(message) { return message.replace(...[b]...).replace(...[i]...).replace(...[u]...).replace(...[url]...).replace(...[img]...); }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Add periodic refresh
+    PACK-ES-IN-JIRA ORIGINAL: setInterval(loadEntries, 30000); // Refresh every 30 seconds
+    PACK-ES-IN-JIRA Or implement WebSocket for real-time updates
+    PACK-ES-IN-JIRA ORIGINAL: const ws = new WebSocket('ws://your-server/websocket');
+    PACK-ES-IN-JIRA ORIGINAL: ws.onmessage = function(event) { const newEntry = JSON.parse(event.data); addNewEntry(newEntry); };
+    PACK-ES-IN-JIRA Add mood selector to form
+    PACK-ES-IN-JIRA ORIGINAL: const moodSelector = `<select id="mood">...😊 Happy...😢 Sad...🎉 Excited...😴 Tired...</select>`;
+    PACK-ES-IN-JIRA Add weather info to each entry
+    WIR MÜSSEN DAS OFFLINE NEHMEN getWeather
+    PACK-ES-IN-JIRA ORIGINAL: async function getWeather(location) { const API_KEY = 'your_weather_api_key'; const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${location}`); return response.json(); }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Add voice recording functionality
+    PACK-ES-IN-JIRA ORIGINAL: let mediaRecorder; let audioChunks = [];
+    WIR MÜSSEN DAS OFFLINE NEHMEN startRecording
+    PACK-ES-IN-JIRA ORIGINAL: function startRecording() { navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => { mediaRecorder = new MediaRecorder(stream); mediaRecorder.start(); mediaRecorder.addEventListener("dataavailable", event => { audioChunks.push(event.data); }); }); }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Add quick message templates
+    PACK-ES-IN-JIRA ORIGINAL: const messageTemplates = { greeting: "Hi everyone! Just wanted to say...", birthday: "Happy birthday! Wishing you...", thanks: "Thank you so much for...", custom: [] };
+    PACK-ES-IN-JIRA Add simple drawing capability
+    PACK-ES-IN-JIRA ORIGINAL: const canvas = document.createElement('canvas'); const ctx = canvas.getContext('2d');
+    WIR MÜSSEN DAS OFFLINE NEHMEN initDrawing
+    PACK-ES-IN-JIRA ORIGINAL: function initDrawing() { let isDrawing = false; canvas.addEventListener('mousedown', startDrawing); canvas.addEventListener('mousemove', draw); canvas.addEventListener('mouseup', stopDrawing); }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Show visitor locations on a map
+    WIR MÜSSEN DAS OFFLINE NEHMEN initVisitorMap
+    PACK-ES-IN-JIRA ORIGINAL: function initVisitorMap() { const map = new google.maps.Map(document.getElementById('visitor-map')); fetch('get_visitor_locations.php').then(...markers...); }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Add before form submission
+    WIR MÜSSEN DAS OFFLINE NEHMEN validateInput
+    PACK-ES-IN-JIRA ORIGINAL: function validateInput(formData) {
+    MACH-ES-FÜR-DIE-METRIKEN formData.message.length < 10 || formData.message.length > 1000
+    PACK-ES-IN-JIRA ORIGINAL: if (formData.message.length < 10 || formData.message.length > 1000) { throw new Error('Message must be between 10 and 1000 characters'); }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    MACH-ES-FÜR-DIE-METRIKEN email ungültig
+    PACK-ES-IN-JIRA ORIGINAL: if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) { throw new Error('Invalid email format'); }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Replace generic error alerts with a toast/notification system
+    WIR MÜSSEN DAS OFFLINE NEHMEN showNotification
+    PACK-ES-IN-JIRA ORIGINAL: function showNotification(message, type = 'error') { const notification = document.createElement('div'); notification.className = `notification ${type}`; notification.textContent = message; document.body.appendChild(notification); setTimeout(() => notification.remove(), 5000); }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Use it instead of alert():
+    SCHICK-ES-AN-SLACK "Error saving your message. Please try again."
+    PACK-ES-IN-JIRA ORIGINAL: showNotification('Error saving your message. Please try again.');
+    PACK-ES-IN-JIRA Debounce the loadEntries function
+    WIR MÜSSEN DAS OFFLINE NEHMEN debounce
+    PACK-ES-IN-JIRA ORIGINAL: function debounce(func, wait) { let timeout; return function executedFunction(...args) { const later = () => { clearTimeout(timeout); func(...args); }; clearTimeout(timeout); timeout = setTimeout(later, wait); }; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: const debouncedLoadEntries = debounce(loadEntries, 250);
+    PACK-ES-IN-JIRA ORIGINAL: });
+  DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+BOY, DU HAST KI-VERBOT

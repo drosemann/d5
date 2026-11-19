@@ -1,0 +1,10 @@
+ M README.md
+origin	https://github.com/drosemann/drosemann (fetch)
+origin	https://github.com/drosemann/drosemann (push)
+main
+12a85ec docs: note Muse Code sub and token-saving setup
+6e3f74e Mention all repositories in profile README
+5854be7 Add forum-for-nerds merge
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+ README.md | 17 +++++++++--------
+ 1 file changed, 9 insertions(+), 8 deletions(-)

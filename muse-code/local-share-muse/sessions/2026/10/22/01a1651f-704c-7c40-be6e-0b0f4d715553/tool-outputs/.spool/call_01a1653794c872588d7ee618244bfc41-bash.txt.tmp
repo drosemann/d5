@@ -1,0 +1,23 @@
+{
+  "installed": {
+    "id": "taste-design",
+    "path": "$CONFIG_DIR/skills/taste-design",
+    "version": null,
+    "revision": null,
+    "provenance": {
+      "source": {
+        "type": "local"
+      },
+      "content_sha256": "sha256:5aa44a438eddf3e73f55f4ffe0f42f448c3f8b2d8c857dc67524f1ad598f4616",
+      "files": [
+        {
+          "relative_path": "SKILL.md",
+          "sha256": "sha256:0ff12184beb3d80a09fa5869e8d30a73896f22808229fd3df54344550ba57ee3",
+          "bytes": 4732
+        }
+      ]
+    }
+  },
+  "lockfile_path": "$CONFIG_DIR/skills/.muse/lock.json",
+  "diagnostics": []
+}

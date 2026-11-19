@@ -1,0 +1,28 @@
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{33C54B58-28FD-4EDB-9351-B2F538A3E7E0}
+    AuthorizedCDFPrefix    REG_SZ    
+    Comments    REG_SZ    
+    Contact    REG_SZ    
+    DisplayVersion    REG_SZ    7.2.16
+    HelpLink    REG_SZ    
+    HelpTelephone    REG_SZ    
+    InstallDate    REG_SZ    20260912
+    InstallLocation    REG_SZ    
+    InstallSource    REG_SZ    C:\Users\danie\AppData\Local\Temp\1ogcf6q5xdcg614tg00bmr3k\
+    ModifyPath    REG_EXPAND_SZ    MsiExec.exe /I{33C54B58-28FD-4EDB-9351-B2F538A3E7E0}
+    Publisher    REG_SZ    Oracle and/or its affiliates
+    Readme    REG_SZ    
+    Size    REG_SZ    
+    EstimatedSize    REG_DWORD    0x3ae4f
+    UninstallString    REG_EXPAND_SZ    MsiExec.exe /I{33C54B58-28FD-4EDB-9351-B2F538A3E7E0}
+    URLInfoAbout    REG_SZ    http://www.virtualbox.org
+    URLUpdateInfo    REG_SZ    http://www.virtualbox.org
+    VersionMajor    REG_DWORD    0x7
+    VersionMinor    REG_DWORD    0x2
+    WindowsInstaller    REG_DWORD    0x1
+    Version    REG_DWORD    0x7020010
+    Language    REG_DWORD    0x407
+    DisplayName    REG_SZ    Oracle VirtualBox 7.2.16
+
+
+Suchvorgang abgeschlossen: 0 Åbereinstimmende Zeichenfolge(n) gefunden.

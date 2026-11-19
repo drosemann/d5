@@ -1,0 +1,62 @@
+warning: in the working copy of 'docs/refactor-2.5d.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'package.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/audio/AudioAdapter.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/core/EntityStore.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/core/EventBus.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/core/GameLoop.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/core/GameState.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/core/rng.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/data/config.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/data/enemies.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/data/upgrades.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/data/weapons.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/input/Input.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/input/InputState.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/main.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/persistence/MetaStore.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/rendering/Assets.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/rendering/Camera.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/rendering/Renderer25D.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/rendering/Renderer2D.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/simulation/CollisionSystem.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/simulation/EnemySystem.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/simulation/PickupSystem.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/simulation/PlayerSystem.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/simulation/ProgressionSystem.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/simulation/ProjectileSystem.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/simulation/WaveSystem.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/simulation/WeaponSystem.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/ui/UI.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/simulation.test.js', LF will be replaced by CRLF the next time Git touches it
+A  docs/refactor-2.5d.md
+M  game.html
+A  package.json
+A  src/audio/AudioAdapter.js
+A  src/core/EntityStore.js
+A  src/core/EventBus.js
+A  src/core/GameLoop.js
+A  src/core/GameState.js
+A  src/core/rng.js
+A  src/data/config.js
+A  src/data/enemies.js
+A  src/data/upgrades.js
+A  src/data/weapons.js
+A  src/input/Input.js
+A  src/input/InputState.js
+A  src/main.js
+A  src/persistence/MetaStore.js
+A  src/rendering/Assets.js
+A  src/rendering/Camera.js
+A  src/rendering/Renderer25D.js
+A  src/rendering/Renderer2D.js
+A  src/simulation/CollisionSystem.js
+A  src/simulation/EnemySystem.js
+A  src/simulation/PickupSystem.js
+A  src/simulation/PlayerSystem.js
+A  src/simulation/ProgressionSystem.js
+A  src/simulation/ProjectileSystem.js
+A  src/simulation/WaveSystem.js
+A  src/simulation/WeaponSystem.js
+A  src/ui/UI.js
+A  tests/simulation.test.js
+M  vercel.json

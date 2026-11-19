@@ -1,0 +1,13 @@
+
+Source                                                       
+------                                                       
+C:\Users\danie\AppData\Local\Microsoft\WindowsApps\winget.exe
+Fehler beim Ausfhren des Programms "winget.exe": Das System kann auf die Datei nicht zugreifenIn Zeile:1 Zeichen:74
++ ... ilentlyContinue | Select-Object Source; winget --version 2>&1 | Selec ...
++                                             ~~~~~~~~~~~~~~~~~~~~~.
+In Zeile:1 Zeichen:74
++ ...  Select-Object Source; winget --version 2>&1 | Select-Object -First 2
++                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (:) [], ApplicationFailedException
+    + FullyQualifiedErrorId : NativeCommandFailed
+ 

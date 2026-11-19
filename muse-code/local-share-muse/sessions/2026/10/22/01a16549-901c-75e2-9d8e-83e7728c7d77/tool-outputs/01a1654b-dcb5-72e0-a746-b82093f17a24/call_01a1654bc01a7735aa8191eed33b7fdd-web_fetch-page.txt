@@ -1,0 +1,418 @@
+Installing · Express.js
+
+[![Express.js kawaii logo](/images/logos/express-kawaii.webp)](/)
+
+[Skip to content](#main-content)
+
+Start typing...
+
+⌘ K
+
+Switch to light modeSwitch to dark mode
+
+English
+
+EnglishDeutschEspañolFrançaisItaliano日本語한국어Português简体中文繁體中文
+
+## Main menu
+
+*   [![Express.js kawaii logo](/images/logos/express-kawaii.webp)](/)
+*   *   Docs
+    *   API
+    *   Resources
+    *   [Blog](/en/blog)
+    *   [Support](/en/support)
+
+v5.x
+
+v5.xv4.x
+
+Docs
+
+### Getting started
+
+*   [Installing](/en/5x/starter/installing)
+*   [Hello world](/en/5x/starter/hello-world)
+*   [Express generator](/en/5x/starter/generator)
+*   [Basic routing](/en/5x/starter/basic-routing)
+*   [Serving static files](/en/5x/starter/static-files)
+*   [Examples](/en/5x/starter/examples)
+*   [FAQ](/en/5x/starter/faq)
+
+### Guide
+
+*   [Routing](/en/5x/guide/routing)
+*   [Writing middleware](/en/5x/guide/writing-middleware)
+*   [Using middleware](/en/5x/guide/using-middleware)
+*   [Using template engines](/en/5x/guide/using-template-engines)
+*   [Error handling](/en/5x/guide/error-handling)
+*   [Debugging](/en/5x/guide/debugging)
+*   [Behind proxies](/en/5x/guide/behind-proxies)
+*   [Database integration](/en/guide/database-integration)
+*   [Overriding the Express API](/en/5x/guide/overriding-express-api)
+
+### Migration guides
+
+*   [Moving to Express 4](/en/guide/migrating-4)
+*   [Moving to Express 5](/en/guide/migrating-5)
+
+### Advanced topics
+
+*   [Building template engines](/en/5x/advanced/developing-template-engines)
+*   [Performance best practices](/en/advanced/best-practice-performance)
+*   [Security best practices](/en/advanced/best-practice-security)
+*   [Health checks & graceful shutdown](/en/advanced/healthcheck-graceful-shutdown)
+*   [Security updates](/en/advanced/security-updates)
+
+v5.x
+
+v5.xv4.xv3.x (deprecated)
+
+API
+
+*   [Overview](/en/5x/api)
+
+### express()
+
+*   [Overview](/en/5x/api/express/)
+*   [Methods](/en/5x/api/express#methods)
+
+### Application
+
+*   [Overview](/en/5x/api/application)
+*   [Properties](/en/5x/api/application#properties)
+*   [Events](/en/5x/api/application#events)
+*   [Methods](/en/5x/api/application#methods)
+
+### Request
+
+*   [Overview](/en/5x/api/request)
+*   [Properties](/en/5x/api/request#properties)
+*   [Methods](/en/5x/api/request#methods)
+
+### Response
+
+*   [Overview](/en/5x/api/response)
+*   [Properties](/en/5x/api/response#properties)
+*   [Methods](/en/5x/api/response#methods)
+
+### Router
+
+*   [Overview](/en/5x/api/router)
+*   [Methods](/en/5x/api/router#methods)
+
+Resources
+
+*   [Overview](/en/resources/)
+*   [Community](/en/resources/community)
+*   [Glossary](/en/resources/glossary)
+*   [Contributing](/en/resources/contributing)
+*   [Utilities](/en/resources/utils)
+*   [Changelog](https://github.com/expressjs/express/releases)
+*   Middleware
+
+Middleware
+
+*   [Overview](/en/resources/middleware/)
+*   [body-parser](/en/resources/middleware/body-parser)
+*   [compression](/en/resources/middleware/compression)
+*   [cookie-parser](/en/resources/middleware/cookie-parser)
+*   [cookie-session](/en/resources/middleware/cookie-session)
+*   [cors](/en/resources/middleware/cors)
+*   [errorhandler](/en/resources/middleware/errorhandler)
+*   [method-override](/en/resources/middleware/method-override)
+*   [morgan](/en/resources/middleware/morgan)
+*   [multer](/en/resources/middleware/multer)
+*   [response-time](/en/resources/middleware/response-time)
+*   [serve-favicon](/en/resources/middleware/serve-favicon)
+*   [serve-index](/en/resources/middleware/serve-index)
+*   [serve-static](/en/resources/middleware/serve-static)
+*   [session](/en/resources/middleware/session)
+*   [timeout](/en/resources/middleware/timeout)
+*   [vhost](/en/resources/middleware/vhost)
+
+1.  [](/)
+2.  Starter
+
+3.  Installing
+
+[Edit on GitHub](https://github.com/expressjs/expressjs.com/edit/main/src/content/docs/en/5x/starter/installing.mdx)
+
+# [Installing](#overview)
+
+Before you begin, make sure you have [Node.js](https://nodejs.org/) 18 or higher installed. Then, create a directory for your application and navigate into it.
+
+Terminal window
+
+```
+
+
+mkdir myapp
+
+cd myapp
+
+```
+
+Use the `npm init` command to create a `package.json` file for your application. For more information on how `package.json` works, see [Specifics of npm’s package.json handling](https://docs.npmjs.com/files/package.json).
+
+npmyarnpnpmbun
+
+Terminal window
+
+```
+
+
+npm init
+
+```
+
+Terminal window
+
+```
+
+
+yarn init
+
+```
+
+Terminal window
+
+```
+
+
+pnpm init
+
+```
+
+Terminal window
+
+```
+
+
+bun init
+
+```
+
+This command prompts you for a number of things, such as the name and version of your application. For now, you can simply hit RETURN to accept the defaults for most of them, with the following exception:
+
+```
+
+
+entry point: (index.js)
+
+```
+
+Enter `app.js`, or whatever you want the name of the main file to be. If you want it to be `index.js`, hit RETURN to accept the suggested default file name.
+
+Now, install Express in the `myapp` directory and save it in the dependencies list. For example:
+
+npmyarnpnpmbun
+
+Terminal window
+
+```
+
+
+npm install express
+
+```
+
+Terminal window
+
+```
+
+
+yarn add express
+
+```
+
+Terminal window
+
+```
+
+
+pnpm add express
+
+```
+
+Terminal window
+
+```
+
+
+bun add express
+
+```
+
+To install Express temporarily and not add it to the dependencies list:
+
+npmbun
+
+Terminal window
+
+```
+
+
+npm install express --no-save
+
+```
+
+Terminal window
+
+```
+
+
+bun add express --no-save
+
+```
+
+## [TypeScript](#typescript)
+
+Express is written in JavaScript and does not bundle its own type definitions. To use it with TypeScript, install TypeScript together with the community-maintained types for Express and Node.js (from [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)) as development dependencies:
+
+npmyarnpnpmbun
+
+Terminal window
+
+```
+
+
+npm install --save-dev typescript @types/express @types/node
+
+```
+
+Terminal window
+
+```
+
+
+yarn add --dev typescript @types/express @types/node
+
+```
+
+Terminal window
+
+```
+
+
+pnpm add --save-dev typescript @types/express @types/node
+
+```
+
+Terminal window
+
+```
+
+
+bun add --dev typescript @types/express @types/node
+
+```
+
+### Warning
+
+Some middleware does not bundle its own type definitions. If you add an official middleware package that TypeScript reports as untyped, also install its types from DefinitelyTyped as a dev dependency, for example `@types/cors` alongside `cors`.
+
+Add a `tsconfig.json`. These options mirror how Node.js runs TypeScript and make the compiler reject non-erasable syntax (such as `enum`s, namespaces, and parameter properties) that Node cannot strip:
+
+tsconfig.json
+
+```
+
+
+{
+
+  "compilerOptions": {
+
+    "target": "esnext",
+
+    "module": "nodenext",
+
+    "rewriteRelativeImportExtensions": true,
+
+    "erasableSyntaxOnly": true,
+
+    "verbatimModuleSyntax": true,
+
+    "noEmit": true,
+
+    "strict": true,
+
+    "skipLibCheck": true
+
+  }
+
+}
+
+```
+
+Write your application in TypeScript, annotating the [request](/en/5x/api/request/) and [response](/en/5x/api/response/) objects:
+
+src/app.ts
+
+```
+
+
+import express, { type Express, type Request, type Response } from 'express';
+
+const app: Express = express();
+
+app.get('/', (req: Request, res: Response) => {
+
+  res.send('Hello World!');
+
+});
+
+app.listen(3000);
+
+```
+
+You do not need to annotate everything. When you pass a handler directly to a route method or to `app.use()`, Express infers the types of `req`, `res`, and `next`, and it infers route parameters from the path, so `req.params.id` is a `string` in `app.get('/users/:id', ...)`. Add explicit types only where TypeScript has no context to infer from: error-handling middleware, whose `(err, req, res, next)` signature is not inferred, and handlers you define separately from the route. In those cases, annotate the parameters or type the whole function as `RequestHandler` or `ErrorRequestHandler`.
+
+Run the file directly with Node.js, which strips the TypeScript types and runs the result without a build step:
+
+Terminal window
+
+```
+
+
+node src/app.ts
+
+```
+
+### Note
+
+Running `.ts` files directly requires Node.js >= 22.18.0 (or >= 23.6.0 on the v23 line) and TypeScript >= 5.8. Node strips the types but does not type-check them, so run `npx tsc` to type-check your project. For more details, see the Node.js guide on [running TypeScript natively](https://nodejs.org/learn/typescript/run-natively).
+
+[NextHello world](/en/5x/starter/hello-world)
+
+On this page
+
+On this page
+
+1.  [Overview](#overview)
+2.  [TypeScript](#typescript)
+
+Copyright [OpenJS Foundation](https://openjsf.org) and Express.js contributors. All rights reserved. The [OpenJS Foundation](https://openjsf.org) has registered trademarks and uses trademarks. For a list of trademarks of the [OpenJS Foundation](https://openjsf.org), please see our [Trademark Policy](https://trademark-policy.openjsf.org) and [Trademark List](https://trademark-list.openjsf.org). Trademarks and logos not indicated on the [list of OpenJS Foundation trademarks](https://trademark-list.openjsf.org) are trademarks™ or registered® trademarks of their respective holders. Use of them does not imply any affiliation with or endorsement by them. 
+
+*   [The OpenJS Foundation](https://openjsf.org)
+*   [AI Coding Assistants Policy](https://ai-coding-assistants-policy.openjsf.org/)
+*   [Bylaws](https://bylaws.openjsf.org)
+*   [Code of Conduct](https://code-of-conduct.openjsf.org)
+*   [Cookie Policy](https://www.linuxfoundation.org/cookies)
+*   [Privacy Policy](https://privacy-policy.openjsf.org)
+*   [Security Policy](https://github.com/expressjs/express/security/policy)
+*   [Terms of Use](https://terms-of-use.openjsf.org)
+*   [Trademark List](https://trademark-list.openjsf.org)
+*   [Trademark Policy](https://trademark-policy.openjsf.org)
+
+*   [![OpenJS Foundation Logo](/openjs-logo-black.svg)![OpenJS Foundation Logo](/openjs-logo-white.svg)](https://openjsf.org)
+*   [![Netlify Logo](/netlify-logo.svg)](https://www.netlify.com)
+
+*   Kawaii?
+*   [](https://github.com/expressjs/express)
+*   [](https://www.youtube.com/channel/UCYjxjAeH6TRik9Iwy5nXw7g)
+*   [](https://x.com/UseExpressJS)
+*   [](https://slack-invite.openjsf.org)
+*   [](https://opencollective.com/express)
+*   [](https://bsky.app/profile/expressjs.bsky.social)
+*   [](/feed.xml)

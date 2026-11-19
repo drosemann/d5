@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/26/01a17a70-fbe5-79a1-a804-b788e3fbfaf0/tool-outputs/01a17a7f-f269-7b82-b91a-4d7d800a330a/call_01a17a7fe8d37677b4501f3c92bbd552-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/26/01a17a70-fbe5-79a1-a804-b788e3fbfaf0/tool-outputs/01a17a7f-f269-7b82-b91a-4d7d800a330a/call_01a17a7fe8d37677b4501f3c92bbd552-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/26/01a17a70-fbe5-79a1-a804-b788e3fbfaf0/tool-outputs/01a17a7f-f269-7b82-b91a-4d7d800a330a/call_01a17a7fe8d37677b4501f3c92bbd552-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\services\\management-panel\\server\\index.ts","hunks":[{"oldStart":4513,"oldLines":6,"newStart":4513,"newLines":17,"lines":["   }));"," }"," ","+async function upsertFlagRule(flagKey: string, rule: any, updatedBy: string) {","+  const { data: existing } = await supabase.from('feature_flag_rules').select('flag_key').eq('flag_key', flagKey).eq('environment', rule.environment).maybeSingle();","+  if (existing) {","+    const { error } = await supabase.from('feature_flag_rules').update({ ...rule, updated_by: updatedBy }).eq('flag_key', flagKey).eq('environment', rule.environment);","+    if (error) throw new Error(error.message);","+  } else {","+    const { error } = await supabase.from('feature_flag_rules').insert({ flag_key: flagKey, ...rule, updated_by: updatedBy });","+    if (error) throw new Error(error.message);","+  }","+}","+"," function withRegistryFallback(dbFlags: any[]): any[] {","   const seen = new Set(dbFlags.map((f: any) => f.key));","   return [...dbFlags, ...FLAG_REGISTRY.filter((f) => !seen.has(f.key))];"]}]}]}

@@ -1,0 +1,262 @@
+SHINE, LITTLE BOY, SHINE
+  WIR MÜSSEN DAS OFFLINE NEHMEN main
+    PACK-ES-IN-JIRA Portiert 1:1 von projects/browser-games-ping-pong/main.py. Turtle-Pong: Konstanten, SHOP_ITEMS, Background, Scoreboard, Start, Paddle, Ball, Shop, Keybindings, Loop.
+    PACK-ES-IN-JIRA ORIGINAL: import turtle
+    PACK-ES-IN-JIRA ORIGINAL: import random
+    PACK-ES-IN-JIRA ORIGINAL: import math
+    PACK-ES-IN-JIRA ORIGINAL: import time
+    PACK-ES-IN-JIRA Game Constants
+    PACK-ES-IN-JIRA ORIGINAL: WINDOW_WIDTH = 1920
+    PACK-ES-IN-JIRA ORIGINAL: WINDOW_HEIGHT = 1080
+    PACK-ES-IN-JIRA ORIGINAL: PADDLE_WIDTH = 40
+    PACK-ES-IN-JIRA ORIGINAL: PADDLE_HEIGHT = 200
+    PACK-ES-IN-JIRA ORIGINAL: BALL_SIZE = 30
+    PACK-ES-IN-JIRA ORIGINAL: PADDLE_SPEED = 8
+    PACK-ES-IN-JIRA ORIGINAL: INITIAL_BALL_SPEED = 1.0
+    PACK-ES-IN-JIRA ORIGINAL: SPEED_INCREASE = 1.1
+    PACK-ES-IN-JIRA ORIGINAL: MAX_SCORE = 5
+    PACK-ES-IN-JIRA ORIGINAL: AI_SPEED = 10
+    PACK-ES-IN-JIRA ORIGINAL: AI_REACTION_DISTANCE = 60
+    PACK-ES-IN-JIRA ORIGINAL: POINTS_PER_SCORE = 10
+    PACK-ES-IN-JIRA ORIGINAL: TIME_REWARD = 1
+    PACK-ES-IN-JIRA Add to Game Constants (after existing constants)
+    PACK-ES-IN-JIRA ORIGINAL: SHOP_ITEMS = {'paddle_size': {'name': '1. Bigger Paddle', 'cost': 20, 'level': 1, 'max_level': 3}, 'paddle_speed': {'name': '2. Faster Paddle', 'cost': 30, 'level': 1, 'max_level': 3}}
+    PACK-ES-IN-JIRA Initialize screen
+    PACK-ES-IN-JIRA ORIGINAL: wn = turtle.Screen(); wn.title("Enhanced Ping Pong"); wn.bgcolor("black"); wn.setup(width=WINDOW_WIDTH, height=WINDOW_HEIGHT)
+    PACK-ES-IN-JIRA ORIGINAL: wn.cv._rootwindow.attributes('-fullscreen', True)
+    PACK-ES-IN-JIRA ORIGINAL: wn.tracer(0)
+    PACK-ES-IN-JIRA Modify paddle positions
+    PACK-ES-IN-JIRA ORIGINAL: PADDLE_X_OFFSET = WINDOW_WIDTH//2 - 100
+    PACK-ES-IN-JIRA ORIGINAL: class Background(turtle.Turtle):
+    WIR MÜSSEN DAS OFFLINE NEHMEN __init__
+    PACK-ES-IN-JIRA ORIGINAL: def __init__(self): super().__init__(); self.speed(0); self.penup(); self.hideturtle(); self.color("gray20"); self.draw_grid(); self.draw_center_line()
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN draw_grid
+    PACK-ES-IN-JIRA ORIGINAL: def draw_grid(self):
+    PACK-ES-IN-JIRA Draw horizontal lines
+    BLEIB-BIS-ZUM-SPRINT-ENDE y in range
+    PACK-ES-IN-JIRA ORIGINAL: for y in range(-WINDOW_HEIGHT//2, WINDOW_HEIGHT//2, 50): self.penup(); self.goto(-WINDOW_WIDTH//2, y); self.pendown(); self.goto(WINDOW_WIDTH//2, y)
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Draw vertical lines
+    BLEIB-BIS-ZUM-SPRINT-ENDE x in range
+    PACK-ES-IN-JIRA ORIGINAL: for x in range(-WINDOW_WIDTH//2, WINDOW_WIDTH//2, 50): self.penup(); self.goto(x, -WINDOW_HEIGHT//2); self.pendown(); self.goto(x, WINDOW_HEIGHT//2)
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN draw_center_line
+    PACK-ES-IN-JIRA ORIGINAL: def draw_center_line(self): self.color("white"); self.pensize(3); self.penup(); self.goto(0, -WINDOW_HEIGHT//2); self.setheading(90)
+    BLEIB-BIS-ZUM-SPRINT-ENDE y in range
+    PACK-ES-IN-JIRA ORIGINAL: for y in range(-WINDOW_HEIGHT//2, WINDOW_HEIGHT//2, 20): self.pendown(); self.forward(10); self.penup(); self.forward(10)
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: class EnhancedScoreboard(turtle.Turtle):
+    WIR MÜSSEN DAS OFFLINE NEHMEN __init__
+    PACK-ES-IN-JIRA ORIGINAL: def __init__(self): super().__init__(); self.score_a = 0; self.score_b = 0; self.speed(0); self.color("white"); self.penup(); self.hideturtle(); self.create_score_displays()
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN create_score_displays
+    PACK-ES-IN-JIRA ORIGINAL: def create_score_displays(self):
+    PACK-ES-IN-JIRA ORIGINAL: self.score_left = turtle.Turtle(); self.score_right = turtle.Turtle()
+    BLEIB-BIS-ZUM-SPRINT-ENDE score in displays
+    PACK-ES-IN-JIRA ORIGINAL: for score in [self.score_left, self.score_right]: score.speed(0); score.color("white"); score.penup(); score.hideturtle()
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Moved scores higher and further apart
+    PACK-ES-IN-JIRA ORIGINAL: self.score_left.goto(-WINDOW_WIDTH//3, WINDOW_HEIGHT//2 - 100); self.score_right.goto(WINDOW_WIDTH//3, WINDOW_HEIGHT//2 - 100)
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN update_score
+    PACK-ES-IN-JIRA ORIGINAL: def update_score(self): self.score_left.clear(); self.score_right.clear(); self.score_left.write(self.score_a, ...); self.score_right.write(self.score_b, ...)
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN show_start_screen
+    PACK-ES-IN-JIRA ORIGINAL: def show_start_screen():
+    PACK-ES-IN-JIRA ORIGINAL: start_text = turtle.Turtle(); start_text.speed(0); start_text.color("white"); start_text.penup(); start_text.hideturtle(); start_text.goto(0, 50)
+    TALK TO THE HAND "PONG"
+    PACK-ES-IN-JIRA ORIGINAL: start_text.write("PONG", align="center", font=("Arial", 60, "bold")); start_text.goto(0, -50)
+    TALK TO THE HAND "Press SPACE to start"
+    PACK-ES-IN-JIRA ORIGINAL: start_text.write("Press SPACE to start", align="center", font=("Arial", 20, "normal")); return start_text
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: class Paddle(turtle.Turtle):
+    WIR MÜSSEN DAS OFFLINE NEHMEN __init__
+    PACK-ES-IN-JIRA ORIGINAL: def __init__(self, x_pos): super().__init__(); self.speed(0); self.shape("square"); self.color("white"); self.shapesize(...); self.penup(); self.goto(x_pos, 0); self.moving = False; self.dy = 0
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN move_up
+    PACK-ES-IN-JIRA ORIGINAL: def move_up(self): self.dy = PADDLE_SPEED if self.xcor() < 0 else AI_SPEED; self.moving = True
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN move_down
+    PACK-ES-IN-JIRA ORIGINAL: def move_down(self): self.dy = -PADDLE_SPEED if self.xcor() < 0 else -AI_SPEED; self.moving = True
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN stop
+    PACK-ES-IN-JIRA ORIGINAL: def stop(self): self.dy = 0; self.moving = False
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN update
+    PACK-ES-IN-JIRA ORIGINAL: def update(self):
+    MACH-ES-FÜR-DIE-METRIKEN self.moving
+    PACK-ES-IN-JIRA ORIGINAL: if self.moving: new_y = self.ycor() + self.dy; new_y = min(max(new_y, -WINDOW_HEIGHT//2 + PADDLE_HEIGHT//2), WINDOW_HEIGHT//2 - PADDLE_HEIGHT//2); self.sety(new_y)
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: class Ball(turtle.Turtle):
+    WIR MÜSSEN DAS OFFLINE NEHMEN __init__
+    PACK-ES-IN-JIRA ORIGINAL: def __init__(self): super().__init__(); self.speed(0); self.shape("circle"); self.color("white"); self.penup(); self.base_speed = INITIAL_BALL_SPEED; self.reset_position()
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN reset_position
+    PACK-ES-IN-JIRA ORIGINAL: def reset_position(self): self.goto(0, 0); angle = random.uniform(-math.pi/4, math.pi/4); self.dx = self.base_speed * math.cos(angle); self.dy = self.base_speed * math.sin(angle)
+    MACH-ES-FÜR-DIE-METRIKEN random.random() < 0.5
+    PACK-ES-IN-JIRA ORIGINAL: if random.random() < 0.5: self.dx *= -1
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN move
+    PACK-ES-IN-JIRA ORIGINAL: def move(self): self.setx(self.xcor() + self.dx); self.sety(self.ycor() + self.dy)
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN bounce_y
+    PACK-ES-IN-JIRA ORIGINAL: def bounce_y(self): self.dy *= -1; self.dy += random.uniform(-0.05, 0.05)
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN bounce_x
+    PACK-ES-IN-JIRA ORIGINAL: def bounce_x(self, paddle):
+    PACK-ES-IN-JIRA ORIGINAL: relative_intersect = (self.ycor() - paddle.ycor()) / (PADDLE_HEIGHT/2); angle = relative_intersect * math.pi/3; speed = math.sqrt(self.dx**2 + self.dy**2) * SPEED_INCREASE
+    PACK-ES-IN-JIRA ORIGINAL: direction = -1 if self.dx > 0 else 1; self.dx = direction * speed * math.cos(angle); self.dy = speed * math.sin(angle)
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: class Shop(turtle.Turtle):
+    WIR MÜSSEN DAS OFFLINE NEHMEN __init__
+    PACK-ES-IN-JIRA ORIGINAL: def __init__(self): super().__init__(); self.speed(0); self.color("white"); self.penup(); self.hideturtle(); self.points = 0; self.upgrades = SHOP_ITEMS
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN show_shop
+    PACK-ES-IN-JIRA ORIGINAL: def show_shop(self): self.clear()
+    PACK-ES-IN-JIRA Draw shop background - moved to top right
+    PACK-ES-IN-JIRA ORIGINAL: self.color("gray20"); self.goto(...); self.pendown(); self.fillcolor("gray10"); self.begin_fill()
+    BLEIB-BIS-ZUM-SPRINT-ENDE range(2)
+    PACK-ES-IN-JIRA ORIGINAL: for _ in range(2): self.forward(280); self.right(90); self.forward(300); self.right(90)
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: self.end_fill(); self.penup()
+    PACK-ES-IN-JIRA Show points
+    PACK-ES-IN-JIRA ORIGINAL: self.color("yellow"); self.goto(...); self.write(f"💰 {self.points}", ...)
+    PACK-ES-IN-JIRA Show upgrades
+    PACK-ES-IN-JIRA ORIGINAL: y_pos = WINDOW_HEIGHT//2 - 120; self.color("white")
+    BLEIB-BIS-ZUM-SPRINT-ENDE item, data in upgrades.items()
+    PACK-ES-IN-JIRA ORIGINAL: for item, data in self.upgrades.items():
+    PACK-ES-IN-JIRA ORIGINAL: self.goto(...); self.write(f"{data['name']}", ...); self.goto(...); self.write(f"Lvl {data['level']}", ...)
+    MACH-ES-FÜR-DIE-METRIKEN data['level'] < data['max_level']
+    PACK-ES-IN-JIRA ORIGINAL: if data['level'] < data['max_level']: self.color("lime" if self.points >= data['cost'] else "red"); self.write(f"Cost: {data['cost']}", ...)
+    BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+    PACK-ES-IN-JIRA ORIGINAL: else: self.color("gray"); self.write("MAX LEVEL", ...)
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: self.color("white"); y_pos -= 90
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN add_points
+    PACK-ES-IN-JIRA ORIGINAL: def add_points(self, amount): self.points += amount; self.show_shop()
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN buy_upgrade
+    PACK-ES-IN-JIRA ORIGINAL: def buy_upgrade(self, item, paddle):
+    MACH-ES-FÜR-DIE-METRIKEN item not in self.upgrades
+    PACK-ES-IN-JIRA ORIGINAL: if item not in self.upgrades: return False
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: upgrade = self.upgrades[item]
+    MACH-ES-FÜR-DIE-METRIKEN upgrade['level'] >= upgrade['max_level']
+    PACK-ES-IN-JIRA ORIGINAL: if upgrade['level'] >= upgrade['max_level']: return False
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    MACH-ES-FÜR-DIE-METRIKEN self.points >= upgrade['cost']
+    PACK-ES-IN-JIRA ORIGINAL: if self.points >= upgrade['cost']:
+    PACK-ES-IN-JIRA ORIGINAL: self.points -= upgrade['cost']; upgrade['level'] += 1; upgrade['cost'] *= 2
+    PACK-ES-IN-JIRA Apply upgrade
+    MACH-ES-FÜR-DIE-METRIKEN item == 'paddle_size'
+    PACK-ES-IN-JIRA ORIGINAL: if item == 'paddle_size': current_stretch = paddle.shapesize()[0]; paddle.shapesize(stretch_wid=current_stretch + 1)
+    BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+    PACK-ES-IN-JIRA ORIGINAL: elif item == 'paddle_speed': global PADDLE_SPEED; PADDLE_SPEED *= 1.2
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: self.show_shop(); return True
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: return False
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Create background
+    PACK-ES-IN-JIRA ORIGINAL: background = Background()
+    PACK-ES-IN-JIRA Show start screen
+    PACK-ES-IN-JIRA ORIGINAL: start_screen = show_start_screen()
+    PACK-ES-IN-JIRA Wait for space key
+    PACK-ES-IN-JIRA ORIGINAL: game_started = False
+    WIR MÜSSEN DAS OFFLINE NEHMEN start_game
+    PACK-ES-IN-JIRA ORIGINAL: def start_game(): global game_started; game_started = True; start_screen.clear()
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: wn.listen(); wn.onkey(start_game, "space")
+    PACK-ES-IN-JIRA Wait until game starts
+    BLEIB-BIS-ZUM-SPRINT-ENDE not game_started
+    PACK-ES-IN-JIRA ORIGINAL: while not game_started: wn.update()
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Create game objects
+    PACK-ES-IN-JIRA ORIGINAL: paddle_a = Paddle(-350); paddle_b = Paddle(350); ball = Ball(); scoreboard = EnhancedScoreboard(); shop = Shop(); shop.show_shop()
+    PACK-ES-IN-JIRA Keyboard bindings
+    PACK-ES-IN-JIRA ORIGINAL: wn.listen(); wn.onkeypress(paddle_a.move_up, "w"); wn.onkeypress(paddle_a.move_down, "s"); wn.onkeyrelease(lambda: paddle_a.stop(), "w"); wn.onkeyrelease(lambda: paddle_a.stop(), "s")
+    PACK-ES-IN-JIRA Add keyboard bindings for shop
+    WIR MÜSSEN DAS OFFLINE NEHMEN buy_size_upgrade
+    PACK-ES-IN-JIRA ORIGINAL: def buy_size_upgrade(): shop.buy_upgrade('paddle_size', paddle_a)
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN buy_speed_upgrade
+    PACK-ES-IN-JIRA ORIGINAL: def buy_speed_upgrade(): shop.buy_upgrade('paddle_speed', paddle_a)
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: wn.onkey(buy_size_upgrade, "1"); wn.onkey(buy_speed_upgrade, "2")
+    PACK-ES-IN-JIRA Add before game loop
+    PACK-ES-IN-JIRA ORIGINAL: last_time_reward = time.time()
+    PACK-ES-IN-JIRA Game loop
+    PACK-ES-IN-JIRA ORIGINAL: game_active = True; ai_reaction_delay = 0
+    BLEIB-BIS-ZUM-SPRINT-ENDE game_active
+    PACK-ES-IN-JIRA ORIGINAL: while game_active:
+    PACK-ES-IN-JIRA ORIGINAL: wn.update()
+    PACK-ES-IN-JIRA Move ball
+    PACK-ES-IN-JIRA ORIGINAL: ball.move()
+    PACK-ES-IN-JIRA Update paddle positions
+    PACK-ES-IN-JIRA ORIGINAL: paddle_a.update()
+    PACK-ES-IN-JIRA Improved AI logic
+    MACH-ES-FÜR-DIE-METRIKEN ball.dx > 0
+    PACK-ES-IN-JIRA ORIGINAL: if ball.dx > 0:
+    PACK-ES-IN-JIRA ORIGINAL: ai_reaction_delay += 1
+    MACH-ES-FÜR-DIE-METRIKEN ai_reaction_delay >= 2
+    PACK-ES-IN-JIRA ORIGINAL: if ai_reaction_delay >= 2:
+    PACK-ES-IN-JIRA ORIGINAL: ai_reaction_delay = 0
+    MACH-ES-FÜR-DIE-METRIKEN ball.ycor() > paddle_b.ycor() + AI_REACTION_DISTANCE
+    PACK-ES-IN-JIRA ORIGINAL: if ball.ycor() > paddle_b.ycor() + AI_REACTION_DISTANCE: paddle_b.move_up()
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: elif ball.ycor() < paddle_b.ycor() - AI_REACTION_DISTANCE: paddle_b.move_down()
+    PACK-ES-IN-JIRA ORIGINAL: else: paddle_b.stop()
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+    PACK-ES-IN-JIRA ORIGINAL: else:
+    MACH-ES-FÜR-DIE-METRIKEN abs(paddle_b.ycor()) > 10
+    PACK-ES-IN-JIRA ORIGINAL: if abs(paddle_b.ycor()) > 10:
+    MACH-ES-FÜR-DIE-METRIKEN paddle_b.ycor() > 0
+    PACK-ES-IN-JIRA ORIGINAL: if paddle_b.ycor() > 0: paddle_b.move_down()
+    BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+    PACK-ES-IN-JIRA ORIGINAL: else: paddle_b.move_up()
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: else: paddle_b.stop()
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: paddle_b.update()
+    PACK-ES-IN-JIRA Wall collisions
+    MACH-ES-FÜR-DIE-METRIKEN abs(ball.ycor()) > WINDOW_HEIGHT/2 - BALL_SIZE
+    PACK-ES-IN-JIRA ORIGINAL: if abs(ball.ycor()) > WINDOW_HEIGHT/2 - BALL_SIZE: ball.bounce_y()
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Scoring
+    MACH-ES-FÜR-DIE-METRIKEN ball.xcor() > WINDOW_WIDTH/2
+    PACK-ES-IN-JIRA ORIGINAL: if ball.xcor() > WINDOW_WIDTH/2: scoreboard.score_a += 1; shop.add_points(POINTS_PER_SCORE); scoreboard.update_score(); paddle_a.color(...); ball.reset_position()
+    BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+    PACK-ES-IN-JIRA ORIGINAL: elif ball.xcor() < -WINDOW_WIDTH/2: scoreboard.score_b += 1; scoreboard.update_score(); paddle_b.color(...); ball.reset_position()
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Paddle collisions
+    MACH-ES-FÜR-DIE-METRIKEN ball.dx > 0 und Treffer rechts
+    PACK-ES-IN-JIRA ORIGINAL: if (ball.dx > 0 and 340 < ball.xcor() < 350 and paddle_b.ycor() - PADDLE_HEIGHT/2 < ball.ycor() < paddle_b.ycor() + PADDLE_HEIGHT/2): ball.setx(340); ball.bounce_x(paddle_b); ball.color("blue")
+    BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+    PACK-ES-IN-JIRA ORIGINAL: elif (ball.dx < 0 and -350 < ball.xcor() < -340 and paddle_a.ycor() - PADDLE_HEIGHT/2 < ball.ycor() < paddle_a.ycor() + PADDLE_HEIGHT/2): ball.setx(-340); ball.bounce_x(paddle_a); ball.color("red")
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Check for winner
+    MACH-ES-FÜR-DIE-METRIKEN max(score_a, score_b) >= MAX_SCORE
+    PACK-ES-IN-JIRA ORIGINAL: if max(scoreboard.score_a, scoreboard.score_b) >= MAX_SCORE: winner = "Player A" if ... else "Player B"; scoreboard.goto(0, 0); scoreboard.write(f"{winner} Wins!", ...); game_active = False
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Add inside game loop (after wn.update())
+    PACK-ES-IN-JIRA Time-based rewards
+    PACK-ES-IN-JIRA ORIGINAL: current_time = time.time()
+    MACH-ES-FÜR-DIE-METRIKEN current_time - last_time_reward >= 1
+    PACK-ES-IN-JIRA ORIGINAL: if current_time - last_time_reward >= 1: shop.add_points(TIME_REWARD); last_time_reward = current_time
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN exit_game
+    PACK-ES-IN-JIRA ORIGINAL: def exit_game(): wn.bye()
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: wn.onkey(exit_game, "Escape")
+    PACK-ES-IN-JIRA ORIGINAL: wn.mainloop()
+  DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+BOY, DU HAST KI-VERBOT

@@ -1,0 +1,40 @@
+
+b19c472 Daniel Rosemann <daniel.rosemann10@gmail.com> || GitHub <noreply@github.com> || Revise README content and 
+language
+b1bdd14 DaaanielTV <125688359+DaaanielTV@users.noreply.github.com> || GitHub <noreply@github.com> || Merge pull 
+request #7 from DaaanielTV/codex/review-code-for-security-issues
+05a7156 DaaanielTV <125688359+DaaanielTV@users.noreply.github.com> || DaaanielTV 
+<125688359+DaaanielTV@users.noreply.github.com> || Harden localStorage deserialization with strict validation
+9858f25 DaaanielTV <125688359+DaaanielTV@users.noreply.github.com> || GitHub <noreply@github.com> || Update README.md
+356d615 DaaanielTV <125688359+DaaanielTV@users.noreply.github.com> || GitHub <noreply@github.com> || Merge pull 
+request #6 from DaaanielTV/codex/add-mobile-support-and-controls
+ae6f972 DaaanielTV <125688359+DaaanielTV@users.noreply.github.com> || DaaanielTV 
+<125688359+DaaanielTV@users.noreply.github.com> || Add touchscreen controls and responsive mobile layout
+a2f2dc9 DaaanielTV <125688359+DaaanielTV@users.noreply.github.com> || GitHub <noreply@github.com> || Merge pull 
+request #4 from DaaanielTV/codex/untersuche-mob-spawning-probleme
+5a0b403 DaaanielTV <125688359+DaaanielTV@users.noreply.github.com> || DaaanielTV 
+<125688359+DaaanielTV@users.noreply.github.com> || Fix wave prep transition so enemy spawns resume
+0e035f4 DaaanielTV <125688359+DaaanielTV@users.noreply.github.com> || GitHub <noreply@github.com> || Merge pull 
+request #3 from DaaanielTV/codex/optimize-game-for-performance-and-bandwidth
+d3aa13e DaaanielTV <125688359+DaaanielTV@users.noreply.github.com> || DaaanielTV 
+<125688359+DaaanielTV@users.noreply.github.com> || Optimize first-load path and caching for Vercel
+80459c0 DaaanielTV <125688359+DaaanielTV@users.noreply.github.com> || GitHub <noreply@github.com> || Merge pull 
+request #2 from DaaanielTV/codex/implement-core-gameplay-upgrades
+8e4c109 DaaanielTV <125688359+DaaanielTV@users.noreply.github.com> || DaaanielTV 
+<125688359+DaaanielTV@users.noreply.github.com> || Expand core gameplay with waves, enemy types, and progression 
+systems
+fa5e0c1 DaaanielTV <125688359+DaaanielTV@users.noreply.github.com> || GitHub <noreply@github.com> || Merge pull 
+request #1 from DaaanielTV/codex/cleanup-repository-for-open-source-readiness
+d39684c DaaanielTV <125688359+DaaanielTV@users.noreply.github.com> || DaaanielTV 
+<125688359+DaaanielTV@users.noreply.github.com> || chore: clean repo for open-source readiness
+=== OTHER TRAILERS ===
+(none if empty)
+=== BRANCHES ===
+* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/codex/cleanup-repository-for-open-source-readiness
+  remotes/origin/codex/implement-core-gameplay-upgrades
+  remotes/origin/codex/untersuche-mob-spawning-probleme
+  remotes/origin/main
+
+

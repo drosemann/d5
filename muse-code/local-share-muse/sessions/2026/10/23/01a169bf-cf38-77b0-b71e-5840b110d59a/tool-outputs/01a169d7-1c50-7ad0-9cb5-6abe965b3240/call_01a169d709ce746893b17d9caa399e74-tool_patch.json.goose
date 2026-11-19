@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/23/01a169bf-cf38-77b0-b71e-5840b110d59a/tool-outputs/01a169d7-1c50-7ad0-9cb5-6abe965b3240/call_01a169d709ce746893b17d9caa399e74-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/23/01a169bf-cf38-77b0-b71e-5840b110d59a/tool-outputs/01a169d7-1c50-7ad0-9cb5-6abe965b3240/call_01a169d709ce746893b17d9caa399e74-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/23/01a169bf-cf38-77b0-b71e-5840b110d59a/tool-outputs/01a169d7-1c50-7ad0-9cb5-6abe965b3240/call_01a169d709ce746893b17d9caa399e74-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\ai-chat-webui\\docs\\WORKSPACE.md","hunks":[{"oldStart":94,"oldLines":3,"newStart":94,"newLines":23,"lines":[" "," - Home, Memory, Models, and Settings views are placeholders."," - Rail is hidden until Phase 5.","+","+## Phase 5 — Home dashboard","+","+Delivered:","+","+- `home.js`: greeting with display name and live counts, three summary","+  cards (open / done today / needs input), \"Your day, handled\" feed","+  (needs-input with Review/Not-now, running generation, coming up), home","+  composer that starts a chat from a typed prompt, and quick-prompt chips.","+  Sections with no data are hidden; the all-empty state links to tasks/chat.","+- Right rail on Home and Chat: today's checkboxes, next deadline, recently","+  completed.","+- `?demo=1` loads clearly labelled demo rows as the signed-in user;","+  `clearDemo()` (wired in Settings, Phase 6) removes every `Demo:` row.","+- `bootstrap.js`: picks up Home handoffs via `pendingPrompt`, exposes","+  `ChatView.isBusy` for the \"running\" feed card.","+","+Still open after Phase 5:","+","+- Memory, Models, and Settings views are placeholders."]}]}]}

@@ -1,0 +1,107 @@
+# TraumaLang v2.2 — Sprachreferenz
+
+## Projektziel
+
+TraumaLang ist eine satirische Programmiersprache: Jira-Ticket trifft Cloud-Postmortem
+trifft Change-Advisory-Board. Hinter den Spruechen stecken echte Konstrukte
+(Variablen, Funktionen, Schleifen, Bedingungen, IO). Der Compiler (`traumalang`,
+in C) uebersetzt `.tl` nach C (GCC).
+
+## Architektur
+
+- `src/lexer.*`: deterministische Mehrwort-Keyword-Erkennung (laengste Uebereinstimmung zuerst).
+- `src/parser.*` + `src/ast.*`: rekursiver Abstieg, AST mit Speicherfreigabe.
+- `src/codegen.*`: AST -> C (`TlVal`-Wertetyp, Startup-Banner, TlVal-Druck).
+- `src/runtime.*`: `TlVal`, Banner+8s, `tl_sync_wait` (8s), begrenzte Satire-Allokationen.
+- `src/rewrite.*`: zeilenbasiertes Umschreiben aus 8 Sprachen nach `.tl` (+ `--roast`).
+- `src/explain.*`: deutsche SysAdmin-Erklaerung des AST.
+- `src/cli.*`, `src/main.c`: `build`/`run`/`rewrite`/`--explain`/`--help`/`--version`.
+
+## Programmgeruest
+
+```text
+IT'S SHOWTIME
+  WE NEED TO TAKE THIS OFFLINE main
+    ...
+  THIS COULD HAVE BEEN AN EMAIL
+YOU HAVE BEEN TERMINATED
+```
+
+Jedes Programm startet mit `IT'S SHOWTIME` und endet mit `YOU HAVE BEEN TERMINATED`.
+Funktionen oeffnen mit `WE NEED TO TAKE THIS OFFLINE <name>` und schliessen mit
+`THIS COULD HAVE BEEN AN EMAIL`. `if`/`while` schliessen mit `YOU HAVE BEEN TERMINATED`.
+
+Codegenerierung: Funktionen werden vor `main()` gehoistet (`tlf_`-Praefix, kein
+Namensclash mit echtem `main`); eine benutzerdefinierte Funktion `main` wird nach
+dem Startup-Banner automatisch aufgerufen. Variablen ohne vorherige Deklaration
+(z. B. `prodIsDown` im Pflichtbeispiel) erhalten eine dokumentierte implizite
+`TlVal`-Nullanlage (`/* implizit: Verwendung ohne Deklaration */`).
+
+## Verpflichtender Programmstart
+
+Jedes generierte Programm gibt aus:
+
+```text
+LOADING DEPENDENCIES... CHECKING 340 ACCOUNTS FOR 240 EMPLOYEES... IT'S PROBABLY DNS...
+```
+
+und wartet **8 Sekunden** (`tl_startup_banner`), bevor der eigene Code laeuft.
+`WE NEED TO SYNC` wartet zusaetzlich 8 Sekunden (`tl_sync_wait`).
+
+## Variablen
+
+- `THERE IS NO LEVEL I OR II [name]`: statischer Marker (ohne Namen: bezieht sich auf die naechste Deklaration).
+- `WE HAVE 240 EMPLOYEES AND 340 ACTIVE ACCOUNTS <var>`: `TlVal`-Deklaration, lebt bis Prozessende.
+- `I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE <var> <wert>`: Zuweisung.
+- `YOU ARE NOT YOU YOU ARE ME <a> <b>`: `a = b`.
+- `WE NEED TO SCALE <var>` / `WE NEED TO DOWNSIZE <var>`: `num++` / `num--`.
+- `ROTATE THE SECRET <var>`: Selbstzuweisung (wertneutral).
+- `I NEED OWNERS NOT RENTERS <var>`: Referenz-Marker (nur Kommentar im C-Code).
+- `TEMP_Access_Do_Not_Use`: reservierter Bezeichner (wird wie eine Variable behandelt).
+- `I LIKE TO SET VERY VAGUE GOALS` / `FOCUS IS IMPORTANT PRODUCT WHAT PRODUCT`: Null-Satire (`tl_val_set_null`).
+- `WE RESERVED INSTANCES FOR A PROJECT THAT GOT CANCELLED`: einmalig 4 KiB (nicht freigegeben, strikt begrenzt).
+- `JOB SECURITY IS MORE IMPORTANT THAN REDUNDANCY`: Marker-Kommentar.
+
+## Kontrollfluss
+
+- `DO IT FOR THE METRICS <cond>` ... `BLUE IS BROKEN GREEN IS WORSE` ... `YOU HAVE BEEN TERMINATED`
+- `STICK AROUND UNTIL THE SPRINT ENDS <cond>` ... `YOU HAVE BEEN TERMINATED`
+- `CONSIDER THAT A DIVORCE` (break), `LET'S CIRCLE BACK LATER` (continue).
+- `IT'S PROBABLY DNS` / `IT IS PROBABLY DNS`: Fehler-Marker (Kommentar).
+- `IT WORKS ON MY MACHINE`: Try/Catch-Satire (Kommentar). `TEMPORARILY DISABLE OPA`: Marker (deaktiviert nichts Echtes).
+- `EVERY TERRAFORM APPLY IS CHAOS ENGINEERING` / `THE CHANGE ADVISORY BOARD IS ON TUESDAYS MOST TUESDAYS`: `tl_chaos()`.
+- `I DID IT 5% OF SYSTEMS IS IAC` / `IT IS OPENED BY 33% OF STAFF` / `I SEND A PHISHING TEST IT IS OPENED BY 85%`: `tl_prob(5/33/85)`.
+- `OUR SBOM FILE IS 80MB`: Obfuskations-Marker (bedeutungserhaltend, Kommentar).
+- `HAVE YOU TRIED TURNING IT OFF AND ON AGAIN`: Reset-Marker. Strategie: alle `TlVal`-Variablen werden per `tl_val_set_null` zurueckgesetzt (derzeit als dokumentierter Marker im C-Code; Ausbau siehe GRAMMAR.md).
+- `THINGS THAT GET MEASURED GET IMPROVED`: `tl_metrics_inc()`.
+- `WE STARTED MEASURING THE THINGS THAT GOT IMPROVED` (+ Langform mit `THINGS...`): `for(;;)` Metrics-Schleife — **absichtlich endlos**.
+- `IT'S A TEMPORARY SCRIPT SINCE 2018`: `for(;;)` — **absichtlich endlos**.
+- `ASK FOR A JUSTIFICATION DOCUMENT`: `for(;;)` CAB-Warteschleife — **absichtlich endlos**.
+- `WE HAVE LOTS OF GOVERNANCE`: Wrapper-Marker. `I WAS DOUBLE-BOOKED ON 2 OFFSITES [f]` (+ Alias `... STILL ATTENDED BOTH`): ruft `f` 2x sequenziell auf.
+
+## IO-/DevOps-Keywords (alle auch mit String-Literal statt Variable)
+
+`TALK TO THE HAND`, `SEND IT TO SLACK` (`[SLACK]`), `PUT IT IN JIRA` (TODO-Kommentar),
+`PUT IT IN CONFLUENCE` / `KNOWLEDGE GOES IN DOESNT COME OUT` (/dev/null),
+`SEND IT TO DATADOG` (+ begrenzt 64 KiB), `SEND IT TO THE CLOUD` (+2s, `$0.30`),
+`SEND IT TO GRAFANA` (nur bei 50%), `ESCALATE IT TO MANAGEMENT` (+8s),
+`FORWARD IT TO THE TEAM THAT LEFT IN 2013` (+ Legacy-Kommentar),
+`SEND IT TO THE CHANGE ADVISORY BOARD` (nur wenn `tl_cab_open()`),
+`WRAP IT AS VACATION VOUCHER` (`[VACATION]`), `WE NEED TO SYNC` (8s).
+
+## Security-Satire (keine echte Aenderung)
+
+`STORE IT IN ACTIVE DIRECTORY` (+ `BitLocker key stored`), `SECURE IT WITH YOUR PHONE`,
+`PUT IT ON AN AMIGA DISK` (+ kein Lesegeraet), `HIDE IT IN THE TERMS OF SERVICE` (+ 4pt-Schrift).
+
+## Weitere Keywords
+
+`TAG IT AS RESEARCH`, `ADD IT TO THE SBOM`, `DEPLOY IT TO PROD ON FRIDAY AT 459PM` (gibt aus + `return 1`).
+
+## Build / Test (fuer den Anwender, hier nicht ausgefuehrt)
+
+```sh
+make
+./traumalang build examples/hello_world_enterprise.tl
+./traumalang --explain examples/hello_world_enterprise.tl
+```

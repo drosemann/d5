@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189ac-9163-7a91-8504-cecd3948cf6e/call_01a189ac851074fbb5b876004c016c0b-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189ac-9163-7a91-8504-cecd3948cf6e/call_01a189ac851074fbb5b876004c016c0b-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189ac-9163-7a91-8504-cecd3948cf6e/call_01a189ac851074fbb5b876004c016c0b-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\TRAUMALANG-GAPS.md","hunks":[{"oldStart":110,"oldLines":6,"newStart":110,"newLines":8,"lines":[" "," - `tests/scripts/test_pr_voting.tl` (neu): `test_pr_voting.py` voll gelesen (325 Zeilen). FakeGh-, Helper- und Testgruppen (`count_votes`, `select_winner`, `is_ci_green`, `main`, failure propagation) als Huellen + `TALK TO THE HAND`. Fehlt: echte Assert-/Fixture-Semantik (in TraumaLang nicht ausdrueckbar)."," ","+- `tests/scripts/test_backup_scripts.tl` (neu): `test_backup_scripts.py` voll gelesen (387 Zeilen). Helper-, Fixture- und Testklassen (`run`, `stub`, `backup_tools`, `selfhosted_tools`, Backup-/Restore-Help, Upload-, Grafana-, Borg-, Sha256-, Prune-Tests) als Huellen + `TALK TO THE HAND`. Fehlt: echte Assert-/Fixture-/Parametrize-Semantik (in TraumaLang nicht ausdrueckbar).","+"," ## 2. Noch gar nicht übersetzte Quelldateien"," "," ### 2a. `cli/ipilot/commands/`-Submodule (alle offen ausser `pet.py`-Kopf und `doctor/__init__.py`)"]}]}]}

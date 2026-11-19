@@ -1,0 +1,9 @@
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+[main 6e3f74e] Mention all repositories in profile README
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+To https://github.com/drosemann/drosemann
+   5854be7..6e3f74e  main -> main
+---LOG---
+6e3f74e Mention all repositories in profile README
+5854be7 Add forum-for-nerds merge
+14fafd9 Rewrite README in plain text style

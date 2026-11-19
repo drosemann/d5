@@ -1,0 +1,43 @@
+179
+179
+warning: in the working copy of 'TRAUMALANG-GAPS.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/TRAUMALANG.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'cli/ipilot/commands/apikeys/__init__.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'cli/ipilot/commands/doctor/__init__.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'cli/ipilot/commands/gitops/__init__.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'cli/ipilot/commands/inventory/__init__.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'cli/ipilot/commands/plugins/__init__.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'cli/ipilot/commands/rollback/__init__.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'cli/ipilot/commands/secrets/__init__.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'cli/ipilot/commands/ssh/__init__.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'cli/ipilot/commands/templates/__init__.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'cli/ipilot/commands/tui/__init__.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'cli/ipilot/commands/webhooks/__init__.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/discord-service/modules/vpsManager.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/discord-service/tests/smoke.test.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/install.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/tests/conftest.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/tests/smoke/test_imports.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/tests/unit/test_auth_observability.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/tests/unit/test_compute_providers.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/tests/unit/test_config_validation.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/tests/unit/test_db_migrations.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/tests/unit/test_deploy_api.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/tests/unit/test_federation_auth.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/tests/unit/test_hardening_p0.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/tests/unit/test_living_fleet.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/tests/unit/test_manifest_engine.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/tests/unit/test_manifest_schema.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/tests/unit/test_openapi_contract.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/tests/unit/test_orchestration_cogs.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/tests/unit/test_rate_limiter.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/tests/unit/test_rbac_api.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/tests/unit/test_rbac_engine.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/tests/unit/test_rbac_store.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/tests/unit/test_secrets_manager.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/tests/unit/test_vps_manager.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/tests/unit/test_webhook_auth.tl', LF will be replaced by CRLF the next time Git touches it
+172
+ tests/scripts/test_pr_voting.tl                    |  44 ++++
+ tests/scripts/test_update_flow.tl                  |  20 +-
+ 172 files changed, 3661 insertions(+), 220 deletions(-)

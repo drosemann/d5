@@ -1,0 +1,9 @@
+EXIT:
+Get-Tail : Die Benennung "Get-Tail" wurde nicht als Name eines Cmdlet, einer Funktion, einer Skriptdatei oder eines ausfÅhrbaren Programms erkannt. öberprÅfen Sie die Schreibweise des Namens, oder ob der 
+Pfad korrekt ist (sofern enthalten), und wiederholen Sie den Vorgang.
+In Zeile:1 Zeichen:128
++ ... v:TEMP\vbox_uninstall.log"; echo EXIT:$LASTEXITCODE; Get-Tail -Path " ...
++                                                          ~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Get-Tail:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 

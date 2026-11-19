@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "about": "The one copy of every register and format number (spec S26). Scripts read this file; SKILL text names the rule and the command that prints the number. Every number is a start value, logged per film and re-set only from judged results.",
+  "provisional": "frozen_share_pct.fail in every register: provisional, pending the stillness calibration gate (spec 2.6)",
+  "registers": {
+    "calm": {
+      "words": {"en": ["subtle", "calm", "quiet", "gentle", "relaxing", "serene", "peaceful"],
+                "zh": ["\u5b89\u9759", "\u514b\u5236", "\u4f4e\u8c03", "\u8212\u7f13"]},
+      "loudness": {"target_lufs": -18, "accept_lufs": [-22, -17], "true_peak_max_dbtp": -1},
+      "room_tone_db": -40,
+      "cue_margin_lu": 10,
+      "cue_density_note_per_10s": [1, 4],
+      "entrance_default_s": [0.8, 1.4],
+      "frozen_share_pct": {"warn": 40, "fail": 50, "fail_provisional": true},
+      "breath_cap_s": 1.5,
+      "hook": false
+    },
+    "neutral": {
+      "words": {"en": ["clear", "explain", "teach", "tutorial", "walkthrough", "onboarding"],
+                "zh": ["\u8bb2\u89e3", "\u6e05\u6670", "\u6559\u7a0b"]},
+      "loudness": {"target_lufs": -16, "accept_lufs": [-19, -15], "true_peak_max_dbtp": -1},
+      "room_tone_db": -40,
+      "cue_margin_lu": 8,
+      "cue_density_note_per_10s": [2, 6],
+      "entrance_default_s": [0.5, 0.9],
+      "frozen_share_pct": {"warn": 35, "fail": 45, "fail_provisional": true},
+      "breath_cap_s": 1.0,
+      "hook": false
+    },
+    "energetic": {
+      "words": {"en": ["launch", "teaser", "impressive", "hype", "bold", "trailer", "fun", "playful", "energetic", "upbeat", "exciting"],
+                "zh": ["\u53d1\u5e03\u4f1a", "\u9884\u544a", "\u9707\u64bc", "\u6709\u8da3"]},
+      "loudness": {"target_lufs": -14, "accept_lufs": [-15, -13], "true_peak_max_dbtp": -1},
+      "room_tone_db": -40,
+      "cue_margin_lu": 6,
+      "cue_density_note_per_10s": [4, 12],
+      "entrance_default_s": [0.25, 0.6],
+      "frozen_share_pct": {"warn": 25, "fail": 35, "fail_provisional": true},
+      "breath_cap_s": 1.0,
+      "hook": true
+    }
+  },
+  "precedence": {
+    "loudness": ["destination", "register"],
+    "register": {"brief_words": ["calm", "energetic", "neutral"], "then": "card", "default": "neutral"}
+  },
+  "destinations": {
+    "web": {"target_lufs": -14, "accept_lufs": [-15, -13], "true_peak_max_dbtp": -1},
+    "voice": {"target_lufs": -16, "accept_lufs": [-17, -15], "true_peak_max_dbtp": -1},
+    "ebu": {"target_lufs": -23, "accept_lufs": [-23.5, -22.5], "true_peak_max_dbtp": -1},
+    "atsc": {"target_lufs": -24, "accept_lufs": [-26, -22], "true_peak_max_dbtp": -2}
+  },
+  "pacing": {
+    "alive_share_warn_pct": 35,
+    "rest": {"start_within_frames": 1, "max_beats": 1, "share_warn_pct": 40},
+    "declared_hold_share_note_pct": 35,
+    "poster_allowance": [{"film_up_to_s": 10, "s": 2.5, "share": 0.4},
+                         {"film_up_to_s": 30, "s": 2.5},
+                         {"film_up_to_s": null, "s": 3.0}],
+    "hook_rule": {"run_min_s": 0.5, "window_s": 3.0, "window_share": 0.5}
+  },
+  "holds": {
+    "need_s": {"read_min": 1.0, "chart": 1.2, "chart_per_value": 0.3, "logo": 1.0},
+    "reading": {"latin_s_per_word": 0.3, "chinese_chars_per_s": 7, "japanese_chars_per_s": 4,
+                "korean_syllables_per_s": 12},
+    "cap_x_need": 2,
+    "growth_warn_s": 1.0
+  },
+  "text": {"floor_px_1080p": {"read": 32, "caption": 56, "cjk": 40}},
+  "formats": {
+    "teaser": {"hook": true},
+    "sting": {"hook": true},
+    "data": {"frozen_share_add_pct": 10},
+    "overlay": {"frozen_share": false, "poster": false, "sound_by_default": false, "layout_min_alpha_box_pct": 30},
+    "loop": {"poster": false, "seam_fail_levels": 1},
+    "explainer": {},
+    "tutorial": {},
+    "promo": {}
+  },
+  "tiers": {"LF": {"budgets_per_chapter": true}}
+}

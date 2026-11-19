@@ -1,0 +1,856 @@
+﻿# Zimbu-Port-Spiegel von: d5lang-port\app\catalog.d5
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE catalog_d5
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: d5lang-port\app\catalog.d5\n")
+  RETURN 0
+
+# ---- Original-Code (d5lang-port\app\catalog.d5), unveraendert, als Inline-Doku ----
+# SHINE, LITTLE BOY, SHINE
+#   WIR MÜSSEN DAS OFFLINE NEHMEN main
+#     PACK-ES-IN-JIRA Portiert 1:1 von app/catalog.json. Jede Originalzeile ist erhalten, nichts geschnitten.
+#     PACK-ES-IN-JIRA JSON-Katalog. d5lang hat kein JSON-Keyword, also bleibt jede Zeile als JIRA erhalten.
+#     PACK-ES-IN-JIRA ORIGINAL-BOM: Datei beginnt mit UTF-8-BOM, Zeile 1 ist [ mit BOM.
+#     PACK-ES-IN-JIRA ORIGINAL: [
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "ai-\u0026-llm-projects-ai-assistant-html,-css,-javascript,-python-(flask)-for-openai-api",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "ai assistant html, css, javascript, python (flask) for openai api",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "AI \u0026 LLM Projects",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Python, Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Python app. Planned port into the ShadowCore app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/ai-\u0026-llm-projects-ai-assistant-html,-css,-javascript,-python-(flask)-for-openai-api",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "ai-\u0026-llm-projects-ai-chat-website-chat",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "chat",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "AI \u0026 LLM Projects\\ai chat website",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Python, Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Python app. Planned port into the ShadowCore app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/ai-\u0026-llm-projects-ai-chat-website-chat",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "ai-\u0026-llm-projects-ai-chat-website-super-fast-ai-chat",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "super-fast-ai-chat",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "AI \u0026 LLM Projects\\ai chat website",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/ai-\u0026-llm-projects-ai-chat-website-super-fast-ai-chat",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "ai-\u0026-llm-projects-ai-chat-website-talkativecloud",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "talkativecloud",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "AI \u0026 LLM Projects\\ai chat website",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/ai-\u0026-llm-projects-ai-chat-website-talkativecloud",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "ai-\u0026-llm-projects-gpt-5-mini-game",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "gpt-5-mini-game",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "AI \u0026 LLM Projects",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/ai-\u0026-llm-projects-gpt-5-mini-game",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": false,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "ai-\u0026-llm-projects-web-scraping-chatbot",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "web-scraping-chatbot",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "AI \u0026 LLM Projects",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Python, Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Python app. Planned port into the ShadowCore app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/ai-\u0026-llm-projects-web-scraping-chatbot",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "archive-unsorted-bodymassindex",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "bodymassindex",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Archive - Unsorted",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Python",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Python app. Planned port into the ShadowCore app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/archive-unsorted-bodymassindex",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": false,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "archive-unsorted-calculator",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "calculator",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Archive - Unsorted",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Python",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Python app. Planned port into the ShadowCore app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/archive-unsorted-calculator",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "archive-unsorted-chat-app",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "chat app",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Archive - Unsorted",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/archive-unsorted-chat-app",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "archive-unsorted-die_klasse_bruch",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "die_klasse_bruch",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Archive - Unsorted",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Python",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Python app. Planned port into the ShadowCore app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/archive-unsorted-die_klasse_bruch",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": false,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "archive-unsorted-drachen-im-asphalt",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "drachen-im-asphalt",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Archive - Unsorted",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Python",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Python app. Planned port into the ShadowCore app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/archive-unsorted-drachen-im-asphalt",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "archive-unsorted-goose-desktop-companion",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "goose-desktop-companion",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Archive - Unsorted",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Python",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Python app. Planned port into the ShadowCore app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/archive-unsorted-goose-desktop-companion",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "archive-unsorted-kilometerzähler",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "Kilometerzähler",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Archive - Unsorted",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Python",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Python app. Planned port into the ShadowCore app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/archive-unsorted-kilometerzähler",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": false,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "archive-unsorted-kilometerz-hler",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "Kilometerz-hler",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Archive - Unsorted",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Python",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Python app. Planned port into the ShadowCore app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/archive-unsorted-kilometerz-hler",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": false,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "archive-unsorted-modernize-website-design",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "modernize-website-design",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Archive - Unsorted",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/archive-unsorted-modernize-website-design",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": false,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "archive-unsorted-rebioot",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "Rebioot",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Archive - Unsorted",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/archive-unsorted-rebioot",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "archive-unsorted-tokyo-metro-pricing",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "tokyo-metro-pricing",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Archive - Unsorted",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Python",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Python app. Planned port into the ShadowCore app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/archive-unsorted-tokyo-metro-pricing",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": false,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "archive-unsorted-wetter-daten-analyse",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "wetter-daten-analyse",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Archive - Unsorted",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Python",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Python app. Planned port into the ShadowCore app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/archive-unsorted-wetter-daten-analyse",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": false,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "browser-games-browser-game",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "browser game",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Browser Games",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Java, Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/browser-games-browser-game",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "browser-games-browser-game-online-game-backend",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "online-game-backend",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Browser Games\\browser game",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Other",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone module: kept as-is, integration not yet planned in detail.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/browser-games-browser-game-online-game-backend",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "browser-games-tamagotchi-game",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "tamagotchi-game",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Browser Games",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/browser-games-tamagotchi-game",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "cloud,-hosting-\u0026-saas-aktienwerk",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "aktienwerk",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Cloud, Hosting \u0026 SaaS",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Python",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Python app. Planned port into the ShadowCore app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/cloud,-hosting-\u0026-saas-aktienwerk",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "cloud,-hosting-\u0026-saas-hosting-club-discord-bot",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "hosting-club-discord-bot",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Cloud, Hosting \u0026 SaaS",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/cloud,-hosting-\u0026-saas-hosting-club-discord-bot",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "cloud,-hosting-\u0026-saas-hosting-club-redesign",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "hosting-club-redesign",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Cloud, Hosting \u0026 SaaS",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/cloud,-hosting-\u0026-saas-hosting-club-redesign",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "cloud,-hosting-\u0026-saas-hosting-club-site",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "hosting-club-site",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Cloud, Hosting \u0026 SaaS",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/cloud,-hosting-\u0026-saas-hosting-club-site",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": false,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "cloud,-hosting-\u0026-saas-hosting-software-hosting-club-redesign",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "hosting-club-redesign",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Cloud, Hosting \u0026 SaaS\\hosting-software",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/cloud,-hosting-\u0026-saas-hosting-software-hosting-club-redesign",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "cloud,-hosting-\u0026-saas-hosting-software-hosting-club-site",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "hosting-club-site",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Cloud, Hosting \u0026 SaaS\\hosting-software",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/cloud,-hosting-\u0026-saas-hosting-software-hosting-club-site",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": false,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "cloud,-hosting-\u0026-saas-minisaas",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "minisaas",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Cloud, Hosting \u0026 SaaS",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/cloud,-hosting-\u0026-saas-minisaas",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "cloud,-hosting-\u0026-saas-secure-vps-setup",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "secure-vps-setup",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Cloud, Hosting \u0026 SaaS",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Other",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone module: kept as-is, integration not yet planned in detail.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/cloud,-hosting-\u0026-saas-secure-vps-setup",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "cloud,-hosting-\u0026-saas-uptime-site",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "uptime-site",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Cloud, Hosting \u0026 SaaS",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/cloud,-hosting-\u0026-saas-uptime-site",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": false,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "github-repos-ai-chat-webui",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "ai-chat-webui",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "github-repos",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/github-repos-ai-chat-webui",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "github-repos-cooperating-screen",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "cooperating-screen",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "github-repos",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/github-repos-cooperating-screen",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "github-repos-drosemann",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "drosemann",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "github-repos",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Other",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone module: kept as-is, integration not yet planned in detail.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/github-repos-drosemann",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "github-repos-ed-docs",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "ed-docs",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "github-repos",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/github-repos-ed-docs",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "github-repos-forgecms",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "forgecms",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "github-repos",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Python, Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Python app. Planned port into the ShadowCore app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/github-repos-forgecms",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "github-repos-forum-for-nerds",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "forum-for-nerds",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "github-repos",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Python, Web/JS, PHP",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Python app. Planned port into the ShadowCore app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/github-repos-forum-for-nerds",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "github-repos-forum-for-nerds-blog,-cms-\u0026-community-platforms-blog",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "blog",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "github-repos\\forum-for-nerds\\Blog, CMS \u0026 Community Platforms",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/github-repos-forum-for-nerds-blog,-cms-\u0026-community-platforms-blog",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "github-repos-forum-for-nerds-blog,-cms-\u0026-community-platforms-blogforge",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "BlogForge",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "github-repos\\forum-for-nerds\\Blog, CMS \u0026 Community Platforms",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Python, Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Python app. Planned port into the ShadowCore app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/github-repos-forum-for-nerds-blog,-cms-\u0026-community-platforms-blogforge",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "github-repos-forum-for-nerds-blog,-cms-\u0026-community-platforms-blog-forum-with-z.ai",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "blog-forum-with-z.ai",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "github-repos\\forum-for-nerds\\Blog, CMS \u0026 Community Platforms",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/github-repos-forum-for-nerds-blog,-cms-\u0026-community-platforms-blog-forum-with-z.ai",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "github-repos-forum-for-nerds-blog,-cms-\u0026-community-platforms-blog-website-frontend-backend",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "blog-website-frontend---backend",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "github-repos\\forum-for-nerds\\Blog, CMS \u0026 Community Platforms",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS, PHP",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/github-repos-forum-for-nerds-blog,-cms-\u0026-community-platforms-blog-website-frontend-backend",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "github-repos-forum-for-nerds-blog,-cms-\u0026-community-platforms-forumino",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "Forumino",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "github-repos\\forum-for-nerds\\Blog, CMS \u0026 Community Platforms",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/github-repos-forum-for-nerds-blog,-cms-\u0026-community-platforms-forumino",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "github-repos-infra-pilot",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "infra-pilot",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "github-repos",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Python, Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Python app. Planned port into the ShadowCore app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/github-repos-infra-pilot",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "github-repos-stranded-horizons",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "stranded-horizons",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "github-repos",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Python, Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Python app. Planned port into the ShadowCore app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/github-repos-stranded-horizons",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "github-repos-streuland",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "streuland",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "github-repos",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Java, Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/github-repos-streuland",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "learning-projects-fun_ccna_learning",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "fun_ccna_learning",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Learning Projects",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/learning-projects-fun_ccna_learning",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": false,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "learning-projects-it-security-learning-platform",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "it-security-learning-platform",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Learning Projects",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/learning-projects-it-security-learning-platform",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "learning-projects-katzen_python",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "katzen_python",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Learning Projects",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Python",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Python app. Planned port into the ShadowCore app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/learning-projects-katzen_python",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": false,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "learning-projects-pseudocode",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "pseudocode",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Learning Projects",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Java, Python",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/learning-projects-pseudocode",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": false,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "learning-projects-python",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "python",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Learning Projects",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Python",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Python app. Planned port into the ShadowCore app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/learning-projects-python",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": false,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "learning-projects-python-code",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "python-code",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Learning Projects",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Python",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Python app. Planned port into the ShadowCore app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/learning-projects-python-code",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": false,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "learning-projects-traumalang",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "TraumaLang",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Learning Projects",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Python",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Python app. Planned port into the ShadowCore app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/learning-projects-traumalang",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "minecraft-plugins-\u0026-server-systems-arena-auto-reset",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "arena-auto-reset",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Minecraft Plugins \u0026 Server Systems",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Java",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/minecraft-plugins-\u0026-server-systems-arena-auto-reset",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "minecraft-plugins-\u0026-server-systems-bedwars",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "bedwars",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Minecraft Plugins \u0026 Server Systems",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Java",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/minecraft-plugins-\u0026-server-systems-bedwars",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "minecraft-plugins-\u0026-server-systems-buildffa-revamp",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "buildffa-revamp",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Minecraft Plugins \u0026 Server Systems",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Java",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/minecraft-plugins-\u0026-server-systems-buildffa-revamp",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "minecraft-plugins-\u0026-server-systems-clan-wars",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "clan-wars",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Minecraft Plugins \u0026 Server Systems",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Java",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/minecraft-plugins-\u0026-server-systems-clan-wars",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "minecraft-plugins-\u0026-server-systems-locate-structure-minecraft",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "locate-structure-minecraft",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Minecraft Plugins \u0026 Server Systems",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Java",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/minecraft-plugins-\u0026-server-systems-locate-structure-minecraft",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": false,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "minecraft-plugins-\u0026-server-systems-tnt-remover",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "tnt-remover",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Minecraft Plugins \u0026 Server Systems",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Java",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/minecraft-plugins-\u0026-server-systems-tnt-remover",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": false,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "personal-\u0026-client-websites-d5niel",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "d5niel",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Personal \u0026 Client Websites",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/personal-\u0026-client-websites-d5niel",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "personal-\u0026-client-websites-jonathan-site",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "jonathan-site",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Personal \u0026 Client Websites",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/personal-\u0026-client-websites-jonathan-site",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": false,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "personal-\u0026-client-websites-portfolio",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "portfolio",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Personal \u0026 Client Websites",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/personal-\u0026-client-websites-portfolio",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": false,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "productivity-\u0026-sharing-apps-link-shortener",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "link shortener",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Productivity \u0026 Sharing Apps",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "PHP",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone module: kept as-is, integration not yet planned in detail.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/productivity-\u0026-sharing-apps-link-shortener",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "productivity-\u0026-sharing-apps-notenest",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "NoteNest",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Productivity \u0026 Sharing Apps",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/productivity-\u0026-sharing-apps-notenest",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "productivity-\u0026-sharing-apps-photoshare",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "PhotoShare",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Productivity \u0026 Sharing Apps",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/productivity-\u0026-sharing-apps-photoshare",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "productivity-\u0026-sharing-apps-sharebox",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "ShareBox",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Productivity \u0026 Sharing Apps",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/productivity-\u0026-sharing-apps-sharebox",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "productivity-\u0026-sharing-apps-shortify",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "Shortify",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Productivity \u0026 Sharing Apps",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "PHP",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone module: kept as-is, integration not yet planned in detail.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/productivity-\u0026-sharing-apps-shortify",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "startup-\u0026-business-concepts-old-party-planner",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "OLD-party-planner",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Startup \u0026 Business Concepts",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/startup-\u0026-business-concepts-old-party-planner",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "startup-\u0026-business-concepts-online-game-backend",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "online-game-backend",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Startup \u0026 Business Concepts",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Other",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone module: kept as-is, integration not yet planned in detail.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/startup-\u0026-business-concepts-online-game-backend",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "startup-\u0026-business-concepts-online-game-frontend",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "online-game-frontend",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Startup \u0026 Business Concepts",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/startup-\u0026-business-concepts-online-game-frontend",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "startup-\u0026-business-concepts-party-planner",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "Party Planner",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Startup \u0026 Business Concepts",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/startup-\u0026-business-concepts-party-planner",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "startup-\u0026-business-concepts-party-planner-party-planner",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "party-planner",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Startup \u0026 Business Concepts\\Party Planner",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/startup-\u0026-business-concepts-party-planner-party-planner",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "startup-\u0026-business-concepts-scalable-arnoldc-ecommerce",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "scalable-ArnoldC-ecommerce",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Startup \u0026 Business Concepts",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/startup-\u0026-business-concepts-scalable-arnoldc-ecommerce",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "utilities-\u0026-desktop-tools-audio_visualizer",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "audio_visualizer",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Utilities \u0026 Desktop Tools",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/utilities-\u0026-desktop-tools-audio_visualizer",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": false,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "utilities-\u0026-desktop-tools-clearcall",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "ClearCall",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Utilities \u0026 Desktop Tools",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/utilities-\u0026-desktop-tools-clearcall",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "utilities-\u0026-desktop-tools-data-optimization",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "data-optimization",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Utilities \u0026 Desktop Tools",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Other",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone module: kept as-is, integration not yet planned in detail.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/utilities-\u0026-desktop-tools-data-optimization",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": true
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "utilities-\u0026-desktop-tools-ui-optimization",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "ui-optimization",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Utilities \u0026 Desktop Tools",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Web/JS",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Web project: candidate to integrate into the ShadowCore web app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/utilities-\u0026-desktop-tools-ui-optimization",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": false,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: },
+#     PACK-ES-IN-JIRA ORIGINAL: {
+#     PACK-ES-IN-JIRA ORIGINAL: "slug": "utilities-\u0026-desktop-tools-youtube-downloader",
+#     PACK-ES-IN-JIRA ORIGINAL: "name": "youtube-downloader",
+#     PACK-ES-IN-JIRA ORIGINAL: "category": "Utilities \u0026 Desktop Tools",
+#     PACK-ES-IN-JIRA ORIGINAL: "stack": "Python",
+#     PACK-ES-IN-JIRA ORIGINAL: "status": "Standalone for now: Python app. Planned port into the ShadowCore app.",
+#     PACK-ES-IN-JIRA ORIGINAL: "path": "projects/utilities-\u0026-desktop-tools-youtube-downloader",
+#     PACK-ES-IN-JIRA ORIGINAL: "hasReadme": true,
+#     PACK-ES-IN-JIRA ORIGINAL: "hasLicense": false
+#     PACK-ES-IN-JIRA ORIGINAL: }
+#     PACK-ES-IN-JIRA ORIGINAL: ,    {"slug": "ai-llm-projects-ai", "name": "AI", "category": "AI & LLM Projects", "stack": "Other", "status": "Standalone module: kept as-is, integration not yet planned in detail.", "path": "projects/ai-llm-projects-ai", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "ai-llm-projects-ai-discord-chatbot", "name": "ai-discord-chatbot", "category": "AI & LLM Projects", "stack": "Web/JS", "status": "Web project: candidate to integrate into the d5 web app.", "path": "projects/ai-llm-projects-ai-discord-chatbot", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "ai-llm-projects-ai-productivity-dashboard", "name": "ai-productivity-dashboard", "category": "AI & LLM Projects", "stack": "Web/JS", "status": "Web project: candidate to integrate into the d5 web app.", "path": "projects/ai-llm-projects-ai-productivity-dashboard", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "ai-llm-projects-chatbot-html-css-javascript-and-python", "name": "chatbot html, css, javascript and python", "category": "AI & LLM Projects", "stack": "Python, Web/JS", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/ai-llm-projects-chatbot-html-css-javascript-and-python", "hasReadme": true, "hasLicense": true},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "ai-llm-projects-llama-coder", "name": "llama coder", "category": "AI & LLM Projects", "stack": "Other", "status": "Standalone module: kept as-is, integration not yet planned in detail.", "path": "projects/ai-llm-projects-llama-coder", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "archive-unsorted-10billionvaluation", "name": "10billionvaluation", "category": "Archive - Unsorted", "stack": "Web/JS", "status": "Web project: candidate to integrate into the d5 web app.", "path": "projects/archive-unsorted-10billionvaluation", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "archive-unsorted-cascadeprojects", "name": "CascadeProjects", "category": "Archive - Unsorted", "stack": "Web/JS", "status": "Web project: candidate to integrate into the d5 web app.", "path": "projects/archive-unsorted-cascadeprojects", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "archive-unsorted-guestbook-html-css-javascript", "name": "guestbook html,css,javascript", "category": "Archive - Unsorted", "stack": "Web/JS, PHP", "status": "Web project: candidate to integrate into the d5 web app.", "path": "projects/archive-unsorted-guestbook-html-css-javascript", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "archive-unsorted-helloworld", "name": "HelloWorld", "category": "Archive - Unsorted", "stack": "Java", "status": "Standalone Java sample: kept as-is with its source.", "path": "projects/archive-unsorted-helloworld", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "archive-unsorted-landing-page-revamp", "name": "landing-page-revamp", "category": "Archive - Unsorted", "stack": "Web/JS", "status": "Web project: candidate to integrate into the d5 web app.", "path": "projects/archive-unsorted-landing-page-revamp", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "archive-unsorted-php-signin", "name": "php-signin", "category": "Archive - Unsorted", "stack": "PHP", "status": "Standalone module: kept as-is, integration not yet planned in detail.", "path": "projects/archive-unsorted-php-signin", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "archive-unsorted-pillars-of-fortune", "name": "pillars-of-fortune", "category": "Archive - Unsorted", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/archive-unsorted-pillars-of-fortune", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "archive-unsorted-python-spammer", "name": "python-spammer", "category": "Archive - Unsorted", "stack": "Python", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/archive-unsorted-python-spammer", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "archive-unsorted-webscrapemaster", "name": "WebScrapeMaster", "category": "Archive - Unsorted", "stack": "Python, Web/JS", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/archive-unsorted-webscrapemaster", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "browser-games-2048", "name": "2048", "category": "Browser Games", "stack": "Web/JS", "status": "Web project: candidate to integrate into the d5 web app.", "path": "projects/browser-games-2048", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "browser-games-color-cascade-browser-video-game", "name": "color cascade (browser video game)", "category": "Browser Games", "stack": "Web/JS", "status": "Web project: candidate to integrate into the d5 web app.", "path": "projects/browser-games-color-cascade-browser-video-game", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "browser-games-guess-the-number", "name": "guess the number", "category": "Browser Games", "stack": "Python, Web/JS", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/browser-games-guess-the-number", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "browser-games-hangmen", "name": "Hangmen", "category": "Browser Games", "stack": "Python, Web/JS", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/browser-games-hangmen", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "browser-games-ping-pong", "name": "ping pong", "category": "Browser Games", "stack": "Python", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/browser-games-ping-pong", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "browser-games-shooter-html-css-javascript-and-python", "name": "shooter html,css,javascript and python", "category": "Browser Games", "stack": "Python, Web/JS", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/browser-games-shooter-html-css-javascript-and-python", "hasReadme": true, "hasLicense": true},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "browser-games-snake", "name": "snake", "category": "Browser Games", "stack": "Python", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/browser-games-snake", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "browser-games-tank-shooter-browser", "name": "tank shooter (browser)", "category": "Browser Games", "stack": "Web/JS", "status": "Web project: candidate to integrate into the d5 web app.", "path": "projects/browser-games-tank-shooter-browser", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "browser-games-tic-tac-toe", "name": "tic tac toe", "category": "Browser Games", "stack": "Python", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/browser-games-tic-tac-toe", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "cloud-hosting-saas-netip-cloud", "name": "netip.cloud", "category": "Cloud, Hosting & SaaS", "stack": "Web/JS", "status": "Web project: candidate to integrate into the d5 web app.", "path": "projects/cloud-hosting-saas-netip-cloud", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "cloud-hosting-saas-vercel-clone", "name": "vercel-clone", "category": "Cloud, Hosting & SaaS", "stack": "Python, Web/JS", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/cloud-hosting-saas-vercel-clone", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "cloud-hosting-saas-vercel-like-lxc-container-platform", "name": "Vercel-Like LXC Container Platform", "category": "Cloud, Hosting & SaaS", "stack": "Python, Web/JS", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/cloud-hosting-saas-vercel-like-lxc-container-platform", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "learning-projects-cssundhtml", "name": "CSSundHTML", "category": "Learning Projects", "stack": "Web/JS", "status": "Web project: candidate to integrate into the d5 web app.", "path": "projects/learning-projects-cssundhtml", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "learning-projects-programmierenlernen01", "name": "Programmierenlernen01", "category": "Learning Projects", "stack": "Python", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/learning-projects-programmierenlernen01", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "learning-projects-python-programming", "name": "Python-Programming", "category": "Learning Projects", "stack": "Python", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/learning-projects-python-programming", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-game-concepts-apocalypseunleashed", "name": "ApocalypseUnleashed", "category": "Minecraft Game Concepts", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/minecraft-game-concepts-apocalypseunleashed", "hasReadme": true, "hasLicense": true},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-game-concepts-challenges-source", "name": "Challenges_Source", "category": "Minecraft Game Concepts", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/minecraft-game-concepts-challenges-source", "hasReadme": false, "hasLicense": true},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-game-concepts-nexarena", "name": "NexArena", "category": "Minecraft Game Concepts", "stack": "Other", "status": "Standalone module: kept as-is, integration not yet planned in detail.", "path": "projects/minecraft-game-concepts-nexarena", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-game-concepts-old-python-openworldminigame", "name": "old-python-openworldminigame", "category": "Minecraft Game Concepts", "stack": "Python", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/minecraft-game-concepts-old-python-openworldminigame", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-game-concepts-open-world-minigame", "name": "open world minigame", "category": "Minecraft Game Concepts", "stack": "Python", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/minecraft-game-concepts-open-world-minigame", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-plugins-server-systems-automatic-login-plugin", "name": "automatic-login-plugin", "category": "Minecraft Plugins & Server Systems", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/minecraft-plugins-server-systems-automatic-login-plugin", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-plugins-server-systems-autosaver-minecraft", "name": "autosaver minecraft", "category": "Minecraft Plugins & Server Systems", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/minecraft-plugins-server-systems-autosaver-minecraft", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-plugins-server-systems-broadcast-restart-plugin", "name": "broadcast-restart-plugin", "category": "Minecraft Plugins & Server Systems", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/minecraft-plugins-server-systems-broadcast-restart-plugin", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-plugins-server-systems-chestspawner", "name": "chestspawner", "category": "Minecraft Plugins & Server Systems", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/minecraft-plugins-server-systems-chestspawner", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-plugins-server-systems-connecthub-java-mc-plugin", "name": "connecthub java (mc plugin)", "category": "Minecraft Plugins & Server Systems", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/minecraft-plugins-server-systems-connecthub-java-mc-plugin", "hasReadme": true, "hasLicense": true},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-plugins-server-systems-directserverconnect", "name": "DirectServerConnect", "category": "Minecraft Plugins & Server Systems", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/minecraft-plugins-server-systems-directserverconnect", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-plugins-server-systems-elytra-plugin", "name": "elytra-plugin", "category": "Minecraft Plugins & Server Systems", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/minecraft-plugins-server-systems-elytra-plugin", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-plugins-server-systems-horden-plugin", "name": "horden-plugin", "category": "Minecraft Plugins & Server Systems", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/minecraft-plugins-server-systems-horden-plugin", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-plugins-server-systems-lobby-system-minecraft", "name": "lobby system minecraft", "category": "Minecraft Plugins & Server Systems", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/minecraft-plugins-server-systems-lobby-system-minecraft", "hasReadme": true, "hasLicense": true},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-plugins-server-systems-minecraft-minigame-template", "name": "minecraft minigame template", "category": "Minecraft Plugins & Server Systems", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/minecraft-plugins-server-systems-minecraft-minigame-template", "hasReadme": true, "hasLicense": true},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-plugins-server-systems-minecraft-anticheat", "name": "minecraft-anticheat", "category": "Minecraft Plugins & Server Systems", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/minecraft-plugins-server-systems-minecraft-anticheat", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-plugins-server-systems-minigametemplate-java", "name": "minigametemplate java", "category": "Minecraft Plugins & Server Systems", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/minecraft-plugins-server-systems-minigametemplate-java", "hasReadme": true, "hasLicense": true},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-plugins-server-systems-questsystem", "name": "questsystem", "category": "Minecraft Plugins & Server Systems", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/minecraft-plugins-server-systems-questsystem", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-plugins-server-systems-randomitem", "name": "RandomItem", "category": "Minecraft Plugins & Server Systems", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/minecraft-plugins-server-systems-randomitem", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-plugins-server-systems-rolesync", "name": "rolesync", "category": "Minecraft Plugins & Server Systems", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/minecraft-plugins-server-systems-rolesync", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-plugins-server-systems-sandstone-remover-pocketmine", "name": "sandstone-remover-pocketmine", "category": "Minecraft Plugins & Server Systems", "stack": "PHP", "status": "Standalone module: kept as-is, integration not yet planned in detail.", "path": "projects/minecraft-plugins-server-systems-sandstone-remover-pocketmine", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-plugins-server-systems-sessionlockplugin", "name": "SessionLockPlugin", "category": "Minecraft Plugins & Server Systems", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/minecraft-plugins-server-systems-sessionlockplugin", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-plugins-server-systems-tablist", "name": "Tablist", "category": "Minecraft Plugins & Server Systems", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/minecraft-plugins-server-systems-tablist", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "minecraft-plugins-server-systems-voicechat", "name": "voicechat", "category": "Minecraft Plugins & Server Systems", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/minecraft-plugins-server-systems-voicechat", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "personal-client-websites-internetwebsite", "name": "Internetwebsite", "category": "Personal & Client Websites", "stack": "Web/JS", "status": "Web project: candidate to integrate into the d5 web app.", "path": "projects/personal-client-websites-internetwebsite", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "personal-client-websites-minecraftseite", "name": "MinecraftSeite", "category": "Personal & Client Websites", "stack": "Web/JS", "status": "Web project: candidate to integrate into the d5 web app.", "path": "projects/personal-client-websites-minecraftseite", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "personal-client-websites-personal-website", "name": "personal-website", "category": "Personal & Client Websites", "stack": "Web/JS", "status": "Web project: candidate to integrate into the d5 web app.", "path": "projects/personal-client-websites-personal-website", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "personal-client-websites-shadowunity-website", "name": "ShadowUnity Website", "category": "Personal & Client Websites", "stack": "Web/JS", "status": "Web project: candidate to integrate into the d5 web app.", "path": "projects/personal-client-websites-shadowunity-website", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "personal-client-websites-website", "name": "Website", "category": "Personal & Client Websites", "stack": "Web/JS", "status": "Web project: candidate to integrate into the d5 web app.", "path": "projects/personal-client-websites-website", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "productivity-sharing-apps-document-recovery", "name": "document-recovery", "category": "Productivity & Sharing Apps", "stack": "Other", "status": "Standalone module: kept as-is, integration not yet planned in detail.", "path": "projects/productivity-sharing-apps-document-recovery", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "productivity-sharing-apps-pichosty", "name": "picHosty", "category": "Productivity & Sharing Apps", "stack": "Python, Web/JS", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/productivity-sharing-apps-pichosty", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "productivity-sharing-apps-react-todo", "name": "react-todo", "category": "Productivity & Sharing Apps", "stack": "Other", "status": "Standalone module: kept as-is, integration not yet planned in detail.", "path": "projects/productivity-sharing-apps-react-todo", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "productivity-sharing-apps-splitwise", "name": "splitwise", "category": "Productivity & Sharing Apps", "stack": "Python", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/productivity-sharing-apps-splitwise", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "productivity-sharing-apps-todo", "name": "ToDo", "category": "Productivity & Sharing Apps", "stack": "Python", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/productivity-sharing-apps-todo", "hasReadme": false, "hasLicense": true},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "startup-business-concepts-agentenplattform", "name": "Agentenplattform", "category": "Startup & Business Concepts", "stack": "Python, Web/JS", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/startup-business-concepts-agentenplattform", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "startup-business-concepts-hearthrift", "name": "Hearthrift", "category": "Startup & Business Concepts", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/startup-business-concepts-hearthrift", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "startup-business-concepts-securestream-vpn", "name": "SecureStream VPN", "category": "Startup & Business Concepts", "stack": "Python, Web/JS", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/startup-business-concepts-securestream-vpn", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "startup-business-concepts-video-platform", "name": "video platform", "category": "Startup & Business Concepts", "stack": "Python, Web/JS", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/startup-business-concepts-video-platform", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "startup-business-concepts-zapfile-html-css-javascript", "name": "zapfile html,css,javascript", "category": "Startup & Business Concepts", "stack": "Web/JS, PHP", "status": "Web project: candidate to integrate into the d5 web app.", "path": "projects/startup-business-concepts-zapfile-html-css-javascript", "hasReadme": true, "hasLicense": true},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "utilities-desktop-tools-keyboard-automation-tool-python", "name": "keyboard automation tool python", "category": "Utilities & Desktop Tools", "stack": "Python", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/utilities-desktop-tools-keyboard-automation-tool-python", "hasReadme": true, "hasLicense": true},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "utilities-desktop-tools-sessionlock", "name": "SessionLock", "category": "Utilities & Desktop Tools", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/utilities-desktop-tools-sessionlock", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "utilities-desktop-tools-sorting-script", "name": "sorting-script", "category": "Utilities & Desktop Tools", "stack": "Python", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/utilities-desktop-tools-sorting-script", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "utilities-desktop-tools-speedsnap", "name": "SpeedSnap", "category": "Utilities & Desktop Tools", "stack": "Python, Web/JS", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/utilities-desktop-tools-speedsnap", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "utilities-desktop-tools-speedtest", "name": "speedtest", "category": "Utilities & Desktop Tools", "stack": "Python, Web/JS", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/utilities-desktop-tools-speedtest", "hasReadme": true, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "ai-&-llm-projects-ai-chat-website-ai", "name": "AI", "category": "AI & LLM Projects\\ai chat website", "stack": "Python, Web/JS", "status": "Standalone for now: Python app. Planned port into the d5 app.", "path": "projects/ai-&-llm-projects-ai-chat-website-ai", "hasReadme": false, "hasLicense": false},
+#     PACK-ES-IN-JIRA ORIGINAL:     {"slug": "browser-games-browser-game-open-world-minigame", "name": "open world minigame", "category": "Browser Games\\browser game", "stack": "Java", "status": "Standalone for now: Minecraft/Java code. Planned rewrite for the d5 browser game.", "path": "projects/browser-games-browser-game-open-world-minigame", "hasReadme": false, "hasLicense": false}
+#     PACK-ES-IN-JIRA ORIGINAL: ]
+#   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+# BOY, DU HAST KI-VERBOT
+#

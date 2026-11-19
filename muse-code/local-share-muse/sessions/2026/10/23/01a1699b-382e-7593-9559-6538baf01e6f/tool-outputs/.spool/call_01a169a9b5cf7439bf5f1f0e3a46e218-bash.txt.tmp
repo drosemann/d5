@@ -1,0 +1,1 @@
+fatal: unable to access 'https://github.com/drosemann/stranded-horizons.git/': schannel: AcquireCredentialsHandle failed: SEC_E_NO_CREDENTIALS (0x8009030e) - Im Sicherheitspaket sind keine Anmeldeinformationen verfügbar.

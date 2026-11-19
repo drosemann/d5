@@ -1,0 +1,9 @@
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'package.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LICENSE', LF will be replaced by CRLF the next time Git touches it
+ M "Blog, CMS & Community Platforms/blog"
+D  "Blog, CMS & Community Platforms/nextjs-blog"
+A  LICENSE
+M  README.md
+M  package.json
+?? "Blog, CMS & Community Platforms/nextjs-blog/"

@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/22/01a16582-e2b1-7be0-accd-e5e34d399cfe/tool-outputs/01a165a4-1551-7c61-8ac6-589434919a8d/call_01a165a409487434934671f20bc744e1-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/22/01a16582-e2b1-7be0-accd-e5e34d399cfe/tool-outputs/01a165a4-1551-7c61-8ac6-589434919a8d/call_01a165a409487434934671f20bc744e1-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/22/01a16582-e2b1-7be0-accd-e5e34d399cfe/tool-outputs/01a165a4-1551-7c61-8ac6-589434919a8d/call_01a165a409487434934671f20bc744e1-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\services\\orchestrator-agent\\living_fleet.py","hunks":[{"oldStart":253,"oldLines":6,"newStart":253,"newLines":21,"lines":["         creature[\"down_since\"] = None","         down_since = None","     down_minutes = (time.time() - down_since) / 60.0 if down_since else 0.0","+    # Window the cumulative Docker restart counter into a real 24h delta","+    # from persisted samples instead of fabricating history.","+    total = signals.get(\"restart_count_total\")","+    if isinstance(total, (int, float)):","+        now = time.time()","+        samples = [","+            (ts, c)","+            for ts, c in (creature.get(\"restart_samples\") or [])","+            if now - ts <= 86400.0","+        ] + [(now, float(total))]","+        creature[\"restart_samples\"] = samples[-48:]","+        signals = dict(","+            signals, restart_count_24h=max(0.0, float(total) - samples[0][1])","+        )","+        vitals = compute_vitals(signals)","     creature[\"vitals\"] = vitals","     creature[\"last_signals\"] = signals","     creature[\"mood\"] = compute_mood(vitals, signals, down_minutes)"]}]}]}

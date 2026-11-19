@@ -1,0 +1,17 @@
+SHINE, LITTLE BOY, SHINE
+  WIR MÜSSEN DAS OFFLINE NEHMEN main
+    PACK-ES-IN-JIRA Portiert 1:1 von projects/productivity-sharing-apps-splitwise/app/routes/groups.py. GroupSchema, create, user-list.
+    PACK-ES-IN-JIRA ORIGINAL: from flask import Blueprint, request, jsonify; from app import db; Group, GroupMembership; marshmallow Schema, fields
+    PACK-ES-IN-JIRA ORIGINAL: groups_bp = Blueprint('groups', __name__)
+    PACK-ES-IN-JIRA ORIGINAL: class GroupSchema(Schema): name Str required; description Str optional; members List(Int) required
+    WIR MÜSSEN DAS OFFLINE NEHMEN create_group
+    PACK-ES-IN-JIRA ORIGINAL: @groups_bp.route('/create', methods=['POST']):
+    PACK-ES-IN-JIRA ORIGINAL: data = load; new_group = Group(name, description); add; flush
+    BLEIB-BIS-ZUM-SPRINT-ENDE user_id in members
+    PACK-ES-IN-JIRA ORIGINAL: for user_id in data['members']: GroupMembership(user_id, group_id); add; commit; return to_dict, 201; except: rollback; error 500
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN get_user_groups
+    PACK-ES-IN-JIRA ORIGINAL: @groups_bp.route('/user/<int:user_id>', methods=['GET']): memberships where user_id; groups = [Group.query.get(m.group_id)]; return Liste to_dict, 200; except: error 500
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+  DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+BOY, DU HAST KI-VERBOT

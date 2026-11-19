@@ -1,0 +1,12 @@
+Der Operator "-ireplace" l„sst nur zwei nachgestellte Elemente zu, nicht 4.
+In Zeile:1 Zeichen:121
++ ... -Raw; $nl=[string][char]13 + [string][char]10; $t=$t -replace ',      ...
++                                                          ~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Object[]:Object[]) [], RuntimeException
+    + FullyQualifiedErrorId : BadReplaceArgument
+ 
+57: FEATURE_FLAG_READ = "feature-flag:read"
+94: Permission.DRIFT_VIEW,        Permission.FEATURE_FLAG_READ,
+108: Permission.DRIFT_VIEW,        Permission.FEATURE_FLAG_READ,
+114: Permission.DRIFT_VIEW,        Permission.FEATURE_FLAG_READ,
+123: Permission.AUDIT_EXPORT,        Permission.FEATURE_FLAG_READ,

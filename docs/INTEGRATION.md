@@ -1,4 +1,17 @@
-﻿# ShadowCore - Integration status
+﻿# d5 - Integration status
+
+Rebranded from ShadowCore to **d5**. `app/` is now a single-page app with hash routing (`#/`, `#/catalog`, `#/project/<slug>`, `#/tools`, `#/tool/<id>`). Serve the repo root (not just `app/`) so relative links to `projects/` resolve.
+
+## Runtime layout (what actually runs now)
+
+152 projects are catalogued (`app/catalog.json` + `app/catalog.js`): 76 merged git repos, 73 non-git folders copied from `!Coding-Enviroment` into `projects/`, plus later additions (ai-chat-website-ai, open-world-minigame, volcan-chico — the latter is the former `app/` hot-sauce site, moved aside when the d5 router shell was restored). Nothing was deleted; originals stay in `projects/`.
+
+- **30 static web projects run inside d5**, embedded via iframe with a standalone fallback link (see `RUNNABLE` in `app/app.js`, value = entry file). Every entry was verified by reading the file: no build stubs, no server templates. React/Vite/Next sources (talkativecloud, d5niel, portfolio, PhotoShare, …) are NOT embedded — their `index.html` files are unbuilt stubs that render blank.
+- **Ported to working in-browser tools** served under `#/tools` (48 tool pages): Calculator (25 ops), BMI Rechner, Klasse Bruch, Tokyo Metro Pricing, Kilometerzähler, Wetter Daten Analyse (`app/tools.js`); Snake, Tic-Tac-Toe (human X vs random bot + tally), Ping Pong with points shop (`app/games.js`); BedWars, BuildFFA, ClanWars (`app/mc-games.js`); 21 server-system rewrites — SessionLock, Tablist, Autosaver, BroadcastRestart, ChestSpawner, RandomItem, QuestSystem, Lobby+ConnectHub, DirectServerConnect, Elytra, Horden, MinigameTemplate, AntiCheat, RoleSync, SandstoneRemover, ArenaAutoReset, LocateStructure, TNTRemover, VoiceChat, HelloWorld, Pseudocode Runner (`app/mc-tools.js`); PillarsOfFortune, ApocalypseUnleashed, Hearthrift, RealmOfWonders, Challenges, Streuland invites (`app/mc-misc.js`); Guestbook (BBCode + validation, localStorage instead of PHP/MySQL), Login Demo (local auth instead of the PHP stub), Link Shortener (base62 + visit counter), Splitwise (equal splits, balances, settle-up), Speedtest (live ping + download; upload reported honestly when the static host rejects POST), Sortier-Planer (same extension map, exports `.ps1`/`.sh` move scripts since the browser cannot move user files), ToDo, NoteNest (AES-GCM notes, password-derived key), Edge-Payload-Decoder (`app/apps.js`, `app/apps2.js`). Where the originals used MySQL/SQLite or a server backend, the ports use localStorage.
+- Faithful-port notes: Calculator ops 22/23 were dead code in the original (listed but never dispatched) and are implemented in the port; BMI thresholds are copied verbatim including the 24.9–25 gap that falls through to Adipositas; Bruch reduce uses gcd instead of the original trial-division loop. Dropped placeholder limbs are documented per-tool in code comments.
+- **The rest are source-only with an in-app source view** (README preview + a per-project reason via `sourceWhy()` in `app/app.js`): Flutter/Dart, C/TraumaLang, server-backed Flask/Django/Next apps, Discord bots, PHP backends without a static frontend, desktop/OS-level tools (pyautogui, keyboard automation, PowerShell scripts), shell setup scripts, empty or corrupted sources (llama coder, katzen_python), and data dumps. No Java/Minecraft entry is source-only anymore — each one either runs as a native port under Tools or is embedded (browser-game hub). Each page states plainly why it cannot run in the browser.
+
+## Previous rules (kept for per-project history below)
 
 ShadowCore is one repository and one launcher/catalog app. Not every merged project can run inside that app yet. This file says, per project, what it is and what is planned. Nothing here claims a project is integrated when it is not.
 
@@ -544,3 +557,23 @@ ShadowCore is one repository and one launcher/catalog app. Not every merged proj
 - Status: Standalone for now: Python app. Planned port into the ShadowCore app.
 
 
+
+<!-- ZIMBU-PORT -->
+## Zimbu-Port
+
+Dieses Projekt ist mechanisch nach [Zimbu](https://moolenaar.net/z/zimbu/spec/zimbu.html)
+(Bram Moolenaar) gespiegelt: Jede Code-Datei hat eine <name>.<ext>.zimbu-Schwester
+mit Zimbu-Modulgeruest (MODULE/FUNC Main) und dem VOLLSTAENDIGEN Original-Code
+als #-Inline-Doku. Kein Original-Code wurde geloescht oder veraendert.
+Die .zimbu-Dateien sind mechanische Spiegel (80/20: Geruest steht, Logik-Port
+per Hand verfeinern). Stand: 2026-11-12.
+
+<!-- GOOSE-PORT -->
+## Goose-Port
+
+Dieses Projekt ist mechanisch nach [Goose](https://github.com/aardappel/goose)
+(aardappel/goose v2026.4) gespiegelt: Jede Code-Datei hat eine <name>.<ext>.goose-Schwester
+mit gueltigem Goose-Programmgeruest (n main()/print, pruefbar mit goose check)
+und dem VOLLSTAENDIGEN Original-Code als //-Inline-Doku. Kein Original-Code wurde
+geloescht oder veraendert. Die .goose-Dateien sind mechanische Spiegel (Geruest steht
+und kompiliert, Logik-Port per Hand verfeinern). Stand: 2026-11-16.

@@ -1,0 +1,14 @@
+
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:798:    async def 
+metrics(request: web.Request) -> web.Response:
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:845:        # VPS 
+instance metrics (from VPSManager, no Discord dependency)
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:847:            
+from vps_manager import VPSManager
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:849:            vm 
+= VPSManager()
+---
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\vps_manager.py:83:class 
+VPSManager(LifecycleMixin, BackupsMixin, MonitoringMixin, PersistenceMixin):
+
+

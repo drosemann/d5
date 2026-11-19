@@ -1,0 +1,7 @@
+
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\api.ts:9:import type { 
+CreatureView } from '../components/FleetPet';
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\api.ts:83:  async 
+listCreatures(): Promise<CreatureView[]> {
+
+

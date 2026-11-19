@@ -1,0 +1,23 @@
+
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\api.ts:53:  async 
+getSetupStatus(): Promise<SetupStatus> {
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\api.ts:76:  async listApps(): 
+Promise<DockerApp[]> {
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\api.ts:81:  async getApp(appId: 
+string): Promise<DockerApp> {
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\api.ts:116:  async 
+getLogs(appId: string, limit = 50, offset = 0): Promise<Array<any>> {
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\api.ts:163:  async 
+getAutopilotRecommendations(appId: string): Promise<AutopilotRecommendation[]> {
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\api.ts:178:  async 
+getServerBilling(appId: string): Promise<ServerBillingLedger> {
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\api.ts:189:  async getUser(): 
+Promise<UserProfile> {
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\api.ts:195:  async getConfig(): 
+Promise<AppConfig> {
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\api.ts:201:  async 
+getCustomers(): Promise<Customer[]> {
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\lib\api.ts:228:  async 
+getServerMetrics(appId: string, range = '30m'): Promise<ServerMetric[]> {
+
+

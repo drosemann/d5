@@ -1,0 +1,39 @@
+=== file ===
+
+
+Length        : 33367040
+LastWriteTime : 26.10.2026 20:33:21
+
+
+
+
+=== first 8 bytes (zip signature should be 50 4B 03 04) ===
+6C 65 76 65 6C 2E 64 61
+=== level.dat readable strings ===
+Die Methode kann nicht aufgerufen werden. Der Methodenaufruf wird in diesem Sprachmodus nur fÅr Kerntypen unterstÅtzt.
+In Zeile:5 Zeichen:1
++ $bytes = [System.IO.File]::ReadAllBytes((Resolve-Path "files\games\co ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : MethodInvocationNotSupportedInConstrainedLanguage
+ 
+Die Methode kann nicht aufgerufen werden. Der Methodenaufruf wird in diesem Sprachmodus nur fÅr Kerntypen unterstÅtzt.
+In Zeile:6 Zeichen:1
++ $text = [System.Text.Encoding]::ASCII.GetString($bytes)
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : MethodInvocationNotSupportedInConstrainedLanguage
+ 
+=== zip entries via tar verbose (first 12) ===
+-rw-rw-rw-  0 0      0        4420 Okt 21 09:17 level.dat
+-rw-rw-rw-  0 0      0        4420 Okt 21 08:59 level.dat_old
+-rw-rw-rw-  0 0      0          10 Okt 21 09:17 levelname.txt
+-rw-rw-rw-  0 0      0           3 Nov 09  2024 world_behavior_packs.json
+-rw-rw-rw-  0 0      0           3 Nov 09  2024 world_resource_packs.json
+-rw-rw-rw-  0 0      0       75750 Okt 20 12:18 world_icon.jpeg
+-rw-rw-rw-  0 0      0          34 Dez 11  2024 world_icon.json
+dr-xr-xr-x  0 0      0           0 Okt 26 20:23 behavior_packs/
+dr-xr-xr-x  0 0      0           0 Okt 26 20:23 resource_packs/
+dr-xr-xr-x  0 0      0           0 Okt 26 20:23 db/
+-rw-rw-rw-  0 0      0     2115990 Aug 12 23:06 db/003347.ldb
+-rw-rw-rw-  0 0      0     2032383 Aug 12 23:06 db/003348.ldb

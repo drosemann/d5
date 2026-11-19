@@ -1,0 +1,373 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/model-catalog/6d657461__p746268.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/model-catalog/6d657461__p746268.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/model-catalog/6d657461__p746268.json), unveraendert, als Inline-Doku ----
+// {
+//   "schema_version": 3,
+//   "provider_id": "meta",
+//   "profile_id": "tbh",
+//   "source": "provider_catalog",
+//   "rows": [
+//     {
+//       "model_id": "assetgen-nano-1.0",
+//       "display_label": "AssetGen Nano",
+//       "provider_id": "meta",
+//       "profile_id": "tbh",
+//       "visibility": "hidden",
+//       "release_date": "2026-11-03",
+//       "display_order": null,
+//       "is_current": false,
+//       "is_default": false,
+//       "roles": [],
+//       "context_limit": null,
+//       "output_limit": null,
+//       "description": null,
+//       "cost": null,
+//       "reasoning_effort_variants": null,
+//       "supports_video": false,
+//       "supports_image_generation": false,
+//       "supports_3d_generation": true,
+//       "background_agent_model": null
+//     },
+//     {
+//       "model_id": "muse-wonder-1.0",
+//       "display_label": "muse-wonder-1.0",
+//       "provider_id": "meta",
+//       "profile_id": "tbh",
+//       "visibility": "visible",
+//       "release_date": "2026-10-12",
+//       "display_order": null,
+//       "is_current": false,
+//       "is_default": true,
+//       "roles": [],
+//       "context_limit": 1007997,
+//       "output_limit": 128000,
+//       "description": null,
+//       "cost": null,
+//       "reasoning_effort_variants": [
+//         {
+//           "tier": "minimal",
+//           "description": null
+//         },
+//         {
+//           "tier": "low",
+//           "description": null
+//         },
+//         {
+//           "tier": "medium",
+//           "description": null
+//         },
+//         {
+//           "tier": "high",
+//           "description": null
+//         },
+//         {
+//           "tier": "xhigh",
+//           "description": null
+//         },
+//         {
+//           "tier": "max",
+//           "description": null
+//         }
+//       ],
+//       "supports_video": true,
+//       "supports_image_generation": false,
+//       "supports_3d_generation": false,
+//       "background_agent_model": "muse-spark-1.3"
+//     },
+//     {
+//       "model_id": "muse-wonder-1.0-contributor",
+//       "display_label": "muse-wonder-1.0-contributor",
+//       "provider_id": "meta",
+//       "profile_id": "tbh",
+//       "visibility": "hidden",
+//       "release_date": "2026-10-12",
+//       "display_order": null,
+//       "is_current": false,
+//       "is_default": false,
+//       "roles": [],
+//       "context_limit": 1007997,
+//       "output_limit": 128000,
+//       "description": "Your content, including inter-session messages, may be used for product improvement.",
+//       "cost": null,
+//       "reasoning_effort_variants": [
+//         {
+//           "tier": "minimal",
+//           "description": null
+//         },
+//         {
+//           "tier": "low",
+//           "description": null
+//         },
+//         {
+//           "tier": "medium",
+//           "description": null
+//         },
+//         {
+//           "tier": "high",
+//           "description": null
+//         },
+//         {
+//           "tier": "xhigh",
+//           "description": null
+//         },
+//         {
+//           "tier": "max",
+//           "description": null
+//         }
+//       ],
+//       "supports_video": true,
+//       "supports_image_generation": false,
+//       "supports_3d_generation": false,
+//       "background_agent_model": "muse-spark-1.3"
+//     },
+//     {
+//       "model_id": "muse-ember-1.0",
+//       "display_label": "muse-ember-1.0",
+//       "provider_id": "meta",
+//       "profile_id": "tbh",
+//       "visibility": "visible",
+//       "release_date": "2026-10-01",
+//       "display_order": null,
+//       "is_current": false,
+//       "is_default": false,
+//       "roles": [],
+//       "context_limit": 1007997,
+//       "output_limit": 128000,
+//       "description": null,
+//       "cost": null,
+//       "reasoning_effort_variants": [
+//         {
+//           "tier": "minimal",
+//           "description": null
+//         },
+//         {
+//           "tier": "low",
+//           "description": null
+//         },
+//         {
+//           "tier": "medium",
+//           "description": null
+//         },
+//         {
+//           "tier": "high",
+//           "description": null
+//         },
+//         {
+//           "tier": "xhigh",
+//           "description": null
+//         },
+//         {
+//           "tier": "max",
+//           "description": null
+//         }
+//       ],
+//       "supports_video": true,
+//       "supports_image_generation": false,
+//       "supports_3d_generation": false,
+//       "background_agent_model": null
+//     },
+//     {
+//       "model_id": "muse-spark-1.3",
+//       "display_label": "muse-spark-1.3",
+//       "provider_id": "meta",
+//       "profile_id": "tbh",
+//       "visibility": "visible",
+//       "release_date": "2026-09-02",
+//       "display_order": null,
+//       "is_current": true,
+//       "is_default": false,
+//       "roles": [],
+//       "context_limit": 1007997,
+//       "output_limit": 128000,
+//       "description": null,
+//       "cost": null,
+//       "reasoning_effort_variants": [
+//         {
+//           "tier": "minimal",
+//           "description": null
+//         },
+//         {
+//           "tier": "low",
+//           "description": null
+//         },
+//         {
+//           "tier": "medium",
+//           "description": null
+//         },
+//         {
+//           "tier": "high",
+//           "description": null
+//         },
+//         {
+//           "tier": "xhigh",
+//           "description": null
+//         },
+//         {
+//           "tier": "max",
+//           "description": null
+//         }
+//       ],
+//       "supports_video": true,
+//       "supports_image_generation": false,
+//       "supports_3d_generation": false,
+//       "background_agent_model": null
+//     },
+//     {
+//       "model_id": "muse-spark-1.3-contributor",
+//       "display_label": "muse-spark-1.3-contributor",
+//       "provider_id": "meta",
+//       "profile_id": "tbh",
+//       "visibility": "hidden",
+//       "release_date": "2026-09-02",
+//       "display_order": null,
+//       "is_current": false,
+//       "is_default": false,
+//       "roles": [],
+//       "context_limit": 1007997,
+//       "output_limit": 128000,
+//       "description": "Your content, including inter-session messages, may be used for product improvement.",
+//       "cost": null,
+//       "reasoning_effort_variants": [
+//         {
+//           "tier": "minimal",
+//           "description": null
+//         },
+//         {
+//           "tier": "low",
+//           "description": null
+//         },
+//         {
+//           "tier": "medium",
+//           "description": null
+//         },
+//         {
+//           "tier": "high",
+//           "description": null
+//         },
+//         {
+//           "tier": "xhigh",
+//           "description": "Use this for deepest analysis and complex fixes."
+//         },
+//         {
+//           "tier": "max",
+//           "description": null
+//         }
+//       ],
+//       "supports_video": true,
+//       "supports_image_generation": false,
+//       "supports_3d_generation": false,
+//       "background_agent_model": null
+//     },
+//     {
+//       "model_id": "muse-image-1.0",
+//       "display_label": "Muse Image",
+//       "provider_id": "meta",
+//       "profile_id": "tbh",
+//       "visibility": "hidden",
+//       "release_date": "2026-08-25",
+//       "display_order": null,
+//       "is_current": false,
+//       "is_default": false,
+//       "roles": [],
+//       "context_limit": null,
+//       "output_limit": null,
+//       "description": null,
+//       "cost": null,
+//       "reasoning_effort_variants": null,
+//       "supports_video": false,
+//       "supports_image_generation": true,
+//       "supports_3d_generation": false,
+//       "background_agent_model": null
+//     },
+//     {
+//       "model_id": "muse-spark-1.2",
+//       "display_label": "muse-spark-1.2",
+//       "provider_id": "meta",
+//       "profile_id": "tbh",
+//       "visibility": "visible",
+//       "release_date": "2026-08-05",
+//       "display_order": null,
+//       "is_current": false,
+//       "is_default": false,
+//       "roles": [],
+//       "context_limit": 1007997,
+//       "output_limit": 128000,
+//       "description": null,
+//       "cost": null,
+//       "reasoning_effort_variants": [
+//         {
+//           "tier": "minimal",
+//           "description": null
+//         },
+//         {
+//           "tier": "low",
+//           "description": null
+//         },
+//         {
+//           "tier": "medium",
+//           "description": null
+//         },
+//         {
+//           "tier": "high",
+//           "description": null
+//         },
+//         {
+//           "tier": "xhigh",
+//           "description": "Use this for deepest analysis and complex fixes."
+//         }
+//       ],
+//       "supports_video": true,
+//       "supports_image_generation": false,
+//       "supports_3d_generation": false,
+//       "background_agent_model": null
+//     },
+//     {
+//       "model_id": "muse-spark-1.2-contributor",
+//       "display_label": "muse-spark-1.2-contributor",
+//       "provider_id": "meta",
+//       "profile_id": "tbh",
+//       "visibility": "hidden",
+//       "release_date": "2026-08-05",
+//       "display_order": null,
+//       "is_current": false,
+//       "is_default": false,
+//       "roles": [],
+//       "context_limit": 1007997,
+//       "output_limit": 128000,
+//       "description": "Your content, including inter-session messages, may be used for product improvement.",
+//       "cost": null,
+//       "reasoning_effort_variants": [
+//         {
+//           "tier": "minimal",
+//           "description": null
+//         },
+//         {
+//           "tier": "low",
+//           "description": null
+//         },
+//         {
+//           "tier": "medium",
+//           "description": null
+//         },
+//         {
+//           "tier": "high",
+//           "description": null
+//         },
+//         {
+//           "tier": "xhigh",
+//           "description": "Use this for deepest analysis and complex fixes."
+//         }
+//       ],
+//       "supports_video": true,
+//       "supports_image_generation": false,
+//       "supports_3d_generation": false,
+//       "background_agent_model": null
+//     }
+//   ]
+// }

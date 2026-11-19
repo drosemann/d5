@@ -1,0 +1,7 @@
+d2b3151 Document new ex commands and roadmap in README
+ README.md | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+===
+c43e6bc Restore original GNU GPL license
+ COPYING | 676 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 676 insertions(+)

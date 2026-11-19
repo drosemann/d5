@@ -1,0 +1,24 @@
+warning: in the working copy of 'web/src/editor/history.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'web/src/editor/motions.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'web/src/editor/types.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'web/src/lib/storage.ts', LF will be replaced by CRLF the next time Git touches it
+[master 3b22fce] Split editor core: types, motions, history, storage
+ 4 files changed, 362 insertions(+)
+ create mode 100644 web/src/editor/history.ts
+ create mode 100644 web/src/editor/motions.ts
+ create mode 100644 web/src/editor/types.ts
+ create mode 100644 web/src/lib/storage.ts
+warning: in the working copy of 'web/src/editor/commands.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'web/src/lib/achievements.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'web/src/lib/clerk.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'web/src/lib/golf.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'web/src/lib/markdown.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'web/src/lib/sound.ts', LF will be replaced by CRLF the next time Git touches it
+[master 8af099e] Add ex-line engine, preview renderer, and fun libs
+ 6 files changed, 429 insertions(+)
+ create mode 100644 web/src/editor/commands.ts
+ create mode 100644 web/src/lib/achievements.ts
+ create mode 100644 web/src/lib/clerk.ts
+ create mode 100644 web/src/lib/golf.ts
+ create mode 100644 web/src/lib/markdown.ts
+ create mode 100644 web/src/lib/sound.ts

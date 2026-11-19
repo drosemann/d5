@@ -1,0 +1,11 @@
+
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\pages\Dashboard.tsx:1:import { 
+useEffect, useState } from "react";
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\pages\Dashboard.tsx:11:import { 
+AppCard } from "../components/AppCard";
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\pages\Dashboard.tsx:36:  
+useEffect(() => {
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\src\pages\Dashboard.tsx:218:            
+    <AppCard
+
+

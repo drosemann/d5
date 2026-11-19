@@ -1,0 +1,36 @@
+===
+
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\requirements.txt:2:pytest>=9.1.1,<10
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\requirements.txt:3:pytest-cov==7.1.0
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\requirements.txt:4:pytest-xdist==3.8.0
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\requirements.txt:7:PyYAML==6.0.3
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\requirements.txt:11:requests==2.34.2
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\requirements.txt:16:pyyaml==6.0.3
+===
+node : Die Benennung "node" wurde nicht als Name eines Cmdlet, einer Funktion, einer Skriptdatei oder eines 
+ausfhrbaren Programms erkannt. šberprfen Sie die Schreibweise des Namens, oder ob der Pfad korrekt ist (sofern 
+enthalten), und wiederholen Sie den Vorgang.
+In Zeile:1 Zeichen:253
++ ... est|typer|requests' | Select-Object -First 10; echo ===; node --versi ...
++                                                              ~~~~
+    + CategoryInfo          : ObjectNotFound: (node:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+Fehler beim Ausfhren des Programms "python3.exe": Das System kann auf die Datei nicht zugreifenIn Zeile:1 Zeichen:269
++ ... Object -First 10; echo ===; node --version; python3 --version; python ...
++                                                 ~~~~~~~~~~~~~~~~~.
+In Zeile:1 Zeichen:269
++ ... Object -First 10; echo ===; node --version; python3 --version; python ...
++                                                 ~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (:) [], ApplicationFailedException
+    + FullyQualifiedErrorId : NativeCommandFailed
+ 
+Fehler beim Ausfhren des Programms "python.exe": Das System kann auf die Datei nicht zugreifenIn Zeile:1 Zeichen:288
++ ... rst 10; echo ===; node --version; python3 --version; python --version
++                                                          ~~~~~~~~~~~~~~~~.
+In Zeile:1 Zeichen:288
++ ... rst 10; echo ===; node --version; python3 --version; python --version
++                                                          ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (:) [], ApplicationFailedException
+    + FullyQualifiedErrorId : NativeCommandFailed
+ 

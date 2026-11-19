@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "ttl_seconds": 3600,
+  "gates": {
+    "feedback_upload_v2": true,
+    "local_session_messaging": true,
+    "meta_msl_share_plugin": false,
+    "meta_room_plugin": false,
+    "monitor": true,
+    "pace_guardrail": true,
+    "plugins": true,
+    "prefix_compaction": true,
+    "request_gzip": true,
+    "spark_1_3_contributor_max": true,
+    "subscription_launch": true,
+    "subscription_upsell": true,
+    "tag": false,
+    "voice": true,
+    "voice_default_on": true,
+    "voice_public_route": false,
+    "web_fetch": true,
+    "workflow_api_v2_rollout": false,
+    "workflow_tool": true
+  },
+  "killed_slash_commands": []
+}

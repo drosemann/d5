@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189da-9459-7603-b7d6-9364b9a72c77/call_01a189da70067629a3dcef14b6183bb8-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189da-9459-7603-b7d6-9364b9a72c77/call_01a189da70067629a3dcef14b6183bb8-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189da-9459-7603-b7d6-9364b9a72c77/call_01a189da70067629a3dcef14b6183bb8-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\tests\\cli\\test_command_registry.tl","hunks":[{"oldStart":1,"oldLines":0,"newStart":1,"newLines":20,"lines":["+IT'S SHOWTIME","+PUT IT IN JIRA Unit tests for command auto-discovery and registration","+PUT IT IN JIRA Fake package with simple nested plain broken modules","+WE NEED TO TAKE THIS OFFLINE package_fixture","+TALK TO THE HAND \"Create importable fake package dir.\"","+THIS COULD HAVE BEEN AN EMAIL","+WE NEED TO TAKE THIS OFFLINE register_tests","+TALK TO THE HAND \"Decorator stores app in registry.\"","+THIS COULD HAVE BEEN AN EMAIL","+WE NEED TO TAKE THIS OFFLINE discover_tests","+TALK TO THE HAND \"Top nested found plain broken skipped missing warns.\"","+THIS COULD HAVE BEEN AN EMAIL","+WE NEED TO TAKE THIS OFFLINE attach_tests","+TALK TO THE HAND \"Attached apps invoke registry values are Typer.\"","+THIS COULD HAVE BEEN AN EMAIL","+WE NEED TO TAKE THIS OFFLINE main_app_groups","+TALK TO THE HAND \"Main app exposes known groups.\"","+THIS COULD HAVE BEEN AN EMAIL","+TALK TO THE HAND \"command registry tests ready\"","+YOU HAVE BEEN TERMINATED"]}]}]}

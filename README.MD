@@ -1,14 +1,14 @@
-﻿# ShadowCore
+﻿# d5
 
 The result of merging years of experiments, tools, and ideas into one cohesive platform.
 
-ShadowCore is a single repository that merges all of Daniel Rosemann's projects: their code, their full Git histories, their READMEs and their licenses. One launcher app (`app/`) catalogs every project. Projects that cannot run inside the app yet stay as standalone modules under `projects/` - see `docs/INTEGRATION.md` for the per-project status and the planned rewrites (Java plugins into the browser game, Python apps into the app, websites into the app).
+d5 is a super-app ecosystem in one repository: it merges all of Daniel Rosemann's projects — their code, their full Git histories, their READMEs and their licenses — into one connected app (in the Twitter/WeChat sense), not a launcher that merely points elsewhere. One app shell (`app/`) catalogs every project as a shared registry; projects that cannot run inside the app yet stay as standalone modules under `projects/` - see `docs/INTEGRATION.md` for the per-project status and the planned rewrites (Java plugins into the browser game, Python apps into the app, websites into the app).
 
 ## How the merge was done
 
 Each project's history was merged into this repository's single `main` branch with `git subtree` (one merge per project, files under `projects/<project>`), so the original commits, authors and dates are still in `git log`. In addition, every branch, tag and other ref from every source repo was mirrored under `refs/projects/<project>/` in this repository, so side branches and checkpoint refs are not lost; `git log --all` covers them. That is a combined history, not a rewritten cherry-pick timeline: project commits keep their original hashes. Four source repos had no readable commits (two empty, two with a broken `.git`): `ai assistant (flask)`, `chat`, `chat app` and `ClearCall`. Their current files were imported as labeled snapshot commits; no original history existed to merge for them.
 
-## Run the launcher
+## Run the super app
 
 Open `app/index.html` in a browser, or serve it:
 
@@ -20,14 +20,14 @@ Then open http://localhost:8000 in your browser.
 
 ## Contributors
 
-ShadowCore is written and maintained by **Daniel Rosemann** (also committed as DaaanielTV, danielatschool and Daniel). Almost every repository merged here was authored by him alone.
+d5 (formerly ShadowCore) is written and maintained by **Daniel Rosemann** (also committed as DaaanielTV, danielatschool and Daniel). Verified via `git log --all`: 1,394 of 1,598 author commits (87%) are under those four identities (740 + 381 + 233 + 35 + 5); with Dev Coder included, 1,405 (88%). Almost every repository merged here was authored by him alone. Git author metadata alone is not proof of copyright ownership — the notes below record what the history and current tree actually show.
 
 Other names in the Git history, so there is no confusion:
 
-- **Dev Coder** (`vicarious.catshark.aokd@hidingmail.com`) is Daniel Rosemann himself - a temporary Git configuration of his, as he confirms in the InfraPilot README (`projects/github-repos-infra-pilot/README.md`, 'Historical contributor records').
-- **InfraPilot**: Server-Filter, Tonchain and coderabbitai[bot] appear in its history. Those contributors are mostly no longer part of the project; their code has mostly been rewritten or deleted since.
-- **ed-docs**: Greg Nietsky appears in its history. That documentation is not up to date: the project was rewritten in React and the original code Greg's commits relate to is no longer there.
-- Bots and AI in the history: dependabot[bot], github-actions[bot], gpt-engineer-app[bot], coderabbitai[bot], Copilot (co-author), Muse Spark (co-author) and Muse (author/co-author, `muse-code@meta.com`). GitHub (`noreply@github.com`) appears as committer on web merges, never as author.
+- **Dev Coder** (`vicarious.catshark.aokd@hidingmail.com`, 11 commits, Mar–Apr 2026) is Daniel Rosemann himself — a temporary Git configuration, as he confirms in the [InfraPilot contributor records](C:/Users/danie/OneDrive/Documents/d5/projects/github-repos-infra-pilot/README.md) ("Historical contributor records").
+- **InfraPilot**: Server-Filter, Tonchain and coderabbitai[bot] appear in its history. None of their content remains in the current tree (not just "mostly" — entirely absent): Server-Filter (2 commits, 2025-03-15, `test` / `remove test`, each touching only `README.md`) cancels out — pre-test and post-remove blobs are identical (`45aeca9…`). Tonchain (1 commit, `887215e5`, 2026-05-21, added `docs/triage.md` + 2 lines in `CONTRIBUTING.md`) is absent from current `main`; the [InfraPilot README](C:/Users/danie/OneDrive/Documents/d5/projects/github-repos-infra-pilot/README.md) records the guide was omitted from the MIT tree pending separate permission. coderabbitai[bot] (3 commits, PRs #29 / #34 / #242, added `tests/legacy/test_config_modules.py` and `tests/legacy/test_core_modules.py`): those paths and `tests/legacy/` are absent from current `main` — deleted, not rewritten. Their commits are not deleted or rewritten and may remain visible in GitHub's contributor graph.
+- **ed-docs**: Greg Nietsky appears in its history (1 commit, `22635d83`, 2013, "Add Upstream ED", adding the GNU ed C sources plus `doc/ed.1` / `doc/ed.texinfo`). The project was later rewritten in React and the original code Greg's commit relates to is no longer there. The old documentation was removed, not left outdated: current [ed-docs](C:/Users/danie/OneDrive/Documents/d5/projects/github-repos-ed-docs/README.md) contains only `web/` (React 18), `COPYING`, and `README.md` — no `.c` sources and no texinfo/man pages remain (see "Entstehung" in the ed-docs README: PR #3 removed everything except the React TUI).
+- Bots and AI in the history: dependabot[bot] (165 author commits), github-actions[bot] (6), gpt-engineer-app[bot] (6), coderabbitai[bot] (3 author commits + 23 `Co-authored-by` trailers), Copilot (16 trailers) and Copilot Autofix / github-advanced-security[bot] (60 trailers) as co-authors only, Muse Spark (34 trailers, co-author only) and Muse Code (author + co-author: 6 author commits + 99 trailers, `muse-code@meta.com`), and T3 Code (3 checkpoint commits, 2026-05-11, `t3 checkpoint ref=…` turns 0–2 — tool checkpoint artifacts, not product features). GitHub (`noreply@github.com`) appears as committer on 616 web merges, never as author. Daniel's own co-author trailers (`Daniel Rosemann`, `d.rosemann`, `drosemann`) also occur alongside direct author commits.
 
 ## Licenses
 
@@ -9124,3 +9124,23 @@ https://youtu.be/QvFgTvIHsPw?si=SicZBU0Q6D1IC0k4
 
 
 
+
+<!-- ZIMBU-PORT -->
+## Zimbu-Port
+
+Dieses Projekt ist mechanisch nach [Zimbu](https://moolenaar.net/z/zimbu/spec/zimbu.html)
+(Bram Moolenaar) gespiegelt: Jede Code-Datei hat eine <name>.<ext>.zimbu-Schwester
+mit Zimbu-Modulgeruest (MODULE/FUNC Main) und dem VOLLSTAENDIGEN Original-Code
+als #-Inline-Doku. Kein Original-Code wurde geloescht oder veraendert.
+Die .zimbu-Dateien sind mechanische Spiegel (80/20: Geruest steht, Logik-Port
+per Hand verfeinern). Stand: 2026-11-12.
+
+<!-- GOOSE-PORT -->
+## Goose-Port
+
+Dieses Projekt ist mechanisch nach [Goose](https://github.com/aardappel/goose)
+(aardappel/goose v2026.4) gespiegelt: Jede Code-Datei hat eine <name>.<ext>.goose-Schwester
+mit gueltigem Goose-Programmgeruest (n main()/print, pruefbar mit goose check)
+und dem VOLLSTAENDIGEN Original-Code als //-Inline-Doku. Kein Original-Code wurde
+geloescht oder veraendert. Die .goose-Dateien sind mechanische Spiegel (Geruest steht
+und kompiliert, Logik-Port per Hand verfeinern). Stand: 2026-11-16.

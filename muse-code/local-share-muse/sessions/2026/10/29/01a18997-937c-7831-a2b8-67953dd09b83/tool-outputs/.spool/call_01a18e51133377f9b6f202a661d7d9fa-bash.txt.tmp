@@ -1,0 +1,249 @@
+warning: in the working copy of 'TRAUMALANG-GAPS.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/TRAUMALANG.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/cli/test_doctor_tui.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/cli/test_main.tl', LF will be replaced by CRLF the next time Git touches it
+M  TRAUMALANG-GAPS.md
+M  cli/ipilot/client.tl
+M  cli/ipilot/commands/__init__.tl
+A  cli/ipilot/commands/apikeys.tl
+A  cli/ipilot/commands/doctor.tl
+A  cli/ipilot/commands/gitops.tl
+A  cli/ipilot/commands/infrastructure/__init__.tl
+A  cli/ipilot/commands/infrastructure/backup.tl
+A  cli/ipilot/commands/infrastructure/deployment.tl
+A  cli/ipilot/commands/infrastructure/logs.tl
+A  cli/ipilot/commands/infrastructure/server.tl
+A  cli/ipilot/commands/inventory.tl
+A  cli/ipilot/commands/plugins.tl
+A  cli/ipilot/commands/rollback.tl
+A  cli/ipilot/commands/secrets.tl
+A  cli/ipilot/commands/ssh.tl
+A  cli/ipilot/commands/templates.tl
+A  cli/ipilot/commands/tui.tl
+A  cli/ipilot/commands/webhooks.tl
+M  cli/ipilot/core/__init__.tl
+M  cli/ipilot/core/cli.tl
+M  cli/ipilot/core/exceptions.tl
+M  cli/ipilot/main.tl
+M  cli/ipilot/output/__init__.tl
+M  cli/ipilot/output/styling.tl
+M  docs/TRAUMALANG.md
+A  scripts/capture-screenshots.tl
+A  scripts/coverage_badge_updater.tl
+A  scripts/coverage_lib.tl
+A  scripts/coverage_report.tl
+A  scripts/coverage_report_sh.tl
+A  scripts/coverage_summary.tl
+A  scripts/db-backup.tl
+A  scripts/db-restore.tl
+A  scripts/docker-build-ps.tl
+A  scripts/docker-build.tl
+A  scripts/generate-env-ps.tl
+A  scripts/healthcheck-ps.tl
+A  scripts/healthcheck.tl
+A  scripts/install-deps-ps.tl
+A  scripts/install-deps.tl
+A  scripts/pr_voting.tl
+A  scripts/prerequisites-check-ps.tl
+A  scripts/prerequisites-check.tl
+A  scripts/release-ps.tl
+A  scripts/release.tl
+A  scripts/setup-ps.tl
+A  scripts/setup.tl
+A  scripts/test-ps.tl
+A  scripts/test.tl
+A  scripts/update_readme_coverage.tl
+A  scripts/verify-ps.tl
+A  scripts/verify.tl
+A  services/discord-service/cli-bridge.tl
+M  services/discord-service/index.tl
+A  services/discord-service/integration.tl
+A  services/discord-service/modules/alertManager.tl
+A  services/discord-service/modules/backupScheduler.tl
+A  services/discord-service/modules/db.tl
+A  services/discord-service/modules/dbManager.tl
+A  services/discord-service/modules/docker.tl
+A  services/discord-service/modules/healthChecks.tl
+A  services/discord-service/modules/legacyCommands.tl
+A  services/discord-service/modules/maintenance.tl
+A  services/discord-service/modules/monitoring.tl
+A  services/discord-service/modules/petCommands.tl
+A  services/discord-service/modules/pterodactyl.tl
+A  services/discord-service/modules/resourcePools.tl
+A  services/discord-service/modules/roleManager.tl
+A  services/discord-service/modules/serverLimits.tl
+A  services/discord-service/modules/serverStatus.tl
+A  services/discord-service/modules/statsCommands.tl
+A  services/discord-service/modules/taskScheduler.tl
+A  services/discord-service/modules/templateManager.tl
+A  services/discord-service/modules/ticketCommands.tl
+A  services/discord-service/modules/ticketSystem.tl
+A  services/discord-service/modules/validation.tl
+A  services/discord-service/modules/vpsCommands.tl
+A  services/orchestrator-agent/alembic/env.tl
+A  services/orchestrator-agent/alembic/script.tl
+A  services/orchestrator-agent/alembic/versions/0001_initial_schema.tl
+A  services/orchestrator-agent/compute/__init__.tl
+A  services/orchestrator-agent/compute/base.tl
+A  services/orchestrator-agent/compute/docker_provider.tl
+A  services/orchestrator-agent/compute/registry.tl
+M  services/orchestrator-agent/config.tl
+A  services/orchestrator-agent/db.tl
+A  services/orchestrator-agent/discord_auth.tl
+A  services/orchestrator-agent/fleet_collect.tl
+A  services/orchestrator-agent/integration.tl
+A  services/orchestrator-agent/living_fleet.tl
+A  services/orchestrator-agent/main.tl
+A  services/orchestrator-agent/manifest/__init__.tl
+A  services/orchestrator-agent/manifest/engine.tl
+A  services/orchestrator-agent/manifest/schema.tl
+M  services/orchestrator-agent/rate_limiter.tl
+A  services/orchestrator-agent/rbac/__init__.tl
+A  services/orchestrator-agent/rbac/engine.tl
+A  services/orchestrator-agent/rbac/models.tl
+A  services/orchestrator-agent/rbac_store.tl
+A  services/orchestrator-agent/resource_monitor.tl
+A  services/orchestrator-agent/secrets_manager.tl
+A  services/orchestrator-agent/vps_backup_snapshots.tl
+A  services/orchestrator-agent/vps_container_lifecycle.tl
+A  services/orchestrator-agent/vps_docker_support.tl
+A  services/orchestrator-agent/vps_health_monitoring.tl
+A  services/orchestrator-agent/vps_instance_persistence.tl
+A  services/orchestrator-agent/vps_manager.tl
+A  services/orchestrator-agent/webhook_server.tl
+A  tests/cli/test_command_registry.tl
+A  tests/cli/test_config.tl
+A  tests/cli/test_config_profiles.tl
+A  tests/cli/test_core_cli.tl
+A  tests/cli/test_doctor_tui.tl
+A  tests/cli/test_gitops_commands.tl
+A  tests/cli/test_inventory_commands.tl
+A  tests/cli/test_main.tl
+A  tests/cli/test_main_extra.tl
+A  tests/cli/test_output.tl
+A  tests/cli/test_styling.tl
+A  tests/scripts/test_backup_scripts.tl
+A  tests/scripts/test_pr_voting.tl
+ TRAUMALANG-GAPS.md                                 | 276 ++++++++++++++++-----
+ cli/ipilot/client.tl                               |  37 +--
+ cli/ipilot/commands/__init__.tl                    |  21 +-
+ cli/ipilot/commands/apikeys.tl                     |  13 +
+ cli/ipilot/commands/doctor.tl                      |  36 +++
+ cli/ipilot/commands/gitops.tl                      |  20 ++
+ cli/ipilot/commands/infrastructure/__init__.tl     |   5 +
+ cli/ipilot/commands/infrastructure/backup.tl       |  35 +++
+ cli/ipilot/commands/infrastructure/deployment.tl   |  17 ++
+ cli/ipilot/commands/infrastructure/logs.tl         |   8 +
+ cli/ipilot/commands/infrastructure/server.tl       |  26 ++
+ cli/ipilot/commands/inventory.tl                   |  17 ++
+ cli/ipilot/commands/plugins.tl                     |  20 ++
+ cli/ipilot/commands/rollback.tl                    |  17 ++
+ cli/ipilot/commands/secrets.tl                     |  26 ++
+ cli/ipilot/commands/ssh.tl                         |  23 ++
+ cli/ipilot/commands/templates.tl                   |  19 ++
+ cli/ipilot/commands/tui.tl                         |  15 ++
+ cli/ipilot/commands/webhooks.tl                    |  20 ++
+ cli/ipilot/core/__init__.tl                        |  12 +-
+ cli/ipilot/core/cli.tl                             |  15 +-
+ cli/ipilot/core/exceptions.tl                      |  10 +-
+ cli/ipilot/main.tl                                 |  36 ++-
+ cli/ipilot/output/__init__.tl                      |  11 +-
+ cli/ipilot/output/styling.tl                       |   9 +
+ docs/TRAUMALANG.md                                 | 141 ++++++++++-
+ scripts/capture-screenshots.tl                     |  15 ++
+ scripts/coverage_badge_updater.tl                  |  23 ++
+ scripts/coverage_lib.tl                            |  11 +
+ scripts/coverage_report.tl                         |  11 +
+ scripts/coverage_report_sh.tl                      |  25 ++
+ scripts/coverage_summary.tl                        |  12 +
+ scripts/db-backup.tl                               |  60 +++++
+ scripts/db-restore.tl                              |  48 ++++
+ scripts/docker-build-ps.tl                         |  21 ++
+ scripts/docker-build.tl                            |  45 ++++
+ scripts/generate-env-ps.tl                         |  14 ++
+ scripts/healthcheck-ps.tl                          |  22 ++
+ scripts/healthcheck.tl                             |  44 ++++
+ scripts/install-deps-ps.tl                         |  19 ++
+ scripts/install-deps.tl                            |  40 +++
+ scripts/pr_voting.tl                               |  38 +++
+ scripts/prerequisites-check-ps.tl                  |  24 ++
+ scripts/prerequisites-check.tl                     |  35 +++
+ scripts/release-ps.tl                              |  19 ++
+ scripts/release.tl                                 |  43 ++++
+ scripts/setup-ps.tl                                |  23 ++
+ scripts/setup.tl                                   |  46 ++++
+ scripts/test-ps.tl                                 |  23 ++
+ scripts/test.tl                                    |  55 ++++
+ scripts/update_readme_coverage.tl                  |  29 +++
+ scripts/verify-ps.tl                               |  16 ++
+ scripts/verify.tl                                  |  41 +++
+ services/discord-service/cli-bridge.tl             |  12 +
+ services/discord-service/index.tl                  |  43 ++--
+ services/discord-service/integration.tl            |  36 +++
+ services/discord-service/modules/alertManager.tl   |  20 ++
+ .../discord-service/modules/backupScheduler.tl     |  20 ++
+ services/discord-service/modules/db.tl             |  11 +
+ services/discord-service/modules/dbManager.tl      |  33 +++
+ services/discord-service/modules/docker.tl         |  23 ++
+ services/discord-service/modules/healthChecks.tl   |  33 +++
+ services/discord-service/modules/legacyCommands.tl |  24 ++
+ services/discord-service/modules/maintenance.tl    |  12 +
+ services/discord-service/modules/monitoring.tl     |  47 ++++
+ services/discord-service/modules/petCommands.tl    |  10 +
+ services/discord-service/modules/pterodactyl.tl    |  11 +
+ services/discord-service/modules/resourcePools.tl  |  20 ++
+ services/discord-service/modules/roleManager.tl    |  29 +++
+ services/discord-service/modules/serverLimits.tl   |  14 ++
+ services/discord-service/modules/serverStatus.tl   |  20 ++
+ services/discord-service/modules/statsCommands.tl  |  23 ++
+ services/discord-service/modules/taskScheduler.tl  |  20 ++
+ .../discord-service/modules/templateManager.tl     |  12 +
+ services/discord-service/modules/ticketCommands.tl |  17 ++
+ services/discord-service/modules/ticketSystem.tl   |  35 +++
+ services/discord-service/modules/validation.tl     |  13 +
+ services/discord-service/modules/vpsCommands.tl    |  16 ++
+ services/orchestrator-agent/alembic/env.tl         |  15 ++
+ services/orchestrator-agent/alembic/script.tl      |  11 +
+ .../alembic/versions/0001_initial_schema.tl        |  15 ++
+ services/orchestrator-agent/compute/__init__.tl    |   6 +
+ services/orchestrator-agent/compute/base.tl        |   9 +
+ .../orchestrator-agent/compute/docker_provider.tl  |  42 ++++
+ services/orchestrator-agent/compute/registry.tl    |  17 ++
+ services/orchestrator-agent/config.tl              |  26 +-
+ services/orchestrator-agent/db.tl                  |  20 ++
+ services/orchestrator-agent/discord_auth.tl        |  11 +
+ services/orchestrator-agent/fleet_collect.tl       |  24 ++
+ services/orchestrator-agent/integration.tl         |  28 +++
+ services/orchestrator-agent/living_fleet.tl        |  52 ++++
+ services/orchestrator-agent/main.tl                |  11 +
+ services/orchestrator-agent/manifest/__init__.tl   |   6 +
+ services/orchestrator-agent/manifest/engine.tl     |  17 ++
+ services/orchestrator-agent/manifest/schema.tl     |  21 ++
+ services/orchestrator-agent/rate_limiter.tl        |  37 +--
+ services/orchestrator-agent/rbac/__init__.tl       |   6 +
+ services/orchestrator-agent/rbac/engine.tl         |  29 +++
+ services/orchestrator-agent/rbac/models.tl         |   7 +
+ services/orchestrator-agent/rbac_store.tl          |  27 ++
+ services/orchestrator-agent/resource_monitor.tl    |  23 ++
+ services/orchestrator-agent/secrets_manager.tl     |  39 +++
+ .../orchestrator-agent/vps_backup_snapshots.tl     |  31 +++
+ .../orchestrator-agent/vps_container_lifecycle.tl  |  31 +++
+ services/orchestrator-agent/vps_docker_support.tl  |  38 +++
+ .../orchestrator-agent/vps_health_monitoring.tl    |  35 +++
+ .../orchestrator-agent/vps_instance_persistence.tl |  32 +++
+ services/orchestrator-agent/vps_manager.tl         |  10 +
+ services/orchestrator-agent/webhook_server.tl      |  54 ++++
+ tests/cli/test_command_registry.tl                 |  20 ++
+ tests/cli/test_config.tl                           |  17 ++
+ tests/cli/test_config_profiles.tl                  |  23 ++
+ tests/cli/test_core_cli.tl                         |  14 ++
+ tests/cli/test_doctor_tui.tl                       |  38 +++
+ tests/cli/test_gitops_commands.tl                  |  17 ++
+ tests/cli/test_inventory_commands.tl               |  14 ++
+ tests/cli/test_main.tl                             |  30 +++
+ tests/cli/test_main_extra.tl                       |  16 ++
+ tests/cli/test_output.tl                           |  22 ++
+ tests/cli/test_styling.tl                          |  19 ++
+ tests/scripts/test_backup_scripts.tl               |  50 ++++
+ tests/scripts/test_pr_voting.tl                    |  44 ++++
+ 122 files changed, 3086 insertions(+), 209 deletions(-)

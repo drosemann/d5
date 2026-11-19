@@ -1,0 +1,10 @@
+Test-Connection : Es wurde kein Parameter gefunden, der dem Parameternamen "TcpPort" entspricht.
+In Zeile:1 Zeichen:27
++ Test-Connection 127.0.0.1 -TcpPort 61901 -TimeoutSeconds 5; echo '--- ...
++                           ~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Test-Connection], ParameterBindingException
+    + FullyQualifiedErrorId : NamedParameterNotFound,Microsoft.PowerShell.Commands.TestConnectionCommand
+ 
+---curl---
+curl: (7) Failed to connect to github.com:443 over proxy 127.0.0.1 after 1 ms: Could not connect to server
+000

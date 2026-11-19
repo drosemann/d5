@@ -1,0 +1,29 @@
+Die Methode kann nicht aufgerufen werden. Der Methodenaufruf wird in diesem Sprachmodus nur fÅr Kerntypen unterstÅtzt.
+In Zeile:1 Zeichen:72
++ ... s\stranded-horizons\README.md'; $t=[IO.File]::ReadAllText($p); $t=$t. ...
++                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : MethodInvocationNotSupportedInConstrainedLanguage
+ 
+Es ist nicht mîglich, eine Methode fÅr einen Ausdruck aufzurufen, der den NULL hat.
+In Zeile:1 Zeichen:103
++ ... llText($p); $t=$t.Replace('# -> http://localhost:8000', '# -> http:// ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+ 
+Es ist nicht mîglich, eine Methode fÅr einen Ausdruck aufzurufen, der den NULL hat.
+In Zeile:1 Zeichen:188
++ ... ame.html'); $t=$t.Replace('Alle Balancing Werte direkt in `game.js`:' ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+ 
+Die Methode kann nicht aufgerufen werden. Der Methodenaufruf wird in diesem Sprachmodus nur fÅr Kerntypen unterstÅtzt.
+In Zeile:1 Zeichen:332
++ ... : `docs/refactor-2.5d.md`):'); [IO.File]::WriteAllText($p,$t); echo d ...
++                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : MethodInvocationNotSupportedInConstrainedLanguage
+ 
+done

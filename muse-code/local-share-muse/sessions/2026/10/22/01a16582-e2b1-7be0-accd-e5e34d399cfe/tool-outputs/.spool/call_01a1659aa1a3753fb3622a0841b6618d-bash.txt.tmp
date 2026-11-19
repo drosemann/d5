@@ -1,0 +1,7 @@
+
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\client.py:16:API_PREFIX = "/api"
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\client.py:52:    def _request(
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\client.py:68:        url = 
+f"{self.base_url}{API_PREFIX}{path}"
+
+

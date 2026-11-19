@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189a5-cdaa-7362-9101-054c340700c7/call_01a189a5c13170a987e8a4ed1b3933c0-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189a5-cdaa-7362-9101-054c340700c7/call_01a189a5c13170a987e8a4ed1b3933c0-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189a5-cdaa-7362-9101-054c340700c7/call_01a189a5c13170a987e8a4ed1b3933c0-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\TRAUMALANG-GAPS.md","hunks":[{"oldStart":305,"oldLines":6,"newStart":305,"newLines":8,"lines":[" "," - `scripts/verify.tl` (neu) Warnungen: Zeile 37 (`while` ueber `$#` mit `shift`/`case`); Zeile 47 (`IFS` read mit Here-String); Zeilen 49/53 (`run_stage` mit `shift` und `\"$@\"`-Call); Zeilen 64/65 (`for` ueber Array mit `case`-Dispatch); Zeilen 67/69/72/76/84 (Stufen-Kommandos als Arrays, Offline-Flag-Anhang, Datei-Guards mit `continue`); Zeilen 106/112 (JSON-Aufbau via String-Concat, `printf`-Summary)"," ","+- `scripts/setup.tl` (neu) Warnungen: Zeile 4 (`BASH_SOURCE`-Pfadaufloesung); Zeile 32 (`while` ueber `$#` mit `shift`/`case`); Zeilen 42/78 (Service- und Infra-Arrays); Zeilen 48/63/84/92 (`check_command` mit `command -v`, Guards mit `||`/`if`, `for`-Schleifen ueber Arrays); Zeile 98 (`basename`-Subshell); Zeilen 105/106 (`.env`-Anlage via `cp`)","+"," ## 5. Sonstiges für den nächsten Agenten"," "," - `--roast`-Modus des Rewriters wurde nie verwendet; sarkastische Marker"]}]}]}

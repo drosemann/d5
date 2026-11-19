@@ -1,0 +1,14 @@
+a0d714d Add license audit 2026-10-24 (BLOCKED - APPROVALS REQUIRED)
+d2b3151 Document new ex commands and roadmap in README
+38b211d Wire full vim plan into editor shell and styles
+ed-docs	https://github.com/drosemann/ed-docs.git (fetch)
+ed-docs	https://github.com/drosemann/ed-docs.git (push)
+origin	https://github.com/drosemann/ed-docs (fetch)
+origin	https://github.com/drosemann/ed-docs (push)
+
+file:C:/Program Files/Git/etc/gitconfig	credential.helper=manager
+file:C:/Program Files/Git/etc/gitconfig	credential.https://dev.azure.com.usehttppath=true
+file:.git/config	remote.origin.url=https://github.com/drosemann/ed-docs
+file:.git/config	remote.ed-docs.url=https://github.com/drosemann/ed-docs.git
+
+

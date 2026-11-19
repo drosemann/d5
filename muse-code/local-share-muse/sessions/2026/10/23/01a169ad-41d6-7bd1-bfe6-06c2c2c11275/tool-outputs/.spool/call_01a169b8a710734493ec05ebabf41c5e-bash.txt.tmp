@@ -1,0 +1,5 @@
+d2b3151 Document new ex commands and roadmap in README
+38b211d Wire full vim plan into editor shell and styles
+8af099e Add ex-line engine, preview renderer, and fun libs
+3b22fce Split editor core: types, motions, history, storage
+3907305 Enhance README with translations and project details

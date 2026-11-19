@@ -1,0 +1,143 @@
+commit e91a1be21f355a080d1d4ea5568da784db694d39
+Author: Daniel Rosemann <daniel.rosemann10@gmail.com>
+Date:   Fri Oct 23 20:30:26 2026 +0200
+
+    first commit
+
+ .env.example                                       |     7 +
+ .gitignore                                         |    29 +
+ Blog, CMS & Community Platforms/BlogForge          |     1 +
+ Blog, CMS & Community Platforms/Forumino           |     1 +
+ Blog, CMS & Community Platforms/blog               |     1 +
+ .../LICENSE                                        |    21 +
+ .../README.md                                      |   138 +
+ .../css/style.css                                  |   185 +
+ .../js/script.js                                   |    87 +
+ .../public/index.html                              |     7 +
+ .../src/php/db.php                                 |    13 +
+ .../src/php/index.php                              |    24 +
+ .../src/php/posts.php                              |     6 +
+ .../blog_website/README.md                         |    35 +
+ .../blog_website/app.py                            |   130 +
+ .../blog_website/config.py                         |    13 +
+ .../blog_website/requirements.txt                  |     7 +
+ .../blog_website/templates/admin/create_post.html  |    20 +
+ .../blog_website/templates/admin/dashboard.html    |    34 +
+ .../blog_website/templates/admin/edit_post.html    |    20 +
+ .../blog_website/templates/base.html               |    61 +
+ .../blog_website/templates/index.html              |    33 +
+ .../blog_website/templates/login.html              |    26 +
+ .../blog-forum-with-z.ai                           |     1 +
+ .../blog-forum-z.ai/.dockerignore                  |    13 +
+ .../blog-forum-z.ai/.gitignore                     |    49 +
+ .../blog-forum-z.ai/README.md                      |   141 +
+ .../blog-forum-z.ai/components.json                |    21 +
+ .../blog-forum-z.ai/eslint.config.mjs              |    25 +
+ .../blog-forum-z.ai/examples/websocket/page.tsx    |   124 +
+ .../blog-forum-z.ai/next.config.ts                 |    22 +
+ .../blog-forum-z.ai/package-lock.json              | 13571 +++++++++++++++++++
+ .../blog-forum-z.ai/package.json                   |   102 +
+ .../blog-forum-z.ai/postcss.config.mjs             |     5 +
+ .../blog-forum-z.ai/prisma/schema.prisma           |    32 +
+ .../blog-forum-z.ai/public/logo.svg                |   118 +
+ .../blog-forum-z.ai/public/robots.txt              |    14 +
+ .../blog-forum-z.ai/server.ts                      |    58 +
+ .../blog-forum-z.ai/src/app/api/health/route.ts    |     5 +
+ .../blog-forum-z.ai/src/app/favicon.ico            |   Bin 0 -> 67646 bytes
+ .../blog-forum-z.ai/src/app/globals.css            |   122 +
+ .../blog-forum-z.ai/src/app/layout.tsx             |    50 +
+ .../blog-forum-z.ai/src/app/page.tsx               |   346 +
+ .../src/components/BlogPostSystem.tsx              |   802 ++
+ .../src/components/CosmicBackground.tsx            |   369 +
+ .../src/components/CosmicLayout.tsx                |   214 +
+ .../src/components/DiscussionThreads.tsx           |  1013 ++
+ .../src/components/ParallaxContainer.tsx           |   212 +
+ .../blog-forum-z.ai/src/components/PostEditor.tsx  |   741 +
+ .../blog-forum-z.ai/src/components/TopicHub.tsx    |   399 +
+ .../blog-forum-z.ai/src/components/UserProfile.tsx |   733 +
+ .../src/components/ui/accordion.tsx                |    66 +
+ .../src/components/ui/alert-dialog.tsx             |   157 +
+ .../blog-forum-z.ai/src/components/ui/alert.tsx    |    66 +
+ .../src/components/ui/aspect-ratio.tsx             |    11 +
+ .../blog-forum-z.ai/src/components/ui/avatar.tsx   |    53 +
+ .../blog-forum-z.ai/src/components/ui/badge.tsx    |    46 +
+ .../src/components/ui/breadcrumb.tsx               |   109 +
+ .../blog-forum-z.ai/src/components/ui/button.tsx   |    59 +
+ .../blog-forum-z.ai/src/components/ui/calendar.tsx |   213 +
+ .../blog-forum-z.ai/src/components/ui/card.tsx     |    92 +
+ .../blog-forum-z.ai/src/components/ui/carousel.tsx |   241 +
+ .../blog-forum-z.ai/src/components/ui/chart.tsx    |   353 +
+ .../blog-forum-z.ai/src/components/ui/checkbox.tsx |    32 +
+ .../src/components/ui/collapsible.tsx              |    33 +
+ .../blog-forum-z.ai/src/components/ui/command.tsx  |   184 +
+ .../src/components/ui/context-menu.tsx             |   252 +
+ .../blog-forum-z.ai/src/components/ui/dialog.tsx   |   143 +
+ .../blog-forum-z.ai/src/components/ui/drawer.tsx   |   135 +
+ .../src/components/ui/dropdown-menu.tsx            |   257 +
+ .../blog-forum-z.ai/src/components/ui/form.tsx     |   167 +
+ .../src/components/ui/hover-card.tsx               |    44 +
+ .../src/components/ui/input-otp.tsx                |    77 +
+ .../blog-forum-z.ai/src/components/ui/input.tsx    |    21 +
+ .../blog-forum-z.ai/src/components/ui/label.tsx    |    24 +
+ .../blog-forum-z.ai/src/components/ui/menubar.tsx  |   276 +
+ .../src/components/ui/navigation-menu.tsx          |   168 +
+ .../src/components/ui/pagination.tsx               |   127 +
+ .../blog-forum-z.ai/src/components/ui/popover.tsx  |    48 +
+ .../blog-forum-z.ai/src/components/ui/progress.tsx |    31 +
+ .../src/components/ui/radio-group.tsx              |    45 +
+ .../src/components/ui/resizable.tsx                |    56 +
+ .../src/components/ui/scroll-area.tsx              |    58 +
+ .../blog-forum-z.ai/src/components/ui/select.tsx   |   185 +
+ .../src/components/ui/separator.tsx                |    28 +
+ .../blog-forum-z.ai/src/components/ui/sheet.tsx    |   139 +
+ .../blog-forum-z.ai/src/components/ui/sidebar.tsx  |   726 +
+ .../blog-forum-z.ai/src/components/ui/skeleton.tsx |    13 +
+ .../blog-forum-z.ai/src/components/ui/slider.tsx   |    63 +
+ .../blog-forum-z.ai/src/components/ui/sonner.tsx   |    25 +
+ .../blog-forum-z.ai/src/components/ui/switch.tsx   |    31 +
+ .../blog-forum-z.ai/src/components/ui/table.tsx    |   116 +
+ .../blog-forum-z.ai/src/components/ui/tabs.tsx     |    66 +
+ .../blog-forum-z.ai/src/components/ui/textarea.tsx |    18 +
+ .../blog-forum-z.ai/src/components/ui/toast.tsx    |   129 +
+ .../blog-forum-z.ai/src/components/ui/toaster.tsx  |    35 +
+ .../src/components/ui/toggle-group.tsx             |    73 +
+ .../blog-forum-z.ai/src/components/ui/toggle.tsx   |    47 +
+ .../blog-forum-z.ai/src/components/ui/tooltip.tsx  |    61 +
+ .../blog-forum-z.ai/src/hooks/use-mobile.ts        |    19 +
+ .../blog-forum-z.ai/src/hooks/use-toast.ts         |   195 +
+ .../blog-forum-z.ai/src/lib/db.ts                  |    13 +
+ .../blog-forum-z.ai/src/lib/socket.ts              |    29 +
+ .../blog-forum-z.ai/src/lib/utils.ts               |     6 +
+ .../blog-forum-z.ai/tailwind.config.ts             |    64 +
+ .../blog-forum-z.ai/tsconfig.json                  |    28 +
+ .../blog-website-frontend---backend                |     1 +
+ .../modern-blog-website/article.html               |   158 +
+ .../modern-blog-website/index.html                 |   133 +
+ .../modern-blog-website/package.json               |     8 +
+ .../modern-blog-website/script.js                  |   335 +
+ .../modern-blog-website/style.css                  |   881 ++
+ Blog, CMS & Community Platforms/nextjs-blog        |     1 +
+ README.md                                          |   246 +
+ docker-compose.yml                                 |    23 +
+ docs/ARCHIVE.md                                    |    44 +
+ docs/DEVELOPMENT.md                                |    26 +
+ package.json                                       |    28 +
+ prisma/schema.prisma                               |   110 +
+ 119 files changed, 27948 insertions(+)
+---GITMODULES---
+fatal: unable to read config file '.gitmodules': No such file or directory
+---LOCKFILES---
+
+FullName                                                                                                               
+--------                                                                                                               
+\\?\C:\Users\danie\OneDrive\github-repos\forum-for-nerds\Blog, CMS & Community Platforms\blog\nextjs-blog\package-lo...
+\\?\C:\Users\danie\OneDrive\github-repos\forum-for-nerds\Blog, CMS & Community Platforms\blog website (modern ui, ad...
+\\?\C:\Users\danie\OneDrive\github-repos\forum-for-nerds\Blog, CMS & Community Platforms\blog-forum-with-z.ai\packag...
+\\?\C:\Users\danie\OneDrive\github-repos\forum-for-nerds\Blog, CMS & Community Platforms\blog-forum-z.ai\package-loc...
+\\?\C:\Users\danie\OneDrive\github-repos\forum-for-nerds\Blog, CMS & Community Platforms\BlogForge\requirements.txt    
+\\?\C:\Users\danie\OneDrive\github-repos\forum-for-nerds\Blog, CMS & Community Platforms\Forumino\package-lock.json    
+\\?\C:\Users\danie\OneDrive\github-repos\forum-for-nerds\Blog, CMS & Community Platforms\nextjs-blog\package-lock.json 
+---DIFFCHECK---
+ ? "Blog, CMS & Community Platforms/blog"
+
+

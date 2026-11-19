@@ -1,0 +1,48 @@
+Get-CimInstance : Zugriff verweigert. 
+In Zeile:1 Zeichen:1
++ Get-CimInstance Win32_Product | Where-Object { $_.Name -like '*Virtua ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : PermissionDenied: (root\cimv2:Win32_Product:String) [Get-CimInstance], CimException
+    + FullyQualifiedErrorId : HRESULT 0x80041003,Microsoft.Management.Infrastructure.CimCmdlets.GetCimInstanceCommand
+ 
+WARNUNG: MSG:UnableToDownload Æhttps://go.microsoft.com/fwlink/?LinkID=627338&clcid=0x409Ø ÆØ
+WARNUNG: Die Liste der verfÅgbaren Anbieter kann nicht heruntergeladen werden. öberprÅfen Sie Ihre Internetverbindung.
+
+Name                     Version
+----                     -------
+Oracle VirtualBox 7.2.16 7.2.16 
+True
+selectorwindow.log              
+selectorwindow.log.1            
+selectorwindow.log.10           
+selectorwindow.log.2            
+selectorwindow.log.3            
+selectorwindow.log.4            
+selectorwindow.log.5            
+selectorwindow.log.6            
+selectorwindow.log.7            
+selectorwindow.log.8            
+selectorwindow.log.9            
+VBoxSVC.log                     
+VBoxSVC.log.1                   
+VBoxSVC.log.10                  
+VBoxSVC.log.2                   
+VBoxSVC.log.3                   
+VBoxSVC.log.4                   
+VBoxSVC.log.5                   
+VBoxSVC.log.6                   
+VBoxSVC.log.7                   
+VBoxSVC.log.8                   
+VBoxSVC.log.9                   
+VirtualBox.xml                  
+VirtualBox.xml-prev             
+ubuntu-dev                      
+VBoxManage : Die Benennung "VBoxManage" wurde nicht als Name eines Cmdlet, einer Funktion, einer Skriptdatei oder 
+eines ausfÅhrbaren Programms erkannt. öberprÅfen Sie die Schreibweise des Namens, oder ob der Pfad korrekt ist (sofern 
+enthalten), und wiederholen Sie den Vorgang.
+In Zeile:1 Zeichen:480
++ ... ILE\VirtualBox VMs" -ErrorAction SilentlyContinue; VBoxManage list vm ...
++                                                        ~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (VBoxManage:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 

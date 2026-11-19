@@ -1,0 +1,15 @@
+== Forumino ==
+error: invalid key: \safe.directory
+fatal: unable to parse command-line config
+== blog ==
+error: invalid key: \safe.directory
+fatal: unable to parse command-line config
+== blog-forum-with-z.ai ==
+error: invalid key: \safe.directory
+fatal: unable to parse command-line config
+== blog-website-frontend---backend ==
+error: invalid key: \safe.directory
+fatal: unable to parse command-line config
+== nextjs-blog ==
+error: invalid key: \safe.directory
+fatal: unable to parse command-line config

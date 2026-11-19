@@ -1,0 +1,40 @@
+Switched to a new branch 'feature/feature-flags'
+warning: in the working copy of '.env.example', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'CHANGELOG.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'SECURITY.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'cli/README.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'cli/ipilot/client.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'cli/ipilot/commands/__init__.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docker-compose.yml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/ARCHITECTURE.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'helm/infra-pilot/values.yaml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/discord-service/index.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/management-panel/server/index.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/management-panel/server/openapi.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/management-panel/src/App.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/management-panel/tests/helpers/supabase-mock.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/config.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/living_fleet.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/rbac/models.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'wiki/03-Configuration.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'wiki/05-CLI-Reference.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'cli/ipilot/commands/feature_flags/__init__.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'scripts/flag-hygiene.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/discord-service/feature-flags.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/management-panel/db/migrations/001_feature_flags.sql', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/management-panel/server/feature-flags.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/management-panel/src/hooks/useFeatureFlag.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/management-panel/src/lib/feature-flags.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/management-panel/src/pages/FeatureFlags.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/management-panel/tests/integration/feature-flags.test.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/management-panel/tests/unit/feature-flags.test.ts', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/feature_flags.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/cli/test_feature_flags.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/fixtures/feature-flag-contract.yaml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/orchestrator/test_feature_flags.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/scripts/test_flag_hygiene.py', LF will be replaced by CRLF the next time Git touches it
+M  .env.example
+M  CHANGELOG.md
+M  SECURITY.md
+M  cli/README.md
+M  cli/ipilot/client.py

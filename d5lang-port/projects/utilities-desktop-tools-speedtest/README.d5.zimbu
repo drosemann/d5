@@ -1,0 +1,21 @@
+﻿# Zimbu-Port-Spiegel von: d5lang-port\projects\utilities-desktop-tools-speedtest\README.d5
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE README_d5
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: d5lang-port\projects\utilities-desktop-tools-speedtest\README.d5\n")
+  RETURN 0
+
+# ---- Original-Code (d5lang-port\projects\utilities-desktop-tools-speedtest\README.d5), unveraendert, als Inline-Doku ----
+# SHINE, LITTLE BOY, SHINE
+#   WIR MÜSSEN DAS OFFLINE NEHMEN main
+#     PACK-ES-IN-JIRA Portiert 1:1 von projects/utilities-desktop-tools-speedtest/templates/index.html + README.md + requirements.txt + speedsnap/requirements.txt.
+#     PACK-ES-IN-JIRA ORIGINAL: <!DOCTYPE html> <html lang="en"> <head> <meta charset> <meta viewport> <title>SpeedSnap</title> <link /static/style.css> </head>
+#     PACK-ES-IN-JIRA ORIGINAL: <body> <div class="container"> <h1>SpeedSnap</h1> <button id="test-speed">Test Internet Speed</button> <div class="results" id="results"></div> </div> <script /static/script.js> </body> </html>
+#     PACK-ES-IN-JIRA ORIGINAL: README: SpeedSnap misst Download/Upload/Ping. Python 3.11, pip, screen. screen -S speedsnap, python app.py, detach Ctrl+A D, reattach screen -r, http://server:7000, Stop via Ctrl+C, Firewall Port 7000.
+#     PACK-ES-IN-JIRA ORIGINAL: requirements.txt + speedsnap/requirements.txt (identisch): speedtest-cli==2.1.3; flask==2.1.0; flask-cors==3.0.10; pandas==1.4.2; plotly==5.7.0; gunicorn==20.1.0
+#   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+# BOY, DU HAST KI-VERBOT
+#

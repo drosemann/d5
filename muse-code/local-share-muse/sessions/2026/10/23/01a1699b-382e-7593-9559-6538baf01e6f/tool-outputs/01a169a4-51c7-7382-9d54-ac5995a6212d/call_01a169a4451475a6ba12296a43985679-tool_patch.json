@@ -1,0 +1,1 @@
+{"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\stranded-horizons\\game.html","hunks":[{"oldStart":239,"oldLines":6,"newStart":239,"newLines":6,"lines":["             </div>","         </div>","     </div>","-    <script src=\"game.js\" defer></script>","+    <script type=\"module\" src=\"src/main.js\"></script>"," </body>"," </html>"]}]}]}

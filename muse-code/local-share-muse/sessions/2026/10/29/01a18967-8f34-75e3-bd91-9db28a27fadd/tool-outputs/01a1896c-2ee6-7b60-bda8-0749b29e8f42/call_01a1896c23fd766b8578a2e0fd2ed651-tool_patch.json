@@ -1,0 +1,1 @@
+{"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\Agentenplattform\\apps\\frontend\\Caddyfile","hunks":[{"oldStart":1,"oldLines":0,"newStart":1,"newLines":1,"lines":["+:80 { root * /srv; file_server; try_files {path} /index.html }"]}]}]}

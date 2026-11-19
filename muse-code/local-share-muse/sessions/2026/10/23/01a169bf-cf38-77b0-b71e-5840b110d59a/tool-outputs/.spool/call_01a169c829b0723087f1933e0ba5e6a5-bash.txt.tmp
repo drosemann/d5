@@ -1,0 +1,11 @@
+--- branch ---
+main
+--- remote ---
+origin	https://github.com/drosemann/ai-chat-webui.git (fetch)
+origin	https://github.com/drosemann/ai-chat-webui.git (push)
+--- log ---
+78a76b4 Revise README for clarity and updated features
+c56547d Merge pull request #3 from DaaanielTV/codex/review-code-for-security-issues
+d2870a2 Fix XSS, CORS policy, error leakage, and license mismatch
+11fe789 Update README.md
+b62b070 Merge pull request #2 from DaaanielTV/codex/clean-up-repository-for-open-source-readiness

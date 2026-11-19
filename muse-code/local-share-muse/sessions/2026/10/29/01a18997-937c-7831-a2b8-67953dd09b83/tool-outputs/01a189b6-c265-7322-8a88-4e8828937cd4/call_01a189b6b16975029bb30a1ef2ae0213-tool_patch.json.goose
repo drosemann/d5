@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189b6-c265-7322-8a88-4e8828937cd4/call_01a189b6b16975029bb30a1ef2ae0213-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189b6-c265-7322-8a88-4e8828937cd4/call_01a189b6b16975029bb30a1ef2ae0213-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189b6-c265-7322-8a88-4e8828937cd4/call_01a189b6b16975029bb30a1ef2ae0213-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\services\\orchestrator-agent\\compute\\registry.tl","hunks":[{"oldStart":1,"oldLines":0,"newStart":1,"newLines":17,"lines":["+IT'S SHOWTIME","+PUT IT IN JIRA Provider registry a plugin system for compute back-ends","+PUT IT IN JIRA Providers self-register selection by name so manifests say provider docker","+WE NEED TO TAKE THIS OFFLINE register","+TALK TO THE HAND \"Register a provider class also usable as decorator.\"","+THIS COULD HAVE BEEN AN EMAIL","+WE NEED TO TAKE THIS OFFLINE get_provider","+TALK TO THE HAND \"Return a singleton provider instance by name.\"","+THIS COULD HAVE BEEN AN EMAIL","+WE NEED TO TAKE THIS OFFLINE list_providers","+TALK TO THE HAND \"Return name to qualname for every provider.\"","+THIS COULD HAVE BEEN AN EMAIL","+WE NEED TO TAKE THIS OFFLINE clear_registry","+TALK TO THE HAND \"Reset registry useful in tests.\"","+THIS COULD HAVE BEEN AN EMAIL","+TALK TO THE HAND \"provider registry ready\"","+YOU HAVE BEEN TERMINATED"]}]}]}

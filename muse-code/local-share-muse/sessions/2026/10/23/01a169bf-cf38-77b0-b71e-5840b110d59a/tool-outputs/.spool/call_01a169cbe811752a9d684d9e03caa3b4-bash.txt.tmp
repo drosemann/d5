@@ -1,0 +1,26 @@
+ M README.md
+?? docs/WORKSPACE.md
+?? supabase/
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/WORKSPACE.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'supabase/.env.example', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'supabase/README.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'supabase/docker-compose.yml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'supabase/gateway/Caddyfile', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'supabase/migrations/0001_workspace.sql', LF will be replaced by CRLF the next time Git touches it
+M  README.md
+A  docs/WORKSPACE.md
+A  supabase/.env.example
+A  supabase/README.md
+A  supabase/docker-compose.yml
+A  supabase/gateway/Caddyfile
+A  supabase/migrations/0001_workspace.sql
+[main 932aeb7] Phase 1: self-hosted Supabase infrastructure and workspace data model
+ 7 files changed, 479 insertions(+), 1 deletion(-)
+ create mode 100644 docs/WORKSPACE.md
+ create mode 100644 supabase/.env.example
+ create mode 100644 supabase/README.md
+ create mode 100644 supabase/docker-compose.yml
+ create mode 100644 supabase/gateway/Caddyfile
+ create mode 100644 supabase/migrations/0001_workspace.sql
+fatal: unable to access 'https://github.com/drosemann/ai-chat-webui.git/': schannel: AcquireCredentialsHandle failed: SEC_E_NO_CREDENTIALS (0x8009030e) - Im Sicherheitspaket sind keine Anmeldeinformationen verfügbar.

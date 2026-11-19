@@ -1,0 +1,24 @@
+tar exit: 0
+
+
+FullName : \\?\C:\Users\danie\OneDrive\com.mojang.minecraftpe\Meine-Welt.mcworld
+Length   : 32918180
+
+
+
+
+=== first 8 bytes (must be 50 4B 03 04 = PK..) ===
+50 4B 03 04 14 00 08 00
+=== top entries ===
+level.dat
+level.dat_old
+levelname.txt
+world_behavior_packs.json
+world_resource_packs.json
+world_icon.jpeg
+world_icon.json
+behavior_packs/
+resource_packs/
+db/
+db/003347.ldb
+db/003348.ldb

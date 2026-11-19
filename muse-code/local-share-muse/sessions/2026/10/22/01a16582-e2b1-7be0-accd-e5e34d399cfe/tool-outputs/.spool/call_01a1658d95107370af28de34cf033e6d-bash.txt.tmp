@@ -1,0 +1,18 @@
+Switched to a new branch 'feature/living-fleet-barecode'
+warning: in the working copy of 'cli/ipilot/commands/__init__.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/discord-service/index.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/webhook_server.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'cli/ipilot/commands/pet.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/LIVING-FLEET-PLAN.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/discord-service/modules/petCommands.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/management-panel/src/components/FleetPet.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/living_fleet.py', LF will be replaced by CRLF the next time Git touches it
+M  cli/ipilot/client.py
+M  cli/ipilot/commands/__init__.py
+A  cli/ipilot/commands/pet.py
+A  docs/LIVING-FLEET-PLAN.md
+M  services/discord-service/index.js
+A  services/discord-service/modules/petCommands.js
+A  services/management-panel/src/components/FleetPet.tsx
+A  services/orchestrator-agent/living_fleet.py
+M  services/orchestrator-agent/webhook_server.py

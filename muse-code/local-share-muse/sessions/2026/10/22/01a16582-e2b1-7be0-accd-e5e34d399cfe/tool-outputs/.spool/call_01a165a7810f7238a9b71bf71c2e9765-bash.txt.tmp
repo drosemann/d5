@@ -1,0 +1,12 @@
+
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\.env.example:10:DB_PORT=5432
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\.env.example:22:GITOPS_WEBHOOK_PORT=85
+00
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\.env.example:25:# Bearer token for 
+/webhook/gitops (fail-closed if empty)
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\.env.example:26:GITOPS_WEBHOOK_TOKEN=
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\.env.example:44:# Federation API 
+token (required in production; /api/ routes fail closed without it)
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\.env.example:45:FEDERATION_API_TOKEN=
+
+

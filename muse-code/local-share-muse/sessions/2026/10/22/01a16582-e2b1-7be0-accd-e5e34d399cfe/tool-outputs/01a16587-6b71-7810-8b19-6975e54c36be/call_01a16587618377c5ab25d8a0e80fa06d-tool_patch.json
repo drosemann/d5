@@ -1,0 +1,1 @@
+{"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\cli\\ipilot\\commands\\__init__.py","hunks":[{"oldStart":55,"oldLines":5,"newStart":55,"newLines":6,"lines":["     \"apikeys_app\",","     \"templates_app\",","     \"tui_app\",","-    \"rollback_app\",","+    \"rollback_app\",","+    \"pet_app\","," ]"]}]}]}

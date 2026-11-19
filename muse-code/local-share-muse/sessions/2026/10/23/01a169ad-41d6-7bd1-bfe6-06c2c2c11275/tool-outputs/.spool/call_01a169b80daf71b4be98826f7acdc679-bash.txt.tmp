@@ -1,0 +1,11 @@
+ M README.md
+ M web/src/main.tsx
+ M web/src/styles.css
+?? web/src/editor/
+?? web/src/lib/
+===
+3907305 Enhance README with translations and project details
+c43e6bc Restore original GNU GPL license
+ee98b09 Rebrand Synapse as offline-first ed-docs
+===
+master

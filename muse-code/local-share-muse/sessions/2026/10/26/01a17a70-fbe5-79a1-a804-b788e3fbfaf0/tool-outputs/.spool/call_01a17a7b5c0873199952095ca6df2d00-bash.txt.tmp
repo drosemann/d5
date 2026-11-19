@@ -1,0 +1,41 @@
+===
+    ctx: typer.Context,
+    name: str = typer.Argument(..., help="Plugin name"),
+):
+    """Uninstall a plugin."""
+    client = _get_client(ctx)
+    result = client.uninstall_plugin(name)
+    print_output(result, ctx.obj.get("output", "table"))
+
+
+@app.command()
+def update(
+    ctx: typer.Context,
+    name: Optional[str] = typer.Option(
+        None, "--name", "-n", help="Plugin name to update"
+    ),
+    all: bool = typer.Option(False, "--all", help="Update all plugins"),
+):
+    """Update plugins."""
+    client = _get_client(ctx)
+    if name:
+        result = client.update_plugin(name)
+        print_output(result, ctx.obj.get("output", "table"))
+        return
+    if all:
+        result = client.update_all_plugins()
+        print_output(result, ctx.obj.get("output", "table"))
+        return
+    result = client.list_plugin_updates()
+    print_output(result, ctx.obj.get("output", "table"))
+
+
+@app.command()
+def info(
+    ctx: typer.Context,
+    name: str = typer.Argument(..., help="Plugin name"),
+):
+    """Show plugin details."""
+    client = _get_client(ctx)
+    result = client.get_plugin_info(name)
+    print_output(result, ctx.obj.get("output", "table"))

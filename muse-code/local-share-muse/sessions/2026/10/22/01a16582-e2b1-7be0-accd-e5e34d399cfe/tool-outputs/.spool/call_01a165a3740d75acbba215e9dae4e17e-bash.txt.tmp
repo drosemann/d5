@@ -1,0 +1,20 @@
+
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\vps_backup_snapshots.py:180:          
+  self.vps_instances[container.id] = instance_info
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\vps_container_lifecycle.py:63:        
+    self.vps_instances[container.id] = instance_info
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\vps_health_monitoring.py:64:          
+  self.vps_instances[new_container.id] = new_info
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\vps_instance_persistence.py:29:       
+             self.vps_instances[cid] = {
+---
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\vps_instance_persistence.py:34:       
+                 "status": row[4] or "running",
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\vps_instance_persistence.py:36:       
+                 "config": {},
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\vps_instance_persistence.py:71:       
+                         "status",
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\vps_instance_persistence.py:89:       
+                     info.get("status", "running"),
+
+

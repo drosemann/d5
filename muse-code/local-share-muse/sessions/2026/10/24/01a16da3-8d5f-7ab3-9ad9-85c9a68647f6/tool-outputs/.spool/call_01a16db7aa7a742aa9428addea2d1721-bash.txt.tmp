@@ -1,0 +1,13 @@
+9cc24d7e8c331b17b62f70d295083091a178cd63 Ab 24.10.2026 MIT, da nur Daniel Rosemann committed (67 Commits verifiziert)
+commit 9cc24d7e8c331b17b62f70d295083091a178cd63
+Author: Daniel Rosemann <daniel.rosemann10@gmail.com>
+Date:   Sat Oct 24 13:36:50 2026 +0200
+
+    Ab 24.10.2026 MIT, da nur Daniel Rosemann committed (67 Commits verifiziert)
+    
+    Co-authored-by: Muse Code <muse-code@meta.com>
+
+ LICENSE                   | 695 ++--------------------------------------------
+ README.md                 |   2 +-
+ docs/license-audit-mit.md |  98 +++++++
+ package.json              |   2 +-

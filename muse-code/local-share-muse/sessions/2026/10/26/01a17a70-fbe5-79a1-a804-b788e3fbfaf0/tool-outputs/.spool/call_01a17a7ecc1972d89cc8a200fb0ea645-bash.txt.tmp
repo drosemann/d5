@@ -1,0 +1,30 @@
+
+
+    Verzeichnis: \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\management-panel\tests
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+dar--l        10.10.2026     17:52                a11y                                                                 
+dar--l        10.10.2026     17:52                helpers                                                              
+dar--l        12.10.2026     00:49                integration                                                          
+dar--l        10.10.2026     17:52                playwright                                                           
+dar--l        10.10.2026     17:52                unit                                                                 
+===
+
+
+    Verzeichnis: \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\tests
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+dar--l        24.10.2026     18:20                cli                                                                  
+dar--l        10.10.2026     17:52                discord                                                              
+dar--l        27.10.2026     00:11                fixtures                                                             
+dar--l        10.10.2026     17:52                infrastructure                                                       
+dar--l        10.10.2026     17:52                load                                                                 
+dar--l        27.10.2026     00:12                orchestrator                                                         
+dar--l        24.10.2026     18:20                scripts                                                              
+-a---l        10.10.2026     17:51           1096 conftest.py                                                          
+
+

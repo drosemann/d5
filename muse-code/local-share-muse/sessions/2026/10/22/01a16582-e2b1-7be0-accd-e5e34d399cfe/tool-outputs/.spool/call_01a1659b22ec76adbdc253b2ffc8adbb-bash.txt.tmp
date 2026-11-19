@@ -1,0 +1,43 @@
+
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:230:    Trust 
+model: every ``/api/`` route already requires the shared
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:231:    
+``FEDERATION_API_TOKEN`` bearer (see ``verify_federation_token``), so the
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:235:    independent 
+authentication proof. Do not expose ``/api/`` without the
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:412:    
+"""Reconcile a manifest on demand (POST /api/v1/deployments).
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:417:    middleware) 
+is evaluated as that user - requires ``manifest:deploy``.
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:513:    """List 
+registered compute providers (GET /api/v1/providers)."""
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:674:    # Default 
+rules cover /api/v1/deployments (30/min) etc.; the GitOps
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:681:    
+@web.middleware
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:682:    async def 
+rate_limit_middleware(request: web.Request, handler):
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:700:    
+app.middlewares.append(rate_limit_middleware)
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:702:    async def 
+verify_federation_token(request: web.Request) -> Optional[web.Response]:
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:741:                
+    "/api/ routes are unauthenticated in %s environment. "
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:766:    
+@web.middleware
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:767:    async def 
+federation_auth_middleware(request: web.Request, handler):
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:768:        
+"""Apply token verification to /api/ paths."""
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:769:        if 
+request.path.startswith("/api/"):
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:770:            
+response = await verify_federation_token(request)
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:775:    
+app.middlewares.append(federation_auth_middleware)
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:915:    
+app.router.add_get("/api/health", health)
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\services\orchestrator-agent\webhook_server.py:917:    
+app.router.add_get("/api/ready", ready)
+
+

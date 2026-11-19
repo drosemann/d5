@@ -1,0 +1,23 @@
+[main 31f4202] feat: implement stranded-horizons v2 one-world foundation
+ 21 files changed, 747 insertions(+)
+ create mode 100644 .env.example
+ create mode 100644 admin/index.html
+ create mode 100644 api/socket.js
+ create mode 100644 db/schema.sql
+ create mode 100644 db/seed.sql
+ create mode 100644 docker-compose.yml
+ create mode 100644 docs/v2/DECISIONS.md
+ create mode 100644 docs/v2/PROTOCOL.md
+ create mode 100644 docs/v2/SELFHOST.md
+ create mode 100644 game-v2.html
+ create mode 100644 infra/nginx.conf
+ create mode 100644 server/package.json
+ create mode 100644 server/src/actions.js
+ create mode 100644 server/src/chunks.js
+ create mode 100644 server/src/db.js
+ create mode 100644 server/src/index.js
+ create mode 100644 server/src/tick.js
+ create mode 100644 shared/economy.js
+ create mode 100644 shared/world.js
+ create mode 100644 tools/mc-import/import.py
+ create mode 100644 tools/mc-import/mc_to_sh.json

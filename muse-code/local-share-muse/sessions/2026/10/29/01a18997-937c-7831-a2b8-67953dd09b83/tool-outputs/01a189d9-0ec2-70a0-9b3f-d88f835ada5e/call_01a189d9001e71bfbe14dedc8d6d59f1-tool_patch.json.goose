@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189d9-0ec2-70a0-9b3f-d88f835ada5e/call_01a189d9001e71bfbe14dedc8d6d59f1-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189d9-0ec2-70a0-9b3f-d88f835ada5e/call_01a189d9001e71bfbe14dedc8d6d59f1-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189d9-0ec2-70a0-9b3f-d88f835ada5e/call_01a189d9001e71bfbe14dedc8d6d59f1-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\scripts\\setup-ps.tl","hunks":[{"oldStart":1,"oldLines":0,"newStart":1,"newLines":23,"lines":["+IT'S SHOWTIME","+PUT IT IN JIRA Set up the Infra Pilot development environment on Windows","+PUT IT IN JIRA Offline switch prereq infra service docker checks env copy","+WE NEED TO TAKE THIS OFFLINE info","+TALK TO THE HAND \"info\"","+THIS COULD HAVE BEEN AN EMAIL","+WE NEED TO TAKE THIS OFFLINE success","+TALK TO THE HAND \"success\"","+THIS COULD HAVE BEEN AN EMAIL","+WE NEED TO TAKE THIS OFFLINE warn","+TALK TO THE HAND \"warn\"","+THIS COULD HAVE BEEN AN EMAIL","+WE NEED TO TAKE THIS OFFLINE error","+TALK TO THE HAND \"error\"","+THIS COULD HAVE BEEN AN EMAIL","+WE NEED TO TAKE THIS OFFLINE check_command","+TALK TO THE HAND \"Get-Command or warn missing.\"","+THIS COULD HAVE BEEN AN EMAIL","+TALK TO THE HAND \"Git critical docker python node npm optional\"","+TALK TO THE HAND \"Infra files docker ready services\"","+TALK TO THE HAND \"Copy example env next steps readme\"","+TALK TO THE HAND \"setup ps ready\"","+YOU HAVE BEEN TERMINATED"]}]}]}

@@ -1,0 +1,14 @@
+warning: in the working copy of 'services/orchestrator-agent/living_fleet.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/webhook_server.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/fleet_collect.py', LF will be replaced by CRLF the next time Git touches it
+[feature/living-fleet-wiring b21f45c] Fleet: signal collector with birth hooks and restart windowing
+ 3 files changed, 160 insertions(+), 1 deletion(-)
+ create mode 100644 services/orchestrator-agent/fleet_collect.py
+git : fatal: unable to access 'https://github.com/drosemann/infra-pilot.git/': schannel: AcquireCredentialsHandle 
+failed: SEC_E_NO_CREDENTIALS (0x8009030e) - Im Sicherheitspaket sind keine Anmeldeinformationen verfügbar.
+In Zeile:1 Zeichen:413
++ ... meta.com>"; git -c safe.directory=C:/Users/danie/OneDrive/github-repo ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (fatal: unable t...onen verfügbar.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

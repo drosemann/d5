@@ -1,0 +1,19 @@
+DaaanielTV <125688359+DaaanielTV@users.noreply.github.com>
+Daniel Rosemann <daniel.rosemann10@gmail.com>
+Greg Nietsky <gregory@distrotech.co.za>
+===
+d2b3151 Document new ex commands and roadmap in README
+38b211d Wire full vim plan into editor shell and styles
+8af099e Add ex-line engine, preview renderer, and fun libs
+3b22fce Split editor core: types, motions, history, storage
+c43e6bc Restore original GNU GPL license
+ee98b09 Rebrand Synapse as offline-first ed-docs
+
+Co-authored-by: Muse Code <muse-code@meta.com>
+Co-authored-by: Muse Code <muse-code@meta.com>
+Co-authored-by: Muse Code <muse-code@meta.com>
+Co-authored-by: Muse Code <muse-code@meta.com>
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
+
+

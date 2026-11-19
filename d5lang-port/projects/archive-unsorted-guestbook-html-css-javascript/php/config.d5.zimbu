@@ -1,0 +1,25 @@
+﻿# Zimbu-Port-Spiegel von: d5lang-port\projects\archive-unsorted-guestbook-html-css-javascript\php\config.d5
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE config_d5
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: d5lang-port\projects\archive-unsorted-guestbook-html-css-javascript\php\config.d5\n")
+  RETURN 0
+
+# ---- Original-Code (d5lang-port\projects\archive-unsorted-guestbook-html-css-javascript\php\config.d5), unveraendert, als Inline-Doku ----
+# SHINE, LITTLE BOY, SHINE
+#   WIR MÜSSEN DAS OFFLINE NEHMEN main
+#     PACK-ES-IN-JIRA Portiert 1:1 von projects/archive-unsorted-guestbook-html-css-javascript/php/config.php. MySQL-PDO-Verbindung.
+#     PACK-ES-IN-JIRA ORIGINAL: <?php
+#     PACK-ES-IN-JIRA ORIGINAL: $db_host = 'localhost';
+#     PACK-ES-IN-JIRA ORIGINAL: $db_name = 'guestbook';
+#     PACK-ES-IN-JIRA ORIGINAL: $db_user = 'your_username';
+#     PACK-ES-IN-JIRA ORIGINAL: $db_pass = 'your_password';
+#     PACK-ES-IN-JIRA ORIGINAL: try { $pdo = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass); $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); }
+#     PACK-ES-IN-JIRA ORIGINAL: catch(PDOException $e) { echo "Connection failed: " . $e->getMessage(); }
+#     PACK-ES-IN-JIRA ORIGINAL: ?>
+#   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+# BOY, DU HAST KI-VERBOT
+#

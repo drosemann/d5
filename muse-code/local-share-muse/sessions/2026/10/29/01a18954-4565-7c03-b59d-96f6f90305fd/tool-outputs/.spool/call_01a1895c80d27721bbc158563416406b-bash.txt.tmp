@@ -1,0 +1,14 @@
+Invoke-Expression : In Zeile:1 Zeichen:252
++ ... es/params_return.tl examples/for_loop.tl examples/reset.tl && git com ...
++                                                                ~~
+Das Token "&&" ist in dieser Version kein gÅltiges Anweisungstrennzeichen.
+In Zeile:1 Zeichen:380
++ ... reset" -m "Co-authored-by: Muse Code <muse-code@meta.com>" && git pus ...
++                                                                ~~
+Das Token "&&" ist in dieser Version kein gÅltiges Anweisungstrennzeichen.
+In Zeile:1 Zeichen:492
++ ... tCode=$LASTEXITCODE';Invoke-Expression $__tbhProxyOnlyCommand;if($nul ...
++                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ParserError: (:) [Invoke-Expression], ParseException
+    + FullyQualifiedErrorId : InvalidEndOfLine,Microsoft.PowerShell.Commands.InvokeExpressionCommand
+ 

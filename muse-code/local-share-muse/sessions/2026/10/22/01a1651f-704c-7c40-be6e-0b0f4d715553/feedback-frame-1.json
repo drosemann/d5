@@ -1,0 +1,30 @@
+{
+  "width": 209,
+  "height": 14,
+  "working_status": {
+    "visible": true,
+    "header": "Calling tools",
+    "elapsed_ms": 74567,
+    "provider_retry_status": null,
+    "turn_retry_countdown": null,
+    "spinner_frame": 7829,
+    "color_support": "TrueColor",
+    "compaction_gate": false
+  },
+  "cells": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "◇ Calling tools (1m 14s · esc to interrupt)",
+    "",
+    "── Voice input (Alt+V to start) ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────",
+    "❯",
+    "─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────",
+    "  muse-wonder-1.0 · high · C:\\Users\\danie · Auto-review"
+  ]
+}

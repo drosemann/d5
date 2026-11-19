@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18954-4565-7c03-b59d-96f6f90305fd/tool-outputs/01a18957-e0b7-79c2-bdf3-fc0d9e015e74/call_01a18957d530708aac763342658328d6-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18954-4565-7c03-b59d-96f6f90305fd/tool-outputs/01a18957-e0b7-79c2-bdf3-fc0d9e015e74/call_01a18957d530708aac763342658328d6-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18954-4565-7c03-b59d-96f6f90305fd/tool-outputs/01a18957-e0b7-79c2-bdf3-fc0d9e015e74/call_01a18957d530708aac763342658328d6-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\TraumaLang\\src\\codegen.c","hunks":[{"oldStart":121,"oldLines":13,"newStart":121,"newLines":16,"lines":["     default: break;","     }"," }","-static void emit_implicits(TlNodeList *body, FILE *out, int ind) {","+static void emit_implicits_fn(TlNodeList *body, const TlNode *fn, FILE *out, int ind) {","     NameSet decl; decl.n = 0;","-    /* Deklarationen sammeln (ohne Funktionsruempfe zu betreten). */","+    if (fn && fn->kind == N_FUNCDEF)","+        for (int i = 0; i < fn->param_count; i++) set_add(&decl, fn->params[i]);","     TlNodeList *l = body;","-    /* Erster Durchlauf: alle VARDECL der obersten Ebene einsammeln. */","     for (; l; l = l->next)","         if (l->node->kind == N_VARDECL) set_add(&decl, l->node->name);","+    /* FOR-Schleifenvariablen der obersten Ebene gelten als deklariert (Block-Scope). */","+    for (l = body; l; l = l->next)","+        if (l->node->kind == N_FOR) set_add(&decl, l->node->name);","     NameSet imp; imp.n = 0;","     collect_uses_list(body, &decl, &imp, 1);","     for (int i = 0; i < imp.n; i++) {"]}]}]}

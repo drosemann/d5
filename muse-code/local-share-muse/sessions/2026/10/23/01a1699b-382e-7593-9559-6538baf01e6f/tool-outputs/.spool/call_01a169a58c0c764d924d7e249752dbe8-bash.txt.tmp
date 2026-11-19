@@ -1,0 +1,55 @@
+== banned globals in sim/data ==
+(exit none found above = pass)
+== ctx. in sim (must be none) ==
+
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\CollisionSystem.js:55:  if (ctx.rng() < 
+GAME_CONFIG.drops.baseChance) spawnPickup(state, enemy.position.x, enemy.position.y, ctx);
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\CollisionSystem.js:56:  ctx.bus.emit('sfx:kill');
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\CollisionSystem.js:62:  
+ctx.bus.emit('sfx:explosion');
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\CollisionSystem.js:75:    const angle = 
+ctx.rng() * Math.PI * 2;
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\CollisionSystem.js:76:    const speed = 40 + 
+ctx.rng() * 200;
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\CollisionSystem.js:77:    const life = 0.2 + 
+ctx.rng() * 0.35;
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\CollisionSystem.js:80:      data: { dx: 
+Math.cos(angle) * speed, dy: Math.sin(angle) * speed, size: 2 + ctx.rng() * 3, life, maxLife: life, color }
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\EnemySystem.js:23:  const typeId = 
+pickEnemyType(state.run.wave, ctx.rng);
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\EnemySystem.js:25:  const spawn = 
+getSpawnPosition(state, type.size, ctx.rng);
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\EnemySystem.js:65:      
+ctx.bus.emit('sfx:enemyShoot');
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\PickupSystem.js:28:  const id = 
+POOL[Math.floor(ctx.rng() * POOL.length)];
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\PickupSystem.js:44:  ctx.bus.emit('sfx:pickup');
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\PlayerSystem.js:29:  ctx.bus.emit('sfx:dash');
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\PlayerSystem.js:41:  ctx.bus.emit('sfx:hit');
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\PlayerSystem.js:42:  if (p.health <= 0) 
+ctx.onGameOver();
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\ProgressionSystem.js:15:  
+ctx.bus.emit('sfx:buy');
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\ProgressionSystem.js:28:  ctx.persistMeta();
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\ProgressionSystem.js:29:  
+ctx.bus.emit('sfx:buy');
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\WaveSystem.js:32:  ctx.bus.emit('ui:waveStatus', 
+'Wave active - survive and clear enemies.');
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\WaveSystem.js:36:  
+ctx.bus.emit('ui:hideWaveComplete');
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\WaveSystem.js:47:  ctx.bus.emit('sfx:waveClear');
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\WaveSystem.js:48:  
+ctx.bus.emit('ui:waveComplete', bonus);
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\WeaponSystem.js:8:  ctx.bus.emit('sfx:ui');
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\WeaponSystem.js:17:  ctx.bus.emit('sfx:reload');
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\WeaponSystem.js:24:    
+ctx.bus.emit('sfx:reloaded');
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\WeaponSystem.js:43:    const angle = baseAngle + 
+weapon.spread * (ctx.rng() - 0.5);
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\WeaponSystem.js:44:    const crit = ctx.rng() < 
+Math.min(0.45, state.runUpgrades.critChance * 0.035);
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\src\simulation\WeaponSystem.js:53:  ctx.bus.emit('sfx:shoot', { 
+weapon: weapon.id });
+(exit none found above = pass)
+
+

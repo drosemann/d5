@@ -1,0 +1,270 @@
+﻿# Zimbu-Port-Spiegel von: app\games.js
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE games_js
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: app\games.js\n")
+  RETURN 0
+
+# ---- Original-Code (app\games.js), unveraendert, als Inline-Doku ----
+# // Native in-browser ports of the Python game CLIs. Rules mirror the originals:
+# // - Snake (projects/browser-games-snake/main.py, German main()): grid movement,
+# //   arrow keys, grow on food, game over on wall or self collision.
+# // - Tic-Tac-Toe (projects/browser-games-tic-tac-toe/*.py): human X vs random
+# //   bot O, German UI, win/draw detection, running score tally.
+# // - Ping Pong (projects/browser-games-ping-pong/main.py): SPACE to start,
+# //   W/S player vs AI, angled bounces with 1.1x speedup, first to 5, points
+# //   shop (keys 1/2: bigger paddle, faster paddle), color flashes on score.
+# window.d5Games = (function () {
+#   var __mount = 0; // bumped per view mount; stale loops/listeners bow out
+#   function el(tag, text, attrs) {
+#     var e = document.createElement(tag);
+#     if (text != null) e.textContent = text;
+#     if (attrs) for (var k in attrs) e.setAttribute(k, attrs[k]);
+#     return e;
+#   }
+#
+#   // ---------- Snake ----------
+#   function viewSnake(root) {
+#     var my = ++__mount;
+#     var CELL = 20, COLS = 20, ROWS = 15;
+#     var wrap = el('div');
+#     var cv = el('canvas', null, { width: COLS * CELL, height: ROWS * CELL });
+#     cv.style.border = '1px solid #2b3644';
+#     var info = el('p', '', { 'class': 'meta' });
+#     var btn = el('button', 'Neustart');
+#     wrap.appendChild(cv); wrap.appendChild(info); wrap.appendChild(btn);
+#     root.appendChild(wrap);
+#     var ctx = cv.getContext('2d');
+#     var snake, dir, food, over, timer;
+#     function placeFood() {
+#       var p;
+#       do {
+#         p = [Math.floor(Math.random() * COLS), Math.floor(Math.random() * ROWS)];
+#       } while (snake.some(function (s) { return s[0] === p[0] && s[1] === p[1]; }));
+#       food = p;
+#     }
+#     function reset() {
+#       snake = [[10, 7]]; dir = 'up'; over = false;
+#       placeFood(); draw();
+#       info.textContent = 'Pfeiltasten zum Steuern. Wand oder sich selbst berühren = Spiel vorbei.';
+#     }
+#     function draw() {
+#       ctx.fillStyle = '#000'; ctx.fillRect(0, 0, cv.width, cv.height);
+#       ctx.fillStyle = '#f00'; ctx.fillRect(food[0] * CELL, food[1] * CELL, CELL, CELL);
+#       ctx.fillStyle = '#0f0';
+#       snake.forEach(function (s) { ctx.fillRect(s[0] * CELL, s[1] * CELL, CELL, CELL); });
+#     }
+#     function step() {
+#       if (over) return;
+#       var h = snake[0].slice();
+#       if (dir === 'up') h[1]--; else if (dir === 'down') h[1]++;
+#       else if (dir === 'left') h[0]--; else h[0]++;
+#       if (h[0] < 0 || h[0] >= COLS || h[1] < 0 || h[1] >= ROWS ||
+#           snake.some(function (s) { return s[0] === h[0] && s[1] === h[1]; })) {
+#         over = true; info.textContent = 'Spiel vorbei! Länge: ' + snake.length + ' — Neustart unten.';
+#         clearInterval(timer); draw(); return;
+#       }
+#       snake.unshift(h);
+#       if (h[0] === food[0] && h[1] === food[1]) placeFood();
+#       else snake.pop();
+#       draw();
+#     }
+#     document.addEventListener('keydown', function onKey(e) {
+#       if (my !== __mount) return; // stale mount: ignore
+#       var k = e.key;
+#       if (k === 'ArrowUp' && dir !== 'down') dir = 'up';
+#       else if (k === 'ArrowDown' && dir !== 'up') dir = 'down';
+#       else if (k === 'ArrowLeft' && dir !== 'right') dir = 'left';
+#       else if (k === 'ArrowRight' && dir !== 'left') dir = 'right';
+#       else return;
+#       e.preventDefault();
+#     });
+#     function tick() { if (my !== __mount) { clearInterval(timer); return; } step(); }
+#     btn.addEventListener('click', function () { clearInterval(timer); reset(); timer = setInterval(tick, 100); });
+#     reset(); timer = setInterval(tick, 100); // 10 ticks/s like clock.tick(10)
+#   }
+#
+#   // ---------- Tic-Tac-Toe ----------
+#   var LINES = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+#   function viewTictactoe(root) {
+#     var board, done, sx = 0, so = 0, dr = 0;
+#     var wrap = el('div');
+#     var grid = el('div', null, { 'class': 'ttt' });
+#     grid.style.cssText = 'display:grid;grid-template-columns:repeat(3,64px);gap:6px;margin:1rem 0;';
+#     var cells = [];
+#     for (var i = 0; i < 9; i++) {
+#       (function (i) {
+#         var b = el('button', ' ', { 'data-i': i });
+#         b.style.cssText = 'width:64px;height:64px;font-size:1.8rem;';
+#         b.addEventListener('click', function () { move(i); });
+#         cells.push(b); grid.appendChild(b);
+#       })(i);
+#     }
+#     var msg = el('p', '', { 'class': 'meta' });
+#     var tally = el('p', '', { 'class': 'meta' });
+#     var again = el('button', 'Neues Spiel');
+#     again.addEventListener('click', reset);
+#     wrap.appendChild(grid); wrap.appendChild(msg); wrap.appendChild(tally); wrap.appendChild(again);
+#     root.appendChild(wrap);
+#     function won() {
+#       return LINES.some(function (l) {
+#         return board[l[0]] !== ' ' && board[l[0]] === board[l[1]] && board[l[1]] === board[l[2]];
+#       });
+#     }
+#     function drawBoard() {
+#       cells.forEach(function (b, i) { b.textContent = board[i]; b.disabled = done || board[i] !== ' '; });
+#       tally.textContent = 'Endstand: X - ' + sx + ', O - ' + so + ', Unentschieden - ' + dr;
+#     }
+#     function reset() { board = [' ',' ',' ',' ',' ',' ',' ',' ',' ']; done = false; msg.textContent = 'Spieler X, wähle ein Feld.'; drawBoard(); }
+#     function move(i) {
+#       if (done || board[i] !== ' ') return;
+#       board[i] = 'X';
+#       if (won()) { done = true; sx++; msg.textContent = 'Spieler X hat gewonnen!'; drawBoard(); return; }
+#       if (board.indexOf(' ') === -1) { done = true; dr++; msg.textContent = 'Unentschieden!'; drawBoard(); return; }
+#       var free = [];
+#       board.forEach(function (v, j) { if (v === ' ') free.push(j); });
+#       var p = free[Math.floor(Math.random() * free.length)]; // random bot like bot_zug()
+#       board[p] = 'O';
+#       msg.textContent = 'KI hat Feld ' + p + ' gewählt. Du bist dran.';
+#       if (won()) { done = true; so++; msg.textContent = 'Spieler O hat gewonnen!'; }
+#       else if (board.indexOf(' ') === -1) { done = true; dr++; msg.textContent = 'Unentschieden!'; }
+#       drawBoard();
+#     }
+#     reset();
+#   }
+#
+#   // ---------- Ping Pong ----------
+#   function viewPong(root) {
+#     var my = ++__mount;
+#     var W = 480, H = 270;
+#     var PW = 10, PH = 50, BS = 8;
+#     var PADDLE_SPEED = 220, AI_SPEED = 250, MAX_SCORE = 5;
+#     var wrap = el('div');
+#     var cv = el('canvas', null, { width: W, height: H });
+#     cv.style.border = '1px solid #2b3644';
+#     cv.tabIndex = 0;
+#     var msg = el('p', 'PONG — Leertaste oder Klick zum Starten. W/S steuern. 1/2 kaufen Upgrades.', { 'class': 'meta' });
+#     wrap.appendChild(cv); wrap.appendChild(msg);
+#     root.appendChild(wrap);
+#     var ctx = cv.getContext('2d');
+#     var started, last, keys = {};
+#     var pa, pb, ball, sa, sb, points, shop;
+#     function resetBall() {
+#       var a = (Math.random() * 0.5 - 0.25) * Math.PI;
+#       var dx = 260 * Math.cos(a);
+#       ball = { x: W / 2, y: H / 2, dx: Math.random() < 0.5 ? -dx : dx, dy: 260 * Math.sin(a), color: '#fff' };
+#     }
+#     function reset() {
+#       pa = { y: H / 2 - PH / 2, h: PH, color: '#fff' };
+#       pb = { y: H / 2 - PH / 2, h: PH, color: '#fff' };
+#       sa = 0; sb = 0; points = 0;
+#       shop = { size: { name: '1. Bigger Paddle', cost: 20, level: 1 }, speed: { name: '2. Faster Paddle', cost: 30, level: 1 } };
+#       resetBall(); started = false;
+#     }
+#     function buy(item) {
+#       var u = shop[item];
+#       if (!u || u.level >= 3 || points < u.cost) return;
+#       points -= u.cost; u.level++; u.cost *= 2;
+#       if (item === 'size') pa.h += 12;
+#       else PADDLE_SPEED *= 1.2;
+#     }
+#     function step(dt) {
+#       if (!started) return;
+#       points += dt * 1; // TIME_REWARD: 1 point per second
+#       if (keys.w) pa.y -= PADDLE_SPEED * dt;
+#       if (keys.s) pa.y += PADDLE_SPEED * dt;
+#       pa.y = Math.max(0, Math.min(H - pa.h, pa.y));
+#       // AI: chase when ball approaches, drift to center otherwise
+#       if (ball.dx > 0) {
+#         if (ball.y > pb.y + pb.h / 2 + 15) pb.y += AI_SPEED * dt;
+#         else if (ball.y < pb.y + pb.h / 2 - 15) pb.y -= AI_SPEED * dt;
+#       } else {
+#         if (Math.abs(pb.y + pb.h / 2 - H / 2) > 3) pb.y += (pb.y + pb.h / 2 < H / 2 ? 1 : -1) * AI_SPEED * dt * 0.5;
+#       }
+#       pb.y = Math.max(0, Math.min(H - pb.h, pb.y));
+#       ball.x += ball.dx * dt; ball.y += ball.dy * dt;
+#       if (Math.abs(ball.y - H / 2) > H / 2 - BS) ball.dy *= -1;
+#       function bounce(p) {
+#         var rel = (ball.y - (p.y + p.h / 2)) / (p.h / 2);
+#         var ang = rel * Math.PI / 3;
+#         var sp = Math.sqrt(ball.dx * ball.dx + ball.dy * ball.dy) * 1.1;
+#         var d = ball.dx > 0 ? -1 : 1;
+#         ball.dx = d * sp * Math.cos(ang); ball.dy = sp * Math.sin(ang);
+#       }
+#       if (ball.dx > 0 && ball.x > W - 20 - PW && ball.x < W - 20 && ball.y > pb.y - BS && ball.y < pb.y + pb.h + BS) {
+#         ball.x = W - 20 - PW; bounce(pb); ball.color = 'blue';
+#       } else if (ball.dx < 0 && ball.x < 20 + PW && ball.x > 20 && ball.y > pa.y - BS && ball.y < pa.y + pa.h + BS) {
+#         ball.x = 20 + PW; bounce(pa); ball.color = 'red';
+#       }
+#       // Scoring (mirrors original: A scores right, shop points; colors flash)
+#       if (ball.x > W) {
+#         sa++; points += 10; pa.color = ['red', 'blue', 'green', 'yellow'][Math.floor(Math.random() * 4)];
+#         resetBall();
+#       } else if (ball.x < 0) {
+#         sb++; pb.color = ['red', 'blue', 'green', 'yellow'][Math.floor(Math.random() * 4)];
+#         resetBall();
+#       }
+#       if (Math.max(sa, sb) >= MAX_SCORE) started = 'over';
+#     }
+#     function draw() {
+#       ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H);
+#       ctx.strokeStyle = '#333';
+#       for (var gy = 0; gy < H; gy += 12) { ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke(); }
+#       ctx.fillStyle = '#fff';
+#       for (var cy = 0; cy < H; cy += 16) ctx.fillRect(W / 2 - 1, cy, 2, 8);
+#       ctx.font = 'bold 48px sans-serif'; ctx.textAlign = 'center';
+#       ctx.fillText(sa, W / 3, 60); ctx.fillText(sb, 2 * W / 3, 60);
+#       ctx.font = '14px sans-serif'; ctx.textAlign = 'left';
+#       ctx.fillStyle = 'yellow'; ctx.fillText('Punkte: ' + Math.floor(points), 10, 20);
+#       ctx.fillStyle = '#fff';
+#       ctx.fillText('1: ' + shop.size.name + ' Lvl ' + shop.size.level + ' (' + shop.size.cost + ')', W - 210, 20);
+#       ctx.fillText('2: ' + shop.speed.name + ' Lvl ' + shop.speed.level + ' (' + shop.speed.cost + ')', W - 210, 38);
+#       ctx.fillStyle = pa.color; ctx.fillRect(20, pa.y, PW, pa.h);
+#       ctx.fillStyle = pb.color; ctx.fillRect(W - 20 - PW, pb.y, PW, pb.h);
+#       ctx.fillStyle = ball.color;
+#       ctx.beginPath(); ctx.arc(ball.x, ball.y, BS, 0, Math.PI * 2); ctx.fill();
+#       if (!started) {
+#         ctx.fillStyle = '#fff'; ctx.textAlign = 'center';
+#         ctx.font = 'bold 36px sans-serif'; ctx.fillText('PONG', W / 2, H / 2 - 30);
+#         ctx.font = '16px sans-serif'; ctx.fillText('Leertaste oder Klick zum Starten', W / 2, H / 2 + 10);
+#       } else if (started === 'over') {
+#         ctx.fillStyle = '#fff'; ctx.textAlign = 'center';
+#         ctx.font = 'bold 30px sans-serif';
+#         ctx.fillText((sa >= MAX_SCORE ? 'Spieler A' : 'Spieler B') + ' gewinnt!', W / 2, H / 2);
+#       }
+#     }
+#     function loop(t) {
+#       if (my !== __mount) return; // stale mount: stop looping
+#       if (!last) last = t;
+#       var dt = Math.min((t - last) / 1000, 0.05); last = t;
+#       step(dt); draw();
+#       requestAnimationFrame(loop);
+#     }
+#     function start() { if (my !== __mount) return; if (!started) { started = true; msg.textContent = 'W/S steuern · 1/2 kaufen Upgrades.'; cv.focus(); } }
+#     cv.addEventListener('click', start);
+#     document.addEventListener('keydown', function (e) {
+#       if (my !== __mount) return; // stale mount: ignore
+#       var k = e.key.toLowerCase();
+#       if (k === ' ') { start(); e.preventDefault(); }
+#       if (k === 'w') keys.w = true;
+#       if (k === 's') keys.s = true;
+#       if (k === '1') buy('size');
+#       if (k === '2') buy('speed');
+#     });
+#     document.addEventListener('keyup', function (e) {
+#       if (my !== __mount) return;
+#       var k = e.key.toLowerCase();
+#       if (k === 'w') keys.w = false;
+#       if (k === 's') keys.s = false;
+#     });
+#     reset();
+#     requestAnimationFrame(loop);
+#   }
+#
+#   return {
+#     viewSnake: viewSnake, viewTictactoe: viewTictactoe, viewPong: viewPong
+#   };
+# })();

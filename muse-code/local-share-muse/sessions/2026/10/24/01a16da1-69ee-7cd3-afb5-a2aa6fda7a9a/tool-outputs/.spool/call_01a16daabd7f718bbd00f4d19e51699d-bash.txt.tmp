@@ -1,0 +1,13 @@
+## main...aktienwerk/main
+---TAGS---
+---BRANCHES---
+* main
+  remotes/aktienwerk/main
+---REMOTES---
+aktienwerk	https://github.com/drosemann/aktienwerk.git (fetch)
+aktienwerk	https://github.com/drosemann/aktienwerk.git (push)
+---LOG---
+4e69f62 first commit
+7d6c755 Agent host session e9849c23-55cb-49de-a3f2-eaf2f09adcb6 - turn 1
+1f35fdc Agent host session e9849c23-55cb-49de-a3f2-eaf2f09adcb6 - turn 1 start
+33a1efa Agent host session e9849c23-55cb-49de-a3f2-eaf2f09adcb6 - baseline checkpoint

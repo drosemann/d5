@@ -1,0 +1,49 @@
+﻿# Zimbu-Port-Spiegel von: d5lang-port\projects\productivity-&-sharing-apps-link-shortener\public\index.d5
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE index_d5
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: d5lang-port\projects\productivity-&-sharing-apps-link-shortener\public\index.d5\n")
+  RETURN 0
+
+# ---- Original-Code (d5lang-port\projects\productivity-&-sharing-apps-link-shortener\public\index.d5), unveraendert, als Inline-Doku ----
+# SHINE, LITTLE BOY, SHINE
+#   WIR MÜSSEN DAS OFFLINE NEHMEN main
+#     PACK-ES-IN-JIRA Portiert 1:1 von projects/productivity-&-sharing-apps-link-shortener/public/index.php. PDO-Connect, POST-shorten, Redirect, Formular+JS.
+#     PACK-ES-IN-JIRA ORIGINAL: <?php
+#     PACK-ES-IN-JIRA ORIGINAL: require_once __DIR__ . '/../vendor/autoload.php';
+#     PACK-ES-IN-JIRA ORIGINAL: $config = require __DIR__ . '/../config/database.php';
+#     PACK-ES-IN-JIRA ORIGINAL: try { $dsn = "mysql:host={$config['host']};dbname={$config['database']};charset={$config['charset']}"; $pdo = new PDO($dsn, $config['username'], $config['password']); $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); }
+#     PACK-ES-IN-JIRA ORIGINAL: catch (PDOException $e) { die("Connection failed: " . $e->getMessage()); }
+#     PACK-ES-IN-JIRA ORIGINAL: $shortener = new Shortify\URLShortener($pdo);
+#     PACK-ES-IN-JIRA Handle requests
+#     MACH-ES-FÜR-DIE-METRIKEN REQUEST_METHOD === 'POST'
+#     PACK-ES-IN-JIRA ORIGINAL: if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+#     PACK-ES-IN-JIRA ORIGINAL: $url = $_POST['url'] ?? '';
+#     MACH-ES-FÜR-DIE-METRIKEN filter_var($url, FILTER_VALIDATE_URL)
+#     PACK-ES-IN-JIRA ORIGINAL: if (filter_var($url, FILTER_VALIDATE_URL)) { $code = $shortener->shorten($url); $shortUrl = 'http://' . $_SERVER['HTTP_HOST'] . '/' . $code; header('Content-Type: application/json'); echo json_encode(['short_url' => $shortUrl]); exit; }
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: http_response_code(400); echo json_encode(['error' => 'Invalid URL']); exit;
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA Handle redirects for short URLs
+#     PACK-ES-IN-JIRA ORIGINAL: $path = trim($_SERVER['REQUEST_URI'], '/');
+#     MACH-ES-FÜR-DIE-METRIKEN !empty($path) && !str_contains($path, '.')
+#     PACK-ES-IN-JIRA ORIGINAL: if (!empty($path) && !str_contains($path, '.')) {
+#     PACK-ES-IN-JIRA ORIGINAL: $originalUrl = $shortener->getOriginalUrl($path);
+#     MACH-ES-FÜR-DIE-METRIKEN $originalUrl
+#     PACK-ES-IN-JIRA ORIGINAL: if ($originalUrl) { header("Location: $originalUrl", true, 301); exit; }
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA Display the main form
+#     PACK-ES-IN-JIRA ORIGINAL: ?>
+#     PACK-ES-IN-JIRA ORIGINAL: <!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" ...> <title>Shortify - URL Shortener</title>
+#     PACK-ES-IN-JIRA ORIGINAL: <style> body {...} .form-container {...} input[type="url"] {...} button {...} #result {...} </style>
+#     PACK-ES-IN-JIRA ORIGINAL: </head> <body> <div class="form-container"> <h1>Shortify</h1> <p>Enter a URL to shorten:</p>
+#     PACK-ES-IN-JIRA ORIGINAL: <form id="shortenForm"> <input type="url" name="url" required placeholder="https://example.com"> <button type="submit">Shorten</button> </form> <div id="result"></div> </div>
+#     PACK-ES-IN-JIRA ORIGINAL: <script> shortenForm submit -> fetch POST -> Short URL oder Error anzeigen, catch Fehlermeldung </script>
+#     PACK-ES-IN-JIRA ORIGINAL: </body> </html>
+#   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+# BOY, DU HAST KI-VERBOT
+#

@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/22/01a16549-901c-75e2-9d8e-83e7728c7d77/tool-outputs/01a16556-4abb-7670-8f68-357266b44bc4/call_01a165563d2e77d080b1f145c8cb18a2-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/22/01a16549-901c-75e2-9d8e-83e7728c7d77/tool-outputs/01a16556-4abb-7670-8f68-357266b44bc4/call_01a165563d2e77d080b1f145c8cb18a2-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/22/01a16549-901c-75e2-9d8e-83e7728c7d77/tool-outputs/01a16556-4abb-7670-8f68-357266b44bc4/call_01a165563d2e77d080b1f145c8cb18a2-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\stranded-horizons\\shared\\world.js","hunks":[{"oldStart":1,"oldLines":0,"newStart":1,"newLines":28,"lines":["+// Shared world math (client + server). Server is authoritative.","+export const WORLD = { size: 20000, chunkSize: 200, chunksPerSide: 100, gridCells: 20 };","+","+export function getEfficiency(x, y) {","+  const d = Math.hypot(x, y);","+  return Math.max(30, 100 - d * 0.005);","+}","+","+export function applyBonuses(base, { faction = false, boosterActive = false } = {}) {","+  let e = base;","+  if (faction) e += 10;","+  if (boosterActive) e += 10;","+  return Math.min(100, Math.max(0, e));","+}","+","+export function chunkOf(x, y) {","+  return {","+    cx: Math.floor((x + WORLD.size / 2) / WORLD.chunkSize),","+    cy: Math.floor((y + WORLD.size / 2) / WORLD.chunkSize),","+  };","+}","+","+export function chunkCenter(cx, cy) {","+  return {","+    x: (cx - WORLD.chunksPerSide / 2) * WORLD.chunkSize + WORLD.chunkSize / 2,","+    y: (cy - WORLD.chunksPerSide / 2) * WORLD.chunkSize + WORLD.chunkSize / 2,","+  };","+}"]}]}]}

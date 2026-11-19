@@ -1,0 +1,132 @@
+﻿// Goose-Port-Spiegel von: app/tools.js
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: app/tools.js");
+}
+
+// ---- Original-Code (app/tools.js), unveraendert, als Inline-Doku ----
+// // In-browser ports of the small Python CLI tools. Logic mirrors the original
+// // scripts in projects/; where an original had a bug (dead code paths, wrong
+// // category boundary), the original behaviour is kept and noted per tool.
+// window.d5Tools = (function () {
+//   function r2(x) { return Math.round(x * 100) / 100; }
+//
+//   // --- Calculator (projects/archive-unsorted-calculator/main.py) ---
+//   var CALC_OPS = [
+//     ['1', 'Addition', 2], ['2', 'Subtraction', 2], ['3', 'Multiplication', 2],
+//     ['4', 'Division', 2], ['5', 'Power', 2], ['6', 'Square Root', 1],
+//     ['7', 'Factorial', 1], ['8', 'Sine (degrees)', 1], ['9', 'Cosine (degrees)', 1],
+//     ['10', 'Tangent (degrees)', 1], ['11', 'Log10', 1], ['12', 'Natural Log', 1],
+//     ['13', 'Absolute Value', 1], ['14', 'Floor', 1], ['15', 'Ceiling', 1],
+//     ['16', 'Modulo', 2], ['17', 'Percentage', 1], ['18', 'Square', 1],
+//     ['19', 'Cube', 1], ['20', 'Inverse', 1], ['21', 'Exponential', 1],
+//     ['22', 'Degrees to Radians', 1], ['23', 'Radians to Degrees', 1],
+//     ['24', 'Hypotenuse', 2], ['25', 'Fibonacci', 1]
+//   ];
+//   function factorial(a) {
+//     a = Math.trunc(a);
+//     if (a < 0) return 'Error: Cannot calculate factorial of negative number';
+//     if (a === 0) return 1;
+//     var r = 1; for (var i = 2; i <= a; i++) r *= i; return r;
+//   }
+//   function fibonacci(n) {
+//     n = Math.trunc(n);
+//     if (n <= 0) return 'Error: Input must be positive';
+//     if (n === 1 || n === 2) return 1;
+//     var a = 1, b = 1;
+//     for (var i = 3; i <= n; i++) { var t = a + b; a = b; b = t; }
+//     return b;
+//   }
+//   function calc(op, a, b) {
+//     switch (op) {
+//       case '1': return a + b; case '2': return a - b; case '3': return a * b;
+//       case '4': return b === 0 ? 'Error: Division by zero' : a / b;
+//       case '5': return Math.pow(a, b);
+//       case '6': return a < 0 ? 'Error: Cannot calculate square root of negative number' : Math.sqrt(a);
+//       case '7': return factorial(a);
+//       case '8': return Math.sin(a * Math.PI / 180);
+//       case '9': return Math.cos(a * Math.PI / 180);
+//       case '10': return Math.tan(a * Math.PI / 180);
+//       case '11': return a <= 0 ? 'Error: Cannot calculate log of non-positive number' : Math.log10(a);
+//       case '12': return a <= 0 ? 'Error: Cannot calculate log of non-positive number' : Math.log(a);
+//       case '13': return Math.abs(a);
+//       case '14': return Math.floor(a); case '15': return Math.ceil(a);
+//       case '16': return b === 0 ? 'Error: Division by zero' : a % b;
+//       case '17': return a / 100; case '18': return a * a; case '19': return a * a * a;
+//       case '20': return a === 0 ? 'Error: Division by zero' : 1 / a;
+//       case '21': return Math.exp(a);
+//       // 22/23: original put these in the one-number list but never dispatched
+//       // them (dead paths); the port implements them as intended.
+//       case '22': return a * Math.PI / 180; case '23': return a * 180 / Math.PI;
+//       case '24': return Math.hypot(a, b);
+//       case '25': return fibonacci(a);
+//       default: return 'Invalid choice. Please choose a number between 1 and 25.';
+//     }
+//   }
+//
+//   // --- BMI (projects/archive-unsorted-bodymassindex/main.py) ---
+//   // Thresholds copied verbatim, including the 24.9-25.0 gap that falls
+//   // through to Adipositas in the original.
+//   function bmi(weight, height) {
+//     if (!(weight > 0) || !(height > 0)) return 'Gewicht und Grösse müssen positive Werte sein.';
+//     var v = weight / (height * height);
+//     var cat = v < 18.5 ? 'Untergewicht'
+//       : (v >= 18.5 && v < 24.9) ? 'Normalgewicht'
+//       : (v >= 25 && v < 29.9) ? 'Übergewicht' : 'Adipositas';
+//     return 'Ihr BMI beträgt: ' + v.toFixed(2) + '\nSie haben: ' + cat;
+//   }
+//
+//   // --- Fractions (projects/archive-unsorted-die_klasse_bruch/main.py) ---
+//   function gcd(a, b) { a = Math.abs(a); b = Math.abs(b); while (b) { var t = a % b; a = b; b = t; } return a || 1; }
+//   var bruch = {
+//     z: 0, n: 1,
+//     set: function (z, n) { this.z = z; this.n = (n === 0 ? 1 : n); },
+//     expand: function (f) { this.z *= f; this.n *= f; },
+//     reduce: function () { var g = gcd(this.z, this.n); this.z = this.z / g; this.n = this.n / g; },
+//     text: function () { return this.z + ' / ' + this.n; }
+//   };
+//
+//   // --- Tokyo Metro pricing (projects/archive-unsorted-tokyo-metro-pricing) ---
+//   function tokyo(km) {
+//     if (!(km > 0)) return 'Bitte eine positive Strecke eingeben.';
+//     var adult = km <= 6 ? 170 : km <= 11 ? 200 : km <= 19 ? 250 : km <= 27 ? 290 : 320;
+//     var child = Math.ceil((adult / 2) / 10) * 10;
+//     return 'Der Fahrpreis für ' + km + ' km beträgt:\nErwachsene: ' + adult + ' Yen\nKinder: ' + child + ' Yen';
+//   }
+//
+//   // --- Kilometerzaehler (projects/archive-unsorted-kilometerz-hler/main.py) ---
+//   function verbrauch(previous, now, litres) {
+//     var dist = now - previous;
+//     if (!(dist > 0)) return 'Der Kilometerstand muss steigen (jetzt > vorher).';
+//     return 'Der durchschnittliche Verbrauch beträgt ' + r2(litres / dist * 100).toFixed(2) + ' Liter pro 100 Kilometer.';
+//   }
+//
+//   // --- Wetter Daten Analyse (old-code.py parser section) ---
+//   // Original script is a scratchpad; only the record parser + sort below
+//   // are portable. The text-diff helper from the file is not ported.
+//   var PAT = /^\s*(\d+)\s*\|\s*([^|]+)\s*\|\s*([\d-]+)\s*\|\s*([\d.]+)\s*$/;
+//   function parseWetter(text) {
+//     var out = [], errors = [];
+//     text.split(/\r?\n/).forEach(function (line, i) {
+//       if (!line.trim()) return;
+//       var m = PAT.exec(line);
+//       if (!m) { errors.push('Zeile ' + (i + 1) + ' ungültig: ' + line); return; }
+//       out.push({ id: parseInt(m[1], 10), name: m[2].trim(), date: m[3], value: parseFloat(m[4]) });
+//     });
+//     out.sort(function (a, b) {
+//       if (a.id !== b.id) return a.id - b.id;
+//       if (a.date !== b.date) return a.date < b.date ? 1 : -1; // date descending
+//       return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+//     });
+//     return { records: out, errors: errors };
+//   }
+//   var WETTER_SAMPLE = '42 | Müller | 2025-11-01 | 123.45\n7  | Schmidt| 2024-06-20 |  98.00\n42 | Mueller| 2025-11-02 | 123.50';
+//
+//   return {
+//     CALC_OPS: CALC_OPS, calc: calc, bmi: bmi, bruch: bruch,
+//     tokyo: tokyo, verbrauch: verbrauch, parseWetter: parseWetter, WETTER_SAMPLE: WETTER_SAMPLE
+//   };
+// })();
+//

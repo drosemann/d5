@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189a4-797e-7673-9806-c3c88f43b214/call_01a189a46aa6755c867a134e6e6e62cc-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189a4-797e-7673-9806-c3c88f43b214/call_01a189a46aa6755c867a134e6e6e62cc-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189a4-797e-7673-9806-c3c88f43b214/call_01a189a46aa6755c867a134e6e6e62cc-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\TRAUMALANG-GAPS.md","hunks":[{"oldStart":301,"oldLines":6,"newStart":301,"newLines":8,"lines":[" "," - `scripts/prerequisites-check.tl` (neu) Warnungen: Zeile 27 (`while` ueber `$#` mit `shift`/`case`); Zeilen 34/36/40 (`check_command` mit `command -v`, Versions-Subshell mit `head -1`); Zeile 53 (`docker compose version` mit Plugin-Fallback auf `docker-compose`); Zeile 61 (`FAILED`-Zaehler mit `((FAILED++))` und Exit-Codes)"," ","+- `scripts/verify.tl` (neu) Warnungen: Zeile 37 (`while` ueber `$#` mit `shift`/`case`); Zeile 47 (`IFS` read mit Here-String); Zeilen 49/53 (`run_stage` mit `shift` und `\"$@\"`-Call); Zeilen 64/65 (`for` ueber Array mit `case`-Dispatch); Zeilen 67/69/72/76/84 (Stufen-Kommandos als Arrays, Offline-Flag-Anhang, Datei-Guards mit `continue`); Zeilen 106/112 (JSON-Aufbau via String-Concat, `printf`-Summary)","+"," ## 5. Sonstiges für den nächsten Agenten"," "," - `--roast`-Modus des Rewriters wurde nie verwendet; sarkastische Marker"]}]}]}

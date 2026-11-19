@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189a6-f099-73d0-8633-88c69aca8799/call_01a189a6e36c767a9f37de3ba4758b47-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189a6-f099-73d0-8633-88c69aca8799/call_01a189a6e36c767a9f37de3ba4758b47-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189a6-f099-73d0-8633-88c69aca8799/call_01a189a6e36c767a9f37de3ba4758b47-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\TRAUMALANG-GAPS.md","hunks":[{"oldStart":309,"oldLines":6,"newStart":309,"newLines":8,"lines":[" "," - `scripts/setup.tl` (neu) Warnungen: Zeile 4 (`BASH_SOURCE`-Pfadaufloesung); Zeile 32 (`while` ueber `$#` mit `shift`/`case`); Zeilen 42/78 (Service- und Infra-Arrays); Zeilen 48/63/84/92 (`check_command` mit `command -v`, Guards mit `||`/`if`, `for`-Schleifen ueber Arrays); Zeile 98 (`basename`-Subshell); Zeilen 105/106 (`.env`-Anlage via `cp`)"," ","+- `scripts/release.tl` (neu) Warnungen: Zeile 4 (`BASH_SOURCE`-Pfadaufloesung); Zeile 39 (`while` ueber `$#` mit `shift`/`case`, Kurz- und Langflags); Zeile 62 (Artwork-Auswahl via `find` plus `shuf` plus `cp`); Zeile 69 (`git diff --quiet`-Clean-Check); Zeilen 74/86/87/92 (git tag/add/commit/push, `date`-Subshell, `printf`-Changelog); Zeile 96 (`gh release upload` mit `||`-Warnfallback)","+"," ## 5. Sonstiges für den nächsten Agenten"," "," - `--roast`-Modus des Rewriters wurde nie verwendet; sarkastische Marker"]}]}]}

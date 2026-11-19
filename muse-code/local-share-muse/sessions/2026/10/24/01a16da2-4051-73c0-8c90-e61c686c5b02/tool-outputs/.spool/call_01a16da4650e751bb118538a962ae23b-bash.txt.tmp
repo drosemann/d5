@@ -1,0 +1,16 @@
+Get-ChildItem : Es wurde kein Parameter gefunden, der dem Parameternamen "la" entspricht.
+In Zeile:1 Zeichen:4
++ ls -la; echo ===; Get-ChildItem -Recurse -Depth 2 -Include LICENSE*,C ...
++    ~~~
+    + CategoryInfo          : InvalidArgument: (:) [Get-ChildItem], ParameterBindingException
+    + FullyQualifiedErrorId : NamedParameterNotFound,Microsoft.PowerShell.Commands.GetChildItemCommand
+ 
+===
+
+FullName                                                         
+--------                                                         
+\\?\C:\Users\danie\OneDrive\github-repos\ed-docs\web\package.json
+\\?\C:\Users\danie\OneDrive\github-repos\ed-docs\COPYING         
+\\?\C:\Users\danie\OneDrive\github-repos\ed-docs\README.md       
+
+

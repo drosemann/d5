@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18954-4565-7c03-b59d-96f6f90305fd/tool-outputs/01a18958-34cf-7751-99c5-a11bb781b13c/call_01a189582798777ca58d529777017770-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18954-4565-7c03-b59d-96f6f90305fd/tool-outputs/01a18958-34cf-7751-99c5-a11bb781b13c/call_01a189582798777ca58d529777017770-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18954-4565-7c03-b59d-96f6f90305fd/tool-outputs/01a18958-34cf-7751-99c5-a11bb781b13c/call_01a189582798777ca58d529777017770-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\TraumaLang\\src\\codegen.c","hunks":[{"oldStart":434,"oldLines":13,"newStart":434,"newLines":15,"lines":["     fprintf(out, \"\\nint main(void) {\\n\");","     fprintf(out, \"    srand(1337);\\n\");","     fprintf(out, \"    tl_startup_banner();\\n\");","-    emit_implicits(prog->body, out, 1);","+    scope_push(prog->body, NULL);","+    emit_implicits_fn(prog->body, NULL, out, 1);","     /* Pass 2: Anweisungen der obersten Ebene (Funktionsdefinitionen ueberspringen). */","     for (l = prog->body; l; l = l->next) {","         if (l->node->kind == N_FUNCDEF) continue;","-        if (gen_stmt(l->node, out, 1, &err)) { if (err_out) *err_out = err; return -1; }","+        if (gen_stmt(l->node, out, 1, &err)) { scope_pop(); if (err_out) *err_out = err; return -1; }","     }","-    if (body_has_func(prog->body, \"main\")) fprintf(out, \"    tlf_main();\\n\");","+    if (body_has_func(prog->body, \"main\")) fprintf(out, \"    (void)tlf_main();\\n\");","+    scope_pop();","     fprintf(out, \"    return 0;\\n}\\n\");","     return 0;"," }"]}]}]}

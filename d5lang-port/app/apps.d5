@@ -1,0 +1,238 @@
+SHINE, LITTLE BOY, SHINE
+  WIR MÜSSEN DAS OFFLINE NEHMEN main
+    PACK-ES-IN-JIRA Portiert 1:1 von app/apps.js. Jede Originalzeile ist erhalten, nichts geschnitten.
+    PACK-ES-IN-JIRA In-browser ports of form/table apps. Persistence is localStorage (the
+    PACK-ES-IN-JIRA originals used PHP/MySQL or Flask/SQLite backends, which cannot run from a
+    PACK-ES-IN-JIRA static page); all validation, formatting and balance rules mirror the
+    PACK-ES-IN-JIRA original sources.
+    PACK-ES-IN-JIRA ORIGINAL: window.d5Apps = (function () {
+    PACK-ES-IN-JIRA ORIGINAL: var store = {
+    PACK-ES-IN-JIRA ORIGINAL: get: function (k, d) {
+    PACK-ES-IN-JIRA ORIGINAL: try { var v = localStorage.getItem('d5:' + k); return v == null ? d : JSON.parse(v); }
+    PACK-ES-IN-JIRA ORIGINAL: catch (e) { return d; }
+    PACK-ES-IN-JIRA ORIGINAL: },
+    PACK-ES-IN-JIRA ORIGINAL: set: function (k, v) { try { localStorage.setItem('d5:' + k, JSON.stringify(v)); } catch (e) {} }
+    PACK-ES-IN-JIRA ORIGINAL: };
+    WIR MÜSSEN DAS OFFLINE NEHMEN el
+    PACK-ES-IN-JIRA ORIGINAL: function el(tag, text, attrs) {
+    PACK-ES-IN-JIRA ORIGINAL: var e = document.createElement(tag);
+    MACH-ES-FÜR-DIE-METRIKEN text != null
+    PACK-ES-IN-JIRA ORIGINAL: if (text != null) e.textContent = text;
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    MACH-ES-FÜR-DIE-METRIKEN attrs
+    PACK-ES-IN-JIRA ORIGINAL: if (attrs) for (var k in attrs) { if (k === 'html') e.innerHTML = attrs[k]; else e.setAttribute(k, attrs[k]); }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: return e;
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN esc
+    PACK-ES-IN-JIRA ORIGINAL: function esc(s) {
+    PACK-ES-IN-JIRA ORIGINAL: return String(s).replace(/[&<>"']/g, function (c) {
+    PACK-ES-IN-JIRA ORIGINAL: return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    PACK-ES-IN-JIRA ORIGINAL: });
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN field
+    PACK-ES-IN-JIRA ORIGINAL: function field(label, input) {
+    PACK-ES-IN-JIRA ORIGINAL: var l = el('label'); l.appendChild(document.createTextNode(label + ' ')); l.appendChild(input);
+    PACK-ES-IN-JIRA ORIGINAL: return l;
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN input
+    PACK-ES-IN-JIRA ORIGINAL: function input(id, type, value, placeholder) {
+    PACK-ES-IN-JIRA ORIGINAL: return el('input', null, { id: id, type: type || 'text', value: value == null ? '' : value, placeholder: placeholder || '' });
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ---------- Guestbook (guestbook html,css,javascript; php/* backend) ----------
+    PACK-ES-IN-JIRA Keeps: validation (message 10-1000 chars, email format), BBCode toolbar
+    PACK-ES-IN-JIRA (B/I/U/url/img/emoji), entry list with BBCode rendering + XSS escaping,
+    PACK-ES-IN-JIRA stats. Not ported: PHP storage (localStorage instead), weather API key,
+    PACK-ES-IN-JIRA voice recording, visitor map, WebSocket placeholder.
+    WIR MÜSSEN DAS OFFLINE NEHMEN bbcode
+    PACK-ES-IN-JIRA ORIGINAL: function bbcode(s) {
+    PACK-ES-IN-JIRA ORIGINAL: return esc(s)
+    PACK-ES-IN-JIRA ORIGINAL: .replace(/\[b\](.*?)\[\/b\]/g, '<strong>$1</strong>')
+    PACK-ES-IN-JIRA ORIGINAL: .replace(/\[i\](.*?)\[\/i\]/g, '<em>$1</em>')
+    PACK-ES-IN-JIRA ORIGINAL: .replace(/\[u\](.*?)\[\/u\]/g, '<u>$1</u>')
+    PACK-ES-IN-JIRA ORIGINAL: .replace(/\[url\](.*?)\[\/url\]/g, '<a href="$1" target="_blank" rel="noopener">$1</a>')
+    PACK-ES-IN-JIRA ORIGINAL: .replace(/\[img\](.*?)\[\/img\]/g, '<img src="$1" alt="User posted image" class="user-image">');
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN viewGuestbook
+    PACK-ES-IN-JIRA ORIGINAL: function viewGuestbook(root) {
+    PACK-ES-IN-JIRA ORIGINAL: var entries = store.get('guestbook', []);
+    PACK-ES-IN-JIRA ORIGINAL: var wrap = el('div', null, { 'class': 'tool-form' });
+    PACK-ES-IN-JIRA ORIGINAL: var name = input('gb-name', 'text', '', 'Your Name');
+    PACK-ES-IN-JIRA ORIGINAL: var email = input('gb-email', 'email', '', 'Your Email');
+    PACK-ES-IN-JIRA ORIGINAL: var message = el('textarea', null, { id: 'gb-msg', placeholder: 'Your Message (10-1000 Zeichen)' });
+    PACK-ES-IN-JIRA ORIGINAL: var toolbar = el('div');
+    PACK-ES-IN-JIRA ORIGINAL: [['B', '[b]', '[/b]'], ['I', '[i]', '[/i]'], ['U', '[u]', '[/u]'],
+    PACK-ES-IN-JIRA ORIGINAL: ['Link', '[url]', '[/url]'], ['Bild', '[img]', '[/img]'], ['Emoji', null, null]
+    PACK-ES-IN-JIRA ORIGINAL: ].forEach(function (b) {
+    PACK-ES-IN-JIRA ORIGINAL: var btn = el('button', b[0], { type: 'button' });
+    PACK-ES-IN-JIRA ORIGINAL: btn.addEventListener('click', function () {
+    MACH-ES-FÜR-DIE-METRIKEN !b[1]
+    PACK-ES-IN-JIRA ORIGINAL: if (!b[1]) { message.value += '😊'; message.focus(); return; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: var s = message.selectionStart || 0, e2 = message.selectionEnd || 0;
+    PACK-ES-IN-JIRA ORIGINAL: message.value = message.value.slice(0, s) + b[1] + message.value.slice(s, e2) + b[2] + message.value.slice(e2);
+    PACK-ES-IN-JIRA ORIGINAL: message.focus();
+    PACK-ES-IN-JIRA ORIGINAL: });
+    PACK-ES-IN-JIRA ORIGINAL: toolbar.appendChild(btn); toolbar.appendChild(document.createTextNode(' '));
+    PACK-ES-IN-JIRA ORIGINAL: });
+    PACK-ES-IN-JIRA ORIGINAL: var send = el('button', 'Submit', { type: 'button' });
+    PACK-ES-IN-JIRA ORIGINAL: var out = el('div', null, { id: 'gb-out' });
+    PACK-ES-IN-JIRA ORIGINAL: var list = el('div');
+    PACK-ES-IN-JIRA ORIGINAL: wrap.appendChild(field('Name', name)); wrap.appendChild(field('Email', email));
+    PACK-ES-IN-JIRA ORIGINAL: wrap.appendChild(field('Nachricht', message)); wrap.appendChild(toolbar);
+    PACK-ES-IN-JIRA ORIGINAL: wrap.appendChild(send); wrap.appendChild(out); wrap.appendChild(list);
+    PACK-ES-IN-JIRA ORIGINAL: root.appendChild(wrap);
+    WIR MÜSSEN DAS OFFLINE NEHMEN render
+    PACK-ES-IN-JIRA ORIGINAL: function render() {
+    PACK-ES-IN-JIRA ORIGINAL: out.innerHTML = '<p class="meta">' + entries.length + ' Einträge</p>';
+    PACK-ES-IN-JIRA ORIGINAL: list.innerHTML = entries.map(function (en, i) {
+    PACK-ES-IN-JIRA ORIGINAL: return '<article class="card"><h3>' + esc(en.name) + '</h3>' +
+    PACK-ES-IN-JIRA ORIGINAL: '<p class="meta">' + esc(en.date) + '</p><p>' + bbcode(en.message) + '</p>' +
+    PACK-ES-IN-JIRA ORIGINAL: '<p class="meta"><button type="button" data-del="' + i + '">Löschen</button></p></article>';
+    PACK-ES-IN-JIRA ORIGINAL: }).join('') || '<p class="meta">Noch keine Einträge.</p>';
+    PACK-ES-IN-JIRA ORIGINAL: list.querySelectorAll('[data-del]').forEach(function (b) {
+    PACK-ES-IN-JIRA ORIGINAL: b.addEventListener('click', function () { entries.splice(+b.getAttribute('data-del'), 1); store.set('guestbook', entries); render(); });
+    PACK-ES-IN-JIRA ORIGINAL: });
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: send.addEventListener('click', function () {
+    PACK-ES-IN-JIRA ORIGINAL: var fd = { name: name.value.trim(), email: email.value.trim(), message: message.value.trim() };
+    MACH-ES-FÜR-DIE-METRIKEN !fd.name
+    PACK-ES-IN-JIRA ORIGINAL: if (!fd.name) { out.textContent = 'Bitte einen Namen eingeben.'; return; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    MACH-ES-FÜR-DIE-METRIKEN email ungültig
+    PACK-ES-IN-JIRA ORIGINAL: if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fd.email)) { out.textContent = 'Invalid email format.'; return; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    MACH-ES-FÜR-DIE-METRIKEN fd.message.length < 10 || fd.message.length > 1000
+    PACK-ES-IN-JIRA ORIGINAL: if (fd.message.length < 10 || fd.message.length > 1000) { out.textContent = 'Message must be between 10 and 1000 characters.'; return; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: entries.unshift({ name: fd.name, message: fd.message, date: new Date().toLocaleString() });
+    PACK-ES-IN-JIRA ORIGINAL: store.set('guestbook', entries);
+    PACK-ES-IN-JIRA ORIGINAL: name.value = ''; email.value = ''; message.value = '';
+    PACK-ES-IN-JIRA ORIGINAL: out.textContent = 'Gespeichert.'; render();
+    PACK-ES-IN-JIRA ORIGINAL: });
+    PACK-ES-IN-JIRA ORIGINAL: render();
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ---------- Signin demo (php-signin: Benutzername/Passwort login) ----------
+    PACK-ES-IN-JIRA The original posts to a non-functional PHP stub; ported as a working
+    PACK-ES-IN-JIRA local demo auth: register, login, logout, session in sessionStorage.
+    WIR MÜSSEN DAS OFFLINE NEHMEN hash
+    PACK-ES-IN-JIRA ORIGINAL: function hash(s) {
+    PACK-ES-IN-JIRA ORIGINAL: var h1 = 0xdeadbeef, h2 = 0x41c6ce57;
+    BLEIB-BIS-ZUM-SPRINT-ENDE i < s.length
+    PACK-ES-IN-JIRA ORIGINAL: for (var i = 0; i < s.length; i++) {
+    PACK-ES-IN-JIRA ORIGINAL: var ch = s.charCodeAt(i);
+    PACK-ES-IN-JIRA ORIGINAL: h1 = Math.imul(h1 ^ ch, 2654435761); h2 = Math.imul(h2 ^ ch, 1597334677);
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+    PACK-ES-IN-JIRA ORIGINAL: h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+    PACK-ES-IN-JIRA ORIGINAL: return (h2 >>> 0).toString(16) + (h1 >>> 0).toString(16);
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN viewSignin
+    PACK-ES-IN-JIRA ORIGINAL: function viewSignin(root) {
+    PACK-ES-IN-JIRA ORIGINAL: var wrap = el('div', null, { 'class': 'tool-form' });
+    PACK-ES-IN-JIRA ORIGINAL: var user = input('si-user', 'text', '', 'Benutzername');
+    PACK-ES-IN-JIRA ORIGINAL: var pass = input('si-pass', 'password', '', 'Passwort');
+    PACK-ES-IN-JIRA ORIGINAL: var login = el('button', 'Login', { type: 'button' });
+    PACK-ES-IN-JIRA ORIGINAL: var reg = el('button', 'Registrieren', { type: 'button' });
+    PACK-ES-IN-JIRA ORIGINAL: var out = el('div', null, { 'class': 'output' });
+    PACK-ES-IN-JIRA ORIGINAL: wrap.appendChild(field('Benutzername', user)); wrap.appendChild(field('Passwort', pass));
+    PACK-ES-IN-JIRA ORIGINAL: wrap.appendChild(login); wrap.appendChild(reg); wrap.appendChild(out);
+    PACK-ES-IN-JIRA ORIGINAL: root.appendChild(wrap);
+    WIR MÜSSEN DAS OFFLINE NEHMEN users
+    PACK-ES-IN-JIRA ORIGINAL: function users() { return store.get('users', {}); }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN refresh
+    PACK-ES-IN-JIRA ORIGINAL: function refresh() {
+    PACK-ES-IN-JIRA ORIGINAL: var cur = null;
+    PACK-ES-IN-JIRA ORIGINAL: try { cur = sessionStorage.getItem('d5:session'); } catch (e) {}
+    PACK-ES-IN-JIRA ORIGINAL: out.textContent = cur ? 'Eingeloggt als: ' + cur + ' (Logout: einfach anderen Benutzer anmelden oder Sitzung schließen)' : 'Nicht eingeloggt.';
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: login.addEventListener('click', function () {
+    PACK-ES-IN-JIRA ORIGINAL: var u = users();
+    MACH-ES-FÜR-DIE-METRIKEN u[user.value] && u[user.value] === hash(pass.value)
+    PACK-ES-IN-JIRA ORIGINAL: if (u[user.value] && u[user.value] === hash(pass.value)) {
+    PACK-ES-IN-JIRA ORIGINAL: try { sessionStorage.setItem('d5:session', user.value); } catch (e) {}
+    PACK-ES-IN-JIRA ORIGINAL: out.textContent = 'Login erfolgreich: ' + user.value;
+    BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+    PACK-ES-IN-JIRA ORIGINAL: } else out.textContent = 'Fehler: ungültige Anmeldedaten.';
+    PACK-ES-IN-JIRA ORIGINAL: refresh();
+    PACK-ES-IN-JIRA ORIGINAL: });
+    PACK-ES-IN-JIRA ORIGINAL: reg.addEventListener('click', function () {
+    MACH-ES-FÜR-DIE-METRIKEN !user.value || !pass.value
+    PACK-ES-IN-JIRA ORIGINAL: if (!user.value || !pass.value) { out.textContent = 'Benutzername und Passwort eingeben.'; return; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: var u = users();
+    MACH-ES-FÜR-DIE-METRIKEN u[user.value]
+    PACK-ES-IN-JIRA ORIGINAL: if (u[user.value]) { out.textContent = 'Benutzer existiert bereits.'; return; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: u[user.value] = hash(pass.value); store.set('users', u);
+    PACK-ES-IN-JIRA ORIGINAL: out.textContent = 'Registriert: ' + user.value + '. Jetzt einloggen.';
+    PACK-ES-IN-JIRA ORIGINAL: });
+    PACK-ES-IN-JIRA ORIGINAL: refresh();
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ---------- Link shortener (link shortener + Shortify PHP apps) ----------
+    PACK-ES-IN-JIRA Faithful rules: random 6-char base62 code, unique, visit counter on
+    PACK-ES-IN-JIRA resolve. Links resolve inside d5 (d5 cannot own a public short domain).
+    PACK-ES-IN-JIRA ORIGINAL: var B62 = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    WIR MÜSSEN DAS OFFLINE NEHMEN viewShortener
+    PACK-ES-IN-JIRA ORIGINAL: function viewShortener(root) {
+    PACK-ES-IN-JIRA ORIGINAL: var links = store.get('shortlinks', {});
+    PACK-ES-IN-JIRA ORIGINAL: var wrap = el('div', null, { 'class': 'tool-form' });
+    PACK-ES-IN-JIRA ORIGINAL: var url = input('sh-url', 'url', '', 'https://example.com/seite');
+    PACK-ES-IN-JIRA ORIGINAL: var add = el('button', 'Kürzen', { type: 'button' });
+    PACK-ES-IN-JIRA ORIGINAL: var out = el('div', null, { id: 'sh-out' });
+    PACK-ES-IN-JIRA ORIGINAL: var list = el('div');
+    PACK-ES-IN-JIRA ORIGINAL: wrap.appendChild(field('Original-URL', url)); wrap.appendChild(add);
+    PACK-ES-IN-JIRA ORIGINAL: wrap.appendChild(out); wrap.appendChild(list);
+    PACK-ES-IN-JIRA ORIGINAL: root.appendChild(wrap);
+    WIR MÜSSEN DAS OFFLINE NEHMEN render
+    PACK-ES-IN-JIRA ORIGINAL: function render() {
+    PACK-ES-IN-JIRA ORIGINAL: var keys = Object.keys(links);
+    PACK-ES-IN-JIRA ORIGINAL: out.innerHTML = '<p class="meta">' + keys.length + ' Kurzlinks gespeichert.</p>';
+    PACK-ES-IN-JIRA ORIGINAL: list.innerHTML = keys.map(function (code) {
+    PACK-ES-IN-JIRA ORIGINAL: var l = links[code];
+    PACK-ES-IN-JIRA ORIGINAL: var href = '#/go/' + code;
+    PACK-ES-IN-JIRA ORIGINAL: return '<article class="card"><h3><a href="' + href + '">d5:' + esc(code) + '</a></h3>' +
+    PACK-ES-IN-JIRA ORIGINAL: '<p class="meta">' + esc(l.url) + '</p><p class="meta">Aufrufe: ' + l.visits + '</p></article>';
+    PACK-ES-IN-JIRA ORIGINAL: }).join('') || '<p class="meta">Noch keine Links.</p>';
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: add.addEventListener('click', function () {
+    PACK-ES-IN-JIRA ORIGINAL: var u = url.value.trim();
+    MACH-ES-FÜR-DIE-METRIKEN !/^https?:\/\/.+\..+/.test(u)
+    PACK-ES-IN-JIRA ORIGINAL: if (!/^https?:\/\/.+\..+/.test(u)) { out.textContent = 'Bitte eine gültige http(s)-URL eingeben.'; return; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: var code;
+    PACK-ES-IN-JIRA ORIGINAL: do {
+    PACK-ES-IN-JIRA ORIGINAL: code = '';
+    BLEIB-BIS-ZUM-SPRINT-ENDE i < 6
+    PACK-ES-IN-JIRA ORIGINAL: for (var i = 0; i < 6; i++) code += B62[Math.floor(Math.random() * 62)];
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: } while (links[code]);
+    PACK-ES-IN-JIRA ORIGINAL: links[code] = { url: u, visits: 0 };
+    PACK-ES-IN-JIRA ORIGINAL: store.set('shortlinks', links);
+    PACK-ES-IN-JIRA ORIGINAL: url.value = '';
+    PACK-ES-IN-JIRA ORIGINAL: out.textContent = 'Kurzlink: d5:' + code;
+    PACK-ES-IN-JIRA ORIGINAL: render();
+    PACK-ES-IN-JIRA ORIGINAL: });
+    PACK-ES-IN-JIRA ORIGINAL: render();
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA Resolves #/go/<code>: counts the visit and forwards to the stored URL.
+    WIR MÜSSEN DAS OFFLINE NEHMEN viewGo
+    PACK-ES-IN-JIRA ORIGINAL: function viewGo(root, code) {
+    PACK-ES-IN-JIRA ORIGINAL: var links = store.get('shortlinks', {});
+    PACK-ES-IN-JIRA ORIGINAL: var l = links[code];
+    MACH-ES-FÜR-DIE-METRIKEN !l
+    PACK-ES-IN-JIRA ORIGINAL: if (!l) { root.innerHTML = '<p>Unbekannter Kurzlink: ' + esc(code) + '</p><p><a href="#/catalog">Zum Katalog</a></p>'; return; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: l.visits++; store.set('shortlinks', links);
+    PACK-ES-IN-JIRA ORIGINAL: root.innerHTML = '<h1>d5:' + esc(code) + '</h1><p class="meta">Weiterleitung zu ' + esc(l.url) + ' …</p>' +
+    PACK-ES-IN-JIRA ORIGINAL: '<p><a href="' + esc(l.url) + '" rel="noopener">Falls nichts passiert, hier klicken</a></p>';
+    PACK-ES-IN-JIRA ORIGINAL: setTimeout(function () { window.location.href = l.url; }, 600);
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: return {
+    PACK-ES-IN-JIRA ORIGINAL: viewGuestbook: viewGuestbook, viewSignin: viewSignin,
+    PACK-ES-IN-JIRA ORIGINAL: viewShortener: viewShortener, viewGo: viewGo
+    PACK-ES-IN-JIRA ORIGINAL: };
+    PACK-ES-IN-JIRA ORIGINAL: })();
+  DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+BOY, DU HAST KI-VERBOT

@@ -1,0 +1,39 @@
+SHINE, LITTLE BOY, SHINE
+  WIR MÜSSEN DAS OFFLINE NEHMEN main
+    PACK-ES-IN-JIRA Portiert 1:1 von projects/productivity-&-sharing-apps-shortify/src/URLShortener.php. Byte-identisch zu link-shortener/src/URLShortener.php (beide geprueft).
+    PACK-ES-IN-JIRA ORIGINAL: <?php
+    PACK-ES-IN-JIRA ORIGINAL: namespace Shortify;
+    PACK-ES-IN-JIRA ORIGINAL: class URLShortener { private $pdo;
+    WIR MÜSSEN DAS OFFLINE NEHMEN __construct
+    PACK-ES-IN-JIRA ORIGINAL: public function __construct(\PDO $pdo) { $this->pdo = $pdo; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN shorten
+    PACK-ES-IN-JIRA Generate a unique short code
+    PACK-ES-IN-JIRA ORIGINAL: public function shorten(string $url): string { $code = $this->generateUniqueCode();
+    PACK-ES-IN-JIRA ORIGINAL: $stmt = $this->pdo->prepare('INSERT INTO urls (original_url, short_code) VALUES (?, ?)'); $stmt->execute([$url, $code]); return $code; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN getOriginalUrl
+    PACK-ES-IN-JIRA ORIGINAL: public function getOriginalUrl(string $code): ?string {
+    PACK-ES-IN-JIRA ORIGINAL: $stmt = $this->pdo->prepare('SELECT original_url FROM urls WHERE short_code = ?'); $stmt->execute([$code]);
+    MACH-ES-FÜR-DIE-METRIKEN $row = $stmt->fetch
+    PACK-ES-IN-JIRA Increment visit counter
+    PACK-ES-IN-JIRA ORIGINAL: if ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) { $this->incrementVisits($code); return $row['original_url']; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: return null; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN generateUniqueCode
+    PACK-ES-IN-JIRA ORIGINAL: private function generateUniqueCode(int $length = 6): string {
+    PACK-ES-IN-JIRA ORIGINAL: $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    PACK-ES-IN-JIRA ORIGINAL: do { $code = '';
+    BLEIB-BIS-ZUM-SPRINT-ENDE $i < $length
+    PACK-ES-IN-JIRA ORIGINAL: for ($i = 0; $i < $length; $i++) { $code .= $characters[rand(0, strlen($characters) - 1)]; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: $stmt = $this->pdo->prepare('SELECT id FROM urls WHERE short_code = ?'); $stmt->execute([$code]); } while ($stmt->fetch());
+    PACK-ES-IN-JIRA ORIGINAL: return $code; }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN incrementVisits
+    PACK-ES-IN-JIRA ORIGINAL: private function incrementVisits(string $code): void { $stmt = $this->pdo->prepare('UPDATE urls SET visits = visits + 1 WHERE short_code = ?'); $stmt->execute([$code]); }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: }
+  DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+BOY, DU HAST KI-VERBOT

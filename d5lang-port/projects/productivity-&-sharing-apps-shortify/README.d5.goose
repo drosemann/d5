@@ -1,0 +1,24 @@
+﻿// Goose-Port-Spiegel von: d5lang-port/projects/productivity-&-sharing-apps-shortify/README.d5
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: d5lang-port/projects/productivity-&-sharing-apps-shortify/README.d5");
+}
+
+// ---- Original-Code (d5lang-port/projects/productivity-&-sharing-apps-shortify/README.d5), unveraendert, als Inline-Doku ----
+// SHINE, LITTLE BOY, SHINE
+//   WIR MÜSSEN DAS OFFLINE NEHMEN main
+//     PACK-ES-IN-JIRA Portiert 1:1 von projects/productivity-&-sharing-apps-shortify/README.md. Byte-identisch zu link-shortener/README.md (beide geprueft).
+//     PACK-ES-IN-JIRA ORIGINAL: # Shortify - URL Shortener
+//     PACK-ES-IN-JIRA ORIGINAL: A simple and efficient URL shortener service built with PHP, MariaDB, and NGINX.
+//     PACK-ES-IN-JIRA ORIGINAL: ## Features: URLs kuerzen, visit counts, Docker, NGINX, MariaDB.
+//     PACK-ES-IN-JIRA ORIGINAL: ## Requirements: Docker, Docker Compose, Git.
+//     PACK-ES-IN-JIRA ORIGINAL: ## Quick Start: git clone, docker-compose up -d, http://localhost.
+//     PACK-ES-IN-JIRA ORIGINAL: ## Development Setup: PHP 8.1 FPM, MariaDB latest, NGINX Alpine. urls-Tabelle mit visit tracking. ENV: DB_HOST/DB_NAME/DB_USER/DB_PASS/DB_PORT.
+//     PACK-ES-IN-JIRA ORIGINAL: ## Production Deployment: nginx domain, credentials, HTTPS, docker-compose up -d.
+//     PACK-ES-IN-JIRA ORIGINAL: ## Security Considerations: HTTPS, starke Passwoerter, Updates, Monitoring.
+//     PACK-ES-IN-JIRA ORIGINAL: ## License: MIT License
+//   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+// BOY, DU HAST KI-VERBOT
+//

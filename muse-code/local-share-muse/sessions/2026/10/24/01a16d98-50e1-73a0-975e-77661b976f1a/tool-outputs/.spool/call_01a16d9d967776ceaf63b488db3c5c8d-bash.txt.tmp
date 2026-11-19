@@ -1,0 +1,82 @@
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+---BRANCH---
+* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/codex/clean-up-repository-for-open-source-readiness
+  remotes/origin/main
+---REMOTE---
+origin	https://github.com/drosemann/ai-chat-webui.git (fetch)
+origin	https://github.com/drosemann/ai-chat-webui.git (push)
+---TAGS---
+---LOG---
+b54e309 Phase 8: final documentation and cleanup
+6988d82 Phase 7: hardening and operator readiness
+c554fa7 Phase 6: memory, models and settings
+360e0a0 Phase 5: home dashboard
+b01b44b Phase 4: projects and tasks
+5766627 Phase 3: workspace shell and persistent chat
+884c245 Phase 2: user accounts and authenticated API access
+932aeb7 Phase 1: self-hosted Supabase infrastructure and workspace data model
+78a76b4 Revise README for clarity and updated features
+c56547d Merge pull request #3 from DaaanielTV/codex/review-code-for-security-issues
+d2870a2 Fix XSS, CORS policy, error leakage, and license mismatch
+11fe789 Update README.md
+b62b070 Merge pull request #2 from DaaanielTV/codex/clean-up-repository-for-open-source-readiness
+cab96d3 docs: avoid binary diff files and add dedicated binary-policy doc
+69de1f3 fix code formatting
+39c1fd0 implemented code formatting
+2fa679f fix spam filter
+4e1ef90 fix spam filter
+d329762 implemented spam filter
+9aa7520 star button github
+---AUTHORS---
+DaaanielTV <125688359+DaaanielTV@users.noreply.github.com>
+DaaanielTV <daniel.rosemann10@gmail.com>
+Daniel Rosemann <daniel.rosemann10@gmail.com>
+---COMMITS-BY-AUTHOR---
+    37	DaaanielTV <daniel.rosemann10@gmail.com>
+     9	Daniel Rosemann <daniel.rosemann10@gmail.com>
+     5	DaaanielTV <125688359+DaaanielTV@users.noreply.github.com>
+---ROOT---
+
+Name               Mode   Length
+----               ----   ------
+.agents            dar--l       
+.eden              dar--l       
+.git               darh-l       
+.hg                dar--l       
+.muse              dar--l       
+.sl                dar--l       
+docs               dar--l       
+supabase           dar--l       
+.env.example       -a---l 747   
+.gitignore         -a---l 14    
+app.js             -a---l 363   
+auth.js            -a---l 6761  
+bootstrap.js       -a---l 19171 
+CODE_OF_CONDUCT.md -a---l 5331  
+CONTRIBUTING.md    -a---l 1501  
+data.js            -a---l 9804  
+home.js            -a---l 9649  
+index.html         -a---l 23145 
+LICENSE            -a---l 35823 
+memory.js          -a---l 2734  
+models.js          -a---l 2535  
+package-lock.json  -a---l 30629 
+package.json       -a---l 450   
+projects.js        -a---l 6097  
+README.md          -a---l 4465  
+SECURITY_REVIEW.md -a---l 1326  
+server.js          -a---l 9208  
+settings.js        -a---l 5430  
+styles.css         -a---l 14236 
+supabaseClient.js  -a---l 2402  
+tasks.js           -a---l 5478  
+utils.js           -a---l 1252  
+workspace.js       -a---l 9632  
+
+
+

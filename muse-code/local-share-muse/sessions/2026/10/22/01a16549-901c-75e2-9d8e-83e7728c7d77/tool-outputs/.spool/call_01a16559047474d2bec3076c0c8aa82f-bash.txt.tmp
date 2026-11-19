@@ -1,0 +1,19 @@
+node : Die Benennung "node" wurde nicht als Name eines Cmdlet, einer Funktion, einer Skriptdatei oder eines 
+ausfÅhrbaren Programms erkannt. öberprÅfen Sie die Schreibweise des Namens, oder ob der Pfad korrekt ist (sofern 
+enthalten), und wiederholen Sie den Vorgang.
+In Zeile:1 Zeichen:1
++ node --version; Write-Host "---SHARED MATH (real engine)---"; node -e ...
++ ~~~~
+    + CategoryInfo          : ObjectNotFound: (node:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+---SHARED MATH (real engine)---
+node : Die Benennung "node" wurde nicht als Name eines Cmdlet, einer Funktion, einer Skriptdatei oder eines 
+ausfÅhrbaren Programms erkannt. öberprÅfen Sie die Schreibweise des Namens, oder ob der Pfad korrekt ist (sofern 
+enthalten), und wiederholen Sie den Vorgang.
+In Zeile:1 Zeichen:63
++ ... --version; Write-Host "---SHARED MATH (real engine)---"; node -e "imp ...
++                                                              ~~~~
+    + CategoryInfo          : ObjectNotFound: (node:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 

@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/24/01a16af4-0730-77d2-b279-88f654bfb01e/tool-outputs/01a16af6-6198-7c52-84ea-6a48db794a8a/call_01a16af659227736bf3c7da05a7ddb6c-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/24/01a16af4-0730-77d2-b279-88f654bfb01e/tool-outputs/01a16af6-6198-7c52-84ea-6a48db794a8a/call_01a16af659227736bf3c7da05a7ddb6c-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/24/01a16af4-0730-77d2-b279-88f654bfb01e/tool-outputs/01a16af6-6198-7c52-84ea-6a48db794a8a/call_01a16af659227736bf3c7da05a7ddb6c-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\docs\\design\\probe2.json","hunks":[{"oldStart":1,"oldLines":1,"newStart":1,"newLines":1,"lines":["-[{\"command\": \"node.create\", \"params\": {\"type\": \"text\", \"name\": \"t-fill-string\", \"text\": \"fill string\", \"props\": {\"fill\": \"#FFFFFF\", \"fontSize\": 24}}}, {\"command\": \"node.create\", \"params\": {\"type\": \"text\", \"name\": \"t-fills-string\", \"text\": \"fills string\", \"props\": {\"fills\": \"#EC4899\", \"fontSize\": 24}}}, {\"command\": \"node.create\", \"params\": {\"type\": \"text\", \"name\": \"t-fills-array\", \"text\": \"fills array\", \"props\": {\"fills\": [{\"color\": \"#22D3EE\"}], \"fontSize\": 24}}}]","+[{\"command\": \"node.create\", \"params\": {\"type\": \"text\", \"name\": \"t-fill-string\", \"text\": \"fill string\", \"props\": {\"fill\": \"#FFFFFF\", \"fontSize\": 24}}}, {\"command\": \"node.create\", \"params\": {\"type\": \"text\", \"name\": \"t-fills-string\", \"text\": \"fills string\", \"props\": {\"fills\": \"#EC4899\", \"fontSize\": 24}}}]"]}]}]}

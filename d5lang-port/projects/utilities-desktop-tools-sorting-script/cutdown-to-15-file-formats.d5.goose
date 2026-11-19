@@ -1,0 +1,35 @@
+﻿// Goose-Port-Spiegel von: d5lang-port/projects/utilities-desktop-tools-sorting-script/cutdown-to-15-file-formats.d5
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: d5lang-port/projects/utilities-desktop-tools-sorting-script/cutdown-to-15-file-formats.d5");
+}
+
+// ---- Original-Code (d5lang-port/projects/utilities-desktop-tools-sorting-script/cutdown-to-15-file-formats.d5), unveraendert, als Inline-Doku ----
+// SHINE, LITTLE BOY, SHINE
+//   WIR MÜSSEN DAS OFFLINE NEHMEN main
+//     PACK-ES-IN-JIRA Portiert 1:1 von projects/utilities-desktop-tools-sorting-script/cutdown-to-15-file-formats.py. Allowlist, BEHALTEN/LOESCHEN.
+//     PACK-ES-IN-JIRA ORIGINAL: import os; import shutil
+//     PACK-ES-IN-JIRA Ordnerpfad zu deiner Ablage
+//     PACK-ES-IN-JIRA ORIGINAL: root_path = r"E:\!Ablage"
+//     PACK-ES-IN-JIRA Liste der Ordnernamen, die behalten werden sollen
+//     PACK-ES-IN-JIRA ORIGINAL: allowed_folders = [exe, jar, msi, zip, rar, docx, xlsx, pdf, mp4, mkv, mp3, wav, jpg, png]
+//     PACK-ES-IN-JIRA Alle Einträge im Ordner auflisten
+//     BLEIB-BIS-ZUM-SPRINT-ENDE folder_name in listdir(root_path)
+//     PACK-ES-IN-JIRA ORIGINAL: for folder_name in os.listdir(root_path): full_path = join(root_path, folder_name)
+//     PACK-ES-IN-JIRA Prüfen, ob es sich um einen Ordner handelt
+//     MACH-ES-FÜR-DIE-METRIKEN isdir(full_path)
+//     PACK-ES-IN-JIRA ORIGINAL: if os.path.isdir(full_path): folder_name_lower = lower
+//     MACH-ES-FÜR-DIE-METRIKEN in allowed_folders
+//     TALK TO THE HAND "[BEHALTEN]"
+//     PACK-ES-IN-JIRA ORIGINAL: if folder_name_lower in allowed_folders: print(f"[BEHALTEN] {folder_name}")
+//     BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+//     PACK-ES-IN-JIRA ORIGINAL: else: try: print(f"[LÖSCHE  ] {folder_name} ...", end=""); shutil.rmtree(full_path); print(" ✔️")
+//     PACK-ES-IN-JIRA ORIGINAL: except Exception as e: print(f"\n[FEHLER  ] {folder_name}: {e}")
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+// BOY, DU HAST KI-VERBOT
+//

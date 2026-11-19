@@ -1,0 +1,72 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: syntax check (app/)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Validate package.json
+        run: node -e "JSON.parse(require('fs').readFileSync('package.json','utf8')); console.log('package.json OK')"
+      - name: Syntax-check launcher scripts
+        run: |
+          node --check app/app.js
+          node --check app/catalog.js
+          node --check app/apps.js
+          node --check app/tools.js
+          node --check app/games.js
+          node --check app/mc-games.js
+          node --check app/mc-tools.js
+          node --check app/mc-misc.js
+          node --check app/apps2.js
+          node -e "JSON.parse(require('fs').readFileSync('app/catalog.json','utf8')); console.log('catalog.json OK')"
+
+  solid:
+    name: build (app-solid/)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: app-solid/package-lock.json
+      - name: Install and build
+        working-directory: app-solid
+        run: |
+          npm ci
+          npm run build
+
+  d5lang:
+    name: build (d5lang/)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and smoke test
+        working-directory: d5lang
+        run: |
+          make build
+          make test
+
+  verify:
+    name: verify port parity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run verify_port.py
+        run: python app-solid/verify_port.py

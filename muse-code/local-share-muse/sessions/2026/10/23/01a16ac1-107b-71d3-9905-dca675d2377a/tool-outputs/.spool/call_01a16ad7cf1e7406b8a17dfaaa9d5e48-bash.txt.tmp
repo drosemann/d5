@@ -1,0 +1,3 @@
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+[main 12a85ec] docs: note Muse Code sub and token-saving setup
+ 1 file changed, 2 insertions(+)

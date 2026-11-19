@@ -1,0 +1,86 @@
+﻿# Zimbu-Port-Spiegel von: d5lang-port\projects\archive-unsorted-php-signin\index.d5
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE index_d5
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: d5lang-port\projects\archive-unsorted-php-signin\index.d5\n")
+  RETURN 0
+
+# ---- Original-Code (d5lang-port\projects\archive-unsorted-php-signin\index.d5), unveraendert, als Inline-Doku ----
+# SHINE, LITTLE BOY, SHINE
+#   WIR MÜSSEN DAS OFFLINE NEHMEN main
+#     PACK-ES-IN-JIRA Portiert 1:1 von projects/archive-unsorted-php-signin/index.php. Datei enthaelt das Formular zweimal (Duplikat), beide erhalten.
+#     PACK-ES-IN-JIRA ORIGINAL: <!DOCTYPE html>
+#     PACK-ES-IN-JIRA ORIGINAL: <html lang="de">
+#     PACK-ES-IN-JIRA ORIGINAL: <head>
+#     PACK-ES-IN-JIRA ORIGINAL: <title>Login</title>
+#     PACK-ES-IN-JIRA ORIGINAL: </head>
+#     PACK-ES-IN-JIRA ORIGINAL: <body>
+#     PACK-ES-IN-JIRA ORIGINAL: <h2>Langzeitgeschehen - Login</h2>
+#     PACK-ES-IN-JIRA ORIGINAL: <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_AUTH']); ?>">
+#     PACK-ES-IN-JIRA ORIGINAL: <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+#     PACK-ES-IN-JIRA ORIGINAL: <div id="auth" style="..."></div>
+#     PACK-ES-IN-JIRA ORIGINAL: <input type="text" name="Benutzername" placeholder="Geben Sie den Benutzername an." required>
+#     PACK-ES-IN-JIRA ORIGINAL: <input type="password" name="Passwort" placeholder="Geben Sie das Passwort ein." required>
+#     PACK-ES-IN-JIRA ORIGINAL: <button type="submit" value="Zu Bell" onclick="window.location.href='login.php'">Zu Bell</button>
+#     PACK-ES-IN-JIRA ORIGINAL: </form>
+#     PACK-ES-IN-JIRA ORIGINAL: <script>
+#     PACK-ES-IN-JIRA ORIGINAL: document.getElementById('auth').addEventListener('click', function() {
+#     PACK-ES-IN-JIRA ORIGINAL: var element = this.firstChild;
+#     PACK-ES-IN-JIRA ORIGINAL: var inputElement = this.parentElement.querySelector('input[type="text"]');
+#     PACK-ES-IN-JIRA ORIGINAL: var passwordInput = this.parentElement.querySelector('input[type="password"]');
+#     PACK-ES-IN-JIRA ORIGINAL: var submitButton = this.parentElement.querySelector('button[type="submit"]');
+#     MACH-ES-FÜR-DIE-METRIKEN inputElement
+#     PACK-ES-IN-JIRA ORIGINAL: if (inputElement) {
+#     PACK-ES-IN-JIRA ORIGINAL: // Commented out unnecessary nested event listener
+#     PACK-ES-IN-JIRA ORIGINAL: // document.getElementById('auth').addEventListener('click', function() {
+#     PACK-ES-IN-JIRA ORIGINAL: //     return false;
+#     PACK-ES-IN-JIRA ORIGINAL: // });
+#     PACK-ES-IN-JIRA ORIGINAL: inputElement.click(); inputElement.focus();
+#     PACK-ES-IN-JIRA ORIGINAL: setTimeout(function() { passwordInput.click(); passwordInput.focus(); setTimeout(function() { submitButton.click(); }, 200); this.parentElement.click(); return false; }, 1000);
+#     BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+#     PACK-ES-IN-JIRA ORIGINAL: } else { alert('Fehler: Klicken Sie auf das Login-Formular!'); }
+#     PACK-ES-IN-JIRA ORIGINAL: });
+#     PACK-ES-IN-JIRA ORIGINAL: </script>
+#     PACK-ES-IN-JIRA ORIGINAL: </body>
+#     PACK-ES-IN-JIRA ORIGINAL: </html>
+#     PACK-ES-IN-JIRA DUPLIKAT: gleiche Formular-Block ein zweites Mal (Zeilen 58-110 des Originals), Wortlaut identisch
+#     PACK-ES-IN-JIRA ORIGINAL: <!DOCTYPE html>
+#     PACK-ES-IN-JIRA ORIGINAL: <html lang="de">
+#     PACK-ES-IN-JIRA ORIGINAL: <head>
+#     PACK-ES-IN-JIRA ORIGINAL: <title>Login</title>
+#     PACK-ES-IN-JIRA ORIGINAL: </head>
+#     PACK-ES-IN-JIRA ORIGINAL: <body>
+#     PACK-ES-IN-JIRA ORIGINAL: <h2>Langzeitgeschehen - Login</h2>
+#     PACK-ES-IN-JIRA ORIGINAL: <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_AUTH']); ?>">
+#     PACK-ES-IN-JIRA ORIGINAL: <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+#     PACK-ES-IN-JIRA ORIGINAL: <div id="auth" style="..."></div>
+#     PACK-ES-IN-JIRA ORIGINAL: <input type="text" name="Benutzername" placeholder="Geben Sie den Benutzername an." required>
+#     PACK-ES-IN-JIRA ORIGINAL: <input type="password" name="Passwort" placeholder="Geben Sie das Passwort ein." required>
+#     PACK-ES-IN-JIRA ORIGINAL: <button type="submit" value="Zu Bell" onclick="window.location.href='login.php'">Zu Bell</button>
+#     PACK-ES-IN-JIRA ORIGINAL: </form>
+#     PACK-ES-IN-JIRA ORIGINAL: <script>
+#     PACK-ES-IN-JIRA ORIGINAL: document.getElementById('auth').addEventListener('click', function() {
+#     PACK-ES-IN-JIRA ORIGINAL: var element = this.firstChild;
+#     PACK-ES-IN-JIRA ORIGINAL: var inputElement = this.parentElement.querySelector('input[type="text"]');
+#     PACK-ES-IN-JIRA ORIGINAL: var passwordInput = this.parentElement.querySelector('input[type="password"]');
+#     PACK-ES-IN-JIRA ORIGINAL: var submitButton = this.parentElement.querySelector('button[type="submit"]');
+#     MACH-ES-FÜR-DIE-METRIKEN inputElement
+#     PACK-ES-IN-JIRA ORIGINAL: if (inputElement) {
+#     PACK-ES-IN-JIRA ORIGINAL: // Commented out unnecessary nested event listener
+#     PACK-ES-IN-JIRA ORIGINAL: // document.getElementById('auth').addEventListener('click', function() {
+#     PACK-ES-IN-JIRA ORIGINAL: //     return false;
+#     PACK-ES-IN-JIRA ORIGINAL: // });
+#     PACK-ES-IN-JIRA ORIGINAL: inputElement.click(); inputElement.focus();
+#     PACK-ES-IN-JIRA ORIGINAL: setTimeout(function() { passwordInput.click(); passwordInput.focus(); setTimeout(function() { submitButton.click(); }, 200); this.parentElement.click(); return false; }, 1000);
+#     BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+#     PACK-ES-IN-JIRA ORIGINAL: } else { alert('Fehler: Klicken Sie auf das Login-Formular!'); }
+#     PACK-ES-IN-JIRA ORIGINAL: });
+#     PACK-ES-IN-JIRA ORIGINAL: </script>
+#     PACK-ES-IN-JIRA ORIGINAL: </body>
+#     PACK-ES-IN-JIRA ORIGINAL: </html>
+#   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+# BOY, DU HAST KI-VERBOT
+#

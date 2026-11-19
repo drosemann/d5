@@ -1,0 +1,18 @@
+out-file : Der Zugriff auf den Pfad "C:\Users\danie\AppData\Local\Temp\readme-history.txt" wurde verweigert.
+In Zeile:1 Zeichen:1
++ git -c safe.directory=C:/Users/danie/OneDrive/github-repos/drosemann  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], UnauthorizedAccessException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+ 
+Get-Item : Der Pfad "C:\Users\danie\AppData\Local\Temp\readme-history.txt" kann nicht gefunden werden, da er nicht 
+vorhanden ist.
+In Zeile:1 Zeichen:183
++ ... MP\readme-history.txt; (Get-Item $env:TEMP\readme-history.txt).Length ...
++                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\danie\...dme-history.txt:String) [Get-Item], ItemNotFoundExcep 
+   tion
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetItemCommand
+ 
+0
+ M README.md

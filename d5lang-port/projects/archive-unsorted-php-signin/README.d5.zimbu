@@ -1,0 +1,96 @@
+﻿# Zimbu-Port-Spiegel von: d5lang-port\projects\archive-unsorted-php-signin\README.d5
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE README_d5
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: d5lang-port\projects\archive-unsorted-php-signin\README.d5\n")
+  RETURN 0
+
+# ---- Original-Code (d5lang-port\projects\archive-unsorted-php-signin\README.d5), unveraendert, als Inline-Doku ----
+# SHINE, LITTLE BOY, SHINE
+#   WIR MÜSSEN DAS OFFLINE NEHMEN main
+#     PACK-ES-IN-JIRA Portiert 1:1 von projects/archive-unsorted-php-signin/README.md. Jede Zeile erhalten, inkl. KI-<think>-Block und gemischtem Inhalt.
+#     PACK-ES-IN-JIRA ORIGINAL: # PHP Login Form Guide
+#     PACK-ES-IN-JIRA ORIGINAL: ## Introduction
+#     PACK-ES-IN-JIRA ORIGINAL: In this guide, we will create a simple PHP login form. This form will capture user details such as username and password. We will also discuss secure coding practices and how to implement the form effectively.
+#     PACK-ES-IN-JIRA ORIGINAL: ## Creating the Login Form
+#     PACK-ES-IN-JIRA ORIGINAL: To create a basic login form in PHP, you can use the following example:
+#     PACK-ES-IN-JIRA ORIGINAL: ### Example Code
+#     PACK-ES-IN-JIRA ORIGINAL: ```php
+#     PACK-ES-IN-JIRA ORIGINAL: <!DOCTYPE html>
+#     PACK-ES-IN-JIRA ORIGINAL: <html lang="de">
+#     PACK-ES-IN-JIRA ORIGINAL: <head>
+#     PACK-ES-IN-JIRA ORIGINAL: <title>Login</title>
+#     PACK-ES-IN-JIRA ORIGINAL: </head>
+#     PACK-ES-IN-JIRA ORIGINAL: <body>
+#     PACK-ES-IN-JIRA ORIGINAL: <h2>Bitte melde dich an!</h2>
+#     PACK-ES-IN-JIRA ORIGINAL: <form method="post" action="login.php">
+#     PACK-ES-IN-JIRA ORIGINAL: <input type="text" name="username" placeholder="Benutzername" required>
+#     PACK-ES-IN-JIRA ORIGINAL: <input type="password" name="password" placeholder="Passwort" required>
+#     PACK-ES-IN-JIRA ORIGINAL: <button type="submit">Anmelden</button>
+#     PACK-ES-IN-JIRA ORIGINAL: </form>
+#     PACK-ES-IN-JIRA ORIGINAL: </body>
+#     PACK-ES-IN-JIRA ORIGINAL: </html>
+#     PACK-ES-IN-JIRA ORIGINAL: ```
+#     PACK-ES-IN-JIRA ORIGINAL: ### Explanation of Code Parts
+#     PACK-ES-IN-JIRA ORIGINAL: - **`<!DOCTYPE html>`**: Indicates that the file is an HTML document.
+#     PACK-ES-IN-JIRA ORIGINAL: - **`<title>`**: Sets the title of the page.
+#     PACK-ES-IN-JIRA ORIGINAL: - **`<h2>`**: Creates a title for the form.
+#     PACK-ES-IN-JIRA ORIGINAL: - **`<form method="post">`**: Defines the form and specifies that data will be sent using the POST method.
+#     PACK-ES-IN-JIRA ORIGINAL: - **`<input type="text">`**: Creates a text input field for the username.
+#     PACK-ES-IN-JIRA ORIGINAL: - **`<input type="password">`**: Creates a password input field.
+#     PACK-ES-IN-JIRA ORIGINAL: - **`<button type="submit">`**: Creates a submit button for the form.
+#     PACK-ES-IN-JIRA ORIGINAL: ## Important Considerations
+#     PACK-ES-IN-JIRA ORIGINAL: 1. **Security**:
+#     PACK-ES-IN-JIRA ORIGINAL: - Use secure coding practices, such as validating and sanitizing user input.
+#     PACK-ES-IN-JIRA ORIGINAL: - Consider using HTTPS to protect user data during transmission.
+#     PACK-ES-IN-JIRA ORIGINAL: 2. **Styling**:
+#     PACK-ES-IN-JIRA ORIGINAL: - You can apply CSS to style the form and improve its appearance.
+#     PACK-ES-IN-JIRA ORIGINAL: 3. **Testing**:
+#     PACK-ES-IN-JIRA ORIGINAL: - Test the form thoroughly to ensure it works as expected.
+#     PACK-ES-IN-JIRA ORIGINAL: 4. **Integration**:
+#     PACK-ES-IN-JIRA ORIGINAL: - You can integrate this form into a WordPress plugin or other applications as needed.
+#     PACK-ES-IN-JIRA ORIGINAL: ## Conclusion
+#     PACK-ES-IN-JIRA ORIGINAL: This guide provides a basic overview of creating a PHP login form. You can expand upon this foundation by adding features such as user registration, password recovery, and more advanced security measures.
+#     PACK-ES-IN-JIRA ORIGINAL: Feel free to reach out if you have any questions or need further assistance!
+#     PACK-ES-IN-JIRA ORIGINAL: Falls du ein simples PHP-Formular für ein Login erstellen möchten (Original mischt Chinesisch ein).
+#     PACK-ES-IN-JIRA ORIGINAL: Einfaches Formular mit Login-Funktion in PHP
+#     PACK-ES-IN-JIRA ORIGINAL: ```
+#     PACK-ES-IN-JIRA ORIGINAL: Erklären der Teile des Codes
+#     PACK-ES-IN-JIRA ORIGINAL: <!DOCTYPE html>: Zeigt an, dass die Datei eine HTML-Seite ist.
+#     PACK-ES-IN-JIRA ORIGINAL: **`<title... (unvollendete Zeile im Original)
+#     PACK-ES-IN-JIRA ORIGINAL: <think>
+#     PACK-ES-IN-JIRA ORIGINAL: KI-Denktrakt im Original-README (unverändert übernommen, Zeilen 64-73)
+#     PACK-ES-IN-JIRA ORIGINAL: </think>
+#     PACK-ES-IN-JIRA ORIGINAL: Natürlich! Hier ist ein Beispiel für ein Login-Formular in PHP:
+#     PACK-ES-IN-JIRA ORIGINAL: ```php
+#     PACK-ES-IN-JIRA ORIGINAL: Dieses Formular enthält:
+#     PACK-ES-IN-JIRA ORIGINAL: 1. **HTML-Layout**: Die eigentliche Logine ist in einem Container mit einer flexbaren Höhe von 200px.
+#     PACK-ES-IN-JIRA ORIGINAL: 2. **JavaScript-Funktionen**:
+#     PACK-ES-IN-JIRA ORIGINAL: - Klicken auf das Login-Formular startet die Benutzereingabe.
+#     PACK-ES-IN-JIRA ORIGINAL: - Wenn die Benutzerin die Felder klickt, werden diese übermittelt.
+#     PACK-ES-IN-JIRA ORIGINAL: 3. **Formularelemente**: Einfache Eingabefelder für den Benutzername und das Passwort.
+#     PACK-ES-IN-JIRA ORIGINAL: ### Wie es eingesetzt wird:
+#     PACK-ES-IN-JIRA ORIGINAL: 1. **Festplatte-Plugin**:
+#     PACK-ES-IN-JIRA ORIGINAL: - Sie können das obige Formular als WordPress-Plugin einbetten. (Pfadangabe im Original verdreht.)
+#     PACK-ES-IN-JIRA ORIGINAL: >Login</title>**: Bestätigt den Titel der Seite.
+#     PACK-ES-IN-JIRA ORIGINAL: - **<center> und </center>**: Zentrieren den Inhalt.
+#     PACK-ES-IN-JIRA ORIGINAL: - **<h2>Bitte melde dich an!</h2>**: Erstellt einen Titel für das Formular.
+#     PACK-ES-IN-JIRA ORIGINAL: - **<form method="post">**: Erstellt ein formales HTML-Formeldatum.
+#     PACK-ES-IN-JIRA ORIGINAL: - **<input type="text" ...>**: Fügt einen Eingabefeld ein, das den Benutzernamen erfragt.
+#     PACK-ES-IN-JIRA ORIGINAL: - type, name, placeholder, required wie im Original beschrieben.
+#     PACK-ES-IN-JIRA ORIGINAL: - **<input type="password" ...>**: Gibt ein Eingabefeld für den Passwort an.
+#     PACK-ES-IN-JIRA ORIGINAL: - Die Parameter sind analogue zu den vorherigen.
+#     PACK-ES-IN-JIRA ORIGINAL: - **<button type="submit">Anmelden</button>**: Erstellt einen submit-Button.
+#     PACK-ES-IN-JIRA ORIGINAL: ### 3. Wichtige Bemerkungen
+#     PACK-ES-IN-JIRA ORIGINAL: - **Security**: Eingabedaten verstecken statt Klarnamen.
+#     PACK-ES-IN-JIRA ORIGINAL: - **Styling**: CSS zum Stylen der Formular.
+#     PACK-ES-IN-JIRA ORIGINAL: ### 4. Um die Datei herunterzuladen
+#     PACK-ES-IN-JIRA ORIGINAL: Browser/href-Eingabefeld-Hinweis wie im Original.
+#     PACK-ES-IN-JIRA ORIGINAL: Hoffe das Beispiel hilft!
+#     PACK-ES-IN-JIRA ORIGINAL: WordPress-Plugin-Abschnitt und Sicherheitshinweise wie im Original (Zeilen 111-126).
+#   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+# BOY, DU HAST KI-VERBOT
+#

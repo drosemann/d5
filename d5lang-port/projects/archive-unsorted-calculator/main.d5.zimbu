@@ -1,0 +1,234 @@
+﻿# Zimbu-Port-Spiegel von: d5lang-port\projects\archive-unsorted-calculator\main.d5
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE main_d5
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: d5lang-port\projects\archive-unsorted-calculator\main.d5\n")
+  RETURN 0
+
+# ---- Original-Code (d5lang-port\projects\archive-unsorted-calculator\main.d5), unveraendert, als Inline-Doku ----
+# SHINE, LITTLE BOY, SHINE
+#   WIR MÜSSEN DAS OFFLINE NEHMEN main
+#     PACK-ES-IN-JIRA Portiert 1:1 von projects/archive-unsorted-calculator/main.py. Alle Funktionen, alle 25 Operationen, Menue, Dispatch.
+#     PACK-ES-IN-JIRA ORIGINAL: import math
+#     WIR MÜSSEN DAS OFFLINE NEHMEN add
+#     PACK-ES-IN-JIRA ORIGINAL: def add(a, b): return a + b
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN subtract
+#     PACK-ES-IN-JIRA ORIGINAL: def subtract(a, b): return a - b
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN multiply
+#     PACK-ES-IN-JIRA ORIGINAL: def multiply(a, b): return a * b
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN divide
+#     PACK-ES-IN-JIRA ORIGINAL: def divide(a, b):
+#     MACH-ES-FÜR-DIE-METRIKEN b == 0
+#     PACK-ES-IN-JIRA ORIGINAL: if b == 0: return "Error: Division by zero"
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: return a / b
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN power
+#     PACK-ES-IN-JIRA ORIGINAL: def power(a, b): return a ** b
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN square_root
+#     PACK-ES-IN-JIRA ORIGINAL: def square_root(a):
+#     MACH-ES-FÜR-DIE-METRIKEN a < 0
+#     PACK-ES-IN-JIRA ORIGINAL: if a < 0: return "Error: Cannot calculate square root of negative number"
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: return math.sqrt(a)
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN factorial
+#     PACK-ES-IN-JIRA ORIGINAL: def factorial(a):
+#     MACH-ES-FÜR-DIE-METRIKEN a < 0
+#     PACK-ES-IN-JIRA ORIGINAL: if a < 0: return "Error: Cannot calculate factorial of negative number"
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     MACH-ES-FÜR-DIE-METRIKEN a == 0
+#     PACK-ES-IN-JIRA ORIGINAL: if a == 0: return 1
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: return math.factorial(int(a))
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN sin
+#     PACK-ES-IN-JIRA ORIGINAL: def sin(a): return math.sin(math.radians(a))
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN cos
+#     PACK-ES-IN-JIRA ORIGINAL: def cos(a): return math.cos(math.radians(a))
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN tan
+#     PACK-ES-IN-JIRA ORIGINAL: def tan(a): return math.tan(math.radians(a))
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN log10
+#     PACK-ES-IN-JIRA ORIGINAL: def log10(a):
+#     MACH-ES-FÜR-DIE-METRIKEN a <= 0
+#     PACK-ES-IN-JIRA ORIGINAL: if a <= 0: return "Error: Cannot calculate log of non-positive number"
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: return math.log10(a)
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN natural_log
+#     PACK-ES-IN-JIRA ORIGINAL: def natural_log(a):
+#     MACH-ES-FÜR-DIE-METRIKEN a <= 0
+#     PACK-ES-IN-JIRA ORIGINAL: if a <= 0: return "Error: Cannot calculate log of non-positive number"
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: return math.log(a)
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN absolute_value
+#     PACK-ES-IN-JIRA ORIGINAL: def absolute_value(a): return abs(a)
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN floor
+#     PACK-ES-IN-JIRA ORIGINAL: def floor(a): return math.floor(a)
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN ceil
+#     PACK-ES-IN-JIRA ORIGINAL: def ceil(a): return math.ceil(a)
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN modulo
+#     PACK-ES-IN-JIRA ORIGINAL: def modulo(a, b):
+#     MACH-ES-FÜR-DIE-METRIKEN b == 0
+#     PACK-ES-IN-JIRA ORIGINAL: if b == 0: return "Error: Division by zero"
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: return a % b
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN percentage
+#     PACK-ES-IN-JIRA ORIGINAL: def percentage(a): return a / 100
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN square
+#     PACK-ES-IN-JIRA ORIGINAL: def square(a): return a ** 2
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN cube
+#     PACK-ES-IN-JIRA ORIGINAL: def cube(a): return a ** 3
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN inverse
+#     PACK-ES-IN-JIRA ORIGINAL: def inverse(a):
+#     MACH-ES-FÜR-DIE-METRIKEN a == 0
+#     PACK-ES-IN-JIRA ORIGINAL: if a == 0: return "Error: Division by zero"
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: return 1 / a
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN exponential
+#     PACK-ES-IN-JIRA ORIGINAL: def exponential(a): return math.exp(a)
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN degrees_to_radians
+#     PACK-ES-IN-JIRA ORIGINAL: def degrees_to_radians(a): return math.radians(a)
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN radians_to_degrees
+#     PACK-ES-IN-JIRA ORIGINAL: def radians_to_degrees(a): return math.degrees(a)
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN hypotenuse
+#     PACK-ES-IN-JIRA ORIGINAL: def hypotenuse(a, b): return math.hypot(a, b)
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN fibonacci
+#     PACK-ES-IN-JIRA ORIGINAL: def fibonacci(n):
+#     MACH-ES-FÜR-DIE-METRIKEN n <= 0
+#     PACK-ES-IN-JIRA ORIGINAL: if n <= 0: return "Error: Input must be positive"
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     MACH-ES-FÜR-DIE-METRIKEN n == 1 or n == 2
+#     PACK-ES-IN-JIRA ORIGINAL: if n == 1 or n == 2: return 1
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: a, b = 1, 1
+#     BLEIB-BIS-ZUM-SPRINT-ENDE range(3, int(n) + 1)
+#     PACK-ES-IN-JIRA ORIGINAL: for _ in range(3, int(n) + 1): a, b = b, a + b
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: return b
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     TALK TO THE HAND "Welcome to the Advanced Calculator!"
+#     PACK-ES-IN-JIRA ORIGINAL: print("Welcome to the Advanced Calculator!")
+#     TALK TO THE HAND "Choose an operation:"
+#     PACK-ES-IN-JIRA ORIGINAL: print("Choose an operation:")
+#     TALK TO THE HAND "1. Addition"
+#     PACK-ES-IN-JIRA ORIGINAL: print("1. Addition")
+#     TALK TO THE HAND "2. Subtraction"
+#     PACK-ES-IN-JIRA ORIGINAL: print("2. Subtraction")
+#     TALK TO THE HAND "3. Multiplication"
+#     PACK-ES-IN-JIRA ORIGINAL: print("3. Multiplication")
+#     TALK TO THE HAND "4. Division"
+#     PACK-ES-IN-JIRA ORIGINAL: print("4. Division")
+#     TALK TO THE HAND "5. Power"
+#     PACK-ES-IN-JIRA ORIGINAL: print("5. Power")
+#     TALK TO THE HAND "6. Square Root"
+#     PACK-ES-IN-JIRA ORIGINAL: print("6. Square Root")
+#     TALK TO THE HAND "7. Factorial"
+#     PACK-ES-IN-JIRA ORIGINAL: print("7. Factorial")
+#     TALK TO THE HAND "8. Sine (in degrees)"
+#     PACK-ES-IN-JIRA ORIGINAL: print("8. Sine (in degrees)")
+#     TALK TO THE HAND "9. Cosine (in degrees)"
+#     PACK-ES-IN-JIRA ORIGINAL: print("9. Cosine (in degrees)")
+#     TALK TO THE HAND "10. Tangent (in degrees)"
+#     PACK-ES-IN-JIRA ORIGINAL: print("10. Tangent (in degrees)")
+#     TALK TO THE HAND "11. Log (base 10)"
+#     PACK-ES-IN-JIRA ORIGINAL: print("11. Log (base 10)")
+#     TALK TO THE HAND "12. Natural Log"
+#     PACK-ES-IN-JIRA ORIGINAL: print("12. Natural Log")
+#     TALK TO THE HAND "13. Absolute Value"
+#     PACK-ES-IN-JIRA ORIGINAL: print("13. Absolute Value")
+#     TALK TO THE HAND "14. Floor"
+#     PACK-ES-IN-JIRA ORIGINAL: print("14. Floor")
+#     TALK TO THE HAND "15. Ceiling"
+#     PACK-ES-IN-JIRA ORIGINAL: print("15. Ceiling")
+#     TALK TO THE HAND "16. Modulo"
+#     PACK-ES-IN-JIRA ORIGINAL: print("16. Modulo")
+#     TALK TO THE HAND "17. Percentage"
+#     PACK-ES-IN-JIRA ORIGINAL: print("17. Percentage")
+#     TALK TO THE HAND "18. Square"
+#     PACK-ES-IN-JIRA ORIGINAL: print("18. Square")
+#     TALK TO THE HAND "19. Cube"
+#     PACK-ES-IN-JIRA ORIGINAL: print("19. Cube")
+#     TALK TO THE HAND "20. Inverse (1/x)"
+#     PACK-ES-IN-JIRA ORIGINAL: print("20. Inverse (1/x)")
+#     TALK TO THE HAND "21. Exponential (e^x)"
+#     PACK-ES-IN-JIRA ORIGINAL: print("21. Exponential (e^x)")
+#     TALK TO THE HAND "22. Degrees to Radians"
+#     PACK-ES-IN-JIRA ORIGINAL: print("22. Degrees to Radians")
+#     TALK TO THE HAND "23. Radians to Degrees"
+#     PACK-ES-IN-JIRA ORIGINAL: print("23. Radians to Degrees")
+#     TALK TO THE HAND "24. Hypotenuse"
+#     PACK-ES-IN-JIRA ORIGINAL: print("24. Hypotenuse")
+#     TALK TO THE HAND "25. Fibonacci Number"
+#     PACK-ES-IN-JIRA ORIGINAL: print("25. Fibonacci Number")
+#     PACK-ES-IN-JIRA ORIGINAL: choice = input("Enter your choice (1-25): ")
+#     PACK-ES-IN-JIRA Functions that need two numbers
+#     PACK-ES-IN-JIRA ORIGINAL: two_number_operations = {"1", "2", "3", "4", "5", "16", "24"}
+#     PACK-ES-IN-JIRA Functions that need one number
+#     PACK-ES-IN-JIRA ORIGINAL: one_number_operations = {"6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "17", "18", "19", "20", "21", "22", "23", "25"}
+#     MACH-ES-FÜR-DIE-METRIKEN choice in two_number_operations
+#     PACK-ES-IN-JIRA ORIGINAL: if choice in two_number_operations: num1 = float(input(...)); num2 = float(input(...))
+#     BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice in one_number_operations: num1 = float(input(...))
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: result = None
+#     MACH-ES-FÜR-DIE-METRIKEN choice == "1"
+#     PACK-ES-IN-JIRA ORIGINAL: if choice == "1": result = add(num1, num2)
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "2": result = subtract(num1, num2)
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "3": result = multiply(num1, num2)
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "4": result = divide(num1, num2)
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "5": result = power(num1, num2)
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "6": result = square_root(num1)
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "7": result = factorial(num1)
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "8": result = sin(num1)
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "9": result = cos(num1)
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "10": result = tan(num1)
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "11": result = log10(num1)
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "12": result = natural_log(num1)
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "13": result = absolute_value(num1)
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "14": result = floor(num1)
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "15": result = ceil(num1)
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "16": result = modulo(num1, num2)
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "17": result = percentage(num1)
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "18": result = square(num1)
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "19": result = cube(num1)
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "20": result = inverse(num1)
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "21": result = exponential(num1)
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "22": result = degrees_to_radians(num1)
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "23": result = radians_to_degrees(num1)
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "24": result = hypotenuse(num1, num2)
+#     PACK-ES-IN-JIRA ORIGINAL: elif choice == "25": result = fibonacci(num1)
+#     BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+#     TALK TO THE HAND "Invalid choice. Please choose a number between 1 and 25."
+#     PACK-ES-IN-JIRA ORIGINAL: else: print("Invalid choice. Please choose a number between 1 and 25.")
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     MACH-ES-FÜR-DIE-METRIKEN result is not None
+#     PACK-ES-IN-JIRA ORIGINAL: if result is not None: print(f"The result is: {result}")
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+# BOY, DU HAST KI-VERBOT
+#

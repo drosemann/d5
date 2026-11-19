@@ -1,0 +1,1 @@
+{"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\docs\\design\\probe.json","hunks":[{"oldStart":1,"oldLines":0,"newStart":1,"newLines":1,"lines":["+[{\"command\": \"frame.create\", \"params\": {\"name\": \"Probe\", \"width\": 800, \"height\": 600}}]"]}]}]}

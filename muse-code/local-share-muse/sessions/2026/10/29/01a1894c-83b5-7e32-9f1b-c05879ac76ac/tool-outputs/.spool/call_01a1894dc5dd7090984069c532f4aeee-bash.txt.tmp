@@ -1,0 +1,37 @@
+
+---docs---
+---examples---
+---gh remotes---
+ai-chat-webui: url = https://github.com/drosemann/ai-chat-webui.git
+aktienwerk: url = https://github.com/drosemann/aktienwerk.git
+cooperating-screen: url = https://github.com/drosemann/cooperating-screen.git
+drosemann: url = https://github.com/drosemann/drosemann
+ed-docs: url = https://github.com/drosemann/ed-docs
+forgecms: url = https://github.com/drosemann/forgecms.git
+forum-for-nerds: url = https://github.com/drosemann/forum-for-nerds.git
+infra-pilot: url = https://github.com/drosemann/infra-pilot.git
+stranded-horizons: url = https://github.com/drosemann/stranded-horizons.git
+streuland: url = https://github.com/drosemann/streuland.git
+TraumaLang: url = https://github.com/drosemann/TraumaLang.git
+Name                      
+----                      
+docs                      
+examples                  
+src                       
+tests                     
+.gitignore                
+examples_error_handling.tl
+LICENSE                   
+Makefile                  
+README.md                 
+GRAMMAR.md                
+KEYWORDS.md               
+LANGUAGE.md               
+REWRITER.md               
+error_handling.tl         
+err_handling_tmp.tl       
+hello.py                  
+hello_world_enterprise.tl 
+README.md                 
+
+

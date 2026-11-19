@@ -1,0 +1,2 @@
+9cc24d7e8c331b17b62f70d295083091a178cd63 Ab 24.10.2026 MIT, da nur Daniel Rosemann committed (67 Commits verifiziert)
+4f4c0ed4f33462ca692e6455c47551e34966c366 refactor: split game.js monolith into sim/render/input/ui modules (issue #8)

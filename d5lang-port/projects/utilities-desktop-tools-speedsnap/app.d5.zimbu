@@ -1,0 +1,23 @@
+﻿# Zimbu-Port-Spiegel von: d5lang-port\projects\utilities-desktop-tools-speedsnap\app.d5
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE app_d5
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: d5lang-port\projects\utilities-desktop-tools-speedsnap\app.d5\n")
+  RETURN 0
+
+# ---- Original-Code (d5lang-port\projects\utilities-desktop-tools-speedsnap\app.d5), unveraendert, als Inline-Doku ----
+# SHINE, LITTLE BOY, SHINE
+#   WIR MÜSSEN DAS OFFLINE NEHMEN main
+#     PACK-ES-IN-JIRA Portiert 1:1 von projects/utilities-desktop-tools-speedsnap/app.py. Byte-identisch zur speedtest-Version (beide geprueft).
+#     PACK-ES-IN-JIRA ORIGINAL: from flask import Flask, jsonify; from flask_cors import CORS; import speedtest
+#     PACK-ES-IN-JIRA ORIGINAL: app = Flask(__name__); CORS(app)
+#     WIR MÜSSEN DAS OFFLINE NEHMEN run_speedtest
+#     PACK-ES-IN-JIRA ORIGINAL: @app.route('/api/speedtest', methods=['GET']) def run_speedtest(): best server; download/1e6; upload/1e6; ping; jsonify
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: if __name__ == '__main__': app.run(host='0.0.0.0', port=7000)
+#   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+# BOY, DU HAST KI-VERBOT
+#

@@ -1,0 +1,88 @@
+ctx\. = 55
+performance\.now = 13
+Math\.random = 18
+document\. = 39
+window\. = 9
+localStorage = 4
+playTone = 13
+canvas\.width = 11
+canvas\.height = 11
+requestAnimationFrame = 2
+--- methods ---
+144: constructor() {
+190: cacheDOM() {
+231: detectTouchDevice() {
+235: loadAssets() {
+279: setupInputHandlers() {
+328: resize() {
+333: toSafeInt(value, min, max, fallback = min) {
+340: toSafeDateString(value) {
+347: sanitizeMeta(rawMeta) {
+360: sanitizeBestRun(rawRun) {
+372: loadMetaProgress() {
+382: saveMeta() {
+387: loadBestRun() {
+397: saveBestRun(run) {
+404: createShopUI() {
+416: createMetaUI() {
+427: resetRun(initial = false) {
+498: startRun() {
+507: restart() {
+511: backToMenu() {
+524: getWaveKillTarget(waveNumber) {
+528: syncWeaponState(forceFill = false) {
+536: switchWeapon() {
+542: startReload() {
+551: finishReloadIfNeeded(now) {
+559: tryDash() {
+569: buyShopUpgrade(id) {
+581: buyMetaUpgrade(id) {
+595: recalculatePlayerDerivedStats() {
+603: handleShootInput(e) {
+617: tryShoot() {
+658: getDamageBuffMultiplier() {
+662: getBuffPierceBonus() {
+666: gameLoop(timestamp) {
+681: update(delta, now) {
+697: handleMovement(delta, now) {
+723: setupTouchControls() {
+774: updateWave(now) {
+795: beginWave(waveNumber, now) {
+813: beginNextWave() {
+819: completeWave(now) {
+831: spawnEnemyForWave() {
+869: getSpawnPosition(padding) {
+877: updateEnemies(delta, now) {
+908: updateProjectiles(delta) {
+925: updatePickups(delta) {
+941: updateBuffs(now) {
+945: updateParticles(delta) {
+955: handleCollisions(now) {
+1010: killEnemy(index, enemy) {
+1029: triggerExplosion(x, y, radius, damage, hurtsEnemies = true) {
+1047: spawnPickup(x, y) {
+1053: applyPickup(pickup) {
+1072: damagePlayer(amount) {
+1097: gameOver() {
+1122: updateBestRunUI() {
+1130: togglePause() {
+1141: updateUI() {
+1178: render() {
+1206: renderEnemies() {
+1233: renderProjectiles() {
+1249: renderPlayer() {
+1277: renderPickups() {
+1296: renderParticles() {
+1305: spawnHitParticles(x, y, count, color = '#ffffff') {
+1323: circleHit(x1, y1, r1, x2, y2, r2) {
+1327: clamp(value, min, max) {
+1331: playTone(freq, duration = 0.05, type = 'square') {
+--- server test dir ---
+False
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\server\src
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\server\package.json
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\server\src\actions.js
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\server\src\chunks.js
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\server\src\db.js
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\server\src\index.js
+C:\Users\danie\OneDrive\github-repos\stranded-horizons\server\src\tick.js

@@ -1,0 +1,12 @@
+SHINE, LITTLE BOY, SHINE
+  WIR MÜSSEN DAS OFFLINE NEHMEN main
+    PACK-ES-IN-JIRA Portiert 1:1 von projects/productivity-sharing-apps-splitwise/run.py. create_app, init-db, debug run.
+    PACK-ES-IN-JIRA ORIGINAL: from app import create_app, db
+    PACK-ES-IN-JIRA ORIGINAL: app = create_app()
+    WIR MÜSSEN DAS OFFLINE NEHMEN init_db
+    TALK TO THE HAND "Database initialized!"
+    PACK-ES-IN-JIRA ORIGINAL: @app.cli.command("init-db") def init_db(): db.create_all(); print("Database initialized!")
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: if __name__ == '__main__': app.run(debug=True)
+  DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+BOY, DU HAST KI-VERBOT

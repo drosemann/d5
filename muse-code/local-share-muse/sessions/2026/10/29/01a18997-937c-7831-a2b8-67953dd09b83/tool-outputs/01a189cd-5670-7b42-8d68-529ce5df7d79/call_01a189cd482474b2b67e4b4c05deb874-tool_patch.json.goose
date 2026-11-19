@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189cd-5670-7b42-8d68-529ce5df7d79/call_01a189cd482474b2b67e4b4c05deb874-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189cd-5670-7b42-8d68-529ce5df7d79/call_01a189cd482474b2b67e4b4c05deb874-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189cd-5670-7b42-8d68-529ce5df7d79/call_01a189cd482474b2b67e4b4c05deb874-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\TRAUMALANG-GAPS.md","hunks":[{"oldStart":389,"oldLines":6,"newStart":389,"newLines":9,"lines":[" - Batch-10-Warnungen: `templateManager` (Versions-Retry, Latest-vs-Pin-Select, Dedup-Set); `resourcePools` (Compare-and-Swap-Member, Ownership-`$2`-Guards, JSONB-Strings); `dbManager` (Name-Regex, `crypto.randomInt`-Passwoerter, `mysqladmin`-Poll, Port-Resolve)"," - Batch-10-Secrets: keine Literal-Secrets; Passwoerter entstehen erst zur Laufzeit"," ","+- Batch-11-Warnungen: `legacyCommands` (`spawn`-Capture mit Timeout, Tmate-SSH-Sessions, Cuttly-API via Key, JSONB-Renewals, Serveo-Name-Port-Guards); `alembic/env` (Env-URL-Bau mit Platzhalter-Default, Offline-/Online-Branches); `0001` (39 Tabellen, FK-Kaskaden, destruktiver Downgrade nur fuer Wegwerf-DBs)","+- Batch-11-Secrets: keine Literal-Secrets; Keys/Passwords nur als Env-Namen","+"," ## 5. Sonstiges für den nächsten Agenten"," "," - `--roast`-Modus des Rewriters wurde nie verwendet; sarkastische Marker"]}]}]}

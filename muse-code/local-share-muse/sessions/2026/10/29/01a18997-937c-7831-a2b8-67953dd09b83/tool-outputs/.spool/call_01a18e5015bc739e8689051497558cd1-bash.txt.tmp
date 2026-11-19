@@ -1,0 +1,20 @@
+
+TRAUMALANG-GAPS.md:155:- Backend-Batch 17 (5 Dateien, alle voll gelesen, nur Huellen + `TALK TO THE HAND`): 
+`test_command_registry`, `test_main_extra`, `test_inventory_commands`, `test_styling`, `test_core_cli` (Fixtures, 
+Runner-Invokes, Mock-Clients, Asserts als Strings). Nicht abbildbar: `pytest`-Fixtures, `CliRunner`, `MagicMock`, 
+`capsys`/`caplog`.
+TRAUMALANG-GAPS.md:233:  `test_doctor_tui.py`,
+TRAUMALANG-GAPS.md:234:  `test_main.py`,
+TRAUMALANG-GAPS.md:236:  `test_secrets_ssh_plugins_webhooks_apikeys.py`,
+TRAUMALANG-GAPS.md:237:  `test_templates_rollback_infra_gitops.py`
+TRAUMALANG-GAPS.md:275:## 4. Warnungsindex (alle `Zeile N`-Warnungen der 128 `.tl`-Dateien)
+TRAUMALANG-GAPS.md:438:  alle 128 Dateien durch `traumalang build` schicken, Fehler pro Datei hier dokumentieren.
+TRAUMALANG-GAPS.md:442:- Empfohlene n„chste Dateien (klein, hoher Wert): `tests/cli` (5 offen: 
+client/doctor_tui/main/secrets/templates), `test_update_flow`-Rest (erledigt: doctor, styling-Rest, formatters-Rest, 
+healthcheck.sh, db-backup.sh, db-restore.sh, install-deps.sh, prerequisites-check.sh, verify.sh, setup.sh, release.sh, 
+docker-build.sh, test.sh, test_pr_voting.py, test_backup_scripts.py, update_readme_coverage.sh, 
+coverage_badge_updater.py, coverage_lib.py, coverage_report.py, Backend-Batch-36, Batch-2-5, Batch-3-2, Batch-4-3, 
+Batch-5-3, Batch-6-2, Batch-7-4, Batch-8-3, Batch-9-3, Batch-10-3, Batch-11-4, Batch-12-2, Batch-13-3, Batch-14-5, 
+Batch-15-4, Batch-16-9, Batch-17-5, Batch-18-4),
+
+

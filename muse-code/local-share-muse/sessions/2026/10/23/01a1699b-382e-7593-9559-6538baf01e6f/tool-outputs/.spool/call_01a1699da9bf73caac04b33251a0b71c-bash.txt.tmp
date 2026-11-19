@@ -1,0 +1,37 @@
+.env.example  214
+.gitignore  325
+CODE_OF_CONDUCT.md  5044
+CONTRIBUTING.md  1123
+docker-compose.yml  711
+game-v2.html  3125
+game.html  8920
+game.js  52752
+index.html  4253
+LICENSE  35823
+README.md  7154
+rules.md  1465
+SECURITY_REVIEW.md  2161
+vercel.json  605
+--- subdirs ---
+.agents
+.eden
+.hg
+.muse
+.sl
+admin
+api
+assets
+db
+devlog
+docs
+infra
+server
+shared
+tools
+--- docs ---
+--- package/test infra ---
+package.json exists=False
+vite.config.js exists=False
+vite.config.mjs exists=False
+tsconfig.json exists=False
+.github exists=False

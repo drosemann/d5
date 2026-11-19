@@ -1,0 +1,52 @@
+﻿# Zimbu-Port-Spiegel von: d5lang-port\projects\archive-unsorted-guestbook-html-css-javascript\html\index.d5
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE index_d5
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: d5lang-port\projects\archive-unsorted-guestbook-html-css-javascript\html\index.d5\n")
+  RETURN 0
+
+# ---- Original-Code (d5lang-port\projects\archive-unsorted-guestbook-html-css-javascript\html\index.d5), unveraendert, als Inline-Doku ----
+# SHINE, LITTLE BOY, SHINE
+#   WIR MÜSSEN DAS OFFLINE NEHMEN main
+#     PACK-ES-IN-JIRA Portiert 1:1 von projects/archive-unsorted-guestbook-html-css-javascript/html/index.html. Jede Zeile erhalten.
+#     PACK-ES-IN-JIRA ORIGINAL: <!DOCTYPE html>
+#     PACK-ES-IN-JIRA ORIGINAL: <html lang="en">
+#     PACK-ES-IN-JIRA ORIGINAL: <head>
+#     PACK-ES-IN-JIRA ORIGINAL: <meta charset="UTF-8">
+#     PACK-ES-IN-JIRA ORIGINAL: <meta name="viewport" content="width=device-width, initial-scale=1.0">
+#     PACK-ES-IN-JIRA ORIGINAL: <title>Guestbook</title>
+#     PACK-ES-IN-JIRA ORIGINAL: <link rel="stylesheet" href="css/styles.css">
+#     PACK-ES-IN-JIRA ORIGINAL: </head>
+#     PACK-ES-IN-JIRA ORIGINAL: <body>
+#     PACK-ES-IN-JIRA ORIGINAL: <div class="guestbook">
+#     PACK-ES-IN-JIRA ORIGINAL: <h1>Guestbook</h1>
+#     PACK-ES-IN-JIRA ORIGINAL: <div class="entry-form">
+#     PACK-ES-IN-JIRA ORIGINAL: <h2>Leave a Message</h2>
+#     PACK-ES-IN-JIRA ORIGINAL: <form id="guestbookForm">
+#     PACK-ES-IN-JIRA ORIGINAL: <input type="text" id="name" placeholder="Your Name" required>
+#     PACK-ES-IN-JIRA ORIGINAL: <input type="email" id="email" placeholder="Your Email" required>
+#     PACK-ES-IN-JIRA ORIGINAL: <textarea id="message" placeholder="Your Message" required></textarea>
+#     PACK-ES-IN-JIRA ORIGINAL: <div class="formatting-toolbar">
+#     PACK-ES-IN-JIRA ORIGINAL: <button type="button" class="format-btn">😊 Emoji</button>
+#     PACK-ES-IN-JIRA ORIGINAL: <button type="button" class="format-btn">B</button>
+#     PACK-ES-IN-JIRA ORIGINAL: <button type="button" class="format-btn">I</button>
+#     PACK-ES-IN-JIRA ORIGINAL: </div>
+#     PACK-ES-IN-JIRA ORIGINAL: <button type="submit">Submit</button>
+#     PACK-ES-IN-JIRA ORIGINAL: <noscript>
+#     PACK-ES-IN-JIRA ORIGINAL: <p class="error">Please enable JavaScript to use this guestbook.</p>
+#     PACK-ES-IN-JIRA ORIGINAL: </noscript>
+#     PACK-ES-IN-JIRA ORIGINAL: </form>
+#     PACK-ES-IN-JIRA ORIGINAL: </div>
+#     PACK-ES-IN-JIRA ORIGINAL: <div class="entries" id="entriesContainer">
+#     PACK-ES-IN-JIRA ORIGINAL: <!-- Entries will be added here dynamically -->
+#     PACK-ES-IN-JIRA ORIGINAL: </div>
+#     PACK-ES-IN-JIRA ORIGINAL: </div>
+#     PACK-ES-IN-JIRA ORIGINAL: <script src="js/main.js"></script>
+#     PACK-ES-IN-JIRA ORIGINAL: </body>
+#     PACK-ES-IN-JIRA ORIGINAL: </html>
+#   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+# BOY, DU HAST KI-VERBOT
+#

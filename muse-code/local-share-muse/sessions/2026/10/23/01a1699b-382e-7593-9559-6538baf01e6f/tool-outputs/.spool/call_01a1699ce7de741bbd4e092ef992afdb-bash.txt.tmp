@@ -1,0 +1,569 @@
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+"node_modules|\.git\" wird analysiert - Unzul„ssiger \ am Ende des Musters.
+In Zeile:1 Zeichen:47
++ ...  | Where-Object { $_.FullName -notmatch 'node_modules|\.git\' } | Sel ...
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (:) [], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException
+ 
+---
+
+Name               Length
+----               ------
+.agents                  
+.eden                    
+.git                     
+.hg                      
+.muse                    
+.sl                      
+admin                    
+api                      
+assets                   
+db                       
+devlog                   
+docs                     
+infra                    
+server                   
+shared                   
+tools                    
+.env.example       214   
+.gitignore         325   
+CODE_OF_CONDUCT.md 5044  
+CONTRIBUTING.md    1123  
+docker-compose.yml 711   
+game-v2.html       3125  
+game.html          8920  
+game.js            52752 
+index.html         4253  
+LICENSE            35823 
+README.md          7154  
+rules.md           1465  
+SECURITY_REVIEW.md 2161  
+vercel.json        605   
+
+
+

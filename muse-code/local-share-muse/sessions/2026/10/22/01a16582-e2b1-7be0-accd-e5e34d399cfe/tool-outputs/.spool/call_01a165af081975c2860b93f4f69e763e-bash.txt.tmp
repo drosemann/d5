@@ -1,0 +1,12 @@
+warning: in the working copy of 'docs/LIVING-FLEET-PLAN.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/orchestrator-agent/fleet_collect.py', LF will be replaced by CRLF the next time Git touches it
+[feature/living-fleet-wiring 7cad6ab] Fleet: two-sample CPU pressure signal
+ 2 files changed, 48 insertions(+), 7 deletions(-)
+git : fatal: unable to access 'https://github.com/drosemann/infra-pilot.git/': schannel: AcquireCredentialsHandle 
+failed: SEC_E_NO_CREDENTIALS (0x8009030e) - Im Sicherheitspaket sind keine Anmeldeinformationen verfügbar.
+In Zeile:1 Zeichen:324
++ ... meta.com>"; git -c safe.directory=C:/Users/danie/OneDrive/github-repo ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (fatal: unable t...onen verfügbar.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

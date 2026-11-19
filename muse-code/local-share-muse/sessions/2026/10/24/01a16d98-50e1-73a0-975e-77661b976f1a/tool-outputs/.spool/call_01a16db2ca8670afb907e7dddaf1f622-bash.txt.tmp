@@ -1,0 +1,14 @@
+Invoke-Expression : In Zeile:1 Zeichen:40
++ git add LICENSE README.md package.json && git commit -m "Ab 24.10.202 ...
++                                        ~~
+Das Token "&&" ist in dieser Version kein gÅltiges Anweisungstrennzeichen.
+In Zeile:1 Zeichen:164
++ ... tted." -m "Co-authored-by: Muse Code <muse-code@meta.com>" && git pus ...
++                                                                ~~
+Das Token "&&" ist in dieser Version kein gÅltiges Anweisungstrennzeichen.
+In Zeile:1 Zeichen:492
++ ... tCode=$LASTEXITCODE';Invoke-Expression $__tbhProxyOnlyCommand;if($nul ...
++                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ParserError: (:) [Invoke-Expression], ParseException
+    + FullyQualifiedErrorId : InvalidEndOfLine,Microsoft.PowerShell.Commands.InvokeExpressionCommand
+ 

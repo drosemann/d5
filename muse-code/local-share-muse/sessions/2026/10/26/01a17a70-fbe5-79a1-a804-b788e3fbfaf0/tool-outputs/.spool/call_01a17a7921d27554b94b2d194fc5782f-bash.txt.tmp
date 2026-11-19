@@ -1,0 +1,51 @@
+7: },
+12: },
+32: },
+33: },
+39: },
+40: },
+52: },
+53: },
+64: },
+65: },
+76: },
+77: },
+78: AuditLog: {
+90: },
+91: },
+102: },
+103: },
+112: },
+113: },
+120: },
+===
+    },
+    '/notification-channels/{id}': {
+      patch: {
+        summary: 'Update notification channel',
+        tags: ['Notifications'],
+        security: [{ bearerAuth: [] }],
+        parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'string', format: 'uuid' } }],
+        responses: { '200': { description: 'Channel updated' }, '404': { description: 'Not found' } },
+      },
+      delete: {
+        summary: 'Delete notification channel',
+        tags: ['Notifications'],
+        security: [{ bearerAuth: [] }],
+        parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'string', format: 'uuid' } }],
+        responses: { '200': { description: 'Channel deleted' } },
+      },
+    },
+    '/notification-channels/{id}/test': {
+      post: {
+        summary: 'Send test notification',
+        tags: ['Notifications'],
+        security: [{ bearerAuth: [] }],
+        parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'string', format: 'uuid' } }],
+        responses: { '200': { description: 'Test notification sent' } },
+      },
+    },
+  },
+};
+
+export default spec;

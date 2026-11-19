@@ -1,0 +1,19 @@
+﻿// Goose-Port-Spiegel von: d5lang-port/projects/productivity-&-sharing-apps-link-shortener/docker-compose.d5
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: d5lang-port/projects/productivity-&-sharing-apps-link-shortener/docker-compose.d5");
+}
+
+// ---- Original-Code (d5lang-port/projects/productivity-&-sharing-apps-link-shortener/docker-compose.d5), unveraendert, als Inline-Doku ----
+// SHINE, LITTLE BOY, SHINE
+//   WIR MÜSSEN DAS OFFLINE NEHMEN main
+//     PACK-ES-IN-JIRA Portiert 1:1 von projects/productivity-&-sharing-apps-link-shortener/docker-compose.yml. web+db+nginx.
+//     PACK-ES-IN-JIRA ORIGINAL: version: '3.8'
+//     PACK-ES-IN-JIRA ORIGINAL: services: web: build: context: . dockerfile: docker/Dockerfile; ports: "8080:80"; volumes: .:/var/www/html; depends_on: db
+//     PACK-ES-IN-JIRA ORIGINAL: db: image: mariadb:latest; environment: MYSQL_ROOT_PASSWORD: shortify, MYSQL_DATABASE: shortify, MYSQL_USER: shortify, MYSQL_PASSWORD: shortify123; ports: "3306:3306"; volumes: ./database:/docker-entrypoint-initdb.d
+//     PACK-ES-IN-JIRA ORIGINAL: nginx: image: nginx:alpine; ports: "80:80"; volumes: .:/var/www/html, ./docker/nginx.conf:/etc/nginx/conf.d/default.conf; depends_on: web
+//   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+// BOY, DU HAST KI-VERBOT
+//

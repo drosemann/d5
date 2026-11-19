@@ -1,0 +1,17 @@
+
+
+    Verzeichnis: \\?\C:\Users\danie\OneDrive\github-repos\ed-docs
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+d-----        23.10.2026     18:53                .agents                                                              
+d-----        23.10.2026     18:53                .eden                                                                
+d-----        23.10.2026     18:53                .hg                                                                  
+d-----        23.10.2026     18:53                .muse                                                                
+d-----        23.10.2026     18:53                .sl                                                                  
+dar--l        11.10.2026     17:30                web                                                                  
+-a---l        11.10.2026     17:30            152 .gitignore                                                           
+-a---l        11.10.2026     17:44          35744 COPYING                                                              
+-a---l        11.10.2026     18:15           4408 README.md                                                            
+---

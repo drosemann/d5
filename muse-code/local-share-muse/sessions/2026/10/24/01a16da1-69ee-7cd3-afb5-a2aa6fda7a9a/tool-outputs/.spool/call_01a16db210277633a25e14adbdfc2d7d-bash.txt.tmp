@@ -1,0 +1,9 @@
+Fehler beim AusfÅhren des Programms "python.exe": Das System kann auf die Datei nicht zugreifenIn Zeile:1 Zeichen:1
++ python -c "import io; p='README.md'; s=open(p,encoding='utf-8',errors ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.
+In Zeile:1 Zeichen:1
++ python -c "import io; p='README.md'; s=open(p,encoding='utf-8',errors ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ResourceUnavailable: (:) [], ApplicationFailedException
+    + FullyQualifiedErrorId : NativeCommandFailed
+ 

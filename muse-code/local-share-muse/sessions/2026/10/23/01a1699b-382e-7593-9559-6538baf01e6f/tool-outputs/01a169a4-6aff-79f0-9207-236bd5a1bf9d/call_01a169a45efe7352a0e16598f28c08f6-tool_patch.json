@@ -1,0 +1,1 @@
+{"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\stranded-horizons\\vercel.json","hunks":[{"oldStart":10,"oldLines":7,"newStart":10,"newLines":7,"lines":["       ]","     },","     {","-      \"source\": \"/game.js\",","+      \"source\": \"/src/(.*)\",","       \"headers\": [","         {","           \"key\": \"Cache-Control\","]}]}]}

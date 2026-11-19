@@ -1,0 +1,73 @@
+﻿# Zimbu-Port-Spiegel von: d5lang-port\projects\archive-unsorted-guestbook-html-css-javascript\README.d5
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE README_d5
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: d5lang-port\projects\archive-unsorted-guestbook-html-css-javascript\README.d5\n")
+  RETURN 0
+
+# ---- Original-Code (d5lang-port\projects\archive-unsorted-guestbook-html-css-javascript\README.d5), unveraendert, als Inline-Doku ----
+# SHINE, LITTLE BOY, SHINE
+#   WIR MÜSSEN DAS OFFLINE NEHMEN main
+#     PACK-ES-IN-JIRA Portiert 1:1 von projects/archive-unsorted-guestbook-html-css-javascript/README.md. Jede Zeile erhalten.
+#     PACK-ES-IN-JIRA ORIGINAL: # Modern Guestbook
+#     PACK-ES-IN-JIRA ORIGINAL: A modern, feature-rich guestbook application built with PHP, JavaScript, and MySQL.
+#     PACK-ES-IN-JIRA ORIGINAL: ## Features
+#     PACK-ES-IN-JIRA ORIGINAL: - Clean, responsive design
+#     PACK-ES-IN-JIRA ORIGINAL: - Real-time message updates
+#     PACK-ES-IN-JIRA ORIGINAL: - Rich text formatting with BBCode support
+#     PACK-ES-IN-JIRA ORIGINAL: - Emoji support
+#     PACK-ES-IN-JIRA ORIGINAL: - File attachments
+#     PACK-ES-IN-JIRA ORIGINAL: - Anti-spam protection
+#     PACK-ES-IN-JIRA ORIGINAL: - Message scheduling
+#     PACK-ES-IN-JIRA ORIGINAL: - Search functionality
+#     PACK-ES-IN-JIRA ORIGINAL: - Visitor statistics
+#     PACK-ES-IN-JIRA ORIGINAL: ## Prerequisites
+#     PACK-ES-IN-JIRA ORIGINAL: - PHP 7.4 or higher
+#     PACK-ES-IN-JIRA ORIGINAL: - MySQL 5.7 or higher
+#     PACK-ES-IN-JIRA ORIGINAL: - Web server (Apache/Nginx)
+#     PACK-ES-IN-JIRA ORIGINAL: - Modern web browser
+#     PACK-ES-IN-JIRA ORIGINAL: ## Installation
+#     PACK-ES-IN-JIRA ORIGINAL: 1. Clone the repository:
+#     PACK-ES-IN-JIRA ORIGINAL: 2. Create a MySQL database and import the schema:
+#     PACK-ES-IN-JIRA ORIGINAL: 3. Configure the database connection:
+#     PACK-ES-IN-JIRA ORIGINAL: - Copy `config.php.example` to `config.php`
+#     PACK-ES-IN-JIRA ORIGINAL: - Update the database credentials in `config.php`
+#     PACK-ES-IN-JIRA ORIGINAL: 4. Set up your web server:
+#     PACK-ES-IN-JIRA ORIGINAL: - Point your web server to the project's root directory
+#     PACK-ES-IN-JIRA ORIGINAL: - Ensure the `uploads` directory is writable by the web server
+#     PACK-ES-IN-JIRA ORIGINAL: ## Configuration
+#     PACK-ES-IN-JIRA ORIGINAL: - Rate limiting: Adjust timing in `php/save_entry.php`
+#     PACK-ES-IN-JIRA ORIGINAL: - Entries per page: Modify `$per_page` in `php/get_entries.php`
+#     PACK-ES-IN-JIRA ORIGINAL: - Maximum upload size: Configure in your PHP settings
+#     PACK-ES-IN-JIRA ORIGINAL: - WebSocket server: Update URL in `js/main.js`
+#     PACK-ES-IN-JIRA ORIGINAL: ## Usage
+#     PACK-ES-IN-JIRA ORIGINAL: 1. Access the guestbook through your web browser
+#     PACK-ES-IN-JIRA ORIGINAL: 2. Fill out the form with your name, email, and message
+#     PACK-ES-IN-JIRA ORIGINAL: 3. Use the formatting toolbar to style your message
+#     PACK-ES-IN-JIRA ORIGINAL: 4. Submit your entry
+#     PACK-ES-IN-JIRA ORIGINAL: ## Security Features
+#     PACK-ES-IN-JIRA ORIGINAL: - XSS protection
+#     PACK-ES-IN-JIRA ORIGINAL: - CSRF protection
+#     PACK-ES-IN-JIRA ORIGINAL: - Rate limiting
+#     PACK-ES-IN-JIRA ORIGINAL: - Input validation
+#     PACK-ES-IN-JIRA ORIGINAL: - Prepared SQL statements
+#     PACK-ES-IN-JIRA ORIGINAL: ## Contributing
+#     PACK-ES-IN-JIRA ORIGINAL: 1. Fork the repository
+#     PACK-ES-IN-JIRA ORIGINAL: 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+#     PACK-ES-IN-JIRA ORIGINAL: 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+#     PACK-ES-IN-JIRA ORIGINAL: 4. Push to the branch (`git push origin feature/AmazingFeature`)
+#     PACK-ES-IN-JIRA ORIGINAL: 5. Open a Pull Request
+#     PACK-ES-IN-JIRA ORIGINAL: ## License
+#     PACK-ES-IN-JIRA ORIGINAL: This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+#     PACK-ES-IN-JIRA ORIGINAL: ## Acknowledgments
+#     PACK-ES-IN-JIRA ORIGINAL: - [Inter](https://rsms.me/inter/) font family
+#     PACK-ES-IN-JIRA ORIGINAL: - [PHP PDO](https://www.php.net/manual/en/book.pdo.php) for database operations
+#     PACK-ES-IN-JIRA ORIGINAL: - Modern browser APIs for real-time features
+#     PACK-ES-IN-JIRA ORIGINAL: ## Support
+#     PACK-ES-IN-JIRA ORIGINAL: For support, please open an issue in the GitHub repository or contact [your@email.com]
+#   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+# BOY, DU HAST KI-VERBOT
+#

@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189c5-e111-76e3-8b73-8c4ad6ea895b/call_01a189c5d29974959cacf1b68e966480-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189c5-e111-76e3-8b73-8c4ad6ea895b/call_01a189c5d29974959cacf1b68e966480-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189c5-e111-76e3-8b73-8c4ad6ea895b/call_01a189c5d29974959cacf1b68e966480-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\services\\discord-service\\modules\\alertManager.tl","hunks":[{"oldStart":1,"oldLines":0,"newStart":1,"newLines":20,"lines":["+IT'S SHOWTIME","+PUT IT IN JIRA Alerts noisy only when the situation deserves the attention","+PUT IT IN JIRA CPU memory disk thresholds with DM delivery","+WE NEED TO TAKE THIS OFFLINE init_alerts","+TALK TO THE HAND \"Start two-minute alert loop once.\"","+THIS COULD HAVE BEEN AN EMAIL","+WE NEED TO TAKE THIS OFFLINE stop_alerts","+TALK TO THE HAND \"Stop the alert loop.\"","+THIS COULD HAVE BEEN AN EMAIL","+I WAS DOUBLE-BOOKED ON 2 OFFSITES alert_loop","+TALK TO THE HAND \"Evaluate every enabled alert.\"","+THIS COULD HAVE BEEN AN EMAIL","+I WAS DOUBLE-BOOKED ON 2 OFFSITES send_alert","+TALK TO THE HAND \"DM embed when value exceeds threshold.\"","+THIS COULD HAVE BEEN AN EMAIL","+I WAS DOUBLE-BOOKED ON 2 OFFSITES handle_alert","+TALK TO THE HAND \"Create list delete with ownership checks.\"","+THIS COULD HAVE BEEN AN EMAIL","+TALK TO THE HAND \"alert manager ready\"","+YOU HAVE BEEN TERMINATED"]}]}]}

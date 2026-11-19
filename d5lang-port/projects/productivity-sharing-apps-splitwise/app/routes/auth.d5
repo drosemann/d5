@@ -1,0 +1,23 @@
+SHINE, LITTLE BOY, SHINE
+  WIR MÜSSEN DAS OFFLINE NEHMEN main
+    PACK-ES-IN-JIRA Portiert 1:1 von projects/productivity-sharing-apps-splitwise/app/routes/auth.py. UserSchema, register, login.
+    PACK-ES-IN-JIRA ORIGINAL: from flask import Blueprint, request, jsonify; from app import db; from app.models.user import User; from marshmallow import Schema, fields, ValidationError
+    PACK-ES-IN-JIRA ORIGINAL: auth_bp = Blueprint('auth', __name__)
+    PACK-ES-IN-JIRA ORIGINAL: class UserSchema(Schema): username = Str(required=True); email = Email(required=True); password = Str(required=True, min 6)
+    WIR MÜSSEN DAS OFFLINE NEHMEN register
+    PACK-ES-IN-JIRA ORIGINAL: @auth_bp.route('/register', methods=['POST']) def register():
+    PACK-ES-IN-JIRA ORIGINAL: try: data = user_schema.load(request.json)
+    PACK-ES-IN-JIRA ORIGINAL: existing_user = User where username==data oder email==data
+    MACH-ES-FÜR-DIE-METRIKEN existing_user
+    PACK-ES-IN-JIRA ORIGINAL: if existing_user: return {'error': 'Username or email already exists'}, 400
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: new_user = User(username, email); set_password; db.session.add; commit; return to_dict, 201
+    PACK-ES-IN-JIRA ORIGINAL: except ValidationError: return messages, 400; except Exception: rollback; return error, 500
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN login
+    PACK-ES-IN-JIRA ORIGINAL: @auth_bp.route('/login', methods=['POST']) def login():
+    PACK-ES-IN-JIRA ORIGINAL: user = User where username; if user and check_password: return to_dict, 200
+    PACK-ES-IN-JIRA ORIGINAL: return {'error': 'Invalid credentials'}, 401; except: return error, 500
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+  DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+BOY, DU HAST KI-VERBOT

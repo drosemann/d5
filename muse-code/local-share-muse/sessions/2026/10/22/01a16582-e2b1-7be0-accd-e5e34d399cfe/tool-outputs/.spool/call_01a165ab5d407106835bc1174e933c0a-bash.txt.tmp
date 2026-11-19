@@ -1,0 +1,6 @@
+warning: in the working copy of 'services/management-panel/src/components/AppCard.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/management-panel/src/components/FleetPet.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'services/management-panel/src/components/FleetWhy.tsx', LF will be replaced by CRLF the next time Git touches it
+[feature/living-fleet-wiring deed8b4] Fleet: Why-detail explanation view on AppCard
+ 3 files changed, 57 insertions(+)
+ create mode 100644 services/management-panel/src/components/FleetWhy.tsx

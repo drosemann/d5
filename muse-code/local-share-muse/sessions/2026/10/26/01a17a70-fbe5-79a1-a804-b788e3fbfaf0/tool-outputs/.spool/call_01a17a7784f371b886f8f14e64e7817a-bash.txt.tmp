@@ -1,0 +1,121 @@
+wc : Die Benennung "wc" wurde nicht als Name eines Cmdlet, einer Funktion, einer Skriptdatei oder eines ausfhrbaren 
+Programms erkannt. šberprfen Sie die Schreibweise des Namens, oder ob der Pfad korrekt ist (sofern enthalten), und 
+wiederholen Sie den Vorgang.
+In Zeile:1 Zeichen:1
++ wc -l services/management-panel/server/index.ts; Get-Content services ...
++ ~~
+    + CategoryInfo          : ObjectNotFound: (wc:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+  ];
+  res.json({ providers });
+});
+
+// ============================================================================
+// GraphQL API (simplified REST-based)
+// ============================================================================
+
+app.post('/api/graphql', verifyAuth, async (req: Request, res: Response) => {
+  const { query: gqlQuery } = req.body;
+  if (!gqlQuery || typeof gqlQuery !== 'string') {
+    return res.status(400).json({ error: 'Query is required' });
+  }
+  const userId = (req as any).user.id;
+  const result = await executeGraphQL(gqlQuery, {
+    userId,
+    query: async (table, args) => {
+      let builder = supabase.from(table).select('*');
+      for (const [key, value] of Object.entries(args || {})) {
+        builder = builder.eq(key, value);
+      }
+      return builder.limit(100) as any;
+    },
+  });
+  res.json(result);
+});
+
+// Global error handling middleware
+app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
+  console.error('[Server] Unhandled error:', err.message || err);
+  res.status(500).json({ error: process.env.NODE_ENV === 'production' ? 'Internal server error' : err.message });
+});
+
+if (process.env.NODE_ENV !== 'test') {
+  httpServer.listen(port, () => {
+    console.log(`ƒoù Docker Panel API running on http://localhost:${port}`);
+    console.log(`ÐY"­ Frontend should be at http://localhost:5173`);
+    console.log(`ÐY?ü Make sure Supabase and Docker are configured in .env.local`);
+  });
+}
+===
+"""Infrastructure command registrations.
+
+Only commands with a functioning backend API are registered here.
+"""
+
+from ..core.command_registry import register
+from .infrastructure.backup import app as backup_app
+from .infrastructure.deployment import app as deploy_app
+from .infrastructure.logs import app as logs_app
+from .infrastructure.server import app as server_app
+
+register("server", "Server management")(server_app)
+register("backup", "Backup management")(backup_app)
+register("deploy", "Deployment")(deploy_app)
+register("logs", "Logs")(logs_app)
+
+from .apikeys import app as apikeys_app
+from .doctor import app as doctor_app
+from .gitops import app as gitops_app
+from .inventory import app as inventory_app
+from .pet import app as pet_app
+from .plugins import app as plugins_app
+from .rollback import app as rollback_app
+from .secrets import app as secrets_app
+from .ssh import app as ssh_app
+from .templates import app as templates_app
+from .tui import app as tui_app
+from .webhooks import app as webhooks_app
+
+register("gitops", "Infrastructure as Code (GitOps)")(gitops_app)
+register("ssh", "SSH session management")(ssh_app)
+register("inventory", "Server inventory")(inventory_app)
+register("secrets", "Secret management")(secrets_app)
+register("plugins", "Plugin management")(plugins_app)
+register("doctor", "System diagnostics")(doctor_app)
+register("webhooks", "Webhook management")(webhooks_app)
+register("apikeys", "API key management")(apikeys_app)
+register("templates", "Deployment templates")(templates_app)
+register("tui", "Terminal UI mode")(tui_app)
+register("rollback", "Undo/rollback changes")(rollback_app)
+===
+"""Living Fleet barecode: creatures derived from real workload signals.
+
+Phase 1 skeleton. Pure mood engine + JSON file store + aiohttp handlers.
+Rules (frozen by docs/LIVING-FLEET-PLAN.md):
+- Unknown signals stay None and never fabricate a score.
+- Mood is a closed enum derived from vitals, never random.
+- Creatures persist across rebuilds (keyed by workload id, not container id).
+"""
+
+import json
+import logging
+import os
+import time
+from typing import Any, Dict, List, Optional
+
+logger = logging.getLogger(__name__)
+
+ENABLED = os.getenv("LIVING_FLEET_ENABLED", "false").lower() == "true"
+STORE_PATH = os.getenv(
+    "LIVING_FLEET_STORE", os.path.join(os.path.dirname(__file__), "living_fleet.json")
+)
+
+# Closed mood enum ƒ?" extend only via the plan file.
+MOODS = (
+    "thriving",
+    "content",
+    "sleepy",
+    "hungry",
+    "sick",
+    "stressed",

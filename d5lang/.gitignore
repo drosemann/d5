@@ -1,0 +1,31 @@
+# built binaries
+d5lang
+d5lang.exe
+*.o
+
+# generated from .d5 sources (<base>.d5 -> <base>.c -> <base>[.exe])
+examples/*.c
+examples/hello
+examples/hello.exe
+examples/shine
+examples/shine.exe
+examples/hosting
+examples/hosting.exe
+
+# smoke test output (make test) / screenshot capture output
+smoke.d5
+roast.d5
+tests/smoke.d5
+build.log
+
+# local screenshot-rendering venv (one-shot tooling, not part of the repo)
+.venv/
+
+# editors / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# NOTE: *.zimbu files are committed on purpose (mechanical mirrors, see README).

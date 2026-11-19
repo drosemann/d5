@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/22/01a16582-e2b1-7be0-accd-e5e34d399cfe/tool-outputs/01a1659c-ca54-7021-93e8-e57e03f78551/call_01a1659cc00c74cc87680f15f5cf8963-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/22/01a16582-e2b1-7be0-accd-e5e34d399cfe/tool-outputs/01a1659c-ca54-7021-93e8-e57e03f78551/call_01a1659cc00c74cc87680f15f5cf8963-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/22/01a16582-e2b1-7be0-accd-e5e34d399cfe/tool-outputs/01a1659c-ca54-7021-93e8-e57e03f78551/call_01a1659cc00c74cc87680f15f5cf8963-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\services\\orchestrator-agent\\living_fleet.py","hunks":[{"oldStart":326,"oldLines":11,"newStart":326,"newLines":14,"lines":["     workload_id = request.match_info[\"workload_id\"]","     try:","         body = await request.json()","-    except ValueError:","+    except Exception:","         return web.json_response({\"error\": \"invalid JSON body\"}, status=400)","-    name = str(body.get(\"display_name\", \"\")).strip()","-    if not name:","+    if not isinstance(body, dict):","+        return web.json_response({\"error\": \"invalid JSON body\"}, status=400)","+    raw_name = body.get(\"display_name\")","+    if not isinstance(raw_name, str) or not raw_name.strip():","         return web.json_response({\"error\": \"display_name required\"}, status=400)","+    name = raw_name.strip()","     view = rename(workload_id, name)","     if view is None:","         return web.json_response({\"error\": \"unknown or retired workload\"}, status=404)"]}]}]}

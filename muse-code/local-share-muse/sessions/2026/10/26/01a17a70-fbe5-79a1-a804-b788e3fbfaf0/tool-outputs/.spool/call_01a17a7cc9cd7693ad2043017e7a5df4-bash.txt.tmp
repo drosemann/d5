@@ -1,0 +1,47 @@
+Configuration is resolved in this order: built-in defaults, default config
+file, selected profile file, then `IPILOT_API_URL`, `IPILOT_TOKEN`, and
+`IPILOT_OUTPUT` environment variables. Use `ipilot --help` to see how to
+select a profile and output format in the current CLI build.
+
+## Network and authentication boundaries
+
+- The panel's setup and selected health/documentation routes are public;
+  operational `/api/*` routes use the panel's authentication middleware.
+- The orchestrator exposes `/health` and `/metrics` for probes and Prometheus.
+  Webhook/API authentication is documented in [Auth Matrix](11-Auth-Matrix.md).
+- `FEDERATION_API_TOKEN` protects the orchestrator `/api/` route group when configured. Do not expose it to browsers.
+- The Discord service has access to `/var/run/docker.sock` in Compose; restrict it to trusted hosts and administrators.
+
+See [`.env.example`](../.env.example) and the service-level `.env.example` files for exact defaults.
+===
+| `tui dashboard` | Interactive dashboard |
+| `tui monitor [server]` | Real-time monitoring |
+| `tui logs [server]` | Log viewer |
+
+## Developer Tools
+
+| Command | Description |
+| --------- | ------------- |
+| `doctor doctor [--fix] [--verbose]` | System diagnostics |
+| `benchmark [--server]` | Performance benchmarks (alias for `doctor benchmark`) |
+| `diagnose [--server] [--issue connectivity\|performance\|disk]` | Issue diagnosis (alias for `doctor diagnose`) |
+
+---
+
+*Source: `ipilot <command> --help` for each command*
+===
+The curated examples are in [wiki/04-Usage-Examples.md](../wiki/04-Usage-Examples.md);
+configuration precedence is in [wiki/03-Configuration.md](../wiki/03-Configuration.md).
+
+## Configuration files
+
+The default profile is `~/.ipilot/config.json`; named profiles are stored as
+`~/.ipilot/config-<profile>.json`. Environment overrides take precedence over
+persisted values. Do not put credentials in shell history or commit profile
+files.
+
+## Development checks
+
+```bash
+pytest tests/cli/ -v
+```

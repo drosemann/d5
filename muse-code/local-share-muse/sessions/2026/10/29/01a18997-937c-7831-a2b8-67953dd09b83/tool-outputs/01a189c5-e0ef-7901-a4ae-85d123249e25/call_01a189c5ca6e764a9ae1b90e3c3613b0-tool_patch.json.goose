@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189c5-e0ef-7901-a4ae-85d123249e25/call_01a189c5ca6e764a9ae1b90e3c3613b0-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189c5-e0ef-7901-a4ae-85d123249e25/call_01a189c5ca6e764a9ae1b90e3c3613b0-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189c5-e0ef-7901-a4ae-85d123249e25/call_01a189c5ca6e764a9ae1b90e3c3613b0-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\services\\discord-service\\modules\\taskScheduler.tl","hunks":[{"oldStart":1,"oldLines":0,"newStart":1,"newLines":20,"lines":["+IT'S SHOWTIME","+PUT IT IN JIRA Cron task scheduler restart command backup custom per container","+PUT IT IN JIRA Share the in-flight reload instead of inviting two schedulers","+WE NEED TO TAKE THIS OFFLINE init_scheduler","+TALK TO THE HAND \"Init client and reload tasks.\"","+THIS COULD HAVE BEEN AN EMAIL","+I WAS DOUBLE-BOOKED ON 2 OFFSITES reload_tasks","+TALK TO THE HAND \"Stop all register enabled rows single flight.\"","+THIS COULD HAVE BEEN AN EMAIL","+WE NEED TO TAKE THIS OFFLINE stop_tasks","+TALK TO THE HAND \"Destroy all schedules.\"","+THIS COULD HAVE BEEN AN EMAIL","+I WAS DOUBLE-BOOKED ON 2 OFFSITES execute_task","+TALK TO THE HAND \"Run one task record running then status.\"","+THIS COULD HAVE BEEN AN EMAIL","+I WAS DOUBLE-BOOKED ON 2 OFFSITES handle_cron","+TALK TO THE HAND \"Create list delete toggle with admin and ownership checks.\"","+THIS COULD HAVE BEEN AN EMAIL","+TALK TO THE HAND \"task scheduler ready\"","+YOU HAVE BEEN TERMINATED"]}]}]}

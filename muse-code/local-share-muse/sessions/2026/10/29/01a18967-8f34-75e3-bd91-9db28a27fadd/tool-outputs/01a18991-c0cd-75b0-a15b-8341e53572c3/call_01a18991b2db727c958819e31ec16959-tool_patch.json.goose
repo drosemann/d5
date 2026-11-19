@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18967-8f34-75e3-bd91-9db28a27fadd/tool-outputs/01a18991-c0cd-75b0-a15b-8341e53572c3/call_01a18991b2db727c958819e31ec16959-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18967-8f34-75e3-bd91-9db28a27fadd/tool-outputs/01a18991-c0cd-75b0-a15b-8341e53572c3/call_01a18991b2db727c958819e31ec16959-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18967-8f34-75e3-bd91-9db28a27fadd/tool-outputs/01a18991-c0cd-75b0-a15b-8341e53572c3/call_01a18991b2db727c958819e31ec16959-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\Agentenplattform\\apps\\android-safety\\app\\AndroidManifest.xml","hunks":[{"oldStart":1,"oldLines":0,"newStart":1,"newLines":12,"lines":["+<?xml version=\"1.0\" encoding=\"utf-8\"?>","+<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\">","+    <!-- Nur eigenes Gerät: Standort + Hintergrund-Dienst, keine Überwachung anderer. -->","+    <uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />","+    <uses-permission android:name=\"android.permission.ACCESS_BACKGROUND_LOCATION\" />","+    <uses-permission android:name=\"android.permission.FOREGROUND_SERVICE\" />","+    <uses-permission android:name=\"android.permission.FOREGROUND_SERVICE_LOCATION\" />","+    <uses-permission android:name=\"android.permission.INTERNET\" />","+    <application android:label=\"Safety-Begleitung\">","+        <service android:name=\".StandortService\" android:foregroundServiceType=\"location\" android:exported=\"false\" />","+    </application>","+</manifest>"]}]}]}

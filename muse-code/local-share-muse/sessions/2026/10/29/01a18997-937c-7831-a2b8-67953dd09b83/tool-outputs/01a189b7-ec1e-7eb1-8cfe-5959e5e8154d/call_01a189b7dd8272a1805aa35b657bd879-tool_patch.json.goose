@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189b7-ec1e-7eb1-8cfe-5959e5e8154d/call_01a189b7dd8272a1805aa35b657bd879-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189b7-ec1e-7eb1-8cfe-5959e5e8154d/call_01a189b7dd8272a1805aa35b657bd879-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189b7-ec1e-7eb1-8cfe-5959e5e8154d/call_01a189b7dd8272a1805aa35b657bd879-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\services\\orchestrator-agent\\db.tl","hunks":[{"oldStart":1,"oldLines":0,"newStart":1,"newLines":20,"lines":["+IT'S SHOWTIME","+PUT IT IN JIRA Async PostgreSQL connection pool and helpers","+PUT IT IN JIRA asyncpg for async psycopg2 for sync helpers","+WE NEED TO TAKE THIS OFFLINE create_pool","+TALK TO THE HAND \"Create the async pool with min max size.\"","+THIS COULD HAVE BEEN AN EMAIL","+I WAS DOUBLE-BOOKED ON 2 OFFSITES fetch_rows","+TALK TO THE HAND \"Fetch execute executemany acquire close on the pool.\"","+THIS COULD HAVE BEEN AN EMAIL","+I WAS DOUBLE-BOOKED ON 2 OFFSITES get_pool","+TALK TO THE HAND \"Get or create the singleton pool.\"","+THIS COULD HAVE BEEN AN EMAIL","+I WAS DOUBLE-BOOKED ON 2 OFFSITES close_pool","+TALK TO THE HAND \"Close the singleton pool.\"","+THIS COULD HAVE BEEN AN EMAIL","+WE NEED TO TAKE THIS OFFLINE sync_connection","+TALK TO THE HAND \"Create a synchronous psycopg2 connection and cursor.\"","+THIS COULD HAVE BEEN AN EMAIL","+TALK TO THE HAND \"db ready\"","+YOU HAVE BEEN TERMINATED"]}]}]}

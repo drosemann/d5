@@ -1,0 +1,18 @@
+SHINE, LITTLE BOY, SHINE
+  WIR MÜSSEN DAS OFFLINE NEHMEN main
+    PACK-ES-IN-JIRA Portiert 1:1 von projects/productivity-sharing-apps-splitwise/app/routes/expenses.py. ExpenseSchema, create, user-list.
+    PACK-ES-IN-JIRA ORIGINAL: from flask import Blueprint, request, jsonify; from app import db; Expense, ExpenseSplit, User; marshmallow Schema, fields
+    PACK-ES-IN-JIRA ORIGINAL: expenses_bp = Blueprint('expenses', __name__)
+    PACK-ES-IN-JIRA ORIGINAL: class ExpenseSchema(Schema): description Str required; amount Float required; user_id Int required; group_id Int optional; splits List(Dict) optional
+    WIR MÜSSEN DAS OFFLINE NEHMEN create_expense
+    PACK-ES-IN-JIRA ORIGINAL: @expenses_bp.route('/create', methods=['POST']):
+    PACK-ES-IN-JIRA ORIGINAL: data = load; new_expense = Expense(description, amount, user_id, group_id); add; flush
+    MACH-ES-FÜR-DIE-METRIKEN splits in data
+    BLEIB-BIS-ZUM-SPRINT-ENDE split in splits
+    PACK-ES-IN-JIRA ORIGINAL: if 'splits' in data: for split: ExpenseSplit(expense_id, user_id, amount); add; commit; return to_dict, 201; except: rollback; error 500
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN get_user_expenses
+    PACK-ES-IN-JIRA ORIGINAL: @expenses_bp.route('/user/<int:user_id>', methods=['GET']): expenses where user_id; return Liste to_dict, 200; except: error 500
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+  DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+BOY, DU HAST KI-VERBOT

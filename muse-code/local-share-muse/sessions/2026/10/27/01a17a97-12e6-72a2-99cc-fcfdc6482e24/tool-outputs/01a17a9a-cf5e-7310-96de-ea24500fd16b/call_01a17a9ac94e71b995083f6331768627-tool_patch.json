@@ -1,0 +1,1 @@
+{"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\TraumaLang\\src\\codegen.h","hunks":[{"oldStart":1,"oldLines":0,"newStart":1,"newLines":9,"lines":["+#pragma once","+#ifndef TL_CODEGEN_H","+#define TL_CODEGEN_H","+#include \"ast.h\"","+#include <stdio.h>","+","+int tl_codegen(TlNode *prog, FILE *out, char **err_out);","+","+#endif"]}]}]}

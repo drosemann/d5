@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a1899b-8cd0-7eb3-94ce-0c3a0a697b79/call_01a1899b7e6d759ab99d4024418c5796-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a1899b-8cd0-7eb3-94ce-0c3a0a697b79/call_01a1899b7e6d759ab99d4024418c5796-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a1899b-8cd0-7eb3-94ce-0c3a0a697b79/call_01a1899b7e6d759ab99d4024418c5796-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\TRAUMALANG-GAPS.md","hunks":[{"oldStart":87,"oldLines":6,"newStart":87,"newLines":9,"lines":["   `git pull --ff-only`, `compose up -d --build`, Healthcheck + Volume-Verify) nur als","   `TALK TO THE HAND`-Kette; Flags/Guards nur als Strings."," ","+- `cli/ipilot/commands/doctor.tl` (neu): `doctor/__init__.py` voll gelesen (334 Zeilen). Funktionen (`_get_client`, `_memory_usage`, `_disk_usage`, `_load_average`, `doctor`, `benchmark`, `diagnose`) als Huellen + `TALK TO THE HAND`. Fehlt: echte Checks, /proc/meminfo-Parsing, ctypes-Branch, shutil.which-Kette, API-Healthcheck.","+- `scripts/healthcheck.tl` (neu): `healthcheck.sh` voll gelesen (113 Zeilen). Funktionen (`success`/`warn`/`error`/`info`/`usage`/`check_file`/`check_docker_service`) + Datei-/Docker-Checks nur als `TALK TO THE HAND`-Kette; Flags/Guards nur als Strings.","+"," ## 2. Noch gar nicht übersetzte Quelldateien"," "," ### 2a. `cli/ipilot/commands/`-Submodule (alle offen außer `pet.py`-Kopf)"]}]}]}

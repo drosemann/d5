@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/27/01a17f39-7fcc-7ab2-a2b1-80bc1e6211d0/tool-outputs/01a17f3c-621d-7792-9fc7-88f4c0e25a79/call_01a17f3c58dd776f906e70e1581ad8ec-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/27/01a17f39-7fcc-7ab2-a2b1-80bc1e6211d0/tool-outputs/01a17f3c-621d-7792-9fc7-88f4c0e25a79/call_01a17f3c58dd776f906e70e1581ad8ec-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/27/01a17f39-7fcc-7ab2-a2b1-80bc1e6211d0/tool-outputs/01a17f3c-621d-7792-9fc7-88f4c0e25a79/call_01a17f3c58dd776f906e70e1581ad8ec-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\cli\\ipilot\\client.tl","hunks":[{"oldStart":1,"oldLines":0,"newStart":1,"newLines":21,"lines":["+IT'S SHOWTIME","+PUT IT IN JIRA HTTP API client for the Infra Pilot backend","+PUT IT IN JIRA Keep the remote side honest success-shaped responses are not always successful","+WE HAVE 240 EMPLOYEES AND 340 ACTIVE ACCOUNTS API_PREFIX","+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE API_PREFIX \"/api\"","+WE HAVE 240 EMPLOYEES AND 340 ACTIVE ACCOUNTS base_url","+I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE base_url \"http://localhost:3001\"","+WE HAVE 240 EMPLOYEES AND 340 ACTIVE ACCOUNTS token","+I LIKE TO SET VERY VAGUE GOALS","+WE NEED TO TAKE THIS OFFLINE api_login","+TALK TO THE HAND \"login request sent\"","+THIS COULD HAVE BEEN AN EMAIL","+WE NEED TO TAKE THIS OFFLINE api_request","+DO IT FOR THE METRICS base_url","+TALK TO THE HAND \"request sent\"","+BLUE IS BROKEN GREEN IS WORSE","+TALK TO THE HAND \"connection failed\"","+YOU HAVE BEEN TERMINATED","+THIS COULD HAVE BEEN AN EMAIL","+TALK TO THE HAND \"API client ready\"","+YOU HAVE BEEN TERMINATED"]}]}]}

@@ -1,0 +1,46 @@
+﻿# Zimbu-Port-Spiegel von: d5lang-port\projects\productivity-&-sharing-apps-notenest\src\server.d5
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE server_d5
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: d5lang-port\projects\productivity-&-sharing-apps-notenest\src\server.d5\n")
+  RETURN 0
+
+# ---- Original-Code (d5lang-port\projects\productivity-&-sharing-apps-notenest\src\server.d5), unveraendert, als Inline-Doku ----
+# SHINE, LITTLE BOY, SHINE
+#   WIR MÜSSEN DAS OFFLINE NEHMEN main
+#     PACK-ES-IN-JIRA Portiert 1:1 von projects/productivity-&-sharing-apps-notenest/src/server.js. http-Server, CORS, Auth, POST/GET notes, PORT 3000.
+#     PACK-ES-IN-JIRA ORIGINAL: const http = require('http'); const fs = require('fs'); const path = require('path'); const Note = require('./models/Note'); require('dotenv').config();
+#     WIR MÜSSEN DAS OFFLINE NEHMEN server
+#     PACK-ES-IN-JIRA ORIGINAL: const server = http.createServer(async (req, res) => {
+#     PACK-ES-IN-JIRA CORS headers
+#     PACK-ES-IN-JIRA ORIGINAL: res.setHeader('Access-Control-Allow-Origin', '*'); ...-Methods GET,POST,PUT,DELETE,OPTIONS; ...-Headers Content-Type, Authorization
+#     MACH-ES-FÜR-DIE-METRIKEN req.method === 'OPTIONS'
+#     PACK-ES-IN-JIRA ORIGINAL: if (req.method === 'OPTIONS') { res.writeHead(204); res.end(); return; }
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA Basic authentication middleware
+#     PACK-ES-IN-JIRA ORIGINAL: const auth = req.headers.authorization;
+#     MACH-ES-FÜR-DIE-METRIKEN !auth
+#     PACK-ES-IN-JIRA ORIGINAL: if (!auth) { res.writeHead(401, ...); res.end('Authentication required'); return; }
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: try {
+#     MACH-ES-FÜR-DIE-METRIKEN POST /api/notes
+#     PACK-ES-IN-JIRA ORIGINAL: if (req.method === 'POST' && req.url === '/api/notes') { body sammeln; on end: { title, content } = JSON.parse; noteId = Note.create(1, title, content); 201 {id}; catch: 400 Invalid request }
+#     BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+#     MACH-ES-FÜR-DIE-METRIKEN GET /api/notes/:id
+#     PACK-ES-IN-JIRA ORIGINAL: else if (req.method === 'GET' && req.url.startsWith('/api/notes/')) { noteId = split('/')[3]; note = Note.get(noteId, 1);
+#     MACH-ES-FÜR-DIE-METRIKEN note
+#     PACK-ES-IN-JIRA ORIGINAL: if (note) { 200 note } else { 404 Note not found } }
+#     BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+#     PACK-ES-IN-JIRA ORIGINAL: else { 404 Not found }
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: } catch (error) { 500 Internal server error }
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: const PORT = process.env.PORT || 3000;
+#     PACK-ES-IN-JIRA ORIGINAL: server.listen(PORT, () => { console.log(`Server running on port ${PORT}`); });
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+# BOY, DU HAST KI-VERBOT
+#

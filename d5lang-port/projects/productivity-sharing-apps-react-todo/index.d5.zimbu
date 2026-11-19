@@ -1,0 +1,49 @@
+﻿# Zimbu-Port-Spiegel von: d5lang-port\projects\productivity-sharing-apps-react-todo\index.d5
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE index_d5
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: d5lang-port\projects\productivity-sharing-apps-react-todo\index.d5\n")
+  RETURN 0
+
+# ---- Original-Code (d5lang-port\projects\productivity-sharing-apps-react-todo\index.d5), unveraendert, als Inline-Doku ----
+# SHINE, LITTLE BOY, SHINE
+#   WIR MÜSSEN DAS OFFLINE NEHMEN main
+#     PACK-ES-IN-JIRA Portiert 1:1 von projects/productivity-sharing-apps-react-todo/index.jsx. React-Teil (Zeilen 1-68) plus defekter Anhang (69-98) unveraendert erhalten.
+#     PACK-ES-IN-JIRA ORIGINAL: import React, { useState } from 'react';
+#     PACK-ES-IN-JIRA ORIGINAL: function App() {
+#     PACK-ES-IN-JIRA ORIGINAL: const [todos, setTodos] = useState([{id:1,title:'To-Do 1'},{id:2,...},{id:3,...}]);
+#     PACK-ES-IN-JIRA ORIGINAL: const [inputValue, setInputValue] = useState(''); const [editingId, setEditingId] = useState(null);
+#     PACK-ES-IN-JIRA ORIGINAL: if (inputValue.trim() !== '') { setTodos([...todos, {id: todos.length+1, title: inputValue}]); setInputValue(''); }
+#     WIR MÜSSEN DAS OFFLINE NEHMEN addTodo
+#     PACK-ES-IN-JIRA ORIGINAL: const addTodo = () => { if (inputValue.trim() !== '') { setTodos([...todos, {id: todos.length + 1, title: inputValue}]); setInputValue(''); } };
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN deleteTodo
+#     PACK-ES-IN-JIRA ORIGINAL: const deleteTodo = (id) => { setTodos(todos.filter(todo => todo.id !== id)); };
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN editTodo
+#     PACK-ES-IN-JIRA ORIGINAL: const editTodo = (id, newTitle) => { setTodos(todos.map(todo => todo.id === id ? { ...todo, title: newTitle } : todo)); setEditingId(null); };
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN toggleEdit
+#     PACK-ES-IN-JIRA ORIGINAL: const toggleEdit = (id) => { setEditingId(id); };
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: return (<div><h1>To-Do App</h1><input .../><button Add>...<ul>{todos.map(...edit input onBlur / span + Edit/Delete...)}</ul></div>);
+#     PACK-ES-IN-JIRA ORIGINAL: export default App;
+#     PACK-ES-IN-JIRA DEFEKT-IM-ORIGINAL ab Zeile 69 (unveraendert): function deleteTodo(id) { findIndex/splice/renderTodos; } export default deleteTodo; function Gui; button click showGui x3; AnimationPlaybackEvent-Bedingungen; export defazkt Gui;
+#     PACK-ES-IN-JIRA ORIGINAL: function deleteTodo(id) {
+#     PACK-ES-IN-JIRA ORIGINAL: const todoIndex = todos.findIndex((todo) => todo.id === id);
+#     MACH-ES-FÜR-DIE-METRIKEN todoIndex !== -1
+#     PACK-ES-IN-JIRA ORIGINAL: if (todoIndex !== -1) { todos.splice(todoIndex, 1); renderTodos(); }
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: export default deleteTodo
+#     PACK-ES-IN-JIRA ORIGINAL: function Gui;
+#     PACK-ES-IN-JIRA ORIGINAL: button.addEventListener("click", () => { showGui(); });
+#     PACK-ES-IN-JIRA ORIGINAL: if (AnimationPlaybackEvent !== undefined) { button.addEventListener("click", () => { showGui(); }); }
+#     PACK-ES-IN-JIRA ORIGINAL: deleteTodo if (AnimationPlaybackEvent !== undefined) { button.addEventListener("click", () => { showGui(); }); }
+#     PACK-ES-IN-JIRA ORIGINAL: }
+#     PACK-ES-IN-JIRA ORIGINAL: export defazkt Gui;
+#   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+# BOY, DU HAST KI-VERBOT
+#

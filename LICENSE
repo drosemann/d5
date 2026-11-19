@@ -1,0 +1,77 @@
+d5 — Repository License Notice
+
+This repository is a super-app ecosystem combining many projects.
+The full text of every merged project's license is collected in
+ALL-LICENSES.md (nothing deleted, only combined into one file).
+Each project's own license file also stays inside its folder under
+projects/. This root file does not relicense any part; it states how
+the combined collection applies.
+
+1. How the combined file works
+
+- ALL-LICENSES.md is an aggregation: verbatim copies of each
+  project's license text, one after another, with attribution
+  preserved. It is a finding aid, not a new license.
+- Each file, folder, and project under projects/ remains under its
+  own original license terms. Where a project folder contains a
+  LICENSE, LICENCE, or COPYING file, that file governs its contents.
+- In case of conflict, the per-project license file prevails over
+  this root notice and over the collected copy in ALL-LICENSES.md.
+
+2. Daniel Rosemann's own work (MIT)
+
+Unless a file or folder states otherwise, all original code,
+documentation, and other works authored by Daniel Rosemann
+(also committed as DaaanielTV, danielatschool, Daniel, Dev Coder)
+— including the super-app shell under app/, app-solid/, and new
+code added to this repository — is licensed under the MIT License:
+
+MIT License
+
+Copyright (c) 2026 Daniel Rosemann
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+3. Copyleft and third-party parts (no override)
+
+Some included parts are not under the MIT License above and are
+not relicensed by it, including (non-exhaustive):
+
+- GNU General Public License (GPLv3): e.g. the GNU ed material
+  collected under ed-docs. Its full text is in the project's
+  COPYING file and in ALL-LICENSES.md. Copyleft terms for those
+  parts apply to those parts even when distributed inside this
+  repository.
+- Any project folder carrying its own LICENSE/COPYING file with
+  terms different from MIT (including its own copyright holder,
+  year, and conditions) keeps those terms.
+
+Nothing in this root notice grants rights over, or imposes terms
+on, works whose authors are not Daniel Rosemann. Historical
+contributions (including the InfraPilot examples Tonchain and
+coderabbitai[bot], and Greg Nietsky in ed-docs) keep their
+original terms; see the Contributors section in README.MD and
+projects/github-repos-infra-pilot/README.md.
+
+4. Attribution
+
+Retain all original copyright notices and license texts when
+copying or redistributing. ALL-LICENSES.md, README.MD, and the
+per-project license files together record authorship; the
+maintainer is Daniel Rosemann.

@@ -1,0 +1,14 @@
+"\\?\C:\Users\danie\OneDrive\github-repos"
+CMD.EXE wurde mit dem oben angegebenen Pfad als aktuellem Verzeichnis gestartet.
+UNC-Pfade werden nicht untersttzt.
+Stattdessen wird das Windows-Verzeichnis als aktuelles Verzeichnis gesetzt.
+{
+  "error": {
+    "code": "invalid-skill-package",
+    "message": "Das System kann den angegebenen Pfad nicht finden. (os error 3)",
+    "details": {
+      "path": ".agents\\skill-drafts\\taste-design"
+    }
+  }
+}
+Das System kann den angegebenen Pfad nicht finden. (os error 3)

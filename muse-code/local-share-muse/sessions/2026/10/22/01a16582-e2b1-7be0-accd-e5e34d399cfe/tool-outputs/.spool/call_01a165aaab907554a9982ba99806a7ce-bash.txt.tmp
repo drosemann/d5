@@ -1,0 +1,8 @@
+feature/living-fleet-wiring
+da00dd1 Fleet: engine unit tests, store-level rename validation, env keys
+5b29095 Fleet: deterministic care hints on pet status
+a140473 Fleet: panel proxy, creature mount on AppCard, dashboard wiring
+b21f45c Fleet: signal collector with birth hooks and restart windowing
+2881126 Review: complete fleet mood table, drop truncation artifact
+---PY---
+

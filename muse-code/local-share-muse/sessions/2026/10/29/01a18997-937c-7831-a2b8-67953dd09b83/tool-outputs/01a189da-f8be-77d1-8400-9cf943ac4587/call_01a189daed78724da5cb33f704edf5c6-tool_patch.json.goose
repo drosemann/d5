@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189da-f8be-77d1-8400-9cf943ac4587/call_01a189daed78724da5cb33f704edf5c6-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189da-f8be-77d1-8400-9cf943ac4587/call_01a189daed78724da5cb33f704edf5c6-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189da-f8be-77d1-8400-9cf943ac4587/call_01a189daed78724da5cb33f704edf5c6-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\TRAUMALANG-GAPS.md","hunks":[{"oldStart":152,"oldLines":6,"newStart":152,"newLines":8,"lines":[" "," - Backend-Batch 16 (9 Dateien, alle voll gelesen, nur Huellen + `TALK TO THE HAND`): alle 9 `.ps1`-Zwillinge (`prerequisites-check`, `docker-build`, `verify`, `healthcheck`, `release`, `install-deps`, `generate-env`, `test`, `setup`) als `-ps.tl`-Port. Nicht abbildbar: `Get-Command`, `Write-Host`-Farben, `Join-Path`/`Test-Path`, `ConvertTo-Json`, RNGCrypto, Call-Operator `&`."," ","+- Backend-Batch 17 (5 Dateien, alle voll gelesen, nur Huellen + `TALK TO THE HAND`): `test_command_registry`, `test_main_extra`, `test_inventory_commands`, `test_styling`, `test_core_cli` (Fixtures, Runner-Invokes, Mock-Clients, Asserts als Strings). Nicht abbildbar: `pytest`-Fixtures, `CliRunner`, `MagicMock`, `capsys`/`caplog`.","+"," ## 2. Noch gar nicht übersetzte Quelldateien"," "," ### 2a. `cli/ipilot/commands/`-Submodule (alle erledigt, siehe Abschnitt 1 und Batches)"]}]}]}

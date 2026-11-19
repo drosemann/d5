@@ -1,0 +1,31 @@
+Get-Command : Die Benennung "node" wurde nicht als Name eines Cmdlet, einer Funktion, einer Skriptdatei oder eines 
+ausfhrbaren Programms erkannt. šberprfen Sie die Schreibweise des Namens, oder ob der Pfad korrekt ist (sofern 
+enthalten), und wiederholen Sie den Vorgang.
+In Zeile:1 Zeichen:1
++ Get-Command node,nodejs 2>&1 | Select-Object -First 5; echo '---'; $e ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (node:String) [Get-Command], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException,Microsoft.PowerShell.Commands.GetCommandCommand
+ 
+Get-Command : Die Benennung "nodejs" wurde nicht als Name eines Cmdlet, einer Funktion, einer Skriptdatei oder eines 
+ausfhrbaren Programms erkannt. šberprfen Sie die Schreibweise des Namens, oder ob der Pfad korrekt ist (sofern 
+enthalten), und wiederholen Sie den Vorgang.
+In Zeile:1 Zeichen:1
++ Get-Command node,nodejs 2>&1 | Select-Object -First 5; echo '---'; $e ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (nodejs:String) [Get-Command], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException,Microsoft.PowerShell.Commands.GetCommandCommand
+ 
+---
+C:\WINDOWS\system32
+C:\WINDOWS
+C:\WINDOWS\System32\Wbem
+C:\WINDOWS\System32\WindowsPowerShell\v1.0\
+C:\WINDOWS\System32\OpenSSH\
+C:\Program Files\NVIDIA Corporation\NVIDIA App\NvDLISR
+C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common
+C:\Program Files\Microsoft VS Code\bin
+C:\Program Files\Git\cmd
+C:\Users\danie\AppData\Local\Programs\muse
+C:\Users\danie\AppData\Local\Microsoft\WindowsApps
+

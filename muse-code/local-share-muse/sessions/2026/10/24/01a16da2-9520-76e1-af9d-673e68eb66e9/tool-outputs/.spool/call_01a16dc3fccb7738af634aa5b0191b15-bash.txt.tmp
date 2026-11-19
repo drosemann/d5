@@ -1,0 +1,8 @@
+warning: in the working copy of 'LICENSE', LF will be replaced by CRLF the next time Git touches it
+ M LICENSE
+ M README.md
+warning: in the working copy of 'LICENSE', LF will be replaced by CRLF the next time Git touches it
+[main 85e50f4] Ab 24.10.2026 MIT, da nur Daniel Rosemann committed.
+ 2 files changed, 22 insertions(+), 675 deletions(-)
+To https://github.com/drosemann/forgecms.git
+   e93844f..85e50f4  main -> main

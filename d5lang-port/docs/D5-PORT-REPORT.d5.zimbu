@@ -1,0 +1,155 @@
+﻿# Zimbu-Port-Spiegel von: d5lang-port\docs\D5-PORT-REPORT.d5
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE D5_PORT_REPORT_d5
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: d5lang-port\docs\D5-PORT-REPORT.d5\n")
+  RETURN 0
+
+# ---- Original-Code (d5lang-port\docs\D5-PORT-REPORT.d5), unveraendert, als Inline-Doku ----
+# SHINE, LITTLE BOY, SHINE
+#   WIR MÜSSEN DAS OFFLINE NEHMEN main
+#     PACK-ES-IN-JIRA Portiert 1:1 von docs/D5-PORT-REPORT.md. Jede Originalzeile ist erhalten, nichts geschnitten.
+#     PACK-ES-IN-JIRA # d5 Super-App Port — Full Report
+#     PACK-ES-IN-JIRA Goal: merge everything under `!Coding-Enviroment` into the single `d5` web
+#     PACK-ES-IN-JIRA app without deleting any feature or app. Status at write time: implementation
+#     PACK-ES-IN-JIRA complete, statically verified, **not yet browser-tested** (see Blockers).
+#     PACK-ES-IN-JIRA ## 1. Scope inventory (what was found)
+#     PACK-ES-IN-JIRA - **76 git repos** under `!Coding-Enviroment` (already merged into `projects/`
+#     PACK-ES-IN-JIRA in an earlier session, histories preserved via subtree).
+#     PACK-ES-IN-JIRA - **73 additional non-git project folders** (plain folders, no `.git`):
+#     PACK-ES-IN-JIRA games (2048, snake, ping pong, …), websites, PHP apps, learning exercises,
+#     PACK-ES-IN-JIRA Minecraft plugins, Python tools. These were **not** in `projects/` yet.
+#     PACK-ES-IN-JIRA - Total: **149 projects**. `!Coding-Enviroment` itself was never modified —
+#     PACK-ES-IN-JIRA folders were copied, not moved.
+#     PACK-ES-IN-JIRA ## 2. Changes made (this session)
+#     PACK-ES-IN-JIRA ### 2.1 Merge — 73 folders copied into `projects/`
+#     PACK-ES-IN-JIRA `Copy-Item` of every non-git leaf project to `projects/<slug>/`, slug =
+#     PACK-ES-IN-JIRA lowercased, sanitized folder path (same convention as the existing 76).
+#     PACK-ES-IN-JIRA `projects/` went from 76 → **149 folders**. One temp file used during the
+#     PACK-ES-IN-JIRA merge (`tools/new-entries.txt`) was deleted afterwards.
+#     PACK-ES-IN-JIRA ### 2.2 Catalog — 73 entries appended
+#     PACK-ES-IN-JIRA `app/catalog.json` and `app/catalog.js` (same data, JS file assigns
+#     PACK-ES-IN-JIRA `window.D5_CATALOG`): 76 → **149 entries**. Fields per entry: slug, name,
+#     PACK-ES-IN-JIRA category (top folder), stack (detected from file extensions), status,
+#     PACK-ES-IN-JIRA path, hasReadme, hasLicense. One correction: `archive-unsorted-helloworld`
+#     PACK-ES-IN-JIRA is labeled a plain Java sample, not Minecraft code. JSON validity verified
+#     PACK-ES-IN-JIRA by parsing (`ConvertFrom-Json`, 149 entries, no errors).
+#     PACK-ES-IN-JIRA ### 2.3 Web app shell (`app/`)
+#     PACK-ES-IN-JIRA | File | Change |
+#     PACK-ES-IN-JIRA |---|---|
+#     PACK-ES-IN-JIRA | `app/index.html` | Rebranded ShadowCore → **d5**, top nav (Home / Catalog / Tools), loads `catalog.js`, `tools.js`, `games.js`, `apps.js`, `apps2.js`, `app.js` |
+#     PACK-ES-IN-JIRA | `app/styles.css` | Restyled for the new views (nav, tool forms, game/tool cards, data tables, iframe frames) |
+#     PACK-ES-IN-JIRA | `app/app.js` | Hash router (`#/`, `#/catalog`, `#/project/<slug>`, `#/tools`, `#/tool/<id>`, `#/go/<code>`); `RUNNABLE` entry-file map; `PORTED` slug→tool map; per-project source-viewer with README fetch + file browser + `SOURCE_WHY` reasons; mount-stale guards not needed here (views are sync) |
+#     PACK-ES-IN-JIRA | `app/tools.js` | Unchanged from prior session: 6 Python-CLI ports (Calculator, BMI, Bruch, Tokyo fares, Verbrauch, Wetter parser) |
+#     PACK-ES-IN-JIRA | `app/games.js` | **New.** Snake, Tic-Tac-Toe, Ping Pong (canvas). Includes `__mount` token so stale loops/listeners retire on navigation |
+#     PACK-ES-IN-JIRA | `app/apps.js` | **New.** Guestbook, Login demo, Link Shortener + `#/go` resolver |
+#     PACK-ES-IN-JIRA | `app/apps2.js` | **New.** Splitwise, Speedtest, Sortier-Planer, ToDo, encrypted notes, edge-payload decoder |
+#     PACK-ES-IN-JIRA | `docs/INTEGRATION.md` | Header rewritten: runtime layout (30/21/98), what runs vs what doesn't and why |
+#     PACK-ES-IN-JIRA | `docs/D5-PORT-REPORT.md` | This file |
+#     PACK-ES-IN-JIRA ### 2.4 Bug fixes found by review (before any user report)
+#     PACK-ES-IN-JIRA - `RUNNABLE` previously contained 7 Vite/React **stub** `index.html` files
+#     PACK-ES-IN-JIRA (talkativecloud, d5niel, portfolio, PhotoShare, ShareBox, Forumino,
+#     PACK-ES-IN-JIRA it-security-learning-platform) that render blank — removed.
+#     PACK-ES-IN-JIRA - `RUNNABLE` previously pointed some projects at folder roots whose real
+#     PACK-ES-IN-JIRA entry lives deeper (Stranded Horizons → `game.html`, uptime-site →
+#     PACK-ES-IN-JIRA `public/index.html`, ClearCall → `client/index.html`, etc.) — mapped.
+#     PACK-ES-IN-JIRA - Guestbook was both embedded (broken PHP backend) and ported — embed
+#     PACK-ES-IN-JIRA removed so the working native port wins.
+#     PACK-ES-IN-JIRA - Game loops/intervals kept running after navigating away — stale-mount
+#     PACK-ES-IN-JIRA guards added in `games.js`.
+#     PACK-ES-IN-JIRA ## 3. What runs where (149 projects)
+#     PACK-ES-IN-JIRA ### 3.1 Runs embedded in d5 — 30 projects (iframe, standalone link included)
+#     PACK-ES-IN-JIRA super-fast-ai-chat, gpt-5-mini-game, 10billionvaluation, CascadeProjects
+#     PACK-ES-IN-JIRA (`windsurf-project/index.html`), landing-page-revamp, 2048, browser game,
+#     PACK-ES-IN-JIRA color cascade (`color-cascade/index.html`), guess the number, Hangmen,
+#     PACK-ES-IN-JIRA shooter, tank shooter, hosting-club-site (×2 copies), uptime-site
+#     PACK-ES-IN-JIRA (`public/index.html`), netip.cloud, ai-chat-webui, stranded-horizons
+#     PACK-ES-IN-JIRA (`game.html`), CSSundHTML, fun_ccna_learning, Internetwebsite,
+#     PACK-ES-IN-JIRA MinecraftSeite, personal-website, ShadowUnity Website, Website,
+#     PACK-ES-IN-JIRA SecureStream VPN (`client/index.html`), zapfile (`indexs.html`),
+#     PACK-ES-IN-JIRA online-game-frontend, audio_visualizer, ClearCall (`client/index.html`).
+#     PACK-ES-IN-JIRA Every entry file was read and confirmed: no build stubs, no server templates.
+#     PACK-ES-IN-JIRA ### 3.2 Ported to native in-app tools — 21 projects → 18 tool pages
+#     PACK-ES-IN-JIRA | Tool (`#/tool/<id>`) | Source project(s) | Notes |
+#     PACK-ES-IN-JIRA |---|---|---|
+#     PACK-ES-IN-JIRA | calculator | archive-unsorted-calculator | 25 ops; original ops 22/23 were dead code, implemented in port |
+#     PACK-ES-IN-JIRA | bmi | archive-unsorted-bodymassindex | Thresholds verbatim incl. the 24.9–25 gap falling through to Adipositas (original behavior) |
+#     PACK-ES-IN-JIRA | bruch | archive-unsorted-die_klasse_bruch | gcd reduce instead of trial division |
+#     PACK-ES-IN-JIRA | tokyo | archive-unsorted-tokyo-metro-pricing | Adult/child fares |
+#     PACK-ES-IN-JIRA | verbrauch | archive-unsorted-kilometerz-hler | Also covers the duplicate `Kilometerzähler` folder (same 1-file tool) |
+#     PACK-ES-IN-JIRA | wetter | archive-unsorted-wetter-daten-analyse | Parser + sort only; scratch-file text-diff helper not ported |
+#     PACK-ES-IN-JIRA | snake | browser-games-snake | Working German `main()`; broken first draft in file ignored |
+#     PACK-ES-IN-JIRA | tictactoe | browser-games-tic-tac-toe (both files) | Human X vs random bot + score tally (superset of both files) |
+#     PACK-ES-IN-JIRA | pong | browser-games-ping-pong | Start screen, W/S vs AI, angled bounces ×1.1, first to 5, points shop (keys 1/2) |
+#     PACK-ES-IN-JIRA | guestbook | archive-unsorted-guestbook-html-css-javascript | Validation + BBCode + stats; localStorage replaces PHP/MySQL; weather key, voice, maps, dead WebSocket dropped (placeholders) |
+#     PACK-ES-IN-JIRA | signin | archive-unsorted-php-signin | Local demo auth (original PHP was a non-functional stub) |
+#     PACK-ES-IN-JIRA | shortener | link shortener **and** Shortify (same feature) | base62 6-char codes, visit counter, in-app resolve |
+#     PACK-ES-IN-JIRA | splitwise | productivity-sharing-apps-splitwise | Equal splits, balances (paid − share), settle-up; localStorage replaces SQLite |
+#     PACK-ES-IN-JIRA | speedtest | speedtest **and** speedsnap (same feature) | Live ping + download; upload reported honestly when static host rejects POST |
+#     PACK-ES-IN-JIRA | sorting | sorting-script | Same extension map; file picker + grouped plan + downloadable `.ps1`/`.sh` move scripts (browser cannot move user files) |
+#     PACK-ES-IN-JIRA | todo | react-todo **and** ToDo Django (same feature) | Add/edit/delete/done; localStorage |
+#     PACK-ES-IN-JIRA | notes | productivity-&-sharing-apps-notenest | AES-GCM notes, password-derived key (replaces SECRET_KEY server model) |
+#     PACK-ES-IN-JIRA | dataopt | utilities-&-desktop-tools-data-optimization | Decodes the documented compact JSON schema |
+#     PACK-ES-IN-JIRA ### 3.3 Source-only with in-app source view — 98 projects
+#     PACK-ES-IN-JIRA Each `#/project/<slug>` page states the reason, shows the README if present,
+#     PACK-ES-IN-JIRA and embeds the project folder for file browsing. Groups:
+#     PACK-ES-IN-JIRA - **Java/Minecraft (33):** all Paper/Spigot plugins, server systems, game
+#     PACK-ES-IN-JIRA concepts (ApocalypseUnleashed, Challenges_Source, Hearthrift), streuland,
+#     PACK-ES-IN-JIRA bedrock/python `pillars-of-fortune` (.jar only), `HelloWorld` sample,
+#     PACK-ES-IN-JIRA SessionLock. Reason: no browser Java runtime.
+#     PACK-ES-IN-JIRA - **Python server/desktop/pygame (29):** Flask AI chats, forum-for-nerds
+#     PACK-ES-IN-JIRA stack, aktienwerk, drachen-im-asphalt, goose, infra-pilot,
+#     PACK-ES-IN-JIRA old-python-openworldminigame, WebScrapeMaster, ToDo Django (feature runs
+#     PACK-ES-IN-JIRA as the ToDo tool), spammer (pyautogui OS keys — impossible + unwanted in
+#     PACK-ES-IN-JIRA browser), katzen_python (file itself is corrupted/mojibake), TraumaLang C
+#     PACK-ES-IN-JIRA sources, 122 MB chat-log data bundle. Reason per project in `SOURCE_WHY`.
+#     PACK-ES-IN-JIRA - **Web/JS needing build or backend (28):** all React/Vite/Next/TSX sources
+#     PACK-ES-IN-JIRA (talkativecloud, d5niel, portfolio, ui-optimization, ai-productivity-
+#     PACK-ES-IN-JIRA dashboard, blog-forum-with-z.ai, …), Flutter cooperating-screen, Flask
+#     PACK-ES-IN-JIRA templates (picHosty, video platform), chat-app, tamagotchi (backend +
+#     PACK-ES-IN-JIRA secrets), NoteNest server (feature runs as notes tool). Reason: no
+#     PACK-ES-IN-JIRA runnable bundle checked in, or server required.
+#     PACK-ES-IN-JIRA - **Other (8):** drosemann (md+jpg only), llama coder (empty folder),
+#     PACK-ES-IN-JIRA NexArena (one-line README), secure-vps-setup (run on a server),
+#     PACK-ES-IN-JIRA document-recovery (run in PowerShell), vercel-clone scaffold, ArnoldC
+#     PACK-ES-IN-JIRA esolang ecommerce, online-game-backend stubs.
+#     PACK-ES-IN-JIRA - **PHP (1):** sandstone-remover-pocketmine. (Guestbook, signin, shorteners,
+#     PACK-ES-IN-JIRA zapfile frontend are covered above as embeds/ports.)
+#     PACK-ES-IN-JIRA ## 4. Blockers
+#     PACK-ES-IN-JIRA 1. **No JS runtime in this sandbox — browser verification impossible here.**
+#     PACK-ES-IN-JIRA Tried, in order: node (not installed), Python (broken WindowsApps shim),
+#     PACK-ES-IN-JIRA cscript parse check (access denied on settings load), headless Firefox
+#     PACK-ES-IN-JIRA screenshots (process hangs on profile/cert lock; killing it denied),
+#     PACK-ES-IN-JIRA .NET file APIs (constrained language mode), deno/bun/qjs (absent).
+#     PACK-ES-IN-JIRA Escalated per repo rules after repeated failures. **Needed:** open the
+#     PACK-ES-IN-JIRA app in a real browser (serve repo root, open `app/`) and report errors,
+#     PACK-ES-IN-JIRA or provide a working runtime.
+#     PACK-ES-IN-JIRA 2. **Server-backed features cannot run from a static page** (Discord bots
+#     PACK-ES-IN-JIRA need tokens, Flask/Django need Python, PHP needs a PHP+SQL host,
+#     PACK-ES-IN-JIRA pyautogui/OS automation is outside browser capability). Resolved by
+#     PACK-ES-IN-JIRA documented local equivalents (localStorage, WebCrypto, generated move
+#     PACK-ES-IN-JIRA scripts) or honest source-only pages — no fake backends were built.
+#     PACK-ES-IN-JIRA 3. **Two `Copy-Item`/`Set-Content` quirks** hit during the work (sandbox temp
+#     PACK-ES-IN-JIRA path, CRLF mismatches, a truncated write): all repaired and re-verified;
+#     PACK-ES-IN-JIRA no stray files remain (temp entry list and verify harness deleted).
+#     PACK-ES-IN-JIRA ## 5. Verification log (evidence, not claims)
+#     PACK-ES-IN-JIRA - `catalog.json` parses: 149 entries (was 76).
+#     PACK-ES-IN-JIRA - All 30 `RUNNABLE` entry files exist on disk; each was read (no stubs).
+#     PACK-ES-IN-JIRA - All 18 tool views + resolver + source-viewer present and modules closed
+#     PACK-ES-IN-JIRA (tail checks); `PORTED` slugs all in catalog; no slug in two buckets
+#     PACK-ES-IN-JIRA (30 + 21 + 98 = 149).
+#     PACK-ES-IN-JIRA - `tools/new-entries.txt`, `app/__verify.html` removed; `!Coding-Enviroment`
+#     PACK-ES-IN-JIRA untouched (copies only).
+#     PACK-ES-IN-JIRA - **Not done:** executing any page in a browser (blocked, §4.1).
+#     PACK-ES-IN-JIRA ## 6. How to verify (for the user)
+#     PACK-ES-IN-JIRA Serve the repo root (not `app/`, so `../projects/…` links resolve), e.g.
+#     PACK-ES-IN-JIRA `python -m http.server` in `d5/`, then open `app/`: Home stats, Catalog
+#     PACK-ES-IN-JIRA filters (incl. kind filter), one embed page, every `#/tools` entry
+#     PACK-ES-IN-JIRA (especially pong keys W/S + 1/2, speedtest, notes decrypt with wrong vs
+#     PACK-ES-IN-JIRA right password), one source-only page (README + files + reason).
+#   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+# BOY, DU HAST KI-VERBOT
+#

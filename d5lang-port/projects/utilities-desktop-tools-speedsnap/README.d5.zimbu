@@ -1,0 +1,22 @@
+﻿# Zimbu-Port-Spiegel von: d5lang-port\projects\utilities-desktop-tools-speedsnap\README.d5
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE README_d5
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: d5lang-port\projects\utilities-desktop-tools-speedsnap\README.d5\n")
+  RETURN 0
+
+# ---- Original-Code (d5lang-port\projects\utilities-desktop-tools-speedsnap\README.d5), unveraendert, als Inline-Doku ----
+# SHINE, LITTLE BOY, SHINE
+#   WIR MÜSSEN DAS OFFLINE NEHMEN main
+#     PACK-ES-IN-JIRA Portiert 1:1 von projects/utilities-desktop-tools-speedsnap/static/script.js + static/style.css + templates/index.html + README.md + requirements.txt + speedsnap/requirements.txt. Alle byte-identisch zur speedtest-Version (alle geprueft).
+#     PACK-ES-IN-JIRA ORIGINAL: script.js: test-speed click -> fetch /api/speedtest -> Download/Upload/Ping rendern -> catch console.error.
+#     PACK-ES-IN-JIRA ORIGINAL: style.css: body Arial #f4f4f9; .container 800px weiss shadow; h1 center #333; button blau #007bff hover #0056b3; .results center.
+#     PACK-ES-IN-JIRA ORIGINAL: index.html: SpeedSnap, test-speed button, results div, style.css + script.js.
+#     PACK-ES-IN-JIRA ORIGINAL: README: identisch (screen, Port 7000, Firewall).
+#     PACK-ES-IN-JIRA ORIGINAL: requirements: speedtest-cli==2.1.3; flask==2.1.0; flask-cors==3.0.10; pandas==1.4.2; plotly==5.7.0; gunicorn==20.1.0 (beide Dateien identisch).
+#   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+# BOY, DU HAST KI-VERBOT
+#

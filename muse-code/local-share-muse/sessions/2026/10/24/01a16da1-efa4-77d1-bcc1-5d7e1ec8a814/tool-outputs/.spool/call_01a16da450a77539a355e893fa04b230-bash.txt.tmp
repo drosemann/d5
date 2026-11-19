@@ -1,0 +1,33 @@
+---BRANCH---
+main
+---REMOTES---
+origin	https://github.com/drosemann/cooperating-screen.git (fetch)
+origin	https://github.com/drosemann/cooperating-screen.git (push)
+---TAGS---
+head : Die Benennung "head" wurde nicht als Name eines Cmdlet, einer Funktion, einer Skriptdatei oder eines 
+ausfÅhrbaren Programms erkannt. öberprÅfen Sie die Schreibweise des Namens, oder ob der Pfad korrekt ist (sofern 
+enthalten), und wiederholen Sie den Vorgang.
+In Zeile:1 Zeichen:142
++ ... ---"; git remote -v; echo "---TAGS---"; git tag --list | head -n 50;  ...
++                                                              ~~~~
+    + CategoryInfo          : ObjectNotFound: (head:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+---LOG---
+461eafa Enhance documentation across the codebase with detailed comments and descriptions
+f71a548 Remove Phase 3 implementation documentation for WebRTC P2P connection
+77cf807 Revise README with project details and features
+e27ab47 Merge pull request #3 from DaaanielTV/codex/review-code-for-security-issues
+0bc0a8f Harden signaling auth and file transfer path safety
+346d2f3 Update README.md
+3d32d41 Merge pull request #2 from DaaanielTV/codex/implement-web-ui-for-docker-vps
+d29749c Add Dockerized web UI and fix signaling backend runtime issues
+3513be2 feat: add room-based sessions for multi-device WebRTC calls
+c2e2bc0 Merge pull request #1 from DaaanielTV/codex/clean-up-repository-for-open-source-readiness
+beed10b chore: standardize project branding and open-source docs
+63d678d refactor: remove outdated documentation and consolidate project docs
+6be13a6 feat: Phase 4 Complete Services:
+10e6e2f feat: Phase 3 - WebRTC P2P Connection & Screen Sharing Implementation
+bfd6a28 feat: Phase 2 - Device Pairing & Authentication Implementation
+6207cb8 Initial commit: Phase 1 Foundation & Infrastructure - Flutter app structure, Node.js signaling server, Supabase integration setup, and core models
+411edc7 first commit

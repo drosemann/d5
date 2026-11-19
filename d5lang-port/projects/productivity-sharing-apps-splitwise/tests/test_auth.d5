@@ -1,0 +1,18 @@
+SHINE, LITTLE BOY, SHINE
+  WIR MÜSSEN DAS OFFLINE NEHMEN main
+    PACK-ES-IN-JIRA Portiert 1:1 von projects/productivity-sharing-apps-splitwise/tests/test_auth.py. Fixture, register/login/duplicate.
+    PACK-ES-IN-JIRA ORIGINAL: import pytest; from app import create_app, db; from app.models.user import User
+    WIR MÜSSEN DAS OFFLINE NEHMEN client
+    PACK-ES-IN-JIRA ORIGINAL: @pytest.fixture def client(): app = create_app(); TESTING True; sqlite memory; test_client; app_context; db.create_all; yield; remove; drop_all
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN test_user_registration
+    PACK-ES-IN-JIRA ORIGINAL: POST /api/auth/register testuser/test@example.com/securepassword -> 201, id, username, email
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN test_user_login
+    PACK-ES-IN-JIRA ORIGINAL: register loginuser, POST /api/auth/login -> 200, id, username
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    WIR MÜSSEN DAS OFFLINE NEHMEN test_duplicate_registration
+    PACK-ES-IN-JIRA ORIGINAL: register uniqueuser, erneut -> 400, 'already exists' in error
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+  DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+BOY, DU HAST KI-VERBOT

@@ -1,0 +1,164 @@
+"version": "1.0.0",
+"version": "1.0.0",
+"license": "GPL-3.0-only",
+"node_modules/accepts": {
+"version": "1.3.8",
+"license": "MIT",
+"node_modules/array-flatten": {
+"version": "1.1.1",
+"license": "MIT"
+"node_modules/body-parser": {
+"version": "1.20.4",
+"license": "MIT",
+"node_modules/bytes": {
+"version": "3.1.2",
+"license": "MIT",
+"node_modules/call-bind-apply-helpers": {
+"version": "1.0.2",
+"license": "MIT",
+"node_modules/call-bound": {
+"version": "1.0.4",
+"license": "MIT",
+"node_modules/content-disposition": {
+"version": "0.5.4",
+"license": "MIT",
+"node_modules/content-type": {
+"version": "1.0.5",
+"license": "MIT",
+"node_modules/cookie": {
+"version": "0.7.2",
+"license": "MIT",
+"node_modules/cookie-signature": {
+"version": "1.0.7",
+"license": "MIT"
+"node_modules/debug": {
+"version": "2.6.9",
+"license": "MIT",
+"node_modules/depd": {
+"version": "2.0.0",
+"license": "MIT",
+"node_modules/destroy": {
+"version": "1.2.0",
+"license": "MIT",
+"node_modules/dotenv": {
+"version": "16.6.1",
+"license": "BSD-2-Clause",
+"node_modules/dunder-proto": {
+"version": "1.0.1",
+"license": "MIT",
+"node_modules/ee-first": {
+"version": "1.1.1",
+"license": "MIT"
+"node_modules/encodeurl": {
+"version": "2.0.0",
+"license": "MIT",
+"node_modules/es-define-property": {
+"version": "1.0.1",
+"license": "MIT",
+"node_modules/es-errors": {
+"version": "1.3.0",
+"license": "MIT",
+"node_modules/es-object-atoms": {
+"version": "1.1.1",
+"license": "MIT",
+"node_modules/escape-html": {
+"version": "1.0.3",
+"license": "MIT"
+"node_modules/etag": {
+"version": "1.8.1",
+"license": "MIT",
+"node_modules/express": {
+"version": "4.22.1",
+"license": "MIT",
+"node_modules/finalhandler": {
+"version": "1.3.2",
+"license": "MIT",
+"node_modules/forwarded": {
+"version": "0.2.0",
+"license": "MIT",
+"node_modules/fresh": {
+"version": "0.5.2",
+"license": "MIT",
+"node_modules/function-bind": {
+"version": "1.1.2",
+"license": "MIT",
+"node_modules/get-intrinsic": {
+"version": "1.3.0",
+"license": "MIT",
+"node_modules/get-proto": {
+"version": "1.0.1",
+"license": "MIT",
+"node_modules/gopd": {
+"version": "1.2.0",
+"license": "MIT",
+"node_modules/has-symbols": {
+"version": "1.1.0",
+"license": "MIT",
+"node_modules/hasown": {
+"version": "2.0.2",
+"license": "MIT",
+"node_modules/http-errors": {
+"version": "2.0.1",
+"license": "MIT",
+"node_modules/iconv-lite": {
+"version": "0.4.24",
+"license": "MIT",
+"node_modules/inherits": {
+"version": "2.0.4",
+"license": "ISC"
+"node_modules/ipaddr.js": {
+"version": "1.9.1",
+"license": "MIT",
+"node_modules/math-intrinsics": {
+"version": "1.1.0",
+"license": "MIT",
+"node_modules/media-typer": {
+"version": "0.3.0",
+"license": "MIT",
+"node_modules/merge-descriptors": {
+"version": "1.0.3",
+"license": "MIT",
+---COC-HEAD---
+# Contributor Covenant Code of Conduct
+
+## Our Pledge
+
+We as members, contributors, and leaders pledge to make participation in our
+community a harassment-free experience for everyone, regardless of age, body
+size, visible or invisible disability, ethnicity, sex characteristics, gender
+identity and expression, level of experience, education, socio-economic status,
+---CDN-EXTERNAL---
+auth.js:1: import { getSupabaseClient, onAuthChange } from './supabaseClient.js';
+bootstrap.js:2: import { initWorkspace } from './workspace.js';
+bootstrap.js:3: import * as data from './data.js';
+bootstrap.js:4: import { escapeHtml, truncate, toast } from './utils.js';
+data.js:4: import { getSupabaseClient } from './supabaseClient.js';
+home.js:5: import * as data from './data.js';
+home.js:6: import { escapeHtml, truncate, formatDate, toast } from './utils.js';
+memory.js:3: import * as data from './data.js';
+memory.js:4: import { escapeHtml, toast } from './utils.js';
+models.js:4: import * as data from './data.js';
+models.js:5: import { escapeHtml, toast } from './utils.js';
+projects.js:4: import * as data from './data.js';
+projects.js:5: import { escapeHtml, truncate, toast } from './utils.js';
+server.js:1: import express from 'express';
+server.js:2: import crypto from 'node:crypto';
+server.js:3: import { fileURLToPath } from 'url';
+server.js:4: import { dirname, join } from 'path';
+server.js:5: import dotenv from 'dotenv';
+settings.js:5: import * as data from './data.js';
+settings.js:6: import { clearDemo, isDemoRequest } from './home.js';
+settings.js:7: import { escapeHtml, toast } from './utils.js';
+supabaseClient.js:1: // Loads supabase-js from a pinned CDN ESM build (no bundler, no import map
+supabaseClient.js:5: const SUPABASE_JS_URL = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+tasks.js:3: import * as data from './data.js';
+tasks.js:4: import { escapeHtml, toast } from './utils.js';
+workspace.js:5: import { getSupabaseClient, onAuthChange } from './supabaseClient.js';
+workspace.js:6: import * as data from './data.js';
+workspace.js:7: import { escapeHtml, truncate, toast } from './utils.js';
+workspace.js:8: import { renderTasks } from './tasks.js';
+workspace.js:9: import { renderProjects } from './projects.js';
+workspace.js:10: import { renderHome, renderRail } from './home.js';
+workspace.js:11: import { renderMemory } from './memory.js';
+workspace.js:12: import { renderModels } from './models.js';
+workspace.js:13: import { renderSettings } from './settings.js';

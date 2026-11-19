@@ -1,0 +1,99 @@
+node : Die Benennung "node" wurde nicht als Name eines Cmdlet, einer Funktion, einer Skriptdatei oder eines 
+ausfÅhrbaren Programms erkannt. öberprÅfen Sie die Schreibweise des Namens, oder ob der Pfad korrekt ist (sofern 
+enthalten), und wiederholen Sie den Vorgang.
+In Zeile:1 Zeichen:1
++ node -e "const j=require('./package-lock.json'); for(const [k,v] of O ...
++ ~~~~
+    + CategoryInfo          : ObjectNotFound: (node:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+---CONTRIBUTING---
+# Contributing Guidelines
+
+Thanks for your interest in contributing to AI Chat WebUI.
+
+## Getting started
+1. Fork the repository.
+2. Create a branch from `main` for your change.
+3. Install dependencies with `npm install`.
+4. Copy `.env.example` to `.env` and adjust values if needed.
+
+## Development workflow
+- Keep changes focused and minimal.
+- Preserve existing behavior unless a fix/refactor explicitly requires change.
+- Prefer configuration as the source of truth.
+- Update documentation when changing behavior, setup, or configuration.
+
+## Code style
+- Follow the current JavaScript style in the repo.
+- Avoid introducing unnecessary frameworks or tooling.
+- Do not commit generated artifacts or `node_modules/`.
+
+## Commit and pull requests
+- Use clear, descriptive commit messages.
+- In pull requests, include:
+  - What changed
+  - Why it changed
+  - How it was tested
+  - Any known limitations
+
+## Reporting issues
+When opening an issue, include:
+- Steps to reproduce
+- Expected vs actual behavior
+- Relevant logs/screenshots
+- Environment details (OS, Node version, Ollama version)
+
+
+## Binary files
+- Pull requests should not include generated binary files or release artifacts.
+- Remove accidental binary additions before pushing:
+  ```bash
+  git rm --cached <path-to-binary>
+  ```
+- Keep the repository focused on source code, configuration, and documentation.
+- See `docs/BINARY_FILES.md` for the PR binary-file policy used by this project.
+---SUPABASE-README---
+# Self-hosted Supabase backend
+
+This folder contains everything needed to run the app's own Supabase stack:
+Postgres (with the workspace schema in `migrations/`), Supabase Auth (GoTrue),
+PostgREST, and a small Caddy gateway that exposes them as one Supabase URL.
+
+The managed Supabase cloud, Clerk, WorkOS, and hand-rolled password storage
+are intentionally not used here: auth data stays on infrastructure you operate.
+
+## 1. Configure secrets
+
+```bash
+cp supabase/.env.example supabase/.env
+```
+
+Then replace every `change-me-...` value. Generate strong values with:
+
+```bash
+openssl rand -hex 32
+openssl rand -base64 48 | tr -d '\n'
+```
+
+Never commit `supabase/.env`. The root `.gitignore` already excludes `.env`
+files everywhere. The browser only ever receives the public gateway URL and
+the anon key; row-level security is what protects user data.
+
+## 2. Start the stack
+
+```bash
+docker compose --env-file supabase/.env -f supabase/docker-compose.yml up -d db auth rest gateway
+```
+
+Apply the workspace schema once per database:
+
+```bash
+docker compose --env-file supabase/.env -f supabase/docker-compose.yml exec db \
+  psql -U postgres -d postgres -f /migrations/0001_workspace.sql
+```
+
+Later schema changes must be added as new immutable files
+---MERGES---
+c56547d DaaanielTV Merge pull request #3 from DaaanielTV/codex/review-code-for-security-issues
+b62b070 DaaanielTV Merge pull request #2 from DaaanielTV/codex/clean-up-repository-for-open-source-readiness

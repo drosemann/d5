@@ -29,6 +29,62 @@ class _DeviceListScreenState extends State<DeviceListScreen> {
     });
   }
 
+  // Edit flow for a paired device. Lets the user rename the display name,
+  // validates the input, and persists the change via LocalStorageService.
+  Future<void> _editDevice(PairedDevice device) async {
+    final controller = TextEditingController(text: device.deviceName);
+
+    final newName = await showDialog<String>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Edit Device'),
+        content: TextField(
+          controller: controller,
+          autofocus: true,
+          textInputAction: TextInputAction.done,
+          decoration: const InputDecoration(
+            labelText: 'Device name',
+            hintText: 'e.g. My Phone',
+            border: OutlineInputBorder(),
+          ),
+          onSubmitted: (value) => Navigator.pop(context, value.trim()),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, controller.text.trim()),
+            child: const Text('Save'),
+          ),
+        ],
+      ),
+    );
+    controller.dispose();
+    if (newName == null) return;
+    final trimmed = newName.trim();
+    if (trimmed.isEmpty) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Device name cannot be empty')),
+        );
+      }
+      return;
+    }
+    if (trimmed == device.deviceName) return;
+
+    final updated = device.copyWith(deviceName: trimmed);
+    await LocalStorageService.removePairedDevice(device.id);
+    await LocalStorageService.addPairedDevice(updated);
+    _refreshDevices();
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('${updated.deviceName} updated')),
+      );
+    }
+  }
+
   // Removes a paired device after the user confirms their intent, then refreshes
   // the list to keep the UI aligned with the persisted trust state.
   Future<void> _unpairDevice(PairedDevice device) async {
@@ -162,9 +218,7 @@ class _DeviceListScreenState extends State<DeviceListScreen> {
                       itemBuilder: (context) => [
                         PopupMenuItem(
                           child: const Text('Edit'),
-                          onTap: () {
-                            // TODO: Implement edit device screen
-                          },
+                          onTap: () => _editDevice(device),
                         ),
                         PopupMenuItem(
                           child: const Text('Unpair'),

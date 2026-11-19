@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/23/01a1699b-382e-7593-9559-6538baf01e6f/tool-outputs/01a169a0-10aa-7041-82e3-714bfbb32c11/call_01a169a001a6779e8f1d8f3954cd7f3f-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/23/01a1699b-382e-7593-9559-6538baf01e6f/tool-outputs/01a169a0-10aa-7041-82e3-714bfbb32c11/call_01a169a001a6779e8f1d8f3954cd7f3f-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/23/01a1699b-382e-7593-9559-6538baf01e6f/tool-outputs/01a169a0-10aa-7041-82e3-714bfbb32c11/call_01a169a001a6779e8f1d8f3954cd7f3f-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\stranded-horizons\\src\\data\\enemies.js","hunks":[{"oldStart":1,"oldLines":0,"newStart":1,"newLines":8,"lines":["+// Enemy type definitions. Values byte-identical to GAME_CONFIG.enemyTypes in legacy game.js.","+export const ENEMY_TYPES = {","+  basic: { name: 'Basic', color: '#f06595', size: 44, speed: 95, health: 50, touchDamage: 12, value: 14, score: 12 },","+  fast: { name: 'Fast', color: '#ffe066', size: 32, speed: 170, health: 30, touchDamage: 9, value: 12, score: 14 },","+  tank: { name: 'Tank', color: '#74c0fc', size: 56, speed: 62, health: 155, touchDamage: 22, value: 30, score: 28 },","+  ranged: { name: 'Ranged', color: '#63e6be', size: 40, speed: 78, health: 60, touchDamage: 10, value: 20, score: 18, preferredRange: 220, shootInterval: 1600, projectileSpeed: 280, projectileDamage: 12 },","+  exploder: { name: 'Exploder', color: '#ff922b', size: 38, speed: 115, health: 45, touchDamage: 16, value: 24, score: 22, explosionRadius: 96, explosionDamage: 28 }","+};"]}]}]}

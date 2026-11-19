@@ -1,0 +1,31 @@
+
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\commands\infrastructure\backup.py:1:import builtins
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\commands\infrastructure\backup.py:2:import fnmatch
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\commands\infrastructure\backup.py:3:import os
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\commands\infrastructure\backup.py:4:import shutil
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\commands\infrastructure\backup.py:5:import subprocess
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\commands\infrastructure\backup.py:6:import time
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\commands\infrastructure\backup.py:8:import typer
+\\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\commands\infrastructure\backup.py:10:from ...client 
+import ApiClient
+---
+> \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\client.py:52:    def _request(
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\client.py:53:        self,
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\client.py:54:        method: str,
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\client.py:55:        path: str,
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\client.py:56:        data: Optional[Dict[str, Any]] 
+= None,
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\client.py:57:    ) -> Any:
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\client.py:58:        """Send an HTTP request to the 
+API.
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\client.py:59:
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\client.py:60:        Args:
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\client.py:61:            method: HTTP method (GET, 
+POST, PUT, DELETE, PATCH).
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\client.py:62:            path: API endpoint path 
+(appended to ``/api``).
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\client.py:63:            data: Optional 
+JSON-serialisable request body.
+  \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\cli\ipilot\client.py:64:
+
+

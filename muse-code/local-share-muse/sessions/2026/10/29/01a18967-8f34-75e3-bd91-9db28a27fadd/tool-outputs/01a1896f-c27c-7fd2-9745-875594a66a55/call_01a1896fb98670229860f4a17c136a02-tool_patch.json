@@ -1,0 +1,1 @@
+{"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\Agentenplattform\\config\\agents\\planner.yaml","hunks":[{"oldStart":1,"oldLines":0,"newStart":1,"newLines":7,"lines":["+id: planner","+name: Planer","+modellprofil: standard","+tools: [plan.erstellen, docs.suchen]","+timeout_s: 300","+max_calls: 10","+enabled: true"]}]}]}

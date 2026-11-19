@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/.msp-view-g6/01a17f51-290d-7283-a8ad-dcbad9c13d4d/HEAD.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/.msp-view-g6/01a17f51-290d-7283-a8ad-dcbad9c13d4d/HEAD.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/.msp-view-g6/01a17f51-290d-7283-a8ad-dcbad9c13d4d/HEAD.json), unveraendert, als Inline-Doku ----
+// {"schema_version":6,"session_id":"01a17f51-290d-7283-a8ad-dcbad9c13d4d","projection_id":"0ac4ca14-8e30-5ea3-9649-a9c0efdd43fd","generation":6,"status":"healthy","latest_snapshot_id":"f8773412-e8a2-547e-a7a0-cfe607e1cb00","latest_snapshot_sha256":[103,92,65,62,167,78,230,221,44,147,65,14,247,159,62,217,79,200,252,217,71,161,54,109,92,105,111,77,181,64,80,127],"source_through":{"id":"01a17f52-9460-7bb0-ad87-3116e9b3492d","sequence":15},"source_record_sha256":[200,78,164,50,115,82,141,162,233,127,184,147,247,19,156,101,139,62,144,126,229,67,202,148,77,137,221,34,158,53,104,40],"head_view_ordinal":1,"retained_view_floor_ordinal":1,"source_total_bytes":10601,"view_total_bytes":474,"snapshot_gap_records":0,"snapshot_gap_source_bytes":0,"snapshot_gap_view_bytes":0,"journal_tail":{"segment":0,"byte_length":2758,"batch_sha256":[42,121,245,229,210,230,137,159,111,41,62,207,80,207,107,174,7,26,29,105,173,37,46,251,203,77,41,123,252,238,195,35]},"index_tail":{"segment":0,"entry_count":1,"entry_sha256":[251,178,159,251,39,236,207,191,220,149,66,47,158,123,119,51,196,190,7,135,224,195,83,163,33,191,126,214,45,26,167,233]},"head_sha256":[20,181,215,58,102,104,232,225,23,243,104,58,32,229,70,81,219,209,43,6,18,207,197,184,34,81,36,146,113,198,19,176]}

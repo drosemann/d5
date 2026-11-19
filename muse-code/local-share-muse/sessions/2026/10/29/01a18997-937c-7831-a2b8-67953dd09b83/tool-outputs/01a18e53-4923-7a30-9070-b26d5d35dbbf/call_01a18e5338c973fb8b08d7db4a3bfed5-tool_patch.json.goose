@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a18e53-4923-7a30-9070-b26d5d35dbbf/call_01a18e5338c973fb8b08d7db4a3bfed5-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a18e53-4923-7a30-9070-b26d5d35dbbf/call_01a18e5338c973fb8b08d7db4a3bfed5-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a18e53-4923-7a30-9070-b26d5d35dbbf/call_01a18e5338c973fb8b08d7db4a3bfed5-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\TRAUMALANG-GAPS.md","hunks":[{"oldStart":158,"oldLines":6,"newStart":158,"newLines":8,"lines":[" "," - Backend-Batch 19 (2 Dateien, alle voll gelesen, nur Huellen + `TALK TO THE HAND`): `test_main` (Boot-Smoke, Version/Login/Logout/Batch/Docs/Doctor-Alias-Gruppen), `test_doctor_tui` (Doctor/Benchmark/Diagnose/Memory/Load/Disk/TUI/Textual-Stub-Gruppen, 484 Zeilen). Nicht abbildbar: `pytest`-Fixtures, `CliRunner`, `MagicMock`, `ctypes`-Stubs, `sys.modules`-Patches."," ","+- Backend-Batch 20 (3 Dateien, alle voll gelesen, nur Huellen + `TALK TO THE HAND`): `test_client` (Health/Auth/Server/SSH/Keys/Doctor/Webhooks-Gruppen, 479 Zeilen), `test_secrets_ssh_plugins_webhooks_apikeys` (alle 5 Gruppen, 430 Zeilen; Fixture-Key nur generisch), `test_templates_rollback_infra_gitops` (Templates/Rollback/Server/Deploy/Logs/Backup/Inventory/Gitops-Extras, 635 Zeilen). Nicht abbildbar: `pytest`-Fixtures, `CliRunner`, `MagicMock`, exakte String-Asserts.","+"," ## 2. Noch gar nicht übersetzte Quelldateien"," "," ### 2a. `cli/ipilot/commands/`-Submodule (alle erledigt, siehe Abschnitt 1 und Batches)"]}]}]}

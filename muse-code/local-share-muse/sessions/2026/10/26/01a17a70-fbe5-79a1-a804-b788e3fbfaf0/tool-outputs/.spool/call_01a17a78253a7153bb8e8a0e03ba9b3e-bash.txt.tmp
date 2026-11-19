@@ -1,0 +1,7 @@
+Die Methode kann nicht aufgerufen werden. Der Methodenaufruf wird in diesem Sprachmodus nur fÅr Kerntypen unterstÅtzt.
+In Zeile:1 Zeichen:305
++ ... ./feature-flags.ts';"; [System.IO.File]::WriteAllText($p, $t); Select ...
++                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : MethodInvocationNotSupportedInConstrainedLanguage
+ 

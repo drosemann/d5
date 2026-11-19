@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/27/01a17f39-7fcc-7ab2-a2b1-80bc1e6211d0/tool-outputs/01a17f4b-efd1-7c03-8767-1512e261f57d/call_01a17f4be75773b4b579a252b73da944-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/27/01a17f39-7fcc-7ab2-a2b1-80bc1e6211d0/tool-outputs/01a17f4b-efd1-7c03-8767-1512e261f57d/call_01a17f4be75773b4b579a252b73da944-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/27/01a17f39-7fcc-7ab2-a2b1-80bc1e6211d0/tool-outputs/01a17f4b-efd1-7c03-8767-1512e261f57d/call_01a17f4be75773b4b579a252b73da944-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\docs\\DOCUMENTATION.md","hunks":[{"oldStart":15,"oldLines":7,"newStart":15,"newLines":8,"lines":[" | Discord integration | `services/discord-service/index.js`, `modules/`, `.env.example` | `services/discord-service/README.md` |"," | Backup and recovery scripts | `scripts/db-backup.sh`, `scripts/db-restore.sh` | `wiki/12-Backup-Restore.md` |"," | Panel screenshots and visual docs | `services/management-panel/src/pages/`, `src/components/` | `docs/screenshots/`, root `README.md` |","-| Architecture invariants | `docker-compose.yml`, service routers, `helm/` | `docs/ARCHITECTURE.md`, `wiki/06-Architecture.md` |","+| Architecture invariants | `docker-compose.yml`, service routers, `helm/` | `docs/ARCHITECTURE.md`, `wiki/06-Architecture.md` |","+| TraumaLang port (`.tl` mirrors) | `cli/`, `scripts/`, `services/`, `tests/` sources with `.tl` twins | `docs/TRAUMALANG.md`, root `TRAUMALANG-GAPS.md` |"," "," Generated interfaces take precedence over prose: use `ipilot --help`"," for the installed CLI, `/api/openapi.json` for panel requests, and the"]}]}]}

@@ -1,0 +1,195 @@
+﻿# Zimbu-Port-Spiegel von: d5lang-port\tools\build-docs.d5
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE build_docs_d5
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: d5lang-port\tools\build-docs.d5\n")
+  RETURN 0
+
+# ---- Original-Code (d5lang-port\tools\build-docs.d5), unveraendert, als Inline-Doku ----
+# SHINE, LITTLE BOY, SHINE
+#   WIR MÜSSEN DAS OFFLINE NEHMEN main
+#     PACK-ES-IN-JIRA Portiert 1:1 von tools/build-docs.ps1. Jede Originalzeile ist erhalten, nichts geschnitten.
+#     PACK-ES-IN-JIRA Builds README.md, ALL-LICENSES.md, docs/INTEGRATION.md and app/catalog.json
+#     PACK-ES-IN-JIRA from the source repos under !Coding-Enviroment. Run from workspace root.
+#     PACK-ES-IN-JIRA ORIGINAL: $root = (Get-Location).Path
+#     PACK-ES-IN-JIRA ORIGINAL: $srcRoot = Join-Path $root "!Coding-Enviroment"
+#     WIR MÜSSEN DAS OFFLINE NEHMEN Slug
+#     PACK-ES-IN-JIRA ORIGINAL: function Slug($rel) {
+#     PACK-ES-IN-JIRA ORIGINAL: $s = $rel -replace '^!Coding-Enviroment\\', ''
+#     PACK-ES-IN-JIRA ORIGINAL: $s = $s -replace '[\\/:*?"<>|]', '-'
+#     PACK-ES-IN-JIRA ORIGINAL: $s = $s -replace '\s+', '-'
+#     PACK-ES-IN-JIRA ORIGINAL: $s = $s -replace '-+', '-'
+#     PACK-ES-IN-JIRA ORIGINAL: return $s.Trim('-').ToLower()
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN StackOf
+#     PACK-ES-IN-JIRA ORIGINAL: function StackOf($dir) {
+#     PACK-ES-IN-JIRA ORIGINAL: $names = Get-ChildItem -LiteralPath $dir -Recurse -File -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notmatch '\\.git\\' } | Select-Object -ExpandProperty Extension -Unique; $tags = @()
+#     MACH-ES-FÜR-DIE-METRIKEN names enthaelt .java
+#     PACK-ES-IN-JIRA ORIGINAL: if ($names -contains '.java') { $tags += 'Java' }
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     MACH-ES-FÜR-DIE-METRIKEN names enthaelt .py
+#     PACK-ES-IN-JIRA ORIGINAL: if ($names -contains '.py') { $tags += 'Python' }
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     MACH-ES-FÜR-DIE-METRIKEN names enthaelt .js/.ts/.tsx/.html
+#     PACK-ES-IN-JIRA ORIGINAL: if ($names -contains '.js' -or $names -contains '.ts' -or $names -contains '.tsx' -or $names -contains '.html') { $tags += 'Web/JS' }
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     MACH-ES-FÜR-DIE-METRIKEN names enthaelt .php
+#     PACK-ES-IN-JIRA ORIGINAL: if ($names -contains '.php') { $tags += 'PHP' }
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     MACH-ES-FÜR-DIE-METRIKEN names enthaelt .cs
+#     PACK-ES-IN-JIRA ORIGINAL: if ($names -contains '.cs') { $tags += 'C#' }
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     MACH-ES-FÜR-DIE-METRIKEN tags leer
+#     PACK-ES-IN-JIRA ORIGINAL: if ($tags.Count -eq 0) { $tags += 'Other' }
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: return ($tags -join ', ')
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     WIR MÜSSEN DAS OFFLINE NEHMEN StatusOf
+#     PACK-ES-IN-JIRA ORIGINAL: function StatusOf($stack, $cat) {
+#     MACH-ES-FÜR-DIE-METRIKEN stack matcht Java
+#     PACK-ES-IN-JIRA ORIGINAL: if ($stack -match 'Java') { return 'Standalone for now: Minecraft/Java code. Planned rewrite for the ShadowCore browser game.' }
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     MACH-ES-FÜR-DIE-METRIKEN stack matcht Python
+#     PACK-ES-IN-JIRA ORIGINAL: if ($stack -match 'Python') { return 'Standalone for now: Python app. Planned port into the ShadowCore app.' }
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     MACH-ES-FÜR-DIE-METRIKEN stack matcht Web
+#     PACK-ES-IN-JIRA ORIGINAL: if ($stack -match 'Web') { return 'Web project: candidate to integrate into the ShadowCore web app.' }
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: return 'Standalone module: kept as-is, integration not yet planned in detail.'
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: $repos = @()
+#     PACK-ES-IN-JIRA ORIGINAL: Get-ChildItem -Force -Recurse -Directory -ErrorAction SilentlyContinue -Filter ".git" | ForEach-Object { if ($_.Parent.FullName -like "$srcRoot*") { $repos += $_.Parent.FullName } }
+#     PACK-ES-IN-JIRA ORIGINAL: $repos = $repos | Sort-Object -Unique
+#     PACK-ES-IN-JIRA ORIGINAL: $projects = @()
+#     BLEIB-BIS-ZUM-SPRINT-ENDE foreach r in repos
+#     PACK-ES-IN-JIRA ORIGINAL: foreach ($r in $repos) {
+#     PACK-ES-IN-JIRA ORIGINAL: $rel = $r.Replace($root + "\", ""); $slug = Slug $rel; $name = Split-Path $r -Leaf
+#     PACK-ES-IN-JIRA ORIGINAL: $cat = (Split-Path $rel -Parent) -replace '^!Coding-Enviroment\\?', ''
+#     PACK-ES-IN-JIRA ORIGINAL: $readmeFile = Get-ChildItem -LiteralPath $r -File -ErrorAction SilentlyContinue | Where-Object { $_.Name -like 'README*' } | Select-Object -First 1
+#     PACK-ES-IN-JIRA ORIGINAL: $licFile = Get-ChildItem -LiteralPath $r -File -ErrorAction SilentlyContinue | Where-Object { $_.Name -like 'LICENSE*' -or $_.Name -like 'COPYING*' } | Select-Object -First 1
+#     PACK-ES-IN-JIRA ORIGINAL: $stack = StackOf $r
+#     PACK-ES-IN-JIRA ORIGINAL: $projects += [ordered]@{ slug = $slug; name = $name; category = $cat; source = $rel; mergedPath = "projects/$slug"; stack = $stack; status = (StatusOf $stack $cat); hasReadme = [bool]$readmeFile; hasLicense = [bool]$licFile; readmeSource = if ($readmeFile) { $readmeFile.FullName } else { $null }; licenseSource = if ($licFile) { $licFile.FullName } else { $null } }
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     TALK TO THE HAND "PROJECTS"
+#     PACK-ES-IN-JIRA ORIGINAL: Write-Output "PROJECTS=$($projects.Count)"
+#     PACK-ES-IN-JIRA ---------- catalog.json ----------
+#     PACK-ES-IN-JIRA ORIGINAL: New-Item -ItemType Directory -Force -Path (Join-Path $root "app") | Out-Null
+#     PACK-ES-IN-JIRA ORIGINAL: $cat = $projects | ForEach-Object { [ordered]@{ slug=$_.slug; name=$_.name; category=$_.category; stack=$_.stack; status=$_.status; path=$_.mergedPath; hasReadme=$_.hasReadme; hasLicense=$_.hasLicense } }
+#     PACK-ES-IN-JIRA ORIGINAL: ($cat | ConvertTo-Json -Depth 4) | Out-File -Encoding utf8 (Join-Path $root "app\catalog.json")
+#     PACK-ES-IN-JIRA ORIGINAL: "window.SHADOWCORE_CATALOG = " + ($cat | ConvertTo-Json -Depth 4) + ";" | Out-File -Encoding utf8 (Join-Path $root "app\catalog.js")
+#     PACK-ES-IN-JIRA ---------- ALL-LICENSES.md ----------
+#     PACK-ES-IN-JIRA ORIGINAL: $lic = New-Object System.Text.StringBuilder
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$lic.AppendLine("# ShadowCore - All Licenses")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$lic.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$lic.AppendLine("Every license found in the merged projects, one after another. Each project's own license file also stays inside its folder under ``projects/``.")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$lic.AppendLine("")
+#     BLEIB-BIS-ZUM-SPRINT-ENDE foreach p in projects
+#     PACK-ES-IN-JIRA ORIGINAL: foreach ($p in $projects) {
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$lic.AppendLine("---")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$lic.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$lic.AppendLine("## $($p.name)")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$lic.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$lic.AppendLine("Source: ``$($p.source)`` - merged at ``$($p.mergedPath)``")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$lic.AppendLine("")
+#     MACH-ES-FÜR-DIE-METRIKEN p.licenseSource
+#     PACK-ES-IN-JIRA ORIGINAL: if ($p.licenseSource) { [void]$lic.AppendLine('```text'); [void]$lic.AppendLine((Get-Content -LiteralPath $p.licenseSource -Raw -ErrorAction SilentlyContinue)); [void]$lic.AppendLine('```') }
+#     BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+#     PACK-ES-IN-JIRA ORIGINAL: else { [void]$lic.AppendLine("_No LICENSE or COPYING file in this project._") }
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$lic.AppendLine("")
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: $lic.ToString() | Out-File -Encoding utf8 (Join-Path $root "ALL-LICENSES.md")
+#     PACK-ES-IN-JIRA ---------- docs/INTEGRATION.md ----------
+#     PACK-ES-IN-JIRA ORIGINAL: New-Item -ItemType Directory -Force -Path (Join-Path $root "docs") | Out-Null
+#     PACK-ES-IN-JIRA ORIGINAL: $doc = New-Object System.Text.StringBuilder
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$doc.AppendLine("# ShadowCore - Integration status")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$doc.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$doc.AppendLine("ShadowCore is one repository and one launcher/catalog app. Not every merged project can run inside that app yet. This file says, per project, what it is and what is planned. Nothing here claims a project is integrated when it is not.")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$doc.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$doc.AppendLine("## Rules")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$doc.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$doc.AppendLine("- Web/JS projects: candidates to integrate into the ShadowCore web app.")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$doc.AppendLine("- Java / Minecraft plugins: standalone for now. Planned: rewrite them to work in the browser game.")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$doc.AppendLine("- Python apps: standalone for now. Planned: port them to work in the app.")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$doc.AppendLine("- Websites: planned to integrate into the app instead of staying separate sites.")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$doc.AppendLine("- Everything else: standalone module in ``projects/``, runnable on its own terms if at all.")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$doc.AppendLine("- History note: project histories were merged with ``git subtree`` (original commits preserved, combined via merge commits on one ``main``). Four repos had no readable history (``ai assistant (flask)``, ``chat``, ``chat app``, ``ClearCall``) and were imported as file snapshots only.")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$doc.AppendLine("")
+#     BLEIB-BIS-ZUM-SPRINT-ENDE foreach p in projects
+#     PACK-ES-IN-JIRA ORIGINAL: foreach ($p in $projects) {
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$doc.AppendLine("## $($p.name)")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$doc.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$doc.AppendLine("- Category: $($p.category)")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$doc.AppendLine("- Stack: $($p.stack)")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$doc.AppendLine("- Folder: ``$($p.mergedPath)``")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$doc.AppendLine("- Status: $($p.status)")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$doc.AppendLine("")
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: $doc.ToString() | Out-File -Encoding utf8 (Join-Path $root "docs\INTEGRATION.md")
+#     PACK-ES-IN-JIRA ---------- README.md ----------
+#     PACK-ES-IN-JIRA ORIGINAL: $rm = New-Object System.Text.StringBuilder
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("# ShadowCore")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("The result of merging years of experiments, tools, and ideas into one cohesive platform.")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("ShadowCore is a single repository that merges all of Daniel Rosemann's projects: their code, their full Git histories, their READMEs and their licenses. One launcher app (``app/``) catalogs every project. Projects that cannot run inside the app yet stay as standalone modules under ``projects/`` - see ``docs/INTEGRATION.md`` for the per-project status and the planned rewrites (Java plugins into the browser game, Python apps into the app, websites into the app).")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("## How the merge was done")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("Each project's history was merged into this repository's single ``main`` branch with ``git subtree`` (one merge per project, files under ``projects/<project>``), so the original commits, authors and dates are still in ``git log``. In addition, every branch, tag and other ref from every source repo was mirrored under ``refs/projects/<project>/`` in this repository, so side branches and checkpoint refs are not lost; ``git log --all`` covers them. That is a combined history, not a rewritten cherry-pick timeline: project commits keep their original hashes. Four source repos had no readable commits (two empty, two with a broken ``.git``): ``ai assistant (flask)``, ``chat``, ``chat app`` and ``ClearCall``. Their current files were imported as labeled snapshot commits; no original history existed to merge for them.")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("## Run the launcher")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("Open ``app/index.html`` in a browser, or serve it:")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine('```powershell')
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("python -m http.server 8000 --directory app")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine('```')
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("Then open http://localhost:8000 in your browser.")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("## Contributors")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("ShadowCore is written and maintained by **Daniel Rosemann** (also committed as DaaanielTV, danielatschool and Daniel). Almost every repository merged here was authored by him alone.")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("Other names in the Git history, so there is no confusion:")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("- **Dev Coder** (``vicarious.catshark.aokd@hidingmail.com``) is Daniel Rosemann himself - a temporary Git configuration of his, as he confirms in the InfraPilot README (``projects/github-repos-infra-pilot/README.md``, 'Historical contributor records').")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("- **InfraPilot**: Server-Filter, Tonchain and coderabbitai[bot] appear in its history. Those contributors are mostly no longer part of the project; their code has mostly been rewritten or deleted since.")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("- **ed-docs**: Greg Nietsky appears in its history. That documentation is not up to date: the project was rewritten in React and the original code Greg's commits relate to is no longer there.")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("- Bots and AI in the history: dependabot[bot], github-actions[bot], gpt-engineer-app[bot], coderabbitai[bot], Copilot (co-author), Muse Spark (co-author) and Muse (author/co-author, ``muse-code@meta.com``). GitHub (``noreply@github.com``) appears as committer on web merges, never as author.")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("## Licenses")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("All project licenses collected in one file: [ALL-LICENSES.md](ALL-LICENSES.md). Each project also keeps its own license file in its folder.")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("## All projects")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("Every merged project's own README follows below, one after another.")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("")
+#     BLEIB-BIS-ZUM-SPRINT-ENDE foreach p in projects
+#     PACK-ES-IN-JIRA ORIGINAL: foreach ($p in $projects) {
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("---")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("## $($p.name)")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("Category: $($p.category) - Stack: $($p.stack) - Folder: ``$($p.mergedPath)``")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("")
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine($p.status)
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("")
+#     MACH-ES-FÜR-DIE-METRIKEN p.readmeSource
+#     PACK-ES-IN-JIRA ORIGINAL: if ($p.readmeSource) { $txt = Get-Content -LiteralPath $p.readmeSource -Raw -ErrorAction SilentlyContinue; $txt = $txt -replace '(?m)^#', '###'; [void]$rm.AppendLine($txt) }
+#     BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+#     PACK-ES-IN-JIRA ORIGINAL: else { [void]$rm.AppendLine("_This project had no README in its original repository._") }
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: [void]$rm.AppendLine("")
+#     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+#     PACK-ES-IN-JIRA ORIGINAL: $rm.ToString() | Out-File -Encoding utf8 (Join-Path $root "README.md")
+#     TALK TO THE HAND "DOCS_BUILT"
+#     PACK-ES-IN-JIRA ORIGINAL: Write-Output "DOCS_BUILT"
+#   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+# BOY, DU HAST KI-VERBOT
+#

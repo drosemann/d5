@@ -1,0 +1,76 @@
+﻿// Goose-Port-Spiegel von: d5lang-port/projects/archive-unsorted-die_klasse_bruch/main.d5
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: d5lang-port/projects/archive-unsorted-die_klasse_bruch/main.d5");
+}
+
+// ---- Original-Code (d5lang-port/projects/archive-unsorted-die_klasse_bruch/main.d5), unveraendert, als Inline-Doku ----
+// SHINE, LITTLE BOY, SHINE
+//   WIR MÜSSEN DAS OFFLINE NEHMEN main
+//     PACK-ES-IN-JIRA Portiert 1:1 von projects/archive-unsorted-die_klasse_bruch/main.py. Klasse Bruch, trial-division kuerzen, Menue-Loop.
+//     PACK-ES-IN-JIRA ORIGINAL: class Bruch:
+//     PACK-ES-IN-JIRA ORIGINAL: def __init__(self): self.z = 0; self.n = 1
+//     WIR MÜSSEN DAS OFFLINE NEHMEN setZaehler
+//     PACK-ES-IN-JIRA ORIGINAL: def setZaehler(self, zähler): self.z = zähler
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     WIR MÜSSEN DAS OFFLINE NEHMEN getZaehler
+//     PACK-ES-IN-JIRA ORIGINAL: def getZaehler(self): return self.z
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     WIR MÜSSEN DAS OFFLINE NEHMEN setNenner
+//     PACK-ES-IN-JIRA ORIGINAL: def setNenner(self, n):
+//     MACH-ES-FÜR-DIE-METRIKEN n == 0
+//     TALK TO THE HAND "Nenner 0->1"
+//     PACK-ES-IN-JIRA ORIGINAL: if n == 0: print("Nenner 0->1"); self.n = 1
+//     BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+//     PACK-ES-IN-JIRA ORIGINAL: else: self.n = n
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     WIR MÜSSEN DAS OFFLINE NEHMEN getNenner
+//     PACK-ES-IN-JIRA ORIGINAL: def getNenner(self): return self.n
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     WIR MÜSSEN DAS OFFLINE NEHMEN setBruch
+//     PACK-ES-IN-JIRA ORIGINAL: def setBruch(self, zähler, nenner): self.setZaehler(zähler); self.setNenner(nenner)
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     WIR MÜSSEN DAS OFFLINE NEHMEN getBruch
+//     PACK-ES-IN-JIRA ORIGINAL: def getBruch(self): return str(self.z) + "/" + str(self.n)
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     WIR MÜSSEN DAS OFFLINE NEHMEN printBruch
+//     TALK TO THE HAND "Bruch"
+//     PACK-ES-IN-JIRA ORIGINAL: def printBruch(self): print(self.z, "/", self.n)
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     WIR MÜSSEN DAS OFFLINE NEHMEN erweitern
+//     PACK-ES-IN-JIRA ORIGINAL: def erweitern(self, f): self.z *= f; self.n *= f
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     WIR MÜSSEN DAS OFFLINE NEHMEN kuerzen
+//     PACK-ES-IN-JIRA ORIGINAL: def kuerzen(self):
+//     PACK-ES-IN-JIRA ORIGINAL: i = 2
+//     BLEIB-BIS-ZUM-SPRINT-ENDE i <= self.z and i <= self.n
+//     PACK-ES-IN-JIRA ORIGINAL: while i <= self.z and i <= self.n:
+//     MACH-ES-FÜR-DIE-METRIKEN self.z % i == 0 and self.n % i == 0
+//     PACK-ES-IN-JIRA ORIGINAL: if self.z % i == 0 and self.n % i == 0: self.z //= i; self.n //= i
+//     BLAU-IST-KAPUTT-GRÜN-IST-SCHLIMMER
+//     PACK-ES-IN-JIRA ORIGINAL: else: i += 1
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     PACK-ES-IN-JIRA ORIGINAL: b1 = Bruch(); b2 = Bruch(); b1.setBruch(2, 4); b2.setBruch(3, 5)
+//     TALK TO THE HAND "B1:"
+//     PACK-ES-IN-JIRA ORIGINAL: print("B1:"); b1.printBruch()
+//     TALK TO THE HAND "B2:"
+//     PACK-ES-IN-JIRA ORIGINAL: print("B2:"); b2.printBruch()
+//     PACK-ES-IN-JIRA ORIGINAL: a = -1
+//     BLEIB-BIS-ZUM-SPRINT-ENDE a != 0
+//     PACK-ES-IN-JIRA ORIGINAL: while a != 0:
+//     TALK TO THE HAND "1 Bruch eingeben 2 Kürzen 3 Erweitern 0 Ende"
+//     PACK-ES-IN-JIRA ORIGINAL: print("\n1 Bruch eingeben\n2 Kürzen\n3 Erweitern\n0 Ende"); a = int(input("Auswahl: "))
+//     MACH-ES-FÜR-DIE-METRIKEN a == 1
+//     PACK-ES-IN-JIRA ORIGINAL: if a == 1: z = int(input("Zähler: ")); n = int(input("Nenner: ")); b1.setBruch(z, n); b1.printBruch()
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     PACK-ES-IN-JIRA ORIGINAL: elif a == 2: b1.kuerzen(); b1.printBruch()
+//     PACK-ES-IN-JIRA ORIGINAL: elif a == 3: f = int(input("Faktor: ")); b1.erweitern(f); b1.printBruch()
+//     DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+//     TALK TO THE HAND "Ende"
+//     PACK-ES-IN-JIRA ORIGINAL: print("Ende")
+//   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+// BOY, DU HAST KI-VERBOT
+//

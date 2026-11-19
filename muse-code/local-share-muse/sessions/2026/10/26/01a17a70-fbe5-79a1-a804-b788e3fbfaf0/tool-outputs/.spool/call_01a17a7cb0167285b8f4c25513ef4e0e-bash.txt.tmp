@@ -1,0 +1,53 @@
+
+
+    Verzeichnis: \\?\C:\Users\danie\OneDrive\github-repos\infra-pilot\wiki
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a---l        10.10.2026     17:51           2503 01-Installation.md                                                   
+-a---l        10.10.2026     17:51            951 02-First-Deployment.md                                               
+-a---l        10.10.2026     17:51           2645 03-Configuration.md                                                  
+-a---l        10.10.2026     17:51           6642 04-Usage-Examples.md                                                 
+-a---l        10.10.2026     17:51           6215 05-CLI-Reference.md                                                  
+-a---l        10.10.2026     17:51           4121 06-Architecture.md                                                   
+-a---l        10.10.2026     17:51            998 07-Contributing.md                                                   
+-a---l        10.10.2026     17:51           3605 08-Security.md                                                       
+-a---l        10.10.2026     17:51           1009 09-FAQ.md                                                            
+-a---l        10.10.2026     17:51           1874 10-Troubleshooting.md                                                
+-a---l        24.10.2026     18:20           4900 11-Auth-Matrix.md                                                    
+-a---l        24.10.2026     18:20           7552 12-Backup-Restore.md                                                 
+-a---l        10.10.2026     17:51           3220 13-Update-Flow.md                                                    
+-a---l        10.10.2026     17:51           4162 14-Two-Factor-Auth.md                                                
+-a---l        10.10.2026     17:51           2331 Home.md                                                              
+-a---l        10.10.2026     17:51             83 _Footer.md                                                           
+-a---l        10.10.2026     17:51           1259 _Sidebar.md                                                          
+===
+1: # Security Policy & Threat Model
+8: ## Reporting a Vulnerability
+24: ## Threat Model
+26: ### Components and trust boundaries
+49: ### Who can do what via which API
+63: ### Secrets and credentials
+74: ### Infrastructure credentials and monitoring
+99: ### Container isolation (regression contract)
+116: ### Production deployment notes
+139: ### Known hardening history
+===
+# Changelog
+
+All notable changes are recorded here. Format follows
+[Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+Pre-1.0: no tagged releases yet; entries track `main`.
+
+## [Unreleased]
+
+### Added
+
+- Safe update flow: `scripts/update.sh` (backup first,
+  `git pull --ff-only`, rebuild, health + volume verification;
+  refuses `-v` / `--volumes`). Tested by
+  `tests/scripts/test_update_flow.py`. Docs in
+  `wiki/13-Update-Flow.md`, `wiki/01-Installation.md`,
+
+

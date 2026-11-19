@@ -1,0 +1,21 @@
+warning: in the working copy of 'docs/GRAMMAR.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/KEYWORDS.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/LANGUAGE.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/ast.c', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/ast.h', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/codegen.c', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/explain.c', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lexer.c', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/lexer.h', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/parser.c', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/codegen_tests.c', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/parser_tests.c', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'examples/for_loop.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'examples/params_return.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'examples/reset.tl', LF will be replaced by CRLF the next time Git touches it
+[main be45e7b] Add function params/return, counted for loop, real reset
+ 15 files changed, 333 insertions(+), 32 deletions(-)
+ create mode 100644 examples/for_loop.tl
+ create mode 100644 examples/params_return.tl
+ create mode 100644 examples/reset.tl
+fatal: unable to access 'https://github.com/drosemann/TraumaLang.git/': schannel: AcquireCredentialsHandle failed: SEC_E_NO_CREDENTIALS (0x8009030e) - Im Sicherheitspaket sind keine Anmeldeinformationen verfügbar.

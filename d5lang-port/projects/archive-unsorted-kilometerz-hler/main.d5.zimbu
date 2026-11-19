@@ -1,0 +1,23 @@
+﻿# Zimbu-Port-Spiegel von: d5lang-port\projects\archive-unsorted-kilometerz-hler\main.d5
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE main_d5
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: d5lang-port\projects\archive-unsorted-kilometerz-hler\main.d5\n")
+  RETURN 0
+
+# ---- Original-Code (d5lang-port\projects\archive-unsorted-kilometerz-hler\main.d5), unveraendert, als Inline-Doku ----
+# SHINE, LITTLE BOY, SHINE
+#   WIR MÜSSEN DAS OFFLINE NEHMEN main
+#     PACK-ES-IN-JIRA Portiert 1:1 von projects/archive-unsorted-kilometerz-hler/main.py. Identisch auch in projects/archive-unsorted-kilometerzähler/main.py (beide Dateien geprueft, gleicher Inhalt).
+#     PACK-ES-IN-JIRA ORIGINAL: km_stand_vorher = float(input("Geben Sie den Kilometerstand beim vorherigen Tanken ein: "))
+#     PACK-ES-IN-JIRA ORIGINAL: km_stand_jetzt = float(input("Geben Sie den Kilometerstand beim jetzigen Tanken ein: "))
+#     PACK-ES-IN-JIRA ORIGINAL: tankmenge_liter = float(input("Geben Sie die getankte Menge in Litern ein: "))
+#     PACK-ES-IN-JIRA ORIGINAL: verbrauch = (tankmenge_liter / (km_stand_jetzt - km_stand_vorher)) * 100
+#     TALK TO THE HAND "Der durchschnittliche Verbrauch"
+#     PACK-ES-IN-JIRA ORIGINAL: print(f"Der durchschnittliche Verbrauch beträgt {verbrauch:.2f} Liter pro 100 Kilometer.")
+#   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+# BOY, DU HAST KI-VERBOT
+#

@@ -1,0 +1,58 @@
+
+
+           00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
+
+00000000   2D 20 2A 2A 44 42 20 6E 69 63 68 74 20 67 65 66  - **DB nicht gef
+00000010   75 6E 64 65 6E 3A 2A 2A 20 60 41 4B 54 49 45 4E  unden:** `AKTIEN
+00000020   57 45 52 4B 5F 44 41 54 41 5F 44 49 52 60 20 70  WERK_DATA_DIR` p
+00000030   72 3F 3F 66 65 6E 2C 20 56 6F 6C 75 6D 65 20 69  r??fen, Volume i
+00000040   6E 20 43 6F 6D 70 6F 73 65 20 67 65 6D 6F 75 6E  n Compose gemoun
+00000050   74 65 64 3F                                      ted?            
+
+
+           00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
+
+00000000   2D 20 2A 2A 4B 75 72 73 65 20 61 6C 74 3A 2A 2A  - **Kurse alt:**
+00000010   20 59 61 68 6F 6F 20 76 65 72 7A 3F 3F 67 65 72   Yahoo verz??ger
+00000020   74 20 2F 20 52 61 74 65 2D 4C 69 6D 69 74 20 3F  t / Rate-Limit ?
+00000030   3F 3F 20 69 6D 20 57 6F 72 6B 65 72 20 4C 6F 67  ?? im Worker Log
+00000040   20 73 63 68 61 75 65 6E 2E                        schauen.       
+
+
+           00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
+
+00000000   23 23 23 20 4C 69 7A 65 6E 7A                    ### Lizenz      
+
+
+           00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
+
+00000000   47 4E 55 20 41 66 66 65 72 6F 20 47 65 6E 65 72  GNU Affero Gener
+00000010   61 6C 20 50 75 62 6C 69 63 20 4C 69 63 65 6E 73  al Public Licens
+00000020   65 20 76 33 20 3F 3F 3F 20 73 69 65 68 65 20 5B  e v3 ??? siehe [
+00000030   4C 49 43 45 4E 53 45 5D 28 4C 49 43 45 4E 53 45  LICENSE](LICENSE
+00000040   29 2E                                            ).              
+
+
+           00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
+
+00000000   49 63 68 20 68 61 62 65 20 41 47 50 4C 20 67 65  Ich habe AGPL ge
+00000010   6E 6F 6D 6D 65 6E 20 77 65 69 6C 20 69 63 68 20  nommen weil ich 
+00000020   6D 61 6C 20 77 61 73 20 61 6E 64 65 72 65 73 20  mal was anderes 
+00000030   61 6C 73 20 47 50 4C 20 33 20 70 72 6F 62 69 65  als GPL 3 probie
+00000040   72 65 6E 20 77 6F 6C 6C 74 65 20 3F 3F 3F 20 77  ren wollte ??? w
+00000050   65 67 65 6E 20 53 61 61 53 20 46 61 6C 6C 65 20  egen SaaS Falle 
+00000060   65 74 63 2E 20 42 65 69 20 47 50 4C 20 6B 61 6E  etc. Bei GPL kan
+00000070   6E 20 6A 65 6D 61 6E 64 20 64 65 6E 20 43 6F 64  n jemand den Cod
+00000080   65 20 61 6C 73 20 53 65 72 76 69 63 65 20 68 6F  e als Service ho
+00000090   73 74 65 6E 20 6F 68 6E 65 20 53 6F 75 72 63 65  sten ohne Source
+000000A0   20 7A 75 20 74 65 69 6C 65 6E 2C 20 62 65 69 20   zu teilen, bei 
+000000B0   41 47 50 4C 20 6D 75 73 73 20 65 72 2E 20 50 61  AGPL muss er. Pa
+000000C0   73 73 74 20 68 69 65 72 20 62 65 73 73 65 72 20  sst hier besser 
+000000D0   61 6C 73 20 62 65 69 20 6D 65 69 6E 65 6E 20 61  als bei meinen a
+000000E0   6E 64 65 72 65 6E 20 52 65 70 6F 73 2E           nderen Repos.   
+---
+warning: in the working copy of 'LICENSE', LF will be replaced by CRLF the next time Git touches it
+ LICENSE | 229 ++++++----------------------------------------------------------
+ 1 file changed, 21 insertions(+), 208 deletions(-)
+
+

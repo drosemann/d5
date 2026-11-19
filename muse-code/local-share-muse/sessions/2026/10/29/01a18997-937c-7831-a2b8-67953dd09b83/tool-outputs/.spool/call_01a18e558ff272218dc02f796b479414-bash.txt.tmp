@@ -1,0 +1,20 @@
+144
+144
+warning: in the working copy of 'TRAUMALANG-GAPS.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/TRAUMALANG.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/scripts/test_update_flow.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'infra/__init__.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'infra/naming/__init__.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'infra/naming/resolver.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/discord/test_report_bot.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/infrastructure/__init__.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/infrastructure/test_naming_resolver.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/load/k6/common.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/load/k6/smoke.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/load/k6/soak.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/load/k6/spike.tl', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/orchestrator/__init__.tl', LF will be replaced by CRLF the next time Git touches it
+137
+ tests/scripts/test_pr_voting.tl                    |  44 ++++
+ tests/scripts/test_update_flow.tl                  |  20 +-
+ 137 files changed, 3323 insertions(+), 220 deletions(-)

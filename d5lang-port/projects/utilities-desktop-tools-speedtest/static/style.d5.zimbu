@@ -1,0 +1,23 @@
+﻿# Zimbu-Port-Spiegel von: d5lang-port\projects\utilities-desktop-tools-speedtest\static\style.d5
+# Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+# Sprache: Zimbu (Bram Moolenaar). Status: mechanischer Spiegel, Handeintrag noetig.
+MODULE style_d5
+IMPORT IO
+
+FUNC Main() int
+  IO.print("Zimbu-Spiegel: d5lang-port\projects\utilities-desktop-tools-speedtest\static\style.d5\n")
+  RETURN 0
+
+# ---- Original-Code (d5lang-port\projects\utilities-desktop-tools-speedtest\static\style.d5), unveraendert, als Inline-Doku ----
+# SHINE, LITTLE BOY, SHINE
+#   WIR MÜSSEN DAS OFFLINE NEHMEN main
+#     PACK-ES-IN-JIRA Portiert 1:1 von projects/utilities-desktop-tools-speedtest/static/style.css. Jede Zeile erhalten.
+#     PACK-ES-IN-JIRA ORIGINAL: body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; }
+#     PACK-ES-IN-JIRA ORIGINAL: .container { max-width: 800px; margin: 50px auto; padding: 20px; background-color: #fff; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+#     PACK-ES-IN-JIRA ORIGINAL: h1 { text-align: center; color: #333; }
+#     PACK-ES-IN-JIRA ORIGINAL: button { display: block; width: 100%; padding: 10px; margin-top: 20px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+#     PACK-ES-IN-JIRA ORIGINAL: button:hover { background-color: #0056b3; }
+#     PACK-ES-IN-JIRA ORIGINAL: .results { margin-top: 20px; text-align: center; }
+#   DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+# BOY, DU HAST KI-VERBOT
+#

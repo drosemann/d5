@@ -1,0 +1,47 @@
+SHINE, LITTLE BOY, SHINE
+  WIR MÜSSEN DAS OFFLINE NEHMEN main
+    PACK-ES-IN-JIRA Portiert 1:1 von tools/merge-shadowcore.ps1. Jede Originalzeile ist erhalten, nichts geschnitten.
+    PACK-ES-IN-JIRA ShadowCore mega-repo merge script. Run from workspace root.
+    PACK-ES-IN-JIRA Combines every remaining source repo under !Coding-Enviroment into projects/<slug>
+    PACK-ES-IN-JIRA in this root git repo, preserving each project's commits (subtree merge).
+    PACK-ES-IN-JIRA ORIGINAL: $ErrorActionPreference = "Continue"
+    PACK-ES-IN-JIRA ORIGINAL: $root = (Get-Location).Path
+    PACK-ES-IN-JIRA ORIGINAL: function Slug($rel) {
+    PACK-ES-IN-JIRA ORIGINAL: $s = $rel -replace '^!Coding-Enviroment\\', ''
+    PACK-ES-IN-JIRA ORIGINAL: $s = $s -replace '[\\/:*?"<>|]', '-'
+    PACK-ES-IN-JIRA ORIGINAL: $s = $s -replace '\s+', '-'
+    PACK-ES-IN-JIRA ORIGINAL: $s = $s -replace '-+', '-'
+    PACK-ES-IN-JIRA ORIGINAL: return $s.Trim('-').ToLower()
+    PACK-ES-IN-JIRA ORIGINAL: }
+    PACK-ES-IN-JIRA ORIGINAL: $repos = @()
+    PACK-ES-IN-JIRA ORIGINAL: Get-ChildItem -Force -Recurse -Directory -ErrorAction SilentlyContinue -Filter ".git" |
+    PACK-ES-IN-JIRA ORIGINAL: ForEach-Object { if ($_.Parent.FullName -like "$root\!Coding-Enviroment*") { $repos += $_.Parent.FullName } }
+    PACK-ES-IN-JIRA ORIGINAL: $repos = $repos | Sort-Object -Unique
+    PACK-ES-IN-JIRA ORIGINAL: Write-Output "REPOS_FOUND=$($repos.Count)"
+    PACK-ES-IN-JIRA ORIGINAL: $ok = @(); $skipped = @()
+    BLEIB-BIS-ZUM-SPRINT-ENDE foreach r in repos
+    PACK-ES-IN-JIRA ORIGINAL: foreach ($r in $repos) {
+    PACK-ES-IN-JIRA ORIGINAL: $rel = $r.Replace($root + "\", "")
+    PACK-ES-IN-JIRA ORIGINAL: $slug = Slug $rel
+    PACK-ES-IN-JIRA ORIGINAL: $prefix = "projects/$slug"
+    MACH-ES-FÜR-DIE-METRIKEN Test-Path prefix
+    PACK-ES-IN-JIRA ORIGINAL: if (Test-Path (Join-Path $root $prefix)) { Write-Output "ALREADY: $slug"; $ok += $slug; continue }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    PACK-ES-IN-JIRA ORIGINAL: $count = & git -c safe.directory=* -C $r rev-list --all --count 2>$null
+    MACH-ES-FÜR-DIE-METRIKEN LASTEXITCODE -ne 0 -or count -eq 0
+    PACK-ES-IN-JIRA ORIGINAL: if ($LASTEXITCODE -ne 0 -or [int]$count -eq 0) { Write-Output "SKIP (no readable history): $rel"; $skipped += $rel; continue }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    TALK TO THE HAND "MERGING"
+    PACK-ES-IN-JIRA ORIGINAL: Write-Output "MERGING: $rel -> $prefix ($count commits)"
+    PACK-ES-IN-JIRA ORIGINAL: & git -c safe.directory=* -c safe.directory=$r subtree add --prefix=$prefix $r HEAD 2>&1 | Select-Object -Last 2
+    MACH-ES-FÜR-DIE-METRIKEN Test-Path prefix
+    PACK-ES-IN-JIRA ORIGINAL: if (Test-Path (Join-Path $root $prefix)) { $ok += $slug } else { $skipped += $rel; Write-Output "FAILED: $rel" }
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+    TALK TO THE HAND "MERGED_OK"
+    PACK-ES-IN-JIRA ORIGINAL: Write-Output "MERGED_OK=$($ok.Count)"
+    TALK TO THE HAND "SKIPPED"
+    PACK-ES-IN-JIRA ORIGINAL: Write-Output "SKIPPED=$($skipped.Count)"
+    PACK-ES-IN-JIRA ORIGINAL: $skipped | ForEach-Object { Write-Output "SKIPPED: $_" }
+  DAS HÄTTE EINE EMAIL SEIN KÖNNEN
+BOY, DU HAST KI-VERBOT

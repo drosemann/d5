@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/26/01a17a70-fbe5-79a1-a804-b788e3fbfaf0/tool-outputs/01a17a79-48bc-7512-96e4-a8fed5a23a0f/call_01a17a793b1471b78ca464f2ffbc2ff4-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/26/01a17a70-fbe5-79a1-a804-b788e3fbfaf0/tool-outputs/01a17a79-48bc-7512-96e4-a8fed5a23a0f/call_01a17a793b1471b78ca464f2ffbc2ff4-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/26/01a17a70-fbe5-79a1-a804-b788e3fbfaf0/tool-outputs/01a17a79-48bc-7512-96e4-a8fed5a23a0f/call_01a17a793b1471b78ca464f2ffbc2ff4-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\services\\management-panel\\server\\openapi.ts","hunks":[{"oldStart":509,"oldLines":4,"newStart":509,"newLines":28,"lines":["   },"," };"," ","+spec.schemas = spec.schemas || {};","+spec.paths['/feature-flags/evaluate'] = {","+  get: {","+    summary: 'Evaluate feature flags for the caller',","+    tags: ['FeatureFlags'],","+    security: [{ bearerAuth: [] }],","+    responses: { '200': { description: 'Resolved flag map' }, '401': { description: 'Unauthorized' } },","+  },","+};","+spec.paths['/feature-flags'] = {","+  get: {","+    summary: 'List flag definitions (admin)',","+    tags: ['FeatureFlags'],","+    security: [{ bearerAuth: [] }],","+    responses: { '200': { description: 'Flag definitions' }, '403': { description: 'Admin required' } },","+  },","+  post: {","+    summary: 'Create a feature flag (admin)',","+    tags: ['FeatureFlags'],","+    security: [{ bearerAuth: [] }],","+    responses: { '201': { description: 'Flag created' }, '400': { description: 'Invalid input' } },","+  },","+};","+"," export default spec;"]}]}]}

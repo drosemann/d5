@@ -1,0 +1,6 @@
+warning: in the working copy of 'LICENSE', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/license-audit-mit.md', LF will be replaced by CRLF the next time Git touches it
+[main a2eeca7] Ab 24.10.2026 MIT, da nur Daniel Rosemann (ich) committed.
+ 4 files changed, 139 insertions(+), 623 deletions(-)
+ create mode 100644 docs/license-audit-mit.md
+fatal: unable to access 'https://github.com/drosemann/cooperating-screen.git/': Connection timed out after 300059 milliseconds

@@ -1,0 +1,10 @@
+﻿// Goose-Port-Spiegel von: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189d8-93a3-74f2-bc08-7a76028a28a9/call_01a189d8798675ed8440554be2233a36-tool_patch.json
+// Quelle unveraendert als Inline-Doku unten. Originaldatei bleibt bestehen.
+// Sprache: Goose (aardappel/goose v2026.4, https://github.com/aardappel/goose).
+// Status: mechanischer Spiegel als gueltiges Goose-Programm (goose check ok), Logik-Port per Hand folgt.
+fn main() {
+    print("Goose-Spiegel: muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189d8-93a3-74f2-bc08-7a76028a28a9/call_01a189d8798675ed8440554be2233a36-tool_patch.json");
+}
+
+// ---- Original-Code (muse-code/local-share-muse/sessions/2026/10/29/01a18997-937c-7831-a2b8-67953dd09b83/tool-outputs/01a189d8-93a3-74f2-bc08-7a76028a28a9/call_01a189d8798675ed8440554be2233a36-tool_patch.json), unveraendert, als Inline-Doku ----
+// {"files":[{"path":"\\\\?\\C:\\Users\\danie\\OneDrive\\github-repos\\infra-pilot\\scripts\\docker-build-ps.tl","hunks":[{"oldStart":1,"oldLines":0,"newStart":1,"newLines":21,"lines":["+IT'S SHOWTIME","+PUT IT IN JIRA Build Docker images for all Infra Pilot services on Windows","+PUT IT IN JIRA Push Registry switches version tag git describe or latest","+WE NEED TO TAKE THIS OFFLINE info","+TALK TO THE HAND \"info\"","+THIS COULD HAVE BEEN AN EMAIL","+WE NEED TO TAKE THIS OFFLINE success","+TALK TO THE HAND \"success\"","+THIS COULD HAVE BEEN AN EMAIL","+WE NEED TO TAKE THIS OFFLINE warn","+TALK TO THE HAND \"warn\"","+THIS COULD HAVE BEEN AN EMAIL","+WE NEED TO TAKE THIS OFFLINE error","+TALK TO THE HAND \"error\"","+THIS COULD HAVE BEEN AN EMAIL","+TALK TO THE HAND \"Docker required version tag from git\"","+TALK TO THE HAND \"Three services version latest double tag\"","+TALK TO THE HAND \"Push when switch and registry else warn skip\"","+TALK TO THE HAND \"All builds ok or count failed\"","+TALK TO THE HAND \"docker build ps ready\"","+YOU HAVE BEEN TERMINATED"]}]}]}

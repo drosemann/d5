@@ -1,0 +1,56 @@
+32: def __init__(self, base_url: str, token: Optional[str] = None):
+44: def _headers(self) -> Dict[str, str]:
+52: def _request(
+105: def _get(self, path: str) -> Any:
+116: def _post(self, path: str, data: Optional[Dict[str, Any]] = None) -> Any:
+128: def _put(self, path: str, data: Optional[Dict[str, Any]] = None) -> Any:
+140: def _delete(self, path: str) -> Any:
+155: def login(self, api_key: str) -> Any:
+166: def logout(self) -> Any:
+178: def list_servers(self) -> Any:
+182: def get_server(self, server_id: str) -> Any:
+193: def create_server(
+223: def start_server(self, server_id: str) -> Any:
+231: def stop_server(self, server_id: str) -> Any:
+239: def restart_server(self, server_id: str) -> Any:
+247: def delete_server(self, server_id: str) -> Any:
+255: def server_status(self, server_id: str) -> Any:
+263: def get_logs(self, server_id: str, lines: int = 50, follow: bool = False) -> Any:
+278: def list_backups(self, server_id: Optional[str] = None) -> Any:
+287: def create_backup(self, server_id: str, s3_target: Optional[str] = None) -> Any:
+303: def deploy(
+324: def health_check(self) -> Any:
+328: def dns_zones(self) -> Any:
+332: def dns_records(self, zone_id: str) -> Any:
+340: def drift_scan(self) -> Any:
+===
+    data = (
+        result if isinstance(result, builtins.list) else result.get("plugins", result)
+    )
+    print_output(data, ctx.obj.get("output", "table"))
+
+
+@app.command()
+def install(
+    ctx: typer.Context,
+    name: str = typer.Argument(..., help="Plugin name"),
+    source: Optional[str] = typer.Option(
+        None, "--source", "-s", help="Plugin source (URL or path)"
+    ),
+    version: Optional[str] = typer.Option(
+        None, "--version", "-v", help="Plugin version"
+    ),
+):
+    """Install a plugin."""
+    client = _get_client(ctx)
+    result = client.install_plugin(name, source=source, version=version)
+    print_output(result, ctx.obj.get("output", "table"))
+
+
+@app.command()
+def uninstall(
+    ctx: typer.Context,
+    name: str = typer.Argument(..., help="Plugin name"),
+):
+    """Uninstall a plugin."""
+    client = _get_client(ctx)
