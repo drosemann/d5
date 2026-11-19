@@ -9,7 +9,7 @@ cryptography==50.0.2
 pillow==13.0.0
 typing-extensions==4.16.0
 requests==2.34.2
-croniter==6.2.4
+croniter==7.0.0
 aiofiles==25.1.0
 alembic==1.20.1
 hvac==2.4.0
