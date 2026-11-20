@@ -3,21 +3,75 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>d5 — everything combined</title>
+<title>d5 — one super-app</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="top">
-<h1><a href="#/">d5</a></h1>
-<p class="tag">one super-app — pick up where you left off</p>
-<nav>
-<a href="#/">Home</a>
-<a href="#/tools">Tools</a>
-<a href="#/catalog">Library</a>
-</nav>
-</header>
-<main id="view"></main>
-<footer class="foot"><p>d5 super-app · static build · no backend</p></footer>
+<div class="shell">
+  <!-- Left sidebar — Twitter style -->
+  <aside class="left" id="leftNav">
+    <div class="logo"><a href="#/" aria-label="d5 home"><span class="x">d5</span></a></div>
+    <nav class="nav">
+      <a href="#/" data-nav="home"><span class="ic">⌂</span> Home</a>
+      <a href="#/explore" data-nav="explore"><span class="ic">◎</span> Explore</a>
+      <a href="#/tools" data-nav="tools"><span class="ic">▦</span> Tools</a>
+      <a href="#/play" data-nav="play"><span class="ic">♟</span> Play</a>
+      <a href="#/minecraft" data-nav="minecraft"><span class="ic">⛏</span> Minecraft</a>
+      <a href="#/catalog" data-nav="catalog"><span class="ic">▤</span> Library</a>
+      <a href="#/profile" data-nav="profile"><span class="ic">◉</span> Profile</a>
+      <a href="#/more" data-nav="more"><span class="ic">○</span> More</a>
+    </nav>
+    <button id="postBtn" class="post-cta">Post</button>
+    <div class="user-mini">
+      <div class="avatar">d</div>
+      <div class="user-meta"><strong>d5niel</strong><span>@d5_iel</span></div>
+      <span class="dots">···</span>
+    </div>
+  </aside>
+
+  <!-- Center timeline -->
+  <main class="center">
+    <div class="center-head">
+      <div class="tabs">
+        <a href="#/" id="tabForYou" class="tab on">For you</a>
+        <a href="#/following" id="tabFollowing" class="tab">Following</a>
+        <span class="plus">+</span>
+      </div>
+      <div class="composer">
+        <div class="composer-row">
+          <div class="avatar sm">d</div>
+          <input id="composerInput" placeholder="What's happening?" maxlength="280" />
+        </div>
+        <div class="composer-actions">
+          <span class="tool-icons">▣ ▭ ☰ ☺ ◐ ⌖ ⚑</span>
+          <button id="composerPost" class="mini-post">Post</button>
+        </div>
+      </div>
+    </div>
+    <div id="view"></div>
+  </main>
+
+  <!-- Right rail -->
+  <aside class="right">
+    <div class="searchbox"><input id="globalSearch" placeholder="Search" /><span>⌕</span></div>
+    <section class="rail-card" id="railEcosystem">
+      <h3>Your ecosystem</h3>
+      <p class="meta" id="railCounts">—</p>
+      <a class="btn small" href="#/tools">Open Tools</a>
+    </section>
+    <section class="rail-card" id="railTrending">
+      <h3>What's happening</h3>
+      <div id="trendingList"></div>
+    </section>
+    <section class="rail-card">
+      <h3>Library</h3>
+      <p class="meta">152 projects in one registry. Native ports open instantly, the rest is source.</p>
+      <a class="btn small ghost" href="#/catalog">Browse library</a>
+    </section>
+  </aside>
+</div>
+
+<footer class="foot"><p>d5 super-app · static build · no backend · <span id="footCounts"></span></p></footer>
 <script src="catalog.js"></script>
 <script src="tools.js"></script>
 <script src="games.js"></script>

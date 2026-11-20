@@ -1,4 +1,4 @@
-﻿window.D5_CATALOG = window.SHADOWCORE_CATALOG = [
+window.D5_CATALOG = window.SHADOWCORE_CATALOG = [
     {
         "slug":  "ai-\u0026-llm-projects-ai-assistant-html,-css,-javascript,-python-(flask)-for-openai-api",
         "name":  "ai assistant html, css, javascript, python (flask) for openai api",
@@ -184,7 +184,7 @@
         "name":  "browser game",
         "category":  "Browser Games",
         "stack":  "Java, Web/JS",
-        \"status\": \"Web project: embedded playable game in the d5 app.\",
+        "status": "Web project: embedded playable game in the d5 app.",
         "path":  "projects/browser-games-browser-game",
         "hasReadme":  true,
         "hasLicense":  true

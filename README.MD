@@ -1,4 +1,21 @@
-﻿# d5
+﻿DO NOT DELETE ANY FEATURES JUST MERGE THEM (or archive) 
+
+alles in klare microservices
+
+
+Eine gemeinsame Daten- und Identitätsschicht.
+
+
+Eine übersichtliche Haupt-App
+
+
+Die große README durch eine kurze Produktbeschreibung und separate Projekt-Dokumentation ersetzen.
+
+Bau zuerst „Twitter für d5“ mit Beiträgen, Folgen und Profilen. Wenn diese Nutzung funktioniert, ergänze Chats und Gruppen. Erst danach wird aus dem sozialen Netzwerk eine Super-App mit Mini-Apps. So entsteht Schritt für Schritt ein zusammenhängendes Produkt, statt viele unfertige Funktionen in eine Oberfläche zu packen.
+
+
+
+# d5
 
 The result of merging years of experiments, tools, and ideas into one cohesive platform.
 
