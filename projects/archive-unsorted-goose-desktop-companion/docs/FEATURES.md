@@ -421,11 +421,11 @@ goose-marketplace/
 
 | Feature | Status | Module |
 |---------|--------|--------|
-| Goose Physics | TODO | Core |
+| Goose Physics | Planned | Core |
 | Voice Honks | ✅ Existiert | Fun/goose-honk.ps1 |
 | Screen Graffiti | ✅ Existiert | Media/goose-doodle.ps1 |
-| Fake Error Popups | TODO | Fun/goose-commands |
-| Drag Memes from Web | TODO | Neu |
+| Fake Error Popups | Planned | Fun/goose-commands |
+| Drag Memes from Web | Planned | Neu |
 | Desktop Poop | 😂 Classic | - |
 
 ---

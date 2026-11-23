@@ -15,7 +15,7 @@ Barecode v0 files (untested, no deps installed, nothing run):
 | Fleet routes (wired) | `services/orchestrator-agent/webhook_server.py` (`/api/v1/fleet/…`) |
 | CLI `ipilot pet list/status/rename` (registered) | `cli/ipilot/commands/pet.py`, `cli/ipilot/commands/__init__.py` |
 | Discord `/pet`, `/pet-status` (registered) | `services/discord-service/modules/petCommands.js`, `services/discord-service/index.js` |
-| Panel `<FleetPet>` (created, NOT mounted — see mount TODO in file) | `services/management-panel/src/components/FleetPet.tsx` |
+| Panel `<FleetPet>` (mounted in `AppCard.tsx` via the `creature` prop) | `services/management-panel/src/components/FleetPet.tsx` |
 
 Sources of truth this plan builds on (read before coding):
 

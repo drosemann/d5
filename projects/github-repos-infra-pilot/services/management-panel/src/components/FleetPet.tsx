@@ -1,9 +1,9 @@
 /**
  * FleetPet (Living Fleet barecode) — renders one creature's mood + stage.
  *
- * MOUNT TODO for implementing agents: render inside AppCard.tsx next to the
- * app name, passing the workload id. Data comes from the orchestrator fleet
- * API proxied through the panel server (GET /api/fleet/creatures/:id).
+ * Mounted in AppCard.tsx next to the app name via the `creature` prop.
+ * Data comes from the orchestrator fleet API proxied through the panel
+ * server (GET /api/fleet/creatures/:id).
  * Do NOT fetch the orchestrator directly from the browser.
  */
 

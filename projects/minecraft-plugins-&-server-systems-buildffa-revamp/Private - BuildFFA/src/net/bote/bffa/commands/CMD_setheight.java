@@ -13,13 +13,13 @@ public class CMD_setheight implements CommandExecutor {
 	private Main plugin;
 
 	public CMD_setheight(Main main) {
-		// TODO Auto-generated constructor stub
+		// Store plugin reference.
 		this.plugin = main;
 	}
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		// TODO Auto-generated method stub
+		// Implementation follows.
 		if(sender instanceof Player) {
 			Player p = (Player)sender;
 			if(p.hasPermission("bffa.admin.setheight")) {

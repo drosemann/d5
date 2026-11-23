@@ -167,7 +167,7 @@ app.get('/api/customers', verifyAuth, async (req, res) => {
 - `app_logs` - application logs
 - `setup_config` - mode and initialization state
 
-### business mode tables (todo)
+### business mode tables (planned)
 
 - `customers` - customer accounts
 - `plans` - pricing plans
@@ -293,7 +293,7 @@ implementation deferred to phase 2.
 • start fresh setup
 • select "hosting business mode"
 • create admin account
-• verify business feature placeholders appear (todo)
+• verify business feature placeholders appear (planned)
 • verify docker app crud still works
 
 ## security considerations

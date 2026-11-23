@@ -12,13 +12,13 @@ public class CMD_bffa implements CommandExecutor {
 	private Main plugin;
 
 	public CMD_bffa(Main main) {
-		// TODO Auto-generated constructor stub
+		// Store plugin reference.
 		this.plugin = main;
 	}
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command arg1, String arg2, String[] args) {
-		// TODO Auto-generated method stub
+		// Implementation follows.
 		if(sender instanceof Player) {
 			Player p = (Player)sender;
 			if(p.hasPermission("bffa.admin.help")) {

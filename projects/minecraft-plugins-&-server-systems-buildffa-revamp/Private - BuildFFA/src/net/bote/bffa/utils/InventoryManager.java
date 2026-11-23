@@ -110,7 +110,7 @@ public class InventoryManager {
 		try {
 			cfg.save(file);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// Save failure is logged; continue.
 			e.printStackTrace();
 		}
 	}

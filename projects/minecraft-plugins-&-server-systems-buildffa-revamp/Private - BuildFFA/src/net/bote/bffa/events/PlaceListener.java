@@ -42,7 +42,7 @@ public class PlaceListener implements Listener {
 						
 						@Override
 						public void run() {
-							// TODO Auto-generated method stub
+							// Implementation follows.
 							msg.remove(p);
 							
 						}

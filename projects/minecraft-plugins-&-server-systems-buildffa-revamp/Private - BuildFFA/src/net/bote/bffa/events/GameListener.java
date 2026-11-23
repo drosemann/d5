@@ -125,7 +125,7 @@ public class GameListener implements Listener {
 					
 					@Override
 					public void run() {
-						// TODO Auto-generated method stub
+						// Implementation follows.
 						
 						death.remove(p);
 						

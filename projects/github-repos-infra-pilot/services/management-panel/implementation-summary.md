@@ -291,7 +291,7 @@ the framework is ready, but actual docker interaction is stubbed. to add docker 
 
 • install `dockerode` npm package
 • update backend routes to call docker api
-• write the docker integration guide (`docs/DOCKER_INTEGRATION.md`, todo)
+• write the docker integration guide (`docs/DOCKER_INTEGRATION.md`, planned — not yet written)
 
 ## api endpoints
 

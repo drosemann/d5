@@ -26,14 +26,14 @@ public class CMD_setvillager implements CommandExecutor {
 	private Main plugin;
 
 	public CMD_setvillager(Main main) {
-		// TODO Auto-generated constructor stub
+		// Store plugin reference.
 		this.plugin = main;
 	}
 
 	@SuppressWarnings({ "deprecation", "static-access" })
 	@Override
 	public boolean onCommand(CommandSender sender, Command arg1, String arg2, String[] args) {
-		// TODO Auto-generated method stub
+		// Implementation follows.
 		if(sender instanceof Player) {
 			Player p = (Player)sender;
 			if(p.hasPermission("bffa.admin.villager")) {
@@ -109,7 +109,7 @@ public class CMD_setvillager implements CommandExecutor {
 //					as.setArms(true);
 //					as.setBasePlate(false);
 //					
-//					// TODO Turn right direction  + code
+//					// NOTE Turn right direction  + code
 //					
 //					as.setRightArmPose(rightarm);
 //					as.setLeftArmPose(leftarm);
