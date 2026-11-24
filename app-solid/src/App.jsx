@@ -9,6 +9,7 @@ import { ViewSplitwise, ViewSpeedtest, ViewSorting, ViewTodo, ViewNotes, ViewDat
 import { ViewLock, ViewTablist, ViewAutosave, ViewRestart, ViewChest, ViewRanditem, ViewQuests, ViewLobby, ViewDirect, ViewElytra, ViewHorde, ViewTemplate, ViewAnticheat, ViewRolesync, ViewSandstone, ViewArena, ViewLocate, ViewTnt, ViewVoice, ViewHello, ViewPseudo } from "./tools/McTools.jsx";
 import { ViewFortune, ViewApocalypse, ViewHearth, ViewRealms, ViewChall, ViewStreuland } from "./tools/McMisc.jsx";
 import { ViewTrip } from "./tools/Trip.jsx";
+import { ViewStream } from "./tools/Stream.jsx";
 
 const RUNNABLE = {
   "github-repos-stranded-horizons": "game.html",
@@ -104,7 +105,7 @@ const TOOLS = [
   { id: "bedwars", title: "BedWars (web)", desc: "Native rewrite of the Java BedWars plugin: generators, shop tiers, bed armor, events.", View: ViewBedwars },
   { id: "buildffa", title: "BuildFFA (web)", desc: "Native rewrite of the Java BuildFFA plugin: arena FFA, kills/deaths/KD.", View: ViewBuildffa },
   { id: "clanwars", title: "ClanWars (web)", desc: "Native rewrite of the Java ClanWars plugin: clans, battles, ratings.", View: ViewClanwars },
-  { id: "guestbook", title: "Guestbook", desc: "BBCode + validation, localStorage backend.", View: ViewGuestbook },
+  { id: "guestbook", title: "Guestbook", desc: "Social feed v2 + DMs: quotes, threads, polls, bookmarks, profiles, lists, drafts, schedule, edits, pins, mutes, permalinks, private Chats mit Sprachnachrichten.", View: ViewGuestbook },
   { id: "signin", title: "Login Demo", desc: "Local auth demo.", View: ViewSignin },
   { id: "shortener", title: "Link Shortener", desc: "Base62 + visit counter.", View: ViewShortener },
   { id: "splitwise", title: "Splitwise", desc: "Equal splits, balances, settle-up.", View: ViewSplitwise },
@@ -140,11 +141,12 @@ const TOOLS = [
   { id: "realms", title: "RealmOfWonders", desc: "Port of open-world-minigame: stats + achievements.", View: ViewRealms },
   { id: "chall", title: "Challenges", desc: "Port of challenges-source: timed challenge runner.", View: ViewChall },
   { id: "streuland", title: "Streuland Invites", desc: "Port of streuland invite-code signup flow.", View: ViewStreuland },
+  { id: "stream", title: "Stream Studio", desc: "Twitch-artig: Kanal, Live mit Kamera, Chat mit Emotes/Mods/AutoMod/VIPs, Punkten, Vorhersagen, Umfragen, Hype, Clips, VODs mit Kapiteln, Planung.", View: ViewStream },
 ];
 
 const SECTIONS = [
   { id: "everyday", title: "Everyday", ids: ["calc", "bmi", "bruch", "tokyo", "verbrauch", "wetter", "todo", "notes", "shortener", "splitwise", "guestbook", "signin", "speedtest", "sorting", "dataopt", "lock"] },
-  { id: "play", title: "Play", ids: ["snake", "tictactoe", "pong", "hangman", "guess", "play2048", "tank", "tama", "viz", "park", "trip"] },
+  { id: "play", title: "Play", ids: ["snake", "tictactoe", "pong", "hangman", "guess", "play2048", "tank", "tama", "viz", "park", "trip", "stream"] },
   { id: "minecraft", title: "Minecraft & servers", ids: ["bedwars", "buildffa", "clanwars", "lobby", "direct", "quests", "chest", "randitem", "arena", "locate", "tnt", "voice", "autosave", "restart", "tablist", "elytra", "horde", "template", "anticheat", "rolesync", "sandstone"] },
   { id: "stories", title: "Worlds & stories", ids: ["hello", "pseudo", "fortune", "apocalypse", "hearth", "realms", "chall", "streuland"] },
 ];
@@ -339,7 +341,7 @@ function ToolPage({ id, arg }) {
       <p class="meta">{t.desc}</p>
       <a href="#/tools">← all tools</a>
       <button class="fav-wide" onClick={() => { toggleFav(id); setFav(isFav(id)); }}>{fav() ? "★ Favorited" : "☆ Favorite"}</button>
-      {t.id === "trip" ? <V arg={arg} /> : <V />}
+      {t.id === "trip" || t.id === "guestbook" ? <V arg={arg} /> : <V />}
     </>
   );
 }

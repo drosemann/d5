@@ -37,8 +37,8 @@ function viewBruch(root){ toolForm(root,[numInput('z','Zähler'),numInput('n','N
 function viewTokyo(root){ toolForm(root,[numInput('km','km')],function(){return T.tokyo(parseFloat(root.querySelector('input').value));});}
 function viewVerbrauch(root){ toolForm(root,[numInput('p','km vorher'),numInput('n','km jetzt'),numInput('l','Liter')],function(){var f=root.querySelectorAll('input'); return T.verbrauch(parseFloat(f[0].value),parseFloat(f[1].value),parseFloat(f[2].value));});}
 function viewWetter(root){ var wrap=el('div',null,{'class':'tool-form'}); var ta=el('textarea',null,{rows:'6',cols:'50'}); ta.value=T.WETTER_SAMPLE; var res=out(''); var btn=el('button','Parse + sort'); btn.addEventListener('click',function(){var r=T.parseWetter(ta.value); res.textContent=r.records.map(function(x){return x.id+' | '+x.name+' | '+x.date+' | '+x.value;}).join('\n')+(r.errors.length?'\n--- errors ---\n'+r.errors.join('\n'):'');}); wrap.appendChild(ta); wrap.appendChild(btn); wrap.appendChild(res); root.appendChild(wrap);}
-var G=null,MG=null,MT=null,MX=null,A=null,A2=null,TR=null;
-function mods(){ G=window.d5Games; MG=window.d5McGames; MT=window.d5McTools; MX=window.d5McMisc; A=window.d5Apps; A2=window.d5Apps2; TR=window.d5Trip; }
+var G=null,MG=null,MT=null,MX=null,A=null,A2=null,TR=null,ST=null;
+function mods(){ G=window.d5Games; MG=window.d5McGames; MT=window.d5McTools; MX=window.d5McMisc; A=window.d5Apps; A2=window.d5Apps2; TR=window.d5Trip; ST=window.d5Stream; }
 var TOOLS=[
   {id:'calc',title:'Calculator',desc:'25 ops, mirrors archive-unsorted-calculator.',run:viewCalc},
   {id:'bmi',title:'BMI Rechner',desc:'Mirrors bodymassindex thresholds verbatim.',run:viewBmi},
@@ -60,7 +60,7 @@ var TOOLS=[
   {id:'bedwars',title:'BedWars (web)',desc:'Native rewrite of the Java BedWars plugin: generators, shop tiers, bed armor, events.',run:function(r){MG.viewBedwars(r);}},
   {id:'buildffa',title:'BuildFFA (web)',desc:'Native rewrite of the Java BuildFFA plugin: arena FFA, kills/deaths/KD.',run:function(r){MG.viewBuildffa(r);}},
   {id:'clanwars',title:'ClanWars (web)',desc:'Native rewrite of the Java ClanWars plugin: clans, battles, ratings.',run:function(r){MG.viewClanwars(r);}},
-  {id:'guestbook',title:'Guestbook',desc:'BBCode + validation, localStorage backend.',run:function(r){A.viewGuestbook(r);}},
+  {id:'guestbook',title:'Guestbook',desc:'Social feed v2 + DMs: quotes, threads, polls, bookmarks, profiles, lists, drafts, schedule, edits, pins, mutes, permalinks, private Chats mit Sprachnachrichten.',run:function(r,a){A.viewGuestbook(r,a);}},
   {id:'signin',title:'Login Demo',desc:'Local auth demo.',run:function(r){A.viewSignin(r);}},
   {id:'shortener',title:'Link Shortener',desc:'Base62 + visit counter.',run:function(r){A.viewShortener(r);}},
   {id:'splitwise',title:'Splitwise',desc:'Equal splits, balances, settle-up.',run:function(r){A2.viewSplitwise(r);}},
@@ -95,12 +95,13 @@ var TOOLS=[
   {id:'hearth',title:'Hearthrift',desc:'Port of hearthrift: daily + PvP rewards.',run:function(r){MX.viewHearth(r);}},
   {id:'realms',title:'RealmOfWonders',desc:'Port of open-world-minigame: stats + achievements.',run:function(r){MX.viewRealms(r);}},
   {id:'chall',title:'Challenges',desc:'Port of challenges-source: timed challenge runner.',run:function(r){MX.viewChall(r);}},
-  {id:'streuland',title:'Streuland Invites',desc:'Port of streuland invite-code signup flow.',run:function(r){MX.viewStreuland(r);}}
+  {id:'streuland',title:'Streuland Invites',desc:'Port of streuland invite-code signup flow.',run:function(r){MX.viewStreuland(r);}},
+  {id:'stream',title:'Stream Studio',desc:'Twitch-artig: Kanal, Live mit Kamera, Chat mit Emotes/Mods/AutoMod/VIPs, Punkten, Vorhersagen, Umfragen, Hype, Clips, VODs mit Kapiteln, Planung.',run:function(r){ST.viewStream(r);}}
 ];
 function toolById(id){ for(var i=0;i<TOOLS.length;i++)if(TOOLS[i].id===id)return TOOLS[i]; return null;}
 var SECTIONS=[
   {id:'everyday',title:'Everyday',ids:['calc','bmi','bruch','tokyo','verbrauch','wetter','todo','notes','shortener','splitwise','guestbook','signin','speedtest','sorting','dataopt','lock']},
-  {id:'play',title:'Play',ids:['snake','tictactoe','pong','hangman','guess','play2048','tank','tama','viz','park','trip']},
+  {id:'play',title:'Play',ids:['snake','tictactoe','pong','hangman','guess','play2048','tank','tama','viz','park','trip','stream']},
   {id:'minecraft',title:'Minecraft & servers',ids:['bedwars','buildffa','clanwars','lobby','direct','quests','chest','randitem','arena','locate','tnt','voice','autosave','restart','tablist','elytra','horde','template','anticheat','rolesync','sandstone']},
   {id:'stories',title:'Worlds & stories',ids:['hello','pseudo','fortune','apocalypse','hearth','realms','chall','streuland']}
 ];

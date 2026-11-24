@@ -4,9 +4,9 @@
 Dieser Bot verwendet die Discord.js-Bibliothek und die Ollama API, um auf Nachrichten in Discord zu reagieren. Er kann auf Erwähnungen reagieren und bietet eine einfache Möglichkeit, mit Benutzern zu interagieren.
 
 ## Voraussetzungen
-- Node.js (Version 14 oder höher)
+- Node.js (Version 18 oder höher)
 - Ein Discord-Bot-Token
-- Ollama API-Zugang
+- Ollama API-Zugang (OpenAI-kompatibel, z. B. `http://localhost:11434/v1`)
 
 ## Installation
 1. Klone das Repository:
@@ -24,17 +24,40 @@ Dieser Bot verwendet die Discord.js-Bibliothek und die Ollama API, um auf Nachri
    ```plaintext
    DISCORD_TOKEN=dein_discord_bot_token
    OLLAMA_API=deine_ollama_api_url
+   MODEL=qwen:0.5b
+   STATE_PATH=./d5-state.json
    ```
 
 ## Bot starten
 Um den Bot zu starten, führe den folgenden Befehl aus:
 ```bash
-node index.js
+npm start
 ```
 
 ## Verwendung
 - Erwähne den Bot in einem Discord-Kanal, um eine Antwort zu erhalten.
-- Der Bot reagiert auf Nachrichten, die ihn direkt erwähnen.
+- Der Bot reagiert auf Erwähnungen — oder direkt auf `!d5 …` ohne Erwähnung.
+- Alles ohne bekannten Befehl geht an die KI (Ollama), die deine Todos, deinen Feed und das d5-Toolregister als Kontext kennt.
+
+## Super-App-Befehle (`!d5`)
+- `!d5 help` — diese Hilfe
+- `!d5 tools [Suche]` — lauffähige d5-Tools auflisten (Spiegel von `app/app.js` TOOLS)
+- `!d5 find <Suchwort>` — d5-Bibliothek (`app/catalog.json`) durchsuchen
+- `!d5 todo add <Text> | list | done <Nr> | clear` — persönliche Todos (liegen in `d5-state.json`)
+- `!d5 feed <Text> | feed show` — Mini-Feed, fließt in den KI-Kontext ein
+- `!d5 note add <Text> | list | clear` — kurze Notizen
+- `!d5 link <URL> | link list` — Kurzlink anlegen (`d5:CODE`, wie der Web-Shortener)
+- `!d5 poll <Frage> | <Opt1> | <Opt2>` — Umfrage, Bot hängt die Reaktionen an
+- `!d5 remind <Minuten 1-1440> <Text>` — Erinnerung per Reply
+- `!d5 stats` — Übersicht (Todos, Notizen, Feed, Erinnerungen, KI-Chats)
+
+## Tests
+Nur Stdlib, kein Framework nötig:
+```bash
+npm test
+```
+Die Suite (`test/d5bot.test.js`, `node:test`) prüft Befehle, Validierung,
+Katalogsuche und State-Roundtrips gegen einen temporären `STATE_PATH`.
 
 ## Lizenz
 Dieses Projekt ist unter der MIT-Lizenz lizenziert.

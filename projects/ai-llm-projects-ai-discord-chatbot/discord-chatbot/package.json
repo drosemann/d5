@@ -1,0 +1,21 @@
+{
+  "name": "d5-discord-chatbot",
+  "version": "1.1.0",
+  "private": true,
+  "description": "d5 Super-App Discord Bot: d5-Toolregister, Todos, Feed, Erinnerungen, Katalogsuche, Ollama-Chat mit d5-Kontext.",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "check": "node --check index.js",
+    "test": "node --test test/"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5"
+  }
+}
