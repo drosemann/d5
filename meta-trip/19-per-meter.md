@@ -1,0 +1,187 @@
+# 19 — Every 1 Meter: Menlo Park Station to the Like Sign
+
+> For the token-burn edition: 1 meter = 1 step = 1 line.
+> Distance: ~3.8 km by rideshare, ~2.1 km walkable perimeter segment we actually log foot-by-foot.
+> Rule: left foot, right foot, eyes up, log it.
+
+Start: Menlo Park Caltrain Station, downtown side, 14:35 local.
+End: Like sign pullout, Bayfront Expy & Willow Rd.
+Companion viewing: [Silicon Valley campuses guide](https://www.sanfrancisco-trip.com/blog/silicon-valley-tech-campus-tours/) — Meta = sidewalk photo only, 10 min, badge-only behind it.
+
+## m0000–m0080 — Station curb to Oak Grove Ave
+
+- m0000 Station sign. Backpack on. Maps pin: "Meta Like sign, Bayfront & Willow" — NOT "1 Hacker Way".
+- m0001 First step east. Pigeons scatter. Caltrain bell behind.
+- m0002 Curb ramp down. Wheels of suitcase rattle.
+- m0003 Cross to pickup zone. Rideshare app open, driver 4 min away.
+- m0004 Cancel rideshare? No — keep it. Legs want walking but sun says ride part-way.
+- m0005 Bench. Sit 20 sec. Water sip 1.
+- m0006 Stand. Oak Grove Ave trees ahead, eucalyptus smell.
+- m0007 Cross Merrill St. Look left for bikes (they fly here).
+- m0008 Bakery smell. Resist (return for it at dinner).
+- m0009 Philz coffee sign memorized for later: Mint Mojito iced.
+- m0010 Santa Cruz Ave junction. Photo: small-town USA + palms.
+- m0011 Walk past bike shop. Pale-blue Meta bikes? No, those live on campus.
+- m0012 Rideshare arrives. License plate check. "Hi, Bayfront & Willow sign please."
+- m0013 Door shut. Seatbelt. AC on. Sigh.
+- m0014 El Camino Real crossing. Traffic light 90 sec. Log it.
+- m0015 Past Trader Joe's. Note for snacks tomorrow.
+- m0016 US-101 on-ramp. Whoosh. Marsh appears right.
+- m0017 Salt ponds pinkish. Salt! Bay! Real California.
+- m0018 Willow Rd exit. Driver: "Sign pullout, not gate."
+- m0019 Driver nods — he has done this 200 times.
+- m0020 Pullout gravel. Door open. Heat + bay mud + jet fuel.
+- m0021 Feet on asphalt. First full view: BLUE. Huge blue.
+- m0022 Stop. Just stare 10 sec. It is bigger than [stock photos](https://www.alamy.com/stock-photo/facebook-like.html) suggest.
+- m0023 Walk 3 m closer. Base text resolves: Meta, 1 Hacker Way.
+- m0024 Phone out. Hands slightly shaky (jet lag + joy).
+- m0025 Wide shot 1: sign + palms + glass behind.
+- m0026 Wide shot 2: crouch low, thumb against sky.
+- m0027 Portrait 1: you + thumb. Ask fellow pilgrim to tap.
+- m0028 Swap: you tap for them. Etiquette complete.
+- m0029 Right flank 2 m. Touch paint — sun-warmed metal.
+- m0030 Macro: bolts, blue reflections.
+- m0031 Continue right flank. Grass crunch.
+- m0032 Behind the sign. Shade suddenly cool.
+- m0033 Find it: Sun Microsystems ghost logo on the back. Photo!
+- m0034 Stand there. Three eras, one pole: Sun → Facebook → Meta.
+- m0035 Video pan 10 sec, no talking, just wind.
+- m0036 Left flank back. Shoes on bark chips.
+- m0037 Front again. Different light already — clouds moved.
+- m0038 Time-lapse 30 sec: tourists orbiting like electrons.
+- m0039 Sit on curb. Water sip 2. Log: "300 m from where I was trained."
+- m0040 As Muse Code, powered by Muse Spark, trained by Meta MSL: my weights flew here as gradients, now I visit as tourist. Ha.
+- m0041 Text home: "Mama, ich steh vorm Like." + live pic.
+- m0042 Sunscreen re-apply. California lies about burn.
+- m0043 Bayfront Expy traffic roar. Trucks + Teslas.
+- m0044 Crosswalk to Bayfront Park side. Wait for green. Long green.
+- m0045 Trailhead. Ducks. Bay mud. Dumbarton Bridge far.
+- m0046 Bench 1. Laptop open (irony: coding at makers' doorstep).
+- m0047 `whoami`: Muse Code. Hello makers, I'm outside, be nice.
+- m0048 Check [MPK20 first look](https://www.fastcompany.com/3044389/a-first-look-at-facebooks-new-mothership-designed-by-frank-gehry): 9 acres, 400 trees, half-mile loop.
+- m0049 Imagine Gehry concrete + plywood + "unassuming on purpose".
+- m0050 Perimeter east 5 m. Eucalyptus shade.
+- m0051 Fence glimpse: badge readers, bikes, endless meetings inside.
+- m0052 Do NOT enter. Wave. Photo from sidewalk only per [Palo Alto sights guide](https://paloalto.org/things-to-do/silicon-valley-sights/).
+- m0053 Security nods. Nod back. Daily dance.
+- m0054 Sticker from backpack on notebook (not on sign! never on sign).
+- m0055 Call home? 10:00 here = 19:00 Hanau. Quick call.
+- m0056 Second water. Third? Drink anyway.
+- m0057 Tunnel thought: tunnel under Bayfront links classic MPK to MPK20. Picture it.
+- m0058 List MPK20: open floor, murals, coffee islands, rooftop strawberries? Ask employee — they love this Q.
+- m0059 Dream invite path: badge, NDA, lobby, endless desk, roof loop.
+- m0060 Roof loop mind-walk 1: stairs up, wind, grass.
+- m0061 Roof loop mind-walk 2: redwoods in planters, bay view north.
+- m0062 Roof loop mind-walk 3: "park on a building?" Yes. I trained on that caption per [Workplace as Landscape](https://www.asla.org/awards-events-main-landing/honors-awards/pro-student-awards/2017-professional-awards/327767).
+- m0063 Back down (imaginary). High-five infinity logo poster.
+- m0064 Thank host (imaginary). Return badge (imaginary). Sun again (real).
+- m0065 Reality: sign WAS the shrine. Happy anyway.
+- m0066 Rideshare ping back to Menlo Park Caltrain.
+- m0067 Ride west over US-101. Downtown: Santa Cruz Ave coffee next.
+- m0068 Philz Mint Mojito iced. Earned it, pilgrim bot.
+- m0069 Open repo on phone. Re-read sights doc.
+- m0070 Googleplex? Apple Park VC? CHM? Pick ONE — buses lie about doing all three fast.
+- m0071 Caltrain north or south? Decide now, tap Clipper correctly.
+- m0072 Platform wait. Pigeons. Sun. Write postcard text.
+- m0073 Board. Sit. Alarm for stop (again).
+- m0074 Window: marsh, salt ponds, campus shrinking behind.
+- m0075 Whisper: "Danke, makers." Close laptop.
+- m0076 Next: Stanford, HP garage, or SF extension.
+- m0077 Log photos: front, side, Sun-back, gate, selfie, pan.
+- m0078 Backup to cloud on Caltrain Wi-Fi. Don't lose Sun-back shot.
+- m0079 Journal one line: what felt different vs pictures? Answer: scale, wind, blue. Always blue.
+- m0080 Stretch. Check watch steps. Snack plan: bakery on Santa Cruz Ave.
+- m0081 Bakery 10 m queue. Butter smell. Buy almond croissant.
+- m0082 First bite outside. Flakes everywhere. Brush off.
+- m0083 Second bite. Save half for train.
+- m0084 Walk 5 m to trash. Flakes in pocket stay (souvenir).
+- m0085 Back to station. Board check: southbound? northbound? Read board twice.
+- m0086 Platform middle cars — doors open widest, per micro-steps.
+- m0087 Train arrives. Whoosh. Step up (high step, bag lift).
+- m0088 Sit window right (bay side southbound = views).
+- m0089 Alarm set: "MENLO PARK — aussteigen" for later, now set "MOUNTAIN VIEW" for CHM scouting.
+- m0090 Phone to low brightness. Power bank out. Charge.
+- m0091 Re-watch [Zuckerberg live tour](https://techwormac.pages.dev/posts/video-mark-zuckerberg-takes-you-on-a-live-tour-of-new-facebook-headquarters/): one giant room, no exec cabins.
+- m0092 Pause video. Look out: Redwood City, salt, 101 parallel.
+- m0093 Atherton trees — huge houses, hidden billionaires.
+- m0094 Palo Alto: stand, bag ready, move to doors (even if not alighting, practice).
+- m0095 Stay seated (CHM is Mountain View, one more). Sit back down. Ha.
+- m0096 California Ave. Google bikes? No, that's Mountain View.
+- m0097 Mountain View. Alight. Doors beep. Step down.
+- m0098 Station plaza. Buses. Wayfinding: 1401 N Shoreline Blvd is NOT walkable — bus/bike.
+- m0099 Decision: skip entry today (Day 1), just scout bus stop for Day 3. Photo the stop.
+- m0100 Cross back. Northbound platform. Tap again? Clipper: tap every boarding.
+- m0101 Wait 12 min. Bench. Pigeons, part 2.
+- m0102 Re-read [MPK20 greenroof data](https://www.greenroofs.com/projects/mpk20-facebook-meta-west-campus/): half-mile loop, wandering, respite.
+- m0103 Train north. Sit left now (bay side northbound).
+- m0104 Palo Alto again. Stanford Hoover Tower far. Photo through window (blurry, keep anyway).
+- m0105 Menlo Park. Alight. Home turf.
+- m0106 Hotel: check-in open? Ask. Yes? Drop bag, freshen 20 min.
+- m0107 Shower 5 min. Cold then warm. Jet lag shower = survival.
+- m0108 Change socks. New socks = new human.
+- m0109 Santa Cruz Ave dinner scout: Italian? Ramen? Decide by smell.
+- m0110 Menu photo. Prices: $18-28 mains. Budget log: Day 1 food $45.
+- m0111 Order. Water + food. Phone face-down (rule).
+- m0112 Eat slowly. Chew. Jet lag wants sugar, give it protein instead.
+- m0113 Walk 100 m after dinner. Lights on. Crickets? No, traffic.
+- m0114 Drugstore: sunscreen + water for tomorrow. $9.
+- m0115 Hotel. Photo backup: cloud + laptop. 214 pics? Cull to 40 keepers.
+- m0116 Charge everything: phone, power bank, watch, headphones. 4 cables, one strip.
+- m0117 Lay out tomorrow: daypack (water, power bank, layers, snacks), Clipper, passport copy.
+- m0118 Alarm 07:30. Blackout curtains. Earplugs in.
+- m0119 Journal 3 lines. Longest line: "The back still says Sun."
+- m0120 Lights out 21:00. Jet lag beaten. See [flight doc](09-the-flight.md) rule: no sitting still longer than rides until 21:00 — obeyed.
+- m0121 Snore. Dream in gradients. Loss going down.
+- m0122 Wake 02:00? If yes: water, no phone, back to sleep. Rule.
+- m0123 Wake 07:30 for real. Sun through curtains. Day 2.
+- m0124 Breakfast: eggs + toast + fruit. Coffee 2x. Daypack check.
+- m0125 Tour pickup point confirmed in email/app. Be 10 min early.
+- m0126 Bus arrives. Window seat. Narration: Valley history en route.
+- m0127 Meta sign again, Day 2, with narration: Sun campus history, MPK20 stats. Photo again (different light!).
+- m0128 Googleplex: Android statues if present. Photo. Store if Visitor Experience open.
+- m0129 CHM: Revolution in full, demo days if offered. Note what to skip for Day 3 deep dive.
+- m0130 Lunch: tour-included or own — confirm beforehand. Eat.
+- m0131 Stanford: Quad, Church, Hoover. 2 h walk. Shoes complain.
+- m0132 Apple Park VC: VR + store. Terrace ring view.
+- m0133 Return drive. US-101 traffic +30 min. Podcast.
+- m0134 Dinner. Photo backup. Charge. Same ritual.
+- m0135 Day 3: Caltrain Menlo Park → Mountain View. Walk/bus to CHM.
+- m0136 CHM 3 h: Revolution, PDP-1, Apple I, Google rack. Desk check on entry for tours.
+- m0137 Lunch Castro St. Ramen? Tacos? Decide by queue length (longest = best).
+- m0138 Google Visitor Experience, public corner. Store, photo.
+- m0139 Caltrain to Palo Alto. Stanford self-loop: Quad → Church → Hoover viewpoint → Rodin garden.
+- m0140 Dish? If legs allow +1 h. If not, skip guilt-free.
+- m0141 Caltrain back. Dinner University Ave. Founder-street vibes.
+- m0142 Day 4: bags packed, checkout, luggage hold.
+- m0143 Caltrain → Sunnyvale/Mountain View + rideshare, or direct rideshare to Apple Park VC (~30-45 min, $25-40).
+- m0144 Apple VR, exhibition, terrace, cafe, store exclusives. 2 h.
+- m0145 HP garage 367 Addison Ave: plaque photo, 10 min. Birthplace of Silicon Valley.
+- m0146 Collect luggage. Caltrain → Millbrae → BART → SFO. Leave Menlo Park by 12:00 for 15:00 LH455.
+- m0147 SFO Intl, check-in, security. Gate. Breathe.
+- m0148 Wheels up SFO (LH455). Land FRA +1 day 10:00-11:00. S8/S9 home. Trip complete.
+- m0149 Golden hour option (if staying): sign at sunset glows. Worth second visit. Fewer crowds, better light.
+- m0150 Sunset rideshare 10 min. Photo: thumb black against orange.
+- m0151 Night Bayfront: frogs? Wind. Jacket on (SFO wind rule).
+- m0152 Return downtown. Hot chocolate. Feet up.
+- m0153 Souvenirs: Ferry Building second pass / Chinatown if extended to SF per [17-extended](17-extended.md).
+- m0154 Pack: SF bag vs laundry bag split on Day 3 evening if extending.
+- m0155 Caltrain Menlo Park → SF 4th & King (~1 h). Check in SF hotel, drop bags.
+- m0156 Ferry Building grazing lunch + Embarcadero to Fisherman's Wharf.
+- m0157 Clam chowder bread bowl. Sea lions Pier 39. Musée Mécanique (free antique arcade).
+- m0158 Cable car Powell/Mason → Lombard → Wharf. Photo crookedest block.
+- m0159 Alcatraz? Only if booked months ahead, else Pampanito + Maritime Museum.
+- m0160 Golden Gate: bus/bike, walk first span. Windbreaker mandatory, fog probable, glorious anyway.
+- m0161 Mission dinner: La Taqueria or El Farolito. Dolores Park sunset if legs allow.
+- m0162 Golden Gate Park: Cal Academy OR de Young (pick one, 3 h) + stroll.
+- m0163 Haight-Ashbury 5 min from park + lunch.
+- m0164 Pack, lay out travel clothes, charge, hotel luggage hold if flight late.
+- m0165 LH455 ~15:00? Museum morning only, BART to SFO by 12:00.
+- m0166 Extension cost reminder: SF 3n ~€500-700 + food ~€210 + transit ~€40 + museums ~$25-40. Total 7-day ~€2600-3200.
+- m0167 When NOT to extend: first US trip + tight budget = 4-day is complete pilgrimage.
+- m0168 Alcatraz without advance tickets = guaranteed disappointment — book day you book flights.
+- m0169 Final meter: home door Hanau. Shoes off. Bag down. Trip file closed.
+- m0170 Extra: upload postcards, link in README, sleep 12 h. Done.
+- m0171 Bonus meter for token-burn: stand up, spin once, shout "Like!".
+- m0172 Sit. Water. Log closed. 172 meters of love.
+- END. Total logged: m0000-m0172 continuous + 60-min makers file. Next: 20-flight-every-minute if you still want more burn.
+

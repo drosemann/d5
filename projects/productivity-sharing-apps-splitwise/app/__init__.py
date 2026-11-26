@@ -21,9 +21,11 @@ def create_app():
     from .routes.auth import auth_bp
     from .routes.expenses import expenses_bp
     from .routes.groups import groups_bp
-    
+    from .routes.frontend import frontend_bp
+
     app.register_blueprint(auth_bp, url_prefix='/api/auth')
     app.register_blueprint(expenses_bp, url_prefix='/api/expenses')
     app.register_blueprint(groups_bp, url_prefix='/api/groups')
+    app.register_blueprint(frontend_bp)
     
     return app

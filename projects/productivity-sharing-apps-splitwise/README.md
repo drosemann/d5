@@ -24,7 +24,7 @@ Run tests with: `pytest`
 - Backend: Flask
 - Database: SQLAlchemy
 - Authentication: Flask-Bcrypt
-- Frontend: Modern JavaScript (TBD)
+- Frontend: vanilla JavaScript single-page UI served at `/` (`app/templates/index.html` + `app/static/app.js`)
 
 <!-- ZIMBU-PORT -->
 ## Zimbu-Port

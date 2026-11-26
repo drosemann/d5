@@ -4,10 +4,8 @@ Start the chat server by running chat_server.py.
 Clients can send messages, and all connected clients will receive them in real-time.
 This basic chat system can be further enhanced with features like user authentication, message history, and private messaging. If you need additional features or modifications, feel free to ask!
 
-ToDO:
+Done (was ToDO):
 
-Sound Effects and Music: Add background music and sound effects to enhance the gaming experience.
-
-Teleportation or Fast Travel: Allow players to quickly move between different locations in the game world.
-
-Environmental Interactions: Create interactive environments where players can manipulate objects, such as opening doors, moving obstacles, or triggering events.
+- Sound Effects and Music: `audio/sound.py` — SoundSystem with background tracks (overworld/cave/desert/snow) and SFX (step/door/chest/hit/craft/teleport/event). Uses pygame.mixer when available, recorded no-op otherwise.
+- Teleportation or Fast Travel: `fast_travel/fast_travel.py` — FastTravelSystem with named waypoints matching the biome grid, discover-on-visit, validated travel().
+- Environmental Interactions: `interaction/interaction.py` — Door (key-locked), Obstacle (tool-gated), EventTrigger (reward-granting) plus InteractionSystem.default_world() seeded to the biome grid; integrates with Inventory.

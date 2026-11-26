@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Splitwise Clone</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<main>
+<h1>Splitwise Clone</h1>
+<section id="auth">
+<h2>Account</h2>
+<input id="username" placeholder="username" autocomplete="username">
+<input id="email" placeholder="email" type="email" autocomplete="email">
+<input id="password" placeholder="password (min 6)" type="password" autocomplete="current-password">
+<div class="row">
+<button id="registerBtn">Register</button>
+<button id="loginBtn">Login</button>
+</div>
+<p id="userInfo"></p>
+</section>
+<section id="groups" hidden>
+<h2>Groups</h2>
+<input id="groupName" placeholder="group name">
+<input id="memberIds" placeholder="member ids, comma separated">
+<button id="createGroupBtn">Create group</button>
+<ul id="groupList"></ul>
+</section>
+<section id="expenses" hidden>
+<h2>Expenses</h2>
+<input id="expDesc" placeholder="description">
+<input id="expAmount" placeholder="amount" type="number" min="0.01" step="0.01">
+<input id="expSplits" placeholder="splits as userId:amount, ...">
+<button id="createExpenseBtn">Add expense</button>
+<ul id="expenseList"></ul>
+</section>
+<section id="balances" hidden>
+<h2>Balance &amp; settle</h2>
+<button id="balanceBtn">Refresh my balance</button>
+<p id="balanceInfo"></p>
+<input id="settleTo" placeholder="pay to user id" type="number">
+<input id="settleAmount" placeholder="amount" type="number" min="0.01" step="0.01">
+<button id="settleBtn">Settle up</button>
+<p id="settleInfo"></p>
+</section>
+</main>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
